@@ -1,0 +1,1342 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FM Kompas</title>
+  <link rel="icon" type="image/svg+xml" href="logo.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --radius:      8px;
+      --card-radius: 10px;
+      --background:        hsl(0, 0%, 7%);
+      --foreground:        hsl(0, 0%, 100%);
+      --card:              hsl(0, 0%, 9%);
+      --card-foreground:   hsl(0, 0%, 100%);
+      --primary:           hsl(235, 100%, 60%);
+      --primary-fg:        hsl(0, 0%, 98%);
+      --secondary:         hsl(0, 0%, 15%);
+      --muted-fg:          hsl(0, 0%, 56%);
+      --accent:            hsl(0, 0%, 15%);
+      --border:            rgba(255,255,255,0.10);
+      --input-bg:          rgba(255,255,255,0.05);
+      --primary-soft:      rgba(91,91,255,0.12);
+      --primary-border:    rgba(91,91,255,0.30);
+    }
+
+    body {
+      background: var(--background);
+      color: var(--foreground);
+      font-family: 'Geist', 'Segoe UI', system-ui, sans-serif;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.6;
+    }
+
+    /* ───────────────────────────────────
+       LOGIN SCREEN
+    ─────────────────────────────────── */
+    #login-screen {
+      position: fixed;
+      inset: 0;
+      background: var(--background);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 999;
+      padding: 1.5rem;
+    }
+
+    .login-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 2.5rem;
+      width: 100%;
+      max-width: 400px;
+      text-align: center;
+    }
+
+    .login-logo {
+      font-size: 1.4rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    .login-logo span { color: var(--primary); }
+
+    .logo-img-sm { width: 28px; height: 28px; }
+    .logo-img-xs { width: 22px; height: 22px; }
+
+    .login-card p {
+      color: var(--muted-fg);
+      font-size: 0.9rem;
+      margin-bottom: 2rem;
+    }
+
+    .google-btn {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      background: #fff;
+      color: #3c4043;
+      border: 1px solid #dadce0;
+      border-radius: var(--radius);
+      font-family: inherit;
+      font-size: 0.95rem;
+      font-weight: 600;
+      padding: 0.75rem;
+      cursor: pointer;
+      transition: box-shadow 0.15s, background 0.15s;
+    }
+    .google-btn:hover { background: #f8f9fa; box-shadow: 0 1px 6px rgba(0,0,0,0.2); }
+    .google-btn:disabled { opacity: 0.6; cursor: default; }
+    .google-btn svg { flex-shrink: 0; }
+
+    .apple-btn {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      background: #000;
+      color: #fff;
+      border: 1px solid #000;
+      border-radius: var(--radius);
+      font-family: inherit;
+      font-size: 0.95rem;
+      font-weight: 600;
+      padding: 0.75rem;
+      cursor: pointer;
+      margin-top: 0.65rem;
+      transition: box-shadow 0.15s, background 0.15s;
+    }
+    .apple-btn:hover { background: #1a1a1a; box-shadow: 0 1px 6px rgba(0,0,0,0.4); }
+    .apple-btn:disabled { opacity: 0.6; cursor: default; }
+    .apple-btn svg { flex-shrink: 0; }
+
+    .login-error {
+      color: hsl(0,80%,65%);
+      font-size: 0.82rem;
+      margin-top: 0.75rem;
+      display: none;
+    }
+
+    /* ───────────────────────────────────
+       MAIN APP (hidden until login)
+    ─────────────────────────────────── */
+    #app { display: none; }
+
+    /* ───────────────────────────────────
+       HEADER
+    ─────────────────────────────────── */
+    header {
+      border-bottom: 1px solid var(--border);
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 60px;
+      position: sticky;
+      top: 0;
+      background: rgba(18,18,18,0.88);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      z-index: 100;
+    }
+
+    .header-left { display: flex; align-items: center; gap: 1rem; }
+
+    .logo {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--foreground);
+      cursor: pointer;
+      letter-spacing: -0.02em;
+    }
+
+    .logo span { color: var(--primary); }
+
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--muted-fg);
+      font-size: 0.875rem;
+    }
+
+    .breadcrumb .sep { opacity: 0.4; }
+    .breadcrumb .current { color: var(--foreground); font-weight: 500; }
+
+    .header-right { display: flex; align-items: center; gap: 0.75rem; }
+
+    .user-chip {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--secondary);
+      border: 1px solid var(--border);
+      border-radius: 99px;
+      padding: 0.3rem 0.9rem 0.3rem 0.4rem;
+      font-size: 0.82rem;
+      font-weight: 500;
+    }
+
+    .user-avatar {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: #fff;
+      flex-shrink: 0;
+      overflow: hidden;
+    }
+    .user-avatar img { width: 100%; height: 100%; object-fit: cover; }
+
+    .logout-btn {
+      background: none;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      color: var(--muted-fg);
+      font-family: inherit;
+      font-size: 0.78rem;
+      padding: 0.3rem 0.65rem;
+      cursor: pointer;
+      transition: color 0.15s, border-color 0.15s;
+    }
+
+    .logout-btn:hover { color: var(--foreground); border-color: rgba(255,255,255,0.25); }
+
+    /* ───────────────────────────────────
+       PAGES
+    ─────────────────────────────────── */
+    .page { display: none; }
+    .page.active { display: block; }
+
+    /* ───────────────────────────────────
+       HOME PAGE
+    ─────────────────────────────────── */
+    .home-wrap {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 3rem 2rem 5rem;
+    }
+
+    .home-hero {
+      margin-bottom: 2.5rem;
+    }
+
+    .home-hero h1 {
+      font-size: 2.2rem;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 1.1;
+      margin-bottom: 0.6rem;
+    }
+
+    .home-hero h1 span { color: var(--primary); }
+
+    .home-hero p {
+      color: var(--muted-fg);
+      font-size: 0.95rem;
+      max-width: 460px;
+    }
+
+    /* Section label */
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted-fg);
+      margin-bottom: 0.75rem;
+    }
+
+    /* Course grid */
+    .course-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 0.65rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .course-tile {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--card-radius);
+      padding: 1.1rem 1.25rem;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.2s, background 0.2s, transform 0.15s, box-shadow 0.2s;
+    }
+
+    .course-tile:hover {
+      border-color: rgba(91,91,255,0.45);
+      background: hsl(0,0%,11%);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    }
+
+    .course-tile .tile-icon { font-size: 1.35rem; margin-bottom: 0.55rem; display: block; }
+    .course-tile h3 { font-size: 0.88rem; font-weight: 600; margin-bottom: 0.2rem; }
+    .course-tile p { color: var(--muted-fg); font-size: 0.78rem; line-height: 1.5; }
+
+    .badge {
+      position: absolute;
+      top: 0.75rem;
+      right: 0.75rem;
+      font-size: 0.65rem;
+      background: var(--primary-soft);
+      color: var(--primary);
+      border: 1px solid var(--primary-border);
+      padding: 0.15rem 0.5rem;
+      border-radius: 99px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+
+    /* Two-column row: trending + leaderboard */
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.65rem;
+      margin-bottom: 0.65rem;
+    }
+
+    @media (max-width: 640px) { .two-col { grid-template-columns: 1fr; } }
+
+    /* Bottom row: contact + donate */
+    .bottom-row {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 0.65rem;
+    }
+
+    @media (max-width: 640px) { .bottom-row { grid-template-columns: 1fr; } }
+
+    /* Generic card */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--card-radius);
+      padding: 1.25rem 1.5rem;
+      overflow: hidden;
+    }
+
+    .card-title {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.9rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .card-title .icon { font-size: 1rem; }
+
+    /* Trending topics */
+    .trending-list { display: flex; flex-direction: column; gap: 0.1rem; }
+
+    .trending-item {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0.5rem 0.6rem;
+      border-radius: var(--radius);
+      font-size: 0.845rem;
+      cursor: pointer;
+      transition: background 0.15s;
+      text-decoration: none;
+      color: var(--foreground);
+    }
+
+    .trending-item:hover { background: var(--accent); }
+
+    .trending-replies {
+      font-size: 0.75rem;
+      color: var(--muted-fg);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    /* Leaderboard */
+    .leaderboard-list { display: flex; flex-direction: column; gap: 0.1rem; }
+
+    .lb-item {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      padding: 0.5rem 0.6rem;
+      border-radius: var(--radius);
+      transition: background 0.15s;
+    }
+
+    .lb-item:hover { background: var(--accent); }
+
+    .lb-rank {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--muted-fg);
+      width: 20px;
+      text-align: center;
+      flex-shrink: 0;
+    }
+
+    .lb-avatar {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: #fff;
+      flex-shrink: 0;
+      overflow: hidden;
+    }
+    .lb-avatar img { width: 100%; height: 100%; object-fit: cover; }
+
+    .lb-name {
+      font-size: 0.845rem;
+      font-weight: 500;
+      flex: 1;
+    }
+
+    .lb-pts {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .lb-empty {
+      font-size: 0.82rem;
+      color: var(--muted-fg);
+      text-align: center;
+      padding: 1rem 0;
+    }
+
+    /* Contact form */
+    .contact-form { display: flex; flex-direction: column; gap: 0.65rem; }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.65rem; }
+    @media (max-width: 480px) { .form-row { grid-template-columns: 1fr; } }
+
+    .form-group { display: flex; flex-direction: column; gap: 0.3rem; }
+
+    .form-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--muted-fg);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .form-input, .form-textarea {
+      background: var(--input-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      color: var(--foreground);
+      font-family: inherit;
+      font-size: 0.875rem;
+      padding: 0.6rem 0.8rem;
+      outline: none;
+      transition: border-color 0.15s;
+      resize: none;
+    }
+
+    .form-input:focus, .form-textarea:focus { border-color: var(--primary); }
+    .form-textarea { min-height: 90px; }
+
+    .form-submit {
+      align-self: flex-start;
+      background: var(--primary);
+      color: var(--primary-fg);
+      border: none;
+      border-radius: var(--radius);
+      font-family: inherit;
+      font-size: 0.875rem;
+      font-weight: 600;
+      padding: 0.55rem 1.25rem;
+      cursor: pointer;
+      transition: opacity 0.15s;
+    }
+
+    .form-submit:hover { opacity: 0.88; }
+
+    .form-success {
+      font-size: 0.85rem;
+      color: hsl(142,70%,55%);
+      display: none;
+      padding: 0.5rem 0;
+    }
+
+    /* Donate card */
+    .donate-card {
+      background: var(--primary-soft);
+      border: 1px solid var(--primary-border);
+      border-radius: var(--card-radius);
+      padding: 1.25rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .donate-card .card-title { margin-bottom: 0.35rem; }
+
+    .donate-card p {
+      color: var(--muted-fg);
+      font-size: 0.845rem;
+      line-height: 1.6;
+    }
+
+    .donate-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: var(--primary);
+      color: var(--primary-fg);
+      border: none;
+      border-radius: var(--radius);
+      font-family: inherit;
+      font-size: 0.875rem;
+      font-weight: 600;
+      padding: 0.55rem 1.1rem;
+      text-decoration: none;
+      transition: opacity 0.15s;
+      cursor: pointer;
+      align-self: flex-start;
+    }
+
+    .donate-btn:hover { opacity: 0.88; }
+
+    /* ───────────────────────────────────
+       VAK PAGE
+    ─────────────────────────────────── */
+    .vak-page {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 2.5rem 2rem 5rem;
+    }
+
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: var(--muted-fg);
+      font-size: 0.875rem;
+      font-weight: 500;
+      cursor: pointer;
+      margin-bottom: 2rem;
+      transition: color 0.15s, background 0.15s;
+      background: none;
+      border: none;
+      font-family: inherit;
+      padding: 0.35rem 0.7rem;
+      border-radius: var(--radius);
+    }
+
+    .back-btn:hover { color: var(--foreground); background: var(--accent); }
+
+    .vak-page h1 {
+      font-size: 1.8rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.35rem;
+    }
+
+    .vak-subtitle {
+      color: var(--muted-fg);
+      font-size: 0.875rem;
+      margin-bottom: 2.25rem;
+      padding-bottom: 1.75rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .vak-page h2 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin: 2rem 0 0.65rem;
+    }
+
+    .vak-page h3 {
+      font-size: 0.875rem;
+      font-weight: 600;
+      margin: 1.5rem 0 0.45rem;
+      color: var(--primary);
+    }
+
+    .vak-page p {
+      color: hsl(0,0%,72%);
+      font-size: 0.9rem;
+      margin-bottom: 0.65rem;
+      line-height: 1.7;
+    }
+
+    .vak-page ul {
+      padding-left: 1.25rem;
+      color: hsl(0,0%,72%);
+      font-size: 0.9rem;
+      margin-bottom: 0.65rem;
+    }
+
+    .vak-page ul li { margin-bottom: 0.3rem; line-height: 1.6; }
+
+    .table-wrap {
+      overflow-x: auto;
+      margin: 0.6rem 0 1.25rem;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--card-radius);
+    }
+
+    table { width: 100%; border-collapse: collapse; font-size: 0.855rem; }
+
+    th {
+      text-align: left;
+      padding: 0.55rem 1rem;
+      background: hsl(0,0%,11%);
+      border-bottom: 1px solid var(--border);
+      color: var(--muted-fg);
+      font-weight: 600;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    td {
+      padding: 0.6rem 1rem;
+      border-bottom: 1px solid var(--border);
+      color: hsl(0,0%,72%);
+      vertical-align: top;
+      line-height: 1.55;
+    }
+
+    tr:last-child td { border-bottom: none; }
+    td strong { color: var(--foreground); font-weight: 600; }
+
+    .callout {
+      background: var(--primary-soft);
+      border: 1px solid var(--primary-border);
+      border-left: 3px solid var(--primary);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 0.75rem 1rem;
+      margin: 1rem 0;
+      font-size: 0.875rem;
+      color: hsl(0,0%,72%);
+      line-height: 1.6;
+    }
+
+    .callout strong { color: hsl(235,100%,72%); }
+
+    /* ───────────────────────────────────
+       FOOTER
+    ─────────────────────────────────── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.5rem 2rem;
+      text-align: center;
+      color: var(--muted-fg);
+      font-size: 0.78rem;
+    }
+
+    @media (max-width: 600px) {
+      .home-hero h1 { font-size: 1.75rem; }
+      .home-wrap { padding: 2rem 1rem 4rem; }
+      .vak-page { padding: 1.5rem 1rem 4rem; }
+      header { padding: 0 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ────────────────────────────────────────────────────
+     LOGIN SCREEN
+──────────────────────────────────────────────────── -->
+<div id="login-screen">
+  <div class="login-card">
+    <div class="login-logo">
+      <img src="logo.svg" class="logo-img-sm" alt="FM Kompas logo" />
+      FM <span>Kompas</span>
+    </div>
+    <p>Log in om je voortgang bij te houden en het leaderboard te zien.</p>
+
+    <button class="google-btn" id="google-login-btn" onclick="signInWithGoogle()">
+      <svg width="20" height="20" viewBox="0 0 48 48">
+        <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>
+        <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/>
+        <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/>
+        <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.18 1.48-4.97 2.36-8.16 2.36-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/>
+        <path fill="none" d="M0 0h48v48H0z"/>
+      </svg>
+      Inloggen met Google
+    </button>
+    <button class="apple-btn" id="apple-login-btn" onclick="signInWithApple()">
+      <svg width="20" height="20" viewBox="0 0 814 1000" fill="#fff">
+        <path d="M788.1 340.9c-5.8 4.5-108.2 62.2-108.2 190.5 0 148.4 130.3 200.9 134.2 202.2-.6 3.2-20.7 71.9-68.7 141.9-42.8 61.6-87.5 123.1-155.5 123.1s-85.5-39.5-164-39.5c-76 0-103.7 40.8-165.9 40.8s-105-57.8-155.5-127.4C46 420.7 0 265.6 0 118.4 0 53.3 23.3.4 69.6.4c49.8 0 83.4 33.5 108 67.1 23.5 32.2 38.4 89.5 38.4 89.5h-2.4c53.8 0 100.3-36.8 141.8-36.8 38.9 0 71.4 24.1 100.3 56.8 30.8 34.4 46.7 78.1 46.7 125.2 0 .4 0 .8-.1 1.2-.3 52.5-26.6 101-64.5 130.2z"/>
+      </svg>
+      Inloggen met Apple
+    </button>
+    <div class="login-error" id="login-error">Inloggen mislukt. Probeer het opnieuw.</div>
+  </div>
+</div>
+
+
+<!-- ────────────────────────────────────────────────────
+     MAIN APP
+──────────────────────────────────────────────────── -->
+<div id="app">
+
+  <!-- HEADER -->
+  <header>
+    <div class="header-left">
+      <div class="logo" onclick="goHome()" style="display:flex;align-items:center;gap:0.4rem;">
+        <img src="logo.svg" class="logo-img-xs" alt="" />
+        FM <span>Kompas</span>
+      </div>
+      <div class="breadcrumb" id="breadcrumb" style="display:none">
+        <span class="sep">›</span>
+        <span class="current" id="breadcrumb-text"></span>
+      </div>
+    </div>
+    <div class="header-right">
+      <div class="user-chip">
+        <div class="user-avatar" id="user-avatar-header"></div>
+        <span id="user-name-header">Student</span>
+      </div>
+      <button class="logout-btn" onclick="doLogout()">Uitloggen</button>
+    </div>
+  </header>
+
+
+  <!-- ────────────────────────────────
+       PAGE: HOME
+  ──────────────────────────────── -->
+  <div class="page active" id="page-home">
+    <div class="home-wrap">
+
+      <!-- Hero -->
+      <div class="home-hero">
+        <h1>Welkom, <span id="hero-name">student</span></h1>
+        <p>Samenvattingen per vak, een leaderboard en alles wat je nodig hebt voor Facilitair Management.</p>
+      </div>
+
+      <!-- Vakken -->
+      <div class="section-label">Vakken · Periode 4</div>
+      <div class="course-grid">
+        <div class="course-tile" onclick="goTo('evenementenlogistiek')">
+          <span class="tile-icon">🧩</span>
+          <div class="badge">P4</div>
+          <h3>Evenementenlogistiek</h3>
+          <p>Schillenmodel, mobiliteit, toegang en evenementprocessen.</p>
+        </div>
+        <div class="course-tile" onclick="goTo('evenementenmarketing')">
+          <span class="tile-icon">📣</span>
+          <div class="badge">P4</div>
+          <h3>Evenementenmarketing</h3>
+          <p>5 P's, driecomponentenmodel, crossmedia en persona's.</p>
+        </div>
+        <div class="course-tile" onclick="goTo('projectvaardigheden')">
+          <span class="tile-icon">📋</span>
+          <div class="badge">P4</div>
+          <h3>Projectvaardigheden</h3>
+          <p>Observeren, interviewen, enquêteren, zakelijk communiceren.</p>
+        </div>
+        <div class="course-tile" onclick="goTo('ppo')">
+          <span class="tile-icon">🌱</span>
+          <div class="badge">P4</div>
+          <h3>Persoonlijke Ontwikkeling</h3>
+          <p>Zelfreflectie, growth mindset en professionele groei.</p>
+        </div>
+      </div>
+
+      <!-- Herexamen -->
+      <div class="section-label" style="margin-top:0.5rem;">Herexamen</div>
+      <div class="course-grid">
+        <div class="course-tile" onclick="window.location.href='eventmanagement1.html'" style="border-color: rgba(239,68,68,0.25);">
+          <span class="tile-icon">📖</span>
+          <div class="badge" style="background:rgba(239,68,68,0.12);color:hsl(0,80%,65%);border-color:rgba(239,68,68,0.3);">Herexamen</div>
+          <h3>Eventmanagement 1</h3>
+          <p>Samenvatting, begrippenlijst & oefentoets voor het herexamen.</p>
+        </div>
+      </div>
+
+      <!-- Trending + Leaderboard -->
+      <div class="two-col">
+
+        <!-- Trending -->
+        <div class="card">
+          <div class="card-title"><span class="icon">🔥</span> Trending onderwerpen</div>
+          <div class="trending-list">
+            <a class="trending-item" onclick="goTo('evenementenlogistiek')">
+              <span>Wat is het schillenmodel?</span>
+              <span class="trending-replies">populair</span>
+            </a>
+            <a class="trending-item" onclick="goTo('evenementenmarketing')">
+              <span>Segmentatie vs. targeting</span>
+              <span class="trending-replies">tentamenpunt</span>
+            </a>
+            <a class="trending-item" onclick="goTo('ppo')">
+              <span>Fixed vs. growth mindset</span>
+              <span class="trending-replies">populair</span>
+            </a>
+            <a class="trending-item" onclick="goTo('projectvaardigheden')">
+              <span>Interviewtypen uitgelegd</span>
+              <span class="trending-replies">nieuw</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Leaderboard -->
+        <div class="card">
+          <div class="card-title"><span class="icon">🏆</span> Leaderboard</div>
+          <div class="leaderboard-list" id="leaderboard-list">
+            <!-- gevuld via JS -->
+          </div>
+          <p class="lb-empty" id="lb-empty" style="display:none">Nog geen scores. Maak quizzes om op het leaderboard te komen!</p>
+        </div>
+
+      </div>
+
+      <!-- Contact + Donate -->
+      <div class="bottom-row" style="margin-top: 0.65rem;">
+
+        <!-- Contact form -->
+        <div class="card">
+          <div class="card-title"><span class="icon">✉️</span> Stel een vraag</div>
+          <form
+            class="contact-form"
+            id="contact-form"
+            action="https://formspree.io/f/YOUR_FORM_ID"
+            method="POST"
+            onsubmit="handleFormSubmit(event)"
+          >
+            <input type="hidden" name="_replyto" value="dpw.koolstra@student.han.nl" />
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="f-name">Naam</label>
+                <input class="form-input" id="f-name" name="naam" type="text" placeholder="Jouw naam" required />
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="f-email">E-mail</label>
+                <input class="form-input" id="f-email" name="email" type="email" placeholder="jou@email.nl" required />
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="f-subject">Onderwerp</label>
+              <input class="form-input" id="f-subject" name="onderwerp" type="text" placeholder="Bijv. vraag over Schillenmodel" />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="f-msg">Bericht</label>
+              <textarea class="form-textarea" id="f-msg" name="bericht" placeholder="Typ hier je vraag of opmerking..." required></textarea>
+            </div>
+            <div style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap;">
+              <button class="form-submit" type="submit">Verstuur →</button>
+              <span class="form-success" id="form-success">Verstuurd! Je hoort snel van me.</span>
+            </div>
+          </form>
+        </div>
+
+        <!-- Donate -->
+        <div class="donate-card">
+          <div>
+            <div class="card-title"><span class="icon">☕</span> Steun dit project</div>
+            <p>FM Kompas is gratis en blijft gratis. Vond je het nuttig? Je kunt me optioneel een kopje koffie sturen.</p>
+          </div>
+          <a class="donate-btn" href="https://ko-fi.com/davidkoolstra" target="_blank" rel="noopener">
+            ☕ Ko-fi
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ────────────────────────────────
+       PAGE: EVENEMENTENLOGISTIEK
+  ──────────────────────────────── -->
+  <div class="page" id="page-evenementenlogistiek">
+    <div class="vak-page">
+      <button class="back-btn" onclick="goHome()">← Terug naar overzicht</button>
+      <h1>Evenementenlogistiek</h1>
+      <p class="vak-subtitle">Evenementen Management 2 · Periode 4 · Centraal model: het schillenmodel</p>
+
+      <h2>Kern van het vak</h2>
+      <p>Evenementenlogistiek gaat over het organiseren van stromen: mensen, goederen en informatie rondom een evenement. Het <strong>schillenmodel</strong> is het centrale kader — vier lagen van buiten naar binnen, elk met eigen processen.</p>
+
+      <h2>Het Schillenmodel</h2>
+      <p>Je ontwerpt een evenement van buiten naar binnen. Elke schil heeft een eigen kernvraag en bijbehorende producten.</p>
+
+      <h3>Schil 1 — Beïnvloedingsprocessen</h3>
+      <p>Alles wat bezoekers beïnvloedt <em>voordat</em> ze vertrekken naar het evenement.</p>
+      <div class="table-wrap">
+        <table>
+          <tr><th>Begriff</th><th>Uitleg</th></tr>
+          <tr><td><strong>Modal split</strong></td><td>Verdeling van bezoekers over vervoersmiddelen (auto, fiets, OV)</td></tr>
+          <tr><td><strong>Modal shift</strong></td><td>Het verschuiven van de modal split naar gewenst gedrag (bijv. meer OV)</td></tr>
+          <tr><td><strong>Mental shift</strong></td><td>Gedragsverandering door bewuste beïnvloeding via communicatie en incentives</td></tr>
+        </table>
+      </div>
+      <p><strong>Middelen voor modal shift:</strong> incentives (gratis OV bij ticket), communicatie (route-instructies), afschrikking (hoge parkeerkosten), informatieportaal/app.</p>
+
+      <h3>Schil 2 — Mobiliteitsprocessen</h3>
+      <p>De bewegingen van bezoekers van thuis naar het evenement én terug.</p>
+      <ul>
+        <li>Mobiliteitsplan: overzicht van alle vervoersstromen</li>
+        <li>P&R (Park & Ride) locaties, shuttle-diensten, fietsenstallingen</li>
+        <li>Piekmomenten bij aankomst en vertrek bewaken</li>
+        <li>Afstemming met gemeente en politie</li>
+      </ul>
+
+      <h3>Schil 3 — Toegangsprocessen</h3>
+      <p>Alles rondom de overgang van buiten naar binnen het terrein.</p>
+      <div class="table-wrap">
+        <table>
+          <tr><th>Onderdeel</th><th>Toelichting</th></tr>
+          <tr><td><strong>Hospitality</strong></td><td>Welkomstervaring, VVIP-ingangen, gastheerschap</td></tr>
+          <tr><td><strong>Toegangscontrole</strong></td><td>Ticketcontrole, poortjes, scanners</td></tr>
+          <tr><td><strong>Zonering</strong></td><td>Wie mag waar? (VVIP, backstage, gasten, pers)</td></tr>
+          <tr><td><strong>Veiligheidschecks</strong></td><td>Frisking, tassen controleren, metaaldetectoren</td></tr>
+          <tr><td><strong>Nooduitgangen</strong></td><td>Vluchtwegen, minimale doorgang, signalering</td></tr>
+        </table>
+      </div>
+      <div class="callout"><strong>Capaciteitsrichtlijn:</strong> 1 poortje verwerkt ±400–600 personen/uur (handmatig) of ±800–1.200/uur (barcodescan).</div>
+
+      <h3>Schil 4 / Kern — Evenementprocessen</h3>
+      <p>Alles wat op het evenementterrein zelf plaatsvindt.</p>
+      <div class="table-wrap">
+        <table>
+          <tr><th>Onderdeel</th><th>Toelichting</th></tr>
+          <tr><td><strong>Plattegrond</strong></td><td>Indeling terrein: podia, catering, toiletten, noodpost, backstage</td></tr>
+          <tr><td><strong>Relatiediagram</strong></td><td>Wie heeft contact met wie? (organisatie, leveranciers, hulpdiensten)</td></tr>
+          <tr><td><strong>Looproutes</strong></td><td>Bezoekersstromen, bottlenecks vermijden</td></tr>
+          <tr><td><strong>Veiligheid</strong></td><td>EHBO-post, BHV, evacuatieplan, aanrijtijd hulpdiensten</td></tr>
+          <tr><td><strong>Draaiboek</strong></td><td>Minutennauwkeurig overzicht van het volledige programma</td></tr>
+        </table>
+      </div>
+
+      <h2>Producten per schil</h2>
+      <div class="table-wrap">
+        <table>
+          <tr><th>Schil</th><th>Verplicht product</th></tr>
+          <tr><td><strong>Schil 1</strong></td><td>Mobiliteitsplan / beïnvloedingsplan</td></tr>
+          <tr><td><strong>Schil 2</strong></td><td>Verkeers- en parkeerplan</td></tr>
+          <tr><td><strong>Schil 3</strong></td><td>Toegangsplan + capaciteitsberekening</td></tr>
+          <tr><td><strong>Schil 4/Kern</strong></td><td>Plattegrond + relatiediagram + draaiboek</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ────────────────────────────────
+       PAGE: EVENEMENTENMARKETING
+  ──────────────────────────────── -->
+  <div class="page" id="page-evenementenmarketing">
+    <div class="vak-page">
+      <button class="back-btn" onclick="goHome()">← Terug naar overzicht</button>
+      <h1>Evenementenmarketing</h1>
+      <p class="vak-subtitle">Project Eventmanagement · Periode 4 · Relevant voor tentamen Eventmanagement B</p>
+
+      <h2>Het Marketingproces (5 stappen)</h2>
+      <div class="table-wrap">
+        <table>
+          <tr><th>#</th><th>Stap</th></tr>
+          <tr><td>1</td><td>Drie marketingdoelstellingen formuleren (SMART + driecomponentenmodel)</td></tr>
+          <tr><td>2</td><td>Doelgroepen bepalen via segmentatie + persona's</td></tr>
+          <tr><td>3</td><td>Marketingstrategie & concept uitwerken (5 P's)</td></tr>
+          <tr><td>4</td><td>Marketingcommunicatie kiezen (crossmedia uitingen)</td></tr>
+          <tr><td>5</td><td>Marketing- en communicatieplanning opstellen</td></tr>
+        </table>
+      </div>
+
+      <h2>Driecomponentenmodel</h2>
+      <div class="table-wrap">
+        <table>
+          <tr><th>Component</th><th>Vraag</th><th>Voorbeeld doelstelling</th></tr>
+          <tr><td><strong>Kennis</strong></td><td>Wat wil je dat de doelgroep <em>weet</em>?</td><td>"80% weet voor aanvang van het bestaan ervan."</td></tr>
+          <tr><td><strong>Houding</strong></td><td>Wat wil je dat de doelgroep <em>voelt</em>?</td><td>"60% voelt na afloop zin in het volgende evenement."</td></tr>
+          <tr><td><strong>Gedrag</strong></td><td>Wat wil je dat de doelgroep <em>doet</em>?</td><td>"100% heeft 2 weken van tevoren dieetwensen doorgegeven."</td></tr>
+        </table>
+      </div>
+
+      <h2>Segmentatiecriteria</h2>
+      <ul>
+        <li><strong>Geografisch</strong> — regio, stad, provincie</li>
+        <li><strong>Demografisch</strong> — leeftijd, geslacht, inkomen, opleiding</li>
+        <li><strong>Psychografisch</strong> — levensstijl, persoonlijkheid, sociale klasse</li>
+        <li><strong>Gedrag</strong> — gebruiksfrequentie, loyaliteit, benefits</li>
+      </ul>
+      <div class="callout"><strong>Tentamenpunt:</strong> Segmentatie ≠ targeting. Segmentatie = opdelen in groepen. Targeting = kiezen op welke groep(en) je je richt.</div>
+
+      <h2>De 5 P's van Evenementenmarketing</h2>
+      <div class="table-wrap">
+        <table>
+          <tr><th>P</th><th>Toelichting</th></tr>
+          <tr><td><strong>Product</strong></td><td>Wat maakt het evenement uniek?</td></tr>
+          <tr><td><strong>Prijs</strong></td><td>Wat kost het de bezoeker (geld én tijd)?</td></tr>
+          <tr><td><strong>Plaats</strong></td><td>Locatie, bereikbaarheid, sfeer</td></tr>
+          <tr><td><strong>Public relations</strong></td><td>Verspreiding via derden (krant, radio, influencers)</td></tr>
+          <tr><td><strong>Positionering</strong></td><td>Creatieve boodschap: voor wie, wat onderscheidt jou?</td></tr>
+        </table>
+      </div>
+
+      <h2>De 3 E's van Eventmarketing</h2>
+      <div class="table-wrap">
+        <table>
+          <tr><th>E</th><th>Vraag</th></tr>
+          <tr><td><strong>Entertainment</strong></td><td>Wat bied je dat mensen thuis niet hebben?</td></tr>
+          <tr><td><strong>Excitement</strong></td><td>Waar worden mensen enthousiast van?</td></tr>
+          <tr><td><strong>Enterprising</strong></td><td>Wat maakt het evenement uniek en vernieuwend?</td></tr>
+        </table>
+      </div>
+
+      <h2>Crossmedia Communicatie</h2>
+      <p>Dezelfde boodschap via meerdere kanalen. Mensen zien gemiddeld 2.700 berichten per dag — positionering moet opvallen.</p>
+      <ul>
+        <li>E-mail / nieuwsbrief</li>
+        <li>Flyer / poster</li>
+        <li>Social media (Instagram, TikTok, Facebook)</li>
+        <li>Intranet (intern) / fysieke uitnodiging</li>
+      </ul>
+    </div>
+  </div>
+
+
+  <!-- ────────────────────────────────
+       PAGE: PROJECTVAARDIGHEDEN
+  ──────────────────────────────── -->
+  <div class="page" id="page-projectvaardigheden">
+    <div class="vak-page">
+      <button class="back-btn" onclick="goHome()">← Terug naar overzicht</button>
+      <h1>Projectvaardigheden</h1>
+      <p class="vak-subtitle">Evenementen Management 2 · Periode 4 · 7 lesweken</p>
+
+      <h2>Opbouw van de module</h2>
+      <div class="table-wrap">
+        <table>
+          <tr><th>Les</th><th>Onderwerp</th></tr>
+          <tr><td>1–2</td><td>Observeren</td></tr>
+          <tr><td>3</td><td>Zakelijk en visueel communiceren</td></tr>
+          <tr><td>4–5</td><td>Interviewen</td></tr>
+          <tr><td>6–7</td><td>Enquêteren</td></tr>
+        </table>
+      </div>
+
+      <h2>Observeren (les 1–2)</h2>
+      <p>Systematisch waarnemen zonder direct te handelen. Objectief beeld opbouwen voordat je conclusies trekt.</p>
+      <ul>
+        <li><strong>Observatietypen:</strong> open vs. gesloten, participerend vs. niet-participerend</li>
+        <li><strong>Vastlegging:</strong> observatieformulier, aantekeningen, visueel (foto/schets)</li>
+      </ul>
+
+      <h2>Zakelijk en visueel communiceren (les 3)</h2>
+      <ul>
+        <li><strong>Zakelijk schrijven:</strong> structuur, toon, doelgroepgericht</li>
+        <li><strong>Visuele communicatie:</strong> infographics, plattegronden, presentaties</li>
+      </ul>
+
+      <h2>Interviewen (les 4–5)</h2>
+      <div class="table-wrap">
+        <table>
+          <tr><th>Type</th><th>Kenmerken</th></tr>
+          <tr><td><strong>Gestructureerd</strong></td><td>Vaste vragen — vergelijkbare data</td></tr>
+          <tr><td><strong>Semi-gestructureerd</strong></td><td>Kernvragen + doorvragen — meest gebruikt</td></tr>
+          <tr><td><strong>Open</strong></td><td>Geen vaste structuur — exploratief, diepgaand</td></tr>
+        </table>
+      </div>
+      <p><strong>Opbouw:</strong> opening — kernvragen — doorvragen — afsluiting.</p>
+      <p><strong>Verwerking:</strong> coderen, thema's onderscheiden, citaten gebruiken.</p>
+
+      <h2>Enquêteren (les 6–7)</h2>
+      <ul>
+        <li><strong>Vraagtypen:</strong> open, gesloten, Likert, meerkeuze</li>
+        <li><strong>Steekproef en representativiteit</strong> bewaken</li>
+        <li><strong>Tools:</strong> Google Forms, Microsoft Forms</li>
+        <li><strong>Analyse:</strong> frequentietabellen, gemiddelden, kruistabellen</li>
+      </ul>
+    </div>
+  </div>
+
+
+  <!-- ────────────────────────────────
+       PAGE: PPO
+  ──────────────────────────────── -->
+  <div class="page" id="page-ppo">
+    <div class="vak-page">
+      <button class="back-btn" onclick="goHome()">← Terug naar overzicht</button>
+      <h1>Persoonlijke Ontwikkeling</h1>
+      <p class="vak-subtitle">PPO · Periode 4 · Zelfinzicht, reflectie en professionele groei</p>
+
+      <h2>Kern van het vak</h2>
+      <p>PPO draait om zelfinzicht, reflectie en groei. Je brengt je competenties, werkstijl en ontwikkelpunten in kaart als voorbereiding op de beroepspraktijk.</p>
+
+      <h2>Producten</h2>
+      <div class="table-wrap">
+        <table>
+          <tr><th>Product</th><th>Beschrijving</th></tr>
+          <tr><td><strong>Logboek "De Praktijk In"</strong></td><td>Reflectie op praktijkervaringen — wekelijks in te vullen</td></tr>
+          <tr><td><strong>Kandidaatrapportage (TMA)</strong></td><td>Persoonlijk assessment: talenten, motivatoren, competenties</td></tr>
+          <tr><td><strong>Beoordelingsformulier</strong></td><td>Criteria waarop je beoordeeld wordt</td></tr>
+        </table>
+      </div>
+
+      <h2>Growth Mindset (Carol Dweck)</h2>
+      <div class="table-wrap">
+        <table>
+          <tr><th>Fixed mindset</th><th>Growth mindset</th></tr>
+          <tr><td>Talent staat vast bij geboorte</td><td>Talent groeit door inzet en ervaring</td></tr>
+          <tr><td>Fouten zijn bedreigend</td><td>Fouten zijn leermomenten</td></tr>
+          <tr><td>Feedback wordt vermeden</td><td>Feedback wordt gezocht en benut</td></tr>
+          <tr><td>Uitdagingen worden ontlopen</td><td>Uitdagingen worden opgezocht</td></tr>
+        </table>
+      </div>
+      <div class="callout"><strong>Kernboodschap:</strong> Doorzetten en inspanning leiden tot groei, niet aangeboren talent.</div>
+
+      <h2>Comfortzone, leerzone en paniekregio</h2>
+      <ul>
+        <li><strong>Comfortzone</strong> — bekende situaties, automatisch handelen, weinig groei</li>
+        <li><strong>Leerzone</strong> — licht oncomfortabel, maximale groei, bewuste reflectie vereist</li>
+        <li><strong>Paniekregio</strong> — te ver buiten comfortzone, blokkeert leren</li>
+      </ul>
+    </div>
+  </div>
+
+
+  <!-- FOOTER -->
+  <footer>
+    FM Kompas · Studiehulp voor Facilitair Management · Inhoud is indicatief — controleer altijd je eigen lesmateriaal.
+  </footer>
+
+</div><!-- /app -->
+
+
+<script>
+  /* ─────────────────────────────────────────────────
+     FIREBASE CONFIGURATIE
+     Vul hieronder je eigen Firebase-config in.
+     Haal deze op via: Firebase Console → Project Settings → Jouw apps → SDK setup
+  ───────────────────────────────────────────────── */
+  const firebaseConfig = {
+    apiKey:            "AIzaSyBB397Wk2eqpBjic8E7aGV1mTgIjhQ21a8",
+    authDomain:        "fmkompas-ff8bc.firebaseapp.com",
+    projectId:         "fmkompas-ff8bc",
+    storageBucket:     "fmkompas-ff8bc.firebasestorage.app",
+    messagingSenderId: "487972024689",
+    appId:             "1:487972024689:web:712c3117080745d14746d0",
+    measurementId:     "G-2TDBKR4DKT"
+  };
+
+  firebase.initializeApp(firebaseConfig);
+  const auth = firebase.auth();
+  const db   = firebase.firestore();
+  const googleProvider = new firebase.auth.GoogleAuthProvider();
+  const appleProvider  = new firebase.auth.OAuthProvider('apple.com');
+
+  /* ─────────────────────────────────────────────────
+     AUTH
+  ───────────────────────────────────────────────── */
+  function signInWithGoogle() {
+    const btn = document.getElementById('google-login-btn');
+    const err = document.getElementById('login-error');
+    btn.disabled = true;
+    err.style.display = 'none';
+    auth.signInWithPopup(googleProvider).catch(e => {
+      err.style.display = 'block';
+      btn.disabled = false;
+      console.error(e);
+    });
+  }
+
+  function signInWithApple() {
+    const btn = document.getElementById('apple-login-btn');
+    const err = document.getElementById('login-error');
+    btn.disabled = true;
+    err.style.display = 'none';
+    auth.signInWithPopup(appleProvider).catch(e => {
+      err.style.display = 'block';
+      btn.disabled = false;
+      console.error(e);
+    });
+  }
+
+  function doLogout() {
+    auth.signOut();
+  }
+
+  auth.onAuthStateChanged(async user => {
+    if (user) {
+      // Gebruiker is ingelogd
+      document.getElementById('login-screen').style.display = 'none';
+      document.getElementById('app').style.display = 'block';
+
+      const firstName = user.displayName ? user.displayName.split(' ')[0] : 'student';
+      document.getElementById('hero-name').textContent = firstName;
+      document.getElementById('user-name-header').textContent = firstName;
+
+      const avatarEl = document.getElementById('user-avatar-header');
+      if (user.photoURL) {
+        avatarEl.innerHTML = `<img src="${user.photoURL}" alt="" referrerpolicy="no-referrer" />`;
+      } else {
+        const initials = (user.displayName || 'U').split(' ').map(w => w[0]).slice(0,2).join('').toUpperCase();
+        avatarEl.textContent = initials;
+      }
+
+      // Sla gebruikersinfo op in Firestore als die er nog niet staat
+      const ref = db.collection('scores').doc(user.uid);
+      const snap = await ref.get();
+      if (!snap.exists) {
+        await ref.set({ name: user.displayName || 'Anoniem', pts: 0, photoURL: user.photoURL || '', updatedAt: firebase.firestore.FieldValue.serverTimestamp() });
+      }
+
+      renderLeaderboard();
+    } else {
+      // Uitgelogd
+      document.getElementById('login-screen').style.display = 'flex';
+      document.getElementById('app').style.display = 'none';
+      document.getElementById('google-login-btn').disabled = false;
+    }
+  });
+
+  /* ─────────────────────────────────────────────────
+     LEADERBOARD (leest uit Firestore)
+  ───────────────────────────────────────────────── */
+  async function renderLeaderboard() {
+    const list  = document.getElementById('leaderboard-list');
+    const empty = document.getElementById('lb-empty');
+
+    try {
+      const snap = await db.collection('scores').orderBy('pts', 'desc').limit(5).get();
+      const entries = snap.docs.map(d => d.data()).filter(u => u.pts > 0);
+
+      if (entries.length === 0) {
+        list.innerHTML = '';
+        empty.style.display = 'block';
+        return;
+      }
+
+      empty.style.display = 'none';
+      list.innerHTML = entries.map((u, i) => {
+        const initials = (u.name || 'U').split(' ').map(w => w[0]).slice(0,2).join('').toUpperCase();
+        const avatarHtml = u.photoURL
+          ? `<img src="${u.photoURL}" alt="" referrerpolicy="no-referrer" />`
+          : initials;
+        return `
+          <div class="lb-item">
+            <span class="lb-rank">#${i+1}</span>
+            <div class="lb-avatar">${avatarHtml}</div>
+            <span class="lb-name">${u.name || 'Onbekend'}</span>
+            <span class="lb-pts">${u.pts} pts</span>
+          </div>`;
+      }).join('');
+    } catch(e) {
+      console.warn('Leaderboard kon niet geladen worden:', e);
+    }
+  }
+
+  /* ─────────────────────────────────────────────────
+     NAVIGATIE
+  ───────────────────────────────────────────────── */
+  const pages = {
+    home:                 'page-home',
+    evenementenlogistiek: 'page-evenementenlogistiek',
+    evenementenmarketing: 'page-evenementenmarketing',
+    projectvaardigheden:  'page-projectvaardigheden',
+    ppo:                  'page-ppo',
+  };
+
+  const titles = {
+    evenementenlogistiek: 'Evenementenlogistiek',
+    evenementenmarketing: 'Evenementenmarketing',
+    projectvaardigheden:  'Projectvaardigheden',
+    ppo:                  'Persoonlijke Ontwikkeling',
+  };
+
+  function goTo(key) {
+    Object.values(pages).forEach(id => document.getElementById(id).classList.remove('active'));
+    document.getElementById(pages[key]).classList.add('active');
+    const bc = document.getElementById('breadcrumb');
+    if (key === 'home') {
+      bc.style.display = 'none';
+    } else {
+      bc.style.display = 'flex';
+      document.getElementById('breadcrumb-text').textContent = titles[key] || '';
+    }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function goHome() { goTo('home'); }
+
+  /* ─────────────────────────────────────────────────
+     CONTACT FORM
+  ───────────────────────────────────────────────── */
+  function handleFormSubmit(e) {
+    e.preventDefault();
+    const form    = document.getElementById('contact-form');
+    const success = document.getElementById('form-success');
+    const btn     = form.querySelector('.form-submit');
+
+    if (form.action.includes('YOUR_FORM_ID')) {
+      success.textContent = 'Let op: stel eerst Formspree in (zie opmerking in code).';
+      success.style.color = 'hsl(35,80%,60%)';
+      success.style.display = 'block';
+      return;
+    }
+
+    btn.textContent = 'Versturen...';
+    btn.disabled = true;
+
+    fetch(form.action, {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    }).then(r => {
+      if (r.ok) {
+        form.reset();
+        success.textContent = 'Verstuurd! Je hoort snel van me.';
+        success.style.color = 'hsl(142,70%,55%)';
+      } else {
+        success.textContent = 'Er ging iets mis. Probeer het opnieuw.';
+        success.style.color = 'hsl(0,80%,65%)';
+      }
+      success.style.display = 'block';
+      btn.textContent = 'Verstuur →';
+      btn.disabled = false;
+    }).catch(() => {
+      success.textContent = 'Er ging iets mis. Probeer het opnieuw.';
+      success.style.color = 'hsl(0,80%,65%)';
+      success.style.display = 'block';
+      btn.textContent = 'Verstuur →';
+      btn.disabled = false;
+    });
+  }
+</script>
+
+</body>
+</html>

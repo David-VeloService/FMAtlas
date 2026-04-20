@@ -1,0 +1,1081 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Eventmanagement 1 — FM Kompas</title>
+  <link rel="icon" type="image/svg+xml" href="logo.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --radius:8px; --card-radius:10px;
+      --bg:hsl(0,0%,7%); --fg:hsl(0,0%,100%);
+      --card:hsl(0,0%,9%); --card2:hsl(0,0%,11%);
+      --primary:hsl(235,100%,60%); --primary-fg:hsl(0,0%,98%);
+      --secondary:hsl(0,0%,15%); --muted:hsl(0,0%,56%);
+      --accent:hsl(0,0%,15%); --border:rgba(255,255,255,0.10);
+      --input:rgba(255,255,255,0.05);
+      --primary-soft:rgba(91,91,255,0.12); --primary-border:rgba(91,91,255,0.30);
+      --green:hsl(142,70%,55%); --red:hsl(0,72%,58%);
+    }
+    body { background:var(--bg); color:var(--fg); font-family:'Geist','Segoe UI',system-ui,sans-serif; min-height:100vh; -webkit-font-smoothing:antialiased; line-height:1.6; }
+
+    /* HEADER */
+    header { border-bottom:1px solid var(--border); padding:0 2rem; display:flex; align-items:center; justify-content:space-between; height:60px; position:sticky; top:0; background:rgba(18,18,18,0.9); backdrop-filter:blur(12px); z-index:100; }
+    .header-left { display:flex; align-items:center; gap:0.75rem; }
+    .back-link { display:inline-flex; align-items:center; gap:0.35rem; color:var(--muted); font-size:0.82rem; font-weight:500; text-decoration:none; padding:0.3rem 0.65rem; border-radius:var(--radius); border:1px solid var(--border); transition:color 0.15s,border-color 0.15s; cursor:pointer; }
+    .back-link:hover { color:var(--fg); border-color:rgba(255,255,255,0.25); }
+    .page-title { font-size:0.95rem; font-weight:700; letter-spacing:-0.01em; }
+    .page-title span { color:var(--muted); font-weight:400; }
+    .pts-chip { display:flex; align-items:center; gap:0.4rem; background:var(--primary-soft); border:1px solid var(--primary-border); border-radius:99px; padding:0.25rem 0.8rem; font-size:0.8rem; font-weight:700; color:var(--primary); }
+
+    /* VIEWS */
+    .view { display:none; }
+    .view.active { display:block; }
+    .content-wrap { max-width:860px; margin:0 auto; padding:2.5rem 2rem 5rem; }
+
+    /* HOME */
+    .home-hero { margin-bottom:1.75rem; }
+    .home-hero h1 { font-size:1.85rem; font-weight:800; letter-spacing:-0.03em; line-height:1.15; margin-bottom:0.5rem; }
+    .home-hero h1 span { color:var(--primary); }
+    .home-hero p { color:var(--muted); font-size:0.9rem; max-width:520px; line-height:1.6; }
+    .exam-info-card { background:var(--card); border:1px solid var(--border); border-radius:var(--card-radius); padding:1.25rem 1.5rem; margin-bottom:1.75rem; }
+    .exam-info-label { font-size:0.7rem; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:var(--muted); margin-bottom:0.75rem; }
+    .exam-info-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(175px,1fr)); gap:0.65rem; }
+    .exam-info-item .lbl { font-size:0.7rem; color:var(--muted); margin-bottom:0.1rem; }
+    .exam-info-item .val { font-size:0.88rem; font-weight:600; }
+    .section-lbl { font-size:0.72rem; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:var(--muted); margin-bottom:0.75rem; }
+    .sub-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:0.65rem; }
+    .sub-tile { background:var(--card); border:1px solid var(--border); border-radius:var(--card-radius); padding:1.2rem 1.35rem; cursor:pointer; position:relative; overflow:hidden; transition:border-color 0.2s,background 0.2s,transform 0.15s,box-shadow 0.2s; }
+    .sub-tile:hover { border-color:rgba(91,91,255,0.45); background:var(--card2); transform:translateY(-2px); box-shadow:0 4px 20px rgba(0,0,0,0.3); }
+    .sub-tile .t-icon { font-size:1.3rem; margin-bottom:0.55rem; display:block; }
+    .sub-tile h3 { font-size:0.9rem; font-weight:700; margin-bottom:0.2rem; }
+    .sub-tile p { color:var(--muted); font-size:0.78rem; line-height:1.5; }
+    .sub-tile .t-badge { position:absolute; top:0.75rem; right:0.75rem; font-size:0.63rem; background:var(--primary-soft); color:var(--primary); border:1px solid var(--primary-border); padding:0.13rem 0.45rem; border-radius:99px; font-weight:700; }
+
+    /* SUMMARY */
+    .chapter { margin-bottom:2.5rem; }
+    .chapter-header { display:flex; align-items:center; gap:0.6rem; margin-bottom:1rem; padding-bottom:0.75rem; border-bottom:1px solid var(--border); }
+    .chapter-num { background:var(--primary); color:#fff; font-size:0.72rem; font-weight:800; padding:0.2rem 0.55rem; border-radius:4px; letter-spacing:0.04em; }
+    .chapter h2 { font-size:1.05rem; font-weight:700; letter-spacing:-0.01em; }
+    .section-title { font-size:0.8rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:var(--muted); margin:1.25rem 0 0.5rem; }
+    .prose { color:hsl(0,0%,72%); font-size:0.9rem; line-height:1.7; margin-bottom:0.65rem; }
+    .prose strong { color:var(--fg); }
+    .item-list { list-style:none; display:flex; flex-direction:column; gap:0.25rem; margin-bottom:0.75rem; }
+    .item-list li { font-size:0.875rem; color:hsl(0,0%,72%); padding:0.3rem 0 0.3rem 1rem; position:relative; }
+    .item-list li::before { content:'›'; position:absolute; left:0; color:var(--muted); font-weight:700; }
+    .item-list li strong { color:var(--fg); }
+    .callout { background:var(--primary-soft); border:1px solid var(--primary-border); border-left:3px solid var(--primary); border-radius:0 var(--radius) var(--radius) 0; padding:0.7rem 1rem; margin:0.75rem 0; font-size:0.875rem; color:hsl(0,0%,72%); line-height:1.6; }
+    .callout strong { color:hsl(235,100%,72%); }
+    .warn { background:rgba(239,68,68,0.1); border-left:3px solid var(--red); border-radius:0 var(--radius) var(--radius) 0; padding:0.65rem 1rem; margin:0.75rem 0; font-size:0.875rem; color:hsl(0,72%,75%); }
+    .table-wrap { overflow-x:auto; margin:0.5rem 0 1.25rem; background:var(--card); border:1px solid var(--border); border-radius:var(--card-radius); }
+    table { width:100%; border-collapse:collapse; font-size:0.845rem; }
+    th { text-align:left; padding:0.55rem 1rem; background:var(--card2); border-bottom:1px solid var(--border); color:var(--muted); font-weight:600; font-size:0.75rem; text-transform:uppercase; letter-spacing:0.06em; }
+    td { padding:0.55rem 1rem; border-bottom:1px solid var(--border); color:hsl(0,0%,72%); vertical-align:top; line-height:1.5; }
+    tr:last-child td { border-bottom:none; }
+    td strong { color:var(--fg); font-weight:600; }
+    .formula { display:inline-block; background:var(--secondary); border:1px solid var(--border); border-radius:4px; padding:0.15rem 0.55rem; font-size:0.8rem; font-family:monospace; color:hsl(235,100%,78%); margin-top:0.2rem; }
+    .two-col-grid { display:grid; grid-template-columns:1fr 1fr; gap:0.65rem; margin-bottom:0.75rem; }
+    @media(max-width:540px){.two-col-grid{grid-template-columns:1fr;}}
+    .mini-card { background:var(--card); border:1px solid var(--border); border-radius:var(--card-radius); padding:0.9rem 1rem; }
+    .mini-card h4 { font-size:0.8rem; font-weight:700; color:var(--primary); margin-bottom:0.4rem; }
+    .mini-card p { font-size:0.82rem; color:hsl(0,0%,68%); line-height:1.55; }
+
+    /* BEGRIPPENLIJST */
+    .begrip-cat-head { font-size:0.72rem; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:var(--primary); margin:2rem 0 0.65rem; padding-bottom:0.45rem; border-bottom:1px solid var(--border); }
+    .begrip-cat-head:first-child { margin-top:0; }
+    .begrip-list { display:flex; flex-direction:column; gap:0.35rem; }
+    .begrip-item { background:var(--card); border:1px solid var(--border); border-radius:var(--card-radius); padding:0.8rem 1.1rem; }
+    .begrip-term { font-size:0.875rem; font-weight:700; margin-bottom:0.2rem; }
+    .begrip-def { font-size:0.82rem; color:hsl(0,0%,70%); line-height:1.55; }
+    .begrip-formula { display:inline-block; margin-top:0.3rem; background:var(--secondary); border:1px solid var(--border); border-radius:4px; padding:0.1rem 0.45rem; font-family:monospace; font-size:0.77rem; color:hsl(235,100%,78%); }
+
+    /* FLASHCARDS */
+    .fc-controls { display:flex; align-items:center; gap:0.65rem; margin-bottom:1.5rem; flex-wrap:wrap; }
+    .fc-select { background:var(--input); border:1px solid var(--border); border-radius:var(--radius); color:var(--fg); font-family:inherit; font-size:0.875rem; padding:0.45rem 0.75rem; outline:none; cursor:pointer; }
+    .fc-select:focus { border-color:var(--primary); }
+    .fc-btn { background:var(--secondary); border:1px solid var(--border); border-radius:var(--radius); color:var(--fg); font-family:inherit; font-size:0.82rem; font-weight:600; padding:0.4rem 0.85rem; cursor:pointer; transition:background 0.15s; }
+    .fc-btn:hover { background:var(--accent); }
+    .fc-btn.primary { background:var(--primary); color:var(--primary-fg); border-color:var(--primary); }
+    .fc-btn.primary:hover { opacity:0.88; }
+    .fc-stats { display:flex; gap:1.5rem; margin-bottom:1.25rem; }
+    .fc-stat { text-align:center; }
+    .fc-stat .num { font-size:1.5rem; font-weight:800; line-height:1; }
+    .fc-stat .lbl { font-size:0.72rem; color:var(--muted); text-transform:uppercase; letter-spacing:0.06em; }
+    .fc-stat.green .num { color:var(--green); }
+    .fc-stat.red .num { color:var(--red); }
+    .progress-wrap { margin-bottom:1.5rem; }
+    .progress-bar-bg { height:4px; background:var(--secondary); border-radius:99px; overflow:hidden; }
+    .progress-bar-fill { height:100%; background:var(--primary); border-radius:99px; transition:width 0.3s; width:0%; }
+    .progress-lbl { font-size:0.75rem; color:var(--muted); margin-top:0.35rem; }
+    .card-area { perspective:800px; min-height:200px; display:flex; flex-direction:column; align-items:center; }
+    .flip-wrap { width:100%; max-width:600px; position:relative; cursor:pointer; }
+    .flip-inner { position:relative; transition:transform 0.45s; transform-style:preserve-3d; }
+    .flip-wrap.flipped .flip-inner { transform:rotateY(180deg); }
+    .card-face { background:var(--card); border:1px solid var(--border); border-radius:14px; padding:2rem; min-height:180px; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; -webkit-backface-visibility:hidden; backface-visibility:hidden; }
+    .card-face.back { position:absolute; inset:0; transform:rotateY(180deg); }
+    .fc-cat-badge { font-size:0.68rem; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; background:var(--primary-soft); color:var(--primary); border:1px solid var(--primary-border); border-radius:99px; padding:0.18rem 0.6rem; margin-bottom:0.85rem; display:inline-block; }
+    .fc-term { font-size:1.25rem; font-weight:800; letter-spacing:-0.02em; }
+    .fc-hint { font-size:0.78rem; color:var(--muted); margin-top:0.75rem; }
+    .fc-def { font-size:0.95rem; color:hsl(0,0%,80%); line-height:1.65; }
+    .fc-formula { background:var(--secondary); border:1px solid var(--border); border-radius:6px; padding:0.4rem 0.85rem; font-family:monospace; font-size:0.9rem; color:hsl(235,100%,78%); margin-top:0.75rem; display:inline-block; }
+    .fc-counter { font-size:0.78rem; color:var(--muted); margin:0.75rem 0; text-align:center; }
+    .fc-actions { display:flex; gap:0.65rem; justify-content:center; margin-top:0.75rem; }
+    .fc-action-btn { padding:0.55rem 1.4rem; border-radius:var(--radius); border:1px solid var(--border); font-family:inherit; font-size:0.875rem; font-weight:600; cursor:pointer; transition:all 0.15s; }
+    .fc-action-btn.miss { background:rgba(239,68,68,0.12); color:var(--red); border-color:rgba(239,68,68,0.3); }
+    .fc-action-btn.miss:hover { background:rgba(239,68,68,0.2); }
+    .fc-action-btn.skip { background:var(--secondary); color:var(--muted); }
+    .fc-action-btn.skip:hover { color:var(--fg); }
+    .fc-action-btn.known { background:rgba(34,197,94,0.12); color:var(--green); border-color:rgba(34,197,94,0.3); }
+    .fc-action-btn.known:hover { background:rgba(34,197,94,0.2); }
+    .fc-done { text-align:center; padding:2rem 1rem; background:var(--card); border:1px solid var(--border); border-radius:14px; display:none; }
+    .fc-done-score { font-size:3rem; font-weight:900; color:var(--green); line-height:1; margin:0.5rem 0; }
+    .fc-done h3 { font-size:1.1rem; font-weight:700; margin-bottom:0.35rem; }
+    .fc-done p { color:var(--muted); font-size:0.875rem; margin-bottom:1.25rem; }
+    .pts-awarded { background:var(--primary-soft); border:1px solid var(--primary-border); border-radius:var(--card-radius); padding:0.75rem 1rem; font-size:0.875rem; color:hsl(235,100%,78%); margin-bottom:1rem; font-weight:600; }
+
+    /* QUIZ */
+    .quiz-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:1.5rem; flex-wrap:wrap; gap:0.65rem; }
+    .quiz-score-bar { display:flex; gap:1.5rem; }
+    .quiz-stat { text-align:center; }
+    .quiz-stat .num { font-size:1.4rem; font-weight:800; line-height:1; }
+    .quiz-stat .lbl { font-size:0.7rem; color:var(--muted); text-transform:uppercase; letter-spacing:0.06em; }
+    .quiz-stat.g .num { color:var(--green); }
+    .quiz-stat.r .num { color:var(--red); }
+    .quiz-section-label { font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:var(--primary); margin:1.75rem 0 0.75rem; padding-bottom:0.5rem; border-bottom:1px solid var(--border); }
+    .q-card { background:var(--card); border:1px solid var(--border); border-radius:var(--card-radius); padding:1.1rem 1.25rem; margin-bottom:0.6rem; transition:border-color 0.2s; }
+    .q-card.correct { border-color:rgba(34,197,94,0.5); background:rgba(34,197,94,0.06); }
+    .q-card.wrong { border-color:rgba(239,68,68,0.5); background:rgba(239,68,68,0.06); }
+    .q-num { font-size:0.7rem; font-weight:700; color:var(--muted); text-transform:uppercase; letter-spacing:0.06em; margin-bottom:0.35rem; }
+    .q-text { font-size:0.9rem; color:hsl(0,0%,85%); margin-bottom:0.75rem; line-height:1.55; }
+    .q-btns { display:flex; gap:0.5rem; }
+    .q-btn { padding:0.4rem 1rem; border-radius:var(--radius); border:1px solid var(--border); font-family:inherit; font-size:0.8rem; font-weight:600; cursor:pointer; transition:all 0.15s; background:var(--secondary); color:var(--fg); }
+    .q-btn:hover:not(:disabled) { border-color:rgba(255,255,255,0.25); background:var(--accent); }
+    .q-btn:disabled { opacity:0.5; cursor:default; }
+    .q-btn.sel-true { background:rgba(34,197,94,0.15); border-color:var(--green); color:var(--green); }
+    .q-btn.sel-false { background:rgba(239,68,68,0.15); border-color:var(--red); color:var(--red); }
+    .q-explanation { font-size:0.82rem; color:hsl(0,0%,65%); margin-top:0.65rem; padding-top:0.65rem; border-top:1px solid var(--border); line-height:1.55; display:none; }
+    .q-explanation.show { display:block; }
+    .quiz-result { text-align:center; background:var(--card); border:1px solid var(--border); border-radius:14px; padding:2rem; margin-bottom:1.5rem; display:none; }
+    .quiz-result.show { display:block; }
+    .quiz-result-score { font-size:3.5rem; font-weight:900; line-height:1; margin:0.5rem 0; }
+    .quiz-result h3 { font-size:1.1rem; font-weight:700; margin-bottom:0.35rem; }
+    .quiz-result p { color:var(--muted); font-size:0.875rem; margin-bottom:1rem; }
+    .quiz-action-bar { display:flex; gap:0.65rem; justify-content:center; margin-bottom:2rem; flex-wrap:wrap; }
+    .quiz-action-bar button { padding:0.55rem 1.25rem; border-radius:var(--radius); border:1px solid var(--border); font-family:inherit; font-size:0.875rem; font-weight:600; cursor:pointer; transition:opacity 0.15s; }
+    .quiz-action-bar button.primary { background:var(--primary); color:var(--primary-fg); border-color:var(--primary); }
+    .quiz-action-bar button:not(.primary) { background:var(--secondary); color:var(--fg); }
+    .quiz-action-bar button:hover { opacity:0.85; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-left">
+    <a class="back-link" id="back-btn" href="index.html">← FM Kompas</a>
+    <span class="page-title" id="page-title">Eventmanagement 1 <span>· Herkansen</span></span>
+  </div>
+  <div class="pts-chip">⭐ <span id="pts-display">0</span> pts</div>
+</header>
+
+<!-- ══════ VIEW: HOME ══════ -->
+<div class="view active" id="view-home">
+<div class="content-wrap">
+  <div class="home-hero">
+    <h1>Eventmanagement <span>1</span></h1>
+    <p>Herkansing — Studie- en oefenmateriaal voor het tentamen Projectmanagement op basis van Roel Grit.</p>
+  </div>
+
+  <div class="exam-info-card">
+    <div class="exam-info-label">Toetsinformatie</div>
+    <div class="exam-info-grid">
+      <div class="exam-info-item"><div class="lbl">Toetsvorm</div><div class="val">Juist / Onjuist vragen</div></div>
+      <div class="exam-info-item"><div class="lbl">Aantal vragen</div><div class="val">40 vragen per toets</div></div>
+      <div class="exam-info-item"><div class="lbl">Stof</div><div class="val">H1–H12 + EVM + Expert-colleges</div></div>
+      <div class="exam-info-item"><div class="lbl">Cesuur</div><div class="val">Minimaal 5,5 vereist</div></div>
+      <div class="exam-info-item"><div class="lbl">Boek</div><div class="val">Roel Grit — Projectmanagement</div></div>
+      <div class="exam-info-item"><div class="lbl">Afname</div><div class="val">Schriftelijk, gesloten boek</div></div>
+    </div>
+  </div>
+
+  <div class="section-lbl">Kies een onderdeel</div>
+  <div class="sub-grid">
+    <div class="sub-tile" onclick="showView('verbinding','Verbindingsoverzicht')">
+      <span class="t-icon">🔗</span>
+      <h3>Verbindingsoverzicht</h3>
+      <p>Koppelingen tussen begrippen, veelgemaakte toetsfouten en EVM-interpretatie.</p>
+    </div>
+    <div class="sub-tile" onclick="showView('samenvatting','Studiesamenvatting')">
+      <span class="t-icon">📖</span>
+      <h3>Studiesamenvatting</h3>
+      <p>Volledige samenvatting van H1 t/m H12, EVM-formules en Expert-colleges.</p>
+    </div>
+    <div class="sub-tile" onclick="showView('toets1','Oefentoets 1')">
+      <span class="t-icon">✏️</span>
+      <h3>Oefentoets 1</h3>
+      <p>H1 t/m H6 — 42 juist/onjuist vragen met directe feedback en toelichting.</p>
+      <span class="t-badge">+2 pts/goed</span>
+    </div>
+    <div class="sub-tile" onclick="showView('toets2','Oefentoets 2')">
+      <span class="t-icon">✏️</span>
+      <h3>Oefentoets 2</h3>
+      <p>H7 t/m H12 + Expert-colleges — 38 vragen met feedback en toelichting.</p>
+      <span class="t-badge">+2 pts/goed</span>
+    </div>
+    <div class="sub-tile" onclick="showView('begrippen','Begrippenlijst')">
+      <span class="t-icon">📋</span>
+      <h3>Begrippenlijst</h3>
+      <p>Alle begrippen met definities, overzichtelijk per categorie gerangschikt.</p>
+    </div>
+    <div class="sub-tile" onclick="showView('flashcards','Flashcards')">
+      <span class="t-icon">🃏</span>
+      <h3>Flashcards</h3>
+      <p>Oefen alle begrippen interactief met de kaartjes-trainer.</p>
+      <span class="t-badge">+5 pts/kaart</span>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<!-- ══════ VIEW: VERBINDINGSOVERZICHT ══════ -->
+<div class="view" id="view-verbinding">
+<div class="content-wrap">
+
+  <div class="chapter">
+    <div class="chapter-header"><span class="chapter-num">1</span><h2>P6-methode versus Traditionele fasering</h2></div>
+    <div class="table-wrap"><table>
+      <tr><th>P6-stap</th><th>Naam</th><th>Traditionele fase</th><th>Oplevering</th></tr>
+      <tr><td>1</td><td><strong>Initiëren</strong></td><td>Start definitiefase</td><td>Projectvoorstel</td></tr>
+      <tr><td>2</td><td><strong>Inrichten</strong></td><td>Definitiefase (team)</td><td>Team + communicatieafspraken</td></tr>
+      <tr><td>3</td><td><strong>Definiëren</strong></td><td>Definitiefase (PvA)</td><td>Plan van Aanpak</td></tr>
+      <tr><td>4</td><td><strong>Uitvoeren</strong></td><td>Ontwerp + Voorbereiding + Realisatie</td><td>Projectresultaat</td></tr>
+      <tr><td>5</td><td><strong>Opleveren</strong></td><td>Einde realisatie</td><td>Formele acceptatie opdrachtgever</td></tr>
+      <tr><td>6</td><td><strong>Afsluiten</strong></td><td>Nazorgfase</td><td>Financiële afronding, evaluatie</td></tr>
+    </table></div>
+    <div class="callout"><strong>Let op:</strong> In de P6-methode zitten ontwerp, voorbereiding én realisatie samen in stap 4 "Uitvoeren". In de traditionele fasering zijn dat drie losse fasen.</div>
+  </div>
+
+  <div class="chapter">
+    <div class="chapter-header"><span class="chapter-num">2</span><h2>EVM — Formules en interpretatie</h2></div>
+    <div class="table-wrap"><table>
+      <tr><th>Afkorting</th><th>Formule</th><th>&gt; 0 / &gt; 1 betekent</th><th>&lt; 0 / &lt; 1 betekent</th></tr>
+      <tr><td><strong>CPI</strong></td><td><span class="formula">EV ÷ AC</span></td><td>Onder budget</td><td>Over budget</td></tr>
+      <tr><td><strong>SPI</strong></td><td><span class="formula">EV ÷ PV</span></td><td>Voor op schema</td><td>Achter op schema</td></tr>
+      <tr><td><strong>CV</strong></td><td><span class="formula">EV − AC</span></td><td>Onder budget (positief)</td><td>Over budget (negatief)</td></tr>
+      <tr><td><strong>SV</strong></td><td><span class="formula">EV − PV</span></td><td>Voor op schema (positief)</td><td>Achter op schema (negatief)</td></tr>
+      <tr><td><strong>EAC</strong></td><td><span class="formula">BAC ÷ CPI</span></td><td>EAC &lt; BAC = goedkoper dan gepland</td><td>EAC &gt; BAC = duurder (als CPI &lt; 1)</td></tr>
+    </table></div>
+    <div class="warn"><strong>Toetsvalkuil:</strong> Als CPI &lt; 1 is het project over budget — en dan is EAC <em>hoger</em> dan BAC, niet lager\!</div>
+  </div>
+
+  <div class="chapter">
+    <div class="chapter-header"><span class="chapter-num">3</span><h2>Beheersaspecten — GOKIT = TGKIO = KOFTIG</h2></div>
+    <div class="callout"><strong>Alle drie exact hetzelfde\!</strong> Geld · Organisatie · Kwaliteit · Informatie · Tijd — alleen in een andere volgorde gespeld. Geen enkele set heeft een ander aspect dan de andere.</div>
+    <div class="table-wrap"><table>
+      <tr><th>Afkorting</th><th>Letters staan voor</th></tr>
+      <tr><td><strong>GOKIT</strong></td><td>Geld · Organisatie · Kwaliteit · Informatie · Tijd</td></tr>
+      <tr><td><strong>TGKIO</strong></td><td>Tijd · Geld · Kwaliteit · Informatie · Organisatie</td></tr>
+      <tr><td><strong>KOFTIG</strong></td><td>Kwaliteit · Organisatie · <strong>Facilitair</strong> · Tijd · Informatie · Geld</td></tr>
+    </table></div>
+    <div class="warn"><strong>Let op KOFTIG:</strong> de F staat voor <em>Facilitair</em>, niet Financieel\!</div>
+  </div>
+
+  <div class="chapter">
+    <div class="chapter-header"><span class="chapter-num">4</span><h2>Belbin-rollen per categorie</h2></div>
+    <div class="table-wrap"><table>
+      <tr><th>Categorie</th><th>Rollen</th><th>Kernwoorden</th></tr>
+      <tr><td><strong>Actiegericht</strong></td><td>Vormer · Bedrijfsman/Zetter · Afmaker</td><td>Resultaat, uitvoering, deadlines</td></tr>
+      <tr><td><strong>Mensgeoriënteerd</strong></td><td>Coördinator · Groepswerker · Brononderzoeker</td><td>Samenwerking, teamklimaat, extern netwerk</td></tr>
+      <tr><td><strong>Cerebraal</strong></td><td>Plant · Monitor/Waarschuwer · Specialist</td><td>Ideeën, analyse, vakkennis</td></tr>
+    </table></div>
+    <div class="warn"><strong>Toetsvalkuil:</strong> Brononderzoeker = sociale/mensgerichte rol, NIET taakgericht. Monitor = denkrol, GEEN actierol.</div>
+  </div>
+
+  <div class="chapter">
+    <div class="chapter-header"><span class="chapter-num">5</span><h2>Scrum-ceremonies</h2></div>
+    <div class="table-wrap"><table>
+      <tr><th>Ceremonie</th><th>Wanneer</th><th>Doel</th><th>Over</th></tr>
+      <tr><td><strong>Sprint Planning</strong></td><td>Start van sprint</td><td>Werk selecteren uit backlog</td><td>Wat gaan we doen?</td></tr>
+      <tr><td><strong>Daily Scrum</strong></td><td>Dagelijks, max 15 min</td><td>Voortgang afstemmen</td><td>Gisteren / Vandaag / Obstakels</td></tr>
+      <tr><td><strong>Sprint Review</strong></td><td>Einde sprint</td><td>Demo aan stakeholders</td><td>Het PRODUCT</td></tr>
+      <tr><td><strong>Sprint Retrospective</strong></td><td>Na Sprint Review</td><td>Intern evalueren</td><td>Het WERKPROCES</td></tr>
+    </table></div>
+    <div class="warn"><strong>Toetsvalkuil:</strong> Review ≠ Retrospective. Review = product demo. Retrospective = interne procesevaluatie.</div>
+  </div>
+
+  <div class="chapter">
+    <div class="chapter-header"><span class="chapter-num">6</span><h2>Veelgemaakte toetsfouten</h2></div>
+    <div class="table-wrap"><table>
+      <tr><th>Veelgemaakte fout</th><th>Juiste antwoord</th></tr>
+      <tr><td>Ontwerp is de 3e fase</td><td>Ontwerp is fase 2, Voorbereiding is fase 3</td></tr>
+      <tr><td>Review en Retrospective zijn hetzelfde</td><td>Review = product. Retrospective = proces</td></tr>
+      <tr><td>GOKIT en TGKIO hebben andere inhoud</td><td>Ze zijn identiek — zelfde 5 aspecten</td></tr>
+      <tr><td>Brononderzoeker is een taakgerichte rol</td><td>Brononderzoeker is mensgeoriënteerd (sociaal)</td></tr>
+      <tr><td>Monitor is een actierol</td><td>Monitor is een denkrol (cerebraal)</td></tr>
+      <tr><td>Managementsamenvatting is een vooruitblik</td><td>Managementsamenvatting is een rapportage achteraf</td></tr>
+      <tr><td>Planning = Plan van Aanpak</td><td>Planning is slechts één onderdeel van het PvA</td></tr>
+      <tr><td>Stafafdeling heeft bevelsbevoegdheid</td><td>Stafafdeling adviseert alleen, geen bevelsbevoegdheid</td></tr>
+      <tr><td>Scrum Master wijst taken toe</td><td>Het team is zelfsturend; Scrum Master coacht het proces</td></tr>
+      <tr><td>CPI &lt; 1 = onder budget</td><td>CPI &gt; 1 = onder budget; CPI &lt; 1 = over budget</td></tr>
+      <tr><td>EAC is lager als CPI &lt; 1</td><td>EAC is hoger als CPI &lt; 1 — project loopt over budget</td></tr>
+      <tr><td>Randvoorwaarden = factoren met invloed</td><td>Randvoorwaarden zijn factoren zónder invloed van het team</td></tr>
+    </table></div>
+  </div>
+
+  <div class="chapter">
+    <div class="chapter-header"><span class="chapter-num">7</span><h2>Risicostrategieën</h2></div>
+    <div class="table-wrap"><table>
+      <tr><th>Strategie</th><th>Wat doe je?</th><th>Risico verdwenen?</th></tr>
+      <tr><td><strong>Vermijden</strong></td><td>Aanpak wijzigen zodat risico niet meer bestaat</td><td>Ja</td></tr>
+      <tr><td><strong>Mitigeren</strong></td><td>Kans en/of impact verkleinen</td><td>Nee, maar kleiner</td></tr>
+      <tr><td><strong>Overdragen</strong></td><td>Bij andere partij neerleggen (bijv. verzekering)</td><td>Nee, maar niet meer jouw probleem</td></tr>
+      <tr><td><strong>Accepteren</strong></td><td>Bewust niets doen, eventueel contingency plan</td><td>Nee</td></tr>
+    </table></div>
+    <div class="warn"><strong>Toetsvalkuil:</strong> Vermijden = aanpak aanpassen, NIET een noodplan opstellen. Dat is Accepteren met contingency plan.</div>
+  </div>
+
+</div>
+</div>
+
+
+<!-- ══════ VIEW: SAMENVATTING ══════ -->
+<div class="view" id="view-samenvatting">
+<div class="content-wrap">
+
+  <!-- H1 -->
+  <div class="chapter">
+    <div class="chapter-header"><span class="chapter-num">H1</span><h2>Het Project</h2></div>
+    <div class="section-title">3 soorten werkzaamheden</div>
+    <div class="table-wrap"><table>
+      <tr><th>Soort</th><th>Kenmerken</th></tr>
+      <tr><td><strong>Improvisatie</strong></td><td>Ad hoc, geen plan, onzeker resultaat, veel flexibiliteit</td></tr>
+      <tr><td><strong>Routinematig</strong></td><td>Herhaaldelijk, vaste procedures, voorspelbaar resultaat</td></tr>
+      <tr><td><strong>Projectmatig</strong></td><td>Eenmalig, tijdelijk, planmatig in fasen met Plan van Aanpak</td></tr>
+    </table></div>
+    <div class="section-title">Definitie van een project</div>
+    <div class="callout"><strong>Een project</strong> is een tijdelijke samenwerking van mensen uit verschillende vakgebieden, om binnen een vastgestelde tijd een vooraf vastgesteld projectresultaat te bereiken met een vastgesteld budget.</div>
+    <div class="section-title">5 soorten projecten</div>
+    <ul class="item-list">
+      <li><strong>Technisch</strong> — nieuwe techniek of product, goed planbaar</li>
+      <li><strong>Sociaal</strong> — cultuur- of organisatieverandering</li>
+      <li><strong>Commercieel</strong> — geld verdienen, bijv. marktonderzoek</li>
+      <li><strong>Gemengd</strong> — combinatie van soorten</li>
+      <li><strong>Evenement</strong> — resultaat op vast moment (bijv. festival)</li>
+    </ul>
+    <div class="section-title">Traditionele fasering (watervalmodel)</div>
+    <div class="table-wrap"><table>
+      <tr><th>#</th><th>Fase</th><th>Oplevering</th></tr>
+      <tr><td>1</td><td><strong>Definitie</strong></td><td>Plan van Aanpak</td></tr>
+      <tr><td>2</td><td><strong>Ontwerp</strong></td><td>Ontwerpdocument</td></tr>
+      <tr><td>3</td><td><strong>Voorbereiding</strong></td><td>Inkoop, detailplanning</td></tr>
+      <tr><td>4</td><td><strong>Realisatie</strong></td><td>Eindresultaat</td></tr>
+      <tr><td>5</td><td><strong>Nazorg</strong></td><td>Evaluatie, overdracht</td></tr>
+    </table></div>
+    <div class="warn">Let op volgorde: <strong>Ontwerp komt vóór Voorbereiding</strong> — veelgemaakte fout\!</div>
+    <div class="section-title">SMART &amp; MVO</div>
+    <p class="prose"><strong>SMART:</strong> Specifiek · Meetbaar · Acceptabel · Realistisch · Tijdgebonden</p>
+    <p class="prose"><strong>MVO 4 P's:</strong> Project · People · Planet · Profit</p>
+  </div>
+
+  <!-- H2 -->
+  <div class="chapter">
+    <div class="chapter-header"><span class="chapter-num">H2</span><h2>Mensen en Projecten</h2></div>
+    <div class="section-title">Organisatietypen</div>
+    <ul class="item-list">
+      <li><strong>Lijnorganisatie</strong> — vast, permanent, hiërarchisch</li>
+      <li><strong>Projectorganisatie</strong> — tijdelijk, naast de lijn</li>
+      <li><strong>Matrixorganisatie</strong> — medewerker heeft twee bazen (afdelingshoofd + projectleider)</li>
+      <li><strong>Stafafdeling</strong> — adviseert, heeft géén bevelsbevoegdheid</li>
+    </ul>
+    <div class="callout"><strong>Twee-bazen-probleem:</strong> projectlid rapporteert aan zowel afdelingshoofd als projectleider.</div>
+    <div class="section-title">Belbin-rollen</div>
+    <div class="table-wrap"><table>
+      <tr><th>Categorie</th><th>Rollen</th></tr>
+      <tr><td><strong>Actiegericht</strong></td><td>Vormer · Bedrijfsman/Zetter · Afmaker</td></tr>
+      <tr><td><strong>Mensgeoriënteerd</strong></td><td>Coördinator · Groepswerker · Brononderzoeker</td></tr>
+      <tr><td><strong>Cerebraal (denk)</strong></td><td>Plant · Monitor · Specialist</td></tr>
+    </table></div>
+    <p class="prose">Eén persoon kan <strong>meerdere rollen</strong> vervullen. Brononderzoeker is een <strong>sociale/mensgerichte rol</strong> — niet taakgericht\!</p>
+    <div class="section-title">Besluitvorming</div>
+    <ul class="item-list">
+      <li><strong>Autocratisch</strong> — leider beslist alleen</li>
+      <li><strong>Stemmen (meerderheidsbesluit)</strong> — meerderheid wint</li>
+      <li><strong>Consensus</strong> — iedereen kan ermee leven, geen stemming, kost meer tijd</li>
+    </ul>
+  </div>
+
+  <!-- H3 -->
+  <div class="chapter">
+    <div class="chapter-header"><span class="chapter-num">H3</span><h2>Het Project van Begin tot Eind</h2></div>
+    <div class="section-title">GOKIT / TGKIO / KOFTIG</div>
+    <div class="callout"><strong>Alle drie hetzelfde\!</strong> Geld · Organisatie · Kwaliteit · Informatie · Tijd — alleen in andere volgorde. KOFTIG: de F = Facilitair, niet Financieel\!</div>
+    <div class="section-title">Duivelsdriehoek</div>
+    <p class="prose">Geld, Tijd en Kwaliteit/Scope zijn onlosmakelijk verbonden. Als je één aanpast, heeft dit altijd effect op de andere twee.</p>
+    <div class="section-title">Risicobeheersing (4 strategieën)</div>
+    <div class="table-wrap"><table>
+      <tr><th>Strategie</th><th>Wat doe je?</th></tr>
+      <tr><td><strong>Vermijden</strong></td><td>Aanpak aanpassen zodat het risico niet meer bestaat</td></tr>
+      <tr><td><strong>Mitigeren</strong></td><td>Kans en/of impact verkleinen</td></tr>
+      <tr><td><strong>Overdragen</strong></td><td>Risico bij andere partij neerleggen (verzekering, uitbesteding)</td></tr>
+      <tr><td><strong>Accepteren</strong></td><td>Bewust accepteren, eventueel met contingency plan</td></tr>
+    </table></div>
+    <p class="prose"><strong>Risicoscore</strong> = kans × impact</p>
+  </div>
+
+  <!-- H4 -->
+  <div class="chapter">
+    <div class="chapter-header"><span class="chapter-num">H4</span><h2>Planning</h2></div>
+    <div class="two-col-grid">
+      <div class="mini-card"><h4>Gantt-chart / Strokenplanning</h4><p>Activiteiten als balken in de tijd. Toont tijdsvolgorde, maar niet inhoudelijke afhankelijkheden.</p></div>
+      <div class="mini-card"><h4>WBS (Werkbreakdownstructuur)</h4><p>Hiërarchische opdeling van alle activiteiten. Toont structuur, géén tijdsvolgorde.</p></div>
+      <div class="mini-card"><h4>Kritiek pad (CPM)</h4><p>Langste reeks afhankelijke activiteiten. Vertraging hier = vertraging hele project. Float = 0.</p></div>
+      <div class="mini-card"><h4>PERT</h4><p>3 tijdschattingen: optimistisch, meest waarschijnlijk, pessimistisch. CPM gebruikt slechts 1 schatting.</p></div>
+    </div>
+    <ul class="item-list">
+      <li><strong>Lead</strong> — overlap, opvolgende activiteit start eerder dan normaal</li>
+      <li><strong>Lag</strong> — wachttijd, opvolgende activiteit moet even wachten</li>
+      <li><strong>Doorlooptijd ≠ Werktijd</strong> — doorlooptijd is kalendertijd, werktijd is daadwerkelijke uren</li>
+    </ul>
+  </div>
+
+  <!-- H5/H6 -->
+  <div class="chapter">
+    <div class="chapter-header"><span class="chapter-num">H5/H6</span><h2>P6-methode &amp; Plan van Aanpak</h2></div>
+    <div class="table-wrap"><table>
+      <tr><th>Stap</th><th>Naam</th><th>Wat?</th></tr>
+      <tr><td>1</td><td><strong>Initiëren</strong></td><td>Idee, haalbaarheid, projectvoorstel</td></tr>
+      <tr><td>2</td><td><strong>Inrichten</strong></td><td>Team samenstellen, afspraken communicatie</td></tr>
+      <tr><td>3</td><td><strong>Definiëren</strong></td><td>Plan van Aanpak opstellen</td></tr>
+      <tr><td>4</td><td><strong>Uitvoeren</strong></td><td>Ontwerp + Voorbereiding + Realisatie (TGKIO bewaken)</td></tr>
+      <tr><td>5</td><td><strong>Opleveren</strong></td><td>Testplan uitvoeren, formele acceptatie opdrachtgever</td></tr>
+      <tr><td>6</td><td><strong>Afsluiten</strong></td><td>Financieel afronden, handleidingen, projectleden terug naar lijn</td></tr>
+    </table></div>
+    <div class="callout"><strong>PvA vs. Planning:</strong> een planning is slechts één onderdeel van het Plan van Aanpak. Het PvA bevat ook organisatie, begroting, risicoanalyse, etc.</div>
+    <p class="prose"><strong>Opdrachtgever</strong> = eigenaar projectdoelstelling (het "waarom"). <strong>Projectleider</strong> = eigenaar projectresultaat (het "wat").</p>
+    <p class="prose"><strong>Randvoorwaarden</strong> = factoren waarop het team géén invloed heeft. <strong>Scope</strong> = alles wat binnen het project valt.</p>
+    <p class="prose"><strong>Exploitatiekosten</strong> = kosten ná oplevering (gebruik en onderhoud), niet vóór.</p>
+  </div>
+
+  <!-- H7 -->
+  <div class="chapter">
+    <div class="chapter-header"><span class="chapter-num">H7</span><h2>Agile &amp; Scrum</h2></div>
+    <p class="prose">Agile is een <strong>mindset</strong>, geen methode. Scrum is een framework dat Agile-waarden toepast. Gebruik Scrum als eisen onduidelijk zijn of veranderlijk.</p>
+    <div class="section-title">Scrum-rollen</div>
+    <div class="table-wrap"><table>
+      <tr><th>Rol</th><th>Verantwoordelijkheid</th></tr>
+      <tr><td><strong>Product Owner</strong></td><td>Beheert en prioriteert de product backlog. Vertegenwoordigt de klant.</td></tr>
+      <tr><td><strong>Scrum Master</strong></td><td>Begeleidt het proces, verwijdert obstakels. Dienende leider — géén inhoudelijke bevoegdheid, wijst geen taken toe.</td></tr>
+      <tr><td><strong>Development Team</strong></td><td>Zelforganiserend, cross-functioneel. Bepaalt eigen velocity.</td></tr>
+    </table></div>
+    <div class="section-title">Scrum-ceremonies</div>
+    <div class="table-wrap"><table>
+      <tr><th>Ceremonie</th><th>Wanneer</th><th>Doel</th></tr>
+      <tr><td><strong>Sprint Planning</strong></td><td>Start sprint</td><td>Werk kiezen uit backlog</td></tr>
+      <tr><td><strong>Daily Scrum</strong></td><td>Dagelijks, max 15 min</td><td>Voortgang afstemmen</td></tr>
+      <tr><td><strong>Sprint Review</strong></td><td>Einde sprint</td><td>Demo aan stakeholders — over het PRODUCT</td></tr>
+      <tr><td><strong>Sprint Retrospective</strong></td><td>Na Sprint Review</td><td>Evaluatie werkproces — over het PROCES</td></tr>
+    </table></div>
+    <div class="warn"><strong>Review ≠ Retrospective</strong> — veelgemaakte fout. Review = product demo. Retrospective = interne procesevaluatie.</div>
+  </div>
+
+  <!-- H8 -->
+  <div class="chapter">
+    <div class="chapter-header"><span class="chapter-num">H8</span><h2>Vergaderen</h2></div>
+    <div class="section-title">Soorten vergaderingen</div>
+    <ul class="item-list">
+      <li><strong>Informatieverstrekking</strong> — kennis delen, geen besluit</li>
+      <li><strong>Meningsvorming</strong> — standpunten uitwisselen, nog geen besluit</li>
+      <li><strong>Besluitvorming</strong> — formeel besluit nemen</li>
+    </ul>
+    <div class="section-title">Rollen</div>
+    <ul class="item-list">
+      <li><strong>Voorzitter</strong> — verantwoordelijk voor leiding, voorbereiding, opent en sluit vergadering, bewaakt agenda</li>
+      <li><strong>Notulist</strong> — legt beslissingen en actiepunten vast (niet de voorzitter\!)</li>
+    </ul>
+    <div class="section-title">Praktische regels</div>
+    <ul class="item-list">
+      <li><strong>Agenda</strong> — rondvraag altijd als laatste punt</li>
+      <li><strong>Documenten</strong> — vooraf verspreiden, of aan het begin een leespauze inlassen</li>
+      <li><strong>Notulen</strong> — zo snel mogelijk na de vergadering uitwerken (geheugen is dan nog vers)</li>
+    </ul>
+  </div>
+
+  <!-- H9 -->
+  <div class="chapter">
+    <div class="chapter-header"><span class="chapter-num">H9</span><h2>Interviewen</h2></div>
+    <div class="section-title">Soorten interviews</div>
+    <ul class="item-list">
+      <li><strong>Gestandaardiseerd</strong> — vaste vragen voor iedereen, goed vergelijkbaar, minder diepgang</li>
+      <li><strong>Vrij (open)</strong> — geen vaste structuur, meer diepgang, minder vergelijkbaar</li>
+    </ul>
+    <div class="section-title">Praktische afspraken</div>
+    <ul class="item-list">
+      <li>Werk met <strong>twee personen</strong>: één stelt vragen, één schrijft — zo kan de vrager zich volledig concentreren</li>
+      <li>Stuur het verslag achteraf naar de geïnterviewde ter <strong>controle op juistheid</strong></li>
+      <li>Gebruik <strong>open vragen</strong> voor meer informatie; gesloten vragen voor feiten</li>
+    </ul>
+  </div>
+
+  <!-- H10 -->
+  <div class="chapter">
+    <div class="chapter-header"><span class="chapter-num">H10</span><h2>Rapport Schrijven</h2></div>
+    <div class="section-title">Opmaakregels</div>
+    <ul class="item-list">
+      <li><strong>Bijlagen</strong> — aangeduid met letters (Bijlage A, B, C), niet met cijfers</li>
+      <li><strong>Stijl</strong> — zakelijk, geen persoonlijke voornaamwoorden (geen ik/wij)</li>
+      <li><strong>Inhoudsopgave</strong> — maximaal drie niveaus, met paginaverwijzingen</li>
+      <li><strong>Hoofdstukken</strong> — beginnen altijd met een korte inleiding vóór de eerste paragraaf</li>
+    </ul>
+    <div class="section-title">APA-bronvermelding</div>
+    <ul class="item-list">
+      <li>De punt staat <strong>ná</strong> de bronvermelding, niet ervóór</li>
+      <li>Alfabetisch op achternaam eerste auteur</li>
+    </ul>
+  </div>
+
+  <!-- H11 -->
+  <div class="chapter">
+    <div class="chapter-header"><span class="chapter-num">H11</span><h2>Presentatie</h2></div>
+    <div class="section-title">Pitch-elementen</div>
+    <ul class="item-list">
+      <li><strong>Aantrekkelijke opening</strong> — prikkel de aandacht direct</li>
+      <li><strong>Probleemstelling</strong> — maak het probleem duidelijk</li>
+      <li><strong>USP</strong> (Unique Selling Point) — wat maakt jouw oplossing bijzonder?</li>
+      <li><strong>Call to action</strong> — wat wil je dat het publiek doet?</li>
+    </ul>
+    <div class="section-title">Afsluiting</div>
+    <p class="prose">Herhaal de kernboodschap, vat de conclusies samen en geef ruimte voor vragen.</p>
+    <div class="section-title">Dia's</div>
+    <ul class="item-list">
+      <li>Niet te veel informatie op één dia — één kernidee per dia</li>
+      <li>Gebruik beeld ter ondersteuning, niet als vervanging van je verhaal</li>
+      <li>Non-verbaal: oogcontact, houding, stemgebruik zijn minstens zo belangrijk als de inhoud</li>
+    </ul>
+  </div>
+
+  <!-- H12 -->
+  <div class="chapter">
+    <div class="chapter-header"><span class="chapter-num">H12</span><h2>Managementsamenvatting</h2></div>
+    <div class="callout"><strong>Definitie:</strong> een rapportage achteraf over een uitgevoerd (project)onderdeel — géén vooruitblik\!</div>
+    <div class="section-title">Onderdelen</div>
+    <ul class="item-list">
+      <li><strong>Stand van zaken</strong> — wat is er bereikt?</li>
+      <li><strong>Beslispunten</strong> — waar moet het management een beslissing over nemen?</li>
+      <li><strong>Aanbevelingen</strong> — wat adviseer jij?</li>
+    </ul>
+    <div class="section-title">Doelgroep en lengte</div>
+    <ul class="item-list">
+      <li>Geschreven voor de <strong>manager</strong>, niet voor de vakspecialist — geen jargon</li>
+      <li>Maximaal <strong>1 à 2 pagina's</strong> — kort, bondig, direct begrijpelijk</li>
+    </ul>
+    <div class="warn">Toetsvalkuil: een managementsamenvatting is een rapportage <em>achteraf</em>, geen plan of vooruitblik\!</div>
+  </div>
+
+  <!-- EVM -->
+  <div class="chapter">
+    <div class="chapter-header"><span class="chapter-num">EVM</span><h2>Earned Value Management</h2></div>
+    <div class="table-wrap"><table>
+      <tr><th>Afkorting</th><th>Naam</th><th>Formule</th><th>Betekenis</th></tr>
+      <tr><td><strong>BAC</strong></td><td>Budget at Completion</td><td><span class="formula">totaalbudget</span></td><td>Goedgekeurd totaalbudget</td></tr>
+      <tr><td><strong>PV</strong></td><td>Planned Value</td><td><span class="formula">gepland werk × tarief</span></td><td>Wat zou nu klaar moeten zijn?</td></tr>
+      <tr><td><strong>EV</strong></td><td>Earned Value</td><td><span class="formula">% klaar × BAC</span></td><td>Budgetwaarde van echt gedaan werk</td></tr>
+      <tr><td><strong>AC</strong></td><td>Actual Cost</td><td><span class="formula">daadwerkelijk uitgegeven</span></td><td>Werkelijke kosten tot nu toe</td></tr>
+      <tr><td><strong>CPI</strong></td><td>Cost Performance Index</td><td><span class="formula">EV ÷ AC</span></td><td>&gt;1 = onder budget · &lt;1 = over budget</td></tr>
+      <tr><td><strong>SPI</strong></td><td>Schedule Performance Index</td><td><span class="formula">EV ÷ PV</span></td><td>&gt;1 = voor op schema · &lt;1 = achter</td></tr>
+      <tr><td><strong>CV</strong></td><td>Cost Variance</td><td><span class="formula">EV − AC</span></td><td>Negatief = over budget</td></tr>
+      <tr><td><strong>SV</strong></td><td>Schedule Variance</td><td><span class="formula">EV − PV</span></td><td>Negatief = achter op schema</td></tr>
+      <tr><td><strong>EAC</strong></td><td>Estimate at Completion</td><td><span class="formula">BAC ÷ CPI</span></td><td>Verwachte eindkosten. Hoger als CPI &lt;1\!</td></tr>
+      <tr><td><strong>ETC</strong></td><td>Estimate to Complete</td><td><span class="formula">EAC − AC</span></td><td>Verwachte resterende kosten</td></tr>
+    </table></div>
+  </div>
+
+  <!-- Expert-colleges -->
+  <div class="chapter">
+    <div class="chapter-header"><span class="chapter-num">Expert</span><h2>Expert-colleges</h2></div>
+    <div class="section-title">Recht</div>
+    <ul class="item-list">
+      <li>Evenementenrecht bestaat <strong>niet</strong> als apart rechtsgebied — meerdere rechtsgebieden van toepassing</li>
+      <li><strong>BUMA/STEMRA</strong> — auteursrechten componisten/tekstschrijvers</li>
+      <li><strong>Sena</strong> — naburige rechten uitvoerende artiesten/producenten</li>
+      <li>Als organisator heb je een <strong>juridische zorgplicht</strong> en kun je aansprakelijk worden gesteld</li>
+    </ul>
+    <div class="section-title">Marketing</div>
+    <ul class="item-list">
+      <li><strong>3 E's:</strong> Entertainment · Excitement · Enterprise</li>
+      <li><strong>Segmentatie ≠ Targeting</strong> — segmentatie = opdelen, targeting = kiezen op welke groep</li>
+      <li><strong>Demografische segmentatie:</strong> leeftijd, geslacht, inkomen, opleiding</li>
+    </ul>
+    <div class="section-title">Kwaliteit (FAT en SAT)</div>
+    <ul class="item-list">
+      <li><strong>FAT (Factory Acceptance Test)</strong> — acceptatietest bij de leverancier, vóór verzending</li>
+      <li><strong>SAT (Site Acceptance Test)</strong> — acceptatietest op locatie van de klant</li>
+    </ul>
+    <div class="section-title">BEC (Bedrijfseconomie)</div>
+    <ul class="item-list">
+      <li><strong>Vaste kosten</strong> — onafhankelijk van aantal bezoekers (bijv. locatiehuur)</li>
+      <li><strong>Variabele kosten</strong> — stijgen mee met het aantal bezoekers (bijv. catering p.p.)</li>
+    </ul>
+  </div>
+
+</div>
+</div>
+
+
+<!-- ══════ VIEW: OEFENTOETS 1 (q1-42) ══════ -->
+<div class="view" id="view-toets1">
+<div class="content-wrap">
+  <div class="quiz-result" id="quiz1-result">
+    <h3>Resultaat Oefentoets 1</h3>
+    <div class="quiz-result-score" id="quiz1-score">0/42</div>
+    <p id="quiz1-text">Bekijk je score hieronder.</p>
+    <div class="pts-awarded" id="quiz1-pts" style="display:none"></div>
+  </div>
+  <div class="quiz-action-bar">
+    <button class="primary" onclick="quiz1.showResults()">Bekijk resultaat</button>
+    <button onclick="quiz1.reset()">Opnieuw</button>
+  </div>
+  <div class="quiz-header">
+    <div class="quiz-score-bar">
+      <div class="quiz-stat"><div class="num">42</div><div class="lbl">Vragen</div></div>
+      <div class="quiz-stat"><div class="num" id="q1-answered">0</div><div class="lbl">Beantwoord</div></div>
+      <div class="quiz-stat g"><div class="num" id="q1-correct">0</div><div class="lbl">Goed</div></div>
+      <div class="quiz-stat r"><div class="num" id="q1-wrong">0</div><div class="lbl">Fout</div></div>
+    </div>
+  </div>
+  <div id="quiz1-questions"></div>
+</div>
+</div>
+
+<!-- ══════ VIEW: OEFENTOETS 2 (q43-80) ══════ -->
+<div class="view" id="view-toets2">
+<div class="content-wrap">
+  <div class="quiz-result" id="quiz2-result">
+    <h3>Resultaat Oefentoets 2</h3>
+    <div class="quiz-result-score" id="quiz2-score">0/38</div>
+    <p id="quiz2-text">Bekijk je score hieronder.</p>
+    <div class="pts-awarded" id="quiz2-pts" style="display:none"></div>
+  </div>
+  <div class="quiz-action-bar">
+    <button class="primary" onclick="quiz2.showResults()">Bekijk resultaat</button>
+    <button onclick="quiz2.reset()">Opnieuw</button>
+  </div>
+  <div class="quiz-header">
+    <div class="quiz-score-bar">
+      <div class="quiz-stat"><div class="num">38</div><div class="lbl">Vragen</div></div>
+      <div class="quiz-stat"><div class="num" id="q2-answered">0</div><div class="lbl">Beantwoord</div></div>
+      <div class="quiz-stat g"><div class="num" id="q2-correct">0</div><div class="lbl">Goed</div></div>
+      <div class="quiz-stat r"><div class="num" id="q2-wrong">0</div><div class="lbl">Fout</div></div>
+    </div>
+  </div>
+  <div id="quiz2-questions"></div>
+</div>
+</div>
+
+<!-- ══════ VIEW: BEGRIPPENLIJST ══════ -->
+<div class="view" id="view-begrippen">
+<div class="content-wrap" id="begrippen-content">
+</div>
+</div>
+
+<!-- ══════ VIEW: FLASHCARDS ══════ -->
+<div class="view" id="view-flashcards">
+<div class="content-wrap">
+  <div class="fc-controls">
+    <select class="fc-select" id="catFilter" onchange="loadDeck()">
+      <option value="all">Alle categorieën</option>
+      <option value="project">Projectbasis</option>
+      <option value="fasering">Fasering</option>
+      <option value="planning">Planning</option>
+      <option value="evm">EVM</option>
+      <option value="risico">Risicobeheersing</option>
+      <option value="organisatie">Organisatie &amp; MVO</option>
+      <option value="belbin">Belbin</option>
+      <option value="scrum">Agile &amp; Scrum</option>
+      <option value="kwaliteit">Kwaliteit</option>
+      <option value="overig">Overige begrippen</option>
+    </select>
+    <button class="fc-btn" onclick="shuffleDeck()">Schud</button>
+    <button class="fc-btn" onclick="loadDeck()">Opnieuw</button>
+  </div>
+  <div class="fc-stats">
+    <div class="fc-stat"><div class="num" id="stat-total">0</div><div class="lbl">Totaal</div></div>
+    <div class="fc-stat green"><div class="num" id="stat-known">0</div><div class="lbl">Gekend</div></div>
+    <div class="fc-stat red"><div class="num" id="stat-missed">0</div><div class="lbl">Herhalen</div></div>
+  </div>
+  <div class="progress-wrap">
+    <div class="progress-bar-bg"><div class="progress-bar-fill" id="prog-bar"></div></div>
+    <div class="progress-lbl" id="prog-label">0 / 0 bekend</div>
+  </div>
+  <div class="card-area" id="card-area">
+    <div class="flip-wrap" id="flip-wrap" onclick="flipCard()">
+      <div class="flip-inner">
+        <div class="card-face front">
+          <span class="fc-cat-badge" id="front-cat">Categorie</span>
+          <div class="fc-term" id="front-term">Laadt...</div>
+          <div class="fc-hint">Klik om de definitie te zien</div>
+        </div>
+        <div class="card-face back">
+          <div class="fc-def" id="back-def"></div>
+          <div class="fc-formula" id="back-formula" style="display:none"></div>
+        </div>
+      </div>
+    </div>
+    <div class="fc-counter" id="fc-counter">Kaart 1 van 0</div>
+    <div class="fc-actions" id="fc-actions">
+      <button class="fc-action-btn miss" onclick="markCard(false)">Nog niet</button>
+      <button class="fc-action-btn skip" onclick="skipCard()">Sla over</button>
+      <button class="fc-action-btn known" onclick="markCard(true)">Gekend\! +5 pts</button>
+    </div>
+  </div>
+  <div class="fc-done" id="fc-done">
+    <h3>Sessie klaar\!</h3>
+    <div class="fc-done-score" id="fc-done-score">0 / 0</div>
+    <p id="fc-done-text">Goed bezig\!</p>
+    <div class="pts-awarded" id="fc-pts-awarded" style="display:none"></div>
+    <div style="display:flex;gap:0.65rem;justify-content:center;flex-wrap:wrap;margin-top:1rem;">
+      <button class="fc-btn primary" onclick="repeatMissed()">Herhaal niet-gekende</button>
+      <button class="fc-btn" onclick="loadDeck()">Begin opnieuw</button>
+    </div>
+  </div>
+</div>
+</div>
+
+<script>
+/* ══ DATA ══ */
+const allCards = [
+  {cat:"project",term:"Project",def:"Een tijdelijke, unieke samenwerking gericht op een vooraf bepaald resultaat, binnen afgesproken randvoorwaarden van tijd, geld en kwaliteit."},
+  {cat:"project",term:"Projectkenmerken",def:"Tijdelijk, uniek, eenmalig, gericht op een concreet resultaat, met een projectteam, budget en deadline."},
+  {cat:"project",term:"Opdrachtgever",def:"De persoon of organisatie die het project opdraagt, het budget verstrekt en het eindresultaat accepteert. Staat buiten het projectteam."},
+  {cat:"project",term:"Projectleider",def:"Verantwoordelijk voor de dagelijkse uitvoering, planning en coördinatie van het project. Rapporteert aan de opdrachtgever."},
+  {cat:"project",term:"Stuurgroep",def:"Strategisch beslisorgaan bestaande uit de opdrachtgever en andere beslissingsbevoegde stakeholders. Neemt go/no-go beslissingen bij faseovergangen."},
+  {cat:"project",term:"Stakeholder",def:"Iedereen die belang heeft bij of invloed uitoefent op het project. Niet per se financieel — ook organisatorisch, maatschappelijk of persoonlijk."},
+  {cat:"project",term:"Kick-off meeting",def:"Officiële startbijeenkomst aan het begin van een project. Alle betrokkenen worden geïnformeerd over doel, aanpak en rolverdeling."},
+  {cat:"project",term:"Go/no-go beslissing",def:"Formele beslissing aan het einde van een projectfase: gaan we door naar de volgende fase of stoppen we? Genomen door de stuurgroep."},
+  {cat:"project",term:"Mijlpaal",def:"Meetbaar tussentijds resultaat of formeel beslismoment binnen een project. Geen doorlooptijd, wél een concreet resultaat."},
+  {cat:"project",term:"Scope creep",def:"Ongecontroleerde, niet-geplande uitbreiding van de projectomvang zonder formele goedkeuring of aanpassing van budget en doorlooptijd."},
+  {cat:"project",term:"Deliverable",def:"Een op te leveren resultaat (product, rapport, ontwerp). Niet hetzelfde als een activiteit — dat is de taak die nodig is om de deliverable te maken."},
+  {cat:"project",term:"P6-methode",def:"Methode van Roel Grit voor een Plan van Aanpak: Initiëren, Inrichten, Definiëren, Uitvoeren, Opleveren, Afsluiten."},
+  {cat:"project",term:"Plan van Aanpak",def:"Het centrale projectdocument. Bevat: aanleiding, doelstelling, resultaat, aanpak, planning, begroting, risicoanalyse en organisatie."},
+  {cat:"project",term:"SMART",def:"Methode om doelstellingen concreet te formuleren: Specifiek, Meetbaar, Acceptabel, Realistisch, Tijdgebonden. Garandeert haalbaarheid NIET."},
+  {cat:"project",term:"Lijnorganisatie",def:"De vaste, permanente organisatiestructuur van een bedrijf. Tegenover de tijdelijke projectorganisatie."},
+  {cat:"fasering",term:"Volgorde traditionele fasering",def:"Definitie → Ontwerp → Voorbereiding → Realisatie → Nazorg. Ontwerp komt VOOR Voorbereiding\!"},
+  {cat:"fasering",term:"Definitiefase",def:"Eerste fase: doel, haalbaarheid en opdracht worden bepaald. Levert het Plan van Aanpak op."},
+  {cat:"fasering",term:"Ontwerpfase",def:"Tweede fase: uitwerken wát er gemaakt wordt. Levert een ontwerpdocument op."},
+  {cat:"fasering",term:"Voorbereidingsfase",def:"Derde fase: inkoop, aanbesteding en detailplanning klaarstomen voor uitvoering."},
+  {cat:"fasering",term:"Realisatiefase",def:"Vierde fase: de daadwerkelijke uitvoering. Hier wordt het eindresultaat gebouwd of gerealiseerd."},
+  {cat:"fasering",term:"Nazorgfase",def:"Vijfde fase: overdracht aan de klant, evaluatie en afbouw van de projectorganisatie."},
+  {cat:"fasering",term:"Watervalmodel",def:"Lineaire aanpak: elke fase volledig afronden voor de volgende begint. Grote scopewijzigingen halverwege zijn kostbaar en lastig."},
+  {cat:"fasering",term:"Fase-gate",def:"Controlemoment aan het einde van elke fase. Stuurgroep neemt go/no-go beslissing."},
+  {cat:"planning",term:"GOKIT",def:"Geld, Organisatie, Kwaliteit, Informatie, Tijd. Zelfde als TGKIO en KOFTIG — alleen een andere volgorde van dezelfde 5 beheersaspecten."},
+  {cat:"planning",term:"TGKIO",def:"Tijd, Geld, Kwaliteit, Informatie, Organisatie. Alternatieve volgorde van dezelfde 5 beheersaspecten als GOKIT."},
+  {cat:"planning",term:"KOFTIG",def:"Kwaliteit, Organisatie, Facilitair, Tijd, Informatie, Geld. De F staat voor FACILITAIR, niet Financieel\!"},
+  {cat:"planning",term:"Duivelsdriehoek",def:"Geld, Tijd en Kwaliteit/Scope zijn onlosmakelijk verbonden. Als scope groeit zonder meer geld/tijd, daalt de kwaliteit."},
+  {cat:"planning",term:"Gantt-chart",def:"Balkplanningsdiagram: activiteiten als balken in de tijd. Toont tijdsvolgorde, maar niet inhoudelijke afhankelijkheden."},
+  {cat:"planning",term:"WBS (Werkbreakdownstructuur)",def:"Hiërarchische opdeling van alle projectactiviteiten. Toont structuur, géén tijdsvolgorde — dat doet een Gantt-chart."},
+  {cat:"planning",term:"Kritiek pad (CPM)",def:"Langste reeks afhankelijke activiteiten zonder tijdsspeling. Vertraging hier = vertraging hele project."},
+  {cat:"planning",term:"Float / tijdsspeling",def:"Hoeveel tijd een activiteit mag uitlopen zonder het eindmoment te beïnvloeden. Op het kritieke pad: float = 0."},
+  {cat:"planning",term:"Lead (voorsprong)",def:"Overlap in netwerkplanning: opvolgende activiteit start eerder dan normaal. Lead = versnelling."},
+  {cat:"planning",term:"Lag (vertraging)",def:"Wachttijd in netwerkplanning: de opvolgende activiteit moet even wachten. Lag = vertraging."},
+  {cat:"planning",term:"PERT",def:"Planningstechniek met drie tijdschattingen: optimistisch, meest waarschijnlijk en pessimistisch. Verschil met CPM: CPM gebruikt één schatting."},
+  {cat:"evm",term:"BAC — Budget at Completion",def:"Het totale, goedgekeurde projectbudget. Uitgangspunt voor alle EVM-berekeningen.",formula:"BAC = totaalbudget"},
+  {cat:"evm",term:"PV — Planned Value",def:"Het gebudgetteerde bedrag voor het werk dat op dit moment gepland stond af te ronden.",formula:"PV = gepland werk × tarief"},
+  {cat:"evm",term:"EV — Earned Value",def:"De budgetwaarde van het werk dat daadwerkelijk is uitgevoerd.",formula:"EV = % klaar × BAC"},
+  {cat:"evm",term:"AC — Actual Cost",def:"De werkelijke kosten van het tot nu toe uitgevoerde werk.",formula:"AC = daadwerkelijk uitgegeven"},
+  {cat:"evm",term:"CPI — Cost Performance Index",def:"Meet kostenefficiëntie. CPI > 1 = onder budget. CPI < 1 = over budget.",formula:"CPI = EV ÷ AC"},
+  {cat:"evm",term:"SPI — Schedule Performance Index",def:"Meet planningsefficiëntie. SPI > 1 = voor op schema. SPI < 1 = achter op schema.",formula:"SPI = EV ÷ PV"},
+  {cat:"evm",term:"CV — Cost Variance",def:"Negatief = meer uitgegeven dan verdiend = over budget.",formula:"CV = EV − AC"},
+  {cat:"evm",term:"SV — Schedule Variance",def:"Negatief = minder gedaan dan gepland = achter op schema.",formula:"SV = EV − PV"},
+  {cat:"evm",term:"EAC — Estimate at Completion",def:"Verwachte totale kosten. EAC is HOGER als CPI < 1\!",formula:"EAC = BAC ÷ CPI"},
+  {cat:"evm",term:"ETC — Estimate to Complete",def:"Verwachte resterende kosten om het project af te ronden.",formula:"ETC = EAC − AC"},
+  {cat:"risico",term:"Risico",def:"Onzekere gebeurtenis met een positief (kans) of negatief (bedreiging) effect op projectdoelen."},
+  {cat:"risico",term:"Risicoscore",def:"Kans × impact. Hoger = urgenter. Basis voor prioritering in de risicomatrix.",formula:"Risicoscore = kans × impact"},
+  {cat:"risico",term:"Risicomatrix",def:"Visueel hulpmiddel om risico's te prioriteren op basis van kans én impact."},
+  {cat:"risico",term:"Vermijden",def:"Aanpak zo aanpassen dat het risico niet meer bestaat. GEEN noodplan opstellen — dat is accepteren."},
+  {cat:"risico",term:"Mitigeren",def:"Kans en/of impact verkleinen. Elimineert het risico niet volledig."},
+  {cat:"risico",term:"Overdragen (Transfer)",def:"Risico neerleggen bij een andere partij via bijv. verzekering of uitbesteding."},
+  {cat:"risico",term:"Accepteren",def:"Risico bewust accepteren, eventueel met contingency plan als het optreedt."},
+  {cat:"risico",term:"Contingency plan",def:"Vooraf opgesteld noodplan dat in werking treedt als een geaccepteerd risico zich voordoet."},
+  {cat:"organisatie",term:"Matrixorganisatie",def:"Medewerker rapporteert aan ZOWEL de lijnmanager ALS de projectleider. Dubbele rapportagelijn."},
+  {cat:"organisatie",term:"MVO 3 P's",def:"People (sociaal), Planet (ecologisch), Profit (economisch). Maatschappelijk Verantwoord Ondernemen."},
+  {cat:"belbin",term:"Actierollen (Belbin)",def:"Vormer · Bedrijfsman/Zetter · Afmaker. Gericht op resultaat en uitvoering."},
+  {cat:"belbin",term:"Mensgerichte rollen (Belbin)",def:"Coördinator · Groepswerker · Brononderzoeker. Gericht op teamdynamiek en externe contacten."},
+  {cat:"belbin",term:"Cerebrale rollen (Belbin)",def:"Plant · Monitor · Specialist. Gericht op denken, analyseren en vakkennis."},
+  {cat:"belbin",term:"Brononderzoeker",def:"Enthousiast, netwerkt buiten het team, brengt kansen van buiten naar binnen. SOCIALE/mensgerichte rol — niet taakgericht\!"},
+  {cat:"belbin",term:"Monitor / Waarschuwer",def:"Analytisch, objectief, beoordeelt opties kritisch. DENKROL — géén actierol\!"},
+  {cat:"scrum",term:"Agile",def:"Verzameling waarden en principes voor flexibele ontwikkeling. Geschikt voor veranderende of onduidelijke eisen."},
+  {cat:"scrum",term:"Sprint",def:"Timeboxed iteratie van 1–4 weken. Team levert een werkend increment op aan het einde."},
+  {cat:"scrum",term:"Product Owner",def:"Beheert en prioriteert de product backlog. Vertegenwoordigt de klant. NIET de Scrum Master\!"},
+  {cat:"scrum",term:"Scrum Master",def:"Begeleidt het Scrum-proces, verwijdert obstakels. Dienende leider — geen inhoudelijke bevoegdheid, wijst geen taken toe."},
+  {cat:"scrum",term:"Sprint Review",def:"Einde sprint: demo aan Product Owner en stakeholders. Over het PRODUCT."},
+  {cat:"scrum",term:"Sprint Retrospective",def:"Na Sprint Review: team reflecteert op het WERKPROCES. Niet over het product\!"},
+  {cat:"scrum",term:"Daily Scrum",def:"Dagelijkse standup van max. 15 min: wat deed ik gisteren, wat doe ik vandaag, welke obstakels?"},
+  {cat:"kwaliteit",term:"FAT — Factory Acceptance Test",def:"Acceptatietest bij de LEVERANCIER. Klant controleert of product aan eisen voldoet vóór verzending."},
+  {cat:"kwaliteit",term:"SAT — Site Acceptance Test",def:"Acceptatietest bij de KLANT/locatie. Controle of het geïnstalleerde systeem correct werkt in de echte omgeving."},
+  {cat:"overig",term:"CPM vs PERT",def:"CPM = 1 deterministische tijdschatting. PERT = 3 schattingen (optimistisch/meest waarschijnlijk/pessimistisch) voor onzekerheid."},
+  {cat:"overig",term:"Businesscase",def:"Onderbouwing van de toegevoegde waarde van het project: kosten, baten, risico's en alternatieven."},
+];
+
+const catLabels = {project:"Projectbasis",fasering:"Fasering",planning:"Planning",evm:"EVM",risico:"Risico",organisatie:"Organisatie",belbin:"Belbin",scrum:"Scrum",kwaliteit:"Kwaliteit",overig:"Overig"};
+const catOrder = ["project","fasering","planning","evm","risico","organisatie","belbin","scrum","kwaliteit","overig"];
+
+const questions = [
+  {section:"H1 — Het Project",num:1,text:"Routinematig werken is eenmalig en tijdelijk van aard.",answer:false,explanation:"Projectmatig werken is eenmalig en tijdelijk. Routinematig werken is herhaaldelijk en wordt uitgevoerd volgens vaste procedures."},
+  {section:null,num:2,text:"Een project heeft altijd een vooraf vastgesteld budget.",answer:true,explanation:"Correct. Een eigen budget is één van de kenmerken van een project."},
+  {section:null,num:3,text:"Evenementen zijn een apart soort project waarbij het projectresultaat op een vast moment ontstaat.",answer:true,explanation:"Correct. Evenementen zijn één van de vijf soorten projecten."},
+  {section:null,num:4,text:"In de definitiefase van een project wordt een ontwerprapport opgeleverd.",answer:false,explanation:"De definitiefase levert een Plan van Aanpak op. Het ontwerprapport is het product van de ontwerpfase."},
+  {section:null,num:5,text:"SMART staat voor Specifiek, Meetbaar, Aanwijsbaar, Realistisch en Tijdgebonden.",answer:true,explanation:"Correct. Dit zijn de vijf criteria waaraan een SMART-doel moet voldoen."},
+  {section:null,num:6,text:"De levenscyclus van een project eindigt op het moment dat het projectresultaat wordt opgeleverd.",answer:false,explanation:"De levenscyclus loopt door tot na de oplevering: exploitatie, nazorg en stagnatie."},
+  {section:null,num:7,text:"Bij maatschappelijk verantwoord projectmanagement (MVP) staan de vier P's voor Project, People, Plant en Profit.",answer:true,explanation:"Correct. Deze vier P's vormen het kader voor maatschappelijk verantwoord projectmanagement."},
+  {section:null,num:8,text:"Het doel van fasering is om de opdrachtgever aan het einde van elke fase de mogelijkheid te geven het project bij te sturen.",answer:true,explanation:"Correct. Door fasering worden beslismomenten ingebouwd."},
+  {section:"H2 — Mensen en Projecten",num:9,text:"Een stafafdeling heeft bevelsbevoegdheid over de lijnafdelingen.",answer:false,explanation:"Een stafafdeling geeft advies en ondersteuning, maar kan zaken niet dwingend voorschrijven."},
+  {section:null,num:10,text:"Het twee-bazen-probleem ontstaat doordat een projectlid zowel een afdelingshoofd als een projectleider als leidinggevende heeft.",answer:true,explanation:"Correct. Projectleden werken vaak parttime in een project en hebben daardoor twee leidinggevenden."},
+  {section:null,num:11,text:"De Plant is een sociale rol binnen het Belbin-model.",answer:false,explanation:"De Plant is een denkrol. Sociale rollen zijn: Voorzitter, Groepswerker en Brononderzoeker."},
+  {section:null,num:12,text:"Bij consensusbesluitvorming wordt gestemd en wint de meerderheid.",answer:false,explanation:"Bij consensus wordt juist niet gestemd. Het kost veel tijd maar iedereen kan ermee leven."},
+  {section:null,num:13,text:"De Monitor is een actierol in het Belbin-model.",answer:false,explanation:"De Monitor is een denkrol. Actierollen zijn: Afmaker, Bedrijfsman en Vormer."},
+  {section:null,num:14,text:"Eén persoon kan slechts één Belbin-rol vervullen.",answer:false,explanation:"Van de negen rollen kan een persoon er meerdere vervullen, afhankelijk van karakter en ervaring."},
+  {section:null,num:15,text:"Een Brononderzoeker is nieuwsgierig, enthousiast en legt gemakkelijk contacten.",answer:true,explanation:"Correct. De Brononderzoeker is een sociale rol: extravert en communicatief."},
+  {section:null,num:16,text:"De stuurgroep beheert meerdere projecten en bestaat uit een directielid én projectleiders.",answer:true,explanation:"Correct. Dit zijn de kenmerken van een stuurgroep."},
+  {section:"H3 — Begin tot Eind",num:17,text:"GOKIT en TGKIO zijn twee verschillende sets beheersaspecten met elk een andere inhoud.",answer:false,explanation:"GOKIT en TGKIO zijn dezelfde vijf beheersaspecten, alleen in een andere volgorde."},
+  {section:null,num:18,text:"Bij risicobeheersing betekent 'overdragen' dat je een risico accepteert en er niets aan doet.",answer:false,explanation:"Overdragen = risico bij andere partij neerleggen. Accepteren = niets doen."},
+  {section:null,num:19,text:"Een projectstart-up vergadering wordt ook wel een kick-off vergadering genoemd.",answer:true,explanation:"Correct. De kick-off is het officiële begin van een project."},
+  {section:null,num:20,text:"Scrum wordt aanbevolen wanneer de opdrachtgever precies weet wat hij wil.",answer:false,explanation:"Scrum wordt juist aanbevolen als de opdrachtgever niet precies weet wat hij wil."},
+  {section:null,num:21,text:"Een risico wordt bepaald door de kans vermenigvuldigd met het gevolg.",answer:true,explanation:"Correct. Risico = kans × gevolg."},
+  {section:null,num:22,text:"De duivelsdriehoek beschrijft de spanning tussen Tijd, Geld en Kwaliteit.",answer:true,explanation:"Correct. Als je één aanpast, heeft dat altijd effect op de andere twee."},
+  {section:null,num:23,text:"De P6-methode is specifiek ontwikkeld voor grote internationale projecten.",answer:false,explanation:"De P6-methode is juist bruikbaar voor kleine en middelgrote projecten."},
+  {section:null,num:24,text:"Risicobeheersing bestaat uit vier strategieën: voorkomen, verminderen, overdragen en accepteren.",answer:true,explanation:"Correct. Dit zijn de vier manieren om met risico's om te gaan."},
+  {section:"H4 — Planning",num:25,text:"Een strokenplanning wordt ook wel een Gantt-chart genoemd.",answer:true,explanation:"Correct. Een strokenplanning (Gantt-chart) toont activiteiten in een tijdsbalk."},
+  {section:null,num:26,text:"Een netwerkplanning toont de afhankelijkheden tussen activiteiten en helpt het kritische pad te bepalen.",answer:true,explanation:"Correct. Het kritische pad is de langste route door de netwerkplanning."},
+  {section:null,num:27,text:"De doorlooptijd en de werktijd van een activiteit zijn altijd gelijk aan elkaar.",answer:false,explanation:"Doorlooptijd is de kalendertijd. Werktijd is het aantal daadwerkelijk bestede uren."},
+  {section:null,num:28,text:"Een mijlpaal in een planning is een belangrijk tussenresultaat.",answer:true,explanation:"Correct. Een mijlpaal markeert een cruciaal punt in de planning."},
+  {section:null,num:29,text:"Een planning en een Plan van Aanpak zijn hetzelfde document.",answer:false,explanation:"Een planning is slechts één onderdeel van het Plan van Aanpak."},
+  {section:"H5 — De P6-Methode",num:30,text:"In de P6-methode worden ontwerp-, voorbereidings- en realisatiefase samengevoegd tot stap 4 'Uitvoeren'.",answer:true,explanation:"Correct. De P6-methode wijkt hierin af van de traditionele watervalfasering."},
+  {section:null,num:31,text:"In stap 4 van de P6-methode worden de beheersaspecten TGKIO bewaakt.",answer:true,explanation:"Correct. Per uitvoeringsfase worden Tijd, Geld, Kwaliteit, Informatie en Organisatie bewaakt."},
+  {section:null,num:32,text:"De zesde stap van de P6-methode heet 'Evalueren'.",answer:false,explanation:"De zesde stap heet 'Afsluiten', niet 'Evalueren'."},
+  {section:null,num:33,text:"Het Plan van Aanpak wordt opgesteld in stap 3 van de P6-methode.",answer:true,explanation:"Correct. Stap 3 is specifiek gewijd aan het maken van het Plan van Aanpak."},
+  {section:null,num:34,text:"In stap 5 van de P6-methode wordt het projectresultaat getest en formeel goedgekeurd.",answer:true,explanation:"Correct. In stap 5 'Opleveren' vindt formele acceptatie door de opdrachtgever plaats."},
+  {section:null,num:35,text:"De P6-methode kan alleen worden toegepast op projecten, niet op onderzoek.",answer:false,explanation:"De P6-methode kan ook worden toegepast op onderzoeksprojecten."},
+  {section:null,num:36,text:"In stap 2 van de P6-methode wordt het projectteam samengesteld.",answer:true,explanation:"Correct. Stap 2 'Inrichten': geschikte projectleden selecteren en afspraken vastleggen."},
+  {section:"H6 — Plan van Aanpak",num:37,text:"Het Plan van Aanpak is het contract tussen het projectteam en de opdrachtgever.",answer:true,explanation:"Correct. Het PvA maakt duidelijk wat er gaat gebeuren en fungeert als formeel contract."},
+  {section:null,num:38,text:"Exploitatiekosten zijn kosten die worden gemaakt vóór de uitvoering van het project.",answer:false,explanation:"Exploitatiekosten zijn kosten ná de oplevering, bij het gebruik en onderhoud."},
+  {section:null,num:39,text:"De scope van een project beschrijft alles wat binnen het project valt.",answer:true,explanation:"Correct. Alles binnen de projectgrenzen is de 'scope'."},
+  {section:null,num:40,text:"De projectdoelstelling (het 'waarom') is eigendom van de projectleider.",answer:false,explanation:"De projectdoelstelling is eigendom van de opdrachtgever. De projectleider is eigenaar van het resultaat."},
+  {section:null,num:41,text:"Een risicoanalyse maakt onderscheid tussen interne en externe risico's.",answer:true,explanation:"Correct. Interne: gebrek aan kennis. Externe: afhankelijkheid van andere projecten."},
+  {section:null,num:42,text:"Randvoorwaarden zijn factoren waarop het projectteam zelf invloed kan uitoefenen.",answer:false,explanation:"Randvoorwaarden zijn juist factoren waarop het projectteam géén invloed heeft."},
+  {section:"H7 — Agile en Scrum",num:43,text:"Agile is een specifieke projectmanagementmethode met vaste stappen en procedures.",answer:false,explanation:"Agile is een mindset, een parapluterm voor verschillende methoden zoals Scrum."},
+  {section:null,num:44,text:"Een sprint duurt bij Scrum doorgaans 2 tot 4 weken.",answer:true,explanation:"Correct. Scrum werkt in korte, vaste werkcycli van 2 tot 4 weken."},
+  {section:null,num:45,text:"De Scrum Master wijst de taken toe aan de teamleden.",answer:false,explanation:"Het Scrum-team is zelfsturend. De Scrum Master coacht het proces maar wijst geen taken toe."},
+  {section:null,num:46,text:"De Product Owner is de enige die de prioriteiten in de product backlog bepaalt.",answer:true,explanation:"Correct. De Product Owner bepaalt welke user stories worden gerealiseerd en in welke volgorde."},
+  {section:null,num:47,text:"De Daily Standup duurt maximaal 15 minuten.",answer:true,explanation:"Correct. De Daily Standup is een dagelijks overleg van maximaal 15 minuten."},
+  {section:null,num:48,text:"Een Sprint Retrospective is een open bijeenkomst waarbij een demo wordt gegeven aan stakeholders.",answer:false,explanation:"Dat is de Sprint Review. De Sprint Retrospective is een interne evaluatie van het werkproces."},
+  {section:null,num:49,text:"Bij agile werken worden producten vroeg en frequent opgeleverd.",answer:true,explanation:"Correct. Werkende producten worden al vroeg en regelmatig opgeleverd."},
+  {section:null,num:50,text:"Een product backlog bevat een geprioriteerde lijst van alle user stories voor het gehele project.",answer:true,explanation:"Correct. De product backlog is de volledige to-dolijst, geprioriteerd door de Product Owner."},
+  {section:"H8 — Vergaderen",num:51,text:"Het doel van een vergadering kan zijn: informatieverstrekking, meningsvorming of besluitvorming.",answer:true,explanation:"Correct. Dit zijn de drie mogelijke doelen van een projectvergadering."},
+  {section:null,num:52,text:"De notulist is verantwoordelijk voor de organisatie en leiding van de vergadering.",answer:false,explanation:"De voorzitter is verantwoordelijk. De notulist legt beslissingen en actiepunten vast."},
+  {section:null,num:53,text:"Documenten moeten pas tijdens de vergadering worden uitgedeeld zodat de inhoud vers is.",answer:false,explanation:"Documenten moeten vooraf worden gestuurd of er moet een leespauze worden ingelast."},
+  {section:null,num:54,text:"Notulen moeten zo snel mogelijk ná de vergadering worden uitgewerkt.",answer:true,explanation:"Correct. Hoe eerder de notulen worden gemaakt, hoe beter alles nog in het geheugen zit."},
+  {section:"H9 — Interview",num:55,text:"Het gestandaardiseerde interview heeft als voordeel dat er ongeremd informatie verzameld kan worden.",answer:false,explanation:"Ongeremd informatie verzamelen is het voordeel van het vrije interview."},
+  {section:null,num:56,text:"Het is aanbevolen met twee personen een interview af te nemen: één die vraagt en één die schrijft.",answer:true,explanation:"Correct. Met twee personen kan de vragensteller zich volledig concentreren op het gesprek."},
+  {section:null,num:57,text:"Na afloop van een interview stuur je een kopie van het verslag naar de geïnterviewde.",answer:true,explanation:"Correct. De geïnterviewde kan het verslag controleren op juistheid."},
+  {section:"H10 — Rapport Schrijven",num:58,text:"Bijlagen in een rapport worden aangeduid met letters (A, B, C), niet met cijfers.",answer:true,explanation:"Correct. Bijlagen krijgen letters (Bijlage A, Bijlage B)."},
+  {section:null,num:59,text:"In een rapport mag je persoonlijke voornaamwoorden zoals 'ik' en 'we' gebruiken.",answer:false,explanation:"Een rapport wordt geschreven in zakelijke stijl zonder persoonlijke voornaamwoorden."},
+  {section:null,num:60,text:"Een inhoudsopgave in een rapport mag maximaal drie niveaus bevatten.",answer:true,explanation:"Correct. De inhoudsopgave bevat paginaverwijzingen met maximaal drie niveaus."},
+  {section:null,num:61,text:"Een hoofdstuk in een rapport mag direct beginnen met een paragraaf, zonder aparte inleiding.",answer:false,explanation:"Elk hoofdstuk moet beginnen met een korte inleiding voordat de eerste paragraaf start."},
+  {section:null,num:62,text:"Bij APA-bronvermelding staat de punt ná de bron, niet ervóór.",answer:true,explanation:"Correct. De punt wordt geplaatst achter de bronvermelding."},
+  {section:"H11 — Presentatie",num:63,text:"Een pitch bestaat onder andere uit een aantrekkelijke opening, probleemstelling en USP.",answer:true,explanation:"Correct. Dit zijn kernelementen van een goede pitch."},
+  {section:null,num:64,text:"Tijdens de afsluiting van een presentatie herhaal je de boodschap en geef je gelegenheid tot vragen.",answer:true,explanation:"Correct. De afsluiting: samenvatting, conclusies herhalen en ruimte voor vragen."},
+  {section:null,num:65,text:"Je zet zo veel mogelijk informatie op één dia zodat het publiek alles kan lezen.",answer:false,explanation:"Je zet juist niet te veel informatie op één dia. Overvolle dia's zijn afleidend."},
+  {section:"H12 — Managementsamenvatting",num:66,text:"Een managementsamenvatting is een vooruitblik op een aankomend project.",answer:false,explanation:"Een managementsamenvatting is een rapportage achteraf over een uitgevoerd projectonderdeel."},
+  {section:null,num:67,text:"Beslispunten in een managementsamenvatting maken duidelijk waar het management beslissingen over moet nemen.",answer:true,explanation:"Correct. Beslispunten zijn beslissingsvoorbereidend."},
+  {section:null,num:68,text:"Een managementsamenvatting moet beperkt blijven tot maximaal 1 à 2 pagina's.",answer:true,explanation:"Correct. Het moet kort, bondig en direct begrijpelijk zijn voor de manager."},
+  {section:null,num:69,text:"Een managementsamenvatting schrijf je voor vakspecialisten.",answer:false,explanation:"Je schrijft een managementsamenvatting voor de manager, niet voor een vakgenoot."},
+  {section:"Expert-colleges",num:70,text:"In Nederland bestaat een apart wettelijk rechtsgebied dat 'evenementenrecht' heet.",answer:false,explanation:"Evenementenrecht bestaat niet als apart rechtsgebied."},
+  {section:null,num:71,text:"BUMA/STEMRA beheert de auteursrechten van componisten en tekstschrijvers bij muziekgebruik.",answer:true,explanation:"Correct. BUMA/STEMRA beheert auteursrechten. Sena beheert naburige rechten."},
+  {section:null,num:72,text:"De 3 E's van eventmarketing staan voor Entertainment, Excitement en Enterprise.",answer:true,explanation:"Correct. Deze drie E's vormen de basis van eventmarketing."},
+  {section:null,num:73,text:"KOFTIG staat voor Kwaliteit, Organisatie, Financieel, Tijd, Informatie en Geld.",answer:false,explanation:"KOFTIG staat voor Kwaliteit, Organisatie, Facilitair, Tijd, Informatie en Geld. Het is 'Facilitair', niet 'Financieel'."},
+  {section:null,num:74,text:"Vaste kosten bij een evenement zijn onafhankelijk van het aantal bezoekers.",answer:true,explanation:"Correct. Vaste kosten (bijv. locatiehuur) blijven gelijk ongeacht het aantal bezoekers."},
+  {section:null,num:75,text:"Marktsegmentatie op basis van leeftijd, geslacht en inkomen is demografische segmentatie.",answer:true,explanation:"Correct. Demografische segmentatie omvat leeftijd, geslacht, inkomen, opleiding, etc."},
+  {section:null,num:76,text:"Als organisator van een evenement heb je een zorgplicht en kun je aansprakelijk worden gesteld.",answer:true,explanation:"Correct. De organisator heeft een juridische zorgplicht."},
+  {section:null,num:77,text:"Segmentatie en targeting zijn hetzelfde begrip.",answer:false,explanation:"Segmentatie = opdelen van de markt in groepen. Targeting = kiezen op welke groep(en) je je richt."},
+  {section:null,num:78,text:"De Sprint Review en Sprint Retrospective hebben hetzelfde doel.",answer:false,explanation:"Sprint Review = demo van het PRODUCT aan stakeholders. Retrospective = evaluatie van het WERKPROCES intern."},
+  {section:null,num:79,text:"FAT staat voor Factory Acceptance Test en vindt plaats bij de leverancier.",answer:true,explanation:"Correct. Bij de FAT controleert de klant het product bij de leverancier vóór verzending."},
+  {section:null,num:80,text:"De SAT (Site Acceptance Test) vindt plaats op de locatie van de klant.",answer:true,explanation:"Correct. De SAT controleert of het geïnstalleerde systeem correct werkt in de echte omgeving."},
+];
+
+const CARD_PTS = 5, QUIZ_PTS = 2;
+function getUser(){ return localStorage.getItem('fmk_user')||'Anoniem'; }
+function getScores(){ try{return JSON.parse(localStorage.getItem('fmk_scores')||'{}');}catch(e){return{};} }
+function addPoints(pts){ const u=getUser(); if(\!u||u==='Anoniem')return; const s=getScores(); s[u]=(s[u]||0)+pts; localStorage.setItem('fmk_scores',JSON.stringify(s)); updatePtsDisplay(); }
+function getUserPts(){ const s=getScores(); return s[getUser()]||0; }
+function updatePtsDisplay(){ document.getElementById('pts-display').textContent=getUserPts(); }
+
+/* ══ NAVIGATION ══ */
+function showView(id, title) {
+  document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
+  document.getElementById('view-'+id).classList.add('active');
+  const btn = document.getElementById('back-btn');
+  if(id === 'home') {
+    btn.setAttribute('href','index.html');
+    btn.onclick = null;
+    btn.textContent = '← FM Kompas';
+    document.getElementById('page-title').innerHTML = 'Eventmanagement 1 <span>· Herkansen</span>';
+  } else {
+    btn.removeAttribute('href');
+    btn.onclick = function(){ showView('home','Eventmanagement 1'); return false; };
+    btn.textContent = '← Terug';
+    document.getElementById('page-title').innerHTML = title + ' <span>· Herkansen</span>';
+  }
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+/* ══ QUIZ ENGINE ══ */
+function createQuiz(id, questionSet) {
+  let answers = {};
+  function build() {
+    const wrap = document.getElementById('quiz'+id+'-questions');
+    wrap.innerHTML = '';
+    let lastSec = null;
+    questionSet.forEach(q => {
+      if(q.section && q.section \!== lastSec) {
+        lastSec = q.section;
+        const lbl = document.createElement('div');
+        lbl.className = 'quiz-section-label';
+        lbl.textContent = q.section;
+        wrap.appendChild(lbl);
+      }
+      const card = document.createElement('div');
+      card.className = 'q-card'; card.id = 'qc'+id+'-'+q.num;
+      card.innerHTML = `<div class="q-num">Vraag ${q.num}</div><div class="q-text">${q.text}</div><div class="q-btns"><button class="q-btn" id="qb${id}-${q.num}-t" onclick="quiz${id}.answer(${q.num},true)">Juist</button><button class="q-btn" id="qb${id}-${q.num}-f" onclick="quiz${id}.answer(${q.num},false)">Onjuist</button></div><div class="q-explanation" id="qe${id}-${q.num}">${q.explanation}</div>`;
+      wrap.appendChild(card);
+    });
+    updateStats();
+  }
+  function answer(num, val) {
+    if(answers[num]\!==undefined) return;
+    answers[num] = val;
+    const q = questionSet.find(x=>x.num===num);
+    document.getElementById('qc'+id+'-'+num).classList.add(val===q.answer?'correct':'wrong');
+    const tBtn=document.getElementById('qb'+id+'-'+num+'-t');
+    const fBtn=document.getElementById('qb'+id+'-'+num+'-f');
+    tBtn.disabled=true; fBtn.disabled=true;
+    (val?tBtn:fBtn).classList.add(val?'sel-true':'sel-false');
+    document.getElementById('qe'+id+'-'+num).classList.add('show');
+    updateStats();
+  }
+  function updateStats() {
+    const answered=Object.keys(answers).length;
+    const correct=Object.entries(answers).filter(([n,a])=>{const q=questionSet.find(x=>x.num===parseInt(n));return q&&a===q.answer;}).length;
+    document.getElementById('q'+id+'-answered').textContent=answered;
+    document.getElementById('q'+id+'-correct').textContent=correct;
+    document.getElementById('q'+id+'-wrong').textContent=answered-correct;
+  }
+  function showResults() {
+    const correct=Object.entries(answers).filter(([n,a])=>{const q=questionSet.find(x=>x.num===parseInt(n));return q&&a===q.answer;}).length;
+    const answered=Object.keys(answers).length;
+    const pct=questionSet.length?Math.round((correct/questionSet.length)*100):0;
+    const rEl=document.getElementById('quiz'+id+'-result');
+    const sEl=document.getElementById('quiz'+id+'-score');
+    const tEl=document.getElementById('quiz'+id+'-text');
+    sEl.textContent=correct+'/'+questionSet.length;
+    sEl.style.color=pct>=75?'hsl(142,70%,55%)':pct>=50?'hsl(40,90%,60%)':'hsl(0,72%,58%)';
+    tEl.textContent=pct>=75?'Goed gedaan\! '+pct+'% correct — voldoende.':pct>=50?pct+'% correct — bijna\! Herhaal de fout beantwoorde vragen.':pct+'% correct — oefen de stof nog een keer door.';
+    if(answered>0){const pts=correct*QUIZ_PTS;addPoints(pts);const pEl=document.getElementById('quiz'+id+'-pts');pEl.textContent='+'+pts+' punten verdiend ('+correct+' x '+QUIZ_PTS+' pts)\! Totaal: '+getUserPts()+' pts';pEl.style.display='block';}
+    rEl.classList.add('show');
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
+  function reset() {
+    answers={};
+    document.getElementById('quiz'+id+'-result').classList.remove('show');
+    document.getElementById('quiz'+id+'-pts').style.display='none';
+    build();
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
+  build();
+  return {answer, showResults, reset};
+}
+
+const quiz1 = createQuiz('1', questions.slice(0,42));
+const quiz2 = createQuiz('2', questions.slice(42));
+
+/* ══ BEGRIPPENLIJST ══ */
+function buildBegrippen() {
+  const wrap = document.getElementById('begrippen-content');
+  wrap.innerHTML = '';
+  catOrder.forEach(cat => {
+    const cards = allCards.filter(c=>c.cat===cat);
+    if(\!cards.length) return;
+    const head = document.createElement('div');
+    head.className = 'begrip-cat-head';
+    head.textContent = catLabels[cat]||cat;
+    wrap.appendChild(head);
+    const list = document.createElement('div');
+    list.className = 'begrip-list';
+    cards.forEach(c => {
+      const item = document.createElement('div');
+      item.className = 'begrip-item';
+      item.innerHTML = '<div class="begrip-term">'+c.term+'</div><div class="begrip-def">'+c.def+(c.formula?'</div><div class="begrip-formula">'+c.formula:'')+'</div>';
+      list.appendChild(item);
+    });
+    wrap.appendChild(list);
+  });
+}
+buildBegrippen();
+
+/* ══ FLASHCARDS ══ */
+let deck=[],current=0,known=0,missed=[],flipped=false,fcPtsEarned=0;
+function shuffleArr(arr){for(let i=arr.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[arr[i],arr[j]]=[arr[j],arr[i]];}return arr;}
+function loadDeck(){
+  const cat=document.getElementById('catFilter').value;
+  deck=cat==='all'?shuffleArr([...allCards]):shuffleArr(allCards.filter(c=>c.cat===cat));
+  current=0;known=0;missed=[];flipped=false;fcPtsEarned=0;
+  document.getElementById('flip-wrap').classList.remove('flipped');
+  document.getElementById('fc-done').style.display='none';
+  document.getElementById('card-area').style.display='flex';
+  document.getElementById('fc-actions').style.display='flex';
+  updateFcStats();showCard();
+}
+function shuffleDeck(){loadDeck();}
+function showCard(){
+  if(current>=deck.length){showFcDone();return;}
+  const c=deck[current];
+  document.getElementById('fc-counter').textContent='Kaart '+(current+1)+' van '+deck.length;
+  document.getElementById('front-cat').textContent=catLabels[c.cat]||c.cat;
+  document.getElementById('front-term').textContent=c.term;
+  document.getElementById('back-def').textContent=c.def;
+  const fe=document.getElementById('back-formula');
+  if(c.formula){fe.textContent=c.formula;fe.style.display='inline-block';}else{fe.style.display='none';}
+  flipped=false;document.getElementById('flip-wrap').classList.remove('flipped');
+}
+function flipCard(){flipped=\!flipped;document.getElementById('flip-wrap').classList.toggle('flipped',flipped);}
+function markCard(isKnown){if(\!flipped){flipCard();setTimeout(()=>_mark(isKnown),400);}else{_mark(isKnown);}}
+function _mark(isKnown){if(isKnown){known++;fcPtsEarned+=CARD_PTS;}else{missed.push(deck[current]);}current++;updateFcStats();setTimeout(showCard,120);}
+function skipCard(){missed.push(deck[current]);current++;flipped=false;document.getElementById('flip-wrap').classList.remove('flipped');updateFcStats();showCard();}
+function updateFcStats(){
+  const total=deck.length;
+  document.getElementById('stat-total').textContent=total;
+  document.getElementById('stat-known').textContent=known;
+  document.getElementById('stat-missed').textContent=missed.length;
+  document.getElementById('prog-bar').style.width=(total?(current/total*100):0)+'%';
+  document.getElementById('prog-label').textContent=known+' / '+total+' bekend';
+}
+function showFcDone(){
+  document.getElementById('card-area').style.display='none';
+  document.getElementById('fc-actions').style.display='none';
+  const done=document.getElementById('fc-done');
+  done.style.display='block';
+  const pct=deck.length?Math.round((known/deck.length)*100):0;
+  document.getElementById('fc-done-score').textContent=known+' / '+deck.length;
+  document.getElementById('fc-done-text').textContent=pct>=80?'Uitstekend\!':pct>=50?'Goed bezig\! Herhaal de rest nog even.':'Oefen nog een keer — je komt er\!';
+  if(fcPtsEarned>0){addPoints(fcPtsEarned);const pEl=document.getElementById('fc-pts-awarded');pEl.textContent='+'+fcPtsEarned+' punten verdiend\! Totaal: '+getUserPts()+' pts';pEl.style.display='block';}
+}
+function repeatMissed(){deck=shuffleArr([...missed]);current=0;known=0;missed=[];flipped=false;fcPtsEarned=0;document.getElementById('fc-done').style.display='none';document.getElementById('card-area').style.display='flex';document.getElementById('fc-actions').style.display='flex';updateFcStats();showCard();}
+
+/* ══ INIT ══ */
+updatePtsDisplay();
+loadDeck();
+</script>
+</body>
+</html>

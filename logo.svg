@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none">
+  <defs>
+    <linearGradient id="ringGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#6366f1"/>
+      <stop offset="100%" stop-color="#4547d4"/>
+    </linearGradient>
+    <!-- Two-tone arrow: left half white, right half lavender -->
+    <linearGradient id="arrowLeft" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#ffffff"/>
+    </linearGradient>
+    <linearGradient id="arrowRight" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#c7c8f5"/>
+      <stop offset="100%" stop-color="#b0b3ef"/>
+    </linearGradient>
+    <clipPath id="leftHalf">
+      <rect x="0" y="0" width="100" height="200"/>
+    </clipPath>
+    <clipPath id="rightHalf">
+      <rect x="100" y="0" width="100" height="200"/>
+    </clipPath>
+  </defs>
+
+  <!-- Background -->
+  <rect width="200" height="200" fill="#0d0d0f" rx="0"/>
+
+  <!-- Compass ring -->
+  <circle cx="100" cy="100" r="76" stroke="url(#ringGrad)" stroke-width="6"/>
+
+  <!-- Tick marks — 8 evenly spaced (every 45°) -->
+  <!-- N  (0°)   --> <line x1="100" y1="18"  x2="100" y2="32"  stroke="#5b5ef5" stroke-width="4" stroke-linecap="round"/>
+  <!-- NE (45°)  --> <line x1="145" y1="31"  x2="135" y2="41"  stroke="#5b5ef5" stroke-width="3" stroke-linecap="round"/>
+  <!-- E  (90°)  --> <line x1="182" y1="100" x2="168" y2="100" stroke="#5b5ef5" stroke-width="3" stroke-linecap="round"/>
+  <!-- SE (135°) --> <line x1="155" y1="169" x2="145" y2="159" stroke="#5b5ef5" stroke-width="3" stroke-linecap="round"/>
+  <!-- S  (180°) --> <line x1="100" y1="182" x2="100" y2="168" stroke="#5b5ef5" stroke-width="3" stroke-linecap="round"/>
+  <!-- SW (225°) --> <line x1="45"  y1="169" x2="55"  y2="159" stroke="#5b5ef5" stroke-width="3" stroke-linecap="round"/>
+  <!-- W  (270°) --> <line x1="18"  y1="100" x2="32"  y2="100" stroke="#5b5ef5" stroke-width="3" stroke-linecap="round"/>
+  <!-- NW (315°) --> <line x1="55"  y1="31"  x2="65"  y2="41"  stroke="#5b5ef5" stroke-width="3" stroke-linecap="round"/>
+
+  <!--
+    Navigation arrow (Google Maps style):
+    Two wings meeting at a point (top), with a V-notch at the bottom.
+    Left wing = white, right wing = lavender.
+  -->
+
+  <!-- Left half of arrow (white) -->
+  <path d="M100 52 L72 128 L100 112 Z" fill="#ffffff" clip-path="url(#leftHalf)"/>
+
+  <!-- Right half of arrow (lavender) -->
+  <path d="M100 52 L128 128 L100 112 Z" fill="#c7c8f5" clip-path="url(#rightHalf)"/>
+
+  <!-- Center dividing line (subtle dark seam) -->
+  <line x1="100" y1="52" x2="100" y2="128" stroke="#0d0d0f" stroke-width="1.5"/>
+
+</svg>
