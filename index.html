@@ -109,27 +109,6 @@
     .google-btn:disabled { opacity: 0.6; cursor: default; }
     .google-btn svg { flex-shrink: 0; }
 
-    .apple-btn {
-      width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.75rem;
-      background: #000;
-      color: #fff;
-      border: 1px solid #000;
-      border-radius: var(--radius);
-      font-family: inherit;
-      font-size: 0.95rem;
-      font-weight: 600;
-      padding: 0.75rem;
-      cursor: pointer;
-      margin-top: 0.65rem;
-      transition: box-shadow 0.15s, background 0.15s;
-    }
-    .apple-btn:hover { background: #1a1a1a; box-shadow: 0 1px 6px rgba(0,0,0,0.4); }
-    .apple-btn:disabled { opacity: 0.6; cursor: default; }
-    .apple-btn svg { flex-shrink: 0; }
 
     .login-error {
       color: hsl(0,80%,65%);
@@ -696,13 +675,7 @@
       </svg>
       Inloggen met Google
     </button>
-    <button class="apple-btn" id="apple-login-btn" onclick="signInWithApple()">
-      <svg width="20" height="20" viewBox="0 0 814 1000" fill="#fff">
-        <path d="M788.1 340.9c-5.8 4.5-108.2 62.2-108.2 190.5 0 148.4 130.3 200.9 134.2 202.2-.6 3.2-20.7 71.9-68.7 141.9-42.8 61.6-87.5 123.1-155.5 123.1s-85.5-39.5-164-39.5c-76 0-103.7 40.8-165.9 40.8s-105-57.8-155.5-127.4C46 420.7 0 265.6 0 118.4 0 53.3 23.3.4 69.6.4c49.8 0 83.4 33.5 108 67.1 23.5 32.2 38.4 89.5 38.4 89.5h-2.4c53.8 0 100.3-36.8 141.8-36.8 38.9 0 71.4 24.1 100.3 56.8 30.8 34.4 46.7 78.1 46.7 125.2 0 .4 0 .8-.1 1.2-.3 52.5-26.6 101-64.5 130.2z"/>
-      </svg>
-      Inloggen met Apple
-    </button>
-    <div class="login-error" id="login-error">Inloggen mislukt. Probeer het opnieuw.</div>
+<div class="login-error" id="login-error">Inloggen mislukt. Probeer het opnieuw.</div>
   </div>
 </div>
 
@@ -1157,7 +1130,6 @@
   const auth = firebase.auth();
   const db   = firebase.firestore();
   const googleProvider = new firebase.auth.GoogleAuthProvider();
-  const appleProvider  = new firebase.auth.OAuthProvider('apple.com');
 
   /* ─────────────────────────────────────────────────
      AUTH
@@ -1174,17 +1146,6 @@
     });
   }
 
-  function signInWithApple() {
-    const btn = document.getElementById('apple-login-btn');
-    const err = document.getElementById('login-error');
-    btn.disabled = true;
-    err.style.display = 'none';
-    auth.signInWithPopup(appleProvider).catch(e => {
-      err.style.display = 'block';
-      btn.disabled = false;
-      console.error(e);
-    });
-  }
 
   function doLogout() {
     auth.signOut();
