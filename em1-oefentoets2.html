@@ -371,8 +371,12 @@ const _fbCfg={apiKey:"AIzaSyBB397Wk2eqpBjic8E7aGV1mTgIjhQ21a8",authDomain:"fmkom
 if(!firebase.apps.length) firebase.initializeApp(_fbCfg);
 const _auth=firebase.auth(), _db=firebase.firestore();
 async function addPoints(n){
-  const u=_auth.currentUser; if(!u) return;
-  await _db.collection('scores').doc(u.uid).update({pts:firebase.firestore.FieldValue.increment(n),updatedAt:firebase.firestore.FieldValue.serverTimestamp()});
+  const u=await new Promise(r=>{const x=_auth.onAuthStateChanged(u=>{x();r(u);});});
+  if(!u) return;
+  await _db.collection('scores').doc(u.uid).set(
+    {pts:firebase.firestore.FieldValue.increment(n),name:u.displayName||'Anoniem',photoURL:u.photoURL||'',updatedAt:firebase.firestore.FieldValue.serverTimestamp()},
+    {merge:true}
+  );
   _loadPts();
 }
 async function _loadPts(){
