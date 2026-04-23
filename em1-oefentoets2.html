@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Oefentoets 2 — Evenementenmanagement A | FM Kompas</title>
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
   <style>
     :root{
       --bg:hsl(0,0%,7%);
@@ -25,7 +28,8 @@
     body{font-family:'Geist','Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--fg);min-height:100vh;padding-bottom:6rem}
 
     /* ── FM KOMPAS HEADER ── */
-    .fm-header{position:sticky;top:0;z-index:200;height:60px;background:rgba(18,18,18,0.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 1.25rem;gap:1rem}
+    .fm-header{position:sticky;top:0;z-index:200;height:60px;background:rgba(18,18,18,0.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 1.25rem;gap:1rem}
+    .pts-chip{display:flex;align-items:center;gap:.4rem;background:rgba(91,91,255,.12);border:1px solid rgba(91,91,255,.30);border-radius:99px;padding:.25rem .8rem;font-size:.8rem;font-weight:700;color:hsl(235,100%,60%);flex-shrink:0}
     .header-left{display:flex;align-items:center;gap:.9rem;min-width:0}
     .back-link{color:var(--muted);font-size:.82rem;font-weight:500;text-decoration:none;white-space:nowrap;transition:color .15s}
     .back-link:hover{color:var(--fg)}
@@ -110,6 +114,7 @@
     <img src="logo.svg" height="26" alt="FM Kompas" style="display:block">
     <span class="page-title">Eventmanagement 1 <span>/ Oefentoets 2</span></span>
   </div>
+  <div class="pts-chip">⭐ <span id="pts-display">—</span> pts</div>
 </nav>
 
 <div id="scorebar">
@@ -306,6 +311,7 @@ function answer(q, chosen){
 
   if(correct){
     score++;
+    addPoints(2);
     diffScores[q.diff].correct++;
     card.classList.add('correct');
     fb.className='feedback correct show';
@@ -359,6 +365,24 @@ function resetAll(){
 }
 
 buildQuiz();
+
+/* ── FIREBASE PUNTEN ── */
+const _fbCfg={apiKey:"AIzaSyBB397Wk2eqpBjic8E7aGV1mTgIjhQ21a8",authDomain:"fmkompas-ff8bc.firebaseapp.com",projectId:"fmkompas-ff8bc",storageBucket:"fmkompas-ff8bc.firebasestorage.app",messagingSenderId:"487972024689",appId:"1:487972024689:web:712c3117080745d14746d0"};
+if(!firebase.apps.length) firebase.initializeApp(_fbCfg);
+const _auth=firebase.auth(), _db=firebase.firestore();
+async function addPoints(n){
+  const u=_auth.currentUser; if(!u) return;
+  await _db.collection('scores').doc(u.uid).update({pts:firebase.firestore.FieldValue.increment(n),updatedAt:firebase.firestore.FieldValue.serverTimestamp()});
+  _loadPts();
+}
+async function _loadPts(){
+  const u=_auth.currentUser;
+  const el=document.getElementById('pts-display'); if(!el) return;
+  if(!u){el.textContent='—';return;}
+  const s=await _db.collection('scores').doc(u.uid).get();
+  el.textContent=s.exists?(s.data().pts||0):0;
+}
+_auth.onAuthStateChanged(()=>_loadPts());
 </script>
 </body>
 </html>

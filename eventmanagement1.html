@@ -240,12 +240,21 @@
 </div>
 
 
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
 <script>
-function getUser(){ return localStorage.getItem('fmk_user')||'Anoniem'; }
-function getScores(){ try{return JSON.parse(localStorage.getItem('fmk_scores')||'{}');}catch(e){return{};} }
-function getUserPts(){ const s=getScores(); return s[getUser()]||0; }
-function updatePtsDisplay(){ document.getElementById('pts-display').textContent=getUserPts(); }
-updatePtsDisplay();
+const _fbCfg={apiKey:"AIzaSyBB397Wk2eqpBjic8E7aGV1mTgIjhQ21a8",authDomain:"fmkompas-ff8bc.firebaseapp.com",projectId:"fmkompas-ff8bc",storageBucket:"fmkompas-ff8bc.firebasestorage.app",messagingSenderId:"487972024689",appId:"1:487972024689:web:712c3117080745d14746d0"};
+if(!firebase.apps.length) firebase.initializeApp(_fbCfg);
+const _auth=firebase.auth(), _db=firebase.firestore();
+async function _loadPts(){
+  const u=_auth.currentUser;
+  const el=document.getElementById('pts-display'); if(!el) return;
+  if(!u){el.textContent='—';return;}
+  const s=await _db.collection('scores').doc(u.uid).get();
+  el.textContent=s.exists?(s.data().pts||0):0;
+}
+_auth.onAuthStateChanged(()=>_loadPts());
 </script>
 </body>
 </html>

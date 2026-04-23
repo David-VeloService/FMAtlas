@@ -8,6 +8,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
@@ -26,7 +29,8 @@
 body { font-family: 'Geist','Segoe UI',system-ui,sans-serif; background: var(--bg); color: var(--fg); font-size: 14px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
 
 /* FM KOMPAS HEADER */
-.fm-header { border-bottom: 1px solid var(--border); padding: 0 2rem; display: flex; align-items: center; height: 60px; position: sticky; top: 0; background: rgba(18,18,18,0.92); backdrop-filter: blur(12px); z-index: 200; }
+.fm-header { border-bottom: 1px solid var(--border); padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; height: 60px; position: sticky; top: 0; background: rgba(18,18,18,0.92); backdrop-filter: blur(12px); z-index: 200; }
+.pts-chip { display:flex; align-items:center; gap:0.4rem; background:var(--primary-soft); border:1px solid var(--primary-border); border-radius:99px; padding:0.25rem 0.8rem; font-size:0.8rem; font-weight:700; color:var(--primary); flex-shrink:0; }
 .header-left { display: flex; align-items: center; gap: 0.75rem; }
 .back-link { display: inline-flex; align-items: center; gap: 0.35rem; color: var(--muted); font-size: 0.82rem; font-weight: 500; text-decoration: none; padding: 0.3rem 0.65rem; border-radius: 8px; border: 1px solid var(--border); transition: color 0.15s, border-color 0.15s; }
 .back-link:hover { color: var(--fg); border-color: rgba(255,255,255,0.25); }
@@ -98,6 +102,7 @@ body { font-family: 'Geist','Segoe UI',system-ui,sans-serif; background: var(--b
     <img src="logo.svg" height="26" alt="FM Kompas" style="display:block">
     <span class="page-title">Eventmanagement 1 <span>/ Oefentoets 1</span></span>
   </div>
+  <div class="pts-chip">⭐ <span id="pts-display">—</span> pts</div>
 </nav>
 
 <div class="scorebar">
@@ -443,6 +448,7 @@ function answer(idx, userAnswer) {
 
   if (isCorrect) {
     correct++;
+    addPoints(2);
     card.classList.add('correct');
     fb.className = 'feedback correct';
     fb.innerHTML = `✅ <strong>Goed!</strong> ${q.explanation}`;
@@ -511,6 +517,24 @@ function resetAll() {
 }
 
 buildQuiz();
+
+/* ── FIREBASE PUNTEN ── */
+const _fbCfg={apiKey:"AIzaSyBB397Wk2eqpBjic8E7aGV1mTgIjhQ21a8",authDomain:"fmkompas-ff8bc.firebaseapp.com",projectId:"fmkompas-ff8bc",storageBucket:"fmkompas-ff8bc.firebasestorage.app",messagingSenderId:"487972024689",appId:"1:487972024689:web:712c3117080745d14746d0"};
+if(!firebase.apps.length) firebase.initializeApp(_fbCfg);
+const _auth=firebase.auth(), _db=firebase.firestore();
+async function addPoints(n){
+  const u=_auth.currentUser; if(!u) return;
+  await _db.collection('scores').doc(u.uid).update({pts:firebase.firestore.FieldValue.increment(n),updatedAt:firebase.firestore.FieldValue.serverTimestamp()});
+  _loadPts();
+}
+async function _loadPts(){
+  const u=_auth.currentUser;
+  const el=document.getElementById('pts-display'); if(!el) return;
+  if(!u){el.textContent='—';return;}
+  const s=await _db.collection('scores').doc(u.uid).get();
+  el.textContent=s.exists?(s.data().pts||0):0;
+}
+_auth.onAuthStateChanged(()=>_loadPts());
 </script>
 </body>
 </html>
