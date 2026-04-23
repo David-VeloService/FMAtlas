@@ -373,6 +373,7 @@
     }
 
     .lb-item:hover { background: var(--accent); }
+    .lb-item.lb-me { background: rgba(91,91,255,0.08); border-color: rgba(91,91,255,0.30); }
 
     .lb-rank {
       font-size: 0.75rem;
@@ -1167,11 +1168,14 @@
         avatarEl.textContent = initials;
       }
 
-      // Sla gebruikersinfo op in Firestore als die er nog niet staat
+      // Sla gebruikersinfo op in Firestore; migreer localStorage-pts bij eerste keer
       const ref = db.collection('scores').doc(user.uid);
       const snap = await ref.get();
       if (!snap.exists) {
-        await ref.set({ name: user.displayName || 'Anoniem', pts: 0, photoURL: user.photoURL || '', updatedAt: firebase.firestore.FieldValue.serverTimestamp() });
+        const lsScores = (() => { try { return JSON.parse(localStorage.getItem('fmk_scores') || '{}'); } catch(e) { return {}; } })();
+        const lsUser   = localStorage.getItem('fmk_user') || '';
+        const migratedPts = (lsScores[lsUser] || lsScores[user.displayName] || 0);
+        await ref.set({ name: user.displayName || 'Anoniem', pts: migratedPts, photoURL: user.photoURL || '', updatedAt: firebase.firestore.FieldValue.serverTimestamp() });
       }
 
       renderLeaderboard();
@@ -1191,8 +1195,8 @@
     const empty = document.getElementById('lb-empty');
 
     try {
-      const snap = await db.collection('scores').orderBy('pts', 'desc').limit(5).get();
-      const entries = snap.docs.map(d => d.data()).filter(u => u.pts > 0);
+      const snap = await db.collection('scores').orderBy('pts', 'desc').limit(10).get();
+      const entries = snap.docs.map(d => ({ id: d.id, ...d.data() }));
 
       if (entries.length === 0) {
         list.innerHTML = '';
@@ -1201,21 +1205,26 @@
       }
 
       empty.style.display = 'none';
+      const currentUid = auth.currentUser ? auth.currentUser.uid : null;
+      const medals = ['🥇','🥈','🥉'];
       list.innerHTML = entries.map((u, i) => {
         const initials = (u.name || 'U').split(' ').map(w => w[0]).slice(0,2).join('').toUpperCase();
         const avatarHtml = u.photoURL
           ? `<img src="${u.photoURL}" alt="" referrerpolicy="no-referrer" />`
           : initials;
+        const isMe = u.id === currentUid;
+        const rank = medals[i] || `#${i+1}`;
         return `
-          <div class="lb-item">
-            <span class="lb-rank">#${i+1}</span>
+          <div class="lb-item${isMe ? ' lb-me' : ''}">
+            <span class="lb-rank">${rank}</span>
             <div class="lb-avatar">${avatarHtml}</div>
-            <span class="lb-name">${u.name || 'Onbekend'}</span>
-            <span class="lb-pts">${u.pts} pts</span>
+            <span class="lb-name">${u.name || 'Onbekend'}${isMe ? ' <span style="font-size:.65rem;opacity:.6">(jij)</span>' : ''}</span>
+            <span class="lb-pts">${u.pts || 0} pts</span>
           </div>`;
       }).join('');
     } catch(e) {
       console.warn('Leaderboard kon niet geladen worden:', e);
+      list.innerHTML = '<p style="color:var(--muted);font-size:.82rem;padding:.5rem 0">Kon leaderboard niet laden.</p>';
     }
   }
 
