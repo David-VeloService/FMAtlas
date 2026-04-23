@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Oefentoets 1 — Eventmanagement 1 — FM Kompas</title>
+<link rel="icon" type="image/svg+xml" href="logo.svg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: hsl(0,0%,7%);
+  --fg: hsl(0,0%,100%);
+  --card: hsl(0,0%,9%);
+  --card2: hsl(0,0%,11%);
+  --primary: hsl(235,100%,60%);
+  --muted: hsl(0,0%,56%);
+  --border: rgba(255,255,255,0.10);
+  --primary-soft: rgba(91,91,255,0.12);
+  --primary-border: rgba(91,91,255,0.30);
+  --green: hsl(142,70%,55%);
+  --red: hsl(0,72%,58%);
+}
+body { font-family: 'Geist','Segoe UI',system-ui,sans-serif; background: var(--bg); color: var(--fg); font-size: 14px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+
+/* FM KOMPAS HEADER */
+.fm-header { border-bottom: 1px solid var(--border); padding: 0 2rem; display: flex; align-items: center; height: 60px; position: sticky; top: 0; background: rgba(18,18,18,0.92); backdrop-filter: blur(12px); z-index: 200; }
+.header-left { display: flex; align-items: center; gap: 0.75rem; }
+.back-link { display: inline-flex; align-items: center; gap: 0.35rem; color: var(--muted); font-size: 0.82rem; font-weight: 500; text-decoration: none; padding: 0.3rem 0.65rem; border-radius: 8px; border: 1px solid var(--border); transition: color 0.15s, border-color 0.15s; }
+.back-link:hover { color: var(--fg); border-color: rgba(255,255,255,0.25); }
+.page-title { font-size: 0.95rem; font-weight: 700; letter-spacing: -0.01em; }
+.page-title span { color: var(--muted); font-weight: 400; }
+
+/* SCOREBALK */
+.scorebar { background: var(--card); padding: 14px 28px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 20px; position: sticky; top: 60px; z-index: 50; flex-wrap: wrap; }
+.score-display { font-size: 18px; font-weight: 800; color: var(--fg); }
+.score-display span { color: var(--primary); }
+.progress-bar { flex: 1; min-width: 160px; height: 10px; background: rgba(255,255,255,0.08); border-radius: 5px; overflow: hidden; }
+.progress-fill { height: 100%; background: linear-gradient(90deg, var(--primary), var(--green)); border-radius: 5px; transition: width 0.3s; width: 0%; }
+.stat { font-size: 12px; color: var(--muted); }
+.stat strong { color: var(--fg); }
+#btn-results { background: var(--primary); color: white; border: none; padding: 8px 18px; border-radius: 6px; font-size: 13px; font-weight: 700; cursor: pointer; display: none; }
+#btn-results:hover { opacity: 0.85; }
+#btn-reset { background: rgba(255,255,255,0.06); color: var(--muted); border: 1px solid var(--border); padding: 8px 14px; border-radius: 6px; font-size: 13px; cursor: pointer; }
+#btn-reset:hover { color: var(--fg); }
+
+.main { padding: 20px 28px; max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; gap: 10px; }
+
+.section-label { font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); padding: 14px 0 4px; border-top: 1px solid var(--border); margin-top: 6px; }
+.section-label:first-of-type { border-top: none; }
+
+.question-card { background: var(--card); border-radius: 10px; padding: 16px 18px; border: 1px solid var(--border); border-left: 4px solid rgba(255,255,255,0.08); transition: border-color 0.2s; }
+.question-card.correct { border-left-color: var(--green); background: rgba(74,222,128,0.05); }
+.question-card.wrong { border-left-color: var(--red); background: rgba(220,38,38,0.05); }
+
+.q-header { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 10px; }
+.q-num { background: rgba(255,255,255,0.07); color: var(--muted); font-size: 11px; font-weight: 700; padding: 2px 7px; border-radius: 4px; flex-shrink: 0; margin-top: 2px; }
+.q-text { font-size: 14px; color: var(--fg); line-height: 1.55; }
+
+.btn-row { display: flex; gap: 8px; }
+.btn-j, .btn-o { padding: 7px 22px; border: 2px solid; border-radius: 7px; font-size: 13px; font-weight: 700; cursor: pointer; transition: all 0.15s; background: transparent; }
+.btn-j { border-color: var(--green); color: var(--green); }
+.btn-j:hover:not(:disabled) { background: var(--green); color: #0a0a0a; }
+.btn-o { border-color: var(--red); color: var(--red); }
+.btn-o:hover:not(:disabled) { background: var(--red); color: white; }
+.btn-j:disabled, .btn-o:disabled { cursor: default; opacity: 0.45; }
+
+.btn-j.selected-correct { background: var(--green); color: #0a0a0a; border-color: var(--green); opacity: 1 !important; }
+.btn-o.selected-correct { background: var(--green); color: #0a0a0a; border-color: var(--green); opacity: 1 !important; }
+.btn-j.selected-wrong { background: var(--red); color: white; border-color: var(--red); opacity: 1 !important; }
+.btn-o.selected-wrong { background: var(--red); color: white; border-color: var(--red); opacity: 1 !important; }
+
+.feedback { margin-top: 8px; font-size: 13px; padding: 7px 10px; border-radius: 6px; display: none; }
+.feedback.correct { background: rgba(74,222,128,0.1); color: hsl(142,70%,70%); border: 1px solid rgba(74,222,128,0.2); display: block; }
+.feedback.wrong { background: rgba(220,38,38,0.1); color: hsl(0,72%,75%); border: 1px solid rgba(220,38,38,0.2); display: block; }
+
+/* Results panel */
+#results-panel { display: none; background: var(--card); border-radius: 12px; border: 1px solid var(--border); padding: 28px 32px; max-width: 500px; margin: 20px auto; text-align: center; }
+#results-panel h2 { font-size: 22px; color: var(--fg); margin-bottom: 8px; }
+#results-panel .big-score { font-size: 64px; font-weight: 900; margin: 12px 0; }
+#results-panel .verdict { font-size: 16px; font-weight: 700; padding: 8px 20px; border-radius: 20px; display: inline-block; margin-bottom: 14px; }
+.verdict.pass { background: rgba(74,222,128,0.15); color: var(--green); border: 1px solid rgba(74,222,128,0.25); }
+.verdict.fail { background: rgba(220,38,38,0.12); color: var(--red); border: 1px solid rgba(220,38,38,0.2); }
+#results-panel p { color: var(--muted); font-size: 13px; }
+#results-panel .breakdown { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 16px 0; text-align: left; }
+#results-panel .bitem { background: var(--card2); border-radius: 8px; padding: 10px 14px; border: 1px solid var(--border); }
+#results-panel .bitem strong { display: block; font-size: 18px; color: var(--fg); }
+#results-panel .bitem span { font-size: 12px; color: var(--muted); }
+</style>
+</head>
+<body>
+
+<nav class="fm-header">
+  <div class="header-left">
+    <a class="back-link" href="eventmanagement1.html">← Terug</a>
+    <img src="logo.svg" height="26" alt="FM Kompas" style="display:block">
+    <span class="page-title">Eventmanagement 1 <span>/ Oefentoets 1</span></span>
+  </div>
+</nav>
+
+<div class="scorebar">
+  <div class="score-display">Score: <span id="score-num">0</span>/80</div>
+  <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+  <div class="stat">Beantwoord: <strong id="answered-num">0</strong></div>
+  <div class="stat">Goed: <strong id="correct-num" style="color:var(--green);">0</strong></div>
+  <div class="stat">Fout: <strong id="wrong-num" style="color:var(--red);">0</strong></div>
+  <button id="btn-results" onclick="showResults()">Bekijk resultaat</button>
+  <button id="btn-reset" onclick="resetAll()">Opnieuw</button>
+</div>
+
+<div class="main" id="quiz-container"></div>
+
+<div id="results-panel">
+  <h2>Resultaat Oefentoets</h2>
+  <div class="big-score" id="res-score"></div>
+  <div class="verdict" id="res-verdict"></div>
+  <div class="breakdown" id="res-breakdown"></div>
+  <p id="res-msg"></p>
+  <br>
+  <button id="btn-reset" onclick="resetAll()" style="padding:10px 24px;background:var(--primary);color:white;border:none;border-radius:8px;font-size:14px;font-weight:700;cursor:pointer;margin-top:8px;">Nog een keer proberen</button>
+</div>
+
+<script>
+const questions = [
+  // ===== H1: HET PROJECT =====
+  { section: "H1 — Het Project", num: 1,
+    text: "Routinematig werken is eenmalig en tijdelijk van aard.",
+    answer: false, explanation: "Projectmatig werken is eenmalig en tijdelijk. Routinematig werken is juist herhaaldelijk en wordt uitgevoerd volgens vaste procedures." },
+  { section: null, num: 2,
+    text: "Een project heeft altijd een vooraf vastgesteld budget.",
+    answer: true, explanation: "Correct. Een eigen budget — een vooraf gemaakte schatting van de kosten — is een van de kenmerken van een project." },
+  { section: null, num: 3,
+    text: "Evenementen zijn een apart soort project waarbij het projectresultaat op een vast moment ontstaat.",
+    answer: true, explanation: "Correct. Evenementen zijn een van de vijf soorten projecten. Het projectresultaat (bijv. een festival) ontstaat op een vastgesteld moment." },
+  { section: null, num: 4,
+    text: "In de definitiefase van een project wordt een ontwerprapport opgeleverd.",
+    answer: false, explanation: "De definitiefase levert een Plan van Aanpak op. Het ontwerprapport is het product van de ontwerpfase." },
+  { section: null, num: 5,
+    text: "SMART staat voor Specifiek, Meetbaar, Aanwijsbaar, Realistisch en Tijdgebonden.",
+    answer: true, explanation: "Correct. Dit zijn de vijf criteria waaraan een SMART-doel moet voldoen." },
+  { section: null, num: 6,
+    text: "De levenscyclus van een project eindigt op het moment dat het projectresultaat wordt opgeleverd.",
+    answer: false, explanation: "De levenscyclus loopt door tot na de oplevering. Daarna volgen exploitatie (gebruik), nazorg/onderhoud en uiteindelijk stagnatie — waarna een nieuw project kan starten." },
+  { section: null, num: 7,
+    text: "Bij maatschappelijk verantwoord projectmanagement (MVP) staan de vier P's voor Project, People, Plant en Profit.",
+    answer: true, explanation: "Correct. Deze vier P's vormen samen het kader voor maatschappelijk verantwoord projectmanagement." },
+  { section: null, num: 8,
+    text: "Het doel van fasering is om de opdrachtgever aan het einde van elke fase de mogelijkheid te geven het project bij te sturen.",
+    answer: true, explanation: "Correct. Door fasering worden beslismomenten ingebouwd. De opdrachtgever kan dan beslissen: doorgaan, doorgaan met aanpassingen of stoppen." },
+
+  // ===== H2: MENSEN EN PROJECTEN =====
+  { section: "H2 — Mensen en Projecten", num: 9,
+    text: "Een stafafdeling heeft bevelsbevoegdheid over de lijnafdelingen.",
+    answer: false, explanation: "Een stafafdeling (bijv. P&O, administratie) geeft advies en ondersteuning, maar kan zaken niet dwingend voorschrijven aan lijnafdelingen." },
+  { section: null, num: 10,
+    text: "Het twee-bazen-probleem ontstaat doordat een projectlid zowel een afdelingshoofd als een projectleider als leidinggevende heeft.",
+    answer: true, explanation: "Correct. Projectleden werken vaak parttime in een project en hebben daardoor twee leidinggevenden tegelijk." },
+  { section: null, num: 11,
+    text: "De Plant is een sociale rol binnen het Belbin-model.",
+    answer: false, explanation: "De Plant is een denkrol. Sociale rollen zijn: Voorzitter, Groepswerker en Brononderzoeker." },
+  { section: null, num: 12,
+    text: "Bij consensusbesluitvorming wordt gestemd en wint de meerderheid.",
+    answer: false, explanation: "Bij consensus wordt juist niet gestemd. Het kost veel tijd, maar is effectief omdat iedereen ermee kan leven. Meerderheid van stemmen is een andere besluitvormingsvorm." },
+  { section: null, num: 13,
+    text: "De Monitor is een actierol in het Belbin-model.",
+    answer: false, explanation: "De Monitor is een denkrol: kritisch, nuchter en goed in beoordelen. Actierollen zijn: Afmaker, Bedrijfsman en Vormer." },
+  { section: null, num: 14,
+    text: "Eén persoon kan slechts één Belbin-rol vervullen.",
+    answer: false, explanation: "Van de negen rollen die Belbin onderscheidt kan een persoon er meerdere vervullen, afhankelijk van karakter en ervaring." },
+  { section: null, num: 15,
+    text: "Een Brononderzoeker is nieuwsgierig, enthousiast en legt gemakkelijk contacten.",
+    answer: true, explanation: "Correct. De Brononderzoeker is een sociale rol: extravert, communicatief en maakt gemakkelijk contacten." },
+  { section: null, num: 16,
+    text: "De stuurgroep beheert meerdere projecten, zorgt voor informatie-uitwisseling en bestaat uit een directielid én projectleiders.",
+    answer: true, explanation: "Correct. Dit zijn de kenmerken van een stuurgroep, die wordt ingezet bij meerdere van elkaar afhankelijke projecten." },
+
+  // ===== H3: BEGIN TOT EIND =====
+  { section: "H3 — Het Project van Begin tot Eind", num: 17,
+    text: "GOKIT en TGKIO zijn twee verschillende sets beheersaspecten met elk een andere inhoud.",
+    answer: false, explanation: "GOKIT en TGKIO zijn dezelfde vijf beheersaspecten, alleen in een andere volgorde gespeld: Geld, Organisatie, Kwaliteit, Informatie en Tijd." },
+  { section: null, num: 18,
+    text: "Bij risicobeheersing betekent 'overdragen' dat je een risico accepteert en er niets aan doet.",
+    answer: false, explanation: "Overdragen betekent dat je het risico bij een andere partij neerlegt, bijvoorbeeld via een verzekering. Accepteren is de strategie waarbij je niets doet." },
+  { section: null, num: 19,
+    text: "Een projectstart-up vergadering wordt ook wel een kick-off vergadering genoemd.",
+    answer: true, explanation: "Correct. De projectstart-up vergadering (kick-off) is het officiële begin van een project en creëert saamhorigheid onder betrokkenen." },
+  { section: null, num: 20,
+    text: "Scrum wordt aanbevolen wanneer de opdrachtgever precies weet wat hij wil.",
+    answer: false, explanation: "Scrum wordt juist aanbevolen als de opdrachtgever niet precies weet wat hij wil. De flexibele aanpak maakt het mogelijk om gaandeweg bij te sturen." },
+  { section: null, num: 21,
+    text: "Een risico wordt bepaald door de kans vermenigvuldigd met het gevolg.",
+    answer: true, explanation: "Correct. Risico = kans × gevolg. Dit bepaalt hoe groot de impact van een risico op het project is." },
+  { section: null, num: 22,
+    text: "De duivelsdriehoek beschrijft de spanning tussen Tijd, Geld en Kwaliteit.",
+    answer: true, explanation: "Correct. Deze drie factoren staan op gespannen voet met elkaar. Als je één aanpast, heeft dat altijd effect op de andere twee." },
+  { section: null, num: 23,
+    text: "De P6-methode is een projectmanagementmethode die specifiek is ontwikkeld voor grote internationale projecten.",
+    answer: false, explanation: "De P6-methode is een synthese van verschillende methoden en is juist bruikbaar voor kleine en middelgrote projecten." },
+  { section: null, num: 24,
+    text: "Risicobeheersing bestaat uit vier strategieën: voorkomen, verminderen, overdragen en accepteren.",
+    answer: true, explanation: "Correct. Dit zijn de vier manieren om met risico's om te gaan bij het uitvoeren van een project." },
+
+  // ===== H4: PLANNING =====
+  { section: "H4 — Planning", num: 25,
+    text: "Een strokenplanning wordt ook wel een Gantt-chart genoemd.",
+    answer: true, explanation: "Correct. Een strokenplanning (Gantt-chart) toont activiteiten in een tijdsbalk en geeft een visueel overzicht van wie wat wanneer doet." },
+  { section: null, num: 26,
+    text: "Een netwerkplanning toont de afhankelijkheden tussen activiteiten en helpt het kritische pad te bepalen.",
+    answer: true, explanation: "Correct. Het kritische pad is de langste route door de netwerkplanning en bepaalt de minimale projectduur." },
+  { section: null, num: 27,
+    text: "De doorlooptijd en de werktijd van een activiteit zijn altijd gelijk aan elkaar.",
+    answer: false, explanation: "Doorlooptijd is de kalendertijd van start tot eind. Werktijd is het aantal uren dat daadwerkelijk aan de activiteit besteed wordt. Ze kunnen sterk van elkaar verschillen." },
+  { section: null, num: 28,
+    text: "Een mijlpaal in een planning is een belangrijk tussenresultaat.",
+    answer: true, explanation: "Correct. Een mijlpaal (milestone) markeert een cruciaal punt in de planning, zoals de oplevering van een deelresultaat." },
+  { section: null, num: 29,
+    text: "Een planning en een Plan van Aanpak zijn hetzelfde document.",
+    answer: false, explanation: "Een planning is slechts één onderdeel van het Plan van Aanpak. Het PvA bevat ook activiteiten, organisatie, kosten-baten, risicoanalyse en meer." },
+
+  // ===== H5: 6P-METHODE =====
+  { section: "H5 — De P6-Methode", num: 30,
+    text: "In de P6-methode worden de ontwerp-, voorbereidings- en realisatiefase samengevoegd tot stap 4 'Uitvoeren'.",
+    answer: true, explanation: "Correct. De P6-methode wijkt hierin af van de traditionele watervalfasering, waarbij ontwerp, voorbereiding en realisatie drie afzonderlijke fasen zijn." },
+  { section: null, num: 31,
+    text: "In stap 4 van de P6-methode worden de beheersaspecten TGKIO bewaakt.",
+    answer: true, explanation: "Correct. Per uitvoeringsfase worden Tijd, Geld, Kwaliteit, Informatie en Organisatie bewaakt." },
+  { section: null, num: 32,
+    text: "De zesde stap van de P6-methode heet 'Evalueren'.",
+    answer: false, explanation: "De zesde stap heet 'Afsluiten'. In deze stap worden het project financieel afgehandeld, handleidingen gemaakt en projectleden teruggeleid naar de lijnorganisatie." },
+  { section: null, num: 33,
+    text: "Het Plan van Aanpak wordt opgesteld in stap 3 van de P6-methode.",
+    answer: true, explanation: "Correct. Stap 3 is specifiek gewijd aan het maken van het Plan van Aanpak, inclusief de stakeholderanalyse en het vaststellen van het projectresultaat." },
+  { section: null, num: 34,
+    text: "In stap 5 van de P6-methode wordt het projectresultaat getest en formeel goedgekeurd door de opdrachtgever.",
+    answer: true, explanation: "Correct. In stap 5 'Opleveren' wordt een testplan uitgevoerd en vindt formele acceptatie van het resultaat door de opdrachtgever plaats." },
+  { section: null, num: 35,
+    text: "De P6-methode kan alleen worden toegepast op projecten, niet op onderzoek.",
+    answer: false, explanation: "De P6-methode kan ook worden toegepast op onderzoeksprojecten. De stappen blijven hetzelfde, maar de namen van producten veranderen (bijv. onderzoeksvoorstel i.p.v. projectvoorstel)." },
+  { section: null, num: 36,
+    text: "In stap 2 van de P6-methode wordt het projectteam samengesteld en worden afspraken gemaakt over de samenwerking.",
+    answer: true, explanation: "Correct. Stap 2 heet 'Inrichten'. Hierin worden geschikte projectleden geselecteerd, taken verdeeld en communicatieafspraken vastgelegd." },
+
+  // ===== H6: PLAN VAN AANPAK =====
+  { section: "H6 — Plan van Aanpak", num: 37,
+    text: "Het Plan van Aanpak is het contract tussen het projectteam en de opdrachtgever.",
+    answer: true, explanation: "Correct. Het PvA maakt voor iedereen duidelijk wat er gaat gebeuren en fungeert als formeel contract tussen projectmanager en opdrachtgever." },
+  { section: null, num: 38,
+    text: "Exploitatiekosten zijn kosten die gemaakt worden vóór de uitvoering van het project.",
+    answer: false, explanation: "Exploitatiekosten zijn de kosten die worden gemaakt ná de oplevering van het projectresultaat, bij het gebruik en onderhoud ervan." },
+  { section: null, num: 39,
+    text: "Een projectdossier bevat alle inhoudelijke documenten van het project en behoudt na afloop veel waarde.",
+    answer: false, explanation: "Dat beschrijft het systeemdossier. Het projectdossier bevat organisatie- en beheerdocumenten (PvA, notulen) en verliest na afloop snel waarde." },
+  { section: null, num: 40,
+    text: "De scope van een project beschrijft alles wat binnen het project valt.",
+    answer: true, explanation: "Correct. Alles binnen de projectgrenzen wordt de 'scope' (omvang, draagwijdte, domein) genoemd." },
+  { section: null, num: 41,
+    text: "De projectdoelstelling (het 'waarom') is eigendom van de projectleider.",
+    answer: false, explanation: "De projectdoelstelling is eigendom van de opdrachtgever. De projectleider is eigenaar van het projectresultaat (het 'wat')." },
+  { section: null, num: 42,
+    text: "Een risicoanalyse in het Plan van Aanpak maakt onderscheid tussen interne en externe risico's.",
+    answer: true, explanation: "Correct. Interne risico's zijn bijv. gebrek aan kennis of slechte samenwerking. Externe risico's zijn bijv. afhankelijkheid van andere projecten of onduidelijke projectgrenzen." },
+  { section: null, num: 43,
+    text: "Een Plan van Aanpak Light wordt gebruikt bij projecten van beperkte omvang, waarbij hoofdstukken worden samengevoegd.",
+    answer: true, explanation: "Correct. Bij kleine projecten kunnen bijv. Achtergronden, Projectresultaat en Projectgrenzen worden samengevat in één hoofdstuk." },
+  { section: null, num: 44,
+    text: "Randvoorwaarden zijn factoren waarop het projectteam zelf invloed kan uitoefenen.",
+    answer: false, explanation: "Randvoorwaarden zijn juist factoren waarop het projectteam meestal géén invloed heeft, maar waaraan wel moet zijn voldaan om het project succesvol te maken." },
+
+  // ===== H7: AGILE EN SCRUM =====
+  { section: "H7 — Agile en Scrum", num: 45,
+    text: "Agile is een specifieke projectmanagementmethode met vaste stappen en procedures.",
+    answer: false, explanation: "Agile is een manier van denken (mindset), een parapluterm voor verschillende methoden zoals Scrum. Het is geen methode op zichzelf." },
+  { section: null, num: 46,
+    text: "Een sprint duurt bij Scrum doorgaans 2 tot 4 weken.",
+    answer: true, explanation: "Correct. Scrum werkt in korte, vaste werkcycli (sprints) van 2 tot 4 weken, waarbij aan het einde een werkend (tussen)product wordt opgeleverd." },
+  { section: null, num: 47,
+    text: "De Scrum Master wijst de taken toe aan de teamleden.",
+    answer: false, explanation: "Het Scrum-team is zelfsturend en pakt zelf taken op. De Scrum Master coacht het proces en lost belemmeringen op, maar wijst geen taken toe." },
+  { section: null, num: 48,
+    text: "De Product Owner is de enige die de prioriteiten in de product backlog bepaalt.",
+    answer: true, explanation: "Correct. De Product Owner vertegenwoordigt de stakeholders en bepaalt welke user stories worden gerealiseerd en in welke volgorde. Dit is zijn exclusieve bevoegdheid." },
+  { section: null, num: 49,
+    text: "De Daily Standup duurt maximaal 15 minuten.",
+    answer: true, explanation: "Correct. De Daily Standup (daily scrum meeting) is een dagelijks overleg van maximaal 15 minuten waarbij teamleden rapporteren aan elkaar." },
+  { section: null, num: 50,
+    text: "Een Sprint Retrospective is een open bijeenkomst waarbij een demo wordt gegeven aan stakeholders.",
+    answer: false, explanation: "Dat is de Sprint Review. De Sprint Retrospective is een interne evaluatie aan het einde van de sprint: wat ging goed, wat kan beter?" },
+  { section: null, num: 51,
+    text: "Bij agile werken worden producten vroeg en frequent opgeleverd.",
+    answer: true, explanation: "Correct. Dit is één van de kernkenmerken van Agile: werkende producten worden al vroeg en regelmatig opgeleverd, wat snellere feedback mogelijk maakt." },
+  { section: null, num: 52,
+    text: "Een product backlog bevat een geprioriteerde lijst van alle user stories voor het gehele project.",
+    answer: true, explanation: "Correct. De product backlog is de volledige to-dolijst van het project, geprioriteerd door de Product Owner met de belangrijkste items bovenaan." },
+
+  // ===== H8: VERGADEREN =====
+  { section: "H8 — Projectvergaderingen", num: 53,
+    text: "Het doel van een vergadering kan zijn: informatieverstrekking, meningsvorming of besluitvorming.",
+    answer: true, explanation: "Correct. Dit zijn de drie mogelijke doelen van een projectvergadering." },
+  { section: null, num: 54,
+    text: "De notulist is verantwoordelijk voor de organisatie en leiding van de vergadering.",
+    answer: false, explanation: "De voorzitter is verantwoordelijk voor de organisatie en leiding. De notulist legt beslissingen en actiepunten vast." },
+  { section: null, num: 55,
+    text: "Het is het beste om documenten pas tijdens de vergadering uit te delen, zodat de inhoud vers is.",
+    answer: false, explanation: "Documenten moeten vooraf worden gestuurd, of er moet een leespauze worden ingelast. Uitdelen tijdens een vergadering verstoort het verloop." },
+  { section: null, num: 56,
+    text: "Bij online vergaderen zorgt de moderator voor het technisch goed verlopen van de bijeenkomst.",
+    answer: true, explanation: "Correct. De moderator bezit technische kennis en zorgt ervoor dat de online vergadering (technisch) goed verloopt." },
+  { section: null, num: 57,
+    text: "Notulen moeten zo snel mogelijk ná de vergadering worden uitgewerkt.",
+    answer: true, explanation: "Correct. Hoe eerder de notulen worden gemaakt, hoe beter alles nog in het geheugen zit en hoe sneller actiepunten ten uitvoer gebracht kunnen worden." },
+
+  // ===== H9: INTERVIEW =====
+  { section: "H9 — Een Interview Afnemen", num: 58,
+    text: "Het gestandaardiseerde interview heeft als voordeel dat er ongeremd informatie verzameld kan worden.",
+    answer: false, explanation: "Ongeremd informatie verzamelen is juist het voordeel van het vrije interview. Het gestandaardiseerde interview heeft als voordeel: systematische verwerking en controle over het gesprek." },
+  { section: null, num: 59,
+    text: "Het is aanbevolen om met twee personen een interview af te nemen: één die vraagt en één die schrijft.",
+    answer: true, explanation: "Correct. Met twee personen kan de vragensteller zich volledig concentreren op het gesprek, terwijl de ander aantekeningen maakt." },
+  { section: null, num: 60,
+    text: "Na afloop van een interview stuur je een kopie van het verslag naar de geïnterviewde.",
+    answer: true, explanation: "Correct. De geïnterviewde kan het verslag controleren op juistheid en commentaar geven. Dit verhoogt de betrouwbaarheid van de informatie." },
+
+  // ===== H10: RAPPORT SCHRIJVEN =====
+  { section: "H10 — Een Rapport Schrijven", num: 61,
+    text: "Bijlagen in een rapport worden aangeduid met letters (A, B, C), niet met cijfers.",
+    answer: true, explanation: "Correct. Bijlagen krijgen letters (Bijlage A, Bijlage B). Aanduiding met cijfers is een veelgemaakte fout." },
+  { section: null, num: 62,
+    text: "In een rapport mag je persoonlijke voornaamwoorden zoals 'ik', 'we' en 'je' gebruiken voor een informele toon.",
+    answer: false, explanation: "Een rapport wordt geschreven in zakelijke stijl. Persoonlijke voornaamwoorden (ik, je, we, me) zijn niet toegestaan." },
+  { section: null, num: 63,
+    text: "Een inhoudsopgave in een rapport mag maximaal drie niveaus bevatten.",
+    answer: true, explanation: "Correct. De inhoudsopgave bevat paginaverwijzingen naar hoofdstukken en paragrafen, met maximaal drie niveaus." },
+  { section: null, num: 64,
+    text: "Een hoofdstuk in een rapport mag direct beginnen met een paragraaf, zonder aparte inleiding.",
+    answer: false, explanation: "Elk hoofdstuk moet beginnen met een korte inleiding voordat de eerste paragraaf start. Direct beginnen met een paragraaf is een veelgemaakte fout." },
+  { section: null, num: 65,
+    text: "Bij APA-bronvermelding staat de punt ná de bron, niet ervóór.",
+    answer: true, explanation: "Correct. De punt wordt geplaatst achter de bronvermelding, niet vóór. Dit is een veelgemaakte fout." },
+
+  // ===== H11: PRESENTATIE =====
+  { section: "H11 — Een Presentatie Houden", num: 66,
+    text: "Een pitch bestaat onder andere uit een aantrekkelijke opening, een probleemstelling, een oplossing en een USP.",
+    answer: true, explanation: "Correct. Dit zijn de kernelementen van een goede pitch, samen met bewijs (onderbouwing) en een call-to-action." },
+  { section: null, num: 67,
+    text: "Tijdens de afsluiting van een presentatie herhaal je de boodschap en geef je gelegenheid tot vragen.",
+    answer: true, explanation: "Correct. De afsluiting bestaat uit: samenvatting, conclusies herhalen, een pakkende uitsmijter en ruimte voor vragen." },
+  { section: null, num: 68,
+    text: "Je moet bij een presentatie zo veel mogelijk informatie op één dia plaatsen, zodat het publiek alles kan lezen.",
+    answer: false, explanation: "Je zet juist niet te veel informatie op één dia. Overvolle dia's zijn slecht leesbaar en afleidend. Houd het overzichtelijk." },
+  { section: null, num: 69,
+    text: "Het is aanbevolen om de apparatuur en leesbaarheid van de presentatie vooraf te testen.",
+    answer: true, explanation: "Correct. Vooraf testen voorkomt technische problemen op het moment van presenteren." },
+
+  // ===== H12: MANAGEMENTSAMENVATTING =====
+  { section: "H12 — Een Managementsamenvatting Maken", num: 70,
+    text: "Een managementsamenvatting is een vooruitblik op een aankomend project.",
+    answer: false, explanation: "Een managementsamenvatting is een rapportage achteraf over een uitgevoerd projectonderdeel. Het bevat een verantwoording van het resultaat, conclusies en aanbevelingen." },
+  { section: null, num: 71,
+    text: "Beslispunten in een managementsamenvatting maken duidelijk waar het management beslissingen over moet nemen.",
+    answer: true, explanation: "Correct. Beslispunten zijn beslissingsvoorbereidend: goedkeuring van de afgelopen fase, akkoord voor de volgende fase of continueren/opheffen van de projectgroep." },
+  { section: null, num: 72,
+    text: "Een managementsamenvatting moet beperkt blijven tot maximaal 1 à 2 pagina's.",
+    answer: true, explanation: "Correct. Het moet kort, bondig en direct begrijpelijk zijn voor de manager. Niet meer dan 1 à 2 pagina's." },
+  { section: null, num: 73,
+    text: "Een managementsamenvatting schrijf je voor vakspecialisten die diep in de materie zitten.",
+    answer: false, explanation: "Je schrijft een managementsamenvatting voor de manager, niet voor een vakgenoot. Het moet zonder vakkennis direct te begrijpen zijn." },
+
+  // ===== EXPERT-COLLEGES =====
+  { section: "Expert-colleges", num: 74,
+    text: "In Nederland bestaat een apart wettelijk rechtsgebied dat 'evenementenrecht' heet.",
+    answer: false, explanation: "Evenementenrecht bestaat niet als apart rechtsgebied. Bij evenementen zijn meerdere rechtsgebieden betrokken: publiekrecht én privaatrecht." },
+  { section: null, num: 75,
+    text: "BUMA/STEMRA beheert de auteursrechten van componisten en tekstschrijvers bij muziekgebruik.",
+    answer: true, explanation: "Correct. BUMA/STEMRA beheert auteursrechten. Sena beheert naburige rechten van uitvoerende artiesten en producenten. Voor een evenement heb je vaak licenties van beiden nodig." },
+  { section: null, num: 76,
+    text: "De 3 E's van eventmarketing staan voor Entertainment, Excitement en Enterprise.",
+    answer: true, explanation: "Correct. Deze drie E's vormen de basis van eventmarketing: wat bied je (Entertainment), waar worden mensen enthousiast van (Excitement) en wat maakt het uniek (Enterprise)." },
+  { section: null, num: 77,
+    text: "KOFTIG staat voor Kwaliteit, Organisatie, Financieel, Tijd, Informatie en Geld.",
+    answer: false, explanation: "KOFTIG staat voor Kwaliteit, Organisatie, Facilitair, Tijd, Informatie en Geld. Het is 'Facilitair', niet 'Financieel'. Geld staat apart als de G." },
+  { section: null, num: 78,
+    text: "Vaste kosten bij een evenement zijn onafhankelijk van het aantal bezoekers.",
+    answer: true, explanation: "Correct. Vaste kosten (bijv. locatiehuur) blijven gelijk ongeacht het aantal bezoekers. Variabele kosten (bijv. catering per persoon) stijgen mee met het aantal bezoekers." },
+  { section: null, num: 79,
+    text: "Marktsegmentatie op basis van leeftijd, geslacht en inkomen is demografische segmentatie.",
+    answer: true, explanation: "Correct. Demografische segmentatie omvat kenmerken zoals leeftijd, geslacht, gezinsgrootte, inkomen, beroep en opleiding." },
+  { section: null, num: 80,
+    text: "Als organisator van een evenement heb je een zorgplicht en kun je aansprakelijk worden gesteld voor schade.",
+    answer: true, explanation: "Correct. De organisator heeft een juridische zorgplicht. Aansprakelijkheid wordt bepaald op basis van de kans op schade, de ernst ervan en de kosten van preventie." },
+];
+
+let answered = 0, correct = 0, wrong = 0;
+
+function buildQuiz() {
+  const container = document.getElementById('quiz-container');
+  container.innerHTML = '';
+  let currentSection = null;
+
+  questions.forEach((q, idx) => {
+    if (q.section && q.section !== currentSection) {
+      currentSection = q.section;
+      const label = document.createElement('div');
+      label.className = 'section-label';
+      label.textContent = q.section;
+      container.appendChild(label);
+    }
+
+    const card = document.createElement('div');
+    card.className = 'question-card';
+    card.id = `card-${idx}`;
+
+    card.innerHTML = `
+      <div class="q-header">
+        <span class="q-num">${q.num}</span>
+        <span class="q-text">${q.text}</span>
+      </div>
+      <div class="btn-row">
+        <button class="btn-j" id="j-${idx}" onclick="answer(${idx}, true)">✓ Juist</button>
+        <button class="btn-o" id="o-${idx}" onclick="answer(${idx}, false)">✗ Onjuist</button>
+      </div>
+      <div class="feedback" id="fb-${idx}"></div>
+    `;
+    container.appendChild(card);
+  });
+}
+
+function answer(idx, userAnswer) {
+  const q = questions[idx];
+  const card = document.getElementById(`card-${idx}`);
+  const fb = document.getElementById(`fb-${idx}`);
+  const btnJ = document.getElementById(`j-${idx}`);
+  const btnO = document.getElementById(`o-${idx}`);
+
+  if (btnJ.disabled) return;
+
+  btnJ.disabled = true;
+  btnO.disabled = true;
+
+  const isCorrect = (userAnswer === q.answer);
+  answered++;
+
+  if (isCorrect) {
+    correct++;
+    card.classList.add('correct');
+    fb.className = 'feedback correct';
+    fb.innerHTML = `✅ <strong>Goed!</strong> ${q.explanation}`;
+    if (userAnswer === true) btnJ.classList.add('selected-correct');
+    else btnO.classList.add('selected-correct');
+  } else {
+    wrong++;
+    card.classList.add('wrong');
+    fb.className = 'feedback wrong';
+    const juistText = q.answer ? 'Juist' : 'Onjuist';
+    fb.innerHTML = `❌ <strong>Fout — het goede antwoord is: ${juistText}.</strong> ${q.explanation}`;
+    if (userAnswer === true) btnJ.classList.add('selected-wrong');
+    else btnO.classList.add('selected-wrong');
+  }
+
+  updateScore();
+
+  if (answered === 80) {
+    document.getElementById('btn-results').style.display = 'inline-block';
+  }
+}
+
+function updateScore() {
+  document.getElementById('score-num').textContent = correct;
+  document.getElementById('answered-num').textContent = answered;
+  document.getElementById('correct-num').textContent = correct;
+  document.getElementById('wrong-num').textContent = wrong;
+  document.getElementById('progress-fill').style.width = (answered / 80 * 100) + '%';
+}
+
+function showResults() {
+  const panel = document.getElementById('results-panel');
+  panel.style.display = 'block';
+  panel.scrollIntoView({ behavior: 'smooth' });
+
+  const pct = Math.round(correct / 80 * 100);
+  document.getElementById('res-score').textContent = `${correct}/80`;
+  document.getElementById('res-score').style.color = correct >= 60 ? 'var(--green)' : 'var(--red)';
+
+  const verdict = document.getElementById('res-verdict');
+  if (correct >= 60) {
+    verdict.textContent = '🎉 Voldoende — geslaagd!';
+    verdict.className = 'verdict pass';
+    document.getElementById('res-msg').textContent = `Je hebt ${correct} van de 80 vragen goed (${pct}%). Voor de echte toets heb je minimaal 60 nodig. Goed gedaan!`;
+  } else {
+    verdict.textContent = `😓 Onvoldoende — nog ${60 - correct} extra nodig`;
+    verdict.className = 'verdict fail';
+    document.getElementById('res-msg').textContent = `Je hebt ${correct} van de 80 vragen goed (${pct}%). Je hebt nog ${60 - correct} vragen extra nodig om te slagen. Doe de toets nog een keer!`;
+  }
+
+  document.getElementById('res-breakdown').innerHTML = `
+    <div class="bitem"><strong>${correct}</strong><span>Goed</span></div>
+    <div class="bitem"><strong>${wrong}</strong><span>Fout</span></div>
+    <div class="bitem"><strong>${pct}%</strong><span>Score</span></div>
+    <div class="bitem"><strong>${correct >= 60 ? '✓' : '✗'}</strong><span>Voldoende = 60+</span></div>
+  `;
+}
+
+function resetAll() {
+  answered = 0; correct = 0; wrong = 0;
+  updateScore();
+  document.getElementById('btn-results').style.display = 'none';
+  document.getElementById('results-panel').style.display = 'none';
+  buildQuiz();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+buildQuiz();
+</script>
+</body>
+</html>

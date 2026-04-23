@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Oefentoets 2 — Evenementenmanagement A | FM Kompas</title>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:hsl(0,0%,7%);
+      --fg:hsl(0,0%,100%);
+      --card:hsl(0,0%,9%);
+      --card2:hsl(0,0%,11%);
+      --primary:hsl(235,100%,60%);
+      --muted:hsl(0,0%,56%);
+      --border:rgba(255,255,255,0.10);
+      --primary-soft:rgba(91,91,255,0.12);
+      --primary-border:rgba(91,91,255,0.30);
+      --green:hsl(142,70%,45%);
+      --green-bg:rgba(34,197,94,0.12);
+      --red:hsl(0,72%,55%);
+      --red-bg:rgba(239,68,68,0.12);
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'Geist','Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--fg);min-height:100vh;padding-bottom:6rem}
+
+    /* ── FM KOMPAS HEADER ── */
+    .fm-header{position:sticky;top:0;z-index:200;height:60px;background:rgba(18,18,18,0.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 1.25rem;gap:1rem}
+    .header-left{display:flex;align-items:center;gap:.9rem;min-width:0}
+    .back-link{color:var(--muted);font-size:.82rem;font-weight:500;text-decoration:none;white-space:nowrap;transition:color .15s}
+    .back-link:hover{color:var(--fg)}
+    .page-title{font-size:.88rem;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .page-title span{color:var(--muted);font-weight:400}
+
+    /* ── SCOREBALK ── */
+    #scorebar{position:sticky;top:60px;z-index:100;background:rgba(18,18,18,0.95);border-bottom:1px solid var(--border);color:var(--fg);padding:.75rem 1.5rem;display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap;box-shadow:0 2px 8px rgba(0,0,0,.4)}
+    #scorebar span{font-size:.95rem;white-space:nowrap}
+    #progresswrap{flex:1;min-width:120px;background:rgba(255,255,255,0.08);border-radius:999px;height:10px;overflow:hidden}
+    #progressbar{height:100%;background:var(--green);border-radius:999px;transition:width .3s ease;width:0}
+    #resetbtn{margin-left:auto;background:rgba(239,68,68,0.15);border:1px solid rgba(239,68,68,0.35);color:#fc8080;padding:.4rem 1rem;border-radius:8px;cursor:pointer;font-size:.85rem;font-weight:600;transition:all .15s}
+    #resetbtn:hover{background:rgba(239,68,68,0.25)}
+
+    /* ── PAGINA ── */
+    h1{text-align:center;padding:2rem 1rem .5rem;color:var(--fg);font-size:1.7rem}
+    .subtitle{text-align:center;color:var(--muted);font-size:.9rem;margin-bottom:2rem}
+
+    /* ── SECTIEKOPPEN ── */
+    .section-header{max-width:780px;margin:2.5rem auto .75rem;padding:.6rem 1.2rem;background:var(--primary-soft);border:1px solid var(--primary-border);color:var(--fg);border-radius:10px;font-weight:700;font-size:.95rem;letter-spacing:.03em}
+
+    /* ── KAART ── */
+    .card{background:var(--card);border-radius:14px;border:1px solid var(--border);border-left:5px solid rgba(255,255,255,0.08);padding:1.4rem 1.6rem;max-width:780px;margin:.75rem auto;transition:border-color .2s}
+    .card.correct{border-left-color:var(--green);background:var(--green-bg)}
+    .card.wrong  {border-left-color:var(--red);background:var(--red-bg)}
+
+    /* ── BADGES ── */
+    .badges{display:flex;gap:.4rem;margin-bottom:.6rem;flex-wrap:wrap}
+    .badge{font-size:.7rem;font-weight:700;padding:.2rem .55rem;border-radius:999px;text-transform:uppercase;letter-spacing:.04em}
+    .badge.makkelijk{background:rgba(59,130,246,0.18);color:#93c5fd}
+    .badge.gemiddeld {background:rgba(234,179,8,0.18);color:#fde68a}
+    .badge.moeilijk  {background:rgba(236,72,153,0.18);color:#f9a8d4}
+    .badge.evm       {background:rgba(139,92,246,0.18);color:#c4b5fd}
+    .badge.definitie {background:rgba(249,115,22,0.18);color:#fdba74}
+    .badge.situatie  {background:rgba(34,197,94,0.18);color:#86efac}
+
+    /* ── VRAAG ── */
+    .qnum{font-size:.78rem;color:var(--muted);margin-bottom:.35rem}
+    .qtext{font-size:1rem;color:var(--fg);line-height:1.55;margin-bottom:1rem}
+
+    /* ── KNOPPEN ── */
+    .btns{display:flex;gap:.6rem}
+    .btn{flex:1;padding:.55rem;border:2px solid transparent;border-radius:9px;cursor:pointer;font-weight:700;font-size:.9rem;transition:all .15s}
+    .btn-j{background:rgba(34,197,94,0.12);color:#86efac;border-color:rgba(34,197,94,0.30)}
+    .btn-o{background:rgba(239,68,68,0.12);color:#fca5a5;border-color:rgba(239,68,68,0.30)}
+    .btn-j:hover:not(:disabled){background:rgba(34,197,94,0.22)}
+    .btn-o:hover:not(:disabled){background:rgba(239,68,68,0.22)}
+    .btn:disabled{opacity:.45;cursor:not-allowed}
+    .btn.selected-j{background:rgba(34,197,94,0.30);color:#4ade80;border-color:#4ade80}
+    .btn.selected-o{background:rgba(239,68,68,0.30);color:#f87171;border-color:#f87171}
+
+    /* ── FEEDBACK ── */
+    .feedback{display:none;margin-top:.85rem;padding:.7rem 1rem;border-radius:9px;font-size:.88rem;line-height:1.5}
+    .feedback.show{display:block}
+    .feedback.correct{background:rgba(34,197,94,0.12);color:#86efac;border:1px solid rgba(34,197,94,0.25)}
+    .feedback.wrong  {background:rgba(239,68,68,0.12);color:#fca5a5;border:1px solid rgba(239,68,68,0.25)}
+
+    /* ── RESULTAAT ── */
+    #results{display:none;max-width:780px;margin:2.5rem auto;background:var(--card);border:1px solid var(--border);border-radius:16px;padding:2rem;text-align:center}
+    #results h2{font-size:1.6rem;margin-bottom:.5rem;color:var(--fg)}
+    #results .score-num{font-size:3rem;font-weight:900;margin:.5rem 0;color:var(--fg)}
+    #results .verdict{font-size:1.1rem;margin-bottom:1rem;padding:.6rem 1.2rem;border-radius:10px;display:inline-block;font-weight:700}
+    #results .verdict.pass{background:rgba(34,197,94,0.15);color:#4ade80;border:1px solid rgba(34,197,94,0.30)}
+    #results .verdict.fail{background:rgba(239,68,68,0.15);color:#f87171;border:1px solid rgba(239,68,68,0.30)}
+    #results p{color:var(--muted);font-size:.9rem;margin-bottom:1rem}
+    #results button{background:var(--primary);color:#fff;border:none;padding:.65rem 1.6rem;border-radius:10px;cursor:pointer;font-weight:700;transition:opacity .15s}
+    #results button:hover{opacity:.88}
+
+    /* ── SAMENVATTING moeilijkheidsgraad ── */
+    .diff-summary{max-width:780px;margin:1.5rem auto 0;background:var(--card2);border:1px solid var(--border);border-radius:14px;padding:1.2rem 1.6rem}
+    .diff-summary h3{font-size:.95rem;color:var(--fg);margin-bottom:.75rem}
+    .diff-row{display:flex;justify-content:space-between;align-items:center;padding:.3rem 0;border-bottom:1px solid rgba(255,255,255,0.06);font-size:.88rem;color:var(--muted)}
+    .diff-row:last-child{border-bottom:none}
+    .diff-score{font-weight:700;color:var(--fg)}
+  </style>
+</head>
+<body>
+
+<nav class="fm-header">
+  <div class="header-left">
+    <a class="back-link" href="eventmanagement1.html">← Terug</a>
+    <img src="logo.svg" height="26" alt="FM Kompas" style="display:block">
+    <span class="page-title">Eventmanagement 1 <span>/ Oefentoets 2</span></span>
+  </div>
+</nav>
+
+<div id="scorebar">
+  <span>Score: <b id="scoreNum">0</b> / <b id="totalAnswered">0</b></span>
+  <span>Resterend: <b id="remaining">80</b></span>
+  <div id="progresswrap"><div id="progressbar"></div></div>
+  <button id="resetbtn" onclick="resetAll()">↺ Opnieuw</button>
+</div>
+
+<h1>✏️ Oefentoets 2 — Evenementenmanagement A</h1>
+<p class="subtitle">80 juist/onjuist-vragen &nbsp;|&nbsp; Geslaagd bij ≥ 60 punten &nbsp;|&nbsp; Drie moeilijkheidsniveaus</p>
+
+<div id="quizContainer"></div>
+<div id="results">
+  <h2 id="resultsTitle"></h2>
+  <div class="score-num" id="resultsScore"></div>
+  <div class="verdict" id="resultsVerdict"></div>
+  <p id="resultsDetail"></p>
+  <div class="diff-summary" id="diffDetail"></div>
+  <br>
+  <button onclick="resetAll()">↺ Toets opnieuw maken</button>
+</div>
+
+<script>
+const questions = [
+  /* ───────────── MAKKELIJK (1-24) ───────────── */
+  {nr:1, diff:"makkelijk", sub:null, text:"Een project heeft altijd een vastgestelde begin- en einddatum.", answer:true, uitleg:"Een van de kernkenmerken van een project is dat het tijdelijk is: er is een duidelijk begin- en eindpunt."},
+  {nr:2, diff:"makkelijk", sub:null, text:"De Duivelsdriehoek bestaat uit drie hoeken: Geld, Tijd en Kwaliteit.", answer:true, uitleg:"De Duivelsdriehoek (ook wel ijzeren driehoek) toont de drie basisbeperkingen van elk project: geld (budget), tijd en kwaliteit (scope)."},
+  {nr:3, diff:"makkelijk", sub:null, text:"SMART staat voor Specifiek, Meetbaar, Acceptabel, Realistisch en Tijdgebonden.", answer:true, uitleg:"SMART is een methode om doelstellingen concreet en toetsbaar te formuleren."},
+  {nr:4, diff:"makkelijk", sub:null, text:"Belbin onderscheidt precies negen teamrollen.", answer:true, uitleg:"Meredith Belbin beschreef negen rollen verdeeld over drie categorieën: actiegericht, mensgeoriënteerd en cerebraal."},
+  {nr:5, diff:"makkelijk", sub:null, text:"De P6-methode van Roel Grit bestaat uit zes stappen.", answer:true, uitleg:"De P6-methode omvat: Probleemstelling, Producten, Planning, Personeel, Prijs en Plan van Aanpak."},
+  {nr:6, diff:"makkelijk", sub:null, text:"Een project is per definitie een unieke en eenmalige activiteit.", answer:true, uitleg:"Uniciteit is een kernkenmerk van een project: elke keer andere omstandigheden, mensen of randvoorwaarden."},
+  {nr:7, diff:"makkelijk", sub:null, text:"Een Gantt-chart visualiseert activiteiten en hun tijdsduur in de loop van het project.", answer:true, uitleg:"Een Gantt-chart is een balkplanningsdiagram waarbij elke activiteit als een balk in de tijd wordt weergegeven."},
+  {nr:8, diff:"makkelijk", sub:null, text:"Bij Scrum worden de iteraties 'sprints' genoemd.", answer:true, uitleg:"Een sprint is een timeboxed iteratie van 1–4 weken waarin het team een werkend increment oplevert."},
+  {nr:9, diff:"makkelijk", sub:null, text:"GOKIT staat voor Geld, Organisatie, Kwaliteit, Informatie en Tijd.", answer:true, uitleg:"GOKIT is de afkorting voor de vijf beheersaspecten die Roel Grit beschrijft. TGKIO en KOFTIG zijn alternatieve volgordes."},
+  {nr:10, diff:"makkelijk", sub:null, text:"MVO staat voor Maatschappelijk Verantwoord Ondernemen.", answer:true, uitleg:"MVO omvat de verantwoordelijkheid van een organisatie voor haar sociale, ecologische en economische impact (People, Planet, Profit)."},
+  {nr:11, diff:"makkelijk", sub:null, text:"Een stakeholder is uitsluitend iemand die financieel belang heeft bij het project.", answer:false, uitleg:"Een stakeholder is iedereen die belang heeft bij of invloed uitoefent op het project — dat kan financieel zijn, maar ook organisatorisch, maatschappelijk of persoonlijk."},
+  {nr:12, diff:"makkelijk", sub:null, text:"Een projectleider is tegelijkertijd ook de opdrachtgever van het project.", answer:false, uitleg:"De opdrachtgever staat buiten het projectteam en verleent de opdracht. De projectleider voert de opdracht uit namens de opdrachtgever."},
+  {nr:13, diff:"makkelijk", sub:null, text:"Lijnmanagement en projectmanagement zijn uitwisselbare begrippen voor hetzelfde soort management.", answer:false, uitleg:"Lijnmanagement is permanent en gericht op de dagelijkse bedrijfsvoering; projectmanagement is tijdelijk en gericht op een uniek resultaat."},
+  {nr:14, diff:"makkelijk", sub:null, text:"Een risico binnen een project is altijd negatief van aard.", answer:false, uitleg:"Risico's kunnen ook positief zijn: een kans of meevaller (opportunity). Risicobeheersing richt zich op zowel bedreigingen als kansen."},
+  {nr:15, diff:"makkelijk", sub:null, text:"Een projectresultaat kan uitsluitend een tastbaar, fysiek product zijn.", answer:false, uitleg:"Een projectresultaat kan ook een dienst, rapport, verandering, advies of evenement zijn — elk iets wat eindig en uniek is."},
+  {nr:16, diff:"makkelijk", sub:null, text:"De traditionele projectfasering van Roel Grit bestaat uit vier fasen.", answer:false, uitleg:"Roel Grit onderscheidt vijf fasen: Definitie, Ontwerp, Voorbereiding, Realisatie en Nazorg."},
+  {nr:17, diff:"makkelijk", sub:null, text:"De Product Owner in Scrum is verantwoordelijk voor het beheer en de prioritering van de product backlog.", answer:true, uitleg:"De Product Owner bepaalt welke functionaliteiten het meeste waarde opleveren en rangschikt de product backlog dienovereenkomstig."},
+  {nr:18, diff:"makkelijk", sub:null, text:"Een kick-off meeting vindt doorgaans aan het einde van een project plaats.", answer:false, uitleg:"Een kick-off meeting markeert de officiële start van een project. Alle betrokkenen worden geïnformeerd over het doel, de aanpak en de rolverdeling."},
+  {nr:19, diff:"makkelijk", sub:null, text:"Bij Agile heeft het opleveren van werkende software prioriteit boven uitgebreide documentatie.", answer:true, uitleg:"Dit is een van de vier kernwaarden uit het Agile Manifesto: werkende software boven uitgebreide documentatie."},
+  {nr:20, diff:"makkelijk", sub:null, text:"TGKIO en GOKIT verwijzen naar dezelfde vijf beheersaspecten, maar dan in een andere volgorde.", answer:true, uitleg:"TGKIO staat voor Tijd, Geld, Kwaliteit, Informatie, Organisatie — identiek aan GOKIT, alleen in een andere volgorde."},
+  {nr:21, diff:"makkelijk", sub:null, text:"Een projectorganisatie is van tijdelijke aard.", answer:true, uitleg:"Een projectorganisatie bestaat alleen voor de duur van het project en wordt ontbonden zodra het projectresultaat is opgeleverd."},
+  {nr:22, diff:"makkelijk", sub:null, text:"Risicobeheersing maakt geen deel uit van een Plan van Aanpak.", answer:false, uitleg:"Een risicoanalyse (inclusief kans, impact en maatregelen) is een verplicht onderdeel van een volledig Plan van Aanpak."},
+  {nr:23, diff:"makkelijk", sub:null, text:"Een mijlpaal is een meetbaar tussentijds resultaat of een formeel beslismoment binnen een project.", answer:true, uitleg:"Mijlpalen worden gebruikt om voortgang te meten en go/no-go beslissingen te nemen aan het einde van een projectfase."},
+  {nr:24, diff:"makkelijk", sub:null, text:"De Scrum Master is verantwoordelijk voor de inhoud en prioritering van de product backlog.", answer:false, uitleg:"De Product Owner is eigenaar van de backlog en bepaalt de prioriteiten. De Scrum Master ondersteunt het team bij het volgen van het Scrum-proces."},
+
+  /* ───────────── GEMIDDELD (25-56) ───────────── */
+  {nr:25, diff:"gemiddeld", sub:null, text:"Als bij de Duivelsdriehoek de scope vergroot wordt zonder extra budget of tijd, zal de kwaliteit dalen.", answer:true, uitleg:"De Duivelsdriehoek toont dat de drie factoren onderling afhankelijk zijn. Meer scope zonder meer resources leidt onvermijdelijk tot concessies in kwaliteit of doorlooptijd."},
+  {nr:26, diff:"gemiddeld", sub:null, text:"In de traditionele projectfasering vindt de meeste uitvoering van het project plaats in de Definitiefase.", answer:false, uitleg:"De meeste uitvoering vindt plaats in de Realisatiefase. In de Definitiefase worden het doel en de haalbaarheid bepaald."},
+  {nr:27, diff:"gemiddeld", sub:null, text:"Een Scrum Master heeft de hoogste beslissingsbevoegdheid binnen het development team.", answer:false, uitleg:"Het development team is zelforganiserend. De Scrum Master is een dienende leider die obstakels wegneemt, maar heeft geen hiërarchische bevoegdheid over het team."},
+  {nr:28, diff:"gemiddeld", sub:null, text:"KOFTIG is een alternatieve afkorting voor dezelfde vijf beheersaspecten als GOKIT.", answer:true, uitleg:"KOFTIG staat voor Kwaliteit, Organisatie, Financiën (Geld), Tijd, Informatie, Gevolgen — of in sommige varianten dezelfde vijf als GOKIT. In de context van Roel Grit verwijzen beide naar de vijf beheersaspecten."},
+  {nr:29, diff:"gemiddeld", sub:null, text:"Een werkbreakdownstructuur (WBS) toont de chronologische volgorde van alle projectactiviteiten.", answer:false, uitleg:"Een WBS toont de hiërarchische opdeling van het werk in deelresultaten en taken — géén tijdsvolgorde. Tijdsvolgorde wordt weergegeven in een Gantt-chart of netwerkplanning."},
+  {nr:30, diff:"gemiddeld", sub:null, text:"Scrum is het meest geschikt voor projecten waarbij de klantwensen volledig vaststaan vanaf het begin.", answer:false, uitleg:"Scrum is juist ontwikkeld voor projecten met onzekere of veranderende eisen. Bij volledig vastgelegde eisen is een traditionele aanpak doorgaans efficiënter."},
+  {nr:31, diff:"gemiddeld", sub:null, text:"Bij een matrixorganisatie rapporteert een medewerker aan zowel de lijnmanager als de projectleider.", answer:true, uitleg:"In een matrixorganisatie heeft een medewerker een dubbele rapportagelijn: functioneel aan de lijnmanager en projectmatig aan de projectleider."},
+  {nr:32, diff:"gemiddeld", sub:null, text:"De Sprint Review is de Scrum-bijeenkomst waarbij het team intern reflecteert op het eigen werkproces om dat te verbeteren.", answer:false, uitleg:"Interne reflectie op het werkproces vindt plaats in de Sprint Retrospective. De Sprint Review is bedoeld om het opgeleverde increment te inspecteren met stakeholders."},
+  {nr:33, diff:"gemiddeld", sub:null, text:"Het kritieke pad in een projectnetwerk is de langste reeks afhankelijke activiteiten zonder tijdsspeling.", answer:true, uitleg:"Vertraging van een activiteit op het kritieke pad leidt direct tot vertraging van het hele project, omdat er geen vrije tijd (float/slack) beschikbaar is."},
+  {nr:34, diff:"gemiddeld", sub:null, text:"MVO heeft drie kernbegrippen: People, Planet en Profit.", answer:true, uitleg:"De Triple Bottom Line van MVO omvat People (sociaal), Planet (milieu) en Profit (economisch). Sommige modellen voegen een vierde P (Process) toe, maar het standaardmodel heeft drie."},
+  {nr:35, diff:"gemiddeld", sub:null, text:"Een risicomatrix prioriteert risico's op basis van zowel de kans dat het risico optreedt als de impact ervan.", answer:true, uitleg:"In een risicomatrix worden kans en impact gecombineerd tot een risicoscore (kans × impact), waarna risico's worden geprioriteerd en beheersmaatregelen worden bepaald."},
+  {nr:36, diff:"gemiddeld", sub:null, text:"Agile-methoden zijn met name geschikt wanneer de klantwensen gedurende het project kunnen veranderen.", answer:true, uitleg:"Agile is ontworpen om flexibel in te spelen op wijzigende wensen. Korte iteraties en regelmatige feedback stellen het team in staat snel bij te sturen."},
+  {nr:37, diff:"gemiddeld", sub:null, text:"Bij de traditionele watervalanpak is het eenvoudig om halverwege grote wijzigingen in de scope door te voeren.", answer:false, uitleg:"Bij de watervalanpak zijn fasen sequentieel en sterk afhankelijk van het eerdere werk. Grote scopewijzigingen halverwege leiden doorgaans tot hoge kosten en vertragingen."},
+  {nr:38, diff:"gemiddeld", sub:null, text:"De risicorespons 'vermijden' houdt in dat je het risico accepteert en een noodplan (contingency) opstelt.", answer:false, uitleg:"Vermijden = de projectactiviteit of -aanpak zo aanpassen dat het risico niet langer bestaat. Accepteren + noodplan is de strategie 'accepteren met contingency'."},
+  {nr:39, diff:"gemiddeld", sub:null, text:"Een oorzaak-gevolgdiagram (visgraatdiagram) wordt gebruikt om de oorzaken van een probleem systematisch in kaart te brengen.", answer:true, uitleg:"Het visgraatdiagram (Ishikawa) ordent mogelijke oorzaken in categorieën (bijv. mens, machine, methode, materiaal) om de grondoorzaak van een probleem te identificeren."},
+  {nr:40, diff:"gemiddeld", sub:null, text:"Een go/no-go beslissing vindt doorgaans plaats aan het einde van een projectfase.", answer:true, uitleg:"Aan het einde van elke fase beoordeelt de stuurgroep of de resultaten voldoende zijn om door te gaan naar de volgende fase — dit heet een fase-gate of go/no-go."},
+  {nr:41, diff:"gemiddeld", sub:null, text:"SMART-doelstellingen garanderen dat een projectdoel altijd haalbaar is.", answer:false, uitleg:"SMART maakt doelstellingen concreet, meetbaar en toetsbaar, maar garandeert niet dat ze ook daadwerkelijk haalbaar zijn. Haalbaarheid wordt apart beoordeeld in een haalbaarheidsstudie."},
+  {nr:42, diff:"gemiddeld", sub:null, text:"De Belbin-rol 'Brononderzoeker' is een taakgerichte rol.", answer:false, uitleg:"De Brononderzoeker is een sociaal-gerichte rol (extern gericht): enthousiast, netwerkt buiten het team om kansen en ideeën op te sporen. Taakgerichte rollen zijn bijv. Vormer, Bedrijfsman en Afmaker."},
+  {nr:43, diff:"gemiddeld", sub:null, text:"In Scrum stelt het development team zelf vast hoeveel werk zij in een sprint kunnen verwerken.", answer:true, uitleg:"Het development team trekt zelfstandig werk naar zich toe vanuit de product backlog op basis van hun eigen capaciteitsinschatting (velocity)."},
+  {nr:44, diff:"gemiddeld", sub:null, text:"Bij risicobeheersing geldt als vuistregel: risicoscore = kans × impact.", answer:true, uitleg:"De risicoscore geeft aan hoe groot het totale effect van een risico is. Deze score bepaalt de prioritering in de risicomatrix."},
+  {nr:45, diff:"gemiddeld", sub:null, text:"De fase 'Ontwerp' in de traditionele projectfasering levert standaard een fysiek prototype op als eindresultaat.", answer:false, uitleg:"De ontwerpfase levert een ontwerpdocument of functioneel ontwerp op. Een fysiek prototype is mogelijk maar niet standaard; dat hangt af van het type project."},
+  {nr:46, diff:"gemiddeld", sub:null, text:"Belbin stelde dat één persoon slechts één vaste teamrol kan vervullen.", answer:false, uitleg:"Belbin erkende dat mensen meerdere rollen kunnen aannemen, afhankelijk van de situatie en de behoeften van het team. Mensen hebben doorgaans een voorkeurrol maar beheersen er meer."},
+  {nr:47, diff:"gemiddeld", sub:null, text:"Een projectleider is verantwoordelijk voor het dagelijkse management, terwijl de stuurgroep strategische beslissingen neemt.", answer:true, uitleg:"De projectleider bewaakt de dagelijkse voortgang. De stuurgroep (met de opdrachtgever) neemt beslissingen over scope, budget en go/no-go bij faseovergangen."},
+  {nr:48, diff:"gemiddeld", sub:null, text:"Scope creep treedt op wanneer de projectomvang gecontroleerd en gepland wordt uitgebreid met expliciete goedkeuring van de opdrachtgever.", answer:false, uitleg:"Scope creep is juist de ongecontroleerde, niet-geplande uitbreiding van de scope zonder formele goedkeuring of aanpassing van budget en doorlooptijd."},
+  {nr:49, diff:"gemiddeld", sub:null, text:"In de nazorgfase van een project wordt het geplande eindresultaat gerealiseerd en gebouwd.", answer:false, uitleg:"Het eindresultaat wordt gerealiseerd in de Realisatiefase. De Nazorgfase omvat het overdragen, evalueren en afbouwen van de projectorganisatie."},
+  {nr:50, diff:"gemiddeld", sub:null, text:"De Daily Scrum duurt maximaal 15 minuten en is bedoeld om het werk van het team te synchroniseren.", answer:true, uitleg:"De Daily Scrum (standup) is een korte dagelijkse afstemming van maximaal 15 minuten, gericht op wat er gisteren is gedaan, wat er vandaag gebeurt en welke obstakels er zijn."},
+  {nr:51, diff:"gemiddeld", sub:null, text:"Een projectmanager die risico's 'mitigeert', elimineert daarmee de kans op het optreden van die risico's volledig.", answer:false, uitleg:"Mitigeren betekent de kans en/of impact van een risico verkleinen — niet elimineren. Volledig elimineren hoort bij de strategie 'vermijden'."},
+  {nr:52, diff:"gemiddeld", sub:null, text:"Een stuurgroep bestaat doorgaans uitsluitend uit de leden van het projectteam.", answer:false, uitleg:"De stuurgroep bestaat uit de opdrachtgever en andere beslissingsbevoegde stakeholders buiten het projectteam. Zij bewaken het strategische belang."},
+  {nr:53, diff:"gemiddeld", sub:null, text:"Het Plan van Aanpak bevat altijd een uitgewerkte kostenpost voor elk afzonderlijk teamlid.", answer:false, uitleg:"Het Plan van Aanpak bevat een totaalbegroting en een globale personele inzet, maar geen gedetailleerde salarisspecificatie per teamlid."},
+  {nr:54, diff:"gemiddeld", sub:null, text:"Een product backlog bevat uitsluitend voltooide taken.", answer:false, uitleg:"De product backlog is een geprioriteerde lijst van alle gewenste functionaliteiten (user stories, bugs, verbeteringen) — zowel afgerond als nog te doen."},
+  {nr:55, diff:"gemiddeld", sub:null, text:"Een risico dat een lage kans maar een hoge impact heeft, heeft altijd hogere prioriteit dan een risico met een hoge kans maar een lage impact.", answer:false, uitleg:"Prioriteit wordt bepaald door de risicoscore (kans × impact). Een hoog-kans/lage-impact-risico kan een hogere score hebben dan een laag-kans/hoge-impact-risico."},
+  {nr:56, diff:"gemiddeld", sub:null, text:"Een Scrum Sprint heeft altijd een vaste duur van precies twee weken.", answer:false, uitleg:"Een sprint duurt doorgaans 1–4 weken. Het team bepaalt zelf de sprintduur, die gedurende het project wel constant blijft."},
+
+  /* ───────────── MOEILIJK (57-80) ───────────── */
+  /* EVM-berekeningen */
+  {nr:57, diff:"moeilijk", sub:"evm", text:"Een project heeft BAC = €100.000, EV = €50.000 en AC = €55.000. De CPI is groter dan 1, wat aangeeft dat het project onder budget loopt.", answer:false, uitleg:"CPI = EV / AC = 50.000 / 55.000 ≈ 0,91 — dit is kleiner dan 1, wat betekent dat er meer is uitgegeven dan de behaalde waarde rechtvaardigt: het project loopt over budget."},
+  {nr:58, diff:"moeilijk", sub:"evm", text:"Een project heeft EV = €40.000 en PV = €35.000. De SPI is groter dan 1, wat betekent dat het project voor op schema loopt.", answer:true, uitleg:"SPI = EV / PV = 40.000 / 35.000 ≈ 1,14. Een SPI > 1 betekent dat het project meer werk heeft afgerond dan gepland: het loopt voor op schema."},
+  {nr:59, diff:"moeilijk", sub:"evm", text:"Bij een project met BAC = €200.000 en een CPI van 0,80 bedraagt de EAC (Estimate at Completion) €160.000.", answer:false, uitleg:"EAC = BAC / CPI = 200.000 / 0,80 = €250.000. Een CPI < 1 betekent dat het project duurder uitvalt dan gepland, dus de EAC is hoger dan de BAC — niet lager."},
+  {nr:60, diff:"moeilijk", sub:"evm", text:"Als de Cost Variance (CV) negatief is, betekent dit dat er minder is uitgegeven dan de behaalde waarde rechtvaardigt.", answer:false, uitleg:"CV = EV − AC. Een negatieve CV betekent dat EV < AC: er is meer uitgegeven dan de waarde van het verrichte werk. Het project loopt dus over budget."},
+  {nr:61, diff:"moeilijk", sub:"evm", text:"Een project heeft PV = €80.000, EV = €60.000 en AC = €70.000. Zowel de SPI als de CPI zijn in dit geval kleiner dan 1.", answer:true, uitleg:"SPI = EV/PV = 60.000/80.000 = 0,75 (achter op schema). CPI = EV/AC = 60.000/70.000 ≈ 0,86 (over budget). Beide ratio's zijn kleiner dan 1: het project loopt achter én is te duur."},
+  {nr:62, diff:"moeilijk", sub:"evm", text:"Als SPI = 1,0 en CPI = 1,0, loopt het project precies op schema én op budget.", answer:true, uitleg:"SPI = 1,0 betekent dat het uitgevoerde werk exact overeenkomt met het geplande werk. CPI = 1,0 betekent dat de kosten gelijk zijn aan de verdiende waarde. Ideale situatie."},
+  /* Verdraaide definities */
+  {nr:63, diff:"moeilijk", sub:"definitie", text:"In netwerkplanning zorgt een 'lead' voor een vertraging tussen twee activiteiten, terwijl een 'lag' juist overlap tussen activiteiten mogelijk maakt.", answer:false, uitleg:"Het is precies andersom: een lag introduceert een vertraging (wachttijd) tussen activiteiten; een lead zorgt voor overlap, zodat een opvolgende activiteit eerder kan starten."},
+  {nr:64, diff:"moeilijk", sub:"definitie", text:"De SPI meet de kostenefficiëntie van een project, terwijl de CPI de voortgang ten opzichte van de planning weergeeft.", answer:false, uitleg:"CPI (Cost Performance Index) meet kostenefficiëntie; SPI (Schedule Performance Index) meet de planningsefficiëntie. Deze twee zijn in de stelling verwisseld."},
+  {nr:65, diff:"moeilijk", sub:"definitie", text:"De Sprint Retrospective is de Scrum-ceremonie waarbij het team het opgeleverde increment demonstreert aan de Product Owner en stakeholders.", answer:false, uitleg:"Het increment wordt gedemonstreerd tijdens de Sprint Review. De Sprint Retrospective richt zich op verbetering van het werkproces: hoe werkt het team samen en wat kan beter?"},
+  {nr:66, diff:"moeilijk", sub:"definitie", text:"Bij Scrum is de 'Definition of Done' een gedeelde afspraak over de kwaliteitscriteria waaraan een increment moet voldoen om als 'klaar' te worden beschouwd.", answer:true, uitleg:"De Definition of Done is een transparante, formele beschrijving van de staat van het increment. Pas als aan alle criteria is voldaan, mag een item als 'Done' worden beschouwd."},
+  {nr:67, diff:"moeilijk", sub:"definitie", text:"Een deliverable in projectmanagement is hetzelfde als een activiteit: een concrete taak die door het projectteam moet worden uitgevoerd.", answer:false, uitleg:"Een deliverable is een op te leveren resultaat (product, rapport, plan), terwijl een activiteit de taak of handeling is die nodig is om dat resultaat te bereiken. Het zijn fundamenteel verschillende begrippen."},
+  {nr:68, diff:"moeilijk", sub:"definitie", text:"De kritieke-pad-methode (CPM) en PERT zijn identieke technieken die op dezelfde manier omgaan met onzekerheid in activiteitsduur.", answer:false, uitleg:"CPM gebruikt één deterministische tijdschatting per activiteit. PERT gebruikt drie schattingen (optimistisch, meest waarschijnlijk, pessimistisch) en houdt daarmee expliciet rekening met onzekerheid."},
+  /* Situatieschetsen */
+  {nr:69, diff:"moeilijk", sub:"situatie", text:"Een projectteam merkt halverwege dat de kosten sterk oplopen, maar dat de planning goed wordt bijgehouden. In EVM-termen geldt dan: CPI < 1 en SPI ≈ 1.", answer:true, uitleg:"Kosten oplopen = CPI < 1 (meer uitgegeven dan verdiend). Planning op schema = SPI ≈ 1 (verricht werk ≈ gepland werk). Dit is een klassiek 'over budget, op schema'-scenario."},
+  {nr:70, diff:"moeilijk", sub:"situatie", text:"Een opdrachtgever wil de projectscope halverwege uitbreiden zonder het budget of de deadline aan te passen. Volgens de Duivelsdriehoek is dit mogelijk zonder concessies aan kwaliteit te doen.", answer:false, uitleg:"De Duivelsdriehoek stelt dat de drie factoren onlosmakelijk verbonden zijn. Meer scope zonder extra middelen of tijd leidt onvermijdelijk tot kwaliteitsverlies."},
+  {nr:71, diff:"moeilijk", sub:"situatie", text:"Een projectleider kiest voor de Agile-aanpak omdat de klant het eindresultaat volledig heeft gespecificeerd en geen wijzigingen verwacht.", answer:false, uitleg:"Agile is juist geschikt voor situaties met onduidelijke of veranderende eisen. Bij volledig vastgelegde, stabiele eisen is een traditionele (waterval)aanpak doorgaans efficiënter en voorspelbaarder."},
+  {nr:72, diff:"moeilijk", sub:"situatie", text:"Een team ontdekt na drie sprints dat de Definition of Done te vaag was, waardoor functionaliteiten steeds opnieuw moesten worden herzien. Dit is een typisch onderwerp voor de Sprint Retrospective.", answer:true, uitleg:"De Sprint Retrospective richt zich op procesverbetering. Het aanscherpen van de Definition of Done is een concreet voorbeeld van een actiepunt dat voortkomt uit een retrospective."},
+  {nr:73, diff:"moeilijk", sub:"situatie", text:"Een projectleider identificeert een risico A met kans 5% en impact €500, en een risico B met kans 80% en impact €200. Hij geeft risico A de hoogste prioriteit.", answer:false, uitleg:"Risicoscore A = 0,05 × 500 = €25. Risicoscore B = 0,80 × 200 = €160. Risico B heeft de hogere score en verdient daarmee de hogere prioriteit."},
+  {nr:74, diff:"moeilijk", sub:"situatie", text:"Een student analyseert een projectteam met Belbin-rollen en constateert dat de rol 'Vormer' volledig ontbreekt. Volgens Belbin betekent dit dat er geen aanstuurder is die druk zet op resultaten en obstakels aanpakt.", answer:true, uitleg:"De Vormer (Shaper) is een actiegedreven rol die het team aandrijft, uitdagingen aangaat en obstakels aanpakt. Het ontbreken van deze rol kan leiden tot gebrek aan richting en urgentie."},
+  /* Overige moeilijke vragen */
+  {nr:75, diff:"moeilijk", sub:null, text:"Bij earned value management is de Planned Value (PV) gelijk aan het gebudgetteerde bedrag voor het tot dan toe geplande werk (ook wel BCWS genoemd).", answer:true, uitleg:"PV (Planned Value) = BCWS (Budgeted Cost of Work Scheduled): het budget dat is toegewezen aan het werk dat op dit moment gepland stond te zijn afgerond."},
+  {nr:76, diff:"moeilijk", sub:null, text:"Een project waarbij alle eisen volledig zijn vastgelegd en weinig wijzigingen worden verwacht, is doorgaans beter geschikt voor een traditionele watervalplanning dan voor Agile.", answer:true, uitleg:"Waterval excelleert bij stabiele, goed gedefinieerde eisen: de lineaire aanpak biedt dan voorspelbaarheid en controle. Agile is meerwaarde bij onzekerheid en verandering."},
+  {nr:77, diff:"moeilijk", sub:null, text:"De 'ijzeren driehoek' van projectmanagement verwijst naar dezelfde drie beperkingen als de Duivelsdriehoek.", answer:true, uitleg:"Zowel de 'ijzeren driehoek' als de 'Duivelsdriehoek' beschrijven de drie kernbeperkingen van een project: scope/kwaliteit, tijd en kosten/geld."},
+  {nr:78, diff:"moeilijk", sub:null, text:"Bij risicobeheersing brengt het 'overdragen' van een risico (bijv. door verzekering of uitbesteding) doorgaans extra kosten met zich mee.", answer:true, uitleg:"Het overdragen (transfer) van een risico is niet gratis: een verzekering heeft een premie, en uitbesteding heeft contractuele kosten. Het risico schuift naar een andere partij, maar de organisatie betaalt daarvoor."},
+  {nr:79, diff:"moeilijk", sub:null, text:"Een project is succesvol wanneer het resultaat binnen de afgesproken tijd, het budget en de kwaliteitseisen is opgeleverd én de opdrachtgever tevreden is.", answer:true, uitleg:"Projectsucces omvat zowel de objectieve criteria (tijd, geld, kwaliteit) als de subjectieve tevredenheid van de opdrachtgever en andere stakeholders."},
+  {nr:80, diff:"moeilijk", sub:null, text:"De juiste volgorde van de traditionele projectfasering is: Definitie → Voorbereiding → Ontwerp → Realisatie → Nazorg.", answer:false, uitleg:"De correcte volgorde is: Definitie → Ontwerp → Voorbereiding → Realisatie → Nazorg. Ontwerp (uitwerken wat er gemaakt wordt) gaat altijd vóór Voorbereiding (inkoop, planning, organisatie)."},
+];
+
+/* ────── STATE ────── */
+let score = 0;
+let answered = 0;
+let diffScores = {makkelijk:{correct:0,total:0}, gemiddeld:{correct:0,total:0}, moeilijk:{correct:0,total:0}};
+
+/* ────── RENDER ────── */
+function buildQuiz(){
+  const container = document.getElementById('quizContainer');
+  container.innerHTML = '';
+  const sections = [
+    {key:'makkelijk', label:'🟦 Makkelijk (1–24) — Directe reproductie', range:[1,24]},
+    {key:'gemiddeld',  label:'🟨 Gemiddeld (25–56) — Begripskennis',       range:[25,56]},
+    {key:'moeilijk',  label:'🟥 Moeilijk (57–80) — Valkuilen & berekeningen', range:[57,80]},
+  ];
+  sections.forEach(s => {
+    const hdr = document.createElement('div');
+    hdr.className = 'section-header';
+    hdr.textContent = s.label;
+    container.appendChild(hdr);
+    questions.filter(q => q.nr >= s.range[0] && q.nr <= s.range[1]).forEach(q => {
+      container.appendChild(buildCard(q));
+    });
+  });
+}
+
+function buildCard(q){
+  const card = document.createElement('div');
+  card.className = 'card';
+  card.id = 'card-'+q.nr;
+
+  // badges
+  const badges = document.createElement('div');
+  badges.className = 'badges';
+  const b1 = document.createElement('span');
+  b1.className = 'badge '+q.diff;
+  b1.textContent = q.diff.charAt(0).toUpperCase()+q.diff.slice(1);
+  badges.appendChild(b1);
+  if(q.sub){
+    const b2 = document.createElement('span');
+    b2.className = 'badge '+q.sub;
+    b2.textContent = q.sub.charAt(0).toUpperCase()+q.sub.slice(1);
+    badges.appendChild(b2);
+  }
+  card.appendChild(badges);
+
+  // num + text
+  const qnum = document.createElement('div'); qnum.className='qnum'; qnum.textContent='Vraag '+q.nr;
+  const qtext = document.createElement('div'); qtext.className='qtext'; qtext.textContent=q.text;
+  card.appendChild(qnum);
+  card.appendChild(qtext);
+
+  // buttons
+  const btns = document.createElement('div'); btns.className='btns';
+  const bj = document.createElement('button'); bj.className='btn btn-j'; bj.id='bj-'+q.nr; bj.textContent='✓ Juist';
+  const bo = document.createElement('button'); bo.className='btn btn-o'; bo.id='bo-'+q.nr; bo.textContent='✗ Onjuist';
+  bj.onclick = () => answer(q, true);
+  bo.onclick = () => answer(q, false);
+  btns.appendChild(bj); btns.appendChild(bo);
+  card.appendChild(btns);
+
+  // feedback
+  const fb = document.createElement('div'); fb.className='feedback'; fb.id='fb-'+q.nr;
+  card.appendChild(fb);
+  return card;
+}
+
+function answer(q, chosen){
+  const correct = chosen === q.answer;
+  const card = document.getElementById('card-'+q.nr);
+  const fb   = document.getElementById('fb-'+q.nr);
+  const bj   = document.getElementById('bj-'+q.nr);
+  const bo   = document.getElementById('bo-'+q.nr);
+
+  bj.disabled = true; bo.disabled = true;
+  if(chosen){bj.classList.add('selected-j');}else{bo.classList.add('selected-o');}
+
+  diffScores[q.diff].total++;
+
+  if(correct){
+    score++;
+    diffScores[q.diff].correct++;
+    card.classList.add('correct');
+    fb.className='feedback correct show';
+    fb.innerHTML='<b>✓ Correct!</b> '+q.uitleg;
+  } else {
+    card.classList.add('wrong');
+    fb.className='feedback wrong show';
+    const correctLabel = q.answer ? 'Juist' : 'Onjuist';
+    fb.innerHTML='<b>✗ Onjuist.</b> Het goede antwoord is <b>'+correctLabel+'</b>. '+q.uitleg;
+  }
+
+  answered++;
+  updateBar();
+  if(answered === questions.length) showResults();
+}
+
+function updateBar(){
+  document.getElementById('scoreNum').textContent = score;
+  document.getElementById('totalAnswered').textContent = answered;
+  document.getElementById('remaining').textContent = questions.length - answered;
+  document.getElementById('progressbar').style.width = (answered/questions.length*100)+'%';
+}
+
+function showResults(){
+  document.getElementById('results').style.display='block';
+  document.getElementById('results').scrollIntoView({behavior:'smooth',block:'center'});
+  const pass = score >= 60;
+  document.getElementById('resultsTitle').textContent = pass ? '🎉 Geslaagd!' : '😕 Niet geslaagd';
+  document.getElementById('resultsScore').textContent = score+' / 80';
+  const v = document.getElementById('resultsVerdict');
+  v.textContent = pass ? 'Voldoende — je scoorde '+score+' van de 80 punten' : 'Onvoldoende — je scoorde '+score+' van de 80 punten (minimum: 60)';
+  v.className = 'verdict '+(pass?'pass':'fail');
+  document.getElementById('resultsDetail').textContent = 'Bekijk per moeilijkheidsgraad hoe je hebt gescoord:';
+
+  const dd = document.getElementById('diffDetail');
+  dd.innerHTML = '<h3>Score per niveau</h3>';
+  [['makkelijk','Makkelijk (24 vr.)'],['gemiddeld','Gemiddeld (32 vr.)'],['moeilijk','Moeilijk (24 vr.)']].forEach(([k,l])=>{
+    const row = document.createElement('div'); row.className='diff-row';
+    row.innerHTML='<span>'+l+'</span><span class="diff-score">'+diffScores[k].correct+' / '+diffScores[k].total+'</span>';
+    dd.appendChild(row);
+  });
+}
+
+function resetAll(){
+  score=0; answered=0;
+  diffScores={makkelijk:{correct:0,total:0},gemiddeld:{correct:0,total:0},moeilijk:{correct:0,total:0}};
+  document.getElementById('results').style.display='none';
+  updateBar();
+  buildQuiz();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+buildQuiz();
+</script>
+</body>
+</html>
