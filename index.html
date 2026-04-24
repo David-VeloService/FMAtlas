@@ -218,11 +218,11 @@
     .home-wrap {
       max-width: 920px;
       margin: 0 auto;
-      padding: 3rem 2rem 5rem;
+      padding: 2rem 2rem 3rem;
     }
 
     .home-hero {
-      margin-bottom: 2.5rem;
+      margin-bottom: 1.25rem;
     }
 
     .home-hero h1 {
@@ -256,7 +256,7 @@
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
       gap: 0.65rem;
-      margin-bottom: 2.5rem;
+      margin-bottom: 1.25rem;
     }
 
     .course-tile {
@@ -313,6 +313,22 @@
     }
 
     @media (max-width: 640px) { .bottom-row { grid-template-columns: 1fr; } }
+
+    /* Top row: uitleg + donate */
+    .top-row {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      gap: 0.65rem;
+      margin-bottom: 1.5rem;
+    }
+
+    @media (max-width: 640px) { .top-row { grid-template-columns: 1fr; } }
+
+    .info-card p {
+      color: var(--muted-fg);
+      font-size: 0.845rem;
+      line-height: 1.6;
+    }
 
     /* Generic card */
     .card {
@@ -763,6 +779,23 @@
         <p>Samenvattingen per vak, een leaderboard en alles wat je nodig hebt voor Facilitair Management.</p>
       </div>
 
+      <!-- Uitleg + Steun dit project -->
+      <div class="top-row">
+        <div class="card info-card">
+          <div class="card-title"><span class="icon">🧭</span> Over FM Kompas</div>
+          <p>FM Kompas is een gratis studiehulp voor studenten Facilitair Management aan de HAN. Per vak vind je samenvattingen, begrippenlijsten, flashcards en oefentoetsen. Behaal punten door quizzes te maken en vergelijk je score met andere studenten op het leaderboard.</p>
+        </div>
+        <div class="donate-card">
+          <div>
+            <div class="card-title"><span class="icon">☕</span> Steun dit project</div>
+            <p>FM Kompas is gratis en blijft gratis. Vond je het nuttig? Je kunt me optioneel een kopje koffie sturen.</p>
+          </div>
+          <a class="donate-btn" href="https://ko-fi.com/davidkoolstra" target="_blank" rel="noopener">
+            ☕ Ko-fi
+          </a>
+        </div>
+      </div>
+
       <!-- Vakken -->
       <div class="section-label">Vakken · Periode 4</div>
       <div class="course-grid">
@@ -870,33 +903,30 @@
 
       </div>
 
-      <!-- Contact + Donate -->
-      <div class="bottom-row" style="margin-top: 0.65rem;">
-
-        <!-- Contact form -->
-        <div class="card">
-          <div class="card-title"><span class="icon">✉️</span> Stel een vraag</div>
-          <form
-            class="contact-form"
-            id="contact-form"
-            action="https://formspree.io/f/YOUR_FORM_ID"
-            method="POST"
-            onsubmit="handleFormSubmit(event)"
-          >
-            <input type="hidden" name="_replyto" value="dpw.koolstra@student.han.nl" />
-            <div class="form-row">
-              <div class="form-group">
-                <label class="form-label" for="f-name">Naam</label>
-                <input class="form-input" id="f-name" name="naam" type="text" placeholder="Jouw naam" required />
-              </div>
-              <div class="form-group">
-                <label class="form-label" for="f-email">E-mail</label>
-                <input class="form-input" id="f-email" name="email" type="email" placeholder="jou@email.nl" required />
-              </div>
+      <!-- Contact -->
+      <div class="card" style="margin-top: 0.65rem;">
+        <div class="card-title"><span class="icon">✉️</span> Stel een vraag</div>
+        <form
+          class="contact-form"
+          id="contact-form"
+          action="https://formspree.io/f/YOUR_FORM_ID"
+          method="POST"
+          onsubmit="handleFormSubmit(event)"
+        >
+          <input type="hidden" name="_replyto" value="dpw.koolstra@student.han.nl" />
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="f-name">Naam</label>
+              <input class="form-input" id="f-name" name="naam" type="text" placeholder="Jouw naam" required />
             </div>
             <div class="form-group">
-              <label class="form-label" for="f-subject">Onderwerp</label>
-              <input class="form-input" id="f-subject" name="onderwerp" type="text" placeholder="Bijv. vraag over Schillenmodel" />
+              <label class="form-label" for="f-email">E-mail</label>
+              <input class="form-input" id="f-email" name="email" type="email" placeholder="jou@email.nl" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="f-subject">Onderwerp</label>
+            <input class="form-input" id="f-subject" name="onderwerp" type="text" placeholder="Bijv. vraag over Schillenmodel" />
             </div>
             <div class="form-group">
               <label class="form-label" for="f-msg">Bericht</label>
@@ -907,19 +937,6 @@
               <span class="form-success" id="form-success">Verstuurd! Je hoort snel van me.</span>
             </div>
           </form>
-        </div>
-
-        <!-- Donate -->
-        <div class="donate-card">
-          <div>
-            <div class="card-title"><span class="icon">☕</span> Steun dit project</div>
-            <p>FM Kompas is gratis en blijft gratis. Vond je het nuttig? Je kunt me optioneel een kopje koffie sturen.</p>
-          </div>
-          <a class="donate-btn" href="https://ko-fi.com/davidkoolstra" target="_blank" rel="noopener">
-            ☕ Ko-fi
-          </a>
-        </div>
-
       </div>
     </div>
   </div>
