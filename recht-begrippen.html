@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Begrippenlijst · Verbintenissenrecht — FMAtlas</title>
+<link rel="icon" type="image/svg+xml" href="logo.svg"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="css/fmatlas.css"/>
+<style>
+.bl-wrap { max-width: 1040px; margin: 0 auto; padding: 28px 24px 80px; }
+
+.bl-hero {
+  margin-bottom: 22px;
+}
+.bl-hero h1 { font-size: 36px; font-weight: 900; letter-spacing: -0.028em; margin-bottom: 6px; line-height: 1.05; }
+.bl-hero-sub { color: var(--muted); font-size: 13.5px; font-weight: 700; letter-spacing: 0.02em; }
+
+.bl-toolbar {
+  background: var(--surface); border: 1.5px solid var(--line); border-radius: var(--radius-lg);
+  padding: 14px 16px; margin-bottom: 18px;
+  display: flex; flex-direction: column; gap: 12px;
+}
+
+.bl-searchbox {
+  display: flex; align-items: center; gap: 10px;
+  background: var(--bg); border: 1.5px solid var(--line); border-radius: var(--radius);
+  padding: 10px 14px;
+}
+.bl-searchbox input {
+  flex: 1; border: none; background: none; outline: none;
+  font-family: inherit; font-size: 14px; font-weight: 600; color: var(--ink);
+}
+.bl-searchbox input::placeholder { color: var(--muted); }
+.bl-searchbox:focus-within { border-color: var(--accent); background: var(--surface); }
+
+.bl-counter {
+  font-size: 12px; color: var(--muted); font-weight: 700; font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.bl-catfilters {
+  display: flex; flex-wrap: wrap; gap: 6px;
+}
+.bl-catbtn {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: var(--surface); border: 1.5px solid var(--line); border-radius: 999px;
+  padding: 5px 11px; font-size: 11.5px; font-weight: 800; color: var(--ink-soft);
+  font-family: inherit; cursor: pointer; transition: all 0.15s;
+}
+.bl-catbtn:hover { border-color: var(--ink); color: var(--ink); }
+.bl-catbtn.active { color: var(--surface); }
+.bl-catbtn .dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+.bl-catbtn-all.active { background: var(--ink); border-color: var(--ink); }
+
+.bl-section { margin-bottom: 32px; }
+.bl-section-head {
+  display: flex; align-items: baseline; gap: 10px; margin-bottom: 12px;
+  padding-bottom: 6px; border-bottom: 1.5px solid var(--line);
+}
+.bl-section-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; position: relative; top: 1px; }
+.bl-section-title { font-size: 16px; font-weight: 900; letter-spacing: -0.01em; }
+.bl-section-count { font-size: 11px; color: var(--muted); font-weight: 700; letter-spacing: 0.04em; }
+
+.bl-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 10px;
+}
+
+.bl-card {
+  background: var(--surface); border: 1.5px solid var(--line); border-radius: var(--radius);
+  padding: 14px 16px; transition: border-color 0.12s, transform 0.12s;
+}
+.bl-card:hover { border-color: var(--ink-soft); }
+.bl-term {
+  font-size: 14.5px; font-weight: 800; letter-spacing: -0.005em; color: var(--ink);
+  margin-bottom: 4px; line-height: 1.25;
+}
+.bl-def { font-size: 13px; color: var(--ink-soft); line-height: 1.55; font-weight: 500; }
+.bl-formula {
+  display: inline-block; font-family: 'SFMono-Regular', Menlo, monospace;
+  font-size: 11.5px; font-weight: 700;
+  background: var(--surface-alt); border: 1.5px solid var(--line);
+  border-radius: 6px; padding: 3px 8px; margin-top: 6px; color: var(--accent-deep);
+}
+
+mark { background: rgba(239, 90, 63, 0.25); color: var(--ink); border-radius: 3px; padding: 0 2px; font-weight: 700; }
+
+.bl-empty {
+  text-align: center; padding: 48px 20px; color: var(--muted); font-weight: 600;
+}
+.bl-empty h3 { font-size: 16px; color: var(--ink); font-weight: 800; margin-bottom: 6px; }
+</style>
+</head>
+<body>
+
+<div id="fa-header-slot"></div>
+
+<nav class="fa-breadcrumb">
+  <a href="index.html">Home</a>
+  <span>›</span>
+  <a href="facilitaire-inkoop.html">Facilitaire Inkoop</a>
+  <span>›</span>
+  <span class="current">Begrippenlijst</span>
+</nav>
+
+<div class="bl-wrap">
+  <div class="bl-hero">
+    <h1>Begrippenlijst</h1>
+    <div class="bl-hero-sub">
+      <span id="blTotalCount">0</span> begrippen · gegroepeerd per categorie · direct zoekbaar
+    </div>
+  </div>
+
+  <div class="bl-toolbar">
+    <div class="bl-searchbox">
+      <span data-fa-icon="search" data-fa-size="15" style="color:var(--muted)"></span>
+      <input id="blSearch" placeholder="Zoek een begrip of definitie…" autocomplete="off"/>
+      <span class="bl-counter" id="blCounter">0 resultaten</span>
+    </div>
+    <div class="bl-catfilters" id="blCatFilters"></div>
+  </div>
+
+  <div id="blMain"></div>
+
+  <div class="bl-empty" id="blEmpty" style="display:none">
+    <h3>Geen resultaten</h3>
+    <div>Probeer een andere zoekterm of filter.</div>
+  </div>
+</div>
+
+<footer class="fa-footer">
+  <span>Tip: gebruik de flashcards-modus om actief te oefenen</span>
+  <span>FMAtlas · HAN FM</span>
+</footer>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+<script src="js/fmatlas.js"></script>
+<script src="js/data-recht.js"></script>
+<script>
+const firebaseConfig = {
+  apiKey: "AIzaSyBB397Wk2eqpBjic8E7aGV1mTgIjhQ21a8",
+  authDomain: "fmkompas-ff8bc.firebaseapp.com",
+  projectId: "fmkompas-ff8bc",
+  storageBucket: "fmkompas-ff8bc.firebasestorage.app",
+  messagingSenderId: "487972024689",
+  appId: "1:487972024689:web:712c3117080745d14746d0"
+};
+firebase.initializeApp(firebaseConfig);
+firebase.auth().onAuthStateChanged(user => {
+  document.getElementById('fa-header-slot').innerHTML = '';
+  document.getElementById('fa-header-slot').appendChild(faRenderHeader({ user }));
+  faMarkActiveToday();
+  faMarkLastSeen('facilitaire-inkoop','Facilitaire Inkoop','facilitaire-inkoop.html');
+});
+
+const { cats, begrippen } = window.RECHT;
+let activeCat = null;
+let query = '';
+
+document.getElementById('blTotalCount').textContent = begrippen.length;
+
+/* Build category filter buttons */
+function renderFilters() {
+  const box = document.getElementById('blCatFilters');
+  box.innerHTML = '';
+  const allBtn = document.createElement('button');
+  allBtn.className = 'bl-catbtn bl-catbtn-all' + (activeCat === null ? ' active' : '');
+  allBtn.innerHTML = `Alles`;
+  allBtn.onclick = () => { activeCat = null; render(); };
+  box.appendChild(allBtn);
+  cats.forEach(c => {
+    const btn = document.createElement('button');
+    btn.className = 'bl-catbtn' + (activeCat === c.key ? ' active' : '');
+    btn.innerHTML = `<span class="dot" style="background:${c.color}"></span>${c.short}`;
+    if (activeCat === c.key) {
+      btn.style.background = c.color;
+      btn.style.borderColor = c.color;
+      btn.style.color = '#fff';
+    }
+    btn.onclick = () => { activeCat = c.key; render(); };
+    box.appendChild(btn);
+  });
+}
+
+function escapeRegex(str) { return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); }
+function highlight(text, q) {
+  if (!q) return text;
+  const re = new RegExp('(' + escapeRegex(q) + ')', 'gi');
+  return text.replace(re, '<mark>$1</mark>');
+}
+
+function matches(item, q) {
+  if (!q) return true;
+  const l = q.toLowerCase();
+  return item.term.toLowerCase().includes(l) || item.def.toLowerCase().includes(l);
+}
+
+function render() {
+  renderFilters();
+  const main = document.getElementById('blMain');
+  main.innerHTML = '';
+  let totalShown = 0;
+
+  cats.forEach(c => {
+    if (activeCat && activeCat !== c.key) return;
+    const items = begrippen.filter(b => b.cat === c.key && matches(b, query));
+    if (!items.length) return;
+    totalShown += items.length;
+
+    const sec = document.createElement('section');
+    sec.className = 'bl-section';
+    sec.innerHTML = `
+      <div class="bl-section-head">
+        <span class="bl-section-dot" style="background:${c.color}"></span>
+        <span class="bl-section-title">${c.label}</span>
+        <span class="bl-section-count">${items.length} ${items.length === 1 ? 'begrip' : 'begrippen'}</span>
+      </div>
+      <div class="bl-grid">
+        ${items.map(b => `
+          <div class="bl-card">
+            <div class="bl-term">${highlight(b.term, query)}</div>
+            <div class="bl-def">${highlight(b.def, query)}</div>
+            ${b.formula ? `<div class="bl-formula">${highlight(b.formula, query)}</div>` : ''}
+          </div>
+        `).join('')}
+      </div>
+    `;
+    main.appendChild(sec);
+  });
+
+  document.getElementById('blCounter').textContent =
+    totalShown + ' ' + (totalShown === 1 ? 'resultaat' : 'resultaten');
+  document.getElementById('blEmpty').style.display = totalShown ? 'none' : 'block';
+}
+
+document.getElementById('blSearch').addEventListener('input', e => {
+  query = e.target.value.trim();
+  render();
+});
+
+render();
+</script>
+</body>
+</html>
