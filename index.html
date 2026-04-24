@@ -778,12 +778,6 @@
           <h3>Projectvaardigheden</h3>
           <p>Observeren, interviewen, enquêteren, zakelijk communiceren.</p>
         </div>
-        <div class="course-tile" onclick="goTo('ppo')">
-          <span class="tile-icon">🌱</span>
-          <div class="badge">P4</div>
-          <h3>Persoonlijke Ontwikkeling</h3>
-          <p>Zelfreflectie, growth mindset en professionele groei.</p>
-        </div>
       </div>
 
       <!-- Periode 3 -->
@@ -811,12 +805,6 @@
           <div class="badge">P2</div>
           <h3>Basis van FM B</h3>
           <p>Verdieping in facilitaire processen en dienstverlening.</p>
-        </div>
-        <div class="course-tile" onclick="goTo('fm-praktijk')">
-          <span class="tile-icon">🔍</span>
-          <div class="badge">P2</div>
-          <h3>FM in de Praktijk</h3>
-          <p>Praktijkervaring en reflectie op het facilitaire werkveld.</p>
         </div>
         <div class="course-tile" onclick="goTo('facilitaire-bedrijfsproject')">
           <span class="tile-icon">📊</span>
@@ -863,10 +851,6 @@
             <a class="trending-item" onclick="goTo('evenementenmarketing')">
               <span>Segmentatie vs. targeting</span>
               <span class="trending-replies">tentamenpunt</span>
-            </a>
-            <a class="trending-item" onclick="goTo('ppo')">
-              <span>Fixed vs. growth mindset</span>
-              <span class="trending-replies">populair</span>
             </a>
             <a class="trending-item" onclick="goTo('projectvaardigheden')">
               <span>Interviewtypen uitgelegd</span>
@@ -1148,48 +1132,6 @@
   </div>
 
 
-  <!-- ────────────────────────────────
-       PAGE: PPO
-  ──────────────────────────────── -->
-  <div class="page" id="page-ppo">
-    <div class="vak-page">
-      <button class="back-btn" onclick="goHome()">← Terug naar overzicht</button>
-      <h1>Persoonlijke Ontwikkeling</h1>
-      <p class="vak-subtitle">PPO · Periode 4 · Zelfinzicht, reflectie en professionele groei</p>
-
-      <h2>Kern van het vak</h2>
-      <p>PPO draait om zelfinzicht, reflectie en groei. Je brengt je competenties, werkstijl en ontwikkelpunten in kaart als voorbereiding op de beroepspraktijk.</p>
-
-      <h2>Producten</h2>
-      <div class="table-wrap">
-        <table>
-          <tr><th>Product</th><th>Beschrijving</th></tr>
-          <tr><td><strong>Logboek "De Praktijk In"</strong></td><td>Reflectie op praktijkervaringen — wekelijks in te vullen</td></tr>
-          <tr><td><strong>Kandidaatrapportage (TMA)</strong></td><td>Persoonlijk assessment: talenten, motivatoren, competenties</td></tr>
-          <tr><td><strong>Beoordelingsformulier</strong></td><td>Criteria waarop je beoordeeld wordt</td></tr>
-        </table>
-      </div>
-
-      <h2>Growth Mindset (Carol Dweck)</h2>
-      <div class="table-wrap">
-        <table>
-          <tr><th>Fixed mindset</th><th>Growth mindset</th></tr>
-          <tr><td>Talent staat vast bij geboorte</td><td>Talent groeit door inzet en ervaring</td></tr>
-          <tr><td>Fouten zijn bedreigend</td><td>Fouten zijn leermomenten</td></tr>
-          <tr><td>Feedback wordt vermeden</td><td>Feedback wordt gezocht en benut</td></tr>
-          <tr><td>Uitdagingen worden ontlopen</td><td>Uitdagingen worden opgezocht</td></tr>
-        </table>
-      </div>
-      <div class="callout"><strong>Kernboodschap:</strong> Doorzetten en inspanning leiden tot groei, niet aangeboren talent.</div>
-
-      <h2>Comfortzone, leerzone en paniekregio</h2>
-      <ul>
-        <li><strong>Comfortzone</strong> — bekende situaties, automatisch handelen, weinig groei</li>
-        <li><strong>Leerzone</strong> — licht oncomfortabel, maximale groei, bewuste reflectie vereist</li>
-        <li><strong>Paniekregio</strong> — te ver buiten comfortzone, blokkeert leren</li>
-      </ul>
-    </div>
-  </div>
 
 
   <!-- PAGE: FACILITAIRE INKOOP -->
@@ -1493,15 +1435,6 @@
     </div>
   </div>
 
-  <!-- PAGE: FM IN DE PRAKTIJK -->
-  <div class="page" id="page-fm-praktijk">
-    <div class="vak-page">
-      <button class="back-btn" onclick="goHome()">← Terug naar overzicht</button>
-      <h1>FM in de Praktijk</h1>
-      <p class="vak-subtitle">Facilitair Management · Periode 2</p>
-      <p>Deze pagina is nog in opbouw.</p>
-    </div>
-  </div>
 
   <!-- PAGE: FACILITAIR BEDRIJFSPROJECT -->
   <div class="page" id="page-facilitaire-bedrijfsproject">
@@ -1676,10 +1609,8 @@
     home:                          'page-home',
     evenementenlogistiek:          'page-evenementenlogistiek',
     projectvaardigheden:           'page-projectvaardigheden',
-    ppo:                           'page-ppo',
     'facilitaire-inkoop':          'page-facilitaire-inkoop',
     'basis-fm-b':                  'page-basis-fm-b',
-    'fm-praktijk':                 'page-fm-praktijk',
     'facilitaire-bedrijfsproject': 'page-facilitaire-bedrijfsproject',
     'facilitaire-bedrijfseconomie':'page-facilitaire-bedrijfseconomie',
     'basis-fm-a':                  'page-basis-fm-a',
@@ -1689,10 +1620,8 @@
   const titles = {
     evenementenlogistiek:          'Evenementenlogistiek',
     projectvaardigheden:           'Projectvaardigheden',
-    ppo:                           'Persoonlijke Ontwikkeling',
     'facilitaire-inkoop':          'Facilitaire Inkoop',
     'basis-fm-b':                  'Basis van FM B',
-    'fm-praktijk':                 'FM in de Praktijk',
     'facilitaire-bedrijfsproject': 'Facilitair Bedrijfsproject',
     'facilitaire-bedrijfseconomie':'Facilitaire Bedrijfseconomie',
     'basis-fm-a':                  'Basis van FM A',
