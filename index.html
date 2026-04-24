@@ -748,14 +748,66 @@
         </div>
       </div>
 
-      <!-- Herexamen -->
-      <div class="section-label" style="margin-top:0.5rem;">Herexamen</div>
+      <!-- Periode 3 -->
+      <div class="section-label" style="margin-top:0.5rem;">Vakken · Periode 3</div>
       <div class="course-grid">
-        <div class="course-tile" onclick="window.location.href='eventmanagement1.html'" style="border-color: rgba(239,68,68,0.25);">
+        <div class="course-tile" onclick="window.location.href='eventmanagement1.html'">
           <span class="tile-icon">📖</span>
-          <div class="badge" style="background:rgba(239,68,68,0.12);color:hsl(0,80%,65%);border-color:rgba(239,68,68,0.3);">Herexamen</div>
+          <div class="badge">P3</div>
           <h3>Eventmanagement 1</h3>
-          <p>Samenvatting, begrippenlijst & oefentoets voor het herexamen.</p>
+          <p>Samenvatting, begrippenlijst & oefentoets.</p>
+        </div>
+        <div class="course-tile" onclick="goTo('facilitaire-inkoop')">
+          <span class="tile-icon">🛒</span>
+          <div class="badge">P3</div>
+          <h3>Facilitaire Inkoop</h3>
+          <p>Inkoopproces, leveranciersselectie en contractbeheer.</p>
+        </div>
+      </div>
+
+      <!-- Periode 2 -->
+      <div class="section-label" style="margin-top:0.5rem;">Vakken · Periode 2</div>
+      <div class="course-grid">
+        <div class="course-tile" onclick="goTo('basis-fm-b')">
+          <span class="tile-icon">🏢</span>
+          <div class="badge">P2</div>
+          <h3>Basis van FM B</h3>
+          <p>Verdieping in facilitaire processen en dienstverlening.</p>
+        </div>
+        <div class="course-tile" onclick="goTo('fm-praktijk')">
+          <span class="tile-icon">🔍</span>
+          <div class="badge">P2</div>
+          <h3>FM in de Praktijk</h3>
+          <p>Praktijkervaring en reflectie op het facilitaire werkveld.</p>
+        </div>
+        <div class="course-tile" onclick="goTo('facilitaire-bedrijfsproject')">
+          <span class="tile-icon">📊</span>
+          <div class="badge">P2</div>
+          <h3>Facilitair Bedrijfsproject</h3>
+          <p>Groepsproject gericht op een facilitaire vraagstuk in de praktijk.</p>
+        </div>
+        <div class="course-tile" onclick="goTo('facilitaire-bedrijfseconomie')">
+          <span class="tile-icon">💰</span>
+          <div class="badge">P2</div>
+          <h3>Facilitaire Bedrijfseconomie</h3>
+          <p>Begroting, kostenanalyse en financieel beheer binnen FM.</p>
+        </div>
+      </div>
+
+      <!-- Periode 1 -->
+      <div class="section-label" style="margin-top:0.5rem;">Vakken · Periode 1</div>
+      <div class="course-grid">
+        <div class="course-tile" onclick="goTo('basis-fm-a')">
+          <span class="tile-icon">📚</span>
+          <div class="badge">P1</div>
+          <h3>Basis van FM A</h3>
+          <p>Introductie in facilitaire dienstverlening, kernbegrippen en beroepsprofiel.</p>
+        </div>
+        <div class="course-tile" onclick="goTo('trendwatchers')">
+          <span class="tile-icon">🔭</span>
+          <div class="badge">P1</div>
+          <h3>Trendwatchers</h3>
+          <p>Maatschappelijke trends en de impact op facilitaire dienstverlening.</p>
         </div>
       </div>
 
@@ -1102,6 +1154,76 @@
   </div>
 
 
+  <!-- PAGE: FACILITAIRE INKOOP -->
+  <div class="page" id="page-facilitaire-inkoop">
+    <div class="vak-page">
+      <button class="back-btn" onclick="goHome()">← Terug naar overzicht</button>
+      <h1>Facilitaire Inkoop</h1>
+      <p class="vak-subtitle">Facilitair Management · Periode 3</p>
+      <p>Deze pagina is nog in opbouw.</p>
+    </div>
+  </div>
+
+  <!-- PAGE: BASIS VAN FM B -->
+  <div class="page" id="page-basis-fm-b">
+    <div class="vak-page">
+      <button class="back-btn" onclick="goHome()">← Terug naar overzicht</button>
+      <h1>Basis van FM B</h1>
+      <p class="vak-subtitle">Facilitair Management · Periode 2</p>
+      <p>Deze pagina is nog in opbouw.</p>
+    </div>
+  </div>
+
+  <!-- PAGE: FM IN DE PRAKTIJK -->
+  <div class="page" id="page-fm-praktijk">
+    <div class="vak-page">
+      <button class="back-btn" onclick="goHome()">← Terug naar overzicht</button>
+      <h1>FM in de Praktijk</h1>
+      <p class="vak-subtitle">Facilitair Management · Periode 2</p>
+      <p>Deze pagina is nog in opbouw.</p>
+    </div>
+  </div>
+
+  <!-- PAGE: FACILITAIR BEDRIJFSPROJECT -->
+  <div class="page" id="page-facilitaire-bedrijfsproject">
+    <div class="vak-page">
+      <button class="back-btn" onclick="goHome()">← Terug naar overzicht</button>
+      <h1>Facilitair Bedrijfsproject</h1>
+      <p class="vak-subtitle">Facilitair Management · Periode 2</p>
+      <p>Deze pagina is nog in opbouw.</p>
+    </div>
+  </div>
+
+  <!-- PAGE: FACILITAIRE BEDRIJFSECONOMIE -->
+  <div class="page" id="page-facilitaire-bedrijfseconomie">
+    <div class="vak-page">
+      <button class="back-btn" onclick="goHome()">← Terug naar overzicht</button>
+      <h1>Facilitaire Bedrijfseconomie</h1>
+      <p class="vak-subtitle">Facilitair Management · Periode 2</p>
+      <p>Deze pagina is nog in opbouw.</p>
+    </div>
+  </div>
+
+  <!-- PAGE: BASIS VAN FM A -->
+  <div class="page" id="page-basis-fm-a">
+    <div class="vak-page">
+      <button class="back-btn" onclick="goHome()">← Terug naar overzicht</button>
+      <h1>Basis van FM A</h1>
+      <p class="vak-subtitle">Facilitair Management · Periode 1</p>
+      <p>Deze pagina is nog in opbouw.</p>
+    </div>
+  </div>
+
+  <!-- PAGE: TRENDWATCHERS -->
+  <div class="page" id="page-trendwatchers">
+    <div class="vak-page">
+      <button class="back-btn" onclick="goHome()">← Terug naar overzicht</button>
+      <h1>Trendwatchers</h1>
+      <p class="vak-subtitle">Facilitair Management · Periode 1</p>
+      <p>Deze pagina is nog in opbouw.</p>
+    </div>
+  </div>
+
   <!-- FOOTER -->
   <footer>
     FM Kompas · Studiehulp voor Facilitair Management · Inhoud is indicatief — controleer altijd je eigen lesmateriaal.
@@ -1232,18 +1354,32 @@
      NAVIGATIE
   ───────────────────────────────────────────────── */
   const pages = {
-    home:                 'page-home',
-    evenementenlogistiek: 'page-evenementenlogistiek',
-    evenementenmarketing: 'page-evenementenmarketing',
-    projectvaardigheden:  'page-projectvaardigheden',
-    ppo:                  'page-ppo',
+    home:                          'page-home',
+    evenementenlogistiek:          'page-evenementenlogistiek',
+    evenementenmarketing:          'page-evenementenmarketing',
+    projectvaardigheden:           'page-projectvaardigheden',
+    ppo:                           'page-ppo',
+    'facilitaire-inkoop':          'page-facilitaire-inkoop',
+    'basis-fm-b':                  'page-basis-fm-b',
+    'fm-praktijk':                 'page-fm-praktijk',
+    'facilitaire-bedrijfsproject': 'page-facilitaire-bedrijfsproject',
+    'facilitaire-bedrijfseconomie':'page-facilitaire-bedrijfseconomie',
+    'basis-fm-a':                  'page-basis-fm-a',
+    trendwatchers:                 'page-trendwatchers',
   };
 
   const titles = {
-    evenementenlogistiek: 'Evenementenlogistiek',
-    evenementenmarketing: 'Evenementenmarketing',
-    projectvaardigheden:  'Projectvaardigheden',
-    ppo:                  'Persoonlijke Ontwikkeling',
+    evenementenlogistiek:          'Evenementenlogistiek',
+    evenementenmarketing:          'Evenementenmarketing',
+    projectvaardigheden:           'Projectvaardigheden',
+    ppo:                           'Persoonlijke Ontwikkeling',
+    'facilitaire-inkoop':          'Facilitaire Inkoop',
+    'basis-fm-b':                  'Basis van FM B',
+    'fm-praktijk':                 'FM in de Praktijk',
+    'facilitaire-bedrijfsproject': 'Facilitair Bedrijfsproject',
+    'facilitaire-bedrijfseconomie':'Facilitaire Bedrijfseconomie',
+    'basis-fm-a':                  'Basis van FM A',
+    trendwatchers:                 'Trendwatchers',
   };
 
   function goTo(key) {
