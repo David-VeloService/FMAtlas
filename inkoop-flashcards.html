@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flashcards — Facilitaire Inkoop | FM Kompas</title>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+  <style>
+    :root{
+      --bg:hsl(0,0%,7%);
+      --fg:hsl(0,0%,100%);
+      --card:hsl(0,0%,9%);
+      --card2:hsl(0,0%,11%);
+      --primary:hsl(235,100%,60%);
+      --muted:hsl(0,0%,56%);
+      --border:rgba(255,255,255,0.10);
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'Geist','Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--fg);min-height:100vh;display:flex;flex-direction:column;align-items:center;padding-bottom:4rem}
+
+    .fm-header{width:100%;position:sticky;top:0;z-index:200;height:60px;background:rgba(18,18,18,0.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 1.25rem;gap:1rem}
+    .pts-chip{display:flex;align-items:center;gap:.4rem;background:rgba(91,91,255,.12);border:1px solid rgba(91,91,255,.30);border-radius:99px;padding:.25rem .8rem;font-size:.8rem;font-weight:700;color:hsl(235,100%,60%);flex-shrink:0}
+    .header-left{display:flex;align-items:center;gap:.9rem;min-width:0}
+    .back-link{color:var(--muted);font-size:.82rem;font-weight:500;text-decoration:none;white-space:nowrap;transition:color .15s}
+    .back-link:hover{color:var(--fg)}
+    .page-title{font-size:.88rem;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .page-title span{color:var(--muted);font-weight:400}
+
+    .topbar{width:100%;position:sticky;top:60px;z-index:100;background:rgba(18,18,18,0.95);border-bottom:1px solid var(--border);padding:.75rem 1.5rem;display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
+    .topbar h2{font-size:1rem;color:var(--fg);white-space:nowrap;font-weight:700}
+    .topbar select{padding:.4rem .8rem;border-radius:8px;border:1px solid var(--border);font-size:.85rem;background:var(--card2);color:var(--fg);cursor:pointer;font-family:inherit}
+    .topbar select option{background:hsl(0,0%,12%)}
+    .pill{padding:.3rem .75rem;border-radius:999px;font-size:.78rem;font-weight:700;cursor:pointer;border:none;transition:all .15s;font-family:inherit}
+    .pill-shuffle{background:var(--primary);color:#fff}
+    .pill-shuffle:hover{opacity:.88}
+    .pill-reset{background:var(--card2);color:var(--muted);border:1px solid var(--border)}
+    .pill-reset:hover{color:var(--fg)}
+    .progress-wrap{flex:1;min-width:120px}
+    .prog-labels{display:flex;justify-content:space-between;font-size:.72rem;color:var(--muted);margin-bottom:.25rem}
+    .prog-bar-bg{background:rgba(255,255,255,0.08);border-radius:999px;height:8px;overflow:hidden}
+    .prog-bar{height:100%;background:hsl(142,70%,45%);border-radius:999px;transition:width .4s ease}
+
+    .stats{display:flex;gap:1.5rem;padding:.75rem 1.5rem;width:100%;max-width:700px;justify-content:center}
+    .stat{text-align:center}
+    .stat-num{font-size:1.6rem;font-weight:900;line-height:1}
+    .stat-lbl{font-size:.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+    .stat.total .stat-num{color:var(--fg)}
+    .stat.known .stat-num{color:hsl(142,70%,45%)}
+    .stat.unknown .stat-num{color:hsl(0,72%,60%)}
+
+    .card-area{width:100%;max-width:680px;padding:1.5rem 1rem;display:flex;flex-direction:column;align-items:center;gap:1rem}
+
+    .flip-wrap{width:100%;perspective:1200px;cursor:pointer}
+    .flip-inner{position:relative;width:100%;min-height:240px;transform-style:preserve-3d;transition:transform .5s cubic-bezier(.4,0,.2,1)}
+    .flip-wrap.flipped .flip-inner{transform:rotateY(180deg)}
+
+    .face{position:absolute;width:100%;min-height:240px;backface-visibility:hidden;border-radius:20px;padding:2rem;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}
+    .face-front{background:linear-gradient(135deg,hsl(235,40%,16%),hsl(235,30%,12%));border:1px solid rgba(91,91,255,0.25)}
+    .face-back {background:linear-gradient(135deg,hsl(142,40%,12%),hsl(142,30%,9%));border:1px solid rgba(34,197,94,0.25);transform:rotateY(180deg)}
+
+    .face-hint{font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;margin-bottom:.75rem;opacity:.5}
+    .face-front .face-hint{color:#93c5fd}
+    .face-back  .face-hint{color:#86efac}
+
+    .face-cat{font-size:.75rem;font-weight:700;padding:.2rem .65rem;border-radius:999px;margin-bottom:1rem}
+    .face-term{font-size:1.5rem;font-weight:800;color:var(--fg);line-height:1.3}
+    .face-def{font-size:.95rem;color:#d1fae5;line-height:1.6}
+    .face-formula{display:inline-block;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:8px;padding:.3rem .75rem;font-family:monospace;font-size:.9rem;color:#fde68a;margin-top:.75rem}
+
+    .btn-row{display:flex;gap:.75rem;width:100%;max-width:680px;padding:0 1rem}
+    .btn{flex:1;padding:.75rem;border-radius:12px;border:none;font-size:.95rem;font-weight:700;cursor:pointer;transition:all .15s;font-family:inherit}
+    .btn-no{background:rgba(239,68,68,0.15);color:#fca5a5;border:1px solid rgba(239,68,68,0.25)}
+    .btn-no:hover{background:rgba(239,68,68,0.25)}
+    .btn-yes{background:rgba(34,197,94,0.15);color:#86efac;border:1px solid rgba(34,197,94,0.25)}
+    .btn-yes:hover{background:rgba(34,197,94,0.25)}
+    .btn-skip{background:var(--card2);color:var(--muted);border:1px solid var(--border)}
+    .btn-skip:hover{color:var(--fg)}
+
+    .card-counter{font-size:.8rem;color:var(--muted);text-align:center}
+
+    #done{display:none;max-width:680px;width:100%;padding:2rem 1rem;text-align:center}
+    #done h2{font-size:2rem;color:var(--fg);margin-bottom:.5rem}
+    #done .done-score{font-size:3.5rem;font-weight:900;color:hsl(142,70%,45%);margin:.5rem 0}
+    #done p{color:var(--muted);margin-bottom:1.5rem}
+    #done .btn-restart{background:var(--primary);color:#fff;padding:.75rem 2rem;border-radius:12px;border:none;font-size:1rem;font-weight:700;cursor:pointer;font-family:inherit;transition:opacity .15s}
+    #done .btn-restart:hover{opacity:.88}
+    #done .missed-list{text-align:left;background:var(--card);border:1px solid var(--border);border-radius:14px;padding:1.2rem;margin-top:1.5rem;max-height:300px;overflow-y:auto}
+    #done .missed-list h3{color:hsl(0,72%,60%);font-size:.85rem;text-transform:uppercase;letter-spacing:.07em;margin-bottom:.75rem}
+    #done .missed-item{padding:.45rem 0;border-bottom:1px solid rgba(255,255,255,0.06);font-size:.85rem}
+    #done .missed-item:last-child{border-bottom:none}
+    #done .missed-item strong{color:#fca5a5;display:block}
+    #done .missed-item span{color:var(--muted)}
+
+    /* Categoriekleuren */
+    .cc-basis{background:rgba(59,130,246,0.25);color:#93c5fd}
+    .cc-vanweele{background:rgba(34,197,94,0.22);color:#86efac}
+    .cc-tactisch{background:rgba(234,179,8,0.22);color:#fde68a}
+    .cc-operationeel{background:rgba(139,92,246,0.22);color:#c4b5fd}
+    .cc-strategie{background:rgba(249,115,22,0.22);color:#fdba74}
+    .cc-markt{background:rgba(236,72,153,0.22);color:#f9a8d4}
+    .cc-digitaal{background:rgba(6,182,212,0.22);color:#67e8f9}
+  </style>
+</head>
+<body>
+
+<nav class="fm-header">
+  <div class="header-left">
+    <a class="back-link" href="facilitaire-inkoop.html">← Terug</a>
+    <img src="logo.svg" height="26" alt="FM Kompas" style="display:block">
+    <span class="page-title">Facilitaire Inkoop <span>/ Flashcards</span></span>
+  </div>
+  <div class="pts-chip">⭐ <span id="pts-display">—</span> pts</div>
+</nav>
+
+<div class="topbar">
+  <h2>🃏 Flashcards</h2>
+  <select id="catFilter" onchange="loadDeck()">
+    <option value="all">🔍 Alle categorieën</option>
+    <option value="basis">🏗️ Basisprincipes</option>
+    <option value="vanweele">🔄 Van Weele (6 stappen)</option>
+    <option value="tactisch">🎯 Tactische inkoop</option>
+    <option value="operationeel">⚙️ Operationele inkoop</option>
+    <option value="strategie">🏆 Strategie & Contracten</option>
+    <option value="markt">📊 Marktonderzoek & PMI</option>
+    <option value="digitaal">💻 Digitalisering</option>
+  </select>
+  <button class="pill pill-shuffle" onclick="shuffle()">🔀 Schud</button>
+  <button class="pill pill-reset" onclick="loadDeck()">↺ Opnieuw</button>
+  <div class="progress-wrap">
+    <div class="prog-labels"><span id="progLabel">0 / 0 bekend</span></div>
+    <div class="prog-bar-bg"><div class="prog-bar" id="progBar" style="width:0%"></div></div>
+  </div>
+</div>
+
+<div class="stats">
+  <div class="stat total"><div class="stat-num" id="statTotal">0</div><div class="stat-lbl">Totaal</div></div>
+  <div class="stat known"><div class="stat-num" id="statKnown">0</div><div class="stat-lbl">✓ Gekend</div></div>
+  <div class="stat unknown"><div class="stat-num" id="statUnknown">0</div><div class="stat-lbl">✗ Herhalen</div></div>
+</div>
+
+<div class="card-area">
+  <div class="card-counter" id="cardCounter"></div>
+  <div class="flip-wrap" id="flipWrap" onclick="flipCard()">
+    <div class="flip-inner" id="flipInner">
+      <div class="face face-front" id="faceFront">
+        <div class="face-hint">Klik om te onthullen</div>
+        <span class="face-cat" id="frontCat"></span>
+        <div class="face-term" id="frontTerm"></div>
+      </div>
+      <div class="face face-back" id="faceBack">
+        <div class="face-hint">Definitie</div>
+        <div class="face-def" id="backDef"></div>
+        <div class="face-formula" id="backFormula" style="display:none"></div>
+      </div>
+    </div>
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-no"   onclick="markCard(false)">✗ Nog niet</button>
+    <button class="btn btn-skip" onclick="nextCard()">→ Sla over</button>
+    <button class="btn btn-yes"  onclick="markCard(true)">✓ Gekend!</button>
+  </div>
+</div>
+
+<div id="done">
+  <h2>🎉 Sessie klaar!</h2>
+  <div class="done-score" id="doneScore"></div>
+  <p id="doneText"></p>
+  <button class="btn-restart" onclick="restartMissed()" id="btnMissed" style="display:none;margin-bottom:.75rem">🔁 Herhaal niet-gekende kaarten</button>
+  <button class="btn-restart" onclick="loadDeck()">↺ Begin opnieuw</button>
+  <div class="missed-list" id="missedList" style="display:none">
+    <h3>Nog te leren:</h3>
+    <div id="missedItems"></div>
+  </div>
+</div>
+
+<script>
+const allCards = [
+  /* ── BASISPRINCIPES ── */
+  {cat:"basis",term:"Inkoop",def:"Het van externe bronnen betrekken van alle goederen en diensten die noodzakelijk zijn voor de bedrijfsvoering en de instandhouding van een organisatie, tegen de meest gunstige voorwaarden."},
+  {cat:"basis",term:"Inkoopfunctie",def:"Het organisatiebrede proces van inkoop — omvat meer dan alleen de inkoopafdeling. Factuurafhandeling (Finance), inhuren tijdelijk personeel (HRM) en boeken van transport (Logistiek) vallen buiten de afdeling maar zijn onderdeel van de inkoopfunctie."},
+  {cat:"basis",term:"Spin in het web",def:"Metafoor voor de inkoper: inkoop raakt alle bedrijfsfuncties en vormt de schakel tussen de interne organisatie en de externe leveranciersmarkt."},
+  {cat:"basis",term:"Primaire (directe) inkoop",def:"Inkoop van goederen en diensten die rechtstreeks terechtkomen in het eindproduct of de kernactiviteit van de organisatie. Bijv. grondstoffen voor een fabriek, medicijnen in een ziekenhuis."},
+  {cat:"basis",term:"Indirecte inkoop / Facilitaire inkoop",def:"Alle inkoop voor het functioneren van de organisatie in het algemeen, los van het primaire proces. Bijv. schoonmaak, catering, beveiliging, ICT, bedrijfskleding. Dit is het werkterrein van de Facility Manager."},
+  {cat:"basis",term:"MRO (Maintenance, Repair & Operations)",def:"Goederen en activiteiten die nodig zijn voor het dagelijkse onderhoud, reparatie en functioneren van een organisatie. Synoniem voor indirecte/facilitaire inkoop."},
+  {cat:"basis",term:"Inkoopquote",def:"Percentage van de omzet dat besteed wordt aan inkoop.",formula:"Inkoopquote = (inkoopkosten / omzet) × 100%"},
+  {cat:"basis",term:"Hefboomwerking van inkoop",def:"Bij een inkoopquote van 50% en nettomarge van 5% levert 1% inkoopbesparing evenveel resultaatverbetering op als ±10% omzetgroei. Inkoop heeft directe invloed op het bedrijfsresultaat."},
+  {cat:"basis",term:"Make-or-buy beslissing",def:"De meest fundamentele strategische inkoopbeslissing: voert de organisatie een activiteit zelf uit (make) of koopt ze die in bij een externe partij (buy)? Kernactiviteiten worden vaak intern gehouden."},
+  {cat:"basis",term:"Maverick buying",def:"Medewerkers die buiten de gesloten contracten om inkopen. Gevolg: volume- en kortingsvoordelen gaan verloren, administratieve chaos en een slechtere onderhandelingspositie."},
+  {cat:"basis",term:"Publieke inkoop",def:"Inkoop door overheidsorganisaties. Gericht op maatschappelijke doelstellingen. Boven drempelwaarden verplicht Europees aanbesteden met gelijke kansen voor leveranciers."},
+  {cat:"basis",term:"Private inkoop",def:"Inkoop door private organisaties (bedrijven, instellingen). Gericht op winst of continuïteit. Vrij in leverancierskeuze en onderhandelingswijze."},
+  {cat:"basis",term:"Aanbesteding",def:"Formeel proces waarmee een opdrachtgever de markt benadert om leveranciers te selecteren. Verplicht bij publieke organisaties boven bepaalde drempelwaarden."},
+  {cat:"basis",term:"Centrale inkoop",def:"Één centrale afdeling is verantwoordelijk voor alle inkoop. Voordeel: maximale schaalvoordelen. Nadeel: ver van de business, beperkte lokale zeggenschap."},
+  {cat:"basis",term:"Decentrale inkoop",def:"Afdelingen of businessunits kopen zelf in. Voordeel: lokale kennis. Nadeel: verlies van schaalvoordelen en mogelijk hogere prijzen."},
+  {cat:"basis",term:"Hybride inkoop (coördinatie)",def:"Combinatie van centrale regie en decentrale uitvoering. Combineert schaalvoordelen met flexibiliteit."},
+  {cat:"basis",term:"Vier primaire taken van inkoop",def:"1. Operationele excellentie (continuïteit), 2. Realiseren van inkoopbesparingen, 3. Verminderen van risico's in de toeleveringsketen, 4. Bijdragen aan innovatie en waardecreatie."},
+
+  /* ── VAN WEELE (6 STAPPEN) ── */
+  {cat:"vanweele",term:"Lineair inkoopproces van Van Weele",def:"Zes stappen: 1. Specificeren → 2. Selecteren → 3. Contracteren (tactisch, éénmalig) → 4. Bestellen → 5. Bewaken → 6. Nazorg & Evaluatie (operationeel, herhaald)."},
+  {cat:"vanweele",term:"Tactische inkoop (stappen 1-3)",def:"De éénmalige, strategische fase: specificeren, selecteren en contracteren. Bepaalt wat, bij wie en onder welke voorwaarden wordt ingekocht."},
+  {cat:"vanweele",term:"Operationele inkoop (stappen 4-6)",def:"De herhaalde, uitvoerende fase: bestellen, bewaken en nazorg & evaluatie. Wordt gedurende de looptijd van een contract steeds opnieuw doorlopen."},
+  {cat:"vanweele",term:"Stap 1: Specificeren",def:"Bepalen wát er ingekocht moet worden. Primair de verantwoordelijkheid van de gebruiker/budgethouder. De inkoper zorgt dat de specificatie objectief en eenduidig is."},
+  {cat:"vanweele",term:"Stap 2: Selecteren",def:"Markt in kaart brengen, shortlist opstellen, offertes aanvragen (RFQ) en de meest geschikte leverancier kiezen op basis van een gestructureerde beoordelingsmethode."},
+  {cat:"vanweele",term:"Stap 3: Contracteren",def:"Onderhandelen over prijs en voorwaarden, en de afspraken vastleggen in een contract. Bevat afspraken over prijs, kwaliteit, levering, KPI's, SLA's en exitclausules."},
+  {cat:"vanweele",term:"Stap 4: Bestellen",def:"Het plaatsen van een inkooporder bij de gecontracteerde leverancier. De inkooporder is de officiële bevestiging van een bestelling."},
+  {cat:"vanweele",term:"Stap 5: Bewaken (orderbewaking)",def:"Toezicht houden op tijdige, volledige levering. Drie methoden: exception expediting, routine statuscheck, advanced statuscheck."},
+  {cat:"vanweele",term:"Stap 6: Nazorg & Evaluatie",def:"Factuurcontrole via three-way matching, afhandeling van reclames en leveranciersbeoordeling. Basis voor toekomstige selectiebeslissingen."},
+
+  /* ── TACTISCHE INKOOP ── */
+  {cat:"tactisch",term:"Functionele specificatie",def:"Beschrijft wát een product of dienst moet doen (niet hóe). Geeft leveranciers ruimte voor creatieve oplossingen. Voorbeeld: 'De ruimte moet schoon zijn.'"},
+  {cat:"tactisch",term:"Programma van Eisen (PvE)",def:"Verdere detaillering van de functionele specificatie met SMART-geformuleerde eisen, richtbudget en randvoorwaarden."},
+  {cat:"tactisch",term:"Technische specificatie",def:"Uitwerking van alle specifieke technische eisen: maatvoering, materialen, normen, levertijden, certificeringen. Het meest gedetailleerde niveau van specificeren."},
+  {cat:"tactisch",term:"Eisen vs. wensen",def:"Eisen zijn knock-outcriteria — leveranciers die niet voldoen worden uitgesloten. Wensen zijn nice-to-have criteria die meewegen in de beoordeling maar niet elimineren."},
+  {cat:"tactisch",term:"Best Value Procurement (BVP)",def:"Inkoopstrategie waarbij de nadruk ligt op de best mogelijke waarde, niet op de laagste prijs."},
+  {cat:"tactisch",term:"RFI (Request for Information)",def:"Informatieverzoek aan potentiële leveranciers in de oriëntatiefase. Niet bindend. Gebruikt voor marktconsultatie en prekwalificatie: longlist → shortlist."},
+  {cat:"tactisch",term:"RFQ (Request for Quotation)",def:"Formele offerteaanvraag bij de shortlist van leveranciers. Bindend bij gunning. Bevat alle eisen en criteria waarop beoordeeld wordt."},
+  {cat:"tactisch",term:"Prekwalificatie",def:"Toetsen of potentiële leveranciers voldoen aan basisvereisten vóórdat een formele offerteaanvraag wordt gedaan. Longlist → shortlist."},
+  {cat:"tactisch",term:"Gewogen factorscore / BPKV",def:"Offertebeoordelingsmethode waarbij meerdere criteria elk een wegingsfactor krijgen. Meest gebruikt bij complexe aankopen. BPKV = Best Price to Quality Value."},
+  {cat:"tactisch",term:"Indexmethode",def:"Offertebeoordelingsmethode waarbij een vaste prijs/kwaliteitsverhouding is vastgesteld (bijv. 50/50). 1% hogere kwaliteit rechtvaardigt 1% hogere prijs."},
+  {cat:"tactisch",term:"Waardering in euro's",def:"Offertebeoordelingsmethode waarbij kwaliteitsverschillen worden uitgedrukt in euro's en in mindering worden gebracht op de aangeboden prijs. De laagste gecorrigeerde prijs wint."},
+  {cat:"tactisch",term:"Accountportfolio",def:"Spiegel van de Kraljic-matrix vanuit leveranciersperspectief: hoe segmenteert de leverancier zijn klanten? Core account (hoge omzet, strategisch), Development account, Nuisance account."},
+  {cat:"tactisch",term:"Resultaatcontract",def:"Contract waarbij de leverancier een concreet resultaat garandeert. Betaling is gekoppeld aan het resultaat. Makkelijker toetsbaar — voorkeur van de inkoper."},
+  {cat:"tactisch",term:"Inspanningscontract",def:"Contract waarbij de leverancier zich inspant maar geen resultaat garandeert (bijv. advocaat, adviseur). Van toepassing als het eindresultaat moeilijk van tevoren te definiëren is."},
+  {cat:"tactisch",term:"Vaste prijs (fixed price)",def:"Contractvorm waarbij de prijs vooraf is vastgesteld. Het financiële risico ligt bij de leverancier. Vereist een volledig en gedetailleerd PvE."},
+  {cat:"tactisch",term:"Regiecontract",def:"Contractvorm waarbij achteraf wordt verrekend op basis van uren en materialen. Financieel risico ligt bij de opdrachtgever. Biedt de leverancier geen prikkel voor efficiëntie."},
+  {cat:"tactisch",term:"Eenheidsprijscontract",def:"Contractvorm met een tarief per prestatie-eenheid (m², uur, stuk). Geschikt voor standaard terugkerende werkzaamheden waarbij volume vooraf onbekend is."},
+  {cat:"tactisch",term:"SLA (Service Level Agreement)",def:"Meetbare prestatieafspraken over het niveau van dienstverlening. Onderdeel van het contract. Basis voor het beoordelen van de leverancier tijdens de operationele fase."},
+  {cat:"tactisch",term:"KPI (Key Performance Indicator)",def:"Prestatie-indicator waarmee de kwaliteit van levering wordt gemeten. Wordt gebruikt bij orderbewaking, leveranciersevaluatie en contractmanagement."},
+  {cat:"tactisch",term:"Salamitactiek",def:"Onderhandelingstactiek waarbij in kleine stappen concessies worden verkregen, zodat de wederpartij niet in één keer het totale verlies ziet."},
+  {cat:"tactisch",term:"TCO (Total Cost of Ownership)",def:"Alle kosten verbonden aan de aanschaf, het bezit en de afdanking van een product over de volledige levenscyclus. Nadrukkelijk niet alleen de aanschafprijs.",formula:"TCO = pre-transactie + transactie + post-transactiekosten"},
+
+  /* ── OPERATIONELE INKOOP ── */
+  {cat:"operationeel",term:"Inkooporder",def:"Officieel document waarmee de koper een bestelling plaatst bij een leverancier na ondertekening van het contract."},
+  {cat:"operationeel",term:"Roundtrip bestelling",def:"Bestelwijze waarbij de medewerker winkelt in de webshop van de leverancier; het winkelmandje wordt teruggezonden naar het interne bestelsysteem voor goedkeuring."},
+  {cat:"operationeel",term:"Catalogusbestelling",def:"Bestelwijze waarbij de medewerker winkelt in een interne catalogus. Snelle route: direct naar budgethouder ter goedkeuring."},
+  {cat:"operationeel",term:"Vrije aanvraag",def:"Bestelwijze voor niet-standaard bestellingen. Langste route: eerst langs Inkoop en Bedrijfsbureau, dan naar budgethouder."},
+  {cat:"operationeel",term:"Exception expediting (piepsysteem)",def:"Reactieve bewakingsmethode waarbij de inkoper pas actie onderneemt na een probleemsignaal. Nadeel: inkoper loopt altijd achter de feiten aan."},
+  {cat:"operationeel",term:"Routine statuscheck",def:"Proactieve bewakingsmethode waarbij de inkoper enkele dagen vóór de leverdatum contact opneemt om leverdatum en volledigheid te bevestigen."},
+  {cat:"operationeel",term:"Advanced statuscheck",def:"Meest proactieve bewakingsmethode: kritische leveranciers geven een gedetailleerde productieplanning; periodieke voortgangstoetsing. Geschikt voor kritische componenten."},
+  {cat:"operationeel",term:"Ontvangstcontrole",def:"Controle bij binnenkomst van een levering op: artikelen en aantallen (manco), kwaliteit, logistiek (verpakking, tijd) en documentatie."},
+  {cat:"operationeel",term:"Three-way matching",def:"Vergelijking van drie documenten vóórdat een factuur betaalbaar wordt gesteld: (1) inkooporder, (2) afleveringsbon, (3) factuur. Alleen bij overeenstemming wordt betaald."},
+  {cat:"operationeel",term:"Leveranciersevaluatie",def:"Periodieke beoordeling van een leverancier op kwaliteit, leveringsbetrouwbaarheid, communicatie en prijs-kwaliteitsverhouding."},
+
+  /* ── STRATEGIE & CONTRACTEN ── */
+  {cat:"strategie",term:"Uitbesteden (outsourcing)",def:"Strategische overdracht van intern uitgevoerde activiteiten aan een externe partij voor een langere termijn (3-7 jaar). Kenmerken: bedrijfsmiddelen gaan over, intensieve relatie."},
+  {cat:"strategie",term:"Contractmanagement",def:"Het geheel van activiteiten gericht op het wederzijds doen nakomen van afspraken, zodanig dat maximale waarde voor de organisatie wordt gecreëerd. Bestaat uit contractbeheer + prestatiemanagement."},
+  {cat:"strategie",term:"Contractbeheer",def:"Administratief beheren en archiveren van contracten. Bijhouden van expiratiedata, mutaties en stuurinformatie."},
+  {cat:"strategie",term:"Prestatiemanagement",def:"Actief monitoren en sturen op afgesproken prestaties (KPI's en SLA's). Periodieke evaluatiegesprekken met leveranciers gericht op continue verbetering."},
+  {cat:"strategie",term:"Leveranciersmanagement",def:"Alle activiteiten gericht op het verkennen, selecteren, starten, onderhouden, ontwikkelen en beëindigen van leveranciersrelaties. Gaat verder dan contractmanagement — omvat ook co-innovatie."},
+  {cat:"strategie",term:"Spendanalyse",def:"Financiële analyse naar de daadwerkelijke inkoopuitgaven. Beantwoordt acht vragen: wat, hoeveel, bij wie, hoe vaak, welke afdeling, maverick buying-aandeel, aantal facturen, gemiddelde factuurwaarde."},
+  {cat:"strategie",term:"ABC-analyse",def:"Indeling van leveranciers of artikelen op basis van inkoopomzet. A: ~20% leveranciers, ~80% omzet. B: ~30% leveranciers, ~15% omzet. C: ~50% leveranciers, ~5% omzet."},
+  {cat:"strategie",term:"Pareto-principe (80/20-regel)",def:"Empirisch principe: 20% van de leveranciers is verantwoordelijk voor 80% van de inkoopuitgaven. Basis voor de ABC-analyse."},
+  {cat:"strategie",term:"Kraljic-matrix",def:"Portfoliomodel waarbij inkopen worden ingedeeld op financiële invloed (hoog/laag) × toeleveringsrisico (hoog/laag). Vier kwadranten: strategisch, hefboom, knelpunt en routine."},
+  {cat:"strategie",term:"Strategische producten (Kraljic)",def:"Hoog toeleveringsrisico + hoge financiële invloed. Van één leverancier; grote waarde in kostprijs. Bijv. motoren autofabriek. Strategie: strategic partnership, open calculatie, co-innovatie."},
+  {cat:"strategie",term:"Hefboomproducten (Kraljic)",def:"Laag toeleveringsrisico + hoge financiële invloed. Van meerdere leveranciers; kleine prijswijziging heeft groot effect. Bijv. bulkchemicaliën. Strategie: concurrentiestelling, breed uitvragen."},
+  {cat:"strategie",term:"Knelpuntproducten (Kraljic)",def:"Hoog toeleveringsrisico + lage financiële invloed. Van één leverancier; relatief geringe waarde maar kwetsbaar. Bijv. machine-specifieke reserveonderdelen. Strategie: veiligstellen toelevering."},
+  {cat:"strategie",term:"Routineproducten (Kraljic)",def:"Laag toeleveringsrisico + lage financiële invloed. Van veel leveranciers; geringe waarde per eenheid. Bijv. kantoorartikelen. Strategie: digitaliseren en automatiseren."},
+  {cat:"strategie",term:"Exitafspraken",def:"Contractuele bepalingen over hoe een samenwerking beëindigd kan worden: overdrachtsperiode, eigendom van data en bedrijfsmiddelen. Essentieel bij uitbesteding om vendor lock-in te voorkomen."},
+
+  /* ── MARKTONDERZOEK & PMI ── */
+  {cat:"markt",term:"Inkoopmarktonderzoek",def:"Systematisch onderzoek naar alle relevante factoren die de verwerving van goederen en diensten beïnvloeden. Doel: huidige en toekomstige behoeften veiligstellen."},
+  {cat:"markt",term:"Macro-economische factoren",def:"Algemene economische omgeving: conjunctuur, loonontwikkelingen, rentestand, wetgeving, grondstofprijzen, valuta, inflatie, geopolitieke spanningen."},
+  {cat:"markt",term:"Meso-economische factoren",def:"Ontwikkelingen in een specifieke bedrijfstak: vraag-aanbodverhouding, orderportefeuilles, bezettingsgraad, marktstructuur (oligopolie, monopolie, vrije markt)."},
+  {cat:"markt",term:"Micro-economische factoren",def:"Kenmerken van het individuele leveranciersbedrijf: financiële positie, managementstructuur, leveringsbetrouwbaarheid, kwaliteitsprestaties, kostprijsstructuur."},
+  {cat:"markt",term:"Productfactoren",def:"Factoren die de verkoopprijs en kostprijs bepalen: technische specs, substituten, standaardisatie, innovatiecyclus, levertijden, certificeringen."},
+  {cat:"markt",term:"PMI (Purchasing Managers Index)",def:"Indicator voor economische bedrijvigheid, ontleend aan het inkoopvolume dat inkopers in een bepaalde maand contracteren. PMI > 50 = groei; PMI < 50 = krimp."},
+  {cat:"markt",term:"NEVI",def:"Nederlandse Vereniging voor Inkoop Management. Publiceert maandelijks de PMI en is de beroepsvereniging voor inkoopprofessionals in Nederland."},
+  {cat:"markt",term:"Dataleveranciers (Graydon, Dun & Bradstreet)",def:"Commerciële databedrijven die databases beheren met financiële gegevens van bedrijven. Gebruikt om snel inzicht te krijgen in de kredietwaardigheid van potentiële leveranciers."},
+
+  /* ── DIGITALISERING ── */
+  {cat:"digitaal",term:"Inkoopdigitalisering",def:"Het gebruik van ICT om klant, leverancier en andere partners in een waardeketen te verbinden, zodanig dat de prestaties van transactieprocessen worden verbeterd."},
+  {cat:"digitaal",term:"ERP (Enterprise Resource Planning)",def:"Geïntegreerd softwaresysteem dat alle bedrijfsprocessen ondersteunt vanuit één centrale database. Ruggengraat van de informatievoorziening. Bekende leveranciers: SAP, Oracle."},
+  {cat:"digitaal",term:"AI (Artificial Intelligence) in inkoop",def:"Systemen die menselijke intelligentie nabootsen. Toepassingen in inkoop: chatbots, automatische contractopstelling, forecasting van volumes en prijzen."},
+  {cat:"digitaal",term:"RPA (Robotic Process Automation)",def:"Automatisering van repetitieve bedrijfsprocessen via software. Inkoop-toepassing: automatische factuurafhandeling door vergelijking van drie systemen (three-way matching)."},
+  {cat:"digitaal",term:"Blockchain & Smart Contracts",def:"Blockchain = gedistribueerde registratie van data in blokken. Smart contracts voeren afspraken automatisch uit bij vooraf bepaalde criteria. Inkoop-toepassing: herkomst producten traceren."},
+  {cat:"digitaal",term:"IoT (Internet of Things)",def:"Apparaten die via internet met elkaar communiceren. Inkoop-toepassing: machine stuurt signaal bij naderende storing → preventief onderhoud bestellen; automatische voorraadbewaking."},
+  {cat:"digitaal",term:"Data-analyse & visualisatie",def:"Tools (Power BI, Qlikview) die data uit meerdere bronnen combineren en visualiseren. Ondersteunen besluitvorming in inkoop: spend-analyse, leveranciersprestaties, contractverloop."},
+  {cat:"digitaal",term:"Inkoper van de toekomst",def:"Operationele inkoop wordt volledig geautomatiseerd. De inkoper wordt een businessanalist die zich richt op strategie, leveranciersrelaties en innovatie in plaats van routinetransacties."},
+];
+
+/* ════════ STATE ════════ */
+let deck = [];
+let current = 0;
+let known = 0;
+let missed = [];
+let flipped = false;
+
+/* ════════ HELPERS ════════ */
+const catLabels = {basis:"Basis",vanweele:"Van Weele",tactisch:"Tactisch",operationeel:"Operationeel",strategie:"Strategie",markt:"Markt & PMI",digitaal:"Digitalisering"};
+
+function shuffleArr(arr){
+  for(let i=arr.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[arr[i],arr[j]]=[arr[j],arr[i]];}
+  return arr;
+}
+
+/* ════════ LOAD DECK ════════ */
+function loadDeck(){
+  const cat = document.getElementById('catFilter').value;
+  deck = (cat === 'all' ? [...allCards] : allCards.filter(c=>c.cat===cat));
+  current = 0; known = 0; missed = [];
+  flipped = false;
+  document.getElementById('flipWrap').classList.remove('flipped');
+  document.getElementById('done').style.display = 'none';
+  document.querySelector('.card-area').style.display = 'flex';
+  updateStats();
+  showCard();
+}
+
+/* ════════ SHUFFLE ════════ */
+function shuffle(){
+  const cat = document.getElementById('catFilter').value;
+  deck = shuffleArr(cat === 'all' ? [...allCards] : allCards.filter(c=>c.cat===cat));
+  current = 0; known = 0; missed = [];
+  flipped = false;
+  document.getElementById('flipWrap').classList.remove('flipped');
+  document.getElementById('done').style.display = 'none';
+  document.querySelector('.card-area').style.display = 'flex';
+  updateStats();
+  showCard();
+}
+
+/* ════════ SHOW CARD ════════ */
+function showCard(){
+  if(current >= deck.length){ showDone(); return; }
+  const c = deck[current];
+  document.getElementById('cardCounter').textContent = `Kaart ${current+1} van ${deck.length}`;
+  document.getElementById('frontCat').textContent = catLabels[c.cat] || c.cat;
+  document.getElementById('frontCat').className = `face-cat cc-${c.cat}`;
+  document.getElementById('frontTerm').textContent = c.term;
+  document.getElementById('backDef').textContent = c.def;
+  const fEl = document.getElementById('backFormula');
+  if(c.formula){ fEl.textContent = c.formula; fEl.style.display='inline-block'; }
+  else { fEl.style.display='none'; }
+  flipped = false;
+  document.getElementById('flipWrap').classList.remove('flipped');
+}
+
+/* ════════ FLIP ════════ */
+function flipCard(){
+  flipped = !flipped;
+  document.getElementById('flipWrap').classList.toggle('flipped', flipped);
+}
+
+/* ════════ MARK ════════ */
+function markCard(isKnown){
+  if(!flipped){ flipCard(); setTimeout(()=>{ _mark(isKnown); }, 400); }
+  else { _mark(isKnown); }
+}
+function _mark(isKnown){
+  if(isKnown){ known++; addPoints(5); }
+  else { missed.push(deck[current]); }
+  current++;
+  updateStats();
+  setTimeout(showCard, 150);
+}
+
+function nextCard(){
+  missed.push(deck[current]);
+  current++;
+  updateStats();
+  flipped = false;
+  document.getElementById('flipWrap').classList.remove('flipped');
+  showCard();
+}
+
+/* ════════ STATS ════════ */
+function updateStats(){
+  const total = deck.length;
+  document.getElementById('statTotal').textContent = total;
+  document.getElementById('statKnown').textContent = known;
+  document.getElementById('statUnknown').textContent = missed.length;
+  document.getElementById('progBar').style.width = (total ? (current/total*100) : 0) + '%';
+  document.getElementById('progLabel').textContent = `${known} / ${total} bekend`;
+}
+
+/* ════════ DONE SCREEN ════════ */
+function showDone(){
+  document.querySelector('.card-area').style.display = 'none';
+  const doneEl = document.getElementById('done');
+  doneEl.style.display = 'block';
+  const pct = deck.length ? Math.round((known/deck.length)*100) : 0;
+  document.getElementById('doneScore').textContent = `${known} / ${deck.length}`;
+  document.getElementById('doneText').textContent = pct >= 80
+    ? '🎉 Uitstekend! Je beheerst deze stof goed.'
+    : pct >= 60
+    ? '👍 Goed bezig! Herhaal de niet-gekende kaarten nog een keer.'
+    : '📚 Nog wat herhalen. Ga de gemiste kaarten nog eens door.';
+
+  const missBtn = document.getElementById('btnMissed');
+  const missList = document.getElementById('missedList');
+  const missItems = document.getElementById('missedItems');
+
+  if(missed.length){
+    missBtn.style.display='inline-block';
+    missList.style.display='block';
+    missItems.innerHTML = missed.map(c =>
+      `<div class="missed-item"><strong>${c.term}</strong><span>${c.def.substring(0,120)}${c.def.length>120?'…':''}</span></div>`
+    ).join('');
+  } else {
+    missBtn.style.display='none';
+    missList.style.display='none';
+  }
+}
+
+/* ════════ RESTART MISSED ════════ */
+function restartMissed(){
+  if(!missed.length) return;
+  deck = shuffleArr([...missed]);
+  current = 0; known = 0; missed = [];
+  flipped = false;
+  document.getElementById('done').style.display = 'none';
+  document.querySelector('.card-area').style.display = 'flex';
+  document.getElementById('flipWrap').classList.remove('flipped');
+  updateStats();
+  showCard();
+}
+
+/* ════════ KEYBOARD ════════ */
+document.addEventListener('keydown', e => {
+  if(e.key === ' ' || e.key === 'Enter'){ e.preventDefault(); flipCard(); }
+  if(e.key === 'ArrowRight') markCard(true);
+  if(e.key === 'ArrowLeft')  markCard(false);
+  if(e.key === 'ArrowDown')  nextCard();
+});
+
+loadDeck();
+
+/* ── FIREBASE PUNTEN ── */
+const _fbCfg={apiKey:"AIzaSyBB397Wk2eqpBjic8E7aGV1mTgIjhQ21a8",authDomain:"fmkompas-ff8bc.firebaseapp.com",projectId:"fmkompas-ff8bc",storageBucket:"fmkompas-ff8bc.firebasestorage.app",messagingSenderId:"487972024689",appId:"1:487972024689:web:712c3117080745d14746d0"};
+if(!firebase.apps.length) firebase.initializeApp(_fbCfg);
+const _auth=firebase.auth(), _db=firebase.firestore();
+async function addPoints(n){
+  const u=await new Promise(r=>{const x=_auth.onAuthStateChanged(u=>{x();r(u);});});
+  if(!u) return;
+  await _db.collection('scores').doc(u.uid).set(
+    {pts:firebase.firestore.FieldValue.increment(n),name:u.displayName||'Anoniem',photoURL:u.photoURL||'',updatedAt:firebase.firestore.FieldValue.serverTimestamp()},
+    {merge:true}
+  );
+  _loadPts();
+}
+async function _loadPts(){
+  const u=_auth.currentUser;
+  const el=document.getElementById('pts-display'); if(!el) return;
+  if(!u){el.textContent='—';return;}
+  const s=await _db.collection('scores').doc(u.uid).get();
+  el.textContent=s.exists?(s.data().pts||0):0;
+}
+_auth.onAuthStateChanged(()=>_loadPts());
+</script>
+</body>
+</html>

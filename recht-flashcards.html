@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flashcards — Verbintenissenrecht | FM Kompas</title>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+  <style>
+    :root{
+      --bg:hsl(0,0%,7%);
+      --fg:hsl(0,0%,100%);
+      --card:hsl(0,0%,9%);
+      --card2:hsl(0,0%,11%);
+      --primary:hsl(235,100%,60%);
+      --muted:hsl(0,0%,56%);
+      --border:rgba(255,255,255,0.10);
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'Geist','Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--fg);min-height:100vh;display:flex;flex-direction:column;align-items:center;padding-bottom:4rem}
+
+    .fm-header{width:100%;position:sticky;top:0;z-index:200;height:60px;background:rgba(18,18,18,0.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 1.25rem;gap:1rem}
+    .pts-chip{display:flex;align-items:center;gap:.4rem;background:rgba(91,91,255,.12);border:1px solid rgba(91,91,255,.30);border-radius:99px;padding:.25rem .8rem;font-size:.8rem;font-weight:700;color:hsl(235,100%,60%);flex-shrink:0}
+    .header-left{display:flex;align-items:center;gap:.9rem;min-width:0}
+    .back-link{color:var(--muted);font-size:.82rem;font-weight:500;text-decoration:none;white-space:nowrap;transition:color .15s}
+    .back-link:hover{color:var(--fg)}
+    .page-title{font-size:.88rem;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .page-title span{color:var(--muted);font-weight:400}
+
+    .topbar{width:100%;position:sticky;top:60px;z-index:100;background:rgba(18,18,18,0.95);border-bottom:1px solid var(--border);padding:.75rem 1.5rem;display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
+    .topbar h2{font-size:1rem;color:var(--fg);white-space:nowrap;font-weight:700}
+    .topbar select{padding:.4rem .8rem;border-radius:8px;border:1px solid var(--border);font-size:.85rem;background:var(--card2);color:var(--fg);cursor:pointer;font-family:inherit}
+    .topbar select option{background:hsl(0,0%,12%)}
+    .pill{padding:.3rem .75rem;border-radius:999px;font-size:.78rem;font-weight:700;cursor:pointer;border:none;transition:all .15s;font-family:inherit}
+    .pill-shuffle{background:var(--primary);color:#fff}
+    .pill-shuffle:hover{opacity:.88}
+    .pill-reset{background:var(--card2);color:var(--muted);border:1px solid var(--border)}
+    .pill-reset:hover{color:var(--fg)}
+    .progress-wrap{flex:1;min-width:120px}
+    .prog-labels{display:flex;justify-content:space-between;font-size:.72rem;color:var(--muted);margin-bottom:.25rem}
+    .prog-bar-bg{background:rgba(255,255,255,0.08);border-radius:999px;height:8px;overflow:hidden}
+    .prog-bar{height:100%;background:hsl(142,70%,45%);border-radius:999px;transition:width .4s ease}
+
+    .stats{display:flex;gap:1.5rem;padding:.75rem 1.5rem;width:100%;max-width:700px;justify-content:center}
+    .stat{text-align:center}
+    .stat-num{font-size:1.6rem;font-weight:900;line-height:1}
+    .stat-lbl{font-size:.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+    .stat.total .stat-num{color:var(--fg)}
+    .stat.known .stat-num{color:hsl(142,70%,45%)}
+    .stat.unknown .stat-num{color:hsl(0,72%,60%)}
+
+    .card-area{width:100%;max-width:680px;padding:1.5rem 1rem;display:flex;flex-direction:column;align-items:center;gap:1rem}
+
+    .flip-wrap{width:100%;perspective:1200px;cursor:pointer}
+    .flip-inner{position:relative;width:100%;min-height:240px;transform-style:preserve-3d;transition:transform .5s cubic-bezier(.4,0,.2,1)}
+    .flip-wrap.flipped .flip-inner{transform:rotateY(180deg)}
+
+    .face{position:absolute;width:100%;min-height:240px;backface-visibility:hidden;border-radius:20px;padding:2rem;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}
+    .face-front{background:linear-gradient(135deg,hsl(235,40%,16%),hsl(235,30%,12%));border:1px solid rgba(91,91,255,0.25)}
+    .face-back {background:linear-gradient(135deg,hsl(142,40%,12%),hsl(142,30%,9%));border:1px solid rgba(34,197,94,0.25);transform:rotateY(180deg)}
+
+    .face-hint{font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;margin-bottom:.75rem;opacity:.5}
+    .face-front .face-hint{color:#93c5fd}
+    .face-back  .face-hint{color:#86efac}
+
+    .face-cat{font-size:.75rem;font-weight:700;padding:.2rem .65rem;border-radius:999px;margin-bottom:1rem}
+    .face-term{font-size:1.4rem;font-weight:800;color:var(--fg);line-height:1.3}
+    .face-def{font-size:.93rem;color:#d1fae5;line-height:1.6}
+    .face-art{display:inline-block;background:rgba(91,91,255,0.18);border:1px solid rgba(91,91,255,0.35);border-radius:5px;padding:.2rem .6rem;font-size:.8rem;font-weight:700;color:hsl(235,100%,75%);margin-top:.75rem}
+
+    .btn-row{display:flex;gap:.75rem;width:100%;max-width:680px;padding:0 1rem}
+    .btn{flex:1;padding:.75rem;border-radius:12px;border:none;font-size:.95rem;font-weight:700;cursor:pointer;transition:all .15s;font-family:inherit}
+    .btn-no{background:rgba(239,68,68,0.15);color:#fca5a5;border:1px solid rgba(239,68,68,0.25)}
+    .btn-no:hover{background:rgba(239,68,68,0.25)}
+    .btn-yes{background:rgba(34,197,94,0.15);color:#86efac;border:1px solid rgba(34,197,94,0.25)}
+    .btn-yes:hover{background:rgba(34,197,94,0.25)}
+    .btn-skip{background:var(--card2);color:var(--muted);border:1px solid var(--border)}
+    .btn-skip:hover{color:var(--fg)}
+
+    .card-counter{font-size:.8rem;color:var(--muted);text-align:center}
+
+    #done{display:none;max-width:680px;width:100%;padding:2rem 1rem;text-align:center}
+    #done h2{font-size:2rem;color:var(--fg);margin-bottom:.5rem}
+    #done .done-score{font-size:3.5rem;font-weight:900;color:hsl(142,70%,45%);margin:.5rem 0}
+    #done p{color:var(--muted);margin-bottom:1.5rem}
+    #done .btn-restart{background:var(--primary);color:#fff;padding:.75rem 2rem;border-radius:12px;border:none;font-size:1rem;font-weight:700;cursor:pointer;font-family:inherit;transition:opacity .15s}
+    #done .btn-restart:hover{opacity:.88}
+    #done .missed-list{text-align:left;background:var(--card);border:1px solid var(--border);border-radius:14px;padding:1.2rem;margin-top:1.5rem;max-height:300px;overflow-y:auto}
+    #done .missed-list h3{color:hsl(0,72%,60%);font-size:.85rem;text-transform:uppercase;letter-spacing:.07em;margin-bottom:.75rem}
+    #done .missed-item{padding:.45rem 0;border-bottom:1px solid rgba(255,255,255,0.06);font-size:.85rem}
+    #done .missed-item:last-child{border-bottom:none}
+    #done .missed-item strong{color:#fca5a5;display:block}
+    #done .missed-item span{color:var(--muted)}
+
+    /* Categoriekleuren */
+    .cc-inleiding{background:rgba(59,130,246,0.25);color:#93c5fd}
+    .cc-ongeldigheid{background:rgba(239,68,68,0.22);color:#fca5a5}
+    .cc-overeenkomst{background:rgba(34,197,94,0.22);color:#86efac}
+    .cc-volmacht{background:rgba(139,92,246,0.22);color:#c4b5fd}
+    .cc-tekortkoming{background:rgba(249,115,22,0.22);color:#fdba74}
+  </style>
+</head>
+<body>
+
+<nav class="fm-header">
+  <div class="header-left">
+    <a class="back-link" href="facilitaire-inkoop.html">← Terug</a>
+    <img src="logo.svg" height="26" alt="FM Kompas" style="display:block">
+    <span class="page-title">Verbintenissenrecht <span>/ Flashcards</span></span>
+  </div>
+  <div class="pts-chip">⭐ <span id="pts-display">—</span> pts</div>
+</nav>
+
+<div class="topbar">
+  <h2>🃏 Flashcards</h2>
+  <select id="catFilter" onchange="loadDeck()">
+    <option value="all">🔍 Alle categorieën</option>
+    <option value="inleiding">📚 Inleiding recht</option>
+    <option value="ongeldigheid">🚫 Ongeldigheid</option>
+    <option value="overeenkomst">📄 Overeenkomst</option>
+    <option value="volmacht">🔑 Vertegenwoordiging & Volmacht</option>
+    <option value="tekortkoming">⚠️ Tekortkoming & Acties</option>
+  </select>
+  <button class="pill pill-shuffle" onclick="shuffle()">🔀 Schud</button>
+  <button class="pill pill-reset" onclick="loadDeck()">↺ Opnieuw</button>
+  <div class="progress-wrap">
+    <div class="prog-labels"><span id="progLabel">0 / 0 bekend</span></div>
+    <div class="prog-bar-bg"><div class="prog-bar" id="progBar" style="width:0%"></div></div>
+  </div>
+</div>
+
+<div class="stats">
+  <div class="stat total"><div class="stat-num" id="statTotal">0</div><div class="stat-lbl">Totaal</div></div>
+  <div class="stat known"><div class="stat-num" id="statKnown">0</div><div class="stat-lbl">✓ Gekend</div></div>
+  <div class="stat unknown"><div class="stat-num" id="statUnknown">0</div><div class="stat-lbl">✗ Herhalen</div></div>
+</div>
+
+<div class="card-area">
+  <div class="card-counter" id="cardCounter"></div>
+  <div class="flip-wrap" id="flipWrap" onclick="flipCard()">
+    <div class="flip-inner" id="flipInner">
+      <div class="face face-front" id="faceFront">
+        <div class="face-hint">Klik om te onthullen</div>
+        <span class="face-cat" id="frontCat"></span>
+        <div class="face-term" id="frontTerm"></div>
+      </div>
+      <div class="face face-back" id="faceBack">
+        <div class="face-hint">Definitie</div>
+        <div class="face-def" id="backDef"></div>
+        <div class="face-art" id="backArt" style="display:none"></div>
+      </div>
+    </div>
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-no"   onclick="markCard(false)">✗ Nog niet</button>
+    <button class="btn btn-skip" onclick="nextCard()">→ Sla over</button>
+    <button class="btn btn-yes"  onclick="markCard(true)">✓ Gekend!</button>
+  </div>
+</div>
+
+<div id="done">
+  <h2>🎉 Sessie klaar!</h2>
+  <div class="done-score" id="doneScore"></div>
+  <p id="doneText"></p>
+  <button class="btn-restart" onclick="restartMissed()" id="btnMissed" style="display:none;margin-bottom:.75rem">🔁 Herhaal niet-gekende kaarten</button>
+  <button class="btn-restart" onclick="loadDeck()">↺ Begin opnieuw</button>
+  <div class="missed-list" id="missedList" style="display:none">
+    <h3>Nog te leren:</h3>
+    <div id="missedItems"></div>
+  </div>
+</div>
+
+<script>
+const allCards = [
+  /* ── INLEIDING IN HET RECHT ── */
+  {cat:"inleiding",term:"Recht",def:"Het geheel van gedragsregels dat door de overheid is gemaakt om de samenleving rechtvaardig te ordenen. Eigenrichting (zelf voor rechter spelen) is niet toegestaan."},
+  {cat:"inleiding",term:"Rechtsbronnen",def:"De vier vindplaatsen van het recht: (1) wetten, (2) verdragen, (3) jurisprudentie en (4) gewoonte. Uit deze bronnen ontstaat al ons recht."},
+  {cat:"inleiding",term:"Dwingend recht",def:"Rechtsregels waarvan partijen niet bij overeenkomst mogen afwijken, ook niet als beiden dat willen. Geldt ter bescherming van de zwakkere partij of het algemeen belang."},
+  {cat:"inleiding",term:"Regelend (aanvullend) recht",def:"Rechtsregels die alleen gelden als partijen zelf niets anders hebben afgesproken. Partijen mogen hiervan bij overeenkomst afwijken. Vult leemten in de overeenkomst op."},
+  {cat:"inleiding",term:"Privaatrecht",def:"Het deel van het recht dat de verhouding tussen burgers en/of bedrijven onderling regelt. Bijv. BW: koop, huur, arbeidsovereenkomst, aansprakelijkheid."},
+  {cat:"inleiding",term:"Publiekrecht",def:"Het deel van het recht dat de verhouding tussen de overheid en burgers regelt. Bijv. Grondwet, Wetboek van Strafrecht, Algemene wet bestuursrecht."},
+  {cat:"inleiding",term:"Verbintenis",def:"Een rechtsverhouding waarbij de schuldenaar verplicht is tot een prestatie jegens de schuldeiser, en de schuldeiser die prestatie kan vorderen. Verbintenissen ontstaan alleen uit door de wet erkende bronnen.",art:"art. 6:1 BW"},
+  {cat:"inleiding",term:"Schuldeiser",def:"De partij die het recht heeft om nakoming van de verbintenis te vorderen. In een koopovereenkomst: de koper heeft recht op levering; de verkoper heeft recht op betaling."},
+  {cat:"inleiding",term:"Schuldenaar",def:"De partij die verplicht is tot een prestatie. In een koopovereenkomst: de verkoper is schuldenaar voor levering; de koper is schuldenaar voor betaling."},
+  {cat:"inleiding",term:"Rechtshandeling",def:"Een handeling die wordt verricht met de bedoeling om een rechtsgevolg in het leven te roepen. Vereiste: de wil moet overeenstemmen met de verklaring.",art:"art. 3:33 BW"},
+  {cat:"inleiding",term:"Eigenrichting",def:"Zelf voor rechter spelen — iemand eigenmachtig dwingen tot een bepaalde handeling of zelf schade verhalen zonder tussenkomst van de rechter. In ons rechtssysteem niet toegestaan."},
+  {cat:"inleiding",term:"Hoe verwijzen naar een wetsartikel",def:"Volgorde: Boek → art. → lid → sub → afkorting wet. Voorbeeld: art. 7:617 lid 1 sub b BW. Altijd in deze volgorde noteren."},
+
+  /* ── ONGELDIGHEID RECHTSHANDELING ── */
+  {cat:"ongeldigheid",term:"Nietig",def:"De rechtshandeling heeft nooit bestaan. Werkt van rechtswege — geen actie nodig. Iedereen kan een beroep op nietigheid doen, ook de rechter ambtshalve. Bijv. vergissing (art. 3:33), strijd met openbare orde/goede zeden."},
+  {cat:"ongeldigheid",term:"Vernietigbaar",def:"De rechtshandeling is geldig totdat zij vernietigd wordt. Actie vereist door de beschermde partij. Na vernietiging: terugwerkende kracht — ongedaanmakingsverplichtingen.",art:"art. 3:49 BW"},
+  {cat:"ongeldigheid",term:"Vergissing / Wilsontbreken",def:"Als de wil niet overeenstemt met de verklaring (bijv. verspreking, verschrijving), is de rechtshandeling in beginsel nietig. Maar: als de wederpartij redelijkerwijs mocht vertrouwen op de verklaring (art. 3:35 BW), is zij toch geldig.",art:"art. 3:33 BW"},
+  {cat:"ongeldigheid",term:"Wilsvertrouwensleer",def:"Beschermt de wederpartij die redelijkerwijs mocht vertrouwen op de verklaring van de andere partij, ook als die verklaring niet overeenstemt met de werkelijke wil.",art:"art. 3:35 BW"},
+  {cat:"ongeldigheid",term:"Geestelijke stoornis",def:"Een rechtshandeling verricht onder invloed van een geestelijke stoornis is vernietigbaar (gericht) of nietig (eenzijdig ongericht, bijv. testament). Gerechtvaardigd vertrouwen van wederpartij kan geldigheid redden.",art:"art. 3:34 BW"},
+  {cat:"ongeldigheid",term:"Strijd met wet, openbare orde of goede zeden",def:"Strekking in strijd met wet: vernietigbaar. Strijd met openbare orde of goede zeden: nietig. Openbare orde = fundamentele beginselen van onze samenleving.",art:"art. 3:40 BW"},
+  {cat:"ongeldigheid",term:"Bedreiging",def:"Wilsgebrek: iemand wordt door bedreiging bewogen tot een rechtshandeling. Vijf elementen vereist: (1) opzet, (2) onrechtmatige bedreiging, (3) zodanig dat een redelijk mens wordt beïnvloed, (4) nadeel in persoon of goed, (5) causaal verband. Gevolg: vernietigbaar.",art:"art. 3:44 lid 2 BW"},
+  {cat:"ongeldigheid",term:"Bedrog",def:"Wilsgebrek: iemand wordt door opzettelijke misleiding bewogen tot een rechtshandeling. Drie elementen: (1) opzet, (2) onjuiste mededeling, zwijgen of kunstgreep, (3) causaal verband. Algemene aanprijzingen zijn geen bedrog. Gevolg: vernietigbaar.",art:"art. 3:44 lid 3 BW"},
+  {cat:"ongeldigheid",term:"Misbruik van omstandigheden",def:"Wilsgebrek: partij maakt misbruik van een bijzondere omstandigheid (onervarenheid, noodtoestand, afhankelijkheid). Drie elementen: (1) bijzondere omstandigheid, (2) kenbaarheid + bevordering, (3) causaal verband. Gevolg: vernietigbaar.",art:"art. 3:44 lid 4 BW"},
+  {cat:"ongeldigheid",term:"Dwaling",def:"Wilsgebrek: partij heeft een onjuiste voorstelling van zaken. Alleen bij overeenkomsten. Vereisten: (1) onjuiste voorstelling, (2) causaal verband, (3) één van drie situaties. Gevolg: vernietigbaar.",art:"art. 6:228 BW"},
+  {cat:"ongeldigheid",term:"Handelingsonbekwaamheid",def:"Minderjarigen en curatelen zijn handelingsonbekwaam: zij kunnen alleen met toestemming van wettelijk vertegenwoordiger rechtshandelingen verrichten. Zonder toestemming: vernietigbaar (eenzijdig ongericht: nietig).",art:"art. 3:32 BW"},
+
+  /* ── TOTSTANDKOMING OVEREENKOMST ── */
+  {cat:"overeenkomst",term:"Overeenkomst",def:"Een meerzijdige rechtshandeling die tot stand komt door overeenstemmend aanbod en aanvaarding. Beide partijen moeten handelingsbekwaam zijn en de overeenkomst mag niet in strijd zijn met wet, openbare orde of goede zeden.",art:"art. 6:217 BW"},
+  {cat:"overeenkomst",term:"Aanbod",def:"Een voorstel tot het sluiten van een overeenkomst dat voldoende bepaald is. Kan herroepelijk, onherroepelijk of vrijblijvend zijn. Geldigheidsduur: mondeling → direct; schriftelijk → redelijke termijn.",art:"art. 6:219 BW"},
+  {cat:"overeenkomst",term:"Aanvaarding",def:"Onvoorwaardelijk akkoord met het aanbod. Als aanvaarding afwijkt van het aanbod: verwerping + nieuw (tegen)aanbod. Uitzondering: kleine afwijkingen op ondergeschikte punten.",art:"art. 6:225 BW"},
+  {cat:"overeenkomst",term:"Ontvangsttheorie",def:"Een verklaring heeft werking vanaf het moment dat zij de ontvanger bereikt (niet verzonden, maar ontvangen). Bepaalt wanneer een aanbod of aanvaarding effect heeft.",art:"art. 3:37 lid 3 BW"},
+  {cat:"overeenkomst",term:"Uitnodiging tot aanbieding",def:"Geen aanbod maar een uitnodiging om een aanbod te doen (bijv. advertentie voor uniek goed). De adverteerder is niet verplicht te verkopen als slechts één persoon wil kopen."},
+  {cat:"overeenkomst",term:"Vrijblijvend aanbod",def:"Aanbod waarbij de aanbieder zich het recht voorbehoudt om het aanbod in te trekken zelfs na ontvangst van de aanvaarding. Mag echter niet te kwader trouw worden ingetrokken."},
+  {cat:"overeenkomst",term:"Koopovereenkomst",def:"Overeenkomst waarbij de verkoper een zaak levert en de koper de koopprijs betaalt. Meest voorkomende contractvorm in de praktijk."},
+  {cat:"overeenkomst",term:"Aannemingsovereenkomst",def:"Overeenkomst waarbij de aannemer zich verbindt om een werk van stoffelijke aard tot stand te brengen en op te leveren (bouw, renovatie, installatie)."},
+  {cat:"overeenkomst",term:"Dienstverleningsovereenkomst",def:"Overeenkomst waarbij de opdrachtnemer diensten verleent aan de opdrachtgever (bijv. catering, schoonmaak, beveiliging, advies). Veelvoorkomend in facilitaire inkoop."},
+  {cat:"overeenkomst",term:"Algemene voorwaarden",def:"Standaardbedingen die van toepassing zijn op meerdere overeenkomsten. Moeten vóór het sluiten van de overeenkomst ter hand gesteld worden — anders vernietigbaar. B2C: meer consumentenbescherming dan B2B.",art:"art. 6:233 BW"},
+  {cat:"overeenkomst",term:"Wilsovereenstemming",def:"Beide partijen zijn het eens over de wezenlijke onderdelen van de overeenkomst (wat, hoeveel, prijs, levering). Vereiste voor het tot stand komen van een geldige overeenkomst."},
+
+  /* ── VERTEGENWOORDIGING & VOLMACHT ── */
+  {cat:"volmacht",term:"Volmacht",def:"Een bevoegdheid die een gevolmachtigde van de volmachtgever heeft gekregen om namens hem rechtshandelingen te verrichten die de volmachtgever direct binden.",art:"art. 3:60 BW"},
+  {cat:"volmacht",term:"Volmachtgever",def:"De persoon die de volmacht verleent en door de rechtshandelingen van de gevolmachtigde wordt gebonden. Verantwoordelijk voor de gevolgen van bevoegd handelen van de gevolmachtigde."},
+  {cat:"volmacht",term:"Gevolmachtigde",def:"De persoon die de volmacht ontvangt en namens de volmachtgever rechtshandelingen mag verrichten. Handelt voor rekening en risico van de volmachtgever, binnen de grenzen van de volmacht."},
+  {cat:"volmacht",term:"Algemene volmacht",def:"Volmacht die de gevolmachtigde bevoegd maakt tot alle rechtshandelingen die de volmachtgever zelf ook mag verrichten. Ruime reikwijdte.",art:"art. 3:62 lid 1 BW"},
+  {cat:"volmacht",term:"Bijzondere volmacht",def:"Volmacht beperkt tot een of meer specifiek genoemde rechtshandelingen of een bepaald doel. Engere reikwijdte dan algemene volmacht.",art:"art. 3:62 lid 2 BW"},
+  {cat:"volmacht",term:"Bevoegde vertegenwoordiging",def:"De gevolmachtigde handelt binnen de grenzen van de volmacht. Gevolg: de rechtshandeling treft de volmachtgever direct — alsof hij het zelf heeft gedaan.",art:"art. 3:66 BW"},
+  {cat:"volmacht",term:"Onbevoegde vertegenwoordiging",def:"De gevolmachtigde handelt buiten de grenzen van de volmacht. Gevolg: de rechtshandeling treft de volmachtgever in beginsel NIET. Uitzonderingen: schijn van volmacht of bekrachtiging."},
+  {cat:"volmacht",term:"Schijn van volmacht",def:"Als de wederpartij redelijkerwijs mocht aannemen dat een volmacht was verleend, is de volmachtgever toch gebonden — ook al was er geen volmacht. Beschermt de goede trouw van de wederpartij.",art:"art. 3:61 lid 2 BW"},
+  {cat:"volmacht",term:"Bekrachtiging",def:"De volmachtgever keurt de onbevoegde rechtshandeling achteraf goed. Gevolg: de rechtshandeling wordt alsnog aan hem toegerekend, met terugwerkende kracht.",art:"art. 3:69 BW"},
+  {cat:"volmacht",term:"Instaan voor de volmacht",def:"Als de gevolmachtigde onbevoegd heeft gehandeld én geen uitzondering van toepassing is, moet hij zelf instaan voor de volmacht: hij is aansprakelijk voor de schade die de wederpartij daardoor lijdt.",art:"art. 3:70 BW"},
+
+  /* ── TEKORTKOMING, VERZUIM & ACTIES ── */
+  {cat:"tekortkoming",term:"Tekortkoming / Wanprestatie",def:"Het geheel niet, te laat, gedeeltelijk of onbehoorlijk nakomen van een contractuele verplichting. Kan leiden tot vier acties: nakoming, opschorting, schadevergoeding of ontbinding."},
+  {cat:"tekortkoming",term:"Tijdig klagen",def:"Een schuldeiser die een gebrek ontdekt, moet de schuldenaar hierover tijdig informeren. Wie niet tijdig klaagt, verliest zijn recht op schadevergoeding of ontbinding.",art:"art. 6:89 BW"},
+  {cat:"tekortkoming",term:"Nakoming",def:"De schuldeiser vordert dat de schuldenaar alsnog presteert wat is overeengekomen. Drie vereisten: (1) opeisbare vordering, (2) tekortkoming, (3) nakoming nog niet blijvend onmogelijk. Toerekenbaarheid is NIET vereist.",art:"art. 3:296 BW"},
+  {cat:"tekortkoming",term:"Opschorting",def:"Tijdelijk weigeren van de eigen prestatie als drukmiddel. Vier vereisten: (1) opeisbare vordering, (2) connexiteit (samenhang), (3) proportionaliteit, (4) nakoming niet blijvend onmogelijk.",art:"art. 6:52 BW"},
+  {cat:"tekortkoming",term:"Connexiteit",def:"Vereiste voor opschorting: er moet voldoende samenhang bestaan tussen de vordering en de op te schorten verbintenis. Bijv. zelfde rechtsverhouding of regelmatig zaken doen samen."},
+  {cat:"tekortkoming",term:"Retentierecht",def:"Het recht om een zaak van een ander onder zich te houden totdat de vordering op die ander is voldaan. Bijv. een reparateur houdt de gerepareerde auto totdat de factuur betaald is.",art:"art. 3:290 BW"},
+  {cat:"tekortkoming",term:"Schadevergoeding wegens wanprestatie",def:"Financiële compensatie voor schade door tekortkoming. Vijf vereisten: (1) tekortkoming, (2) toerekenbaarheid, (3) schade, (4) causaal verband, (5) verzuim of blijvende onmogelijkheid. Toerekenbaarheid IS vereist (verschil met ontbinding).",art:"art. 6:74 BW"},
+  {cat:"tekortkoming",term:"Toerekenbaarheid",def:"De tekortkoming moet aan de schuldenaar kunnen worden toegerekend: schuld, of toerekening op grond van wet, rechtshandeling of verkeersopvattingen. Vereiste voor schadevergoeding (NIET voor ontbinding).",art:"art. 6:75 BW"},
+  {cat:"tekortkoming",term:"Overmacht",def:"Een tekortkoming die niet aan de schuldenaar kan worden toegerekend: de oorzaak is buiten zijn schuld en risico. Gevolg: geen schadevergoedingsplicht. Ontbinding blijft WEL mogelijk.",art:"art. 6:75 BW"},
+  {cat:"tekortkoming",term:"Ingebrekestelling",def:"Schriftelijke aanmaning aan de schuldenaar om binnen een redelijke termijn alsnog na te komen. Noodzakelijke stap om verzuim te laten intreden (behalve in de gevallen van art. 6:83 BW).",art:"art. 6:82 BW"},
+  {cat:"tekortkoming",term:"Verzuim",def:"Toestand waarin de schuldenaar verkeert als hij na ingebrekestelling niet nakomt. Vereiste voor schadevergoeding (deels) en vervangende schadevergoeding. Treedt ook van rechtswege in: bij verstrijken termijn, mededeling schuldenaar, of OD-grondslag.",art:"art. 6:83 BW"},
+  {cat:"tekortkoming",term:"Vermogensschade",def:"Geleden verlies + gederfde winst. Twee categorieën die voor vergoeding in aanmerking komen bij wanprestatie en onrechtmatige daad.",art:"art. 6:96 BW"},
+  {cat:"tekortkoming",term:"Smartengeld",def:"Vergoeding van immaterieel nadeel (pijn, verdriet, geschokt rechtsgevoel). Wordt alleen toegekend in de door de wet bepaalde gevallen. Ook wel: ander nadeel dan vermogensschade.",art:"art. 6:106 BW"},
+  {cat:"tekortkoming",term:"Condicio sine qua non (csqn)",def:"Het 'maar-voor-test' causaalverband: zou de schade ook geleden zijn zonder de tekortkoming? Als het antwoord nee is, is er causaal verband. Vereiste voor schadevergoeding."},
+  {cat:"tekortkoming",term:"Vervangende schadevergoeding",def:"Schadevergoeding die de waarde van de prestatie in geld uitdrukt, in plaats van nakoming te vorderen. Verzuim is vereist. Kan NIET worden gecombineerd met ontbinding."},
+  {cat:"tekortkoming",term:"Ontbinding",def:"Beëindigen van de overeenkomst wegens tekortkoming. Vier vereisten: (1) wederkerige overeenkomst, (2) tekortkoming, (3) verzuim of onmogelijkheid, (4) tekortkoming rechtvaardigt ontbinding. Toerekenbaarheid is NIET vereist (verschil met schadevergoeding).",art:"art. 6:265 BW"},
+  {cat:"tekortkoming",term:"Wederkerige overeenkomst",def:"Een overeenkomst met twee tegenover elkaar staande verbintenissen. Bijv. koop: levering (verkoper) tegenover betaling (koper). Vereiste voor ontbinding."},
+  {cat:"tekortkoming",term:"Ongedaanmaking",def:"Na ontbinding moeten al verrichte prestaties ongedaan worden gemaakt (teruggeven). Als ongedaanmaking onmogelijk is, moet de waarde worden vergoed.",art:"art. 6:272 BW"},
+  {cat:"tekortkoming",term:"Combinaties van acties bij wanprestatie",def:"Toegestaan: nakoming + gevolgschade; opschorting + gevolgschade; ontbinding + gevolgschade. NIET toegestaan: ontbinding + vervangende schadevergoeding tegelijk."},
+];
+
+/* ════════ STATE ════════ */
+let deck = [];
+let current = 0;
+let known = 0;
+let missed = [];
+let flipped = false;
+
+/* ════════ HELPERS ════════ */
+const catLabels = {inleiding:"Inleiding",ongeldigheid:"Ongeldigheid",overeenkomst:"Overeenkomst",volmacht:"Volmacht",tekortkoming:"Tekortkoming"};
+
+function shuffleArr(arr){
+  for(let i=arr.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[arr[i],arr[j]]=[arr[j],arr[i]];}
+  return arr;
+}
+
+/* ════════ LOAD DECK ════════ */
+function loadDeck(){
+  const cat = document.getElementById('catFilter').value;
+  deck = (cat === 'all' ? [...allCards] : allCards.filter(c=>c.cat===cat));
+  current = 0; known = 0; missed = [];
+  flipped = false;
+  document.getElementById('flipWrap').classList.remove('flipped');
+  document.getElementById('done').style.display = 'none';
+  document.querySelector('.card-area').style.display = 'flex';
+  updateStats();
+  showCard();
+}
+
+/* ════════ SHUFFLE ════════ */
+function shuffle(){
+  const cat = document.getElementById('catFilter').value;
+  deck = shuffleArr(cat === 'all' ? [...allCards] : allCards.filter(c=>c.cat===cat));
+  current = 0; known = 0; missed = [];
+  flipped = false;
+  document.getElementById('flipWrap').classList.remove('flipped');
+  document.getElementById('done').style.display = 'none';
+  document.querySelector('.card-area').style.display = 'flex';
+  updateStats();
+  showCard();
+}
+
+/* ════════ SHOW CARD ════════ */
+function showCard(){
+  if(current >= deck.length){ showDone(); return; }
+  const c = deck[current];
+  document.getElementById('cardCounter').textContent = `Kaart ${current+1} van ${deck.length}`;
+  document.getElementById('frontCat').textContent = catLabels[c.cat] || c.cat;
+  document.getElementById('frontCat').className = `face-cat cc-${c.cat}`;
+  document.getElementById('frontTerm').textContent = c.term;
+  document.getElementById('backDef').textContent = c.def;
+  const artEl = document.getElementById('backArt');
+  if(c.art){ artEl.textContent = c.art; artEl.style.display='inline-block'; }
+  else { artEl.style.display='none'; }
+  flipped = false;
+  document.getElementById('flipWrap').classList.remove('flipped');
+}
+
+/* ════════ FLIP ════════ */
+function flipCard(){
+  flipped = !flipped;
+  document.getElementById('flipWrap').classList.toggle('flipped', flipped);
+}
+
+/* ════════ MARK ════════ */
+function markCard(isKnown){
+  if(!flipped){ flipCard(); setTimeout(()=>{ _mark(isKnown); }, 400); }
+  else { _mark(isKnown); }
+}
+function _mark(isKnown){
+  if(isKnown){ known++; addPoints(5); }
+  else { missed.push(deck[current]); }
+  current++;
+  updateStats();
+  setTimeout(showCard, 150);
+}
+
+function nextCard(){
+  missed.push(deck[current]);
+  current++;
+  updateStats();
+  flipped = false;
+  document.getElementById('flipWrap').classList.remove('flipped');
+  showCard();
+}
+
+/* ════════ STATS ════════ */
+function updateStats(){
+  const total = deck.length;
+  document.getElementById('statTotal').textContent = total;
+  document.getElementById('statKnown').textContent = known;
+  document.getElementById('statUnknown').textContent = missed.length;
+  document.getElementById('progBar').style.width = (total ? (current/total*100) : 0) + '%';
+  document.getElementById('progLabel').textContent = `${known} / ${total} bekend`;
+}
+
+/* ════════ DONE SCREEN ════════ */
+function showDone(){
+  document.querySelector('.card-area').style.display = 'none';
+  const doneEl = document.getElementById('done');
+  doneEl.style.display = 'block';
+  const pct = deck.length ? Math.round((known/deck.length)*100) : 0;
+  document.getElementById('doneScore').textContent = `${known} / ${deck.length}`;
+  document.getElementById('doneText').textContent = pct >= 80
+    ? '🎉 Uitstekend! Je beheerst deze stof goed.'
+    : pct >= 60
+    ? '👍 Goed bezig! Herhaal de niet-gekende kaarten nog een keer.'
+    : '📚 Nog wat herhalen. Ga de gemiste kaarten nog eens door.';
+
+  const missBtn = document.getElementById('btnMissed');
+  const missList = document.getElementById('missedList');
+  const missItems = document.getElementById('missedItems');
+
+  if(missed.length){
+    missBtn.style.display='inline-block';
+    missList.style.display='block';
+    missItems.innerHTML = missed.map(c =>
+      `<div class="missed-item"><strong>${c.term}${c.art ? ' <em style="font-weight:400;color:hsl(235,100%,70%);font-size:.75rem">('+c.art+')</em>' : ''}</strong><span>${c.def.substring(0,120)}${c.def.length>120?'…':''}</span></div>`
+    ).join('');
+  } else {
+    missBtn.style.display='none';
+    missList.style.display='none';
+  }
+}
+
+/* ════════ RESTART MISSED ════════ */
+function restartMissed(){
+  if(!missed.length) return;
+  deck = shuffleArr([...missed]);
+  current = 0; known = 0; missed = [];
+  flipped = false;
+  document.getElementById('done').style.display = 'none';
+  document.querySelector('.card-area').style.display = 'flex';
+  document.getElementById('flipWrap').classList.remove('flipped');
+  updateStats();
+  showCard();
+}
+
+/* ════════ KEYBOARD ════════ */
+document.addEventListener('keydown', e => {
+  if(e.key === ' ' || e.key === 'Enter'){ e.preventDefault(); flipCard(); }
+  if(e.key === 'ArrowRight') markCard(true);
+  if(e.key === 'ArrowLeft')  markCard(false);
+  if(e.key === 'ArrowDown')  nextCard();
+});
+
+loadDeck();
+
+/* ── FIREBASE PUNTEN ── */
+const _fbCfg={apiKey:"AIzaSyBB397Wk2eqpBjic8E7aGV1mTgIjhQ21a8",authDomain:"fmkompas-ff8bc.firebaseapp.com",projectId:"fmkompas-ff8bc",storageBucket:"fmkompas-ff8bc.firebasestorage.app",messagingSenderId:"487972024689",appId:"1:487972024689:web:712c3117080745d14746d0"};
+if(!firebase.apps.length) firebase.initializeApp(_fbCfg);
+const _auth=firebase.auth(), _db=firebase.firestore();
+async function addPoints(n){
+  const u=await new Promise(r=>{const x=_auth.onAuthStateChanged(u=>{x();r(u);});});
+  if(!u) return;
+  await _db.collection('scores').doc(u.uid).set(
+    {pts:firebase.firestore.FieldValue.increment(n),name:u.displayName||'Anoniem',photoURL:u.photoURL||'',updatedAt:firebase.firestore.FieldValue.serverTimestamp()},
+    {merge:true}
+  );
+  _loadPts();
+}
+async function _loadPts(){
+  const u=_auth.currentUser;
+  const el=document.getElementById('pts-display'); if(!el) return;
+  if(!u){el.textContent='—';return;}
+  const s=await _db.collection('scores').doc(u.uid).get();
+  el.textContent=s.exists?(s.data().pts||0):0;
+}
+_auth.onAuthStateChanged(()=>_loadPts());
+</script>
+</body>
+</html>
