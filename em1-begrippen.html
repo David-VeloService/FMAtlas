@@ -1,483 +1,247 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Begrippenlijst — Evenementenmanagement A | FM Kompas</title>
-  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <style>
-    :root{
-      --bg:hsl(0,0%,7%);
-      --fg:hsl(0,0%,100%);
-      --card:hsl(0,0%,9%);
-      --card2:hsl(0,0%,11%);
-      --primary:hsl(235,100%,60%);
-      --muted:hsl(0,0%,56%);
-      --border:rgba(255,255,255,0.10);
-      --primary-soft:rgba(91,91,255,0.12);
-      --primary-border:rgba(91,91,255,0.30);
-    }
-    *{box-sizing:border-box;margin:0;padding:0}
-    body{font-family:'Geist','Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--fg);padding-bottom:4rem}
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Begrippenlijst · Eventmanagement 1 — FMAtlas</title>
+<link rel="icon" type="image/svg+xml" href="logo.svg"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="css/fmatlas.css"/>
+<style>
+.bl-wrap { max-width: 1040px; margin: 0 auto; padding: 28px 24px 80px; }
 
-    /* ── FM KOMPAS HEADER ── */
-    .fm-header{position:sticky;top:0;z-index:200;height:60px;background:rgba(18,18,18,0.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 1.25rem;gap:1rem}
-    .header-left{display:flex;align-items:center;gap:.9rem;min-width:0}
-    .back-link{color:var(--muted);font-size:.82rem;font-weight:500;text-decoration:none;white-space:nowrap;transition:color .15s}
-    .back-link:hover{color:var(--fg)}
-    .page-title{font-size:.88rem;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-    .page-title span{color:var(--muted);font-weight:400}
+.bl-hero {
+  margin-bottom: 22px;
+}
+.bl-hero h1 { font-size: 36px; font-weight: 900; letter-spacing: -0.028em; margin-bottom: 6px; line-height: 1.05; }
+.bl-hero-sub { color: var(--muted); font-size: 13.5px; font-weight: 700; letter-spacing: 0.02em; }
 
-    /* ── ZOEKBALK ── */
-    .searchbar{position:sticky;top:60px;z-index:100;background:rgba(18,18,18,0.95);border-bottom:1px solid var(--border);padding:.75rem 1.5rem;display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
-    .searchbar h2{font-size:1rem;font-weight:700;white-space:nowrap;color:var(--fg)}
-    #searchbox{flex:1;min-width:180px;padding:.45rem .9rem;border-radius:8px;border:1px solid var(--border);background:rgba(255,255,255,0.05);color:var(--fg);font-size:.95rem;font-family:inherit;outline:none;transition:border-color .15s}
-    #searchbox::placeholder{color:var(--muted)}
-    #searchbox:focus{border-color:var(--primary)}
-    #counter{font-size:.8rem;color:var(--muted);white-space:nowrap}
+.bl-toolbar {
+  background: var(--surface); border: 1.5px solid var(--line); border-radius: var(--radius-lg);
+  padding: 14px 16px; margin-bottom: 18px;
+  display: flex; flex-direction: column; gap: 12px;
+}
 
-    /* ── CATEGORIEËN MENU ── */
-    .catmenu{display:flex;gap:.5rem;flex-wrap:wrap;padding:1rem 1.5rem .25rem;max-width:1100px;margin:0 auto}
-    .catbtn{padding:.35rem .85rem;border-radius:999px;border:1px solid var(--border);font-size:.8rem;font-weight:700;cursor:pointer;transition:all .15s;background:var(--card2);color:var(--muted);font-family:inherit}
-    .catbtn:hover{background:rgba(255,255,255,0.08);color:var(--fg)}
-    .catbtn.active{color:#fff;border-color:transparent}
+.bl-searchbox {
+  display: flex; align-items: center; gap: 10px;
+  background: var(--bg); border: 1.5px solid var(--line); border-radius: var(--radius);
+  padding: 10px 14px;
+}
+.bl-searchbox input {
+  flex: 1; border: none; background: none; outline: none;
+  font-family: inherit; font-size: 14px; font-weight: 600; color: var(--ink);
+}
+.bl-searchbox input::placeholder { color: var(--muted); }
+.bl-searchbox:focus-within { border-color: var(--accent); background: var(--surface); }
 
-    /* ── CONTAINER ── */
-    .container{max-width:1100px;margin:0 auto;padding:1rem 1.5rem}
+.bl-counter {
+  font-size: 12px; color: var(--muted); font-weight: 700; font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
 
-    /* ── SECTIE ── */
-    .section{margin-bottom:2.5rem}
-    .section-title{font-size:1rem;font-weight:800;padding:.55rem 1rem;border-radius:10px;margin-bottom:.75rem;display:flex;align-items:center;gap:.5rem}
+.bl-catfilters {
+  display: flex; flex-wrap: wrap; gap: 6px;
+}
+.bl-catbtn {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: var(--surface); border: 1.5px solid var(--line); border-radius: 999px;
+  padding: 5px 11px; font-size: 11.5px; font-weight: 800; color: var(--ink-soft);
+  font-family: inherit; cursor: pointer; transition: all 0.15s;
+}
+.bl-catbtn:hover { border-color: var(--ink); color: var(--ink); }
+.bl-catbtn.active { color: var(--surface); }
+.bl-catbtn .dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+.bl-catbtn-all.active { background: var(--ink); border-color: var(--ink); }
 
-    /* ── GRID ── */
-    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:.75rem}
+.bl-section { margin-bottom: 32px; }
+.bl-section-head {
+  display: flex; align-items: baseline; gap: 10px; margin-bottom: 12px;
+  padding-bottom: 6px; border-bottom: 1.5px solid var(--line);
+}
+.bl-section-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; position: relative; top: 1px; }
+.bl-section-title { font-size: 16px; font-weight: 900; letter-spacing: -0.01em; }
+.bl-section-count { font-size: 11px; color: var(--muted); font-weight: 700; letter-spacing: 0.04em; }
 
-    /* ── KAART ── */
-    .card{background:var(--card);border-radius:12px;padding:1rem 1.2rem;border:1px solid var(--border);border-left:4px solid rgba(255,255,255,0.08);transition:border-color .15s}
-    .card:hover{border-color:rgba(255,255,255,0.18)}
-    .card.hidden{display:none}
-    .term{font-weight:700;font-size:.95rem;color:var(--fg);margin-bottom:.3rem}
-    .def{font-size:.86rem;color:var(--muted);line-height:1.55}
-    .formula{display:inline-block;background:rgba(255,255,255,0.06);border:1px solid var(--border);border-radius:6px;padding:.2rem .5rem;font-family:monospace;font-size:.83rem;color:var(--fg);margin-top:.3rem}
+.bl-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 10px;
+}
 
-    /* ── KLEUREN PER CATEGORIE (donker thema) ── */
-    .cat-project .section-title{background:rgba(59,130,246,0.15);color:#93c5fd;border:1px solid rgba(59,130,246,0.25)}
-    .cat-project .card{border-left-color:#3b82f6}
-    .cat-project .catbtn.active{background:#3b82f6;border-color:#3b82f6}
+.bl-card {
+  background: var(--surface); border: 1.5px solid var(--line); border-radius: var(--radius);
+  padding: 14px 16px; transition: border-color 0.12s, transform 0.12s;
+}
+.bl-card:hover { border-color: var(--ink-soft); }
+.bl-term {
+  font-size: 14.5px; font-weight: 800; letter-spacing: -0.005em; color: var(--ink);
+  margin-bottom: 4px; line-height: 1.25;
+}
+.bl-def { font-size: 13px; color: var(--ink-soft); line-height: 1.55; font-weight: 500; }
+.bl-formula {
+  display: inline-block; font-family: 'SFMono-Regular', Menlo, monospace;
+  font-size: 11.5px; font-weight: 700;
+  background: var(--surface-alt); border: 1.5px solid var(--line);
+  border-radius: 6px; padding: 3px 8px; margin-top: 6px; color: var(--accent-deep);
+}
 
-    .cat-fasering .section-title{background:rgba(34,197,94,0.12);color:#86efac;border:1px solid rgba(34,197,94,0.22)}
-    .cat-fasering .card{border-left-color:#22c55e}
-    .cat-fasering .catbtn.active{background:#22c55e;border-color:#22c55e;color:#0f1f14}
+mark { background: rgba(239, 90, 63, 0.25); color: var(--ink); border-radius: 3px; padding: 0 2px; font-weight: 700; }
 
-    .cat-planning .section-title{background:rgba(234,179,8,0.12);color:#fde68a;border:1px solid rgba(234,179,8,0.22)}
-    .cat-planning .card{border-left-color:#eab308}
-    .cat-planning .catbtn.active{background:#ca8a04;border-color:#ca8a04}
-
-    .cat-evm .section-title{background:rgba(139,92,246,0.15);color:#c4b5fd;border:1px solid rgba(139,92,246,0.25)}
-    .cat-evm .card{border-left-color:#8b5cf6}
-    .cat-evm .catbtn.active{background:#8b5cf6;border-color:#8b5cf6}
-
-    .cat-risico .section-title{background:rgba(239,68,68,0.12);color:#fca5a5;border:1px solid rgba(239,68,68,0.22)}
-    .cat-risico .card{border-left-color:#ef4444}
-    .cat-risico .catbtn.active{background:#ef4444;border-color:#ef4444}
-
-    .cat-organisatie .section-title{background:rgba(249,115,22,0.12);color:#fdba74;border:1px solid rgba(249,115,22,0.22)}
-    .cat-organisatie .card{border-left-color:#f97316}
-    .cat-organisatie .catbtn.active{background:#f97316;border-color:#f97316;color:#1a0a00}
-
-    .cat-belbin .section-title{background:rgba(236,72,153,0.12);color:#f9a8d4;border:1px solid rgba(236,72,153,0.22)}
-    .cat-belbin .card{border-left-color:#ec4899}
-    .cat-belbin .catbtn.active{background:#ec4899;border-color:#ec4899}
-
-    .cat-scrum .section-title{background:rgba(6,182,212,0.12);color:#67e8f9;border:1px solid rgba(6,182,212,0.22)}
-    .cat-scrum .card{border-left-color:#06b6d4}
-    .cat-scrum .catbtn.active{background:#06b6d4;border-color:#06b6d4;color:#001a1f}
-
-    .cat-kwaliteit .section-title{background:rgba(22,163,74,0.12);color:#86efac;border:1px solid rgba(22,163,74,0.22)}
-    .cat-kwaliteit .card{border-left-color:#16a34a}
-    .cat-kwaliteit .catbtn.active{background:#16a34a;border-color:#16a34a}
-
-    .cat-overig .section-title{background:rgba(148,163,184,0.10);color:#cbd5e1;border:1px solid rgba(148,163,184,0.18)}
-    .cat-overig .card{border-left-color:#94a3b8}
-    .cat-overig .catbtn.active{background:#64748b;border-color:#64748b}
-
-    /* ── NO RESULTS ── */
-    #noResults{display:none;text-align:center;color:var(--muted);padding:3rem;font-size:1rem}
-  </style>
+.bl-empty {
+  text-align: center; padding: 48px 20px; color: var(--muted); font-weight: 600;
+}
+.bl-empty h3 { font-size: 16px; color: var(--ink); font-weight: 800; margin-bottom: 6px; }
+</style>
 </head>
 <body>
 
-<nav class="fm-header">
-  <div class="header-left">
-    <a class="back-link" href="eventmanagement1.html">← Terug</a>
-    <img src="logo.svg" height="26" alt="FM Kompas" style="display:block">
-    <span class="page-title">Eventmanagement 1 <span>/ Begrippenlijst</span></span>
-  </div>
+<div id="fa-header-slot"></div>
+
+<nav class="fa-breadcrumb">
+  <a href="index.html">Home</a>
+  <span>›</span>
+  <a href="eventmanagement1.html">Eventmanagement 1</a>
+  <span>›</span>
+  <span class="current">Begrippenlijst</span>
 </nav>
 
-<div class="searchbar">
-  <h2>📖 Begrippenlijst</h2>
-  <input type="text" id="searchbox" placeholder="Zoek een begrip..." oninput="filterAll()">
-  <span id="counter"></span>
+<div class="bl-wrap">
+  <div class="bl-hero">
+    <h1>Begrippenlijst</h1>
+    <div class="bl-hero-sub">
+      <span id="blTotalCount">0</span> begrippen · gegroepeerd per categorie · direct zoekbaar
+    </div>
+  </div>
+
+  <div class="bl-toolbar">
+    <div class="bl-searchbox">
+      <span data-fa-icon="search" data-fa-size="15" style="color:var(--muted)"></span>
+      <input id="blSearch" placeholder="Zoek een begrip of definitie…" autocomplete="off"/>
+      <span class="bl-counter" id="blCounter">0 resultaten</span>
+    </div>
+    <div class="bl-catfilters" id="blCatFilters"></div>
+  </div>
+
+  <div id="blMain"></div>
+
+  <div class="bl-empty" id="blEmpty" style="display:none">
+    <h3>Geen resultaten</h3>
+    <div>Probeer een andere zoekterm of filter.</div>
+  </div>
 </div>
 
-<div class="catmenu" id="catmenu"></div>
+<footer class="fa-footer">
+  <span>Tip: gebruik de flashcards-modus om actief te oefenen</span>
+  <span>FMAtlas · HAN FM</span>
+</footer>
 
-<div class="container" id="main"></div>
-<div id="noResults">Geen begrippen gevonden voor "<span id="searchTerm"></span>"</div>
-
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+<script src="js/fmatlas.js"></script>
+<script src="js/data-em1.js"></script>
 <script>
-const data = [
+const firebaseConfig = {
+  apiKey: "AIzaSyBB397Wk2eqpBjic8E7aGV1mTgIjhQ21a8",
+  authDomain: "fmkompas-ff8bc.firebaseapp.com",
+  projectId: "fmkompas-ff8bc",
+  storageBucket: "fmkompas-ff8bc.firebasestorage.app",
+  messagingSenderId: "487972024689",
+  appId: "1:487972024689:web:712c3117080745d14746d0"
+};
+firebase.initializeApp(firebaseConfig);
+firebase.auth().onAuthStateChanged(user => {
+  document.getElementById('fa-header-slot').innerHTML = '';
+  document.getElementById('fa-header-slot').appendChild(faRenderHeader({ user }));
+  faMarkActiveToday();
+  faMarkLastSeen('eventmanagement1','Eventmanagement 1','eventmanagement1.html');
+});
 
-  /* ══════════════════════════════════════
-     1. PROJECTMANAGEMENT — BASISCONCEPTEN
-     ══════════════════════════════════════ */
-  {cat:"project", term:"Project",
-   def:"Een tijdelijke, unieke samenwerking gericht op een vooraf bepaald resultaat, binnen afgesproken randvoorwaarden van tijd, geld en kwaliteit."},
-  {cat:"project", term:"Projectkenmerken",
-   def:"Tijdelijk, uniek, eenmalig, gericht op een concreet resultaat, met een projectteam, budget en deadline."},
-  {cat:"project", term:"Lijnorganisatie",
-   def:"De vaste, permanente organisatiestructuur van een bedrijf; tegenover projectorganisatie (tijdelijk)."},
-  {cat:"project", term:"Opdrachtgever",
-   def:"De persoon of organisatie die het project opdraagt, het budget verstrekt en het eindresultaat accepteert. Staat buiten het projectteam."},
-  {cat:"project", term:"Projectleider",
-   def:"Verantwoordelijk voor de dagelijkse uitvoering, planning en coördinatie van het project. Rapporteert aan de opdrachtgever."},
-  {cat:"project", term:"Stuurgroep",
-   def:"Strategisch beslisorgaan bestaande uit de opdrachtgever en andere beslissingsbevoegde stakeholders. Neemt go/no-go beslissingen bij faseovergangen."},
-  {cat:"project", term:"Stakeholder",
-   def:"Iedereen die belang heeft bij of invloed uitoefent op het project. Niet per se financieel — ook organisatorisch, maatschappelijk of persoonlijk."},
-  {cat:"project", term:"Projectresultaat",
-   def:"Het tastbare of ontastbare eindproduct van het project: kan een product, dienst, rapport, evenement of verandering zijn."},
-  {cat:"project", term:"Kick-off meeting",
-   def:"Officiële startbijeenkomst aan het begin van een project. Alle betrokkenen worden geïnformeerd over doel, aanpak en rolverdeling."},
-  {cat:"project", term:"Go/no-go beslissing",
-   def:"Formele beslissing aan het einde van een projectfase: gaan we door naar de volgende fase of stoppen we? Genomen door de stuurgroep."},
-  {cat:"project", term:"Mijlpaal",
-   def:"Meetbaar tussentijds resultaat of formeel beslismoment binnen een project. Geen doorlooptijd, wel een concreet resultaat."},
-  {cat:"project", term:"Scope creep",
-   def:"Ongecontroleerde, niet-geplande uitbreiding van de projectomvang zonder formele goedkeuring of aanpassing van budget en doorlooptijd."},
-  {cat:"project", term:"Deliverable",
-   def:"Een op te leveren resultaat (product, rapport, ontwerp). Niet hetzelfde als een activiteit — dat is de taak die nodig is om de deliverable te maken."},
-  {cat:"project", term:"P6-methode",
-   def:"Methode van Roel Grit voor het schrijven van een Plan van Aanpak: Probleemstelling, Producten, Planning, Personeel, Prijs, Plan van Aanpak."},
-  {cat:"project", term:"Plan van Aanpak",
-   def:"Het centrale projectdocument. Bevat: aanleiding, doelstelling, resultaat, aanpak, planning, begroting, risicoanalyse en organisatie."},
-  {cat:"project", term:"SMART",
-   def:"Methode om doelstellingen concreet te formuleren: Specifiek, Meetbaar, Acceptabel, Realistisch, Tijdgebonden. Garandeert niet dat een doel haalbaar is."},
+const { cats, begrippen } = window.EM1;
+let activeCat = null;
+let query = '';
 
-  /* ══════════════════════════════════
-     2. TRADITIONELE FASERING
-     ══════════════════════════════════ */
-  {cat:"fasering", term:"Traditionele fasering (volgorde)",
-   def:"Definitie → Ontwerp → Voorbereiding → Realisatie → Nazorg. Let op: Ontwerp komt vóór Voorbereiding!"},
-  {cat:"fasering", term:"Definitiefase",
-   def:"Eerste fase: doel, haalbaarheid en opdracht worden bepaald. Levert het Plan van Aanpak op."},
-  {cat:"fasering", term:"Ontwerpfase",
-   def:"Tweede fase: uitwerken wat er gemaakt wordt. Levert een functioneel of technisch ontwerp (document), niet standaard een fysiek prototype."},
-  {cat:"fasering", term:"Voorbereidingsfase",
-   def:"Derde fase: inkoop, aanbesteding, detailplanning en organisatie klaarstomen voor uitvoering."},
-  {cat:"fasering", term:"Realisatiefase",
-   def:"Vierde fase: de daadwerkelijke uitvoering. Hier wordt het eindresultaat gebouwd of gerealiseerd."},
-  {cat:"fasering", term:"Nazorgfase",
-   def:"Vijfde fase: overdracht, evaluatie en afbouw van de projectorganisatie. Het resultaat wordt overgedragen aan de opdrachtgever of beheerorganisatie."},
-  {cat:"fasering", term:"Watervalmodel",
-   def:"Lineaire, sequentiële aanpak waarbij elke fase volledig wordt afgerond voor de volgende begint. Moeilijk om halverwege grote wijzigingen door te voeren."},
-  {cat:"fasering", term:"Fase-gate",
-   def:"Controlemoment aan het einde van elke fase. De stuurgroep beoordeelt of aan de criteria is voldaan en neemt een go/no-go beslissing."},
+document.getElementById('blTotalCount').textContent = begrippen.length;
 
-  /* ══════════════════════════════════
-     3. PLANNING & BEHEERSASPECTEN
-     ══════════════════════════════════ */
-  {cat:"planning", term:"GOKIT",
-   def:"Afkorting voor de vijf beheersaspecten: Geld, Organisatie, Kwaliteit, Informatie, Tijd. Zelfde als TGKIO en KOFTIG — andere volgorde."},
-  {cat:"planning", term:"TGKIO",
-   def:"Alternatieve volgorde van dezelfde vijf beheersaspecten: Tijd, Geld, Kwaliteit, Informatie, Organisatie."},
-  {cat:"planning", term:"KOFTIG",
-   def:"Nog een alternatieve volgorde van de vijf beheersaspecten. Alle drie (GOKIT, TGKIO, KOFTIG) verwijzen naar exact dezelfde vijf aspecten."},
-  {cat:"planning", term:"Duivelsdriehoek (IJzeren driehoek)",
-   def:"Model dat de drie basisbeperkingen van een project toont: Geld, Tijd en Kwaliteit/Scope. Als één kant verandert zonder aanpassing van de andere, daalt de kwaliteit."},
-  {cat:"planning", term:"Gantt-chart",
-   def:"Balkplanningsdiagram waarbij activiteiten als balken in de tijd worden weergegeven. Toont tijdsvolgorde, maar niet de inhoudelijke afhankelijkheid tussen activiteiten."},
-  {cat:"planning", term:"WBS (Werkbreakdownstructuur)",
-   def:"Hiërarchische opdeling van alle projectactiviteiten en -resultaten. Toont structuur, géén chronologische volgorde — dat doet een Gantt-chart."},
-  {cat:"planning", term:"Kritiek pad (CPM)",
-   def:"De langste reeks afhankelijke activiteiten zonder tijdsspeling (float). Vertraging op het kritieke pad leidt direct tot vertraging van het hele project."},
-  {cat:"planning", term:"Float / tijdsspeling",
-   def:"De hoeveelheid tijd die een activiteit mag uitlopen zonder het eindmoment van het project te beïnvloeden. Activiteiten op het kritieke pad hebben float = 0."},
-  {cat:"planning", term:"Lead (voorsprong)",
-   def:"In netwerkplanning: een opvolgende activiteit mag eerder starten dan normaal — er is overlap. Lead = versnelling/overlap."},
-  {cat:"planning", term:"Lag (vertraging)",
-   def:"In netwerkplanning: een wachttijd tussen twee activiteiten. De opvolgende activiteit moet wachten voordat zij kan beginnen. Lag = vertraging."},
-  {cat:"planning", term:"PERT",
-   def:"Planningstechniek die onzekerheid meeneemt via drie tijdschattingen per activiteit: optimistisch, meest waarschijnlijk en pessimistisch. Verschil met CPM: CPM gebruikt één schatting."},
+/* Build category filter buttons */
+function renderFilters() {
+  const box = document.getElementById('blCatFilters');
+  box.innerHTML = '';
+  const allBtn = document.createElement('button');
+  allBtn.className = 'bl-catbtn bl-catbtn-all' + (activeCat === null ? ' active' : '');
+  allBtn.innerHTML = `Alles`;
+  allBtn.onclick = () => { activeCat = null; render(); };
+  box.appendChild(allBtn);
+  cats.forEach(c => {
+    const btn = document.createElement('button');
+    btn.className = 'bl-catbtn' + (activeCat === c.key ? ' active' : '');
+    btn.innerHTML = `<span class="dot" style="background:${c.color}"></span>${c.short}`;
+    if (activeCat === c.key) {
+      btn.style.background = c.color;
+      btn.style.borderColor = c.color;
+      btn.style.color = '#fff';
+    }
+    btn.onclick = () => { activeCat = c.key; render(); };
+    box.appendChild(btn);
+  });
+}
 
-  /* ══════════════════════════════════
-     4. EARNED VALUE MANAGEMENT (EVM)
-     ══════════════════════════════════ */
-  {cat:"evm", term:"BAC (Budget at Completion)",
-   def:"Het totale, goedgekeurde projectbudget. Uitgangspunt voor EVM-berekeningen.",
-   formula:"BAC = totaalbudget"},
-  {cat:"evm", term:"PV (Planned Value) = BCWS",
-   def:"Het gebudgetteerde bedrag voor het werk dat op dit moment gepland stond te zijn afgerond.",
-   formula:"PV = gepland werk × uurtarief"},
-  {cat:"evm", term:"EV (Earned Value) = BCWP",
-   def:"De budgetwaarde van het werk dat daadwerkelijk is uitgevoerd. Wat heeft het team 'verdiend' in termen van budget?",
-   formula:"EV = % klaar × BAC"},
-  {cat:"evm", term:"AC (Actual Cost) = ACWP",
-   def:"De werkelijke kosten van het tot nu toe uitgevoerde werk.",
-   formula:"AC = daadwerkelijk uitgegeven"},
-  {cat:"evm", term:"CPI (Cost Performance Index)",
-   def:"Meet kostenefficiëntie. CPI > 1 = onder budget. CPI < 1 = over budget.",
-   formula:"CPI = EV ÷ AC"},
-  {cat:"evm", term:"SPI (Schedule Performance Index)",
-   def:"Meet planningsefficiëntie. SPI > 1 = voor op schema. SPI < 1 = achter op schema.",
-   formula:"SPI = EV ÷ PV"},
-  {cat:"evm", term:"CV (Cost Variance)",
-   def:"Kostenverschil. Negatief = meer uitgegeven dan verdiend = over budget.",
-   formula:"CV = EV − AC"},
-  {cat:"evm", term:"SV (Schedule Variance)",
-   def:"Planningsverschil. Negatief = minder gedaan dan gepland = achter op schema.",
-   formula:"SV = EV − PV"},
-  {cat:"evm", term:"EAC (Estimate at Completion)",
-   def:"Verwachte totale projectkosten op basis van huidige CPI. Als CPI = 0,80 en BAC = €200k, dan EAC = €250k — meer dan gepland!",
-   formula:"EAC = BAC ÷ CPI"},
-  {cat:"evm", term:"ETC (Estimate to Complete)",
-   def:"Verwachte resterende kosten om het project af te ronden.",
-   formula:"ETC = EAC − AC"},
+function escapeRegex(str) { return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); }
+function highlight(text, q) {
+  if (!q) return text;
+  const re = new RegExp('(' + escapeRegex(q) + ')', 'gi');
+  return text.replace(re, '<mark>$1</mark>');
+}
 
-  /* ══════════════════════════════════
-     5. RISICOBEHEERSING
-     ══════════════════════════════════ */
-  {cat:"risico", term:"Risico",
-   def:"Een onzekere gebeurtenis die een positief (kans) of negatief (bedreiging) effect kan hebben op projectdoelen."},
-  {cat:"risico", term:"Risicoscore",
-   def:"Maatstaf voor de prioriteit van een risico. Hoger = urgenter.",
-   formula:"Risicoscore = kans × impact"},
-  {cat:"risico", term:"Risicomatrix",
-   def:"Visueel hulpmiddel om risico's te prioriteren op basis van kans én impact. Hoge kans + hoge impact = hoge prioriteit."},
-  {cat:"risico", term:"Risicorespons: Vermijden",
-   def:"De projectactiviteit of -aanpak zo aanpassen dat het risico niet meer bestaat. Niet hetzelfde als een noodplan!"},
-  {cat:"risico", term:"Risicorespons: Mitigeren",
-   def:"De kans en/of impact van een risico verkleinen. Elimineert het risico niet volledig."},
-  {cat:"risico", term:"Risicorespons: Overdragen (Transfer)",
-   def:"Het risico neerleggen bij een andere partij, bijv. via verzekering of uitbesteding. Kost doorgaans extra geld (premie, contractkosten)."},
-  {cat:"risico", term:"Risicorespons: Accepteren",
-   def:"Het risico bewust accepteren, eventueel met een contingency plan (noodplan) als het toch optreedt."},
-  {cat:"risico", term:"Contingency plan (noodplan)",
-   def:"Vooraf opgesteld plan dat in werking treedt als een geaccepteerd risico zich daadwerkelijk voordoet."},
-  {cat:"risico", term:"Oorzaak-gevolgdiagram (visgraatdiagram / Ishikawa)",
-   def:"Hulpmiddel om oorzaken van een probleem systematisch in kaart te brengen. Categorieën: mens, machine, methode, materiaal, milieu, management."},
+function matches(item, q) {
+  if (!q) return true;
+  const l = q.toLowerCase();
+  return item.term.toLowerCase().includes(l) || item.def.toLowerCase().includes(l);
+}
 
-  /* ══════════════════════════════════
-     6. PROJECTORGANISATIE
-     ══════════════════════════════════ */
-  {cat:"organisatie", term:"Matrixorganisatie",
-   def:"Organisatievorm waarbij een medewerker rapporteert aan zowel de lijnmanager (functioneel) als de projectleider (projectmatig). Dubbele rapportagelijn."},
-  {cat:"organisatie", term:"Zuivere projectorganisatie",
-   def:"Medewerkers worden volledig losgemaakt van de lijnorganisatie voor de duur van het project. Projectleider heeft volledige zeggenschap."},
-  {cat:"organisatie", term:"Stafprojectorganisatie",
-   def:"Projectleider heeft een adviserende rol zonder directe bevoegdheid over de medewerkers; die blijven in de lijn."},
-  {cat:"organisatie", term:"MVO (Maatschappelijk Verantwoord Ondernemen)",
-   def:"Bedrijfsvoering waarbij rekening wordt gehouden met People (sociaal), Planet (milieu) en Profit (economisch). Standaardmodel heeft drie P's."},
-  {cat:"organisatie", term:"People (MVO)",
-   def:"De sociale dimensie van MVO: eerlijke arbeidsomstandigheden, mensenrechten, maatschappelijke bijdrage."},
-  {cat:"organisatie", term:"Planet (MVO)",
-   def:"De ecologische dimensie van MVO: milieubescherming, CO₂-reductie, duurzame grondstofgebruik."},
-  {cat:"organisatie", term:"Profit (MVO)",
-   def:"De economische dimensie van MVO: financieel gezonde bedrijfsvoering die waarde creëert voor alle stakeholders."},
-
-  /* ══════════════════════════════════
-     7. BELBIN TEAMROLLEN
-     ══════════════════════════════════ */
-  {cat:"belbin", term:"Belbin — overzicht",
-   def:"Meredith Belbin onderscheidt 9 teamrollen verdeeld over 3 categorieën. Één persoon kan meerdere rollen vervullen."},
-  {cat:"belbin", term:"Vormer (Shaper) — actiegericht",
-   def:"Drijvende kracht, zet druk op resultaten, pakt obstakels aan. Zonder Vormer mist het team urgentie en richting."},
-  {cat:"belbin", term:"Bedrijfsman / Zetter (Implementer) — actiegericht",
-   def:"Vertaalt ideeën naar praktische actie, werkt gedisciplineerd en efficiënt."},
-  {cat:"belbin", term:"Afmaker (Completer Finisher) — actiegericht",
-   def:"Let op details, zorgt dat alles foutloos wordt opgeleverd, deadlinegericht."},
-  {cat:"belbin", term:"Coördinator (Coordinator) — mensgeoriënteerd",
-   def:"Leidt het team, delegeert goed, bewaakt de doelen. Vroeger ook 'Voorzitter' genaamd."},
-  {cat:"belbin", term:"Groepswerker (Teamworker) — mensgeoriënteerd",
-   def:"Houdt de teamsfeer goed, lost conflicten op, is diplomatiek en ondersteunend."},
-  {cat:"belbin", term:"Brononderzoeker (Resource Investigator) — mensgeoriënteerd",
-   def:"Enthousiast, netwerkt buiten het team, brengt kansen en ideeën van buiten naar binnen. Sociale/externe rol — geen taakgerichte rol!"},
-  {cat:"belbin", term:"Plant / Bedenker (Plant) — cerebraal",
-   def:"Creatief, origineel denker. Genereert vernieuwende ideeën maar communiceert slecht."},
-  {cat:"belbin", term:"Monitor / Waarschuwer (Monitor Evaluator) — cerebraal",
-   def:"Analytisch, objectief, beoordeelt opties kritisch. Heeft geen besluitvaardigheid maar wel goed oordeel."},
-  {cat:"belbin", term:"Specialist (Specialist) — cerebraal",
-   def:"Diepgaande vakkennis op een specifiek gebied. Scoort niet breed maar wel diep."},
-
-  /* ══════════════════════════════════
-     8. AGILE & SCRUM
-     ══════════════════════════════════ */
-  {cat:"scrum", term:"Agile",
-   def:"Verzameling van waarden en principes voor flexibele softwareontwikkeling (Agile Manifesto 2001). Geschikt voor veranderende of onduidelijke eisen."},
-  {cat:"scrum", term:"Agile Manifesto — 4 kernwaarden",
-   def:"1) Mensen & interactie > processen & tools. 2) Werkende software > uitgebreide documentatie. 3) Klantcollaboratie > contractonderhandeling. 4) Inspelen op verandering > plan volgen."},
-  {cat:"scrum", term:"Scrum",
-   def:"Agile framework met vaste rollen, ceremonies en artefacten. Werk in sprints van 1–4 weken."},
-  {cat:"scrum", term:"Sprint",
-   def:"Timeboxed iteratie van 1–4 weken. Het team levert aan het einde een werkend increment op. De duur is vast gedurende het project."},
-  {cat:"scrum", term:"Product Owner",
-   def:"Verantwoordelijk voor de product backlog: prioriteert, beheert en communiceert wat er gebouwd moet worden. Vertegenwoordigt de klant/business."},
-  {cat:"scrum", term:"Scrum Master",
-   def:"Dienende leider die het Scrum-proces begeleidt en obstakels wegneemt. Heeft geen inhoudelijke bevoegdheid en is niet verantwoordelijk voor de backlog."},
-  {cat:"scrum", term:"Development Team",
-   def:"Zelforganiserend, cross-functioneel team dat het werk uitvoert. Bepaalt zelf hoeveel werk het in een sprint kan verwerken (velocity)."},
-  {cat:"scrum", term:"Product Backlog",
-   def:"Geprioriteerde lijst van alle gewenste functionaliteiten, bugs en verbeteringen. Bevat zowel voltooide als nog te doen items. Eigendom van de Product Owner."},
-  {cat:"scrum", term:"Sprint Backlog",
-   def:"De subset van de product backlog die het team in de huidige sprint gaat realiseren."},
-  {cat:"scrum", term:"Increment",
-   def:"Het opgeleverde, werkende product aan het einde van een sprint. Moet voldoen aan de Definition of Done."},
-  {cat:"scrum", term:"Sprint Planning",
-   def:"Ceremonie aan het begin van een sprint: team kiest werk uit de backlog en maakt een plan voor de sprint."},
-  {cat:"scrum", term:"Daily Scrum (standup)",
-   def:"Dagelijkse afstemming van maximaal 15 minuten: wat heb ik gisteren gedaan, wat doe ik vandaag, welke obstakels heb ik?"},
-  {cat:"scrum", term:"Sprint Review",
-   def:"Ceremonie aan het einde van de sprint: het team demonstreert het opgeleverde increment aan de Product Owner en stakeholders. Over het PRODUCT."},
-  {cat:"scrum", term:"Sprint Retrospective",
-   def:"Ceremonie na de Sprint Review: het team reflecteert intern op het WERKPROCES. Hoe kunnen we beter samenwerken? Niet over het product."},
-  {cat:"scrum", term:"Definition of Done (DoD)",
-   def:"Gedeelde afspraak over de kwaliteitscriteria waaraan een increment moet voldoen om als 'klaar' te gelden. Transparant en formeel vastgelegd."},
-  {cat:"scrum", term:"Velocity",
-   def:"De gemiddelde hoeveelheid werk (in story points) die een team per sprint verwerkt. Basis voor capaciteitsplanning."},
-
-  /* ══════════════════════════════════
-     9. KWALITEITSMANAGEMENT
-     ══════════════════════════════════ */
-  {cat:"kwaliteit", term:"Kwaliteitsmanagement",
-   def:"Omvat drie onderdelen: kwaliteitsplanning (wat zijn de eisen?), kwaliteitsborging (procedures) en kwaliteitscontrole (meten of er aan is voldaan)."},
-  {cat:"kwaliteit", term:"FAT (Factory Acceptance Test)",
-   def:"Acceptatietest die plaatsvindt bij de LEVERANCIER/fabrikant. De klant controleert of het product aan de eisen voldoet voordat het verzonden wordt."},
-  {cat:"kwaliteit", term:"SAT (Site Acceptance Test)",
-   def:"Acceptatietest die plaatsvindt bij de KLANT/locatie. Controle of het geïnstalleerde systeem correct werkt in de echte omgeving."},
-
-  /* ══════════════════════════════════
-     10. OVERIGE BEGRIPPEN
-     ══════════════════════════════════ */
-  {cat:"overig", term:"Probleemstelling",
-   def:"Beschrijving van de aanleiding en het probleem dat het project moet oplossen. Eerste stap in de P6-methode."},
-  {cat:"overig", term:"Projectdoelstelling",
-   def:"SMART geformuleerde beschrijving van wat het project beoogt te bereiken. Antwoord op: waarom doen we dit project?"},
-  {cat:"overig", term:"Businesscase",
-   def:"Onderbouwing van de toegevoegde waarde van het project: kosten, baten, risico's en alternatieve opties."},
-  {cat:"overig", term:"Vergaderen — voorzitter",
-   def:"De voorzitter stelt de agenda op, leidt de vergadering, bewaakt de tijd en zorgt voor besluiten. De notulist legt besluiten vast."},
-  {cat:"overig", term:"Agendabeheer",
-   def:"De voorzitter stelt de agenda op en verstuurt die vooraf. Deelnemers kunnen punten toevoegen. Vergadering begint en eindigt op tijd."},
-  {cat:"overig", term:"Presenteren — structuur",
-   def:"Inleiding (wat ga ik vertellen), kern (de boodschap), afsluiting (samenvatting + conclusie/actie). Vertel wat je gaat vertellen, vertel het, vat samen."},
-  {cat:"overig", term:"Netwerken",
-   def:"Actief opbouwen en onderhouden van professionele contacten die van waarde kunnen zijn voor het project of de eigen carrière."},
-];
-
-/* ════════ CATEGORIE-CONFIGURATIE ════════ */
-const cats = [
-  {key:"project",      label:"📋 Basis projectmanagement", cls:"cat-project"},
-  {key:"fasering",     label:"📅 Traditionele fasering",    cls:"cat-fasering"},
-  {key:"planning",     label:"📊 Planning & beheersaspecten", cls:"cat-planning"},
-  {key:"evm",          label:"💹 EVM-berekeningen",         cls:"cat-evm"},
-  {key:"risico",       label:"⚠️ Risicobeheersing",         cls:"cat-risico"},
-  {key:"organisatie",  label:"🏢 Organisatie & MVO",        cls:"cat-organisatie"},
-  {key:"belbin",       label:"👥 Belbin-rollen",            cls:"cat-belbin"},
-  {key:"scrum",        label:"🔄 Agile & Scrum",            cls:"cat-scrum"},
-  {key:"kwaliteit",    label:"✅ Kwaliteit & FAT/SAT",      cls:"cat-kwaliteit"},
-  {key:"overig",       label:"💡 Overige begrippen",        cls:"cat-overig"},
-];
-
-/* ════════ RENDER ════════ */
-function render(filterCat, searchText){
-  const main = document.getElementById('main');
+function render() {
+  renderFilters();
+  const main = document.getElementById('blMain');
   main.innerHTML = '';
   let totalShown = 0;
 
   cats.forEach(c => {
-    if(filterCat && filterCat !== c.key) return;
-    const items = data.filter(d => d.cat === c.key && matchSearch(d, searchText));
-    if(!items.length) return;
+    if (activeCat && activeCat !== c.key) return;
+    const items = begrippen.filter(b => b.cat === c.key && matches(b, query));
+    if (!items.length) return;
     totalShown += items.length;
 
-    const sec = document.createElement('div');
-    sec.className = `section ${c.cls}`;
-    sec.innerHTML = `<div class="section-title">${c.label}</div>`;
-    const grid = document.createElement('div');
-    grid.className = 'grid';
-    items.forEach(d => {
-      const card = document.createElement('div');
-      card.className = 'card';
-      card.innerHTML = `<div class="term">${highlight(d.term, searchText)}</div>
-        <div class="def">${highlight(d.def, searchText)}</div>
-        ${d.formula ? `<div class="formula">${d.formula}</div>` : ''}`;
-      grid.appendChild(card);
-    });
-    sec.appendChild(grid);
+    const sec = document.createElement('section');
+    sec.className = 'bl-section';
+    sec.innerHTML = `
+      <div class="bl-section-head">
+        <span class="bl-section-dot" style="background:${c.color}"></span>
+        <span class="bl-section-title">${c.label}</span>
+        <span class="bl-section-count">${items.length} ${items.length === 1 ? 'begrip' : 'begrippen'}</span>
+      </div>
+      <div class="bl-grid">
+        ${items.map(b => `
+          <div class="bl-card">
+            <div class="bl-term">${highlight(b.term, query)}</div>
+            <div class="bl-def">${highlight(b.def, query)}</div>
+            ${b.formula ? `<div class="bl-formula">${highlight(b.formula, query)}</div>` : ''}
+          </div>
+        `).join('')}
+      </div>
+    `;
     main.appendChild(sec);
   });
 
-  document.getElementById('counter').textContent = totalShown + ' begrippen';
-  document.getElementById('noResults').style.display = totalShown ? 'none' : 'block';
-  document.getElementById('searchTerm').textContent = searchText;
+  document.getElementById('blCounter').textContent =
+    totalShown + ' ' + (totalShown === 1 ? 'resultaat' : 'resultaten');
+  document.getElementById('blEmpty').style.display = totalShown ? 'none' : 'block';
 }
 
-function matchSearch(d, txt){
-  if(!txt) return true;
-  const t = txt.toLowerCase();
-  return d.term.toLowerCase().includes(t) || d.def.toLowerCase().includes(t);
-}
+document.getElementById('blSearch').addEventListener('input', e => {
+  query = e.target.value.trim();
+  render();
+});
 
-function highlight(text, query){
-  if(!query) return text;
-  const regex = new RegExp('(' + query.replace(/[.*+?^${}()|[\]\\]/g,'\\$&') + ')', 'gi');
-  return text.replace(regex, '<mark style="background:rgba(91,91,255,0.35);border-radius:3px;padding:0 2px;color:#fff">$1</mark>');
-}
-
-/* ════════ CATEGORIEKNOPJES ════════ */
-let activeCat = null;
-function buildCatMenu(){
-  const menu = document.getElementById('catmenu');
-  const allBtn = document.createElement('button');
-  allBtn.className = 'catbtn active';
-  allBtn.textContent = '🔍 Alles';
-  allBtn.style.background = 'hsl(235,100%,60%)';
-  allBtn.style.color = '#fff';
-  allBtn.style.borderColor = 'transparent';
-  allBtn.onclick = () => {
-    activeCat = null;
-    document.querySelectorAll('.catbtn').forEach(b=>{b.classList.remove('active');b.style.background='';b.style.color='';b.style.borderColor=''});
-    allBtn.classList.add('active');
-    allBtn.style.background='hsl(235,100%,60%)';
-    allBtn.style.color='#fff';
-    allBtn.style.borderColor='transparent';
-    filterAll();
-  };
-  menu.appendChild(allBtn);
-
-  cats.forEach(c => {
-    const btn = document.createElement('button');
-    btn.className = `catbtn ${c.cls}`;
-    btn.textContent = c.label;
-    btn.onclick = () => {
-      activeCat = c.key;
-      document.querySelectorAll('.catbtn').forEach(b=>{b.classList.remove('active');b.style.background='';b.style.color='';b.style.borderColor=''});
-      allBtn.style.background=''; allBtn.style.color=''; allBtn.style.borderColor='';
-      btn.classList.add('active');
-      filterAll();
-    };
-    menu.appendChild(btn);
-  });
-}
-
-function filterAll(){
-  const q = document.getElementById('searchbox').value.trim();
-  render(activeCat, q);
-}
-
-buildCatMenu();
-render(null, '');
+render();
 </script>
 </body>
 </html>

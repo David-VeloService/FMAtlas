@@ -1,125 +1,107 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Studiesamenvatting — Evenementenmanagement A | FM Kompas</title>
-<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Samenvatting · Eventmanagement 1 — FMAtlas</title>
+<link rel="icon" type="image/svg+xml" href="logo.svg"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="css/fmatlas.css"/>
 <style>
-:root{
-  --bg:hsl(0,0%,7%);
-  --fg:hsl(0,0%,100%);
-  --card:hsl(0,0%,9%);
-  --card2:hsl(0,0%,11%);
-  --primary:hsl(235,100%,60%);
-  --muted:hsl(0,0%,56%);
-  --border:rgba(255,255,255,0.10);
-}
-* { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: 'Geist','Segoe UI',system-ui,sans-serif; background: var(--bg); color: var(--fg); font-size: 14px; line-height: 1.6; }
+/* Legacy samenvatting restyle — FMAtlas look */
+.sam-wrap { max-width: 1100px; margin: 0 auto; padding: 24px; }
+.sam-intro { background: var(--surface); border: 1.5px solid var(--line); border-radius: var(--radius-xl); padding: 28px 32px; margin-bottom: 18px; }
+.sam-intro-meta { font-size: 11px; font-weight: 800; color: var(--accent); letter-spacing: 0.08em; margin-bottom: 8px; }
+.sam-intro h1 { font-size: 32px; font-weight: 900; letter-spacing: -0.025em; line-height: 1.08; margin-bottom: 10px; }
+.sam-intro p { color: var(--ink-soft); font-size: 14.5px; line-height: 1.6; }
 
-/* ── FM KOMPAS HEADER ── */
-.fm-header { position: sticky; top: 0; z-index: 200; height: 60px; background: rgba(18,18,18,0.92); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); display: flex; align-items: center; padding: 0 1.25rem; gap: 1rem; }
-.header-left { display: flex; align-items: center; gap: .9rem; min-width: 0; }
-.back-link { color: var(--muted); font-size: .82rem; font-weight: 500; text-decoration: none; white-space: nowrap; transition: color .15s; }
-.back-link:hover { color: var(--fg); }
-.page-title { font-size: .88rem; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.page-title span { color: var(--muted); font-weight: 400; }
+.toetsinfo { display: none; } /* hide original stripe */
 
-.toetsinfo { background: rgba(234,179,8,0.10); border-left: 5px solid #eab308; padding: 12px 24px; font-size: 13px; color: #fcd34d; }
-.toetsinfo strong { color: #fbbf24; }
+nav.chapnav { background: var(--surface); border: 1.5px solid var(--line); border-radius: var(--radius-lg); padding: 12px 16px; margin: 0 24px 18px; max-width: 1052px; margin-left: auto; margin-right: auto; display: flex; flex-wrap: wrap; gap: 6px; position: sticky; top: 68px; z-index: 20; }
+nav.chapnav a { color: var(--ink-soft); text-decoration: none; padding: 4px 10px; border-radius: 8px; background: var(--bg); font-weight: 800; font-size: 11.5px; border: 1.5px solid var(--line); transition: all 0.12s; }
+nav.chapnav a:hover { background: var(--accent-soft); color: var(--accent-deep); border-color: var(--accent); }
 
-nav.chapnav { background: rgba(18,18,18,0.95); border-bottom: 1px solid var(--border); padding: 10px 24px; display: flex; flex-wrap: wrap; gap: 6px; font-size: 12px; position: sticky; top: 60px; z-index: 100; }
-nav.chapnav a { color: #93c5fd; text-decoration: none; padding: 3px 8px; border-radius: 4px; background: rgba(59,130,246,0.12); font-weight: 600; border: 1px solid rgba(59,130,246,0.20); transition: all .15s; }
-nav.chapnav a:hover { background: rgba(59,130,246,0.22); color: #bfdbfe; }
+.main { max-width: 1052px; margin: 0 auto; padding: 0 24px 60px; display: flex; flex-direction: column; gap: 18px; }
 
-.main { padding: 20px 24px; max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 20px; }
-
-/* Cards */
-.card { background: var(--card); border-radius: 10px; border: 1px solid var(--border); overflow: hidden; scroll-margin-top: 130px; }
-.card-header { padding: 12px 20px; display: flex; align-items: center; gap: 8px; color: white; }
-.card-header h2 { font-size: 17px; font-weight: 700; }
+/* Chapter cards */
+.card { background: var(--surface); border: 1.5px solid var(--line); border-radius: var(--radius-xl); overflow: hidden; scroll-margin-top: 140px; }
+.card-header { padding: 16px 22px; display: flex; align-items: center; gap: 10px; color: var(--surface); background: var(--ink); }
+.card-header h2 { font-size: 17px; font-weight: 900; letter-spacing: -0.015em; }
 .card-header .icon { font-size: 20px; }
-.card-body { padding: 16px 20px; }
+.card-body { padding: 22px 24px; }
 
-/* Color schemes per chapter */
-.h1 { background: #1d4ed8; }
-.h2 { background: #0369a1; }
-.h3 { background: #0f766e; }
-.h4 { background: #15803d; }
-.h5 { background: #7c3aed; }
-.h6 { background: #9333ea; }
-.h7 { background: #b45309; }
-.h8 { background: #c2410c; }
-.h9 { background: #be185d; }
-.h10 { background: #4f46e5; }
-.h11 { background: #0891b2; }
-.h12 { background: #166534; }
-.hpv { background: #374151; }
-.hec { background: #9a3412; }
-.hrt { background: #7c2d12; }
-.hmk { background: #4c1d95; }
-.hbec { background: #1e3a5f; }
+/* Chapter colors — using accent + neutrals */
+.h1, .h2, .h3, .h4, .h5, .h6, .h7, .h8, .h9, .h10, .h11, .h12, .hpv, .hec, .hrt, .hmk, .hbec { background: var(--ink); }
+.h1 { background: var(--accent); }
+.hec, .hrt, .hmk, .hbec, .hpv { background: var(--ink-soft); }
 
-/* Content layout */
-.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-.three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; }
-@media (max-width: 700px) { .two-col, .three-col { grid-template-columns: 1fr; } }
+/* Content elements */
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+@media (max-width: 740px) { .two-col, .three-col { grid-template-columns: 1fr; } }
 
-.section { margin-bottom: 14px; }
-.section h3 { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.4px; color: var(--muted); margin-bottom: 6px; border-bottom: 1px solid var(--border); padding-bottom: 4px; }
+.section { margin-bottom: 18px; }
+.section h3 { font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin-bottom: 8px; padding-bottom: 6px; border-bottom: 1.5px solid var(--line); }
 
-ul.clean { list-style: none; display: flex; flex-direction: column; gap: 3px; }
-ul.clean li { font-size: 13px; padding: 3px 0 3px 14px; position: relative; color: var(--muted); }
-ul.clean li::before { content: '›'; position: absolute; left: 0; color: rgba(255,255,255,0.25); font-weight: 700; }
-ul.clean li strong { color: var(--fg); }
+ul.clean { list-style: none; display: flex; flex-direction: column; gap: 5px; margin: 0; padding: 0; }
+ul.clean li { font-size: 13.5px; line-height: 1.55; padding: 3px 0 3px 16px; position: relative; color: var(--ink-soft); font-weight: 500; }
+ul.clean li::before { content: '›'; position: absolute; left: 0; top: 3px; color: var(--accent); font-weight: 900; }
+ul.clean li strong { color: var(--ink); font-weight: 800; }
 
-.defbox { background: var(--card2); border: 1px solid var(--border); border-left: 4px solid; border-radius: 0 6px 6px 0; padding: 8px 12px; margin-bottom: 8px; font-size: 13px; color: var(--muted); }
-.defbox strong { display: block; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.3px; color: var(--muted); margin-bottom: 2px; }
+.defbox { background: var(--bg); border: 1.5px solid var(--line); border-left: 4px solid var(--accent); border-radius: 0 var(--radius) var(--radius) 0; padding: 10px 14px; margin-bottom: 10px; font-size: 13.5px; line-height: 1.55; color: var(--ink-soft); }
+.defbox strong { display: block; font-size: 10.5px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); margin-bottom: 4px; }
 
-.highlight { background: rgba(234,179,8,0.10); border: 1px solid rgba(234,179,8,0.22); border-radius: 6px; padding: 8px 12px; font-size: 13px; margin-bottom: 8px; color: #fcd34d; }
-.highlight strong { color: #fbbf24; }
+.highlight { background: var(--accent-soft); border: 1.5px solid rgba(239, 90, 63, 0.25); border-radius: var(--radius); padding: 10px 14px; font-size: 13.5px; line-height: 1.55; margin-bottom: 10px; color: var(--accent-deep); font-weight: 600; }
+.highlight strong { color: var(--accent-deep); font-weight: 900; }
 
-.warn { background: rgba(244,63,94,0.10); border-left: 3px solid rgba(244,63,94,0.50); padding: 7px 12px; border-radius: 0 6px 6px 0; font-size: 12px; color: #fda4af; margin-bottom: 8px; }
+.warn { background: #fff7ed; border-left: 3px solid #f59e0b; padding: 9px 14px; border-radius: 0 var(--radius) var(--radius) 0; font-size: 12.5px; color: #92400e; margin-bottom: 10px; font-weight: 600; }
 
-.tag { display: inline-block; padding: 2px 7px; border-radius: 10px; font-size: 11px; font-weight: 700; }
-.blue   { background: rgba(59,130,246,0.18);  color: #93c5fd; }
-.green  { background: rgba(34,197,94,0.15);   color: #86efac; }
-.purple { background: rgba(139,92,246,0.18);  color: #c4b5fd; }
-.orange { background: rgba(249,115,22,0.18);  color: #fdba74; }
-.red    { background: rgba(239,68,68,0.15);   color: #fca5a5; }
-.yellow { background: rgba(234,179,8,0.15);   color: #fde68a; }
+.tag { display: inline-block; padding: 2px 8px; border-radius: 999px; font-size: 11px; font-weight: 800; }
+.blue   { background: #dbeafe;  color: #1e40af; }
+.green  { background: #dcfce7;  color: #166534; }
+.purple { background: #ede9fe;  color: #5b21b6; }
+.orange { background: #ffedd5;  color: #9a3412; }
+.red    { background: #fee2e2;  color: #991b1b; }
+.yellow { background: #fef3c7;  color: #854d0e; }
 
-.grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-.grid3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
+.grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.grid3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
 @media (max-width: 600px) { .grid2, .grid3 { grid-template-columns: 1fr; } }
 
-.box { background: var(--card2); border: 1px solid var(--border); border-radius: 8px; padding: 10px 12px; }
-.box h4 { font-size: 12px; font-weight: 700; margin-bottom: 6px; color: var(--fg); }
+.box { background: var(--bg); border: 1.5px solid var(--line); border-radius: var(--radius); padding: 12px 14px; }
+.box h4 { font-size: 12.5px; font-weight: 900; margin-bottom: 8px; color: var(--ink); letter-spacing: -0.005em; }
 
-.nummer { display: inline-block; background: #1d4ed8; color: white; width: 20px; height: 20px; border-radius: 50%; font-size: 11px; font-weight: 700; text-align: center; line-height: 20px; margin-right: 6px; flex-shrink: 0; }
+.nummer { display: inline-flex; align-items:center; justify-content:center; background: var(--accent); color: var(--surface); width: 22px; height: 22px; border-radius: 50%; font-size: 11px; font-weight: 900; margin-right: 8px; flex-shrink: 0; }
+.stap { display: flex; align-items: center; gap: 4px; font-size: 13.5px; color: var(--ink-soft); padding: 4px 0; line-height: 1.5; }
+.stap strong { color: var(--ink); }
 
-.stap { display: flex; align-items: flex-start; gap: 8px; padding: 5px 0; font-size: 13px; color: var(--muted); }
-.stap span:last-child strong { color: var(--fg); }
-
-table.compact { width: 100%; border-collapse: collapse; font-size: 12px; }
-table.compact th { background: rgba(255,255,255,0.06); padding: 6px 10px; text-align: left; font-weight: 700; border-bottom: 2px solid var(--border); color: var(--fg); }
-table.compact td { padding: 5px 10px; border-bottom: 1px solid rgba(255,255,255,0.05); color: var(--muted); }
-table.compact td strong { color: var(--fg); }
-table.compact tr:nth-child(even) td { background: rgba(255,255,255,0.02); }
-
-footer { text-align: center; padding: 16px; color: var(--muted); font-size: 12px; background: var(--card); border-top: 1px solid var(--border); margin-top: 8px; }
+table.compact { width: 100%; border-collapse: collapse; font-size: 12.5px; margin-top: 6px; }
+table.compact th, table.compact td { padding: 7px 10px; text-align: left; border-bottom: 1.5px solid var(--line); color: var(--ink-soft); }
+table.compact th { font-size: 10.5px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+table.compact td strong { color: var(--ink); font-weight: 800; }
 </style>
 </head>
 <body>
 
-<nav class="fm-header">
-  <div class="header-left">
-    <a class="back-link" href="eventmanagement1.html">← Terug</a>
-    <img src="logo.svg" height="26" alt="FM Kompas" style="display:block">
-    <span class="page-title">Eventmanagement 1 <span>/ Studiesamenvatting</span></span>
-  </div>
+<div id="fa-header-slot"></div>
+
+<nav class="fa-breadcrumb">
+  <a href="index.html">Home</a>
+  <span>›</span>
+  <a href="eventmanagement1.html">Eventmanagement 1</a>
+  <span>›</span>
+  <span class="current">Samenvatting</span>
 </nav>
+
+<div class="sam-wrap">
+  <div class="sam-intro">
+    <div class="sam-intro-meta">SAMENVATTING · 17 hoofdstukken + expert-colleges</div>
+    <h1>Projectmanagement & Eventrecht — volledige studiesamenvatting</h1>
+    <p>Alle hoofdstukken (H1 t/m H12) plus de expert-colleges (Projectvaardigheden, Eventcontrol, Recht & Toezicht, Managementkunde, Bedrijfseconomie) samengevat. Blader via de navigatie of scroll door alle secties.</p>
+  </div>
+</div>
 
 <div class="toetsinfo">
   <strong>Toets:</strong> 80 meerkeuzevragen (juist/onjuist) &nbsp;|&nbsp; <strong>Voldoende:</strong> minimaal 60 goed &nbsp;|&nbsp;
@@ -1421,5 +1403,31 @@ footer { text-align: center; padding: 16px; color: var(--muted); font-size: 12px
   Studiesamenvatting Evenementenmanagement A — Succes met de toets! 🎓
 </footer>
 
+<footer class="fa-footer">
+  <span>FMAtlas · volledige samenvatting Eventmanagement 1</span>
+  <span>HAN · Facilitair Management</span>
+</footer>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+<script src="js/fmatlas.js"></script>
+<script>
+const firebaseConfig = {
+  apiKey: "AIzaSyBB397Wk2eqpBjic8E7aGV1mTgIjhQ21a8",
+  authDomain: "fmkompas-ff8bc.firebaseapp.com",
+  projectId: "fmkompas-ff8bc",
+  storageBucket: "fmkompas-ff8bc.firebasestorage.app",
+  messagingSenderId: "487972024689",
+  appId: "1:487972024689:web:712c3117080745d14746d0"
+};
+firebase.initializeApp(firebaseConfig);
+firebase.auth().onAuthStateChanged(user => {
+  document.getElementById('fa-header-slot').innerHTML = '';
+  document.getElementById('fa-header-slot').appendChild(faRenderHeader({ user }));
+  faMarkActiveToday();
+  faMarkLastSeen('eventmanagement1','Eventmanagement 1','eventmanagement1.html');
+});
+</script>
 </body>
 </html>

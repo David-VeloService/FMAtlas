@@ -1,344 +1,317 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Flashcards — Evenementenmanagement A | FM Kompas</title>
-  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
-  <style>
-    :root{
-      --bg:hsl(0,0%,7%);
-      --fg:hsl(0,0%,100%);
-      --card:hsl(0,0%,9%);
-      --card2:hsl(0,0%,11%);
-      --primary:hsl(235,100%,60%);
-      --muted:hsl(0,0%,56%);
-      --border:rgba(255,255,255,0.10);
-    }
-    *{box-sizing:border-box;margin:0;padding:0}
-    body{font-family:'Geist','Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--fg);min-height:100vh;display:flex;flex-direction:column;align-items:center;padding-bottom:4rem}
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Flashcards · Eventmanagement 1 — FMAtlas</title>
+<link rel="icon" type="image/svg+xml" href="logo.svg"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="css/fmatlas.css"/>
+<style>
+.fc-wrap { max-width: 780px; margin: 0 auto; padding: 28px 24px 80px; }
 
-    /* ── FM KOMPAS HEADER ── */
-    .fm-header{width:100%;position:sticky;top:0;z-index:200;height:60px;background:rgba(18,18,18,0.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 1.25rem;gap:1rem}
-    .pts-chip{display:flex;align-items:center;gap:.4rem;background:rgba(91,91,255,.12);border:1px solid rgba(91,91,255,.30);border-radius:99px;padding:.25rem .8rem;font-size:.8rem;font-weight:700;color:hsl(235,100%,60%);flex-shrink:0}
-    .header-left{display:flex;align-items:center;gap:.9rem;min-width:0}
-    .back-link{color:var(--muted);font-size:.82rem;font-weight:500;text-decoration:none;white-space:nowrap;transition:color .15s}
-    .back-link:hover{color:var(--fg)}
-    .page-title{font-size:.88rem;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-    .page-title span{color:var(--muted);font-weight:400}
+.fc-hero {
+  display: flex; align-items: center; justify-content: space-between; gap: 18px;
+  margin-bottom: 18px; flex-wrap: wrap;
+}
+.fc-hero h1 { font-size: 28px; font-weight: 900; letter-spacing: -0.025em; }
+.fc-hero-sub { font-size: 13px; color: var(--muted); font-weight: 700; letter-spacing: 0.02em; }
 
-    /* ── TOPBAR (filters + progress) ── */
-    .topbar{width:100%;position:sticky;top:60px;z-index:100;background:rgba(18,18,18,0.95);border-bottom:1px solid var(--border);padding:.75rem 1.5rem;display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
-    .topbar h2{font-size:1rem;color:var(--fg);white-space:nowrap;font-weight:700}
-    .topbar select{padding:.4rem .8rem;border-radius:8px;border:1px solid var(--border);font-size:.85rem;background:var(--card2);color:var(--fg);cursor:pointer;font-family:inherit}
-    .topbar select option{background:hsl(0,0%,12%)}
-    .pill{padding:.3rem .75rem;border-radius:999px;font-size:.78rem;font-weight:700;cursor:pointer;border:none;transition:all .15s;font-family:inherit}
-    .pill-shuffle{background:var(--primary);color:#fff}
-    .pill-shuffle:hover{opacity:.88}
-    .pill-reset{background:var(--card2);color:var(--muted);border:1px solid var(--border)}
-    .pill-reset:hover{color:var(--fg)}
-    .progress-wrap{flex:1;min-width:120px}
-    .prog-labels{display:flex;justify-content:space-between;font-size:.72rem;color:var(--muted);margin-bottom:.25rem}
-    .prog-bar-bg{background:rgba(255,255,255,0.08);border-radius:999px;height:8px;overflow:hidden}
-    .prog-bar{height:100%;background:hsl(142,70%,45%);border-radius:999px;transition:width .4s ease}
+.fc-toolbar {
+  background: var(--surface); border: 1.5px solid var(--line); border-radius: var(--radius-lg);
+  padding: 14px 16px; margin-bottom: 16px;
+  display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+}
+.fc-select {
+  background: var(--bg); border: 1.5px solid var(--line); border-radius: 10px;
+  padding: 8px 12px; font-family: inherit; font-size: 13px; font-weight: 700; color: var(--ink);
+  outline: none; cursor: pointer;
+}
+.fc-select:hover, .fc-select:focus { border-color: var(--accent); }
 
-    /* ── STATS ── */
-    .stats{display:flex;gap:1.5rem;padding:.75rem 1.5rem;width:100%;max-width:700px;justify-content:center}
-    .stat{text-align:center}
-    .stat-num{font-size:1.6rem;font-weight:900;line-height:1}
-    .stat-lbl{font-size:.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
-    .stat.total .stat-num{color:var(--fg)}
-    .stat.known .stat-num{color:hsl(142,70%,45%)}
-    .stat.unknown .stat-num{color:hsl(0,72%,60%)}
+.fc-progwrap { flex: 1; min-width: 140px; }
+.fc-proglabels { display: flex; justify-content: space-between; font-size: 11px; color: var(--muted); font-weight: 700; margin-bottom: 4px; }
 
-    /* ── KAART ── */
-    .card-area{width:100%;max-width:680px;padding:1.5rem 1rem;display:flex;flex-direction:column;align-items:center;gap:1rem}
+.fc-stats { display: flex; gap: 18px; justify-content: center; margin-bottom: 18px; }
+.fc-stat { text-align: center; }
+.fc-stat-num { font-size: 28px; font-weight: 900; line-height: 1; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
+.fc-stat-lbl { font-size: 10px; color: var(--muted); font-weight: 800; letter-spacing: 0.07em; text-transform: uppercase; margin-top: 3px; }
+.fc-stat.known .fc-stat-num { color: var(--ok); }
+.fc-stat.unknown .fc-stat-num { color: var(--accent); }
 
-    .flip-wrap{width:100%;perspective:1200px;cursor:pointer}
-    .flip-inner{position:relative;width:100%;min-height:240px;transform-style:preserve-3d;transition:transform .5s cubic-bezier(.4,0,.2,1)}
-    .flip-wrap.flipped .flip-inner{transform:rotateY(180deg)}
+.fc-counter {
+  text-align: center; font-size: 12px; color: var(--muted); font-weight: 700; margin-bottom: 8px;
+  letter-spacing: 0.04em;
+}
 
-    .face{position:absolute;width:100%;min-height:240px;backface-visibility:hidden;border-radius:20px;padding:2rem;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}
-    .face-front{background:linear-gradient(135deg,hsl(235,40%,16%),hsl(235,30%,12%));border:1px solid rgba(91,91,255,0.25)}
-    .face-back {background:linear-gradient(135deg,hsl(142,40%,12%),hsl(142,30%,9%));border:1px solid rgba(34,197,94,0.25);transform:rotateY(180deg)}
+/* Flip card */
+.fc-flip { width: 100%; perspective: 1400px; cursor: pointer; }
+.fc-flip-inner {
+  position: relative; width: 100%; min-height: 260px;
+  transform-style: preserve-3d; transition: transform 0.55s cubic-bezier(.4, 0, .2, 1);
+}
+.fc-flip.flipped .fc-flip-inner { transform: rotateY(180deg); }
+.fc-face {
+  position: absolute; inset: 0; backface-visibility: hidden; border-radius: var(--radius-xl);
+  padding: 40px 32px; display: flex; flex-direction: column; justify-content: center; align-items: center;
+  text-align: center; border: 1.5px solid var(--line); min-height: 260px;
+}
+.fc-face-front { background: var(--surface); }
+.fc-face-back { background: var(--ink); color: var(--surface); border-color: var(--ink); transform: rotateY(180deg); }
 
-    .face-hint{font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;margin-bottom:.75rem;opacity:.5}
-    .face-front .face-hint{color:#93c5fd}
-    .face-back  .face-hint{color:#86efac}
+.fc-face-hint {
+  font-size: 10px; font-weight: 800; letter-spacing: 0.1em; margin-bottom: 14px;
+  text-transform: uppercase; display: flex; align-items: center; gap: 6px;
+}
+.fc-face-front .fc-face-hint { color: var(--muted); }
+.fc-face-back .fc-face-hint { color: rgba(255,255,255,0.5); }
 
-    .face-cat{font-size:.75rem;font-weight:700;padding:.2rem .65rem;border-radius:999px;margin-bottom:1rem}
-    .face-term{font-size:1.5rem;font-weight:800;color:var(--fg);line-height:1.3}
-    .face-def{font-size:.95rem;color:#d1fae5;line-height:1.6}
-    .face-formula{display:inline-block;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:8px;padding:.3rem .75rem;font-family:monospace;font-size:.9rem;color:#fde68a;margin-top:.75rem}
+.fc-cat {
+  display: inline-flex; align-items: center; padding: 4px 12px; font-size: 10px; font-weight: 800;
+  border-radius: 999px; margin-bottom: 16px; letter-spacing: 0.05em; text-transform: uppercase;
+}
+.fc-term { font-size: 24px; font-weight: 900; letter-spacing: -0.02em; line-height: 1.25; color: var(--ink); }
+.fc-def { font-size: 15px; color: rgba(255,255,255,0.88); line-height: 1.6; font-weight: 500; max-width: 560px; }
+.fc-def strong { color: var(--surface); font-weight: 800; }
 
-    /* ── KNOPPEN ── */
-    .btn-row{display:flex;gap:.75rem;width:100%;max-width:680px;padding:0 1rem}
-    .btn{flex:1;padding:.75rem;border-radius:12px;border:none;font-size:.95rem;font-weight:700;cursor:pointer;transition:all .15s;font-family:inherit}
-    .btn-no{background:rgba(239,68,68,0.15);color:#fca5a5;border:1px solid rgba(239,68,68,0.25)}
-    .btn-no:hover{background:rgba(239,68,68,0.25)}
-    .btn-yes{background:rgba(34,197,94,0.15);color:#86efac;border:1px solid rgba(34,197,94,0.25)}
-    .btn-yes:hover{background:rgba(34,197,94,0.25)}
-    .btn-skip{background:var(--card2);color:var(--muted);border:1px solid var(--border)}
-    .btn-skip:hover{color:var(--fg)}
+.fc-formula {
+  display: inline-block; background: rgba(255,255,255,0.1); border: 1.5px solid rgba(255,255,255,0.15);
+  border-radius: 8px; padding: 6px 12px; font-family: 'SFMono-Regular', Menlo, monospace;
+  font-size: 13px; color: #fcd34d; font-weight: 700; margin-top: 16px;
+}
 
-    /* ── CARD COUNTER ── */
-    .card-counter{font-size:.8rem;color:var(--muted);text-align:center}
+.fc-btn-row {
+  display: grid; grid-template-columns: 1fr auto 1fr; gap: 10px; margin-top: 16px;
+}
+@media (max-width: 600px) { .fc-btn-row { grid-template-columns: 1fr; } }
 
-    /* ── KLAAR SCHERM ── */
-    #done{display:none;max-width:680px;width:100%;padding:2rem 1rem;text-align:center}
-    #done h2{font-size:2rem;color:var(--fg);margin-bottom:.5rem}
-    #done .done-score{font-size:3.5rem;font-weight:900;color:hsl(142,70%,45%);margin:.5rem 0}
-    #done p{color:var(--muted);margin-bottom:1.5rem}
-    #done .btn-restart{background:var(--primary);color:#fff;padding:.75rem 2rem;border-radius:12px;border:none;font-size:1rem;font-weight:700;cursor:pointer;font-family:inherit;transition:opacity .15s}
-    #done .btn-restart:hover{opacity:.88}
-    #done .missed-list{text-align:left;background:var(--card);border:1px solid var(--border);border-radius:14px;padding:1.2rem;margin-top:1.5rem;max-height:300px;overflow-y:auto}
-    #done .missed-list h3{color:hsl(0,72%,60%);font-size:.85rem;text-transform:uppercase;letter-spacing:.07em;margin-bottom:.75rem}
-    #done .missed-item{padding:.45rem 0;border-bottom:1px solid rgba(255,255,255,0.06);font-size:.85rem}
-    #done .missed-item:last-child{border-bottom:none}
-    #done .missed-item strong{color:#fca5a5;display:block}
-    #done .missed-item span{color:var(--muted)}
+.fc-btn {
+  padding: 14px 18px; border-radius: var(--radius); border: 1.5px solid transparent;
+  font-family: inherit; font-size: 14px; font-weight: 800; cursor: pointer;
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  transition: transform 0.08s, background 0.15s, border-color 0.15s;
+}
+.fc-btn:active { transform: translateY(1px); }
+.fc-btn-no { background: rgba(239, 68, 68, 0.08); color: #b91c1c; border-color: rgba(239, 68, 68, 0.25); }
+.fc-btn-no:hover { background: rgba(239, 68, 68, 0.15); border-color: #b91c1c; }
+.fc-btn-yes { background: rgba(58, 138, 92, 0.1); color: var(--ok); border-color: rgba(58, 138, 92, 0.3); }
+.fc-btn-yes:hover { background: rgba(58, 138, 92, 0.18); }
+.fc-btn-skip { background: var(--surface); color: var(--ink-soft); border-color: var(--line); }
+.fc-btn-skip:hover { color: var(--ink); border-color: var(--ink); }
 
-    /* ── CAT KLEUREN ── */
-    .cc-project{background:rgba(59,130,246,0.25);color:#93c5fd}
-    .cc-fasering{background:rgba(34,197,94,0.22);color:#86efac}
-    .cc-planning{background:rgba(234,179,8,0.22);color:#fde68a}
-    .cc-evm{background:rgba(139,92,246,0.22);color:#c4b5fd}
-    .cc-risico{background:rgba(239,68,68,0.22);color:#fca5a5}
-    .cc-organisatie{background:rgba(249,115,22,0.22);color:#fdba74}
-    .cc-belbin{background:rgba(236,72,153,0.22);color:#f9a8d4}
-    .cc-scrum{background:rgba(6,182,212,0.22);color:#67e8f9}
-    .cc-kwaliteit{background:rgba(22,163,74,0.22);color:#86efac}
-    .cc-overig{background:rgba(148,163,184,0.15);color:#cbd5e1}
-  </style>
+/* Done screen */
+#fc-done { display: none; text-align: center; padding: 32px 24px; }
+#fc-done h2 { font-size: 32px; font-weight: 900; letter-spacing: -0.03em; margin-bottom: 10px; }
+#fc-done .score-big { font-size: 72px; font-weight: 900; color: var(--ok); line-height: 1; letter-spacing: -0.04em; margin: 12px 0; }
+#fc-done .score-big.bad { color: var(--accent); }
+#fc-done p { color: var(--ink-soft); font-size: 14px; font-weight: 600; margin-bottom: 24px; }
+.missed-list {
+  text-align: left; background: var(--surface); border: 1.5px solid var(--line);
+  border-radius: var(--radius-lg); padding: 18px 22px; margin-top: 24px; max-height: 340px; overflow-y: auto;
+}
+.missed-list h3 { font-size: 11px; color: var(--accent); font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 10px; }
+.missed-item { padding: 8px 0; border-bottom: 1px solid var(--line-soft); font-size: 13px; }
+.missed-item:last-child { border-bottom: none; }
+.missed-item strong { display: block; color: var(--ink); font-weight: 800; margin-bottom: 2px; }
+.missed-item span { color: var(--muted); font-weight: 500; line-height: 1.4; display: block; }
+
+.xp-toast {
+  position: fixed; top: 80px; right: 24px; z-index: 500;
+  background: var(--ink); color: var(--surface); padding: 10px 18px;
+  border-radius: 999px; font-size: 13px; font-weight: 800;
+  display: flex; align-items: center; gap: 6px;
+  transform: translateX(420px); transition: transform 0.25s ease;
+  box-shadow: var(--shadow-lg);
+}
+.xp-toast.show { transform: translateX(0); }
+.xp-toast span { color: var(--xp); }
+
+/* Category color chips */
+.cc-project { background: #dbeafe; color: #1e40af; }
+.cc-fasering { background: #dcfce7; color: #166534; }
+.cc-planning { background: #fef3c7; color: #92400e; }
+.cc-evm { background: #ede9fe; color: #5b21b6; }
+.cc-risico { background: #fee2e2; color: #991b1b; }
+.cc-organisatie { background: #ffedd5; color: #9a3412; }
+.cc-belbin { background: #fce7f3; color: #9f1239; }
+.cc-scrum { background: #cffafe; color: #155e75; }
+.cc-kwaliteit { background: #d1fae5; color: #065f46; }
+.cc-overig { background: var(--surface-alt); color: var(--ink-soft); }
+</style>
 </head>
 <body>
 
-<nav class="fm-header">
-  <div class="header-left">
-    <a class="back-link" href="eventmanagement1.html">← Terug</a>
-    <img src="logo.svg" height="26" alt="FM Kompas" style="display:block">
-    <span class="page-title">Eventmanagement 1 <span>/ Flashcards</span></span>
-  </div>
-  <div class="pts-chip">⭐ <span id="pts-display">—</span> pts</div>
+<div id="fa-header-slot"></div>
+
+<nav class="fa-breadcrumb">
+  <a href="index.html">Home</a>
+  <span>›</span>
+  <a href="eventmanagement1.html">Eventmanagement 1</a>
+  <span>›</span>
+  <span class="current">Flashcards</span>
 </nav>
 
-<div class="topbar">
-  <h2>🃏 Flashcards</h2>
-  <select id="catFilter" onchange="loadDeck()">
-    <option value="all">🔍 Alle categorieën</option>
-    <option value="project">📋 Basis projectmanagement</option>
-    <option value="fasering">📅 Traditionele fasering</option>
-    <option value="planning">📊 Planning & beheersaspecten</option>
-    <option value="evm">💹 EVM-berekeningen</option>
-    <option value="risico">⚠️ Risicobeheersing</option>
-    <option value="organisatie">🏢 Organisatie & MVO</option>
-    <option value="belbin">👥 Belbin-rollen</option>
-    <option value="scrum">🔄 Agile & Scrum</option>
-    <option value="kwaliteit">✅ Kwaliteit & FAT/SAT</option>
-    <option value="overig">💡 Overige begrippen</option>
-  </select>
-  <button class="pill pill-shuffle" onclick="shuffle()">🔀 Schud</button>
-  <button class="pill pill-reset" onclick="loadDeck()">↺ Opnieuw</button>
-  <div class="progress-wrap">
-    <div class="prog-labels"><span id="progLabel">0 / 0 bekend</span></div>
-    <div class="prog-bar-bg"><div class="prog-bar" id="progBar" style="width:0%"></div></div>
+<div class="fc-wrap">
+  <div class="fc-hero">
+    <div>
+      <h1>Flashcards</h1>
+      <div class="fc-hero-sub">Klik de kaart of druk op spatie om te draaien</div>
+    </div>
+    <a class="fa-btn fa-btn-ghost fa-btn-sm" href="eventmanagement1.html">
+      <span data-fa-icon="arrowL" data-fa-size="13"></span>
+      Terug naar vak
+    </a>
   </div>
-</div>
 
-<div class="stats">
-  <div class="stat total"><div class="stat-num" id="statTotal">0</div><div class="stat-lbl">Totaal</div></div>
-  <div class="stat known"><div class="stat-num" id="statKnown">0</div><div class="stat-lbl">✓ Gekend</div></div>
-  <div class="stat unknown"><div class="stat-num" id="statUnknown">0</div><div class="stat-lbl">✗ Herhalen</div></div>
-</div>
-
-<div class="card-area">
-  <div class="card-counter" id="cardCounter"></div>
-  <div class="flip-wrap" id="flipWrap" onclick="flipCard()">
-    <div class="flip-inner" id="flipInner">
-      <div class="face face-front" id="faceFront">
-        <div class="face-hint">Klik om te onthullen</div>
-        <span class="face-cat" id="frontCat"></span>
-        <div class="face-term" id="frontTerm"></div>
-      </div>
-      <div class="face face-back" id="faceBack">
-        <div class="face-hint">Definitie</div>
-        <div class="face-def" id="backDef"></div>
-        <div class="face-formula" id="backFormula" style="display:none"></div>
-      </div>
+  <div class="fc-toolbar">
+    <select class="fc-select" id="catFilter" onchange="loadDeck()">
+      <option value="all">Alle categorieën</option>
+      <option value="project">Projectbasis</option>
+      <option value="fasering">Fasering</option>
+      <option value="planning">Planning</option>
+      <option value="evm">EVM</option>
+      <option value="risico">Risico</option>
+      <option value="organisatie">Organisatie</option>
+      <option value="belbin">Belbin</option>
+      <option value="scrum">Agile & Scrum</option>
+      <option value="kwaliteit">Kwaliteit</option>
+      <option value="overig">Overig</option>
+    </select>
+    <button class="fa-btn fa-btn-accent fa-btn-sm" onclick="shuffleDeck()">
+      <span data-fa-icon="refresh" data-fa-size="13"></span> Schud
+    </button>
+    <button class="fa-btn fa-btn-ghost fa-btn-sm" onclick="loadDeck()">Opnieuw</button>
+    <div class="fc-progwrap">
+      <div class="fc-proglabels"><span id="progLabel">0 / 0 bekend</span><span id="progPct">0%</span></div>
+      <div class="fa-progress"><div class="fa-progress-bar" id="progBar" style="width:0%"></div></div>
     </div>
   </div>
-  <div class="btn-row">
-    <button class="btn btn-no"   onclick="markCard(false)">✗ Nog niet</button>
-    <button class="btn btn-skip" onclick="nextCard()">→ Sla over</button>
-    <button class="btn btn-yes"  onclick="markCard(true)">✓ Gekend!</button>
+
+  <div id="fc-main">
+    <div class="fc-stats">
+      <div class="fc-stat"><div class="fc-stat-num" id="statTotal">0</div><div class="fc-stat-lbl">Totaal</div></div>
+      <div class="fc-stat known"><div class="fc-stat-num" id="statKnown">0</div><div class="fc-stat-lbl">Gekend</div></div>
+      <div class="fc-stat unknown"><div class="fc-stat-num" id="statUnknown">0</div><div class="fc-stat-lbl">Herhalen</div></div>
+    </div>
+
+    <div class="fc-counter" id="cardCounter"></div>
+
+    <div class="fc-flip" id="flipWrap" onclick="flipCard()">
+      <div class="fc-flip-inner" id="flipInner">
+        <div class="fc-face fc-face-front">
+          <div class="fc-face-hint">
+            <span data-fa-icon="sparkle" data-fa-size="11"></span> Klik om te onthullen
+          </div>
+          <span class="fc-cat" id="frontCat"></span>
+          <div class="fc-term" id="frontTerm"></div>
+        </div>
+        <div class="fc-face fc-face-back">
+          <div class="fc-face-hint">Definitie</div>
+          <div class="fc-def" id="backDef"></div>
+          <div class="fc-formula" id="backFormula" style="display:none"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="fc-btn-row">
+      <button class="fc-btn fc-btn-no" onclick="markCard(false)">
+        <span data-fa-icon="x" data-fa-size="14"></span> Nog niet
+      </button>
+      <button class="fc-btn fc-btn-skip" onclick="nextCard()">
+        Sla over
+      </button>
+      <button class="fc-btn fc-btn-yes" onclick="markCard(true)">
+        <span data-fa-icon="check" data-fa-size="14"></span> Gekend!
+      </button>
+    </div>
+  </div>
+
+  <div id="fc-done">
+    <h2>Sessie klaar!</h2>
+    <div class="score-big" id="doneScore">0 / 0</div>
+    <p id="doneText"></p>
+    <button class="fa-btn fa-btn-accent" id="btnMissed" onclick="restartMissed()" style="display:none;margin-right:8px">
+      <span data-fa-icon="refresh" data-fa-size="13"></span> Herhaal niet-gekende
+    </button>
+    <button class="fa-btn fa-btn-primary" onclick="loadDeck()">
+      Begin opnieuw
+    </button>
+    <div class="missed-list" id="missedList" style="display:none">
+      <h3>Nog te leren</h3>
+      <div id="missedItems"></div>
+    </div>
   </div>
 </div>
 
-<div id="done">
-  <h2>🎉 Sessie klaar!</h2>
-  <div class="done-score" id="doneScore"></div>
-  <p id="doneText"></p>
-  <button class="btn-restart" onclick="restartMissed()" id="btnMissed" style="display:none;margin-bottom:.75rem">🔁 Herhaal niet-gekende kaarten</button>
-  <button class="btn-restart" onclick="loadDeck()">↺ Begin opnieuw</button>
-  <div class="missed-list" id="missedList" style="display:none">
-    <h3>Nog te leren:</h3>
-    <div id="missedItems"></div>
-  </div>
-</div>
+<div class="xp-toast" id="xpToast"><span data-fa-icon="bolt" data-fa-size="13"></span> <span id="xpToastText">+1 XP</span></div>
 
+<footer class="fa-footer">
+  <span>Tip: ← nog niet · → gekend · ↓ overslaan · spatie = flip</span>
+  <span>FMAtlas · HAN FM</span>
+</footer>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+<script src="js/fmatlas.js"></script>
+<script src="js/data-em1.js"></script>
 <script>
-const allCards = [
-  /* ── PROJECTMANAGEMENT BASIS ── */
-  {cat:"project",term:"Project",def:"Een tijdelijke, unieke samenwerking gericht op een vooraf bepaald resultaat, binnen afgesproken randvoorwaarden van tijd, geld en kwaliteit."},
-  {cat:"project",term:"Projectkenmerken",def:"Tijdelijk, uniek, eenmalig, gericht op een concreet resultaat, met een projectteam, budget en deadline."},
-  {cat:"project",term:"Opdrachtgever",def:"De persoon of organisatie die het project opdraagt, het budget verstrekt en het eindresultaat accepteert. Staat buiten het projectteam."},
-  {cat:"project",term:"Projectleider",def:"Verantwoordelijk voor de dagelijkse uitvoering, planning en coördinatie van het project. Rapporteert aan de opdrachtgever."},
-  {cat:"project",term:"Stuurgroep",def:"Strategisch beslisorgaan bestaande uit de opdrachtgever en andere beslissingsbevoegde stakeholders. Neemt go/no-go beslissingen bij faseovergangen."},
-  {cat:"project",term:"Stakeholder",def:"Iedereen die belang heeft bij of invloed uitoefent op het project. Niet per se financieel — ook organisatorisch, maatschappelijk of persoonlijk."},
-  {cat:"project",term:"Kick-off meeting",def:"Officiële startbijeenkomst aan het begin van een project. Alle betrokkenen worden geïnformeerd over doel, aanpak en rolverdeling."},
-  {cat:"project",term:"Go/no-go beslissing",def:"Formele beslissing aan het einde van een projectfase: gaan we door naar de volgende fase of stoppen we? Genomen door de stuurgroep."},
-  {cat:"project",term:"Mijlpaal",def:"Meetbaar tussentijds resultaat of formeel beslismoment binnen een project. Geen doorlooptijd, wél een concreet resultaat."},
-  {cat:"project",term:"Scope creep",def:"Ongecontroleerde, niet-geplande uitbreiding van de projectomvang zonder formele goedkeuring of aanpassing van budget en doorlooptijd."},
-  {cat:"project",term:"Deliverable",def:"Een op te leveren resultaat (product, rapport, ontwerp). Niet hetzelfde als een activiteit — dat is de taak die nodig is om de deliverable te maken."},
-  {cat:"project",term:"P6-methode",def:"Methode van Roel Grit voor een Plan van Aanpak: Probleemstelling, Producten, Planning, Personeel, Prijs, Plan van Aanpak."},
-  {cat:"project",term:"Plan van Aanpak",def:"Het centrale projectdocument. Bevat: aanleiding, doelstelling, resultaat, aanpak, planning, begroting, risicoanalyse en organisatie."},
-  {cat:"project",term:"SMART",def:"Methode om doelstellingen concreet te formuleren: Specifiek, Meetbaar, Acceptabel, Realistisch, Tijdgebonden. Garandeert haalbaarheid NIET."},
-  {cat:"project",term:"Lijnorganisatie",def:"De vaste, permanente organisatiestructuur van een bedrijf. Tegenover de tijdelijke projectorganisatie."},
-  /* ── TRADITIONELE FASERING ── */
-  {cat:"fasering",term:"Volgorde traditionele fasering",def:"Definitie → Ontwerp → Voorbereiding → Realisatie → Nazorg. Ontwerp komt VOOR Voorbereiding!"},
-  {cat:"fasering",term:"Definitiefase",def:"Eerste fase: doel, haalbaarheid en opdracht worden bepaald. Levert het Plan van Aanpak op."},
-  {cat:"fasering",term:"Ontwerpfase",def:"Tweede fase: uitwerken wát er gemaakt wordt. Levert een ontwerpdocument op — géén standaard fysiek prototype."},
-  {cat:"fasering",term:"Voorbereidingsfase",def:"Derde fase: inkoop, aanbesteding en detailplanning klaarstomen voor uitvoering."},
-  {cat:"fasering",term:"Realisatiefase",def:"Vierde fase: de daadwerkelijke uitvoering. Hier wordt het eindresultaat gebouwd of gerealiseerd."},
-  {cat:"fasering",term:"Nazorgfase",def:"Vijfde fase: overdracht aan de klant, evaluatie en afbouw van de projectorganisatie."},
-  {cat:"fasering",term:"Watervalmodel",def:"Lineaire aanpak: elke fase volledig afronden voor de volgende begint. Grote scopewijzigingen halverwege zijn kostbaar en lastig."},
-  {cat:"fasering",term:"Fase-gate",def:"Controlemoment aan het einde van elke fase. Stuurgroep neemt go/no-go beslissing."},
-  /* ── PLANNING & BEHEERSASPECTEN ── */
-  {cat:"planning",term:"GOKIT",def:"Geld, Organisatie, Kwaliteit, Informatie, Tijd. Zelfde als TGKIO en KOFTIG — alleen een andere volgorde van dezelfde 5 beheersaspecten."},
-  {cat:"planning",term:"TGKIO",def:"Tijd, Geld, Kwaliteit, Informatie, Organisatie. Alternatieve volgorde van dezelfde 5 beheersaspecten als GOKIT."},
-  {cat:"planning",term:"KOFTIG",def:"Nog een alternatieve volgorde van de 5 beheersaspecten. GOKIT = TGKIO = KOFTIG — zelfde begrippen!"},
-  {cat:"planning",term:"Duivelsdriehoek",def:"Geld, Tijd en Kwaliteit/Scope zijn onlosmakelijk verbonden. Als scope groeit zonder meer geld/tijd, daalt de kwaliteit."},
-  {cat:"planning",term:"Gantt-chart",def:"Balkplanningsdiagram: activiteiten als balken in de tijd. Toont tijdsvolgorde, maar niet inhoudelijke afhankelijkheden."},
-  {cat:"planning",term:"WBS (Werkbreakdownstructuur)",def:"Hiërarchische opdeling van alle projectactiviteiten. Toont structuur, géén tijdsvolgorde — dat doet een Gantt-chart."},
-  {cat:"planning",term:"Kritiek pad (CPM)",def:"Langste reeks afhankelijke activiteiten zonder tijdsspeling. Vertraging hier = vertraging hele project."},
-  {cat:"planning",term:"Float / tijdsspeling",def:"Hoeveel tijd een activiteit mag uitlopen zonder het eindmoment te beïnvloeden. Op het kritieke pad: float = 0."},
-  {cat:"planning",term:"Lead (voorsprong)",def:"Overlap in netwerkplanning: opvolgende activiteit start eerder dan normaal. Lead = versnelling."},
-  {cat:"planning",term:"Lag (vertraging)",def:"Wachttijd in netwerkplanning: de opvolgende activiteit moet even wachten. Lag = vertraging."},
-  {cat:"planning",term:"PERT",def:"Planningstechniek met drie tijdschattingen: optimistisch, meest waarschijnlijk en pessimistisch. Verschil met CPM: CPM gebruikt één schatting."},
-  /* ── EVM ── */
-  {cat:"evm",term:"BAC — Budget at Completion",def:"Het totale, goedgekeurde projectbudget. Uitgangspunt voor alle EVM-berekeningen.",formula:"BAC = totaalbudget"},
-  {cat:"evm",term:"PV — Planned Value (= BCWS)",def:"Het gebudgetteerde bedrag voor het werk dat op dit moment gepland stond af te ronden.",formula:"PV = gepland werk × tarief"},
-  {cat:"evm",term:"EV — Earned Value (= BCWP)",def:"De budgetwaarde van het werk dat daadwerkelijk is uitgevoerd.",formula:"EV = % klaar × BAC"},
-  {cat:"evm",term:"AC — Actual Cost (= ACWP)",def:"De werkelijke kosten van het tot nu toe uitgevoerde werk.",formula:"AC = daadwerkelijk uitgegeven"},
-  {cat:"evm",term:"CPI — Cost Performance Index",def:"Meet kostenefficiëntie. CPI > 1 = onder budget. CPI < 1 = over budget.",formula:"CPI = EV ÷ AC"},
-  {cat:"evm",term:"SPI — Schedule Performance Index",def:"Meet planningsefficiëntie. SPI > 1 = voor op schema. SPI < 1 = achter op schema.",formula:"SPI = EV ÷ PV"},
-  {cat:"evm",term:"CV — Cost Variance",def:"Negatief = meer uitgegeven dan verdiend = over budget.",formula:"CV = EV − AC"},
-  {cat:"evm",term:"SV — Schedule Variance",def:"Negatief = minder gedaan dan gepland = achter op schema.",formula:"SV = EV − PV"},
-  {cat:"evm",term:"EAC — Estimate at Completion",def:"Verwachte totale kosten. CPI = 0,80 & BAC = €200k → EAC = €250k. EAC is HOGER als CPI < 1!",formula:"EAC = BAC ÷ CPI"},
-  {cat:"evm",term:"ETC — Estimate to Complete",def:"Verwachte resterende kosten om het project af te ronden.",formula:"ETC = EAC − AC"},
-  /* ── RISICOBEHEERSING ── */
-  {cat:"risico",term:"Risico",def:"Onzekere gebeurtenis met een positief (kans) of negatief (bedreiging) effect op projectdoelen."},
-  {cat:"risico",term:"Risicoscore",def:"Kans × impact. Hoger = urgenter. Basis voor prioritering in de risicomatrix.",formula:"Risicoscore = kans × impact"},
-  {cat:"risico",term:"Risicomatrix",def:"Visueel hulpmiddel om risico's te prioriteren op basis van kans én impact."},
-  {cat:"risico",term:"Vermijden",def:"Aanpak zo aanpassen dat het risico niet meer bestaat. GEEN noodplan opstellen — dat is accepteren."},
-  {cat:"risico",term:"Mitigeren",def:"Kans en/of impact verkleinen. Elimineert het risico niet volledig."},
-  {cat:"risico",term:"Overdragen (Transfer)",def:"Risico neerleggen bij een andere partij via bijv. verzekering of uitbesteding. Kost doorgaans extra geld."},
-  {cat:"risico",term:"Accepteren",def:"Risico bewust accepteren, eventueel met contingency plan als het optreedt."},
-  {cat:"risico",term:"Contingency plan (noodplan)",def:"Vooraf opgesteld plan dat in werking treedt als een geaccepteerd risico zich daadwerkelijk voordoet."},
-  {cat:"risico",term:"Visgraatdiagram (Ishikawa)",def:"Hulpmiddel om oorzaken van een probleem systematisch in kaart te brengen in categorieën: mens, machine, methode, materiaal."},
-  /* ── ORGANISATIE & MVO ── */
-  {cat:"organisatie",term:"Matrixorganisatie",def:"Medewerker rapporteert aan ZOWEL de lijnmanager (functioneel) ALS de projectleider (projectmatig). Dubbele rapportagelijn."},
-  {cat:"organisatie",term:"Zuivere projectorganisatie",def:"Medewerkers worden volledig losgemaakt van de lijn. Projectleider heeft volledige zeggenschap."},
-  {cat:"organisatie",term:"MVO",def:"Maatschappelijk Verantwoord Ondernemen. Standaardmodel: drie P's — People, Planet, Profit."},
-  {cat:"organisatie",term:"People (MVO)",def:"Sociale dimensie: eerlijke arbeidsomstandigheden, mensenrechten, maatschappelijke bijdrage."},
-  {cat:"organisatie",term:"Planet (MVO)",def:"Ecologische dimensie: milieubescherming, CO₂-reductie, duurzaam grondstofgebruik."},
-  {cat:"organisatie",term:"Profit (MVO)",def:"Economische dimensie: financieel gezonde bedrijfsvoering die waarde creëert voor alle stakeholders."},
-  /* ── BELBIN ── */
-  {cat:"belbin",term:"Belbin — Overzicht",def:"9 teamrollen in 3 categorieën: actiegericht (Vormer, Bedrijfsman, Afmaker), mensgeoriënteerd (Coördinator, Groepswerker, Brononderzoeker), cerebraal (Plant, Monitor, Specialist). Één persoon kan meerdere rollen vervullen."},
-  {cat:"belbin",term:"Vormer (Shaper) — actiegericht",def:"Drijvende kracht, zet druk op resultaten, pakt obstakels aan. Zonder Vormer mist het team urgentie."},
-  {cat:"belbin",term:"Bedrijfsman / Zetter — actiegericht",def:"Vertaalt ideeën naar praktische actie. Werkt gedisciplineerd en efficiënt."},
-  {cat:"belbin",term:"Afmaker — actiegericht",def:"Let op details, zorgt dat alles foutloos wordt opgeleverd. Deadlinegericht."},
-  {cat:"belbin",term:"Coördinator (Voorzitter) — mensgeoriënteerd",def:"Leidt het team, delegeert goed, bewaakt de doelen. Vroeger 'Voorzitter' genaamd."},
-  {cat:"belbin",term:"Groepswerker — mensgeoriënteerd",def:"Houdt de teamsfeer goed, lost conflicten op, is diplomatiek."},
-  {cat:"belbin",term:"Brononderzoeker — mensgeoriënteerd",def:"Enthousiast, netwerkt buiten het team, brengt kansen van buiten naar binnen. SOCIALE rol — geen taakgerichte rol!"},
-  {cat:"belbin",term:"Plant / Bedenker — cerebraal",def:"Creatief, origineel denker. Genereert ideeën maar communiceert ze slecht."},
-  {cat:"belbin",term:"Monitor / Waarschuwer — cerebraal",def:"Analytisch, objectief, beoordeelt opties kritisch. Geen besluitvaardigheid maar wél goed oordeel."},
-  {cat:"belbin",term:"Specialist — cerebraal",def:"Diepgaande vakkennis op één specifiek gebied. Scoort smal maar diep."},
-  /* ── AGILE & SCRUM ── */
-  {cat:"scrum",term:"Agile",def:"Verzameling waarden en principes voor flexibele ontwikkeling. Geschikt voor veranderende of onduidelijke eisen — NIET voor stabiele, volledig vastgelegde eisen."},
-  {cat:"scrum",term:"Agile Manifesto — 4 kernwaarden",def:"1) Mensen > processen. 2) Werkende software > documentatie. 3) Klantcollaboratie > contracten. 4) Inspelen op verandering > plan volgen."},
-  {cat:"scrum",term:"Sprint",def:"Timeboxed iteratie van 1–4 weken. Team levert een werkend increment op. Duur is vast gedurende het project."},
-  {cat:"scrum",term:"Product Owner",def:"Beheert en prioriteert de product backlog. Vertegenwoordigt de klant. NIET de Scrum Master!"},
-  {cat:"scrum",term:"Scrum Master",def:"Begeleidt het Scrum-proces en verwijdert obstakels. Dienende leider — geen inhoudelijke bevoegdheid, niet verantwoordelijk voor de backlog."},
-  {cat:"scrum",term:"Development Team",def:"Zelforganiserend, cross-functioneel. Bepaalt zelf hoeveel werk het per sprint kan verwerken (velocity)."},
-  {cat:"scrum",term:"Product Backlog",def:"Geprioriteerde lijst van alle gewenste functionaliteiten. Eigendom van de Product Owner. Bevat klaar én nog-te-doen items."},
-  {cat:"scrum",term:"Sprint Review",def:"Einde van de sprint: team demonstreert het opgeleverde INCREMENT aan de Product Owner en stakeholders. Over het PRODUCT."},
-  {cat:"scrum",term:"Sprint Retrospective",def:"Na de Sprint Review: team reflecteert intern op het WERKPROCES. Hoe werken we beter samen? Niet over het product!"},
-  {cat:"scrum",term:"Daily Scrum",def:"Dagelijkse standup van max. 15 minuten: wat deed ik gisteren, wat doe ik vandaag, welke obstakels heb ik?"},
-  {cat:"scrum",term:"Definition of Done",def:"Gedeelde kwaliteitscriteria waaraan een increment moet voldoen om als 'klaar' te gelden."},
-  {cat:"scrum",term:"Sprint Planning",def:"Start van de sprint: team kiest werk uit de backlog en maakt een plan voor de komende sprint."},
-  /* ── KWALITEIT ── */
-  {cat:"kwaliteit",term:"Kwaliteitsmanagement",def:"Kwaliteitsplanning (eisen bepalen) + kwaliteitsborging (procedures) + kwaliteitscontrole (meten of aan eisen is voldaan)."},
-  {cat:"kwaliteit",term:"FAT — Factory Acceptance Test",def:"Acceptatietest bij de LEVERANCIER/fabrikant. Klant controleert of product aan eisen voldoet vóór verzending."},
-  {cat:"kwaliteit",term:"SAT — Site Acceptance Test",def:"Acceptatietest bij de KLANT/locatie. Controle of het geïnstalleerde systeem correct werkt in de echte omgeving."},
-  /* ── OVERIG ── */
-  {cat:"overig",term:"Probleemstelling",def:"Beschrijving van de aanleiding en het probleem dat het project moet oplossen. Eerste stap in de P6-methode."},
-  {cat:"overig",term:"Businesscase",def:"Onderbouwing van de toegevoegde waarde van het project: kosten, baten, risico's en alternatieven."},
-  {cat:"overig",term:"Vergaderen — voorzitter",def:"Stelt de agenda op, leidt de vergadering, bewaakt de tijd en zorgt voor besluitvorming."},
-  {cat:"overig",term:"CPM vs PERT",def:"CPM = 1 deterministische tijdschatting. PERT = 3 schattingen (optimistisch/meest waarschijnlijk/pessimistisch) voor onzekerheid."},
-];
+// Firebase init
+const firebaseConfig = {
+  apiKey: "AIzaSyBB397Wk2eqpBjic8E7aGV1mTgIjhQ21a8",
+  authDomain: "fmkompas-ff8bc.firebaseapp.com",
+  projectId: "fmkompas-ff8bc",
+  storageBucket: "fmkompas-ff8bc.firebasestorage.app",
+  messagingSenderId: "487972024689",
+  appId: "1:487972024689:web:712c3117080745d14746d0"
+};
+firebase.initializeApp(firebaseConfig);
+const _auth = firebase.auth();
+const _db = firebase.firestore();
+_auth.onAuthStateChanged(user => {
+  document.getElementById('fa-header-slot').innerHTML = '';
+  document.getElementById('fa-header-slot').appendChild(faRenderHeader({ user }));
+  faMarkActiveToday();
+  faMarkLastSeen('eventmanagement1','Eventmanagement 1','eventmanagement1.html');
+});
 
-/* ════════ STATE ════════ */
-let deck = [];
-let current = 0;
-let known = 0;
-let missed = [];
-let flipped = false;
+// ── Cards (uit gedeeld data-em1.js) ─────────────
+const allCards = (window.EM1 && window.EM1.flashcards) ? window.EM1.flashcards : [];
 
-/* ════════ HELPERS ════════ */
 const catLabels = {project:"Projectbasis",fasering:"Fasering",planning:"Planning",evm:"EVM",risico:"Risico",organisatie:"Organisatie",belbin:"Belbin",scrum:"Scrum",kwaliteit:"Kwaliteit",overig:"Overig"};
+
+let deck = [], current = 0, known = 0, missed = [], flipped = false;
 
 function shuffleArr(arr){
   for(let i=arr.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[arr[i],arr[j]]=[arr[j],arr[i]];}
   return arr;
 }
 
-/* ════════ LOAD DECK ════════ */
 function loadDeck(){
   const cat = document.getElementById('catFilter').value;
-  deck = (cat === 'all' ? [...allCards] : allCards.filter(c=>c.cat===cat));
-  current = 0; known = 0; missed = [];
-  flipped = false;
+  deck = (cat === 'all' ? [...allCards] : allCards.filter(c => c.cat === cat));
+  current = 0; known = 0; missed = []; flipped = false;
   document.getElementById('flipWrap').classList.remove('flipped');
-  document.getElementById('done').style.display = 'none';
-  document.querySelector('.card-area').style.display = 'flex';
+  document.getElementById('fc-done').style.display = 'none';
+  document.getElementById('fc-main').style.display = 'block';
   updateStats();
   showCard();
 }
 
-/* ════════ SHUFFLE ════════ */
-function shuffle(){
-  const cat = document.getElementById('catFilter').value;
-  deck = shuffleArr(cat === 'all' ? [...allCards] : allCards.filter(c=>c.cat===cat));
-  current = 0; known = 0; missed = [];
-  flipped = false;
-  document.getElementById('flipWrap').classList.remove('flipped');
-  document.getElementById('done').style.display = 'none';
-  document.querySelector('.card-area').style.display = 'flex';
-  updateStats();
+function shuffleDeck(){
+  loadDeck();
+  deck = shuffleArr(deck);
   showCard();
 }
 
-/* ════════ SHOW CARD ════════ */
 function showCard(){
   if(current >= deck.length){ showDone(); return; }
   const c = deck[current];
   document.getElementById('cardCounter').textContent = `Kaart ${current+1} van ${deck.length}`;
   document.getElementById('frontCat').textContent = catLabels[c.cat] || c.cat;
-  document.getElementById('frontCat').className = `face-cat cc-${c.cat}`;
+  document.getElementById('frontCat').className = `fc-cat cc-${c.cat}`;
   document.getElementById('frontTerm').textContent = c.term;
   document.getElementById('backDef').textContent = c.def;
   const fEl = document.getElementById('backFormula');
@@ -348,25 +321,28 @@ function showCard(){
   document.getElementById('flipWrap').classList.remove('flipped');
 }
 
-/* ════════ FLIP ════════ */
 function flipCard(){
   flipped = !flipped;
   document.getElementById('flipWrap').classList.toggle('flipped', flipped);
 }
 
-/* ════════ MARK ════════ */
 function markCard(isKnown){
-  if(!flipped){ flipCard(); setTimeout(()=>{ _mark(isKnown); }, 400); }
-  else { _mark(isKnown); }
+  if(!flipped){ flipCard(); setTimeout(() => _mark(isKnown), 400); }
+  else _mark(isKnown);
 }
 function _mark(isKnown){
-  if(isKnown){ known++; addPoints(5); }
-  else { missed.push(deck[current]); }
+  if(isKnown){
+    known++;
+    faAddXP(5);
+    addFirestorePoints(5);
+    showXpToast('+5 XP');
+  } else {
+    missed.push(deck[current]);
+  }
   current++;
   updateStats();
   setTimeout(showCard, 150);
 }
-
 function nextCard(){
   missed.push(deck[current]);
   current++;
@@ -375,92 +351,87 @@ function nextCard(){
   document.getElementById('flipWrap').classList.remove('flipped');
   showCard();
 }
-
-/* ════════ STATS ════════ */
 function updateStats(){
   const total = deck.length;
   const answered = current;
-  const pct = total ? Math.round((known/total)*100) : 0;
   document.getElementById('statTotal').textContent = total;
   document.getElementById('statKnown').textContent = known;
   document.getElementById('statUnknown').textContent = missed.length;
-  document.getElementById('progBar').style.width = (total ? (answered/total*100) : 0) + '%';
+  const pct = total ? Math.round(answered/total*100) : 0;
+  document.getElementById('progBar').style.width = pct + '%';
+  document.getElementById('progPct').textContent = pct + '%';
   document.getElementById('progLabel').textContent = `${known} / ${total} bekend`;
+  faSetProgress('eventmanagement1', Math.min(100, (known/allCards.length)*100));
 }
-
-/* ════════ DONE SCREEN ════════ */
 function showDone(){
-  document.querySelector('.card-area').style.display = 'none';
-  const doneEl = document.getElementById('done');
-  doneEl.style.display = 'block';
-  const pct = deck.length ? Math.round((known/deck.length)*100) : 0;
-  document.getElementById('doneScore').textContent = `${known} / ${deck.length}`;
+  document.getElementById('fc-main').style.display = 'none';
+  const d = document.getElementById('fc-done');
+  d.style.display = 'block';
+  const pct = deck.length ? Math.round(known/deck.length*100) : 0;
+  const scoreEl = document.getElementById('doneScore');
+  scoreEl.textContent = `${known} / ${deck.length}`;
+  scoreEl.className = 'score-big' + (pct < 60 ? ' bad' : '');
   document.getElementById('doneText').textContent = pct >= 80
-    ? '🎉 Uitstekend! Je beheerst deze stof goed.'
+    ? 'Uitstekend! Je beheerst deze stof goed.'
     : pct >= 60
-    ? '👍 Goed bezig! Herhaal de niet-gekende kaarten nog een keer.'
-    : '📚 Nog wat herhalen. Ga de gemiste kaarten nog eens door.';
+    ? 'Goed bezig! Herhaal de niet-gekende kaarten nog een keer.'
+    : 'Nog wat herhalen. Ga de gemiste kaarten nog eens door.';
 
-  const missBtn = document.getElementById('btnMissed');
-  const missList = document.getElementById('missedList');
-  const missItems = document.getElementById('missedItems');
-
+  const btn = document.getElementById('btnMissed');
+  const list = document.getElementById('missedList');
   if(missed.length){
-    missBtn.style.display='inline-block';
-    missList.style.display='block';
-    missItems.innerHTML = missed.map(c =>
-      `<div class="missed-item"><strong>${c.term}</strong><span>${c.def.substring(0,120)}${c.def.length>120?'…':''}</span></div>`
+    btn.style.display = 'inline-flex';
+    list.style.display = 'block';
+    document.getElementById('missedItems').innerHTML = missed.map(c =>
+      `<div class="missed-item"><strong>${c.term}</strong><span>${c.def.substring(0,130)}${c.def.length>130?'…':''}</span></div>`
     ).join('');
   } else {
-    missBtn.style.display='none';
-    missList.style.display='none';
+    btn.style.display = 'none';
+    list.style.display = 'none';
   }
 }
-
-/* ════════ RESTART MISSED ════════ */
 function restartMissed(){
   if(!missed.length) return;
   deck = shuffleArr([...missed]);
-  current = 0; known = 0; missed = [];
-  flipped = false;
-  document.getElementById('done').style.display = 'none';
-  document.querySelector('.card-area').style.display = 'flex';
+  current = 0; known = 0; missed = []; flipped = false;
+  document.getElementById('fc-done').style.display = 'none';
+  document.getElementById('fc-main').style.display = 'block';
   document.getElementById('flipWrap').classList.remove('flipped');
   updateStats();
   showCard();
 }
 
-/* ════════ KEYBOARD ════════ */
+function showXpToast(txt){
+  const t = document.getElementById('xpToast');
+  document.getElementById('xpToastText').textContent = txt;
+  t.classList.add('show');
+  clearTimeout(t._h);
+  t._h = setTimeout(() => t.classList.remove('show'), 1400);
+}
+
+async function addFirestorePoints(n){
+  const u = _auth.currentUser;
+  if(!u) return;
+  try {
+    await _db.collection('scores').doc(u.uid).set({
+      pts: firebase.firestore.FieldValue.increment(n),
+      name: u.displayName || 'Anoniem',
+      photoURL: u.photoURL || '',
+      updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+    }, { merge: true });
+  } catch(e) { console.warn(e); }
+}
+
 document.addEventListener('keydown', e => {
+  if(document.getElementById('fc-done').style.display === 'block') return;
+  if(e.target.tagName === 'SELECT' || e.target.tagName === 'INPUT') return;
   if(e.key === ' ' || e.key === 'Enter'){ e.preventDefault(); flipCard(); }
   if(e.key === 'ArrowRight') markCard(true);
-  if(e.key === 'ArrowLeft')  markCard(false);
-  if(e.key === 'ArrowDown')  nextCard();
+  if(e.key === 'ArrowLeft') markCard(false);
+  if(e.key === 'ArrowDown') { e.preventDefault(); nextCard(); }
 });
 
 loadDeck();
-
-/* ── FIREBASE PUNTEN ── */
-const _fbCfg={apiKey:"AIzaSyBB397Wk2eqpBjic8E7aGV1mTgIjhQ21a8",authDomain:"fmkompas-ff8bc.firebaseapp.com",projectId:"fmkompas-ff8bc",storageBucket:"fmkompas-ff8bc.firebasestorage.app",messagingSenderId:"487972024689",appId:"1:487972024689:web:712c3117080745d14746d0"};
-if(!firebase.apps.length) firebase.initializeApp(_fbCfg);
-const _auth=firebase.auth(), _db=firebase.firestore();
-async function addPoints(n){
-  const u=await new Promise(r=>{const x=_auth.onAuthStateChanged(u=>{x();r(u);});});
-  if(!u) return;
-  await _db.collection('scores').doc(u.uid).set(
-    {pts:firebase.firestore.FieldValue.increment(n),name:u.displayName||'Anoniem',photoURL:u.photoURL||'',updatedAt:firebase.firestore.FieldValue.serverTimestamp()},
-    {merge:true}
-  );
-  _loadPts();
-}
-async function _loadPts(){
-  const u=_auth.currentUser;
-  const el=document.getElementById('pts-display'); if(!el) return;
-  if(!u){el.textContent='—';return;}
-  const s=await _db.collection('scores').doc(u.uid).get();
-  el.textContent=s.exists?(s.data().pts||0):0;
-}
-_auth.onAuthStateChanged(()=>_loadPts());
 </script>
 </body>
 </html>
