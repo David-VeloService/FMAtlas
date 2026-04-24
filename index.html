@@ -633,6 +633,50 @@
 
     .callout strong { color: hsl(235,100%,72%); }
 
+    /* Interne paginanavigatie */
+    .page-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-bottom: 2rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .page-nav a {
+      color: var(--muted-fg);
+      font-size: 0.72rem;
+      font-weight: 600;
+      text-decoration: none;
+      background: var(--secondary);
+      border: 1px solid var(--border);
+      border-radius: 99px;
+      padding: 0.2rem 0.65rem;
+      transition: color 0.15s, border-color 0.15s;
+    }
+
+    .page-nav a:hover { color: var(--foreground); border-color: rgba(255,255,255,0.25); }
+
+    /* Sectie-scheiding binnen vakpagina */
+    .section-divider {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin: 3rem 0 0.75rem;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--muted-fg);
+    }
+
+    .section-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
     /* ───────────────────────────────────
        FOOTER
     ─────────────────────────────────── */
@@ -1153,8 +1197,289 @@
     <div class="vak-page">
       <button class="back-btn" onclick="goHome()">← Terug naar overzicht</button>
       <h1>Facilitaire Inkoop</h1>
-      <p class="vak-subtitle">Facilitair Management · Periode 3</p>
-      <p>Deze pagina is nog in opbouw.</p>
+      <p class="vak-subtitle">Facilitair Management · Periode 3 · Inkoopmanagement &amp; Verbintenissenrecht</p>
+
+      <nav class="page-nav">
+        <a href="#inkoop-kern">Kern van het vak</a>
+        <a href="#inkoop-org">Organisatievormen</a>
+        <a href="#inkoop-tactisch">Van Weele — Tactisch</a>
+        <a href="#inkoop-operationeel">Van Weele — Operationeel</a>
+        <a href="#inkoop-tco">TCO</a>
+        <a href="#inkoop-kraljic">Kraljic-matrix</a>
+        <a href="#inkoop-spend">Spendanalyse &amp; ABC</a>
+        <a href="#inkoop-markt">Marktonderzoek</a>
+        <a href="#inkoop-digitaal">Digitalisering</a>
+        <a href="#recht-inleiding">Verbintenissenrecht</a>
+        <a href="#recht-ongeldigheid">Ongeldigheid</a>
+      </nav>
+
+      <h2 id="inkoop-kern">Kern van het vak</h2>
+      <p><strong>Inkoop</strong> is het van externe bronnen betrekken van alle goederen en diensten die een organisatie nodig heeft, tegen de meest gunstige voorwaarden.</p>
+
+      <h3>Primaire vs. indirecte inkoop</h3>
+      <div class="table-wrap">
+        <table>
+          <tr><th>Type</th><th>Omschrijving</th><th>Voorbeelden</th></tr>
+          <tr><td><strong>Primaire inkoop</strong></td><td>Goederen/diensten die rechtstreeks in het eindproduct terechtkomen</td><td>Grondstoffen, halffabricaten, componenten</td></tr>
+          <tr><td><strong>Indirecte inkoop (MRO)</strong></td><td>Maintenance, Repair &amp; Operations — alles nodig voor dagelijks functioneren</td><td>Kantoorartikelen, schoonmaak, onderhoud</td></tr>
+          <tr><td><strong>Facilitaire inkoop</strong></td><td>Subcategorie van indirecte inkoop, specifiek voor FM</td><td>Catering, beveiliging, technisch onderhoud</td></tr>
+        </table>
+      </div>
+
+      <h3>Inkoopquote &amp; hefboomwerking</h3>
+      <div class="callout">
+        <strong>Inkoopquote</strong> = (Totale inkoopkosten ÷ Totale omzet) × 100%<br />
+        Veel organisaties hebben een inkoopquote van &gt; 50%. <strong>Hefboomwerking:</strong> 1% besparing op inkoop heeft hetzelfde winsteffect als ≈ 10% omzetstijging.
+      </div>
+
+      <h3>4 Primaire taken van inkoop</h3>
+      <ul>
+        <li><strong>Operationele excellentie</strong> — foutloze en tijdige levering</li>
+        <li><strong>Inkoopbesparingen realiseren</strong></li>
+        <li><strong>Risico's in de toeleveringsketen verminderen</strong></li>
+        <li><strong>Bijdragen aan innovatie en waardecreatie</strong></li>
+      </ul>
+
+      <h3>Make-or-buy beslissing</h3>
+      <p>Strategische keuze: zelf doen of uitbesteden? Afwegingscriteria: kosten, kwaliteit, strategisch belang, risico/afhankelijkheid en flexibiliteit. Bij uitbesteding gaan bedrijfsmiddelen naar een externe partij en ontstaat een langdurige relatie (3–7 jaar).</p>
+
+      <h3>Publieke vs. private inkoop</h3>
+      <div class="table-wrap">
+        <table>
+          <tr><th></th><th>Publieke inkoop</th><th>Private inkoop</th></tr>
+          <tr><td><strong>Doelstelling</strong></td><td>Maatschappelijke doelstellingen</td><td>Winst maken</td></tr>
+          <tr><td><strong>Wetgeving</strong></td><td>Aanbestedingswetgeving verplicht</td><td>Vrije leverancierskeuze</td></tr>
+          <tr><td><strong>Politiek</strong></td><td>Hoge politieke gevoeligheid</td><td>Concurrentiepositie versterken</td></tr>
+        </table>
+      </div>
+
+      <h2 id="inkoop-org">Organisatievormen inkoop</h2>
+      <div class="table-wrap">
+        <table>
+          <tr><th>Vorm</th><th>Kenmerken</th><th>Voordelen</th><th>Nadelen</th></tr>
+          <tr><td><strong>Centraal</strong></td><td>Één inkoopafdelings verantwoordelijk voor gehele organisatie</td><td>Maximale schaalvoordelen, uniforme aanpak</td><td>Ver van de business, traag</td></tr>
+          <tr><td><strong>Decentraal</strong></td><td>Business units kopen zelf in</td><td>Dicht bij de business, flexibel</td><td>Geen schaalvoordelen, maverick buying</td></tr>
+          <tr><td><strong>Hybride (coördinatie)</strong></td><td>Centrale raamcontracten + decentrale uitvoering</td><td>Combinatie van schaalvoordeel en flexibiliteit</td><td>Complexe aansturing</td></tr>
+        </table>
+      </div>
+
+      <h2 id="inkoop-tactisch">Van Weele — Tactische fase (stappen 1–3)</h2>
+      <p>De tactische fase wordt <em>eenmalig</em> doorlopen per inkoopproject en legt de basis voor het contract.</p>
+
+      <h3>Stap 1 — Specificeren</h3>
+      <div class="table-wrap">
+        <table>
+          <tr><th>Niveau</th><th>Omschrijving</th></tr>
+          <tr><td><strong>Functionele specificatie</strong></td><td>Beschrijft het gewenste resultaat/functie — niet hoe het gemaakt moet worden</td></tr>
+          <tr><td><strong>Programma van Eisen (PvE)</strong></td><td>SMART geformuleerde eisen: prestatie, technisch, kwaliteit, logistiek, duurzaamheid, richtbudget</td></tr>
+          <tr><td><strong>Technische specificatie</strong></td><td>Exacte technische details, maatvoering, materialen</td></tr>
+        </table>
+      </div>
+      <ul>
+        <li><strong>Eisen</strong> — knock-out criteria, niet onderhandelbaar</li>
+        <li><strong>Wensen</strong> — vatbaar voor onderhandeling, worden gewogen</li>
+        <li><strong>Best Value Procurement (BVP)</strong> — probleem beschrijven, leveranciers vragen om de beste oplossing aan te dragen</li>
+      </ul>
+
+      <h3>Stap 2 — Selecteren</h3>
+      <div class="table-wrap">
+        <table>
+          <tr><th>Instrument</th><th>Doel</th><th>Wanneer</th></tr>
+          <tr><td><strong>RFI</strong> (Request for Information)</td><td>Oriëntatie, marktverkenning</td><td>Brede groep leveranciers</td></tr>
+          <tr><td><strong>RFQ</strong> (Request for Quotation)</td><td>Concrete offerte opvragen</td><td>Shortlist van 3–5 leveranciers</td></tr>
+        </table>
+      </div>
+      <p><strong>Offertebeoordelingsmethoden:</strong> waardering in euro's · indexmethode · <strong>gewogen factorscore / BPKV</strong> (meest gebruikt bij complex) · TCO-gebaseerd.</p>
+      <p><strong>Accountportfolio:</strong> hoe ziet de leverancier jóu als klant? (core account, development account, nuisance account) — dit beïnvloedt je onderhandelingsmacht.</p>
+
+      <h3>Stap 3 — Contracteren</h3>
+      <p><strong>Onderhandelen:</strong> goede voorbereiding is essentieel; de machtsbalans bepaalt de strategie. Bekende tactieken: "take it or leave it", salamitactiek, good cop/bad cop.</p>
+      <div class="table-wrap">
+        <table>
+          <tr><th>Contractvorm</th><th>Beschrijving</th><th>Risico bij</th></tr>
+          <tr><td><strong>Inspanningscontract</strong></td><td>Best effort — betaling per uur of bestede tijd</td><td>Opdrachtgever</td></tr>
+          <tr><td><strong>Resultaatcontract</strong></td><td>Garandeert een concreet resultaat — voorkeur van de inkoper</td><td>Leverancier</td></tr>
+          <tr><td><strong>Vaste prijs (fixed price)</strong></td><td>Prijs staat vast, ongeacht werkelijke kosten</td><td>Leverancier</td></tr>
+          <tr><td><strong>Regiecontract (cost-plus)</strong></td><td>Werkelijke kosten + vaste of procentuele opslag</td><td>Opdrachtgever</td></tr>
+          <tr><td><strong>Eenheidsprijscontract</strong></td><td>Betaling per prestatie-eenheid (bijv. per m² schoongemaakt)</td><td>Gedeeld</td></tr>
+        </table>
+      </div>
+      <div class="callout"><strong>Exit-afspraken:</strong> denk bij het afsluiten van een contract al na over de beëindiging — opzegtermijnen, overdracht van bedrijfsmiddelen, positie van medewerkers.</div>
+
+      <h2 id="inkoop-operationeel">Van Weele — Operationele fase (stappen 4–6)</h2>
+      <p>De operationele fase wordt <em>herhaald</em> voor elke bestelling en bewaakt de dagelijkse uitvoering van het contract.</p>
+
+      <h3>Stap 4 — Bestellen</h3>
+      <div class="table-wrap">
+        <table>
+          <tr><th>Bestelwijze</th><th>Omschrijving</th></tr>
+          <tr><td><strong>Roundtrip (webshop)</strong></td><td>Bestellen via de webshop van de leverancier, order keert terug in het ERP-systeem</td></tr>
+          <tr><td><strong>Catalogus</strong></td><td>Interne catalogus met pre-goedgekeurde artikelen en prijzen</td></tr>
+          <tr><td><strong>Vrije aanvraag</strong></td><td>Handmatig, voor niet-gecatalogiseerde of incidentele artikelen</td></tr>
+        </table>
+      </div>
+      <p><strong>Maverick buying:</strong> inkopen buiten de afgesloten raamcontracten om. Verhoogt kosten en risico; digitalisering verkleint dit aandeel.</p>
+
+      <h3>Stap 5 — Bewaken (orderbewaking)</h3>
+      <div class="table-wrap">
+        <table>
+          <tr><th>Methode</th><th>Aanpak</th><th>Aanbeveling</th></tr>
+          <tr><td><strong>Exception expediting</strong></td><td>Reactief — pas actie bij een gemeld probleem (piepsysteem)</td><td>Niet aanbevolen</td></tr>
+          <tr><td><strong>Routine statuscheck</strong></td><td>Proactief — contact opnemen vóór de leverdatum</td><td>Standaard aanpak</td></tr>
+          <tr><td><strong>Advanced statuscheck</strong></td><td>Voor kritische leveranciers — gedetailleerde planning en periodieke controle</td><td>Bij hoog risico</td></tr>
+        </table>
+      </div>
+      <p><strong>Ontvangstcontrole:</strong> controleer artikel/aantal, kwaliteit, logistieke staat en volledigheid van documentatie.</p>
+
+      <h3>Stap 6 — Nazorg &amp; evaluatie</h3>
+      <div class="callout">
+        <strong>Three-way matching:</strong> vergelijk de inkooporder, de afleveringsbon en de factuur vóór betaling — alle drie moeten overeenkomen.
+      </div>
+      <p><strong>Leveranciersevaluatie:</strong> beoordeel op kwaliteit, betrouwbaarheid, communicatie en prijs-kwaliteitverhouding. Gebruik de uitkomsten als input voor de volgende selectieprocedure of voor leveranciersgesprekken.</p>
+
+      <h2 id="inkoop-tco">Total Cost of Ownership (TCO)</h2>
+      <div class="callout"><strong>Definitie:</strong> TCO omvat alle kosten over de volledige levenscyclus van een product of dienst — van aanschaf tot en met afstoting.</div>
+      <div class="table-wrap">
+        <table>
+          <tr><th>Fase</th><th>Kostencomponenten</th></tr>
+          <tr><td><strong>Pre-transactie</strong></td><td>Behoeftenanalyse, leveranciersonderzoek, kwalificatie, specificeren</td></tr>
+          <tr><td><strong>Transactie</strong></td><td>Aanschafprijs, levering, heffingen, factuurafhandeling, inspectiekosten</td></tr>
+          <tr><td><strong>Post-transactie</strong></td><td>Onderhoud, energie, reparatie, storingen, recycling, restwaarde</td></tr>
+        </table>
+      </div>
+      <p>TCO speelt een rol in drie Van Weele-stappen: bij <em>specificeren</em> (voorcalculatie), bij <em>selecteren</em> (offertes beoordelen op TCO in plaats van alleen prijs) en bij <em>contracteren</em> (TCO-afspraken vastleggen in het contract).</p>
+
+      <h2 id="inkoop-kraljic">Kraljic-matrix</h2>
+      <p>De Kraljic-matrix bepaalt de inkoopstrategie per productcategorie op basis van twee assen: <strong>financieel belang</strong> (aandeel in de kostprijs) en <strong>toeleveringsrisico</strong> (aantal beschikbare leveranciers, substitutiemogelijkheden).</p>
+      <div class="table-wrap">
+        <table>
+          <tr><th>Kwadrant</th><th>Risico</th><th>Waarde</th><th>Voorbeelden</th><th>Strategie</th></tr>
+          <tr><td><strong>Strategische producten</strong></td><td>Hoog</td><td>Hoog</td><td>Computerchips, motoren, turbines</td><td>Strategische samenwerking / partnership</td></tr>
+          <tr><td><strong>Hefboomproducten</strong></td><td>Laag</td><td>Hoog</td><td>Bulkchemicaliën, plaatstaal, grondstoffen</td><td>Concurrentiestelling (verdeel en heers, e-auctions)</td></tr>
+          <tr><td><strong>Knelpuntproducten</strong></td><td>Hoog</td><td>Laag</td><td>Leveranciersgebonden onderdelen, katalysatoren</td><td>Veiligstellen toelevering (buffervoorraden, alternatieven)</td></tr>
+          <tr><td><strong>Routineproducten</strong></td><td>Laag</td><td>Laag</td><td>Kantoorartikelen, schoonmaakmiddelen</td><td>Routinisering (standaardiseren, automatiseren, consolideren)</td></tr>
+        </table>
+      </div>
+      <div class="callout"><strong>Toepassing:</strong> gebruik de matrix om te bepalen hoeveel tijd en aandacht je per leverancier besteedt. Strategische leveranciers verdienen partnershipgesprekken; routineproducten automatiseer je zoveel mogelijk.</div>
+
+      <h2 id="inkoop-spend">Spendanalyse &amp; ABC-analyse</h2>
+      <p><strong>Spendanalyse</strong> is een financiële analyse van de daadwerkelijke inkoopuitgaven. Het beantwoordt 8 vragen: wat is ingekocht, hoeveel, bij welke leveranciers, met welke frequentie, door welke afdelingen, welk aandeel valt buiten het contract (maverick buying %), hoeveel facturen zijn er verstuurd en wat is de gemiddelde factuurwaarde.</p>
+      <p>De <strong>ABC-analyse</strong> is gebaseerd op de Pareto 80/20-regel: een klein deel van de leveranciers is verantwoordelijk voor het grootste deel van de uitgaven.</p>
+      <div class="table-wrap">
+        <table>
+          <tr><th>Categorie</th><th>Aandeel leveranciers</th><th>Aandeel omzet</th><th>Strategie</th></tr>
+          <tr><td><strong>A — Hoog</strong></td><td>±20%</td><td>±80%</td><td>Meeste aandacht, actief managen</td></tr>
+          <tr><td><strong>B — Gemiddeld</strong></td><td>±30%</td><td>±15%</td><td>Regelmatig monitoren</td></tr>
+          <tr><td><strong>C — Laag</strong></td><td>±50%</td><td>±5%</td><td>Automatiseren, consolideren</td></tr>
+        </table>
+      </div>
+
+      <h2 id="inkoop-markt">Inkoopmarktonderzoek</h2>
+      <p>Systematisch onderzoek naar relevante factoren die de verwerving van goederen en diensten beïnvloeden. Doel: inkoopdoelstellingen onderbouwen en de concurrentiepositie versterken.</p>
+      <div class="table-wrap">
+        <table>
+          <tr><th>Niveau</th><th>Onderwerp</th><th>Factoren</th></tr>
+          <tr><td><strong>Macro-economisch</strong></td><td>Algemene economische omgeving</td><td>Conjunctuur, inflatie, rente, wetgeving, wisselkoersen, geopolitiek</td></tr>
+          <tr><td><strong>Meso-economisch</strong></td><td>Bedrijfstak / ketenniveau</td><td>Vraag/aanbodverhouding, orderportefeuilles, bezettingsgraden, marktstructuur</td></tr>
+          <tr><td><strong>Micro-economisch</strong></td><td>Individuele leverancier</td><td>Financiële positie, leveringsbetrouwbaarheid, kwaliteit, kostprijsstructuur</td></tr>
+          <tr><td><strong>Productfactoren</strong></td><td>Het product zelf</td><td>Technische specs, standaardisatie, substitutiemogelijkheden, levenscyclus</td></tr>
+        </table>
+      </div>
+      <div class="callout"><strong>PMI (Purchasing Managers Index)</strong> — gepubliceerd door NEVI. Boven 50 = groei, onder 50 = krimp in economische bedrijvigheid. Handige graadmeter voor de macro-economische omgeving bij marktonderzoek.</div>
+
+      <h2 id="inkoop-digitaal">Digitalisering inkoop</h2>
+      <p><strong>ERP-systemen</strong> (Enterprise Resource Planning — bijv. SAP, Oracle, Microsoft Dynamics) vormen de ruggengraat van de inkoop-informatievoorziening en bieden geïntegreerde inkoopmodules.</p>
+      <p><strong>Redenen voor digitalisering:</strong></p>
+      <ul>
+        <li>Lagere inkoopkosten door beter benutten van raamcontracten</li>
+        <li>Lagere proceskosten door automatisering van routinehandelingen</li>
+        <li>Betere management-informatie (real-time inzicht in spend)</li>
+        <li>Voorkomen van maverick buying</li>
+        <li>Betere risicobeheersing in de keten</li>
+      </ul>
+      <p><strong>Nieuwe technologieën:</strong></p>
+      <ul>
+        <li><strong>AI</strong> — demand forecasting, risicoanalyse, contractopstelling, chatbots voor leverancierscommunicatie</li>
+        <li><strong>RPA</strong> (Robotic Process Automation) — automatiseert repetitieve processen zoals three-way matching en factuurafhandeling</li>
+        <li><strong>Blockchain</strong> — transparante transactieregistratie, smart contracts die automatisch uitvoeren bij voldoen aan condities</li>
+        <li><strong>IoT</strong> — apparaten signaleren autonoom behoeften (sensoren voor preventief onderhoud, automatische herbestelling)</li>
+      </ul>
+      <div class="callout"><strong>Toekomst:</strong> operationele inkoop wordt volledig geautomatiseerd. De inkoper verschuift naar strategisch werk — leveranciersrelaties, innovatie en risicomanagement.</div>
+
+      <!-- ─── SCHEIDING ─── -->
+      <div class="section-divider" id="recht-inleiding">Verbintenissenrecht</div>
+
+      <h2>Inleiding recht</h2>
+
+      <h3>Rechtsbronnen</h3>
+      <ul>
+        <li>Wetten</li>
+        <li>Verdragen</li>
+        <li>Jurisprudentie (rechterlijke uitspraken)</li>
+        <li>Gewoonte</li>
+      </ul>
+
+      <h3>Dwingend vs. regelend recht</h3>
+      <div class="table-wrap">
+        <table>
+          <tr><th></th><th>Dwingend recht</th><th>Regelend (aanvullend) recht</th></tr>
+          <tr><td><strong>Afwijken mogelijk?</strong></td><td>Nee — verplicht van toepassing</td><td>Ja — partijen kunnen anders afspreken</td></tr>
+          <tr><td><strong>Signaalwoorden</strong></td><td>"nietig", "mag niet worden afgeweken"</td><td>Treedt in werking als er geen andere afspraken zijn gemaakt</td></tr>
+          <tr><td><strong>Voorbeeld</strong></td><td>Minimumloon, ontslagrecht</td><td>Leveringstermijnen in kooprecht</td></tr>
+        </table>
+      </div>
+
+      <h3>Privaatrecht vs. publiekrecht</h3>
+      <div class="table-wrap">
+        <table>
+          <tr><th>Privaatrecht</th><th>Publiekrecht</th></tr>
+          <tr><td>Tussen burgers en/of bedrijven onderling</td><td>Overheid met bijzondere bevoegdheid tegenover burger</td></tr>
+          <tr><td>Contracten, erfrecht, familierecht</td><td>Administratief recht, strafrecht, belastingrecht</td></tr>
+        </table>
+      </div>
+
+      <h3>Verbintenis &amp; bronnen (art. 6:1 BW)</h3>
+      <p>Een <strong>verbintenis</strong> is een verplichting voor één partij om iets te geven, te doen of na te laten. Bronnen van verbintenissen: de wet, de overeenkomst en de rechtspraak.</p>
+
+      <h2 id="recht-ongeldigheid">Ongeldigheid van de rechtshandeling</h2>
+      <div class="callout">
+        <strong>Nietig</strong> — van rechtswege ongeldig; de rechtshandeling heeft nooit bestaan. Niemand hoeft actie te ondernemen.<br />
+        <strong>Vernietigbaar</strong> — geldig totdat de benadeelde partij de handeling aanvecht. Vereist actie.
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <tr><th>Grond</th><th>Artikel BW</th><th>Gevolg</th></tr>
+          <tr><td><strong>Vergissing</strong> — wil en verklaring komen niet overeen</td><td>Art. 3:33</td><td>Nietig — maar gerechtvaardigd vertrouwen van de wederpartij (art. 3:35) kan de handeling tóch geldig maken</td></tr>
+          <tr><td><strong>Geestelijke stoornis</strong> — aanwezig bij verrichten van de handeling</td><td>Art. 3:34</td><td>Vernietigbaar; eenzijdig ongericht (bijv. testament): nietig</td></tr>
+          <tr><td><strong>Strijd met wet / openbare orde / goede zeden</strong></td><td>Art. 3:40</td><td>Nietig (of vernietigbaar afhankelijk van aard van de overtreding)</td></tr>
+          <tr><td><strong>Bedreiging</strong></td><td>Art. 3:44 lid 2</td><td>Vernietigbaar</td></tr>
+          <tr><td><strong>Bedrog</strong></td><td>Art. 3:44 lid 3</td><td>Vernietigbaar</td></tr>
+        </table>
+      </div>
+
+      <h3>Vereisten bedreiging (art. 3:44 lid 2 BW)</h3>
+      <ul>
+        <li>Opzet aanwezig bij de bedreigende partij</li>
+        <li>Onrechtmatige bedreiging (met kwaad of nadeel)</li>
+        <li>Een redelijk oordelend mens zou door de bedreiging bewogen worden</li>
+        <li>Nadeel voor de bedreigde</li>
+        <li>Causaal verband tussen bedreiging en rechtshandeling</li>
+      </ul>
+
+      <h3>Vereisten bedrog (art. 3:44 lid 3 BW)</h3>
+      <ul>
+        <li>Opzet aanwezig bij de bedriegende partij</li>
+        <li>Onjuiste mededeling, kunstgreep, of opzettelijk zwijgen over relevante feiten</li>
+        <li>Causaal verband: zonder het bedrog zou de handeling niet (of niet onder dezelfde voorwaarden) zijn verricht</li>
+      </ul>
+      <div class="callout"><strong>Let op:</strong> algemene aanprijzingen ("het mooiste product op de markt") tellen niet als bedrog — alleen concrete, aantoonbaar onjuiste mededelingen.</div>
+
+      <h3>Aanvullende gronden</h3>
+      <ul>
+        <li><strong>Misbruik van omstandigheden</strong> (art. 3:44 lid 4 BW) — gevolg: vernietigbaar</li>
+        <li><strong>Dwaling bij overeenkomsten</strong> (art. 6:228 BW) — gevolg: vernietigbaar</li>
+      </ul>
     </div>
   </div>
 
