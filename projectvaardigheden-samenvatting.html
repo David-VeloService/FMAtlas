@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Samenvatting · Projectvaardigheden — FMAtlas</title>
+<link rel="icon" type="image/svg+xml" href="logo.svg"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="css/fmatlas.css"/>
+<style>
+.sam-wrap { max-width: 1100px; margin: 0 auto; padding: 24px; }
+.sam-intro { background: var(--surface); border: 1.5px solid var(--line); border-radius: var(--radius-xl); padding: 28px 32px; margin-bottom: 18px; }
+.sam-intro-meta { font-size: 11px; font-weight: 800; color: var(--accent); letter-spacing: 0.08em; margin-bottom: 8px; }
+.sam-intro h1 { font-size: 32px; font-weight: 900; letter-spacing: -0.025em; line-height: 1.08; margin-bottom: 10px; }
+.sam-intro p { color: var(--ink-soft); font-size: 14.5px; line-height: 1.6; }
+
+nav.chapnav { background: var(--surface); border: 1.5px solid var(--line); border-radius: var(--radius-lg); padding: 12px 16px; margin: 0 24px 18px; max-width: 1052px; margin-left: auto; margin-right: auto; display: flex; flex-wrap: wrap; gap: 6px; position: sticky; top: 68px; z-index: 20; }
+nav.chapnav a { color: var(--ink-soft); text-decoration: none; padding: 4px 10px; border-radius: 8px; background: var(--bg); font-weight: 800; font-size: 11.5px; border: 1.5px solid var(--line); transition: all 0.12s; }
+nav.chapnav a:hover { background: var(--accent-soft); color: var(--accent-deep); border-color: var(--accent); }
+
+.main { max-width: 1052px; margin: 0 auto; padding: 0 24px 60px; display: flex; flex-direction: column; gap: 18px; }
+
+.card { background: var(--surface); border: 1.5px solid var(--line); border-radius: var(--radius-xl); overflow: hidden; scroll-margin-top: 140px; }
+.card-header { padding: 16px 22px; display: flex; align-items: center; gap: 10px; color: var(--surface); background: var(--ink); }
+.card-header h2 { font-size: 17px; font-weight: 900; letter-spacing: -0.015em; }
+.card-header .icon { font-size: 20px; }
+.card-body { padding: 22px 24px; }
+
+.h1 { background: var(--accent); }
+.h2, .h3, .h4 { background: var(--ink); }
+
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+@media (max-width: 740px) { .two-col, .three-col { grid-template-columns: 1fr; } }
+
+.section { margin-bottom: 18px; }
+.section h3 { font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin-bottom: 8px; padding-bottom: 6px; border-bottom: 1.5px solid var(--line); }
+
+ul.clean { list-style: none; display: flex; flex-direction: column; gap: 5px; margin: 0; padding: 0; }
+ul.clean li { font-size: 13.5px; line-height: 1.55; padding: 3px 0 3px 16px; position: relative; color: var(--ink-soft); font-weight: 500; }
+ul.clean li::before { content: '›'; position: absolute; left: 0; top: 3px; color: var(--accent); font-weight: 900; }
+ul.clean li strong { color: var(--ink); font-weight: 800; }
+
+.defbox { background: var(--bg); border: 1.5px solid var(--line); border-left: 4px solid var(--accent); border-radius: 0 var(--radius) var(--radius) 0; padding: 10px 14px; margin-bottom: 10px; font-size: 13.5px; line-height: 1.55; color: var(--ink-soft); }
+.defbox strong { display: block; font-size: 10.5px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); margin-bottom: 4px; }
+
+.highlight { background: var(--accent-soft); border: 1.5px solid rgba(239, 90, 63, 0.25); border-radius: var(--radius); padding: 10px 14px; font-size: 13.5px; line-height: 1.55; margin-bottom: 10px; color: var(--accent-deep); font-weight: 600; }
+.highlight strong { color: var(--accent-deep); font-weight: 900; }
+
+.warn { background: #fff7ed; border-left: 3px solid #f59e0b; padding: 9px 14px; border-radius: 0 var(--radius) var(--radius) 0; font-size: 12.5px; color: #92400e; margin-bottom: 10px; font-weight: 600; }
+
+.tag { display: inline-block; padding: 2px 8px; border-radius: 999px; font-size: 11px; font-weight: 800; }
+.blue   { background: #dbeafe;  color: #1e40af; }
+.green  { background: #dcfce7;  color: #166534; }
+.purple { background: #ede9fe;  color: #5b21b6; }
+.orange { background: #ffedd5;  color: #9a3412; }
+.red    { background: #fee2e2;  color: #991b1b; }
+.yellow { background: #fef3c7;  color: #854d0e; }
+
+.box { background: var(--bg); border: 1.5px solid var(--line); border-radius: var(--radius); padding: 12px 14px; }
+.box h4 { font-size: 12.5px; font-weight: 900; margin-bottom: 8px; color: var(--ink); letter-spacing: -0.005em; }
+
+.nummer { display: inline-flex; align-items:center; justify-content:center; background: var(--accent); color: var(--surface); width: 22px; height: 22px; border-radius: 50%; font-size: 11px; font-weight: 900; margin-right: 8px; flex-shrink: 0; }
+.stap { display: flex; align-items: flex-start; gap: 4px; font-size: 13.5px; color: var(--ink-soft); padding: 4px 0; line-height: 1.5; }
+.stap strong { color: var(--ink); }
+
+table.compact { width: 100%; border-collapse: collapse; font-size: 12.5px; margin-top: 6px; }
+table.compact th, table.compact td { padding: 7px 10px; text-align: left; border-bottom: 1.5px solid var(--line); color: var(--ink-soft); }
+table.compact th { font-size: 10.5px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+table.compact td strong { color: var(--ink); font-weight: 800; }
+</style>
+</head>
+<body>
+
+<div id="fa-header-slot"></div>
+
+<nav class="fa-breadcrumb">
+  <a href="index.html">Home</a>
+  <span>›</span>
+  <a href="projectvaardigheden.html">Projectvaardigheden</a>
+  <span>›</span>
+  <span class="current">Samenvatting</span>
+</nav>
+
+<div class="sam-wrap">
+  <div class="sam-intro">
+    <div class="sam-intro-meta">SAMENVATTING · 4 thema's · 7 lesblokken</div>
+    <h1>Projectvaardigheden — volledige studiesamenvatting</h1>
+    <p>Alle thema's uit Evenementenmanagement 2: Observeren (week 1–2), Zakelijk en visueel communiceren (week 3), Interviewen (week 4–5) en Enquêteren (week 6–7). Gebaseerd op de collegedias en het bronmateriaal van Baarda (2025).</p>
+  </div>
+</div>
+
+<nav class="chapnav">
+  <a href="#h1">Observeren</a>
+  <a href="#h2">Zakelijk communiceren</a>
+  <a href="#h3">Interviewen</a>
+  <a href="#h4">Enquêteren</a>
+</nav>
+
+<div class="main">
+
+<!-- ===== H1: OBSERVEREN ===== -->
+<div class="card" id="h1">
+  <div class="card-header h1"><span class="icon">👁️</span><h2>Thema 1 — Observeren (week 1 &amp; 2)</h2></div>
+  <div class="card-body">
+
+    <div class="two-col">
+      <div>
+        <div class="section">
+          <h3>Wat is onderzoek doen?</h3>
+          <div class="defbox">
+            <strong>Onderzoek</strong>
+            Het verkennen, verklaren of veranderen van de bestaande situatie. Je bedenkt een plan van aanpak, raadpleegt bronnen, verzamelt gegevens, trekt conclusies en levert een bijdrage aan de oplossing (Baarda, 2025).
+          </div>
+          <table class="compact">
+            <thead><tr><th>Type</th><th>Kenmerken</th><th>Data</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Kwantitatief</strong></td><td>Smalle vraagstelling, vaste richtlijnen, gesloten categorieën</td><td>Getallen</td></tr>
+              <tr><td><strong>Kwalitatief</strong></td><td>Brede vraagstelling, open en flexibel, inzicht zoeken</td><td>Teksten, foto's, verslagen</td></tr>
+              <tr><td><strong>Mixed methods</strong></td><td>Combinatie van beiden — triangulatie</td><td>Beide</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="section">
+          <h3>Wat is observatieonderzoek?</h3>
+          <div class="defbox">
+            <strong>Definitie</strong>
+            Een onderzoeksmethode gericht op systematische waarneming van gedrag. De onderzoeker verandert de bestaande situatie niet, maar observeert en legt de observaties vast.
+          </div>
+          <ul class="clean">
+            <li>In 't veld of in een experiment</li>
+            <li>Direct of indirect (aanwezigheid of beeldmateriaal)</li>
+            <li><strong>Verhuld</strong> of <strong>onverhuld</strong></li>
+            <li><strong>Participerend</strong> of <strong>niet-participerend</strong></li>
+            <li><strong>Gestructureerd</strong> of <strong>niet-gestructureerd</strong></li>
+          </ul>
+        </div>
+
+        <div class="section">
+          <h3>Wanneer kiezen voor observatieonderzoek?</h3>
+          <ul class="clean">
+            <li>Je wil antwoord op een <strong>'hoe'</strong> of <strong>'wat'</strong> vraag over feitelijk gedrag</li>
+            <li>Je wil de onderzoeksgroep zo min mogelijk lastigvallen</li>
+            <li>Je wil zelf waarnemen hoe het er daadwerkelijk aan toe gaat (niet de politiek correcte beschrijving)</li>
+            <li>Je wil kijken wat er gebeurt in de <strong>natuurlijke setting</strong></li>
+            <li>Je wil zien of mensen echt doen wat ze zeggen dat ze doen</li>
+          </ul>
+        </div>
+
+        <div class="section">
+          <h3>Twee typen uitgelicht</h3>
+          <div class="box" style="margin-bottom:8px;">
+            <h4>Participerende observatie</h4>
+            <p style="font-size:13px;color:var(--ink-soft);margin:0;">De onderzoeker neemt actief deel aan het onderzochte proces of de groep. Meer begrip voor de context, maar groter risico op subjectiviteit.</p>
+          </div>
+          <div class="box">
+            <h4>Niet-participerende observatie</h4>
+            <p style="font-size:13px;color:var(--ink-soft);margin:0;">De onderzoeker observeert van buitenaf, zonder deel te nemen. Meer objectief, maar minder diep begrip van de context.</p>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="section">
+          <h3>Voordelen en nadelen</h3>
+          <table class="compact">
+            <thead><tr><th>Voordelen</th><th>Nadelen</th></tr></thead>
+            <tbody>
+              <tr><td>Gedrag vaststellen waarvan respondent zich niet bewust is</td><td>Alleen regelmatig terugkerend gedrag is geschikt</td></tr>
+              <tr><td>Doet geen beroep op de respondent</td><td>Motieven zijn niet te observeren</td></tr>
+              <tr><td>Taal speelt geen rol</td><td>Tijdrovend en relatief duur</td></tr>
+              <tr><td>Bij verhuld observeren speelt sociaal wenselijkheid geen rol</td><td>Toestemming nodig bij niet-anonieme observaties</td></tr>
+              <tr><td>Mogelijkheid om de echte setting te bestuderen</td><td>Observator kan onbewust gedrag beïnvloeden of interpreteren vanuit vooroordelen</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="section">
+          <h3>Risico's en hoe je ze voorkomt</h3>
+          <div class="warn">Subjectiviteit van de onderzoeker (zoek naar eigen gelijk), verkeerd gekozen doelgroep of aanpak, niet-gestandaardiseerde methode, niet-eenduidige observaties (interpretatief i.p.v. observatief).</div>
+          <ul class="clean">
+            <li><strong>Observeer concreet gedrag</strong> — geen interpretaties, maar waarnemingen</li>
+            <li><strong>Standaardisatie</strong> — gebruik een turflijst of scoreformulier als meetprocedure</li>
+            <li><strong>Time sampling</strong> — observeer alleen tijdens afgebakende perioden</li>
+            <li><strong>Event sampling</strong> — noteer alles gedurende een specifieke gebeurtenis</li>
+            <li><strong>Herhaalbaarheid</strong> — opnamen maken of onderzoek herhalen bij dezelfde doelgroep</li>
+            <li><strong>Triangulatie</strong> — combineer met eerdere onderzoeksmethoden die elkaar valideren</li>
+          </ul>
+        </div>
+
+        <div class="section">
+          <h3>Observeren vs. interpreteren</h3>
+          <div class="highlight">
+            <strong>Operationaliseer altijd vooraf.</strong> Bepaal de meetprocedure van tevoren, wees concreet, gebruik geen vage termen ('soms', 'vaak'). Maak het classificeerbaar en objectief. Emoties zijn moeilijk te observeren — observeer het bijbehorende gedrag.
+          </div>
+        </div>
+
+        <div class="section">
+          <h3>Methoden</h3>
+          <div class="box" style="margin-bottom:8px;">
+            <h4>Shadowing</h4>
+            <p style="font-size:13px;color:var(--ink-soft);margin:0;">Je observeert iemand tijdens een actie om zijn of haar gedrag te bestuderen. Je 'volgt' iemand om data te verzamelen over keuzes, routes, houding en interacties.</p>
+          </div>
+          <div class="box">
+            <h4>Turflijst / scoreformulier</h4>
+            <p style="font-size:13px;color:var(--ink-soft);margin:0;">Een gestructureerd formulier waarop je per categorie turfjes zet. Zorgt voor gestandaardiseerde, objectieve dataverzameling.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3>Stappenplan observeren</h3>
+      <div class="two-col">
+        <div>
+          <div class="stap"><span class="nummer">1</span><span><strong>Kies de observatiemethode</strong> — Ga je participerend of niet-participerend observeren? Verhuld of onverhuld? Open of gestructureerd?</span></div>
+          <div class="stap"><span class="nummer">2</span><span><strong>Bepaal wat je observeert</strong> — Frequentie (hoe vaak?), duur (hoe lang?), kwaliteit en richting van gedrag.</span></div>
+          <div class="stap"><span class="nummer">3</span><span><strong>Ontwikkel het observatieschema</strong> — Zorg dat alle categorieën concreet, classificeerbaar en objectief zijn.</span></div>
+        </div>
+        <div>
+          <div class="stap"><span class="nummer">4</span><span><strong>Voer de observatie uit</strong> — Leg vast via opnamen, veldnotities (bierviltjemethode) of logboek.</span></div>
+          <div class="stap"><span class="nummer">5</span><span><strong>Verwerk en rapporteer</strong> — Geef in het rapport een gedetailleerde beschrijving van de aanpak. Verwijs in de resultaten naar concrete observaties en aantallen. Voeg datafiles, turflijsten en observatieoverzichten als bijlage toe.</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3>Voorbeelden van observatieonderwerpen (in FM/events-context)</h3>
+      <div class="three-col">
+        <div style="font-size:13px;color:var(--ink-soft);">Bezettingsgraad en beschikbaarheid · Gebruikspatronen van ruimten · Verkeersstromen · Bezoekersgedrag</div>
+        <div style="font-size:13px;color:var(--ink-soft);">Koopgedrag consumenten · Plaatskeuze · Onderhoud en schoonmaak · Gebruik van middelen</div>
+        <div style="font-size:13px;color:var(--ink-soft);">Samenwerking en interactie · Houding en gedrag · Veiligheid en ergonomie · Afvalscheiding · Energiegebruik</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ===== H2: ZAKELIJK EN VISUEEL COMMUNICEREN ===== -->
+<div class="card" id="h2">
+  <div class="card-header h2"><span class="icon">✍️</span><h2>Thema 2 — Zakelijk en visueel communiceren (week 3)</h2></div>
+  <div class="card-body">
+
+    <div class="two-col">
+      <div>
+        <div class="section">
+          <h3>5 doelen van communicatie</h3>
+          <ul class="clean">
+            <li><span class="tag blue">Informeren</span> — de ander iets laten <strong>weten</strong></li>
+            <li><span class="tag green">Overtuigen</span> — de ander iets laten <strong>geloven</strong></li>
+            <li><span class="tag orange">Appelleren</span> — de ander iets laten <strong>doen</strong></li>
+            <li><span class="tag purple">Instrueren</span> — de ander iets laten <strong>kunnen</strong></li>
+            <li><span class="tag yellow">Motiveren</span> — de ander iets laten <strong>willen</strong></li>
+          </ul>
+        </div>
+
+        <div class="section">
+          <h3>Communicatieanalyse — kernboodschap</h3>
+          <div class="defbox">
+            <strong>Boodschap opstellen: KNCA</strong>
+            <strong style="color:var(--ink);font-size:13px;font-weight:900;">Kort</strong> — niet langer dan een twitterbericht.<br>
+            <strong style="color:var(--ink);font-size:13px;font-weight:900;">Concreet</strong> — gebruik woorden die het publiek kan 'zien'.<br>
+            <strong style="color:var(--ink);font-size:13px;font-weight:900;">Nieuws</strong> — bevat iets dat lezers nog niet weten.<br>
+            <strong style="color:var(--ink);font-size:13px;font-weight:900;">Actief</strong> — geen hulpwerkwoorden, actieve zinnen.
+          </div>
+          <div class="highlight">
+            <strong>Doelgroepanalyse:</strong> Wie zijn de lezers? Wat weten ze al? Welke relevante eigenschappen hebben ze?
+          </div>
+        </div>
+
+        <div class="section">
+          <h3>Kernzin en alineaondersteuning</h3>
+          <div class="defbox">
+            <strong>Kernzin</strong>
+            De zin waarin het onderwerp van de alinea staat én een uitspraak over dat onderwerp wordt gedaan. De meest algemene zin in de alinea — staat meestal als eerste. Dient als smeermiddel tussen de alinea en de rest van de tekst.
+          </div>
+          <div class="defbox">
+            <strong>Alineaondersteuning</strong>
+            Alles in de alinea behalve de kernzin — alles wat je schrijft ter ondersteuning van de kernzin. Een alinea is het duidelijkst als zij zich beperkt tot één onderwerp.
+          </div>
+        </div>
+
+        <div class="section">
+          <h3>Overbodige werkwoorden weglaten</h3>
+          <table class="compact">
+            <thead><tr><th>Werkwoord</th><th>Fout</th><th>Beter</th></tr></thead>
+            <tbody>
+              <tr><td><strong>zullen</strong></td><td>We zullen de mogelijkheden gaan inventariseren.</td><td>We inventariseren de mogelijkheden.</td></tr>
+              <tr><td><strong>gaan</strong></td><td>Morgen gaan we kijken naar de problematiek.</td><td>Morgen kijken we naar de problematiek.</td></tr>
+              <tr><td><strong>willen</strong></td><td>Ik wil u graag uitnodigen voor ons jubileum.</td><td>Ik nodig u graag uit voor ons jubileum.</td></tr>
+              <tr><td><strong>kunnen</strong></td><td>Ik kan morgen naar je huisfeest komen.</td><td>Ik kom morgen naar je huisfeest.</td></tr>
+            </tbody>
+          </table>
+          <div class="warn">Uitzondering: 'zullen' uitdrukt twijfel, 'gaan' geeft een richting aan zonder ander werkwoord, 'willen' geeft iets aan dat je nog niet hebt — dan mag het blijven staan.</div>
+        </div>
+      </div>
+
+      <div>
+        <div class="section">
+          <h3>Typen alineaondersteuning en verbindingswoorden</h3>
+          <table class="compact">
+            <thead><tr><th>Type</th><th>Verbindingswoorden</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Opsomming</strong></td><td>ten eerste, ten tweede, vervolgens, daarnaast, bovendien, tot slot</td></tr>
+              <tr><td><strong>Oorzaak</strong></td><td>de oorzaak hiervan is, doordat, daardoor, omdat, namelijk</td></tr>
+              <tr><td><strong>Gevolg</strong></td><td>bijgevolg, hieruit volgt, dus, daarom</td></tr>
+              <tr><td><strong>Reden</strong></td><td>want, omdat, immers, namelijk, aangezien, vanwege</td></tr>
+              <tr><td><strong>Voorbeeld</strong></td><td>bijvoorbeeld, zoals, ter illustratie, dat blijkt uit</td></tr>
+              <tr><td><strong>Voorwaarde</strong></td><td>als, indien, wanneer, tenzij, mits</td></tr>
+              <tr><td><strong>Tegenstelling</strong></td><td>echter, maar, toch, enerzijds – anderzijds, daar staat tegenover</td></tr>
+              <tr><td><strong>Vergelijking</strong></td><td>evenals, eveneens, net als, in vergelijking met</td></tr>
+              <tr><td><strong>Conclusie</strong></td><td>kortom, samengevat, met andere woorden, concluderend</td></tr>
+              <tr><td><strong>Tijd</strong></td><td>daarna, eerst, intussen, nadat, vervolgens, tot nog toe</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="section">
+          <h3>Tekstmodel</h3>
+          <div class="stap"><span class="nummer">1</span><span><strong>Inleiding (kop)</strong> — Wat is de aanleiding? Wat is het doel? Hoe is de tekst opgebouwd? Motiveert de lezer om te lezen.</span></div>
+          <div class="stap"><span class="nummer">2</span><span><strong>Kern (romp)</strong> — Meerdere alinea's, elk met één deelonderwerp voortkomend uit de mindmap/tekstplan. Elke alinea geeft antwoord op één deelvraag en bevat een kernzin.</span></div>
+          <div class="stap"><span class="nummer">3</span><span><strong>Slot (staart)</strong> — Samenvatting van de boodschap. Pakkende afsluiting.</span></div>
+          <div class="highlight" style="margin-top:8px;"><strong>Doel:</strong> niet versimpelen, maar verhelderen.</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="border-top:1.5px solid var(--line);margin-top:4px;padding-top:18px;">
+      <div class="section">
+        <h3>Beeldtaal — 3 niveaus van beeldwaarneming</h3>
+        <div class="defbox">
+          <strong>Beeldtaal</strong>
+          De combinatie van verbale elementen en visuele elementen (beeldelementen en beelden). Doel: niet versimpelen, maar verhelderen.
+        </div>
+        <div class="three-col">
+          <div class="box">
+            <h4>1. Gestalttheorie — perceptie</h4>
+            <p style="font-size:13px;color:var(--ink-soft);margin:0;">Hoe nemen we beelden visueel waar? Gestaltprincipes beschrijven hoe het oog patronen, groepen en figuren herkent (nabijheid, gelijkenis, sluiting, continuïteit).</p>
+            <div style="margin-top:8px;"><span class="tag blue">Wat zie je?</span></div>
+          </div>
+          <div class="box">
+            <h4>2. Semiotiek — betekenis</h4>
+            <p style="font-size:13px;color:var(--ink-soft);margin:0;">De studie van tekens en symbolen en hun betekenis. Beelden communiceren op meerdere niveaus: het letterlijke (denotatie) en het bijbetekenislaag (connotatie).</p>
+            <div style="margin-top:8px;"><span class="tag purple">Wat betekent het?</span></div>
+          </div>
+          <div class="box">
+            <h4>3. Retorica — overtuigen</h4>
+            <p style="font-size:13px;color:var(--ink-soft);margin:0;"><strong>Ethos</strong> — uitstraling, geloofwaardigheid, deskundigheid.<br><strong>Pathos</strong> — emotie, verbinden met het publiek.<br><strong>Logos</strong> — feiten, logica, inhoud.</p>
+            <div style="margin-top:8px;"><span class="tag orange">Waarvan overtuigt het?</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h3>Elementen van goede beeldtaal</h3>
+        <div class="two-col">
+          <ul class="clean">
+            <li><strong>Doel en doelgroep</strong> — duidelijk waarvoor en voor wie</li>
+            <li><strong>Kleurgebruik</strong> — past bij huisstijl, aantrekkelijk, consistent, goed leesbaar</li>
+            <li><strong>Lettertype</strong> — past bij huisstijl, aantrekkelijk, consistent</li>
+            <li><strong>Indeling</strong> — tekstblokken van gelijke omvang, logische uitlijning</li>
+          </ul>
+          <ul class="clean">
+            <li><strong>Taalgebruik</strong> — geen spelfouten, consistente opsommingen</li>
+            <li><strong>Balans</strong> — goede verhouding tekst en beeld</li>
+            <li><strong>Informatiedichtheid</strong> — niet te veel, niet te weinig</li>
+            <li><strong>Toegevoegde waarde</strong> — verduidelijkt iets, het doel wordt behaald</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ===== H3: INTERVIEWEN ===== -->
+<div class="card" id="h3">
+  <div class="card-header h3"><span class="icon">🎙️</span><h2>Thema 3 — Interviewen (week 4 &amp; 5)</h2></div>
+  <div class="card-body">
+
+    <div class="two-col">
+      <div>
+        <div class="section">
+          <h3>Wanneer kiezen voor interviewen?</h3>
+          <ul class="clean">
+            <li>Je wil informatie van een <strong>specifieke groep</strong> mensen</li>
+            <li>Het aantal respondenten is overzichtelijk — <strong>niet groter dan 25</strong></li>
+            <li>Je bent op zoek naar meningen, overtuigingen of handelswijzen</li>
+            <li>Je bent benieuwd naar het <strong>'waarom'</strong> en het <strong>'hoe'</strong> (niet naar wat of hoeveel)</li>
+            <li>Je wilt mensen <strong>persoonlijk</strong> bevragen</li>
+            <li>Je wilt niet vastzitten aan een vast format</li>
+            <li>Je bent op zoek naar het herkennen van <strong>patronen</strong></li>
+            <li>Je wilt niet generaliseren naar een hele groep</li>
+          </ul>
+        </div>
+
+        <div class="section">
+          <h3>Open vs. gesloten interview</h3>
+          <div class="box" style="margin-bottom:8px;">
+            <h4>Open (ongestructureerd) interview</h4>
+            <p style="font-size:13px;color:var(--ink-soft);margin:0;">Start met een vaste open startvraag. Vervolgvragen hangen af van het antwoord van de respondent. Soms gebruik van een topiclijst. Veel ruimte voor persoonlijke inbreng.</p>
+            <p style="font-size:12px;color:var(--muted);margin:6px 0 0;font-style:italic;">Voorbeeld: "Hoe ervaart u het evenement?"</p>
+          </div>
+          <div class="box">
+            <h4>Gesloten (gestructureerd) interview</h4>
+            <p style="font-size:13px;color:var(--ink-soft);margin:0;">Vragen staan op voorhand vast. Respondent heeft enkele antwoordmogelijkheden. Weinig ruimte voor persoonlijke inbreng. Sterk gericht op een bepaalde richting.</p>
+            <p style="font-size:12px;color:var(--muted);margin:6px 0 0;font-style:italic;">Voorbeeld: "Is dit de eerste keer dat u dit evenement bezoekt?"</p>
+          </div>
+        </div>
+
+        <div class="section">
+          <h3>Face-to-face en focusgroep</h3>
+          <div class="defbox">
+            <strong>Focusgroepgesprek</strong>
+            Een gesprek tussen één onderzoeker en een groep respondenten. Respondenten kunnen elkaar aan het denken zetten en inspireren. Risico: dominante groepsleden overheersen; mensen uiten zich minder vrij in het bijzijn van anderen.
+          </div>
+        </div>
+
+        <div class="section">
+          <h3>LSD-techniek</h3>
+          <div class="defbox" style="border-color:#3b82f6;">
+            <strong>LSD — Luisteren, Samenvatten, Doorvragen</strong>
+            Een techniek om de regie in het interview te houden en de geïnterviewde te helpen zonder te sturen. Benut actieve luisterhouding, vat regelmatig samen wat gezegd is en stel vervolgens open doorvragen.
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="section">
+          <h3>Voorbereiding: probleemanalyse naar vraagstelling</h3>
+          <div class="stap"><span class="nummer">1</span><span><strong>Literatuurverkenning</strong> — verken het 'probleem' via bronnen</span></div>
+          <div class="stap"><span class="nummer">2</span><span><strong>Stakeholderanalyse</strong> — analyseer belangen en invloed van betrokkenen</span></div>
+          <div class="stap"><span class="nummer">3</span><span><strong>Interne en externe analyse</strong> — op basis van bronnen</span></div>
+          <div class="stap"><span class="nummer">4</span><span><strong>Doelstelling en vraagstelling</strong> — formuleer het doel en de onderzoeksvraag. Hoe beter de probleemanalyse, hoe makkelijker de juiste vragen stellen.</span></div>
+          <div class="stap"><span class="nummer">5</span><span><strong>Doelgroepverkenning</strong> — wie komen op dit event af? Categoriseer de doelgroep.</span></div>
+        </div>
+
+        <div class="section">
+          <h3>Topiclijst opstellen</h3>
+          <div class="defbox">
+            <strong>Topiclijst</strong>
+            Een lijst met thema's die tijdens het interview aan bod moeten komen. Dient als leidraad zodat alle thema's worden besproken zonder dat het een verhoor wordt.
+          </div>
+          <div class="stap"><span class="nummer">1</span><span><strong>Stel voor en verklaar het doel</strong></span></div>
+          <div class="stap"><span class="nummer">2</span><span><strong>Categoriseer onderwerpen</strong> in logische thema's</span></div>
+          <div class="stap"><span class="nummer">3</span><span><strong>Zorg voor logische opbouw</strong>: hoofd­topic → subtopics</span></div>
+          <div class="stap"><span class="nummer">4</span><span><strong>Sluit af</strong> met bedankje en ruimte voor aanvullingen</span></div>
+          <div class="highlight" style="margin-top:8px;"><strong>Aanpassen:</strong> na oefening of feedback verwijder je wat niet werkt en voeg je toe wat mist. Controleer de logische opbouw.</div>
+        </div>
+
+        <div class="section">
+          <h3>Dilemma's bij interviewen</h3>
+          <ul class="clean">
+            <li>Interview is vaak een statisch spel van vraag-antwoord</li>
+            <li>Belang van gegevensverzameling ligt <strong>alleen bij de onderzoeker</strong></li>
+            <li>Lastig om structuur te houden — gesprek gaat alle kanten op</li>
+            <li>Uitwerken kost veel tijd: transcriberen en analyseren in labels</li>
+            <li><strong>Member check</strong> — goedkeuring van de respondent komt vaak pas achteraf</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div style="border-top:1.5px solid var(--line);margin-top:4px;padding-top:18px;">
+      <div class="section">
+        <h3>Post-it methode</h3>
+        <div class="two-col">
+          <div>
+            <div class="defbox">
+              <strong>Post-it methode</strong>
+              Een interviewtechniek waarbij de geïnterviewde zelf de analyse uitvoert door trefwoorden op post-its te schrijven en te ordenen. Zo worden transcripten overbodig en krijgt de onderzoeker direct gestructureerde data.
+            </div>
+            <div class="section">
+              <h3>Aanpak</h3>
+              <div class="stap"><span class="nummer">1</span><span>Houd een interview zoals gebruikelijk — zelfde voorbereiding</span></div>
+              <div class="stap"><span class="nummer">2</span><span>Leg uit dat je het gesprek af en toe onderbreekt voor reflectie</span></div>
+              <div class="stap"><span class="nummer">3</span><span>Vraag bij onderbreking om het gesprek samen te vatten in trefwoorden op post-its — help niet, stel eventueel open vragen</span></div>
+              <div class="stap"><span class="nummer">4</span><span>Orden aan het einde samen alle post-its tot een schema</span></div>
+            </div>
+          </div>
+          <div>
+            <div class="section">
+              <h3>Opbrengst</h3>
+              <ul class="clean">
+                <li>Schema van trefwoorden (op post-its) die door de geïnterviewde in verband zijn gebracht</li>
+                <li>Mondelinge toelichting van de geïnterviewde bij het schema</li>
+                <li>Aantekeningen van de onderzoeker tijdens en na het interview</li>
+                <li>Opname en eventuele uitwerking van het totale interview</li>
+              </ul>
+            </div>
+            <div class="section">
+              <h3>Voordelen en nadelen</h3>
+              <table class="compact">
+                <thead><tr><th>Voordelen</th><th>Nadelen</th></tr></thead>
+                <tbody>
+                  <tr><td>Geen transcripten nodig</td><td>Vereist ervaring van de interviewer</td></tr>
+                  <tr><td>Controlemiddel over inhoud tijdens het interview</td><td>Onderbrekingen halen vaart uit het gesprek</td></tr>
+                  <tr><td>Betere essentie door analyse tijdens het interview</td><td>Duurt langer dan een 'normaal' interview</td></tr>
+                  <tr><td>Structuur in het interview</td><td></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ===== H4: ENQUÊTEREN ===== -->
+<div class="card" id="h4">
+  <div class="card-header h4"><span class="icon">📊</span><h2>Thema 4 — Enquêteren (week 6 &amp; 7)</h2></div>
+  <div class="card-body">
+
+    <div class="two-col">
+      <div>
+        <div class="section">
+          <h3>Kwalitatief vs. kwantitatief (herhaling)</h3>
+          <table class="compact">
+            <thead><tr><th>Kwalitatief</th><th>Kwantitatief</th></tr></thead>
+            <tbody>
+              <tr><td>Interviews</td><td>Vragenlijsten / enquêtes</td></tr>
+              <tr><td>Mondeling</td><td>Schriftelijk of mondeling</td></tr>
+              <tr><td>Inductief</td><td>Deductief</td></tr>
+              <tr><td>Respondent bepaalt antwoorden</td><td>Onderzoeker bepaalt antwoorden vooraf</td></tr>
+              <tr><td>Vraag naar 'WAAROM'</td><td>Vraag naar 'WAT' of 'HOEVEEL'</td></tr>
+              <tr><td>Open vragen</td><td>Gesloten vragen</td></tr>
+              <tr><td>Kleine 'n', patronen herkennen</td><td>Grote 'n', generaliseren</td></tr>
+            </tbody>
+          </table>
+          <div class="highlight" style="margin-top:8px;"><strong>Combinatie:</strong> triangulatie — beide methoden combineren zodat ze elkaar valideren.</div>
+        </div>
+
+        <div class="section">
+          <h3>Operationaliseren</h3>
+          <div class="defbox">
+            <strong>Operationaliseren</strong>
+            Een abstract begrip meetbaar maken door het op te splitsen in dimensies, indicatoren en enquêtevragen. Gebruik bronnen bij het opstellen van een operationaliseringsschema.
+          </div>
+          <div class="stap"><span class="nummer">1</span><span><strong>Begrip</strong> — het abstracte concept (bijv. 'culturele belangstelling')</span></div>
+          <div class="stap"><span class="nummer">2</span><span><strong>Dimensie</strong> — deelaspect van het begrip (bijv. 'bezoek theater', 'lezen')</span></div>
+          <div class="stap"><span class="nummer">3</span><span><strong>Indicator</strong> — concreet observeerbaar gegeven (bijv. 'hoe vaak', 'soort voorstelling')</span></div>
+          <div class="stap"><span class="nummer">4</span><span><strong>Enquêtevraag</strong> — de daadwerkelijke vraag in de vragenlijst</span></div>
+        </div>
+
+        <div class="section">
+          <h3>Antwoordcategorieën</h3>
+          <ul class="clean">
+            <li><strong>Één keuze</strong> — respondent kiest één antwoord (bijv. leeftijdscategorie)</li>
+            <li><strong>Meerdere keuzes</strong> — respondent kan meerdere opties aanvinken</li>
+            <li><strong>Schaal (tegenstellingen)</strong> — respondent geeft positie aan op een schaal (bijv. mooi — lelijk)</li>
+            <li><strong>Open</strong> — respondent formuleert zelf een antwoord (gebruik spaarzaam bij enquêtes)</li>
+          </ul>
+          <div class="warn">Zorg voor zoveel mogelijk gesloten vragen bij enquêtes — open vragen maken dataverwerking onnodig tijdrovend.</div>
+        </div>
+      </div>
+
+      <div>
+        <div class="section">
+          <h3>Meest gemaakte fouten bij enquêtes</h3>
+          <ul class="clean">
+            <li><strong>Suggestieve vragen</strong> — duw de respondent niet in een richting ("Vindt u ook niet dat…")</li>
+            <li><strong>Dubbele vragen</strong> — stel niet twee dingen tegelijk ("Vindt u de service en de prijs goed?")</li>
+            <li><strong>Dubbele ontkenningen</strong> — vermijd lastig te ontcijferen formulering ("Bent u het er niet mee eens dat…")</li>
+            <li><strong>Slechte antwoordopties</strong> — te weinig keuzes, niet dekkend, of tegenstrijdige opties</li>
+            <li><strong>Ontbrekende inleiding</strong> — respondent weet niet waar de enquête over gaat</li>
+            <li><strong>Verkeerde doelgroep</strong> — vragen of taal sluiten niet aan bij de respondenten</li>
+            <li><strong>Te veel open vragen</strong> — verwerking van data kost onnodig veel tijd</li>
+          </ul>
+        </div>
+
+        <div class="section">
+          <h3>Verwerken van data</h3>
+          <div class="box" style="margin-bottom:8px;">
+            <h4>Presentatievormen</h4>
+            <ul class="clean">
+              <li><strong>Tabel</strong> — overzichtelijk voor meerdere variabelen naast elkaar</li>
+              <li><strong>Grafiek</strong> — visuele weergave van verdeling (staaf, cirkel, lijn)</li>
+            </ul>
+          </div>
+          <div class="box">
+            <h4>Centrummaten</h4>
+            <p style="font-size:13px;color:var(--ink-soft);margin:0 0 6px;">Geven een indicatie van het midden van de dataverzameling.</p>
+            <ul class="clean">
+              <li><strong>Gemiddelde</strong> — som van alle waarden gedeeld door het aantal</li>
+              <li><strong>Mediaan</strong> — middelste waarde bij gesorteerde reeks</li>
+              <li><strong>Modus</strong> — meest voorkomende waarde</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="border-top:1.5px solid var(--line);margin-top:4px;padding-top:18px;">
+      <div class="section">
+        <h3>Validiteit en betrouwbaarheid</h3>
+        <div class="two-col">
+          <div>
+            <div class="defbox">
+              <strong>Validiteit — meet je wat je wil meten?</strong>
+              Je onderzoek is valide als het instrument daadwerkelijk meet wat je wilt meten, bij de juiste doelgroep, met de juiste steekproef en een goede operationalisatie.
+            </div>
+            <div class="section">
+              <h3>Validiteit borgen</h3>
+              <ul class="clean">
+                <li>Gebruik een gevalideerd (bewezen) instrument</li>
+                <li>Baseer de vragenlijst op eerder onderzoek</li>
+                <li>Laat de enquêtevragen door iemand anders controleren</li>
+                <li>Houd een proefenquête — begrijpt de respondent de vragen?</li>
+                <li>Benader de juiste doelgroep met een representatieve steekproef</li>
+              </ul>
+            </div>
+            <div class="section">
+              <h3>Wanneer is je onderzoek niet valide?</h3>
+              <ul class="clean">
+                <li>Selecte steekproef (bijv. nationale vraag beantwoord met enquête op middelbare school)</li>
+                <li>Tevredenheidsonderzoek uitgevoerd door de CEO</li>
+                <li>Suggestieve vraagstellingen ("Waarom vindt u Nijmegen zo'n fijne stad?")</li>
+                <li>Vragenlijst die niet meet wat je wilt weten</li>
+                <li>Slechte operationalisatie van begrippen</li>
+              </ul>
+            </div>
+          </div>
+          <div>
+            <div class="defbox">
+              <strong>Betrouwbaarheid — vrij van toevallige fouten?</strong>
+              <em>Kwantitatief:</em> levert herhaling van het onderzoek hetzelfde resultaat? (voldoende respondenten?)<br>
+              <em>Kwalitatief:</em> heeft de onderzoeker niet teveel gestuurd? Is het onderzoek objectief en zijn de data goed vastgelegd en geanalyseerd?
+            </div>
+            <div class="section">
+              <h3>Betrouwbaarheid borgen</h3>
+              <ul class="clean">
+                <li><strong>Grote steekproefomvang</strong> — hoe groter, hoe betrouwbaarder</li>
+                <li><strong>Testen en hertesten</strong> — herhaal het onderzoek</li>
+                <li><strong>Peer-examination</strong> — laat resultaten door iemand anders controleren</li>
+                <li><strong>Triangulatie</strong> — combineer meerdere onderzoeksmethoden</li>
+              </ul>
+            </div>
+            <div class="section">
+              <h3>Wanneer is je onderzoek niet betrouwbaar?</h3>
+              <ul class="clean">
+                <li>Onderzoek naar alle Nederlanders met slechts 20 respondenten</li>
+                <li>Respondent weet het antwoord niet en vult maar wat in</li>
+                <li>Te lange vragenlijst — respondenten haken af</li>
+                <li>Iemand interviewen in aanwezigheid van anderen (sociaal wenselijke antwoorden)</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</div><!-- .main -->
+
+<footer class="fa-footer">
+  <span>FMAtlas · gemaakt door David Koolstra</span>
+  <span>HAN · Facilitair Management · 2026</span>
+</footer>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+<script src="js/fmatlas.js"></script>
+<script>
+const firebaseConfig = {
+  apiKey: "AIzaSyBB397Wk2eqpBjic8E7aGV1mTgIjhQ21a8",
+  authDomain: "fmkompas-ff8bc.firebaseapp.com",
+  projectId: "fmkompas-ff8bc",
+  storageBucket: "fmkompas-ff8bc.firebasestorage.app",
+  messagingSenderId: "487972024689",
+  appId: "1:487972024689:web:712c3117080745d14746d0"
+};
+firebase.initializeApp(firebaseConfig);
+firebase.auth().onAuthStateChanged(user => {
+  document.getElementById('fa-header-slot').innerHTML = '';
+  document.getElementById('fa-header-slot').appendChild(faRenderHeader({ user }));
+  faMarkActiveToday();
+});
+</script>
+</body>
+</html>

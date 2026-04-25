@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Projectvaardigheden — FMAtlas</title>
+<link rel="icon" type="image/svg+xml" href="logo.svg"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="css/fmatlas.css"/>
+<style>
+.vak-hub-wrap { max-width: 900px; margin: 0 auto; padding: 32px 32px 64px; }
+
+.vak-hub-head {
+  background: var(--surface); border: 1.5px solid var(--line); border-radius: var(--radius-xl);
+  padding: 32px 36px; margin-bottom: 28px; position: relative; overflow: hidden;
+}
+.vak-hub-head-top {
+  display: flex; align-items: flex-start; justify-content: space-between; gap: 20px; margin-bottom: 18px;
+}
+.vak-hub-meta {
+  font-size: 11px; font-weight: 800; color: var(--accent); letter-spacing: 0.08em;
+  margin-bottom: 8px;
+}
+.vak-hub-head h1 {
+  font-size: 38px; font-weight: 900; letter-spacing: -0.028em; line-height: 1.05; margin-bottom: 10px;
+}
+.vak-hub-head p {
+  color: var(--ink-soft); font-size: 15px; font-weight: 500; line-height: 1.55; max-width: 520px;
+}
+.vak-hub-icon {
+  width: 64px; height: 64px; background: var(--accent-soft); color: var(--accent-deep);
+  border-radius: 16px; display: grid; place-items: center; border: 1.5px solid rgba(239,90,63,0.3);
+  flex-shrink: 0;
+}
+
+.vak-hub-stats {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 20px;
+  padding-top: 20px; border-top: 1.5px solid var(--line);
+}
+@media (max-width: 700px) { .vak-hub-stats { grid-template-columns: repeat(2, 1fr); } }
+.vak-stat-label { font-size: 10px; color: var(--muted); font-weight: 800; letter-spacing: 0.06em; margin-bottom: 3px; text-transform: uppercase; }
+.vak-stat-val { font-size: 17px; font-weight: 800; letter-spacing: -0.01em; }
+
+.vak-hub-progress {
+  margin-top: 20px; display: flex; align-items: center; gap: 12px;
+}
+.vak-hub-progress .fa-progress { flex: 1; }
+.vak-hub-progress-pct { font-size: 13px; font-weight: 800; font-variant-numeric: tabular-nums; color: var(--accent); }
+
+.sub-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 14px;
+}
+@media (max-width: 700px) { .sub-grid { grid-template-columns: 1fr; } }
+
+.sub-tile {
+  background: var(--surface); border: 1.5px solid var(--line); border-radius: var(--radius-lg);
+  padding: 22px; cursor: pointer; position: relative; transition: all 0.15s; text-decoration: none; color: inherit;
+}
+.sub-tile:hover { border-color: var(--accent); transform: translateY(-2px); box-shadow: var(--shadow); }
+.sub-tile.featured { background: var(--ink); color: var(--surface); border-color: var(--ink); }
+.sub-tile.featured .sub-tile-desc { color: rgba(255,255,255,0.65); }
+.sub-tile.featured .sub-tile-meta { color: rgba(255,255,255,0.5); }
+.sub-tile.featured .sub-icon { background: rgba(255,255,255,0.08); color: var(--accent); border-color: rgba(255,255,255,0.15); }
+.sub-tile.soon { opacity: 0.45; cursor: default; pointer-events: none; }
+
+.sub-tile-badge {
+  position: absolute; top: 14px; right: 14px; font-size: 10px; font-weight: 800;
+  background: var(--accent); color: var(--surface); padding: 3px 10px; border-radius: 999px;
+  letter-spacing: 0.04em;
+}
+.sub-tile-badge.soon-badge {
+  background: var(--surface-alt); color: var(--muted); border: 1.5px solid var(--line);
+}
+.sub-icon {
+  width: 42px; height: 42px; background: var(--surface-alt); color: var(--ink-soft);
+  border-radius: 11px; display: grid; place-items: center; margin-bottom: 14px;
+  border: 1.5px solid var(--line);
+}
+.sub-tile h3 { font-size: 17px; font-weight: 800; letter-spacing: -0.01em; margin-bottom: 4px; }
+.sub-tile-desc { font-size: 13px; color: var(--ink-soft); font-weight: 500; line-height: 1.5; margin-bottom: 12px; }
+.sub-tile-meta {
+  font-size: 11px; font-weight: 700; color: var(--muted); letter-spacing: 0.02em;
+  display: flex; align-items: center; gap: 6px;
+}
+</style>
+</head>
+<body>
+
+<div id="fa-header-slot"></div>
+
+<nav class="fa-breadcrumb">
+  <a href="index.html">Home</a>
+  <span>›</span>
+  <span class="current">Projectvaardigheden</span>
+</nav>
+
+<div class="vak-hub-wrap">
+  <div class="vak-hub-head">
+    <div class="vak-hub-head-top">
+      <div>
+        <div class="vak-hub-meta">PERIODE 4 · EVENEMENTENMANAGEMENT 2</div>
+        <h1>Projectvaardigheden</h1>
+        <p>Onderzoeksmethoden voor facilitair en eventmanagement: observeren, zakelijk en visueel communiceren, interviewen en enquêteren.</p>
+      </div>
+      <div class="vak-hub-icon">
+        <span data-fa-icon="scope" data-fa-size="32" data-fa-stroke="1.8"></span>
+      </div>
+    </div>
+    <div class="vak-hub-stats">
+      <div>
+        <div class="vak-stat-label">Thema's</div>
+        <div class="vak-stat-val">4</div>
+      </div>
+      <div>
+        <div class="vak-stat-label">Lesblokken</div>
+        <div class="vak-stat-val">7</div>
+      </div>
+      <div>
+        <div class="vak-stat-label">Flashcards</div>
+        <div class="vak-stat-val">binnenkort</div>
+      </div>
+      <div>
+        <div class="vak-stat-label">Status</div>
+        <div class="vak-stat-val" style="color:var(--accent)">Actief</div>
+      </div>
+    </div>
+    <div class="vak-hub-progress">
+      <div class="fa-progress"><div class="fa-progress-bar" id="vak-progress-bar" style="width:0%"></div></div>
+      <span class="vak-hub-progress-pct" id="vak-progress-pct">0%</span>
+    </div>
+  </div>
+
+  <div class="sub-grid">
+    <a class="sub-tile featured" href="projectvaardigheden-samenvatting.html" onclick="faMarkLastSeen('projectvaardigheden','Projectvaardigheden','projectvaardigheden.html')">
+      <span class="sub-tile-badge">NIEUW</span>
+      <div class="sub-icon"><span data-fa-icon="book" data-fa-size="22"></span></div>
+      <h3>Studiesamenvatting</h3>
+      <p class="sub-tile-desc">Alle 4 thema's compact: observeren, zakelijk communiceren, interviewen en enquêteren.</p>
+      <div class="sub-tile-meta">
+        <span data-fa-icon="clock" data-fa-size="11"></span>
+        Ongeveer 25 min leestijd
+      </div>
+    </a>
+
+    <div class="sub-tile soon">
+      <span class="sub-tile-badge soon-badge">BINNENKORT</span>
+      <div class="sub-icon"><span data-fa-icon="cards" data-fa-size="22"></span></div>
+      <h3>Flashcards</h3>
+      <p class="sub-tile-desc">Kernbegrippen per thema. Schud, filter en herhaal wat je nog niet kent.</p>
+      <div class="sub-tile-meta">
+        <span data-fa-icon="bolt" data-fa-size="11" style="color:var(--xp)"></span>
+        +1 XP per correcte kaart
+      </div>
+    </div>
+
+    <div class="sub-tile soon">
+      <span class="sub-tile-badge soon-badge">BINNENKORT</span>
+      <div class="sub-icon"><span data-fa-icon="book" data-fa-size="22"></span></div>
+      <h3>Begrippenlijst</h3>
+      <p class="sub-tile-desc">Zoekbare lijst van alle vakbegrippen met korte definities.</p>
+      <div class="sub-tile-meta">
+        <span data-fa-icon="search" data-fa-size="11"></span>
+        Zoek op term of thema
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="fa-footer">
+  <span>FMAtlas · gemaakt door David Koolstra</span>
+  <span>HAN · Facilitair Management · 2026</span>
+</footer>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+<script src="js/fmatlas.js"></script>
+<script>
+const firebaseConfig = {
+  apiKey: "AIzaSyBB397Wk2eqpBjic8E7aGV1mTgIjhQ21a8",
+  authDomain: "fmkompas-ff8bc.firebaseapp.com",
+  projectId: "fmkompas-ff8bc",
+  storageBucket: "fmkompas-ff8bc.firebasestorage.app",
+  messagingSenderId: "487972024689",
+  appId: "1:487972024689:web:712c3117080745d14746d0"
+};
+firebase.initializeApp(firebaseConfig);
+firebase.auth().onAuthStateChanged(user => {
+  document.getElementById('fa-header-slot').innerHTML = '';
+  document.getElementById('fa-header-slot').appendChild(faRenderHeader({ user }));
+  faMarkActiveToday();
+});
+const pct = faGetVakProgress('projectvaardigheden');
+document.getElementById('vak-progress-bar').style.width = pct + '%';
+document.getElementById('vak-progress-pct').textContent = pct + '%';
+</script>
+</body>
+</html>
