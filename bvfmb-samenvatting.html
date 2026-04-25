@@ -1,0 +1,1217 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Samenvatting · Basis van FM B — volledige samenvatting — FMAtlas</title>
+<link rel="icon" type="image/svg+xml" href="logo.svg"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="css/fmatlas.css"/>
+<style>
+.sam-wrap { max-width: 1100px; margin: 0 auto; padding: 24px; }
+.sam-intro { background: var(--surface); border: 1.5px solid var(--line); border-radius: var(--radius-xl); padding: 28px 32px; margin-bottom: 18px; }
+.sam-intro-meta { font-size: 11px; font-weight: 800; color: var(--accent); letter-spacing: 0.08em; margin-bottom: 8px; }
+.sam-intro h1 { font-size: 32px; font-weight: 900; letter-spacing: -0.025em; line-height: 1.08; margin-bottom: 10px; }
+.sam-intro p { color: var(--ink-soft); font-size: 14.5px; line-height: 1.6; }
+
+nav.chapnav { background: var(--surface); border: 1.5px solid var(--line); border-radius: var(--radius-lg); padding: 12px 16px; margin: 0 24px 18px; max-width: 1052px; margin-left: auto; margin-right: auto; display: flex; flex-wrap: wrap; gap: 6px; position: sticky; top: 68px; z-index: 20; }
+nav.chapnav a { color: var(--ink-soft); text-decoration: none; padding: 4px 10px; border-radius: 8px; background: var(--bg); font-weight: 800; font-size: 11.5px; border: 1.5px solid var(--line); transition: all 0.12s; }
+nav.chapnav a:hover { background: var(--accent-soft); color: var(--accent-deep); border-color: var(--accent); }
+nav.chapnav .nav-group { font-size: 10px; font-weight: 900; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; padding: 4px 6px; border-radius: 6px; background: transparent; border: none; cursor: default; }
+nav.chapnav .nav-group:hover { background: transparent; color: var(--muted); border-color: transparent; transform: none; }
+
+.main { max-width: 1052px; margin: 0 auto; padding: 0 24px 60px; display: flex; flex-direction: column; gap: 18px; }
+
+.dienst-label { font-size: 11px; font-weight: 900; color: var(--muted); letter-spacing: 0.12em; text-transform: uppercase; padding: 14px 0 8px; border-bottom: 1.5px solid var(--line); margin-bottom: 0; display: flex; align-items: center; gap: 8px; }
+.dienst-label .dl-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+.dl-sc  { background: #3b82f6; }
+.dl-cat { background: #22c55e; }
+.dl-vz  { background: #a855f7; }
+
+.card { background: var(--surface); border: 1.5px solid var(--line); border-radius: var(--radius-xl); overflow: hidden; scroll-margin-top: 140px; }
+.card-header { padding: 16px 22px; display: flex; align-items: center; gap: 10px; color: var(--surface); background: var(--ink); }
+.card-header h2 { font-size: 17px; font-weight: 900; letter-spacing: -0.015em; }
+.card-header .les-num { font-size: 10px; opacity: 0.7; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 3px; }
+.card-body { padding: 22px 24px; }
+
+/* Dienst-kleuren voor card headers */
+.hsc  { background: #1e3a8a; }
+.hcat { background: #14532d; }
+.hvz  { background: #4c1d95; }
+/* Sub-lessen binnen elke dienst */
+.hsc2, .hsc3, .hsc4 { background: #1e40af; }
+.hcat2, .hcat3, .hcat4 { background: #166534; }
+.hvz2, .hvz3, .hvz4 { background: #5b21b6; }
+
+.section { margin-bottom: 18px; }
+.section h3 { font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin-bottom: 8px; padding-bottom: 6px; border-bottom: 1.5px solid var(--line); }
+
+ul.clean { list-style: none; display: flex; flex-direction: column; gap: 5px; margin: 0; padding: 0; }
+ul.clean li { font-size: 13.5px; line-height: 1.55; padding: 3px 0 3px 16px; position: relative; color: var(--ink-soft); font-weight: 500; }
+ul.clean li::before { content: '›'; position: absolute; left: 0; top: 3px; color: var(--accent); font-weight: 900; }
+ul.clean li strong { color: var(--ink); font-weight: 800; }
+
+.defbox { background: var(--bg); border: 1.5px solid var(--line); border-left: 4px solid var(--accent); border-radius: 0 var(--radius) var(--radius) 0; padding: 10px 14px; margin-bottom: 10px; font-size: 13.5px; line-height: 1.55; color: var(--ink-soft); }
+.defbox strong { display: block; font-size: 10.5px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); margin-bottom: 4px; }
+
+.highlight { background: var(--accent-soft); border: 1.5px solid rgba(239, 90, 63, 0.25); border-radius: var(--radius); padding: 10px 14px; font-size: 13.5px; line-height: 1.55; margin-bottom: 10px; color: var(--accent-deep); font-weight: 600; }
+.highlight strong { color: var(--accent-deep); font-weight: 900; }
+
+.warn { background: #fff7ed; border-left: 3px solid #f59e0b; padding: 9px 14px; border-radius: 0 var(--radius) var(--radius) 0; font-size: 12.5px; color: #92400e; margin-bottom: 10px; font-weight: 600; }
+
+.tag { display: inline-block; padding: 2px 8px; border-radius: 999px; font-size: 11px; font-weight: 800; }
+.blue   { background: #dbeafe; color: #1e40af; }
+.green  { background: #dcfce7; color: #166534; }
+.purple { background: #ede9fe; color: #5b21b6; }
+.orange { background: #ffedd5; color: #9a3412; }
+.red    { background: #fee2e2; color: #991b1b; }
+.yellow { background: #fef3c7; color: #854d0e; }
+.gray   { background: var(--surface-alt); color: var(--muted); border: 1px solid var(--line); }
+
+.grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.grid3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+@media (max-width: 600px) { .grid2, .grid3 { grid-template-columns: 1fr; } }
+
+.box { background: var(--bg); border: 1.5px solid var(--line); border-radius: var(--radius); padding: 12px 14px; }
+.box h4 { font-size: 12.5px; font-weight: 900; margin-bottom: 8px; color: var(--ink); letter-spacing: -0.005em; }
+
+.nummer { display: inline-flex; align-items:center; justify-content:center; background: var(--accent); color: var(--surface); width: 22px; height: 22px; border-radius: 50%; font-size: 11px; font-weight: 900; margin-right: 8px; flex-shrink: 0; }
+.stap { display: flex; align-items: flex-start; gap: 4px; font-size: 13.5px; color: var(--ink-soft); padding: 4px 0; line-height: 1.5; }
+.stap strong { color: var(--ink); }
+
+table.compact { width: 100%; border-collapse: collapse; font-size: 12.5px; margin-top: 6px; }
+table.compact th, table.compact td { padding: 7px 10px; text-align: left; border-bottom: 1.5px solid var(--line); color: var(--ink-soft); }
+table.compact th { font-size: 10.5px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+table.compact td strong { color: var(--ink); font-weight: 800; }
+</style>
+</head>
+<body>
+
+<div id="fa-header-slot"></div>
+
+<nav class="fa-breadcrumb">
+  <a href="index.html">Home</a>
+  <span>›</span>
+  <a href="basis-van-fm-b.html">Basis van FM — B</a>
+  <span>›</span>
+  <span class="current">Samenvatting</span>
+</nav>
+
+<div class="sam-wrap">
+  <div class="sam-intro">
+    <div class="sam-intro-meta">SAMENVATTING · 3 diensten · 12 lessen · Open boek tentamen</div>
+    <h1>Basis van FM B — volledige samenvatting</h1>
+    <p>Alle theorie voor het tentamen: schoonmaak (les 1–4), catering (les 5–8) en veiligheidszorg (les 9–12). Modellen, contractvormen, wetgeving en praktische toepassing op casusvragen.</p>
+  </div>
+</div>
+
+<nav class="chapnav">
+  <span class="nav-group">Schoonmaak</span>
+  <a href="#schoonmaak">Les 1 — Basics</a>
+  <a href="#h2">Les 2 — Werkprogramma</a>
+  <a href="#h3">Les 3 — Kwaliteit</a>
+  <a href="#h4">Les 4 — MI &amp; Trends</a>
+  <span class="nav-group">Catering</span>
+  <a href="#catering">Les 5 — Concept</a>
+  <a href="#h6">Les 6 — Routing</a>
+  <a href="#h7">Les 7 — Voedselveiligheid</a>
+  <a href="#h8">Les 8 — Contracten</a>
+  <span class="nav-group">Veiligheid</span>
+  <a href="#veiligheid">Les 9 — Safety &amp; Arbo</a>
+  <a href="#h10">Les 10 — OBE</a>
+  <a href="#h11">Les 11 — BCM</a>
+  <a href="#h12">Les 12 — Cybercrime</a>
+</nav>
+
+<div class="main">
+
+<!-- ═══════ SCHOONMAAK ═══════ -->
+<div class="dienst-label"><span class="dl-dot dl-sc"></span> Schoonmaak — Les 1 t/m 4</div>
+
+<!-- LES 1 -->
+<div class="card" id="schoonmaak">
+  <div class="card-header hsc">
+    <div>
+      <div class="les-num">Les 1 · Schoonmaak</div>
+      <h2>Schoonmaakbasics, Reinheidsgraden &amp; PvE</h2>
+    </div>
+  </div>
+  <div class="card-body">
+
+    <div class="section">
+      <h3>Schoonmaakcirkel van Sinner</h3>
+      <div class="defbox">
+        <strong>Sinner-cirkel</strong>
+        De vier factoren die samen de schoonmaakkwaliteit bepalen: <strong>T</strong>emperatuur · <strong>A</strong>rbeid · <strong>C</strong>hemie · <strong>T</strong>ijd. Als één factor wordt verhoogd, kunnen de andere worden verlaagd — het totaal blijft constant.
+      </div>
+      <div class="grid2">
+        <div class="box">
+          <h4>De 4 Sinner-factoren</h4>
+          <ul class="clean">
+            <li><strong>Temperatuur</strong> — warmte bevordert werking chemicaliën en lost vet/vuil op</li>
+            <li><strong>Arbeid</strong> — mechanische kracht (wrijven, schrobben, borstelen)</li>
+            <li><strong>Chemie</strong> — schoonmaakmiddelen (ontvet, desinfecteert)</li>
+            <li><strong>Tijd</strong> — inwerktijd van middelen en bewerkingsduur</li>
+          </ul>
+        </div>
+        <div class="box">
+          <h4>Overige kwaliteitsfactoren</h4>
+          <ul class="clean">
+            <li>Opleiding — "schoonmaken is een vak"</li>
+            <li>Voldoen aan actuele richtlijnen en normen</li>
+            <li>Gedrag medewerkers en leiding</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3>Reinheidsgraden</h3>
+      <table class="compact">
+        <thead><tr><th>Reinheidsgraad</th><th>Toepassingsgebied</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Microbiologisch schoon</strong></td><td>Zorgsector en bereiding van voedsel — hoge hygiëne-eisen, bacteriologisch gecontroleerd</td></tr>
+          <tr><td><strong>Huishoudelijk schoon</strong></td><td>Kantoren, leslokalen en vergaderruimtes — standaard schoonmaakpeil</td></tr>
+          <tr><td><strong>Ruw schoon</strong></td><td>Opslag, parkeergarages en buitenruimten — basisniveau</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="section">
+      <h3>Schoonmaakfrequenties</h3>
+      <ul class="clean">
+        <li><strong>Dagelijks onderhoud</strong> — reguliere schoonmaak die elke dag plaatsvindt</li>
+        <li><strong>Periodiek onderhoud</strong> — bijv. 1× per maand (diepschoonmaak, plafonds, verlichtingsarmaturen)</li>
+        <li><strong>Jaarlijks onderhoud</strong> — grondige reiniging minder frequente ruimtes/elementen</li>
+        <li><strong>Specialistisch</strong> — bijv. vloeronderhoud, gevelreiniging, asbestverwijdering</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h3>Contractvormen schoonmaak</h3>
+      <table class="compact">
+        <thead><tr><th>Contractvorm</th><th>Basis</th><th>Kenmerken</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong>Inspanningsgericht</strong></td>
+            <td>Schoonmaakplan + frequenties en werkzaamheden</td>
+            <td>Gedetailleerd, objectief, goed controleerbaar. Bruikbaar bij standaard gebruik. Speelt minder in op wisselende bezetting.</td>
+          </tr>
+          <tr>
+            <td><strong>Resultaatgericht</strong></td>
+            <td>HOE schoon moet het zijn / welke mate van vervuiling is acceptabel</td>
+            <td>Schoonmaker beoordeelt zelf en voert geen onnodige taken uit. Afhankelijk van beoordeling schoonmaker (subjectief).</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="section">
+      <h3>Programma van Eisen (PvE) schoonmaak</h3>
+      <p style="font-size:13.5px;color:var(--ink-soft);margin-bottom:10px;line-height:1.55">In een PvE specificeer je welke criteria (eisen) en keuzes (wensen) van belang zijn voor schoonmaak binnen jouw organisatie. De volgende elementen zijn bepalend:</p>
+      <div class="grid2">
+        <ul class="clean">
+          <li>Object / gebouwkenmerken</li>
+          <li>Type organisatie</li>
+          <li>Doelgroepbeschrijving / eisen en wensen schoonmaak</li>
+          <li>Type gebouw</li>
+          <li>Functies en inrichting van ruimtes</li>
+          <li>Afwerkingsmaterialen vloeren en inrichting</li>
+        </ul>
+        <ul class="clean">
+          <li>Gewenst reinigingsniveau / reinheidsgraad</li>
+          <li>Te verwachten vervuiling (aard en mate)</li>
+          <li>Gebruiksintensiteit / bezettingsgraad</li>
+          <li>Gebruikersdiscipline</li>
+          <li>Beschikbaar budget</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- LES 2 -->
+<div class="card" id="h2">
+  <div class="card-header hsc2">
+    <div>
+      <div class="les-num">Les 2 · Schoonmaak</div>
+      <h2>Werkprogramma, Tijdcalculatie &amp; Materialen</h2>
+    </div>
+  </div>
+  <div class="card-body">
+
+    <div class="section">
+      <h3>Schoonmaakkosten</h3>
+      <div class="highlight">
+        <strong>80% van de schoonmaakkosten bestaat uit personele kosten.</strong> Dit maakt tijdcalculatie en efficiënte taakverdeling cruciaal voor kostenbesparing.
+      </div>
+    </div>
+
+    <div class="section">
+      <h3>Schoonmaak werkprogramma</h3>
+      <div class="defbox">
+        <strong>Definitie</strong>
+        Gestructureerd overzicht van taken en activiteiten die nodig zijn om een ruimte, gebouw of object schoon te houden.
+      </div>
+      <div class="grid2">
+        <div class="box">
+          <h4>Inhoud werkprogramma</h4>
+          <ul class="clean">
+            <li>Planning dagelijkse, periodieke en specialistische werkzaamheden</li>
+            <li>Frequentie (afhankelijk van vervuiling en gewenste kwaliteit)</li>
+            <li>Taakverdeling (geografisch / specialistisch / combi)</li>
+            <li>Verantwoordelijkheden</li>
+            <li>Tijdschema</li>
+            <li>Soms: kwaliteitscontroles, rapportage, veiligheids- en milieurichtlijnen</li>
+          </ul>
+        </div>
+        <div class="box">
+          <h4>Doel werkprogramma (3)</h4>
+          <ul class="clean">
+            <li>Basis taakomschrijving / instructie medewerkers</li>
+            <li>Vastleggen afspraken met opdrachtgever</li>
+            <li>Communicatie naar eindgebruiker</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3>Tijdcalculatie — m² prestatie</h3>
+      <div class="defbox">
+        <strong>m² prestatie (productienorm)</strong>
+        Hoeveel vierkante meter een schoonmaker per uur kan reinigen. Varieert per ruimtesoort (kantoor vs sanitair vs trappen etc.).
+      </div>
+      <ul class="clean">
+        <li><strong>Doel 1:</strong> basis voor de kostprijs (uurtarief × benodigde uren)</li>
+        <li><strong>Doel 2:</strong> nodig voor inzet van het aantal medewerkers en de taakverdeling</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h3>Materialen, machines en middelen</h3>
+      <div class="grid2">
+        <div class="box">
+          <h4>Methoden</h4>
+          <ul class="clean">
+            <li><strong>Traditionele methode</strong> — katoenen moppenkoppen, emmer-en-dweil</li>
+            <li><strong>Microvezelsystematiek</strong> — microvezel hecht vuil mechanisch, minder chemie nodig, efficiënter</li>
+          </ul>
+        </div>
+        <div class="box">
+          <h4>Kleurcodering materialen</h4>
+          <ul class="clean">
+            <li><span class="tag blue">Blauw</span> — interieur (bureaus, ruimten)</li>
+            <li><span class="tag red">Rood</span> — sanitair (toiletten, wastafels)</li>
+            <li><span class="tag green">Groen</span> — vloer</li>
+            <li><span class="tag gray">Wit/apart</span> — desinfectanten</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- LES 3 -->
+<div class="card" id="h3">
+  <div class="card-header hsc3">
+    <div>
+      <div class="les-num">Les 3 · Schoonmaak</div>
+      <h2>Personele Inzet, Organisatie &amp; Kwaliteitsmetingen</h2>
+    </div>
+  </div>
+  <div class="card-body">
+
+    <div class="section">
+      <h3>Organisatie schoonmaak — aandachtspunten</h3>
+      <div class="grid2">
+        <ul class="clean">
+          <li>Structuur / organogram schoonmaakorganisatie</li>
+          <li>Inzet aantal medewerkers</li>
+          <li>Verdeling fulltime / parttime medewerkers</li>
+          <li>Leeftijdsopbouw medewerkers</li>
+          <li>Inzet leidinggevenden (span of control)</li>
+        </ul>
+        <ul class="clean">
+          <li>Taken, bevoegdheden en verantwoordelijkheden</li>
+          <li>Verschil eigen beheer vs uitbesteden</li>
+          <li>Bereikbaarheid / inzet bij calamiteiten</li>
+          <li>Schoonmaak CAO</li>
+          <li>Diploma's / opleidingen</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3>Taakverdeling</h3>
+      <table class="compact">
+        <thead><tr><th>Indeling</th><th>Uitleg</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Geografisch</strong></td><td>Medewerker verantwoordelijk voor een vaste zone / vloer / afdeling</td></tr>
+          <tr><td><strong>Specialistisch</strong></td><td>Medewerker uitsluitend voor één taak (bijv. alleen sanitair of alleen vloeren)</td></tr>
+          <tr><td><strong>Combi</strong></td><td>Combinatie van geografisch en specialistisch</td></tr>
+          <tr><td><strong>Zelfsturende teams</strong></td><td>Team bepaalt zelf de taakverdeling en verantwoordelijkheden</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="section">
+      <h3>Schoonmaaktijden</h3>
+      <ul class="clean">
+        <li><strong>Overdag</strong> — gelijktijdig met gebruik van het pand; zichtbaar, maar kan hinder geven</li>
+        <li><strong>Buiten openingstijden</strong> — voor of na kantooruren; geen hinder, maar minder zichtbaar</li>
+        <li><strong>Weekendprogramma</strong> — diepe schoonmaak op vrijdag-avond of weekend</li>
+        <li><strong>Continu / 24-uursdienst</strong> — noodzakelijk bij ziekenhuizen, fabrieken, luchthavens</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h3>Kwaliteitsmetingen schoonmaak</h3>
+      <table class="compact">
+        <thead><tr><th>Methode</th><th>Wat wordt gemeten</th><th>Voorbeeld</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Administratieve controle</strong></td><td>Naleving werkprogramma, uren, rapportages</td><td>Logboek, contractchecks</td></tr>
+          <tr><td><strong>Visuele kwaliteitscontrole</strong></td><td>Zichtbare schoonheid van oppervlakken</td><td>DKS / VSR-KMS (Kwaliteits Meetsysteem)</td></tr>
+          <tr><td><strong>Belevingsonderzoek</strong></td><td>Hoe gebruikers de schoonmaak ervaren</td><td>VSR-KBS (Klant Beleving Survey)</td></tr>
+          <tr><td><strong>Bacteriologisch / microbiologisch</strong></td><td>Aanwezigheid bacteriën / ziekteverwekkers</td><td>Swab-tests in zorgsector / voedselbereidingsruimten</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="section">
+      <h3>Financiële consequenties — kostenelementen</h3>
+      <ul class="clean">
+        <li>Personele inzet: aantal uren × uurtarieven (80% van totale kosten)</li>
+        <li>Inzet machines, materialen en middelen</li>
+        <li>Opleidingskosten</li>
+        <li>Dienstkleding</li>
+        <li>Kosten kwaliteitsmetingen</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h3>Toegevoegde waarde &amp; KSF schoonmaak</h3>
+      <div class="highlight"><strong>Effect van schoonmaak op de 3 K's:</strong> Klanten (tevredenheid) · Kwaliteit (niveau) · Kosten (efficiëntie)</div>
+      <ul class="clean">
+        <li>Transparante communicatie met eindgebruikers → tevreden eindgebruikers</li>
+        <li>Duidelijke, objectief meetbare contractafspraken (technische + belevingskwaliteit)</li>
+        <li>Passend schoonmaakniveau per ruimtesoort</li>
+        <li>Deskundigheid van alle schoonmaakmedewerkers</li>
+        <li>Efficiënte uitvoering afgestemd op wisselende gebruiksintensiteit</li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+<!-- LES 4 -->
+<div class="card" id="h4">
+  <div class="card-header hsc4">
+    <div>
+      <div class="les-num">Les 4 · Schoonmaak</div>
+      <h2>Managementinformatie, Trends &amp; Branche</h2>
+    </div>
+  </div>
+  <div class="card-body">
+
+    <div class="section">
+      <h3>Managementinformatie (MI) schoonmaak — kwartaalrapportage</h3>
+      <ul class="clean">
+        <li><strong>Medewerkerinfo:</strong> ingezette uren, ziekteverzuim, verloop, opleidingsstatus</li>
+        <li><strong>Kwaliteitsmetingen:</strong> uitslag DKS/VSR-KMS en VSR-KBS scores</li>
+        <li><strong>Klachten:</strong> aantal klachten en afhandelingsstatus</li>
+        <li><strong>Planning:</strong> periodieke en extra/regie-werkzaamheden</li>
+        <li><strong>Technisch:</strong> updates mankementen en storingen</li>
+        <li><strong>Innovatie:</strong> schoonmaaktrends en -ontwikkelingen</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h3>Kenmerken schoonmaakbranche</h3>
+      <div class="warn">De schoonmaakbranche kampt met een negatief imago en structurele arbeidsmarktkrapte.</div>
+      <ul class="clean">
+        <li>Niet populair / slecht imago</li>
+        <li>Lage status / hoge werkdruk</li>
+        <li>Krappe arbeidsmarkt — moeilijk aan medewerkers te komen</li>
+        <li>Hoog ziekteverzuim</li>
+        <li>Hoog personeelsverloop</li>
+        <li>Budget vaak onder druk</li>
+        <li>Grote concurrentie met lage marges</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h3>Code Verantwoordelijk Marktgedrag</h3>
+      <div class="defbox">
+        <strong>Doel</strong>
+        Marktverhoudingen in de schoonmaakbranche verbeteren. Bij aanbestedingen niet uitsluitend op prijs concurreren, maar ook op kwaliteit van uitvoering en arbeidsomstandigheden.
+      </div>
+      <ul class="clean">
+        <li>Ondertekend door: werkgevers, werknemers, opdrachtgevers en rijksoverheid</li>
+        <li>Binding: vrijwillig maar breed gedragen convenant</li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════ CATERING ═══════ -->
+<div class="dienst-label" style="margin-top:12px"><span class="dl-dot dl-cat"></span> Catering — Les 5 t/m 8</div>
+
+<!-- LES 5 -->
+<div class="card" id="catering">
+  <div class="card-header hcat">
+    <div>
+      <div class="les-num">Les 5 · Catering</div>
+      <h2>Cateringconcept, PvE, Doelgroepen &amp; 7 P's</h2>
+    </div>
+  </div>
+  <div class="card-body">
+
+    <div class="section">
+      <h3>Definitie catering</h3>
+      <div class="defbox">
+        <strong>Catering</strong>
+        De georganiseerde bereiding en verstrekking van voedsel en dranken aan grote groepen op <em>andere dan horecalocaties</em>.
+      </div>
+    </div>
+
+    <div class="section">
+      <h3>Programma van Eisen (PvE) catering — elementen</h3>
+      <div class="grid2">
+        <ul class="clean">
+          <li><strong>Algemene gegevens</strong> — aantal gebruikers, afwezigheidspercentage, ligging restaurant en keuken</li>
+          <li><strong>Restauratieve dienst</strong> — ontbijt/lunch/diner/nacht, openingstijden</li>
+          <li><strong>Assortiment</strong> — basis, luxe of premium</li>
+          <li><strong>Prijsbeleid</strong> — opslag voor luxe/premium</li>
+          <li><strong>Gratis verstrekkingen</strong> — koffie/thee, melk/suiker, bestek, soep, sauzen</li>
+        </ul>
+        <ul class="clean">
+          <li><strong>Uitgiftesysteem</strong> — lijnbuffet, freeflow, à la carte</li>
+          <li><strong>Verstrekkingwijze</strong> — porselein, disposable, biologisch afbreekbaar, bring your own</li>
+          <li><strong>Afrekenen</strong> — pin, contant, bonnen, zelfscan, creditcard, op rekening</li>
+          <li><strong>Afruimen</strong> — door gebruiker, cateringpersoneel of regaalwagens</li>
+          <li><strong>Uitwerking verstrekkingen</strong> — personeel, zelfbediening, automaten</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3>Doelgroepen cateringconcept (8 typen)</h3>
+      <div class="grid2">
+        <ul class="clean">
+          <li><strong>Bedrijfscatering</strong> — kantoor- en bedrijfsrestaurants</li>
+          <li><strong>Institutionele catering</strong> — ziekenhuizen, zorginstellingen</li>
+          <li><strong>Onderwijscatering</strong> — scholen en universiteiten</li>
+          <li><strong>Remote site catering</strong> — ver van bewoonde wereld (boorplatform, bouwplaats)</li>
+        </ul>
+        <ul class="clean">
+          <li><strong>Transportcatering</strong> — vliegtuig, trein, boot</li>
+          <li><strong>Party- en eventcatering</strong> — evenementen en feesten</li>
+          <li><strong>Automaten catering</strong> — vending machines</li>
+          <li><strong>Leisure catering</strong> — pretparken, sportaccommodaties</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3>7 P's van de marketingmix</h3>
+      <table class="compact">
+        <thead><tr><th>P</th><th>Toepassing in catering</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Product</strong></td><td>Maaltijden, dranken, assortiment</td></tr>
+          <tr><td><strong>Prijs</strong></td><td>Kostprijs, subsidie, onderscheid sociaal/luxe</td></tr>
+          <tr><td><strong>Plaats</strong></td><td>Locatie restaurant, looproutes, bereikbaarheid</td></tr>
+          <tr><td><strong>Promotie</strong></td><td>Communicatie over aanbod, campagnes, menuboorden</td></tr>
+          <tr><td><strong>Personeel (People)</strong></td><td>Gastvrij, deskundig, uniforme uitstraling</td></tr>
+          <tr><td><strong>Proces</strong></td><td>Routing, wachttijden, uitgifte, betaalproces</td></tr>
+          <tr><td><strong>Presentatie (Physical evidence)</strong></td><td>Inrichting, uitstraling, sfeer van de ruimte</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="section">
+      <h3>Uitbesteden vs eigen beheer</h3>
+      <div class="grid2">
+        <div class="box">
+          <h4>Voordelen uitbesteden</h4>
+          <ul class="clean">
+            <li>Branchevreemde activiteiten afstoten</li>
+            <li>Kwaliteitsverbetering door externe kennis</li>
+            <li>Geen belasting eigen afdeling</li>
+            <li>Collectieve inkoop / kortingen</li>
+            <li>Management ontlast; eenvoudiger budgetbeheer</li>
+            <li>Betere kostenbeheersing</li>
+            <li>Hogere efficiency</li>
+          </ul>
+        </div>
+        <div class="box">
+          <h4>Nadelen uitbesteden</h4>
+          <ul class="clean">
+            <li>Kostbaar voor kleine organisaties (&lt;50 medewerkers)</li>
+            <li>Emotionele weerstand eigen personeel</li>
+            <li>Meer buitenstaanders in het bedrijf</li>
+            <li>Afhankelijkheid van derden</li>
+            <li>Betaling management fee</li>
+            <li>Verlies van kennis en vaardigheden</li>
+            <li>Monitoringskosten</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- LES 6 -->
+<div class="card" id="h6">
+  <div class="card-header hcat2">
+    <div>
+      <div class="les-num">Les 6 · Catering</div>
+      <h2>Persona's, Routing &amp; Ruimtelijke Indeling</h2>
+    </div>
+  </div>
+  <div class="card-body">
+
+    <div class="section">
+      <h3>Persona's</h3>
+      <div class="defbox">
+        <strong>Persona</strong>
+        Visuele weergave van de doelgroep aan de hand van een fictief persoon. Doel: een eenduidig klantbeeld creëren, communicatie over klantbehoeften makkelijker maken en wensen en problemen van klanten beter begrijpen. Als FM'er gebruik je persona's om de klant optimaal te faciliteren.
+      </div>
+    </div>
+
+    <div class="section">
+      <h3>Routing</h3>
+      <div class="defbox">
+        <strong>Routing</strong>
+        De gang van een product door de verschillende ruimten.
+      </div>
+      <div class="grid2">
+        <div class="box">
+          <h4>4 logistieke stromen</h4>
+          <ul class="clean">
+            <li><strong>Goederenstroom</strong> — ingrediënten → uitgifte gereed product</li>
+            <li><strong>Serviesstroom</strong> — vuil servies → schoon servies (dishwasher circuit)</li>
+            <li><strong>Afvalstroom</strong> — verwerking etensresten en verpakkingen</li>
+            <li><strong>Consumentenstroom</strong> — looproute van gasten door het restaurant</li>
+          </ul>
+        </div>
+        <div class="box">
+          <h4>Hygiëne-routing</h4>
+          <ul class="clean">
+            <li><strong>Schoon / vuil</strong> — kruisbesmetting voorkomen</li>
+            <li><strong>Rauw / bereid</strong> — strikte scheiding in opslag en bereiding</li>
+            <li><strong>Warm / koud</strong> — temperatuurzones handhaven</li>
+            <li><strong>Efficiency</strong> — plaatsing (voor)bereidingsruimte t.o.v. apparatuur en looplijnen</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3>Ruimtelijke indeling — 3 stappen</h3>
+      <div class="stap"><span class="nummer">1</span><span><strong>Vlekkenplan</strong> — grove indeling wat komt waar. Vaststellen primaire relaties (moet naast elkaar) en antirelaties (mag niet naast elkaar).</span></div>
+      <div class="stap"><span class="nummer">2</span><span><strong>Wandenplan</strong> — na het vlekkenplan worden wanden geplaatst: welke ruimtes worden afgesloten?</span></div>
+      <div class="stap"><span class="nummer">3</span><span><strong>Inrichtingsplan</strong> — gedetailleerde tekening met de plaatsing van meubilair en apparatuur in elke ruimte.</span></div>
+    </div>
+
+    <div class="section">
+      <h3>Kengetallen catering</h3>
+      <table class="compact">
+        <thead><tr><th>Kengetal</th><th>Norm</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Bedrijfskeuken</strong></td><td>Hooguit 1/3 van de totaal beschikbare ruimte</td></tr>
+          <tr><td><strong>Zitruimte — krap</strong></td><td>1,25 m² per zitplaats</td></tr>
+          <tr><td><strong>Zitruimte — normaal</strong></td><td>1,40 m² per zitplaats</td></tr>
+          <tr><td><strong>Zitruimte — bij bediening</strong></td><td>1,60 m² per zitplaats</td></tr>
+          <tr><td><strong>Bezettingsgraad</strong></td><td>Aantal zitplaatsen × 120%</td></tr>
+          <tr><td><strong>Kleine locatie</strong></td><td>10 bezoekers = 1 uur personeelsinzet</td></tr>
+          <tr><td><strong>Grote locatie</strong></td><td>12 bezoekers = 1 uur personeelsinzet</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</div>
+
+<!-- LES 7 -->
+<div class="card" id="h7">
+  <div class="card-header hcat3">
+    <div>
+      <div class="les-num">Les 7 · Catering</div>
+      <h2>Voedselveiligheid, Wetgeving &amp; Kwaliteit</h2>
+    </div>
+  </div>
+  <div class="card-body">
+
+    <div class="section">
+      <h3>Wetgeving tijdlijn</h3>
+      <div class="stap"><span class="nummer">1993</span><span>Europese Hygiënerichtlijn</span></div>
+      <div class="stap"><span class="nummer">1995</span><span>In Nederland: Warenwetbesluit Hygiëne van Levensmiddelen</span></div>
+      <div class="stap"><span class="nummer">2006</span><span>Europese Hygiëneverordening: verplichting HACCP-plan en Hygiënecode per branche (1996: Hygiënecode contractcatering). Controle en toezicht door de <strong>NVWA</strong> (Nederlandse Voedsel en Waren Autoriteit).</span></div>
+    </div>
+
+    <div class="section">
+      <h3>Dieet, allergie en intolerantie</h3>
+      <table class="compact">
+        <thead><tr><th>Type</th><th>Definitie</th><th>Ernst</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Dieet</strong></td><td>Voorkeur, keuze, overtuiging of tijdelijke vermijding. Product kan wel gegeten worden, maar iemand kiest dit (tijdelijk) te vermijden.</td><td>Keuze / niet medisch</td></tr>
+          <tr><td><strong>Allergie</strong></td><td>Lichaam reageert overgevoelig op bepaalde stoffen. Klachten variëren van mild tot ernstig. Kan levensbedreigend zijn (bijv. pinda-allergie).</td><td>Medisch — potentieel levensbedreigend</td></tr>
+          <tr><td><strong>Intolerantie</strong></td><td>Lichaam verteert een voedingsstof onvoldoende (bijv. lactose-intolerantie).</td><td>Medisch — niet levensbedreigend</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="section">
+      <h3>10 kritische gevaren in het cateringproces</h3>
+      <div class="grid2">
+        <ul class="clean">
+          <li><strong>1.</strong> (Kern)temperatuur producten bij ontvangst</li>
+          <li><strong>2.</strong> Verpakking, etikettering, THT-datum, versheid</li>
+          <li><strong>3.</strong> Temperatuur producten in opslagruimte</li>
+          <li><strong>4.</strong> Kerntemperatuur producten aan einde bereiding</li>
+          <li><strong>5.</strong> Temperatuur na assembleren</li>
+        </ul>
+        <ul class="clean">
+          <li><strong>6.</strong> Terugkoeltijd en terugkoeltemperatuur</li>
+          <li><strong>7.</strong> Kerntemperatuur aan einde regenereren</li>
+          <li><strong>8.</strong> Kerntemperatuur tijdens uitgeven</li>
+          <li><strong>9.</strong> Duur ongekoeld uitgeven</li>
+          <li><strong>10.</strong> Temperatuur na distribueren en serveren</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3>Interne communicatie voedselveiligheid</h3>
+      <p style="font-size:13px;color:var(--ink-soft);margin-bottom:8px">Uitdaging: medewerkers werken niet altijd tegelijk. Hoe borg je voedselveiligheid zonder iedereen fysiek te zien?</p>
+      <ul class="clean">
+        <li><strong>Voedseldagstickers</strong> — datum van bereiding</li>
+        <li><strong>Datumstickers</strong> — houdbaarheidsdatum</li>
+        <li><strong>Bewaarwijzers</strong> — instructies voor opslag</li>
+        <li><strong>Temperatuurlijsten</strong> — koelkasttemperaturen bijhouden</li>
+        <li><strong>FIFO-systeem</strong> — First In First Out (oudste product eerst gebruiken)</li>
+        <li><strong>Teamafspraken</strong> — gedragsafspraken rond hygiëne</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h3>Kwaliteit en management catering</h3>
+      <div class="highlight"><strong>Kenmerken van dienstverlening (4):</strong> Ontastbaar · Vergankelijk · Heterogeniteit · Interactieve consumptie. <br>De <strong>realiteit</strong> moet altijd gelijk of hoger zijn dan de <strong>verwachting</strong> van de klant.</div>
+      <ul class="clean">
+        <li>Duidelijke kwaliteitseisen stellen en teamafspraken maken</li>
+        <li>Versheid en kwaliteit van producten garanderen</li>
+        <li>Gebruik van gecertificeerde leveranciers</li>
+        <li>KSF's en KPI's opstellen en waarborgen</li>
+        <li>Kwaliteitscontroles (bijv. mysteryguest)</li>
+        <li>Proeverijen en klanttevredenheidsonderzoeken</li>
+        <li>Gastvrijheidstrainingen en opleiding personeel</li>
+        <li>Up-to-date blijven van trends (beurzen, nieuwe technieken)</li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+<!-- LES 8 -->
+<div class="card" id="h8">
+  <div class="card-header hcat4">
+    <div>
+      <div class="les-num">Les 8 · Catering</div>
+      <h2>Prijsbeleid, Kostprijsberekening &amp; Contractvormen</h2>
+    </div>
+  </div>
+  <div class="card-body">
+
+    <div class="section">
+      <h3>Prijsbeleid</h3>
+      <div class="defbox">
+        <strong>Prijsbeleid</strong>
+        Een door de opdrachtgever vastgestelde methode van berekenen van de verkoopprijs op basis van een aantal van tevoren vastgestelde uitgangspunten.
+      </div>
+      <p style="font-size:13.5px;color:var(--ink-soft);margin-bottom:8px">Mogelijke uitgangspunten:</p>
+      <ul class="clean">
+        <li>Inkoop grondstoffen</li>
+        <li>Jaarbudget catering</li>
+        <li>Onderscheid luxe en sociaal pakket</li>
+        <li>Bedrijfssubsidie</li>
+        <li>Bedrijfsfilosofie en aard van de branche</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h3>Kostprijs berekenen</h3>
+      <div class="highlight">
+        <strong>Formule:</strong> Ingrediënten + toeslag 25% + non-foodkosten €0,25 (vast) + BTW 9%
+      </div>
+      <table class="compact">
+        <thead><tr><th>Element</th><th>Toelichting</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Ingrediënten</strong></td><td>Inkoopprijs van alle grondstoffen voor de maaltijd</td></tr>
+          <tr><td><strong>Toeslag 25%</strong></td><td>Dekking voor personeels-, overhead- en apparatuurkosten</td></tr>
+          <tr><td><strong>Non-foodkosten (vast) €0,25</strong></td><td>Servies, bestek, verpakking, schoonmaak</td></tr>
+          <tr><td><strong>BTW 9%</strong></td><td>Laag BTW-tarief voor voedingsmiddelen</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="section">
+      <h3>Contractvormen catering</h3>
+      <table class="compact">
+        <thead><tr><th>Contractvorm</th><th>Kenmerken</th><th>Risico bij</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong>Opencalculatiecontract (openboek)</strong></td>
+            <td>Alle kosten volledig inzichtelijk voor de opdrachtgever</td>
+            <td>Opdrachtgever</td>
+          </tr>
+          <tr>
+            <td><strong>(Vaste) aanneemsomcontract</strong></td>
+            <td>Een vaste prijs voor de hele opdracht of dienst</td>
+            <td>Opdrachtnemer</td>
+          </tr>
+          <tr>
+            <td><strong>Prestatiecontract</strong></td>
+            <td>Draait om resultaten, niet om uren of middelen</td>
+            <td>Opdrachtnemer</td>
+          </tr>
+          <tr>
+            <td><strong>Commercieel contract</strong></td>
+            <td>Leverancier draagt het ondernemersrisico en haalt inkomsten uit verkopen aan gebruikers</td>
+            <td>Leverancier</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════ VEILIGHEIDSZORG ═══════ -->
+<div class="dienst-label" style="margin-top:12px"><span class="dl-dot dl-vz"></span> Veiligheidszorg — Les 9 t/m 12</div>
+
+<!-- LES 9 -->
+<div class="card" id="veiligheid">
+  <div class="card-header hvz">
+    <div>
+      <div class="les-num">Les 9 · Veiligheidszorg</div>
+      <h2>Safety, Security, Arbo &amp; Risicomanagement</h2>
+    </div>
+  </div>
+  <div class="card-body">
+
+    <div class="section">
+      <h3>Safety vs Security</h3>
+      <table class="compact">
+        <thead><tr><th>Begriff</th><th>Definitie</th><th>Gericht op</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Safety</strong></td><td>Veiligheid tegen fysieke en niet-opzettelijke risico's</td><td>Brandveiligheid, Arbo, BHV, interne plannen</td></tr>
+          <tr><td><strong>Security</strong></td><td>Beveiliging tegen opzettelijk menselijk handelen gericht op schade aan middelen, informatie of personen</td><td>Bewaking, toegangscontrole, cameratoezicht</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="section">
+      <h3>Arbo — drie dimensies</h3>
+      <div class="grid3">
+        <div class="box">
+          <h4>Veiligheid</h4>
+          <p style="font-size:12.5px;color:var(--ink-soft)">Veilige schoonmaakmiddelen, materialen (machines) en instructies om veilig te werken.</p>
+        </div>
+        <div class="box">
+          <h4>Welzijn</h4>
+          <p style="font-size:12.5px;color:var(--ink-soft)">Prettig werkklimaat, aandacht voor medewerkers, uitdagend werk, autonomie geven.</p>
+        </div>
+        <div class="box">
+          <h4>Gezondheid</h4>
+          <p style="font-size:12.5px;color:var(--ink-soft)">Instructies over werkhouding, ergonomie bij machines, voorkomen van arbeidsgerelateerde ziekten.</p>
+        </div>
+      </div>
+      <div class="defbox" style="margin-top:10px">
+        <strong>Arbo-catalogus</strong>
+        Document waarin werkgevers én werknemers op eigen initiatief beschrijven hoe zij voldoen aan de doelvoorschriften van de overheid voor gezond en veilig werken. Minder regels, meer eigen verantwoordelijkheid.
+      </div>
+    </div>
+
+    <div class="section">
+      <h3>BHV — Bedrijfshulpverlening</h3>
+      <div class="highlight"><strong>Elke werkgever is verplicht</strong> maatregelen te nemen en minimaal één BHV-er aan te wijzen.</div>
+      <div class="grid2">
+        <ul class="clean">
+          <li><strong>Kerntaak 1:</strong> Eerste Hulp Bij Ongelukken (EHBO)</li>
+          <li><strong>Kerntaak 2:</strong> Brand beperken en bestrijden</li>
+        </ul>
+        <ul class="clean">
+          <li><strong>Kerntaak 3:</strong> Ontruiming van het gebouw</li>
+          <li><strong>Kerntaak 4:</strong> Communicatie bij incident (intern en met hulpdiensten)</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3>Risicomanagement — RI&amp;E</h3>
+      <div class="defbox">
+        <strong>RI&amp;E (Risico Inventarisatie &amp; Evaluatie)</strong>
+        Het continu en systematisch doorlopen van de organisatie op risico's, met als doel de gevolgen ervan te verminderen en de kans erop te verkleinen.
+      </div>
+      <div class="stap"><span class="nummer">1</span><span><strong>Inventarisatie</strong> — alle risico's identificeren en op één lijst zetten</span></div>
+      <div class="stap"><span class="nummer">2</span><span><strong>Evaluatie</strong> — risico's kwantificeren en sorteren op prioriteit</span></div>
+      <div class="stap"><span class="nummer">3</span><span><strong>Plan van Aanpak</strong> — beheersmaatregelen: wie doet wat, wanneer?</span></div>
+      <div class="highlight" style="margin-top:10px"><strong>Risico = Kans × Schade.</strong> Risico's zijn niet te meten maar wel in te schatten.</div>
+    </div>
+
+    <div class="section">
+      <h3>Risicomatrix (heatmap) — 4 kwadranten</h3>
+      <table class="compact">
+        <thead><tr><th>Kwadrant</th><th>Kans</th><th>Schade</th><th>Aanpak</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Ad 1</strong></td><td>Hoog</td><td>Hoog</td><td>Verzekeren (bijv. brand- en inboedelverzekering)</td></tr>
+          <tr><td><strong>Ad 2</strong></td><td>Hoog</td><td>Laag</td><td>Niet te verzekeren, preventie is onvoldoende — aanpakken!</td></tr>
+          <tr><td><strong>Ad 3</strong></td><td>Laag</td><td>Laag</td><td>Zelf het (financiële) risico dragen</td></tr>
+          <tr><td><strong>Ad 4</strong></td><td>Laag</td><td>Hoog</td><td>Beveiligingsmaatregelen nemen (OBE)</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="section">
+      <h3>Belang risicomanagement — 4 redenen</h3>
+      <ul class="clean">
+        <li>Toenemende dreiging</li>
+        <li>Meer regels — einde gedoogbeleid</li>
+        <li>Toenemende impact van imagoschade</li>
+        <li>Toenemende financiële gevolgen van incidenten</li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+<!-- LES 10 -->
+<div class="card" id="h10">
+  <div class="card-header hvz2">
+    <div>
+      <div class="les-num">Les 10 · Veiligheidszorg</div>
+      <h2>OBE-Maatregelen, Plantoetsing &amp; Sociale Veiligheid</h2>
+    </div>
+  </div>
+  <div class="card-body">
+
+    <div class="section">
+      <h3>Sociale (on)veiligheid</h3>
+      <div class="grid2">
+        <div class="box">
+          <h4>Objectief vs subjectief</h4>
+          <ul class="clean">
+            <li><strong>Objectief</strong> — daadwerkelijke slachtoffers en incidenten</li>
+            <li><strong>Subjectief</strong> — zorgen of angst rondom slachtofferschap (gevoel van onveiligheid)</li>
+          </ul>
+        </div>
+        <div class="box">
+          <h4>3 uitingsvormen</h4>
+          <ul class="clean">
+            <li><strong>1.</strong> Persoonsgerichte criminaliteit — schade aan persoon of eigendom</li>
+            <li><strong>2.</strong> Overlast — rondhangend gedrag, geluidsoverlast, vandali­sme, bedreigingen</li>
+            <li><strong>3.</strong> Subjectieve onveiligheid — het gevoel van onveilig zijn zonder concreet incident</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3>Plantoetsingscriteria (8)</h3>
+      <p style="font-size:13px;color:var(--ink-soft);margin-bottom:8px">Criteria waarmee de veiligheid van een ruimtelijk plan of gebouw wordt beoordeeld:</p>
+      <div class="grid2">
+        <ul class="clean">
+          <li>Attractiviteit van de omgeving</li>
+          <li>Toegankelijkheid / vluchtwegen</li>
+          <li>Aantrekkelijkheid van het doelwit</li>
+          <li>Aanwezigheid van (potentiële) daders</li>
+        </ul>
+        <ul class="clean">
+          <li>Aanwezigheid van sociale ogen (toezicht)</li>
+          <li>Betrokkenheid / verantwoordelijkheidsgevoel</li>
+          <li>Fysieke kwetsbaarheid van het doelwit</li>
+          <li>Zichtbaarheid (van incidenten en van toezicht)</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3>Externe veiligheid</h3>
+      <div class="defbox">
+        <strong>Definitie</strong>
+        Het beheersen van risico's voor de omgeving bij (productie,) vervoer, opslag en gebruik van gevaarlijke stoffen. Publiek domein: coördinatie door ministerie van Infrastructuur en Milieu. Privaat domein: veiligheids- en/of milieucoördinator.
+      </div>
+    </div>
+
+    <div class="section">
+      <h3>OBE-maatregelen</h3>
+      <div class="grid3">
+        <div class="box">
+          <h4>O — Organisatorisch</h4>
+          <ul class="clean">
+            <li>Procedures en protocollen</li>
+            <li>Aanwezigheid beveiliging</li>
+            <li>Bewustwording medewerkers</li>
+            <li>Incidentenregistratie</li>
+          </ul>
+        </div>
+        <div class="box">
+          <h4>B — Bouwkundig</h4>
+          <ul class="clean">
+            <li>Situering werkplekken</li>
+            <li>Hang- en sluitwerk (SKG-keurmerk)</li>
+            <li>Meeneembeperkende maatregelen</li>
+            <li>Slagbomen, rolluiken, hekwerk</li>
+          </ul>
+        </div>
+        <div class="box">
+          <h4>E — Elektrotechnisch</h4>
+          <ul class="clean">
+            <li>Alarmsystemen</li>
+            <li>Toegangscontrolesystemen</li>
+            <li>Camerabewaking</li>
+            <li>Brandmeld- en ontruimingssystemen</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3>Maatregel, Eis en PvE security</h3>
+      <table class="compact">
+        <thead><tr><th>Begriff</th><th>Definitie</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Maatregel</strong></td><td>Besluit over hoe iets opgelost moet worden</td></tr>
+          <tr><td><strong>Eis</strong></td><td>Beschrijft de criteria waaraan een maatregel moet voldoen</td></tr>
+          <tr><td><strong>PvE security</strong></td><td>Set van criteria, passend binnen het wettelijk kader, waaraan een maatregel moet voldoen. Maakt vaak deel uit van een omvangrijker PvE (bijv. bij (ver)bouwprojecten)</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</div>
+
+<!-- LES 11 -->
+<div class="card" id="h11">
+  <div class="card-header hvz3">
+    <div>
+      <div class="les-num">Les 11 · Veiligheidszorg</div>
+      <h2>BCM, Integrale Veiligheidszorg &amp; Calamiteitenplan</h2>
+    </div>
+  </div>
+  <div class="card-body">
+
+    <div class="section">
+      <h3>Business Continuity Management (BCM)</h3>
+      <div class="defbox">
+        <strong>BCM</strong>
+        Beheer van de continuïteit van de kritieke (primaire) bedrijfsprocessen. Oorsprong in ICT. Focus op risico's die een plotselinge en ernstige verstoring kunnen veroorzaken — met preventieve, repressieve en correctieve maatregelen. Één van de belangrijkste trends in FM.
+      </div>
+      <ul class="clean">
+        <li>Uitwijkplan — alternatieve locatie of werkwijze bij calamiteit</li>
+        <li>Omvat zowel technische als organisatorische maatregelen</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h3>Veiligheidsmanagementproces — 8 stappen</h3>
+      <div class="grid2">
+        <div>
+          <div class="stap"><span class="nummer">1</span><span>Strategische oriëntatie</span></div>
+          <div class="stap"><span class="nummer">2</span><span>Risico-inventarisatie safety &amp; security</span></div>
+          <div class="stap"><span class="nummer">3</span><span>Risico-evaluatie safety &amp; security</span></div>
+          <div class="stap"><span class="nummer">4</span><span>Formuleren veiligheidszorgbeleid</span></div>
+        </div>
+        <div>
+          <div class="stap"><span class="nummer">5</span><span>Ontwerpen, implementeren en onderhouden VZG-systeem</span></div>
+          <div class="stap"><span class="nummer">6</span><span>Maatregelen nemen (OBE)</span></div>
+          <div class="stap"><span class="nummer">7</span><span>Periodieke controle</span></div>
+          <div class="stap"><span class="nummer">8</span><span>Verstrekking informatie aan management</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3>K-A-M-V — Integrale veiligheidszorg</h3>
+      <div class="defbox">
+        <strong>Integrale Veiligheidszorg</strong>
+        De hele organisatie beveiligen tegen alle bedreigingen die als reëel worden beschouwd, door een pakket van maatregelen dat regelmatig wordt gecontroleerd en geëvalueerd.
+      </div>
+      <div class="grid2">
+        <div class="box">
+          <h4>K-A-M-V niet geïntegreerd</h4>
+          <ul class="clean">
+            <li>Nieuwe risico's in tussengebieden door tegengestelde maatregelen</li>
+            <li>Sub-optimalisaties per domein</li>
+          </ul>
+        </div>
+        <div class="box">
+          <h4>K-A-M-V geïntegreerd</h4>
+          <ul class="clean">
+            <li>Leren van en aansluiten bij andere domeinen</li>
+            <li>Voortdurende systematische beheersing en verbetering</li>
+            <li>Efficiënt en effectief</li>
+            <li>Minder procedures / vereenvoudigd systeemonderhoud</li>
+            <li>Minder coördinatielast en eenvoudigere infostromen</li>
+          </ul>
+        </div>
+      </div>
+      <div style="margin-top:10px;font-size:13px;color:var(--ink-soft);line-height:1.55">
+        <strong>Integrale aanpak:</strong>
+        <span class="tag red">Rood</span> Brandweer ·
+        <span class="tag" style="background:#fef9c3;color:#713f12">Wit</span> Ambulance ·
+        <span class="tag blue">Blauw</span> Politie ·
+        <span class="tag green">Groen</span> Gemeente
+      </div>
+    </div>
+
+    <div class="section">
+      <h3>Bedrijfsnood- / calamiteitenplan — 6 deelplannen</h3>
+      <table class="compact">
+        <thead><tr><th>#</th><th>Deelplan</th><th>Inhoud</th></tr></thead>
+        <tbody>
+          <tr><td><strong>1</strong></td><td><strong>BHV-plan</strong></td><td>Kerntaken: EHBO, brand beperken, ontruiming, communicatie. Verplicht voor elke werkgever.</td></tr>
+          <tr><td><strong>2</strong></td><td><strong>Beveiligings-/securityplan</strong></td><td>OBE-maatregelen voor opzettelijk menselijk handelen: bommelding, overval, diefstal, vandalisme, agressie.</td></tr>
+          <tr><td><strong>3</strong></td><td><strong>Veiligheids-/safetyplan</strong></td><td>Maatregelen voor niet-opzettelijke incidenten: Arbo, EHBO, milieu, bedrijfshygiëne, brandveiligheid.</td></tr>
+          <tr><td><strong>4</strong></td><td><strong>Ontruimings-/evacuatieplan</strong></td><td>Wettelijk kader: Bouwverordening + Arbowet. Getoetst door brandweer en arbeidsinspectie.</td></tr>
+          <tr><td><strong>5</strong></td><td><strong>Aanvalsplan brandweer</strong></td><td>Bluswater, brandmeldcentrale, aanrijdroutes, opslag gevaarlijke stoffen. In overleg met brandweer opstellen.</td></tr>
+          <tr><td><strong>6</strong></td><td><strong>Informatie-securityplan</strong></td><td>Preventie fraude (intern), beveiliging bedrijfsgegevens, uitwijkmogelijkheden, herstelplannen, antivirus.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</div>
+
+<!-- LES 12 -->
+<div class="card" id="h12">
+  <div class="card-header hvz4">
+    <div>
+      <div class="les-num">Les 12 · Veiligheidszorg</div>
+      <h2>Cybercrime &amp; Veiligheidscultuur</h2>
+    </div>
+  </div>
+  <div class="card-body">
+
+    <div class="section">
+      <h3>Cybercrime</h3>
+      <div class="defbox">
+        <strong>Definitie</strong>
+        Elke misdaad die wordt gefaciliteerd of gepleegd met gebruik van een computer, netwerk of hardware device.
+      </div>
+      <div class="grid2">
+        <div class="box">
+          <h4>Type I — technologisch</h4>
+          <p style="font-size:12.5px;color:var(--ink-soft)">Voornamelijk technologisch van aard. Bijv. hacking, malware, DDoS-aanvallen.</p>
+        </div>
+        <div class="box">
+          <h4>Type II — menselijke factor</h4>
+          <p style="font-size:12.5px;color:var(--ink-soft)">Meer uitgesproken menselijke factor. Bijv. phishing, CEO-fraude, social engineering.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3>Overheden en instanties</h3>
+      <table class="compact">
+        <thead><tr><th>Instantie</th><th>Niveau</th><th>Doelgroep</th><th>Taken</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong>EC3</strong> (Europol's European CyberCrime Center)</td>
+            <td>Europees</td>
+            <td>Lidstaten EU</td>
+            <td>Coördinatie opsporing cybercriminaliteit</td>
+          </tr>
+          <tr>
+            <td><strong>NCSC</strong> (Nationaal Cyber Security Centrum)</td>
+            <td>Nationaal</td>
+            <td>Rijksoverheid, vitale infrastructuur, bedrijfsleven, kennisinstellingen</td>
+            <td>Response, weerbaarder maken, samenwerken</td>
+          </tr>
+          <tr>
+            <td><strong>DTC</strong> (Digital Trust Centre)</td>
+            <td>Nationaal</td>
+            <td>Ondernemers (niet-vitale sectoren)</td>
+            <td>Bewust worden, kennis overdragen, samenwerken per regio/branche</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="section">
+      <h3>Maatregelen cybercrime</h3>
+      <div class="grid2">
+        <ul class="clean">
+          <li>Beveilig pc's, servers en devices (hard- en software up-to-date houden)</li>
+          <li>Beveilig draadloos netwerk (WPA2/3, sterke wachtwoorden)</li>
+          <li>Maak regelmatig back-ups</li>
+          <li>Bewaar back-up veilig (bijv. kluis en off-site)</li>
+        </ul>
+        <ul class="clean">
+          <li>Doe aangifte bij cybercrime</li>
+          <li>Meld je aan bij Digital Trust Centre</li>
+          <li>Zorg voor structurele en systematische aanpak</li>
+          <li>Schakel externe partij in voor ICT-security indien nodig</li>
+          <li>Laat een beveiligingsscan uitvoeren</li>
+          <li>Breng privacy-risico's in kaart (AVG)</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3>Veiligheidscultuur</h3>
+      <div class="defbox">
+        <strong>Definitie</strong>
+        Alle aspecten van de organisatiecultuur die impact hebben op houding en gedrag in relatie tot het vergroten of verkleinen van risico's.
+      </div>
+      <table class="compact">
+        <thead><tr><th>Niveau</th><th>Kenmerken</th><th>Voorbeelden</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Niveau 1 — zichtbaar / tastbaar</strong></td><td>Dingen die je direct kunt zien en meten</td><td>Slogans, posters, procedures, persoonlijke beschermingsmiddelen, incidents-rapportages, functiebeschrijvingen</td></tr>
+          <tr><td><strong>Niveau 2 — uitgesproken meningen</strong></td><td>Wat mensen zeggen over veiligheid</td><td>Statements in vergaderingen, rechtvaardigingen vastgelegd in notulen</td></tr>
+          <tr><td><strong>Niveau 3 — impliciet / onzichtbaar</strong></td><td>Diepere aannames en overtuigingen; alleen af te leiden via observatie</td><td>Onderliggende normen, onuitgesproken verwachtingen over "zo doen wij dat hier"</td></tr>
+        </tbody>
+      </table>
+      <div class="highlight" style="margin-top:10px">
+        <strong>Werken aan veiligheidscultuur:</strong> sensibilisatie- en motivatiecampagnes · regelmatige terugkoppeling van teamprestaties · opleiding · peer-to-peer coaching (bijv. storytelling door "helden" uit de organisatie)
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</div><!-- /.main -->
+
+<footer class="fa-footer">
+  <span>FMAtlas · gemaakt door David Koolstra</span>
+  <span>HAN · Facilitair Management · 2026</span>
+</footer>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+<script src="js/fmatlas.js"></script>
+<script>
+const firebaseConfig = {
+  apiKey: "AIzaSyBB397Wk2eqpBjic8E7aGV1mTgIjhQ21a8",
+  authDomain: "fmkompas-ff8bc.firebaseapp.com",
+  projectId: "fmkompas-ff8bc",
+  storageBucket: "fmkompas-ff8bc.firebasestorage.app",
+  messagingSenderId: "487972024689",
+  appId: "1:487972024689:web:712c3117080745d14746d0"
+};
+firebase.initializeApp(firebaseConfig);
+firebase.auth().onAuthStateChanged(user => {
+  document.getElementById('fa-header-slot').innerHTML = '';
+  document.getElementById('fa-header-slot').appendChild(faRenderHeader({ user }));
+  faMarkActiveToday();
+});
+</script>
+</body>
+</html>
