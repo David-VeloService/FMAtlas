@@ -91,6 +91,27 @@
       font-weight: 700;
     }
 
+    .fa-guest-link {
+      display: block;
+      margin-top: 14px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--muted);
+      cursor: pointer;
+      border: none;
+      background: none;
+      font-family: inherit;
+      width: 100%;
+      padding: 0;
+      transition: color 0.15s;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .fa-guest-link:hover {
+      color: var(--ink);
+    }
+
     /* Home layout */
     .home-hero {
       background: var(--ink);
@@ -694,6 +715,7 @@
         Inloggen met Google
       </button>
       <div class="fa-login-error" id="login-error">Inloggen mislukt. Probeer het opnieuw.</div>
+      <button class="fa-guest-link" onclick="continueAsGuest()">Doorgaan zonder inloggen</button>
     </div>
   </div>
 
@@ -919,6 +941,13 @@
         btn.disabled = false;
         console.error(e);
       });
+    }
+
+    function continueAsGuest() {
+      document.getElementById('fa-login').style.display = 'none';
+      document.getElementById('fa-app').style.display = 'block';
+      initApp(null);
+      renderLeaderboard(null);
     }
 
     auth.onAuthStateChanged(async user => {

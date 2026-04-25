@@ -174,7 +174,11 @@ function faGetLastSeen() {
 /* ─── Logout ─────────── */
 function faLogout() {
   if (typeof firebase !== 'undefined' && firebase.auth) {
-    firebase.auth().signOut();
+    if (firebase.auth().currentUser) {
+      firebase.auth().signOut();
+    } else {
+      window.location.href = 'index.html';
+    }
   }
 }
 
