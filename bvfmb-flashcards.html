@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Flashcards · Basis van FM B — FMAtlas</title>
+<link rel="icon" type="image/svg+xml" href="logo.svg"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="css/fmatlas.css"/>
+<style>
+.fc-wrap { max-width: 780px; margin: 0 auto; padding: 28px 24px 80px; }
+
+.fc-hero {
+  display: flex; align-items: center; justify-content: space-between; gap: 18px;
+  margin-bottom: 18px; flex-wrap: wrap;
+}
+.fc-hero h1 { font-size: 28px; font-weight: 900; letter-spacing: -0.025em; }
+.fc-hero-sub { font-size: 13px; color: var(--muted); font-weight: 700; letter-spacing: 0.02em; }
+
+.fc-toolbar {
+  background: var(--surface); border: 1.5px solid var(--line); border-radius: var(--radius-lg);
+  padding: 14px 16px; margin-bottom: 16px;
+  display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+}
+.fc-select {
+  background: var(--bg); border: 1.5px solid var(--line); border-radius: 10px;
+  padding: 8px 12px; font-family: inherit; font-size: 13px; font-weight: 700; color: var(--ink);
+  outline: none; cursor: pointer;
+}
+.fc-select:hover, .fc-select:focus { border-color: var(--accent); }
+
+.fc-progwrap { flex: 1; min-width: 140px; }
+.fc-proglabels { display: flex; justify-content: space-between; font-size: 11px; color: var(--muted); font-weight: 700; margin-bottom: 4px; }
+
+.fc-stats { display: flex; gap: 18px; justify-content: center; margin-bottom: 18px; }
+.fc-stat { text-align: center; }
+.fc-stat-num { font-size: 28px; font-weight: 900; line-height: 1; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
+.fc-stat-lbl { font-size: 10px; color: var(--muted); font-weight: 800; letter-spacing: 0.07em; text-transform: uppercase; margin-top: 3px; }
+.fc-stat.known .fc-stat-num { color: var(--ok); }
+.fc-stat.unknown .fc-stat-num { color: var(--accent); }
+
+.fc-counter {
+  text-align: center; font-size: 12px; color: var(--muted); font-weight: 700; margin-bottom: 8px;
+  letter-spacing: 0.04em;
+}
+
+/* Flip card */
+.fc-flip { width: 100%; perspective: 1400px; cursor: pointer; }
+.fc-flip-inner {
+  position: relative; width: 100%; min-height: 260px;
+  transform-style: preserve-3d; transition: transform 0.55s cubic-bezier(.4, 0, .2, 1);
+}
+.fc-flip.flipped .fc-flip-inner { transform: rotateY(180deg); }
+.fc-face {
+  position: absolute; inset: 0; backface-visibility: hidden; border-radius: var(--radius-xl);
+  padding: 40px 32px; display: flex; flex-direction: column; justify-content: center; align-items: center;
+  text-align: center; border: 1.5px solid var(--line); min-height: 260px;
+}
+.fc-face-front { background: var(--surface); }
+.fc-face-back { background: var(--ink); color: var(--surface); border-color: var(--ink); transform: rotateY(180deg); }
+
+.fc-face-hint {
+  font-size: 10px; font-weight: 800; letter-spacing: 0.1em; margin-bottom: 14px;
+  text-transform: uppercase; display: flex; align-items: center; gap: 6px;
+}
+.fc-face-front .fc-face-hint { color: var(--muted); }
+.fc-face-back .fc-face-hint { color: rgba(255,255,255,0.5); }
+
+.fc-cat {
+  display: inline-flex; align-items: center; padding: 4px 12px; font-size: 10px; font-weight: 800;
+  border-radius: 999px; margin-bottom: 16px; letter-spacing: 0.05em; text-transform: uppercase;
+}
+.fc-term { font-size: 24px; font-weight: 900; letter-spacing: -0.02em; line-height: 1.25; color: var(--ink); }
+.fc-def { font-size: 15px; color: rgba(255,255,255,0.88); line-height: 1.6; font-weight: 500; max-width: 560px; }
+.fc-def strong { color: var(--surface); font-weight: 800; }
+
+.fc-formula {
+  display: inline-block; background: rgba(255,255,255,0.1); border: 1.5px solid rgba(255,255,255,0.15);
+  border-radius: 8px; padding: 6px 12px; font-family: 'SFMono-Regular', Menlo, monospace;
+  font-size: 13px; color: #fcd34d; font-weight: 700; margin-top: 16px;
+}
+
+.fc-btn-row {
+  display: grid; grid-template-columns: 1fr auto 1fr; gap: 10px; margin-top: 16px;
+}
+@media (max-width: 600px) { .fc-btn-row { grid-template-columns: 1fr; } }
+
+.fc-btn {
+  padding: 14px 18px; border-radius: var(--radius); border: 1.5px solid transparent;
+  font-family: inherit; font-size: 14px; font-weight: 800; cursor: pointer;
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  transition: transform 0.08s, background 0.15s, border-color 0.15s;
+}
+.fc-btn:active { transform: translateY(1px); }
+.fc-btn-no { background: rgba(239, 68, 68, 0.08); color: #b91c1c; border-color: rgba(239, 68, 68, 0.25); }
+.fc-btn-no:hover { background: rgba(239, 68, 68, 0.15); border-color: #b91c1c; }
+.fc-btn-yes { background: rgba(58, 138, 92, 0.1); color: var(--ok); border-color: rgba(58, 138, 92, 0.3); }
+.fc-btn-yes:hover { background: rgba(58, 138, 92, 0.18); }
+.fc-btn-skip { background: var(--surface); color: var(--ink-soft); border-color: var(--line); }
+.fc-btn-skip:hover { color: var(--ink); border-color: var(--ink); }
+
+/* Done screen */
+#fc-done { display: none; text-align: center; padding: 32px 24px; }
+#fc-done h2 { font-size: 32px; font-weight: 900; letter-spacing: -0.03em; margin-bottom: 10px; }
+#fc-done .score-big { font-size: 72px; font-weight: 900; color: var(--ok); line-height: 1; letter-spacing: -0.04em; margin: 12px 0; }
+#fc-done .score-big.bad { color: var(--accent); }
+#fc-done p { color: var(--ink-soft); font-size: 14px; font-weight: 600; margin-bottom: 24px; }
+.missed-list {
+  text-align: left; background: var(--surface); border: 1.5px solid var(--line);
+  border-radius: var(--radius-lg); padding: 18px 22px; margin-top: 24px; max-height: 340px; overflow-y: auto;
+}
+.missed-list h3 { font-size: 11px; color: var(--accent); font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 10px; }
+.missed-item { padding: 8px 0; border-bottom: 1px solid var(--line-soft); font-size: 13px; }
+.missed-item:last-child { border-bottom: none; }
+.missed-item strong { display: block; color: var(--ink); font-weight: 800; margin-bottom: 2px; }
+.missed-item span { color: var(--muted); font-weight: 500; line-height: 1.4; display: block; }
+
+.xp-toast {
+  position: fixed; top: 80px; right: 24px; z-index: 500;
+  background: var(--ink); color: var(--surface); padding: 10px 18px;
+  border-radius: 999px; font-size: 13px; font-weight: 800;
+  display: flex; align-items: center; gap: 6px;
+  transform: translateX(420px); transition: transform 0.25s ease;
+  box-shadow: var(--shadow-lg);
+}
+.xp-toast.show { transform: translateX(0); }
+.xp-toast span { color: var(--xp); }
+</style>
+</head>
+<body>
+
+<div id="fa-header-slot"></div>
+
+<nav class="fa-breadcrumb">
+  <a href="index.html">Home</a>
+  <span>›</span>
+  <a href="basis-van-fm-b.html">Basis van FM — B</a>
+  <span>›</span>
+  <span class="current">Flashcards</span>
+</nav>
+
+<div class="fc-wrap">
+  <div class="fc-hero">
+    <div>
+      <h1>Flashcards</h1>
+      <div class="fc-hero-sub">Klik de kaart of druk op spatie om te draaien</div>
+    </div>
+    <a class="fa-btn fa-btn-ghost fa-btn-sm" href="basis-van-fm-b.html">
+      <span data-fa-icon="arrowL" data-fa-size="13"></span>
+      Terug naar vak
+    </a>
+  </div>
+
+  <div class="fc-toolbar">
+    <select class="fc-select" id="catFilter" onchange="loadDeck()">
+      <option value="all">Alle diensten</option>
+    </select>
+    <button class="fa-btn fa-btn-accent fa-btn-sm" onclick="shuffleDeck()">
+      <span data-fa-icon="refresh" data-fa-size="13"></span> Schud
+    </button>
+    <button class="fa-btn fa-btn-ghost fa-btn-sm" onclick="loadDeck()">Opnieuw</button>
+    <div class="fc-progwrap">
+      <div class="fc-proglabels"><span id="progLabel">0 / 0 bekend</span><span id="progPct">0%</span></div>
+      <div class="fa-progress"><div class="fa-progress-bar" id="progBar" style="width:0%"></div></div>
+    </div>
+  </div>
+
+  <div id="fc-main">
+    <div class="fc-stats">
+      <div class="fc-stat"><div class="fc-stat-num" id="statTotal">0</div><div class="fc-stat-lbl">Totaal</div></div>
+      <div class="fc-stat known"><div class="fc-stat-num" id="statKnown">0</div><div class="fc-stat-lbl">Gekend</div></div>
+      <div class="fc-stat unknown"><div class="fc-stat-num" id="statUnknown">0</div><div class="fc-stat-lbl">Herhalen</div></div>
+    </div>
+
+    <div class="fc-counter" id="cardCounter"></div>
+
+    <div class="fc-flip" id="flipWrap" onclick="flipCard()">
+      <div class="fc-flip-inner" id="flipInner">
+        <div class="fc-face fc-face-front">
+          <div class="fc-face-hint">
+            <span data-fa-icon="sparkle" data-fa-size="11"></span> Klik om te onthullen
+          </div>
+          <span class="fc-cat" id="frontCat"></span>
+          <div class="fc-term" id="frontTerm"></div>
+        </div>
+        <div class="fc-face fc-face-back">
+          <div class="fc-face-hint">Definitie</div>
+          <div class="fc-def" id="backDef"></div>
+          <div class="fc-formula" id="backFormula" style="display:none"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="fc-btn-row">
+      <button class="fc-btn fc-btn-no" onclick="markCard(false)">
+        <span data-fa-icon="x" data-fa-size="14"></span> Nog niet
+      </button>
+      <button class="fc-btn fc-btn-skip" onclick="nextCard()">
+        Sla over
+      </button>
+      <button class="fc-btn fc-btn-yes" onclick="markCard(true)">
+        <span data-fa-icon="check" data-fa-size="14"></span> Gekend!
+      </button>
+    </div>
+  </div>
+
+  <div id="fc-done">
+    <h2>Sessie klaar!</h2>
+    <div class="score-big" id="doneScore">0 / 0</div>
+    <p id="doneText"></p>
+    <button class="fa-btn fa-btn-accent" id="btnMissed" onclick="restartMissed()" style="display:none;margin-right:8px">
+      <span data-fa-icon="refresh" data-fa-size="13"></span> Herhaal niet-gekende
+    </button>
+    <button class="fa-btn fa-btn-primary" onclick="loadDeck()">
+      Begin opnieuw
+    </button>
+    <div class="missed-list" id="missedList" style="display:none">
+      <h3>Nog te leren</h3>
+      <div id="missedItems"></div>
+    </div>
+  </div>
+</div>
+
+<div class="xp-toast" id="xpToast"><span data-fa-icon="bolt" data-fa-size="13"></span> <span id="xpToastText">+5 XP</span></div>
+
+<footer class="fa-footer">
+  <span>Tip: ← nog niet · → gekend · ↓ overslaan · spatie = flip</span>
+  <span>FMAtlas · HAN FM</span>
+</footer>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+<script src="js/fmatlas.js"></script>
+<script src="js/data-bvfmb.js"></script>
+<script>
+window.__FMDATA__ = {
+  flashcards: (window.BVFMB && window.BVFMB.flashcards) || [],
+  cats: (window.BVFMB && window.BVFMB.cats) || [],
+  key: 'basis-fm-b',
+  title: 'Basis van FM — B',
+  url: 'basis-van-fm-b.html'
+};
+</script>
+<script>
+const firebaseConfig = {
+  apiKey: "AIzaSyBB397Wk2eqpBjic8E7aGV1mTgIjhQ21a8",
+  authDomain: "fmkompas-ff8bc.firebaseapp.com",
+  projectId: "fmkompas-ff8bc",
+  storageBucket: "fmkompas-ff8bc.firebasestorage.app",
+  messagingSenderId: "487972024689",
+  appId: "1:487972024689:web:712c3117080745d14746d0"
+};
+firebase.initializeApp(firebaseConfig);
+const _auth = firebase.auth();
+const _db = firebase.firestore();
+
+const DATA = window.__FMDATA__ || { flashcards: [], cats: [], key: 'vak', title: 'Vak', url: 'index.html' };
+
+_auth.onAuthStateChanged(user => {
+  document.getElementById('fa-header-slot').innerHTML = '';
+  document.getElementById('fa-header-slot').appendChild(faRenderHeader({ user }));
+  faMarkActiveToday();
+  faMarkLastSeen(DATA.key, DATA.title, DATA.url);
+});
+
+const allCards = DATA.flashcards || [];
+const catMap = {};
+DATA.cats.forEach(c => catMap[c.key] = c);
+
+/* Build filter options */
+(function(){
+  const sel = document.getElementById('catFilter');
+  DATA.cats.forEach(c => {
+    const opt = document.createElement('option');
+    opt.value = c.key; opt.textContent = c.label;
+    sel.appendChild(opt);
+  });
+  // Pre-select category from URL param
+  const urlCat = new URLSearchParams(window.location.search).get('cat');
+  if(urlCat) sel.value = urlCat;
+})();
+
+function hexToRgb(h){h=h.replace('#','');if(h.length===3)h=h.split('').map(c=>c+c).join('');const n=parseInt(h,16);return [n>>16&255,n>>8&255,n&255];}
+function catSoftBg(k){const c=catMap[k];if(!c)return 'var(--surface-alt)';const [r,g,b]=hexToRgb(c.color);return 'rgba('+r+','+g+','+b+',0.15)';}
+
+let deck = [], current = 0, known = 0, missed = [], flipped = false;
+
+function shuffleArr(arr){
+  for(let i=arr.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[arr[i],arr[j]]=[arr[j],arr[i]];}
+  return arr;
+}
+
+function loadDeck(){
+  const cat = document.getElementById('catFilter').value;
+  deck = (cat === 'all' ? [...allCards] : allCards.filter(c => c.cat === cat));
+  current = 0; known = 0; missed = []; flipped = false;
+  document.getElementById('flipWrap').classList.remove('flipped');
+  document.getElementById('fc-done').style.display = 'none';
+  document.getElementById('fc-main').style.display = 'block';
+  updateStats();
+  showCard();
+}
+
+function shuffleDeck(){
+  loadDeck();
+  deck = shuffleArr(deck);
+  showCard();
+}
+
+function showCard(){
+  if(current >= deck.length){ showDone(); return; }
+  const c = deck[current];
+  document.getElementById('cardCounter').textContent = `Kaart ${current+1} van ${deck.length}`;
+  const frontCat = document.getElementById('frontCat');
+  frontCat.textContent = (catMap[c.cat] && catMap[c.cat].label) || c.cat;
+  frontCat.className = 'fc-cat';
+  frontCat.style.background = catSoftBg(c.cat);
+  frontCat.style.color = (catMap[c.cat] && catMap[c.cat].color) || 'var(--ink)';
+  document.getElementById('frontTerm').textContent = c.term;
+  document.getElementById('backDef').textContent = c.def;
+  const fEl = document.getElementById('backFormula');
+  if(c.formula){ fEl.textContent = c.formula; fEl.style.display='inline-block'; }
+  else { fEl.style.display='none'; }
+  flipped = false;
+  document.getElementById('flipWrap').classList.remove('flipped');
+}
+
+function flipCard(){
+  flipped = !flipped;
+  document.getElementById('flipWrap').classList.toggle('flipped', flipped);
+}
+
+function markCard(isKnown){
+  if(!flipped){ flipCard(); setTimeout(() => _mark(isKnown), 400); }
+  else _mark(isKnown);
+}
+function _mark(isKnown){
+  if(isKnown){
+    known++;
+    faAddXP(5);
+    addFirestorePoints(5);
+    showXpToast('+5 XP');
+  } else {
+    missed.push(deck[current]);
+  }
+  current++;
+  updateStats();
+  setTimeout(showCard, 150);
+}
+function nextCard(){
+  missed.push(deck[current]);
+  current++;
+  updateStats();
+  flipped = false;
+  document.getElementById('flipWrap').classList.remove('flipped');
+  showCard();
+}
+function updateStats(){
+  const total = deck.length;
+  const answered = current;
+  document.getElementById('statTotal').textContent = total;
+  document.getElementById('statKnown').textContent = known;
+  document.getElementById('statUnknown').textContent = missed.length;
+  const pct = total ? Math.round(answered/total*100) : 0;
+  document.getElementById('progBar').style.width = pct + '%';
+  document.getElementById('progPct').textContent = pct + '%';
+  document.getElementById('progLabel').textContent = `${known} / ${total} bekend`;
+  faSetProgress(DATA.key, Math.min(100, (known/allCards.length)*100));
+}
+function showDone(){
+  document.getElementById('fc-main').style.display = 'none';
+  const d = document.getElementById('fc-done');
+  d.style.display = 'block';
+  const pct = deck.length ? Math.round(known/deck.length*100) : 0;
+  const scoreEl = document.getElementById('doneScore');
+  scoreEl.textContent = `${known} / ${deck.length}`;
+  scoreEl.className = 'score-big' + (pct < 60 ? ' bad' : '');
+  document.getElementById('doneText').textContent = pct >= 80
+    ? 'Uitstekend! Je beheerst deze stof goed.'
+    : pct >= 60
+    ? 'Goed bezig! Herhaal de niet-gekende kaarten nog een keer.'
+    : 'Nog wat herhalen. Ga de gemiste kaarten nog eens door.';
+
+  const btn = document.getElementById('btnMissed');
+  const list = document.getElementById('missedList');
+  if(missed.length){
+    btn.style.display = 'inline-flex';
+    list.style.display = 'block';
+    document.getElementById('missedItems').innerHTML = missed.map(c =>
+      `<div class="missed-item"><strong>${c.term}</strong><span>${c.def.substring(0,130)}${c.def.length>130?'…':''}</span></div>`
+    ).join('');
+  } else {
+    btn.style.display = 'none';
+    list.style.display = 'none';
+  }
+}
+function restartMissed(){
+  if(!missed.length) return;
+  deck = shuffleArr([...missed]);
+  current = 0; known = 0; missed = []; flipped = false;
+  document.getElementById('fc-done').style.display = 'none';
+  document.getElementById('fc-main').style.display = 'block';
+  document.getElementById('flipWrap').classList.remove('flipped');
+  updateStats();
+  showCard();
+}
+
+function showXpToast(txt){
+  const t = document.getElementById('xpToast');
+  document.getElementById('xpToastText').textContent = txt;
+  t.classList.add('show');
+  clearTimeout(t._h);
+  t._h = setTimeout(() => t.classList.remove('show'), 1400);
+}
+
+async function addFirestorePoints(n){
+  const u = _auth.currentUser;
+  if(!u) return;
+  try {
+    await _db.collection('scores').doc(u.uid).set({
+      pts: firebase.firestore.FieldValue.increment(n),
+      name: u.displayName || 'Anoniem',
+      photoURL: u.photoURL || '',
+      updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+    }, { merge: true });
+  } catch(e) { console.warn(e); }
+}
+
+document.addEventListener('keydown', e => {
+  if(document.getElementById('fc-done').style.display === 'block') return;
+  if(e.target.tagName === 'SELECT' || e.target.tagName === 'INPUT') return;
+  if(e.key === ' ' || e.key === 'Enter'){ e.preventDefault(); flipCard(); }
+  if(e.key === 'ArrowRight') markCard(true);
+  if(e.key === 'ArrowLeft') markCard(false);
+  if(e.key === 'ArrowDown') { e.preventDefault(); nextCard(); }
+});
+
+loadDeck();
+</script>
+</body>
+</html>
