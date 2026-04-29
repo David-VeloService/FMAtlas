@@ -1,1174 +1,559 @@
 <!DOCTYPE html>
 <html lang="nl">
-
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>FMAtlas — studiehulp voor FM</title>
-  <link rel="icon" type="image/svg+xml" href="logo.svg" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/fmatlas.css" />
-  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
-  <style>
-    /* Login screen */
-    #fa-login {
-      position: fixed;
-      inset: 0;
-      background: var(--bg);
-      z-index: 999;
-      display: grid;
-      place-items: center;
-      padding: 24px;
-    }
-
-    .fa-login-card {
-      background: var(--surface);
-      border: 1.5px solid var(--line);
-      border-radius: var(--radius-xl);
-      padding: 40px 36px;
-      width: 100%;
-      max-width: 420px;
-      text-align: center;
-      box-shadow: var(--shadow);
-    }
-
-    .fa-login-logo {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 8px;
-      font-size: 24px;
-      font-weight: 900;
-      letter-spacing: -0.02em;
-    }
-
-    .fa-login-card p {
-      color: var(--muted);
-      font-size: 14px;
-      font-weight: 600;
-      margin-bottom: 28px;
-      line-height: 1.5;
-    }
-
-    .fa-google-btn {
-      width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      background: #fff;
-      color: #3c4043;
-      border: 1.5px solid #dadce0;
-      border-radius: var(--radius);
-      font-family: inherit;
-      font-size: 14px;
-      font-weight: 700;
-      padding: 12px;
-      cursor: pointer;
-      transition: box-shadow 0.15s, border-color 0.15s;
-    }
-
-    .fa-google-btn:hover {
-      border-color: var(--accent);
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-    }
-
-    .fa-google-btn:disabled {
-      opacity: 0.6;
-      cursor: default;
-    }
-
-    .fa-login-error {
-      color: #dc2626;
-      font-size: 12px;
-      margin-top: 10px;
-      display: none;
-      font-weight: 700;
-    }
-
-    .fa-guest-link {
-      display: block;
-      margin-top: 14px;
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--muted);
-      cursor: pointer;
-      border: none;
-      background: none;
-      font-family: inherit;
-      width: 100%;
-      padding: 0;
-      transition: color 0.15s;
-      text-decoration: underline;
-      text-underline-offset: 3px;
-    }
-
-    .fa-guest-link:hover {
-      color: var(--ink);
-    }
-
-    /* Home layout */
-    .home-hero {
-      background: var(--ink);
-      color: var(--surface);
-      border-radius: var(--radius-xl);
-      padding: 36px 40px;
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 32px;
-      align-items: center;
-      position: relative;
-      overflow: hidden;
-      margin-bottom: 28px;
-    }
-
-    .home-hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      opacity: 0.06;
-      pointer-events: none;
-      background-image: linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px);
-      background-size: 40px 40px;
-    }
-
-    .home-hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      border-radius: 999px;
-      padding: 5px 12px 5px 10px;
-      font-size: 11px;
-      font-weight: 800;
-      letter-spacing: 0.06em;
-      margin-bottom: 16px;
-      color: var(--accent-soft);
-      position: relative;
-    }
-
-    .home-hero-badge::before {
-      content: '';
-      width: 6px;
-      height: 6px;
-      background: var(--accent);
-      border-radius: 50%;
-      box-shadow: 0 0 0 3px rgba(239, 90, 63, 0.2);
-    }
-
-    .home-hero h1 {
-      font-size: 40px;
-      font-weight: 900;
-      line-height: 1.05;
-      letter-spacing: -0.025em;
-      margin-bottom: 10px;
-      position: relative;
-    }
-
-    .home-hero h1 em {
-      color: var(--accent);
-      font-style: normal;
-    }
-
-    .home-hero p {
-      font-size: 15px;
-      color: rgba(255, 255, 255, 0.65);
-      line-height: 1.5;
-      margin-bottom: 20px;
-      max-width: 520px;
-      position: relative;
-    }
-
-    .home-hero-progress {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 20px;
-      position: relative;
-    }
-
-    .home-hero-progress-bar {
-      flex: 0 1 340px;
-      height: 8px;
-      background: rgba(255, 255, 255, 0.12);
-      border-radius: 999px;
-      overflow: hidden;
-    }
-
-    .home-hero-progress-bar>div {
-      height: 100%;
-      background: var(--accent);
-      border-radius: 999px;
-    }
-
-    .home-hero-cta {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      flex-wrap: wrap;
-      position: relative;
-    }
-
-    .home-hero-cta .fa-btn-ghost {
-      border-color: rgba(255, 255, 255, 0.2);
-      color: var(--surface);
-      background: transparent;
-    }
-
-    .home-hero-cta .fa-btn-ghost:hover {
-      border-color: var(--accent);
-      color: var(--accent);
-    }
-
-    .home-mascot {
-      position: relative;
-      z-index: 1;
-    }
-
-    @media (max-width: 900px) {
-      .home-hero {
-        grid-template-columns: 1fr;
-      }
-
-      .home-mascot {
-        justify-self: center;
-      }
-
-      .home-hero h1 {
-        font-size: 30px;
-      }
-    }
-
-    .home-grid {
-      display: grid;
-      grid-template-columns: 1fr 340px;
-      gap: 24px;
-    }
-
-    @media (max-width: 1000px) {
-      .home-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .home-wrap {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 24px 32px 40px;
-    }
-
-    .vak-list {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-    }
-
-    @media (max-width: 700px) {
-      .vak-list {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .vak-card {
-      background: var(--surface);
-      border: 1.5px solid var(--line);
-      border-radius: var(--radius-lg);
-      padding: 16px 18px;
-      cursor: pointer;
-      transition: border-color 0.15s, transform 0.15s;
-      position: relative;
-      text-decoration: none;
-      color: inherit;
-      display: block;
-    }
-
-    .vak-card:hover {
-      border-color: var(--accent);
-      transform: translateY(-2px);
-    }
-
-    .vak-card.last {
-      border-color: var(--accent);
-      box-shadow: 0 0 0 2px var(--accent-soft);
-    }
-
-    .vak-card-badge {
-      position: absolute;
-      top: -9px;
-      right: 14px;
-      background: var(--accent);
-      color: var(--surface);
-      font-size: 10px;
-      font-weight: 800;
-      padding: 3px 9px;
-      border-radius: 999px;
-      letter-spacing: 0.06em;
-    }
-
-    .vak-card-top {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      margin-bottom: 10px;
-    }
-
-    .vak-icon {
-      width: 42px;
-      height: 42px;
-      border-radius: 11px;
-      flex-shrink: 0;
-      background: var(--surface-alt);
-      color: var(--ink-soft);
-      display: grid;
-      place-items: center;
-      border: 1.5px solid var(--line);
-    }
-
-    .vak-icon.active {
-      background: var(--accent-soft);
-      color: var(--accent-deep);
-      border-color: rgba(239, 90, 63, 0.3);
-    }
-
-    .vak-card h3 {
-      font-size: 15px;
-      font-weight: 800;
-      letter-spacing: -0.01em;
-      margin-bottom: 3px;
-      line-height: 1.2;
-    }
-
-    .vak-card .sub {
-      font-size: 12px;
-      color: var(--muted);
-      font-weight: 600;
-      line-height: 1.4;
-    }
-
-    .vak-grade {
-      flex-shrink: 0;
-      background: var(--surface-alt);
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      padding: 4px 8px;
-      font-size: 11px;
-      font-weight: 800;
-      color: var(--ink-soft);
-    }
-
-    .vak-row {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .vak-row .fa-progress {
-      flex: 1;
-    }
-
-    .vak-pct {
-      font-size: 11px;
-      font-weight: 800;
-      color: var(--muted);
-      font-variant-numeric: tabular-nums;
-      width: 32px;
-      text-align: right;
-    }
-
-    .vak-pct.active {
-      color: var(--accent);
-    }
-
-    .vak-actions {
-      display: flex;
-      gap: 6px;
-      margin-top: 12px;
-      padding-top: 12px;
-      border-top: 1px dashed var(--line);
-    }
-
-    .vak-actions .fa-btn-ghost {
-      flex: 1;
-      font-size: 11.5px;
-      padding: 6px 10px;
-    }
-
-    /* Sidebar */
-    .streak-card {
-      background: var(--surface);
-      border: 1.5px solid var(--line);
-      border-radius: var(--radius-lg);
-      padding: 22px;
-    }
-
-    .streak-top {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      margin-bottom: 14px;
-    }
-
-    .streak-label {
-      font-size: 11px;
-      font-weight: 800;
-      color: var(--accent);
-      letter-spacing: 0.06em;
-      margin-bottom: 4px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .streak-num {
-      font-size: 48px;
-      font-weight: 900;
-      line-height: 1;
-      letter-spacing: -0.03em;
-    }
-
-    .streak-label-sub {
-      font-size: 12px;
-      color: var(--ink-soft);
-      font-weight: 700;
-      margin-top: 4px;
-    }
-
-    .streak-icon-big {
-      width: 56px;
-      height: 56px;
-      background: var(--accent-soft);
-      border-radius: 14px;
-      display: grid;
-      place-items: center;
-      border: 1.5px solid rgba(239, 90, 63, 0.3);
-    }
-
-    .streak-week {
-      display: flex;
-      gap: 5px;
-      margin-bottom: 10px;
-    }
-
-    .streak-day {
-      flex: 1;
-      text-align: center;
-    }
-
-    .streak-day-box {
-      width: 100%;
-      aspect-ratio: 1;
-      border-radius: 8px;
-      display: grid;
-      place-items: center;
-      margin-bottom: 4px;
-      color: var(--surface);
-    }
-
-    .streak-day-box.done {
-      background: var(--accent);
-      border: 1.5px solid var(--accent);
-    }
-
-    .streak-day-box.today {
-      background: var(--surface);
-      border: 1.5px dashed var(--accent);
-    }
-
-    .streak-day-box.rest {
-      background: var(--line-soft);
-    }
-
-    .streak-day span {
-      font-size: 10px;
-      color: var(--ink-soft);
-      font-weight: 800;
-      letter-spacing: 0.04em;
-    }
-
-    .streak-hint {
-      font-size: 12px;
-      color: var(--ink-soft);
-      font-weight: 600;
-      line-height: 1.5;
-      background: var(--surface-alt);
-      padding: 8px 12px;
-      border-radius: 8px;
-      margin-top: 4px;
-    }
-
-    .lb-row {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 8px 10px;
-      border-radius: 10px;
-      margin-bottom: 2px;
-      border: 1.5px solid transparent;
-    }
-
-    .lb-row.me {
-      background: var(--accent-soft);
-      border-color: rgba(239, 90, 63, 0.3);
-    }
-
-    .lb-rank {
-      width: 22px;
-      height: 22px;
-      border-radius: 6px;
-      background: var(--surface-alt);
-      display: grid;
-      place-items: center;
-      font-size: 11px;
-      font-weight: 900;
-    }
-
-    .lb-rank.gold {
-      background: #fde68a;
-    }
-
-    .lb-rank.silver {
-      background: #e5e7eb;
-    }
-
-    .lb-rank.bronze {
-      background: #fed7aa;
-    }
-
-    .lb-avatar {
-      width: 28px;
-      height: 28px;
-      border-radius: 50%;
-      background: var(--ink);
-      color: var(--surface);
-      display: grid;
-      place-items: center;
-      font-size: 10px;
-      font-weight: 800;
-      overflow: hidden;
-    }
-
-    .lb-avatar img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .lb-name {
-      flex: 1;
-      font-size: 13px;
-      font-weight: 700;
-      color: var(--ink);
-      min-width: 0;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-    }
-
-    .lb-name.me {
-      font-weight: 800;
-    }
-
-    .lb-pts {
-      font-size: 11.5px;
-      font-weight: 800;
-      color: var(--ink-soft);
-      font-variant-numeric: tabular-nums;
-      display: flex;
-      align-items: center;
-      gap: 3px;
-    }
-
-    .kofi-card {
-      background: var(--accent-soft);
-      border: 1.5px solid rgba(239, 90, 63, 0.3);
-      border-radius: var(--radius-lg);
-      padding: 22px;
-    }
-
-    .tip-card {
-      background: var(--surface);
-      border: 1.5px solid var(--line);
-      border-radius: var(--radius-lg);
-      padding: 18px 22px;
-    }
-
-    /* Contact */
-    .contact-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-      margin-bottom: 10px;
-    }
-
-    @media (max-width: 600px) {
-      .contact-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .form-input,
-    .form-textarea {
-      background: var(--bg);
-      border: 1.5px solid var(--line);
-      border-radius: 10px;
-      padding: 10px 14px;
-      font-family: inherit;
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--ink);
-      width: 100%;
-      outline: none;
-      transition: border-color 0.15s;
-    }
-
-    .form-input:focus,
-    .form-textarea:focus {
-      border-color: var(--accent);
-    }
-
-    .form-textarea {
-      min-height: 84px;
-      resize: vertical;
-    }
-
-    .form-success {
-      font-size: 13px;
-      color: var(--ok);
-      font-weight: 700;
-      display: none;
-      margin-left: 10px;
-    }
-
-    .section-title {
-      font-size: 22px;
-      font-weight: 900;
-      letter-spacing: -0.015em;
-      margin-bottom: 18px;
-    }
-
-    .period-head {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 12px;
-    }
-
-    .period-label {
-      font-size: 12px;
-      font-weight: 800;
-      color: var(--ink-soft);
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-    }
-
-    .period-head .line {
-      flex: 1;
-      height: 1px;
-      background: var(--line);
-    }
-
-    .period-note {
-      font-size: 11px;
-      color: var(--muted);
-      font-weight: 700;
-      letter-spacing: 0.04em;
-    }
-
-    .period-block {
-      margin-bottom: 28px;
-    }
-  </style>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>FM Atlas – gratis studiehulp voor Facilitair Management</title>
+<meta name="description" content="Samenvattingen, flashcards en oefentoetsen voor élk vak van Facilitair Management aan de HAN. Gratis. Door studenten, voor studenten."/>
+<link rel="icon" type="image/svg+xml" href="logo.svg"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+<style>
+  :root{
+    --bg:#fbf3e2; --cream:#f7e9c8; --ink:#0e0d10; --ink-soft:#3d3a45;
+    --muted:#8a8474; --line:#e8dcbe;
+    --accent:#ff5a2f; --accent-soft:#ffd9c9; --accent-deep:#c43512;
+    --yellow:#f4c64f;
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--bg);color:var(--ink);font-family:'Nunito',system-ui,sans-serif;font-weight:700;-webkit-font-smoothing:antialiased;line-height:1.5}
+  body{position:relative;overflow-x:hidden}
+  body::before{content:'';position:fixed;inset:0;pointer-events:none;opacity:.4;z-index:0;
+    background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+    background-size:32px 32px}
+  a{color:inherit;text-decoration:none}
+  button{font-family:inherit;border:none;cursor:pointer}
+  em{font-style:italic;font-weight:400}
+
+  /* Coords stamp */
+  .coords{position:fixed;top:120px;left:40px;font-size:11px;font-weight:800;letter-spacing:.2em;color:var(--muted);transform:rotate(-90deg);transform-origin:left top;z-index:1}
+
+  /* Header */
+  header{position:sticky;top:0;z-index:10;padding:18px 40px;background:var(--bg);border-bottom:2px solid var(--ink);display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand-mark{background:var(--ink);padding:6px;border-radius:12px;display:grid;place-items:center}
+  .brand-name{font-size:22px;font-weight:900;letter-spacing:-.03em}
+  .brand-name span{color:var(--accent)}
+  nav.nav{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  nav.nav a{font-size:13px;font-weight:800;padding:8px 14px;border:2px solid transparent;border-radius:999px;color:var(--ink)}
+  nav.nav a:hover{border-color:var(--ink)}
+  .btn-google-header{background:var(--accent);color:var(--ink);border:2px solid var(--ink);border-radius:999px;padding:10px 16px;font-size:13px;font-weight:900;display:inline-flex;align-items:center;gap:8px;box-shadow:3px 3px 0 var(--ink);transition:transform .08s}
+  .btn-google-header:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--ink)}
+  .btn-google-header .gico{display:inline-flex;background:#fff;border-radius:4px;padding:2px}
+
+  /* Sections */
+  section{position:relative;z-index:1}
+  .wrap{max-width:1320px;margin:0 auto;padding:60px 40px}
+  .wrap-narrow{max-width:1100px}
+
+  /* Hero */
+  .badge{display:inline-flex;align-items:center;gap:8px;background:var(--ink);color:var(--bg);padding:8px 14px;border-radius:999px;font-size:11px;font-weight:900;letter-spacing:.08em;margin-bottom:32px}
+  .badge .dot{width:6px;height:6px;background:var(--accent);border-radius:50%}
+  h1.hero-title{font-size:clamp(56px,10vw,156px);font-weight:900;letter-spacing:-.06em;line-height:.85;margin-bottom:24px}
+  .h1-pill{display:inline-block;position:relative}
+  .h1-pill::before{content:'';position:absolute;inset:-8px -12px;background:var(--accent);border-radius:16px;transform:rotate(-2deg);z-index:0}
+  .h1-pill > span{position:relative;color:var(--bg)}
+  h1 .em{font-style:italic;font-weight:400;color:var(--accent-deep)}
+
+  .hero-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:48px;align-items:flex-start;margin-top:40px}
+  .hero-lede{font-size:19px;line-height:1.55;color:var(--ink-soft);font-weight:600;max-width:540px;margin-bottom:28px}
+
+  .login-card{background:var(--ink);color:var(--bg);border-radius:18px;padding:24px;border:2px solid var(--ink);box-shadow:8px 8px 0 var(--accent);max-width:520px;margin-bottom:16px}
+  .login-card-row{display:flex;align-items:flex-start;gap:16px}
+  .login-card-icon{background:var(--accent);color:var(--ink);width:44px;height:44px;border-radius:12px;display:grid;place-items:center;flex-shrink:0}
+  .login-card h3{font-size:17px;font-weight:900;letter-spacing:-.01em;margin-bottom:4px}
+  .login-card p{font-size:13.5px;color:rgba(255,255,255,.7);line-height:1.5;font-weight:600}
+  .btn-google-card{width:100%;margin-top:18px;background:#fff;color:#3c4043;border-radius:12px;padding:14px 18px;font-size:15px;font-weight:800;display:inline-flex;align-items:center;justify-content:center;gap:12px}
+  .btn-google-card:disabled{opacity:.6;cursor:default}
+  .btn-google-card .arrow{margin-left:auto;font-size:16px}
+  .login-privacy{display:flex;align-items:center;gap:8px;margin-top:14px;font-size:11.5px;font-weight:700;color:rgba(255,255,255,.55)}
+  .login-error{display:none;color:#ffb4b4;font-size:12px;margin-top:10px;font-weight:700}
+
+  .guest-link{display:inline-block;font-size:13.5px;font-weight:800;color:var(--muted);letter-spacing:.02em;text-decoration:underline;text-underline-offset:4px;background:none;padding:0;cursor:pointer}
+  .guest-link:hover{color:var(--ink)}
+
+  .stats{display:grid;grid-template-columns:repeat(3,1fr);margin-top:40px;border:2px solid var(--ink);border-radius:16px;overflow:hidden;background:var(--cream);max-width:540px}
+  .stats > div{padding:20px 22px;border-right:2px solid var(--ink)}
+  .stats > div:last-child{border-right:none}
+  .stats .n{font-size:36px;font-weight:900;letter-spacing:-.03em;line-height:1}
+  .stats .l{font-size:13px;font-weight:800;margin-top:6px}
+  .stats .sub{font-size:11px;font-weight:700;color:var(--muted);letter-spacing:.05em;margin-top:2px}
+
+  /* Big compass */
+  .compass-wrap{position:relative;align-self:center;margin-top:20px}
+  .compass{position:relative;aspect-ratio:1;max-width:460px;background:var(--ink);border-radius:50%;padding:24px;box-shadow:12px 12px 0 var(--accent);display:grid;place-items:center}
+  .compass::before{content:'';position:absolute;inset:14px;border-radius:50%;border:2px dashed var(--bg);opacity:.4}
+  .compass svg{width:84%;height:auto}
+  .compass-letter{position:absolute;color:var(--bg);font-size:14px;font-weight:900;letter-spacing:.1em}
+  .compass-letter.n{top:30px;left:50%;transform:translateX(-50%)}
+  .compass-letter.e{right:30px;top:50%;transform:translateY(-50%)}
+  .compass-letter.s{bottom:30px;left:50%;transform:translateX(-50%)}
+  .compass-letter.w{left:30px;top:50%;transform:translateY(-50%)}
+  .sticker{position:absolute;top:0;right:-20px;background:var(--yellow);color:var(--ink);padding:12px 16px;border-radius:16px;font-size:13px;font-weight:900;line-height:1.1;border:2px solid var(--ink);transform:rotate(8deg);box-shadow:4px 4px 0 var(--ink)}
+  .sticker .sm{font-size:11px;letter-spacing:.08em;margin-bottom:2px}
+  .sticker .lg{font-size:16px}
+  .coord-tag{position:absolute;bottom:-14px;left:30px;background:var(--bg);color:var(--ink);padding:6px 12px;font-size:11px;font-weight:900;letter-spacing:.1em;border:2px solid var(--ink);border-radius:8px}
+
+  /* Section heads */
+  .eyebrow{font-size:12px;font-weight:900;letter-spacing:.15em;color:var(--accent);margin-bottom:12px}
+  h2{font-size:56px;font-weight:900;letter-spacing:-.04em;line-height:.98}
+  .section-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:36px;flex-wrap:wrap}
+  .pill-rotate{background:var(--ink);color:var(--bg);padding:12px 18px;border-radius:12px;font-size:13px;font-weight:800;transform:rotate(-2deg)}
+
+  /* Feature grid */
+  .features{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+  .feat{border:2px solid var(--ink);border-radius:18px;padding:24px 22px;display:flex;flex-direction:column;min-height:240px;box-shadow:4px 4px 0 var(--ink)}
+  .feat:nth-child(1){background:var(--cream)}
+  .feat:nth-child(2){background:var(--accent-soft)}
+  .feat:nth-child(3){background:var(--bg)}
+  .feat:nth-child(4){background:var(--yellow)}
+  .feat .tag{font-size:11px;font-weight:900;letter-spacing:.12em;color:var(--muted);margin-bottom:14px}
+  .feat .icon{margin-bottom:12px}
+  .feat h3{font-size:22px;font-weight:900;letter-spacing:-.02em;margin-bottom:8px}
+  .feat p{font-size:14px;color:var(--ink-soft);line-height:1.55;font-weight:600}
+  .feat .more{margin-top:auto;padding-top:16px;font-size:13px;font-weight:900;color:var(--ink);display:flex;align-items:center;gap:6px}
+
+  /* Login section big */
+  .login-section{background:var(--ink);color:var(--bg);border-radius:24px;padding:56px 48px;border:2px solid var(--ink);box-shadow:10px 10px 0 var(--accent);position:relative;overflow:hidden}
+  .login-section::before,.login-section::after{content:'';position:absolute;border:2px dashed var(--accent);border-radius:50%;pointer-events:none}
+  .login-section::before{right:-100px;bottom:-100px;width:360px;height:360px;opacity:.4}
+  .login-section::after{right:-50px;bottom:-50px;width:260px;height:260px;opacity:.25}
+  .login-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:48px;align-items:center;position:relative;z-index:1}
+  .login-section .eyebrow{margin-bottom:16px}
+  .login-section h2{margin-bottom:20px}
+  .login-section h2 em{color:var(--accent)}
+  .login-section .lede{font-size:16px;color:rgba(255,255,255,.75);line-height:1.6;font-weight:600;margin-bottom:28px;max-width:460px}
+  .btn-google-big{background:var(--accent);color:var(--ink);border-radius:14px;padding:18px 28px;font-size:16px;font-weight:900;display:inline-flex;align-items:center;gap:14px;box-shadow:6px 6px 0 var(--bg);transition:transform .08s}
+  .btn-google-big:active{transform:translate(3px,3px);box-shadow:3px 3px 0 var(--bg)}
+  .btn-google-big .gico{display:inline-flex;background:#fff;border-radius:6px;padding:4px}
+  .btn-google-big .arrow-circle{background:var(--ink);color:var(--accent);width:28px;height:28px;border-radius:50%;display:grid;place-items:center;font-size:14px}
+  .perks{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .perk{background:rgba(255,255,255,.05);border:2px solid rgba(255,255,255,.12);border-radius:14px;padding:18px}
+  .perk-icon{width:38px;height:38px;background:var(--accent);color:var(--ink);border-radius:10px;display:grid;place-items:center;margin-bottom:12px}
+  .perk h4{font-size:14px;font-weight:900;letter-spacing:-.01em;margin-bottom:4px}
+  .perk p{font-size:12.5px;color:rgba(255,255,255,.65);line-height:1.5;font-weight:600}
+  .small-priv{display:flex;align-items:center;gap:8px;margin-top:20px;font-size:12px;font-weight:700;color:rgba(255,255,255,.55)}
+
+  /* FAQ */
+  .faq-list{display:flex;flex-direction:column;gap:8px}
+  .faq{background:var(--cream);color:var(--ink);border:2px solid var(--ink);border-radius:14px;padding:18px 22px;cursor:pointer;transition:background .15s,box-shadow .15s}
+  .faq[open]{background:var(--accent);box-shadow:4px 4px 0 var(--ink)}
+  .faq summary{list-style:none;display:flex;align-items:center;justify-content:space-between;gap:16px}
+  .faq summary::-webkit-details-marker{display:none}
+  .faq summary .q{font-size:17px;font-weight:900;letter-spacing:-.01em}
+  .faq summary .toggle{width:32px;height:32px;border-radius:50%;border:2px solid var(--ink);background:transparent;color:var(--ink);display:grid;place-items:center;font-size:18px;font-weight:900;flex-shrink:0;transition:all .15s}
+  .faq[open] summary .toggle{background:var(--ink);color:var(--accent);border:none}
+  .faq summary .toggle::before{content:'+'}
+  .faq[open] summary .toggle::before{content:'−'}
+  .faq .a{font-size:14.5px;line-height:1.6;margin-top:12px;font-weight:600}
+
+  .text-center{text-align:center}
+  .text-center .section-head{justify-content:center;flex-direction:column;align-items:center}
+
+  /* Contact */
+  .contact{background:var(--accent);color:var(--ink);border-radius:24px;padding:48px;border:2px solid var(--ink);box-shadow:8px 8px 0 var(--ink);display:grid;grid-template-columns:1fr 1fr;gap:48px}
+  .contact h2{margin-bottom:16px;font-size:48px}
+  .contact .lede{font-size:16px;line-height:1.55;font-weight:700;max-width:380px}
+  .contact form{display:flex;flex-direction:column;gap:12px}
+  .contact input,.contact textarea{padding:16px 18px;border-radius:12px;border:2px solid var(--ink);font-family:inherit;font-size:14px;font-weight:700;background:var(--bg);color:var(--ink)}
+  .contact textarea{resize:none}
+  .contact button{background:var(--ink);color:var(--bg);border:2px solid var(--ink);border-radius:12px;padding:16px 22px;font-size:14px;font-weight:900;align-self:flex-start;display:inline-flex;align-items:center;gap:10px}
+  .contact button .arrow-circle{background:var(--accent);color:var(--ink);width:24px;height:24px;border-radius:50%;display:grid;place-items:center;font-size:12px}
+
+  /* Footer */
+  footer{position:relative;z-index:1;border-top:2px solid var(--ink);padding:24px 40px;background:var(--bg)}
+  .footer-row{max-width:1320px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:12px;font-weight:800;color:var(--ink-soft);flex-wrap:wrap}
+  .footer-row .right{color:var(--muted)}
+
+  /* Loading state */
+  body.loading{cursor:wait}
+  body.loading .btn-google-card,body.loading .btn-google-big,body.loading .btn-google-header{opacity:.6;pointer-events:none}
+
+  /* Responsive */
+  @media(max-width:1000px){
+    .hero-grid,.login-grid,.contact{grid-template-columns:1fr}
+    .features{grid-template-columns:repeat(2,1fr)}
+    .login-section{padding:40px 32px}
+    .stats{max-width:none}
+  }
+  @media(max-width:640px){
+    .wrap{padding:40px 20px}
+    header{padding:14px 20px}
+    .features{grid-template-columns:1fr}
+    .perks{grid-template-columns:1fr}
+    .stats{grid-template-columns:1fr;}
+    .stats > div{border-right:none;border-bottom:2px solid var(--ink)}
+    .stats > div:last-child{border-bottom:none}
+    h2{font-size:40px}
+    .contact{padding:32px 24px}
+    .contact h2{font-size:36px}
+    .coords{display:none}
+    nav.nav a:not(.btn-google-header){display:none}
+  }
+</style>
 </head>
-
 <body>
 
-  <!-- ── LOGIN ── -->
-  <div id="fa-login">
-    <div class="fa-login-card">
-      <div class="fa-login-logo">
-        <svg width="34" height="34" viewBox="0 0 32 32" fill="none">
-          <circle cx="16" cy="16" r="14" fill="#ffffff" stroke="#1a2024" stroke-width="2" />
-          <path d="M16 7 L20 16 L16 15 Z" fill="#ef5a3f" stroke="#1a2024" stroke-width="1" stroke-linejoin="round" />
-          <path d="M16 25 L12 16 L16 17 Z" fill="#f1ece2" stroke="#1a2024" stroke-width="1" stroke-linejoin="round" />
-          <circle cx="16" cy="16" r="1.4" fill="#1a2024" />
-        </svg>
-        FMAtlas
-      </div>
-      <p>Log in om je voortgang op te slaan, je reeks bij te houden en het leaderboard te zien.</p>
-      <button class="fa-google-btn" id="google-login-btn" onclick="signInWithGoogle()">
-        <svg width="18" height="18" viewBox="0 0 48 48">
-          <path fill="#EA4335"
-            d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z" />
-          <path fill="#4285F4"
-            d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z" />
-          <path fill="#FBBC05"
-            d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z" />
-          <path fill="#34A853"
-            d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.18 1.48-4.97 2.36-8.16 2.36-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z" />
-        </svg>
-        Inloggen met Google
-      </button>
-      <div class="fa-login-error" id="login-error">Inloggen mislukt. Probeer het opnieuw.</div>
-      <button class="fa-guest-link" onclick="continueAsGuest()">Doorgaan zonder inloggen</button>
-    </div>
-  </div>
+<div class="coords">52°N · HAN · NIJMEGEN</div>
 
-  <!-- ── APP ── -->
-  <div id="fa-app" style="display:none">
-    <div id="fa-header-slot"></div>
+<header>
+  <a href="#" class="brand">
+    <span class="brand-mark">
+      <svg width="28" height="28" viewBox="0 0 200 200" fill="none" aria-hidden="true">
+        <g stroke="#ff5a2f" stroke-width="3" stroke-linecap="round" opacity=".6">
+          <line x1="100" y1="14" x2="100" y2="28" stroke-width="4"/>
+          <line x1="100" y1="172" x2="100" y2="186"/>
+          <line x1="14" y1="100" x2="28" y2="100"/>
+          <line x1="172" y1="100" x2="186" y2="100"/>
+          <line x1="40" y1="40" x2="49" y2="49"/>
+          <line x1="151" y1="49" x2="160" y2="40"/>
+          <line x1="40" y1="160" x2="49" y2="151"/>
+          <line x1="151" y1="151" x2="160" y2="160"/>
+        </g>
+        <circle cx="100" cy="100" r="74" stroke="#ff5a2f" stroke-width="5" fill="none"/>
+        <path d="M100 42 L74 130 L100 114 Z" fill="#fbf3e2"/>
+        <path d="M100 42 L126 130 L100 114 Z" fill="#f4c64f"/>
+        <circle cx="100" cy="114" r="5" fill="#fbf3e2"/>
+      </svg>
+    </span>
+    <span class="brand-name">FM<span>·</span>Atlas</span>
+  </a>
+  <nav class="nav">
+    <a href="#wat">Wat zit erop</a>
+    <a href="#inloggen">Inloggen</a>
+    <a href="#faq">FAQ</a>
+    <a href="#contact">Contact</a>
+    <button class="btn-google-header" data-google-login aria-label="Inloggen met Google">
+      <span class="gico"><svg width="14" height="14" viewBox="0 0 48 48" aria-hidden="true">
+        <path fill="#4285F4" d="M45.12 24.5c0-1.56-.14-3.06-.4-4.5H24v8.51h11.84c-.51 2.75-2.06 5.08-4.39 6.64v5.52h7.11c4.16-3.83 6.56-9.47 6.56-16.17z"/>
+        <path fill="#34A853" d="M24 46c5.94 0 10.92-1.97 14.56-5.33l-7.11-5.52c-1.97 1.32-4.49 2.1-7.45 2.1-5.73 0-10.58-3.87-12.31-9.07H4.34v5.7C7.96 41.07 15.4 46 24 46z"/>
+        <path fill="#FBBC05" d="M11.69 28.18c-.44-1.32-.69-2.73-.69-4.18s.25-2.86.69-4.18v-5.7H4.34C2.85 17.09 2 20.45 2 24s.85 6.91 2.34 9.88l7.35-5.7z"/>
+        <path fill="#EA4335" d="M24 10.75c3.23 0 6.13 1.11 8.41 3.29l6.31-6.31C34.91 4.18 29.93 2 24 2 15.4 2 7.96 6.93 4.34 14.12l7.35 5.7c1.73-5.2 6.58-9.07 12.31-9.07z"/>
+      </svg></span>
+      Inloggen met Google
+    </button>
+  </nav>
+</header>
 
-    <div class="home-wrap">
-      <!-- HERO -->
-      <div class="home-hero">
-        <div>
-          <div class="home-hero-badge" id="hero-badge">GA VERDER WAAR JE WAS</div>
-          <h1 id="hero-title">
-            Goedemiddag <span id="hero-name">student</span>,<br />
-            <em id="hero-section">Evenementenlogistiek</em> wacht op je.
-          </h1>
-          <p id="hero-sub">
-            Kies een vak om verder te gaan met je samenvatting, oefen flashcards of test jezelf met een oefentoets.
-          </p>
-          <div class="home-hero-progress" id="hero-progress-wrap" style="display:none">
-            <div class="home-hero-progress-bar">
-              <div id="hero-progress-fill" style="width:0%"></div>
+<!-- HERO -->
+<section>
+  <div class="wrap">
+    <div class="badge"><span class="dot"></span>GRATIS · OPEN VOOR IEDEREEN · GEMAAKT DOOR EEN MEDESTUDENT</div>
+    <h1 class="hero-title">JOUW <span class="h1-pill"><span>FM-VAK</span></span><br/>ZONDER<br/>DE <em class="em">paniek</em>.</h1>
+    <div class="hero-grid">
+      <div>
+        <p class="hero-lede">Samenvattingen, flashcards en oefentoetsen voor élk vak van Facilitair Management aan de HAN. Één plek. Door studenten, voor studenten.</p>
+
+        <div class="login-card">
+          <div class="login-card-row">
+            <div class="login-card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M5 13 L9 17 L19 7" stroke="#0e0d10" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div style="flex:1">
+              <h3>Begin met inloggen</h3>
+              <p>Bewaar je punten, kom op het leaderboard en help mee de site beter te maken.</p>
             </div>
-            <span style="font-size:13px;font-weight:800;font-variant-numeric:tabular-nums"
-              id="hero-progress-pct">0%</span>
-            <span style="font-size:12px;color:rgba(255,255,255,0.5);font-weight:600" id="hero-progress-note"></span>
           </div>
-          <div class="home-hero-cta">
-            <a class="fa-btn fa-btn-accent" id="hero-btn-continue" href="#">
-              <span data-fa-icon="play" data-fa-size="15"></span>
-              <span id="hero-btn-label">Kies een vak</span>
-            </a>
-            <a class="fa-btn fa-btn-ghost" href="#vakken">
-              <span data-fa-icon="grid" data-fa-size="15" data-fa-fallback></span>
-              Alle vakken
-            </a>
-          </div>
+          <button class="btn-google-card" data-google-login>
+            <svg width="18" height="18" viewBox="0 0 48 48" aria-hidden="true">
+              <path fill="#4285F4" d="M45.12 24.5c0-1.56-.14-3.06-.4-4.5H24v8.51h11.84c-.51 2.75-2.06 5.08-4.39 6.64v5.52h7.11c4.16-3.83 6.56-9.47 6.56-16.17z"/>
+              <path fill="#34A853" d="M24 46c5.94 0 10.92-1.97 14.56-5.33l-7.11-5.52c-1.97 1.32-4.49 2.1-7.45 2.1-5.73 0-10.58-3.87-12.31-9.07H4.34v5.7C7.96 41.07 15.4 46 24 46z"/>
+              <path fill="#FBBC05" d="M11.69 28.18c-.44-1.32-.69-2.73-.69-4.18s.25-2.86.69-4.18v-5.7H4.34C2.85 17.09 2 20.45 2 24s.85 6.91 2.34 9.88l7.35-5.7z"/>
+              <path fill="#EA4335" d="M24 10.75c3.23 0 6.13 1.11 8.41 3.29l6.31-6.31C34.91 4.18 29.93 2 24 2 15.4 2 7.96 6.93 4.34 14.12l7.35 5.7c1.73-5.2 6.58-9.07 12.31-9.07z"/>
+            </svg>
+            Inloggen met Google
+            <span class="arrow">→</span>
+          </button>
+          <div class="login-privacy"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><rect x="5" y="11" width="14" height="10" rx="2" stroke="rgba(255,255,255,.55)" stroke-width="2"/><path d="M8 11 V8 a4 4 0 0 1 8 0 V11" stroke="rgba(255,255,255,.55)" stroke-width="2" fill="none"/></svg> Alleen je naam + email. Niks doorverkocht. Uitloggen kan altijd.</div>
+          <div class="login-error" data-login-error>Inloggen mislukt. Probeer opnieuw.</div>
         </div>
 
-        <div class="home-mascot">
-          <svg width="180" height="180" viewBox="0 0 200 200" fill="none">
-            <circle cx="100" cy="105" r="88" fill="#fde4dd" opacity="0.15" />
-            <circle cx="100" cy="105" r="72" fill="#fff" stroke="#1a2024" stroke-width="2.5" />
-            <g stroke="#4a5258" stroke-linecap="round">
-              <line x1="100" y1="43" x2="100" y2="50" stroke-width="2.5" />
-              <line x1="100" y1="160" x2="100" y2="167" stroke-width="2.5" />
-              <line x1="38" y1="105" x2="45" y2="105" stroke-width="2.5" />
-              <line x1="155" y1="105" x2="162" y2="105" stroke-width="2.5" />
+        <button class="guest-link" data-continue-guest>of bekijk eerst rond zonder account →</button>
+
+        <div class="stats">
+          <div><div class="n">8</div><div class="l">vakken</div><div class="sub">P1 – P4</div></div>
+          <div><div class="n">600+</div><div class="l">flashcards</div><div class="sub">tot in detail</div></div>
+          <div><div class="n">0€</div><div class="l">altijd</div><div class="sub">zonder paywall</div></div>
+        </div>
+      </div>
+
+      <div class="compass-wrap">
+        <div class="compass" aria-hidden="true">
+          <svg viewBox="0 0 200 200" fill="none">
+            <g stroke="#ff5a2f" stroke-width="3" stroke-linecap="round" opacity=".6">
+              <line x1="100" y1="14" x2="100" y2="28" stroke-width="4"/>
+              <line x1="100" y1="172" x2="100" y2="186"/>
+              <line x1="14" y1="100" x2="28" y2="100"/>
+              <line x1="172" y1="100" x2="186" y2="100"/>
+              <line x1="40" y1="40" x2="49" y2="49"/>
+              <line x1="151" y1="49" x2="160" y2="40"/>
+              <line x1="40" y1="160" x2="49" y2="151"/>
+              <line x1="151" y1="151" x2="160" y2="160"/>
             </g>
-            <text x="100" y="58" text-anchor="middle" font-size="11" font-weight="800" fill="#ef5a3f"
-              font-family="Nunito, sans-serif">N</text>
-            <path d="M100 65 L108 105 L100 100 Z" fill="#ef5a3f" stroke="#1a2024" stroke-width="1.5"
-              stroke-linejoin="round" />
-            <path d="M100 145 L92 105 L100 110 Z" fill="#f1ece2" stroke="#1a2024" stroke-width="1.5"
-              stroke-linejoin="round" />
-            <circle cx="100" cy="105" r="4" fill="#1a2024" />
-            <circle cx="82" cy="88" r="1.8" fill="#1a2024" />
-            <circle cx="118" cy="88" r="1.8" fill="#1a2024" />
-            <path d="M93 97 Q100 101 107 97" stroke="#1a2024" stroke-width="1.5" fill="none" stroke-linecap="round" />
+            <circle cx="100" cy="100" r="74" stroke="#ff5a2f" stroke-width="5" fill="none"/>
+            <path d="M100 42 L74 130 L100 114 Z" fill="#fbf3e2"/>
+            <path d="M100 42 L126 130 L100 114 Z" fill="#f4c64f"/>
+            <circle cx="100" cy="114" r="5" fill="#fbf3e2"/>
           </svg>
+          <span class="compass-letter n">N</span>
+          <span class="compass-letter e">E</span>
+          <span class="compass-letter s">S</span>
+          <span class="compass-letter w">W</span>
         </div>
-      </div>
-
-      <!-- GRID -->
-      <div class="home-grid">
-        <!-- LEFT: vakken + contact -->
-        <div>
-          <h2 class="section-title" id="vakken">Jouw vakken</h2>
-
-          <div id="vakken-list"></div>
-
-          <!-- CONTACT -->
-          <div class="fa-card" style="margin-top:8px">
-            <div class="fa-card-title">
-              <span data-fa-icon="chat" data-fa-size="16" style="color:var(--accent)"></span>
-              Stel een vraag
-            </div>
-            <p style="font-size:13px;color:var(--muted);font-weight:600;margin-bottom:14px">
-              Iets onduidelijk, tip of fout gespot? Laat het weten.
-            </p>
-            <form id="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST"
-              onsubmit="handleFormSubmit(event)">
-              <div class="contact-grid">
-                <input class="form-input" name="naam" placeholder="Je naam" required />
-                <input class="form-input" name="email" type="email" placeholder="E-mailadres" required />
-              </div>
-              <textarea class="form-textarea" name="bericht" placeholder="Typ hier je vraag…" required
-                style="margin-bottom:12px"></textarea>
-              <div style="display:flex;align-items:center;flex-wrap:wrap">
-                <button class="fa-btn fa-btn-primary" type="submit">
-                  <span data-fa-icon="send" data-fa-size="14"></span>
-                  Verstuur bericht
-                </button>
-                <span class="form-success" id="form-success">Verstuurd! Je hoort snel van me.</span>
-              </div>
-            </form>
-          </div>
-        </div>
-
-        <!-- RIGHT: sidebar -->
-        <div style="display:flex;flex-direction:column;gap:16px">
-          <!-- STREAK -->
-          <div class="streak-card">
-            <div class="streak-top">
-              <div>
-                <div class="streak-label">
-                  <span data-fa-icon="flame" data-fa-size="13" style="color:var(--accent)"></span>
-                  HUIDIGE REEKS
-                </div>
-                <div class="streak-num" id="streak-num">0</div>
-                <div class="streak-label-sub" id="streak-days-label">dagen op rij</div>
-              </div>
-              <div class="streak-icon-big">
-                <span data-fa-icon="flame" data-fa-size="26" style="color:var(--accent)"></span>
-              </div>
-            </div>
-            <div class="streak-week" id="streak-week"></div>
-            <div class="streak-hint" id="streak-hint">
-              <strong>Nog één sessie</strong> vandaag en je reeks blijft staan.
-            </div>
-          </div>
-
-          <!-- LEADERBOARD -->
-          <div class="fa-card">
-            <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:14px">
-              <div class="fa-card-title" style="margin-bottom:0">
-                <span data-fa-icon="trophy" data-fa-size="16"></span>
-                Leaderboard
-              </div>
-              <span style="font-size:11px;color:var(--muted);font-weight:700;letter-spacing:0.04em">DEZE WEEK</span>
-            </div>
-            <div id="leaderboard-list"></div>
-            <p id="lb-empty"
-              style="display:none;font-size:12px;color:var(--muted);font-weight:600;text-align:center;padding:12px 0">
-              Nog geen scores — maak een oefentoets om op het leaderboard te komen!
-            </p>
-          </div>
-
-          <!-- KOFI -->
-          <div class="kofi-card">
-            <div class="fa-card-title" style="margin-bottom:10px">
-              <span
-                style="width:36px;height:36px;background:var(--surface);color:var(--accent);border-radius:10px;display:grid;place-items:center;border:1.5px solid rgba(239,90,63,0.4)">
-                <span data-fa-icon="coffee" data-fa-size="18"></span>
-              </span>
-              <span style="display:flex;flex-direction:column;gap:1px">
-                Trakteer op koffie
-                <span style="font-size:11px;color:var(--accent-deep);font-weight:700">Optioneel — altijd
-                  gewaardeerd</span>
-              </span>
-            </div>
-            <p style="font-size:12.5px;color:var(--ink-soft);font-weight:600;line-height:1.5;margin-bottom:14px">
-              FMAtlas is gratis voor alle FM-studenten. Helpt het je bij je studie? Dan is een kleine bijdrage
-              erg welkom.
-            </p>
-            <a class="fa-btn fa-btn-primary" href="https://ko-fi.com/davidkoolstra" target="_blank" rel="noopener">
-              Steun op Ko-fi
-              <span data-fa-icon="arrow" data-fa-size="14" data-fa-stroke="2.5"></span>
-            </a>
-          </div>
-
-          <!-- TIP -->
-          <div class="tip-card">
-            <div
-              style="font-size:11px;font-weight:800;color:var(--muted);letter-spacing:0.06em;margin-bottom:8px;display:flex;align-items:center;gap:6px">
-              <span data-fa-icon="sparkle" data-fa-size="13" style="color:var(--accent)"></span>
-              TIP VAN VANDAAG
-            </div>
-            <p style="font-size:13px;color:var(--ink);font-weight:600;line-height:1.5;margin-bottom:10px" id="tip-text">
-              Korte sessies van 10–15 min werken beter dan lange marathons. Doe er vandaag twee.
-            </p>
-            <div style="font-size:11px;color:var(--muted);font-weight:700;display:flex;align-items:center;gap:4px">
-              <span data-fa-icon="clock" data-fa-size="11"></span>
-              volgende tip morgen
-            </div>
-          </div>
-        </div>
+        <div class="sticker"><div class="sm">NIEUW</div><div class="lg">Basis FM B</div></div>
+        <div class="coord-tag">N 51.84° · E 5.86°</div>
       </div>
     </div>
-
-    <footer class="fa-footer">
-      <span>FMAtlas · gemaakt door David Koolstra</span>
-      <span>Facilitair Management · 2026</span>
-    </footer>
   </div>
+</section>
 
-  <script src="js/fmatlas.js"></script>
-  <script>
-    // ── Data ──────────────────────────────────────────────
-    const VAKKEN = [
-      { key: 'evenementenlogistiek', title: 'Evenementenlogistiek', sub: 'Schillenmodel · mobiliteit · toegang', period: 4, active: true, icon: 'event', url: 'evenementenlogistiek.html' },
-      { key: 'projectvaardigheden', title: 'Projectvaardigheden', sub: 'Observeren · interviewen · rapporteren', period: 4, active: true, icon: 'mic', url: 'projectvaardigheden.html' },
-      { key: 'eventmanagement1', title: 'Eventmanagement 1', sub: 'Inleiding op eventprocessen', period: 3, grade: '7,8', icon: 'book', url: 'eventmanagement1.html' },
-      { key: 'facilitaire-inkoop', title: 'Facilitaire Inkoop', sub: 'Inkoop + verbintenissenrecht', period: 3, grade: '6,4', icon: 'cart', url: 'facilitaire-inkoop.html' },
-      { key: 'basis-fm-b', title: 'Basis van FM — B', sub: 'Schoonmaak · Catering · Veiligheidszorg', period: 2, grade: '7,2', icon: 'building', url: 'basis-van-fm-b.html' },
-      { key: 'facilitaire-bedrijfseconomie', title: 'Facilitaire Bedrijfseconomie', sub: 'Begroting & kosten', period: 2, grade: '6,9', icon: 'coin', url: 'bedrijfseconomie.html' },
-      { key: 'basis-fm-a', title: 'Basis van FM — A', sub: 'Introductie beroepsprofiel', period: 1, grade: '7,5', icon: 'compass', url: 'basis-van-fm-a.html' },
-      { key: 'trendwatchers', title: 'Trendwatchers', sub: 'Trends & impact op FM', period: 1, grade: '8,0', icon: 'scope', url: 'trendwatchers.html' },
-    ];
-
-    // ── Firebase ──────────────────────────────────────────
-    const firebaseConfig = {
-      apiKey: "AIzaSyBB397Wk2eqpBjic8E7aGV1mTgIjhQ21a8",
-      authDomain: "fmkompas-ff8bc.firebaseapp.com",
-      projectId: "fmkompas-ff8bc",
-      storageBucket: "fmkompas-ff8bc.firebasestorage.app",
-      messagingSenderId: "487972024689",
-      appId: "1:487972024689:web:712c3117080745d14746d0",
-      measurementId: "G-2TDBKR4DKT"
-    };
-    firebase.initializeApp(firebaseConfig);
-    const auth = firebase.auth();
-    const db = firebase.firestore();
-    const googleProvider = new firebase.auth.GoogleAuthProvider();
-
-    function signInWithGoogle() {
-      const btn = document.getElementById('google-login-btn');
-      const err = document.getElementById('login-error');
-      btn.disabled = true;
-      err.style.display = 'none';
-      auth.signInWithPopup(googleProvider).catch(e => {
-        err.style.display = 'block';
-        btn.disabled = false;
-        console.error(e);
-      });
-    }
-
-    function continueAsGuest() {
-      document.getElementById('fa-login').style.display = 'none';
-      document.getElementById('fa-app').style.display = 'block';
-      initApp(null);
-      renderLeaderboard(null);
-    }
-
-    auth.onAuthStateChanged(async user => {
-      if (user) {
-        document.getElementById('fa-login').style.display = 'none';
-        document.getElementById('fa-app').style.display = 'block';
-        initApp(user);
-        const ref = db.collection('scores').doc(user.uid);
-        const snap = await ref.get();
-        if (!snap.exists) {
-          await ref.set({
-            name: user.displayName || 'Anoniem',
-            pts: faGetXP(),
-            photoURL: user.photoURL || '',
-            updatedAt: firebase.firestore.FieldValue.serverTimestamp()
-          });
-        } else {
-          // sync local XP upward
-          const fsPts = snap.data().pts || 0;
-          if (faGetXP() > fsPts) {
-            await ref.update({ pts: faGetXP(), updatedAt: firebase.firestore.FieldValue.serverTimestamp() });
-          }
-        }
-        renderLeaderboard(user.uid);
-      } else {
-        document.getElementById('fa-login').style.display = 'grid';
-        document.getElementById('fa-app').style.display = 'none';
-        document.getElementById('google-login-btn').disabled = false;
-      }
-    });
-
-    // ── App render ────────────────────────────────────────
-    function initApp(user) {
-      // Header
-      document.getElementById('fa-header-slot').innerHTML = '';
-      document.getElementById('fa-header-slot').appendChild(faRenderHeader({ user }));
-
-      // Hero
-      const firstName = user?.displayName ? user.displayName.split(' ')[0] : 'student';
-      document.getElementById('hero-name').textContent = firstName;
-
-      const last = faGetLastSeen();
-      const progress = faGetProgress();
-      if (last) {
-        document.getElementById('hero-badge').textContent = 'GA VERDER WAAR JE WAS';
-        document.getElementById('hero-title').innerHTML =
-          `Hoi ${firstName},<br/><em>${last.label}</em> wacht op je.`;
-        const pct = progress[last.key] || 0;
-        document.getElementById('hero-progress-wrap').style.display = 'flex';
-        document.getElementById('hero-progress-fill').style.width = pct + '%';
-        document.getElementById('hero-progress-pct').textContent = pct + '%';
-        document.getElementById('hero-progress-note').textContent = '';
-        document.getElementById('hero-btn-continue').href = last.url;
-        document.getElementById('hero-btn-label').textContent = 'Verder gaan';
-        document.getElementById('hero-sub').textContent =
-          'Je stopte in ' + last.label + '. Nog één sessie en je streak blijft staan.';
-      } else {
-        document.getElementById('hero-badge').textContent = 'WELKOM BIJ FMATLAS';
-        document.getElementById('hero-btn-continue').href = '#vakken';
-      }
-
-      // Vakken per periode
-      renderVakken();
-
-      // Streak
-      renderStreak();
-
-      // Mark active (pings the streak)
-      faMarkActiveToday();
-      renderStreak();
-    }
-
-    function renderVakken() {
-      const container = document.getElementById('vakken-list');
-      const progress = faGetProgress();
-      const last = faGetLastSeen();
-      const byPeriod = [4, 3, 2, 1].map(p => ({
-        num: p,
-        note: p === 4 ? 'Lopend · week 6' : 'Afgerond',
-        courses: VAKKEN.filter(v => v.period === p),
-      }));
-
-      container.innerHTML = byPeriod.map(p => `
-    <div class="period-block">
-      <div class="period-head">
-        <span class="period-label">Periode ${p.num}</span>
-        <span class="line"></span>
-        <span class="period-note">${p.note}</span>
+<!-- FEATURES -->
+<section id="wat">
+  <div class="wrap" style="padding-top:80px;padding-bottom:60px">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">→ WAT KUN JE DOEN</div>
+        <h2>Vier manieren om jezelf<br/>door je toetsen te slepen.</h2>
       </div>
-      <div class="vak-list">
-        ${p.courses.map(c => {
-        const pct = c.active ? (progress[c.key] || 0) : 100;
-        const isLast = last && last.key === c.key;
-        return `
-            <a class="vak-card ${isLast ? 'last' : ''}" href="${c.url}" onclick="faMarkLastSeen('${c.key}','${c.title.replace(/'/g, "\\'")}','${c.url}')">
-              ${isLast ? '<span class="vak-card-badge">LAATST OPEN</span>' : ''}
-              <div class="vak-card-top">
-                <span class="vak-icon ${c.active ? 'active' : ''}" data-fa-icon="${c.icon}" data-fa-size="20"></span>
-                <div style="flex:1;min-width:0">
-                  <h3>${c.title}</h3>
-                  <div class="sub">${c.sub}</div>
-                </div>
-                ${c.grade ? `<div class="vak-grade">${c.grade}</div>` : ''}
-              </div>
-              <div class="vak-row">
-                <div class="fa-progress">
-                  <div class="fa-progress-bar ${c.active ? '' : 'neutral'}" style="width:${pct}%"></div>
-                </div>
-                <span class="vak-pct ${c.active ? 'active' : ''}">${pct}%</span>
-              </div>
-              ${c.active ? `
-                <div class="vak-actions">
-                  <span class="fa-btn fa-btn-ghost">
-                    <span data-fa-icon="book" data-fa-size="13"></span> Samenvatting
-                  </span>
-                  <span class="fa-btn fa-btn-ghost">
-                    <span data-fa-icon="cards" data-fa-size="13"></span> Flashcards
-                  </span>
-                </div>` : ''}
-            </a>
-          `;
-      }).join('')}
+      <div class="pill-rotate">kies &amp; combineer →</div>
+    </div>
+    <div class="features">
+      <div class="feat">
+        <div class="tag">LEZEN</div>
+        <div class="icon"><svg width="48" height="48" viewBox="0 0 44 44" fill="none">
+          <rect x="8" y="6" width="24" height="32" rx="3" fill="#fbf3e2" stroke="#0e0d10" stroke-width="2.5"/>
+          <line x1="13" y1="14" x2="27" y2="14" stroke="#0e0d10" stroke-width="2.5" stroke-linecap="round"/>
+          <line x1="13" y1="20" x2="27" y2="20" stroke="#0e0d10" stroke-width="2.5" stroke-linecap="round"/>
+          <line x1="13" y1="26" x2="22" y2="26" stroke="#0e0d10" stroke-width="2.5" stroke-linecap="round"/>
+          <rect x="20" y="22" width="14" height="18" rx="2" fill="#ff5a2f" stroke="#0e0d10" stroke-width="2.5"/>
+          <line x1="24" y1="28" x2="30" y2="28" stroke="#0e0d10" stroke-width="2" stroke-linecap="round"/>
+          <line x1="24" y1="32" x2="30" y2="32" stroke="#0e0d10" stroke-width="2" stroke-linecap="round"/>
+        </svg></div>
+        <h3>Samenvattingen</h3>
+        <p>Korte, duidelijke samenvattingen per vak. Alleen wat je echt moet weten voor de toets.</p>
+        <div class="more">Bekijken <span>→</span></div>
+      </div>
+      <div class="feat">
+        <div class="tag">TRAINEN</div>
+        <div class="icon"><svg width="48" height="48" viewBox="0 0 44 44" fill="none">
+          <rect x="6" y="10" width="20" height="26" rx="3" fill="#fbf3e2" stroke="#0e0d10" stroke-width="2.5" transform="rotate(-8 16 23)"/>
+          <rect x="18" y="8" width="20" height="26" rx="3" fill="#ff5a2f" stroke="#0e0d10" stroke-width="2.5" transform="rotate(8 28 21)"/>
+          <text x="28" y="26" font-family="Nunito,sans-serif" font-weight="900" font-size="14" fill="#0e0d10" text-anchor="middle" transform="rotate(8 28 21)">A</text>
+        </svg></div>
+        <h3>Flashcards</h3>
+        <p>Train begrippen met spaced repetition. Verdien +5 punten per kaart die je goed hebt.</p>
+        <div class="more">Bekijken <span>→</span></div>
+      </div>
+      <div class="feat">
+        <div class="tag">TESTEN</div>
+        <div class="icon"><svg width="48" height="48" viewBox="0 0 44 44" fill="none">
+          <rect x="6" y="6" width="32" height="32" rx="4" fill="#fbf3e2" stroke="#0e0d10" stroke-width="2.5"/>
+          <path d="M13 22 L20 28 L31 16" stroke="#ff5a2f" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg></div>
+        <h3>Oefentoetsen</h3>
+        <p>Tientallen vragen per vak, op meerdere niveaus. Test of je het stof écht beheerst.</p>
+        <div class="more">Bekijken <span>→</span></div>
+      </div>
+      <div class="feat">
+        <div class="tag">WINNEN</div>
+        <div class="icon"><svg width="48" height="48" viewBox="0 0 44 44" fill="none">
+          <path d="M14 8 H30 V18 C30 24 26 28 22 28 C18 28 14 24 14 18 Z" fill="#ff5a2f" stroke="#0e0d10" stroke-width="2.5" stroke-linejoin="round"/>
+          <path d="M14 12 C10 12 8 14 8 17 C8 20 10 22 14 22" stroke="#0e0d10" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+          <path d="M30 12 C34 12 36 14 36 17 C36 20 34 22 30 22" stroke="#0e0d10" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+          <line x1="22" y1="28" x2="22" y2="34" stroke="#0e0d10" stroke-width="2.5" stroke-linecap="round"/>
+          <rect x="14" y="34" width="16" height="4" rx="1" fill="#0e0d10"/>
+          <text x="22" y="20" font-family="Nunito,sans-serif" font-weight="900" font-size="10" fill="#0e0d10" text-anchor="middle">1</text>
+        </svg></div>
+        <h3>Leaderboard</h3>
+        <p>Verzamel punten en zie hoe je het doet ten opzichte van je medestudenten.</p>
+        <div class="more">Bekijken <span>→</span></div>
       </div>
     </div>
-  `).join('');
-      faRenderIcons(container);
-    }
+  </div>
+</section>
 
-    function renderStreak() {
-      const count = faGetStreak();
-      document.getElementById('streak-num').textContent = count;
-      document.getElementById('streak-days-label').textContent = count === 1 ? 'dag' : 'dagen op rij';
-
-      const today = new Date();
-      const dayIdx = (today.getDay() + 6) % 7; // Mon=0..Sun=6
-      const data = faGetStreakData();
-      const lastDate = data.last ? new Date(data.last) : null;
-      const labels = ['M', 'D', 'W', 'D', 'V', 'Z', 'Z'];
-      const weekHtml = labels.map((l, i) => {
-        let cls = 'rest';
-        if (i < dayIdx) {
-          if (lastDate && count > (dayIdx - i)) cls = 'done';
-        } else if (i === dayIdx) {
-          cls = lastDate && lastDate.toDateString() === today.toDateString() ? 'done' : 'today';
-        }
-        return `
-      <div class="streak-day">
-        <div class="streak-day-box ${cls}">
-          ${cls === 'done' ? faIcon('check', { size: 12, stroke: 3, color: '#fff' }) : ''}
+<!-- LOGIN BIG -->
+<section id="inloggen">
+  <div class="wrap" style="padding-top:40px;padding-bottom:80px">
+    <div class="login-section">
+      <div class="login-grid">
+        <div>
+          <div class="eyebrow">⚡ HAAL ER MEER UIT</div>
+          <h2>Log in met Google.<br/><em>Krijg er meer voor terug.</em></h2>
+          <p class="lede">Inloggen duurt twee tellen. Je punten worden bewaard, je kunt je voortgang per vak volgen, en je helpt mee de site beter te maken — want zo zie ik welke vakken het meest gebruikt worden.</p>
+          <button class="btn-google-big" data-google-login>
+            <span class="gico"><svg width="20" height="20" viewBox="0 0 48 48">
+              <path fill="#4285F4" d="M45.12 24.5c0-1.56-.14-3.06-.4-4.5H24v8.51h11.84c-.51 2.75-2.06 5.08-4.39 6.64v5.52h7.11c4.16-3.83 6.56-9.47 6.56-16.17z"/>
+              <path fill="#34A853" d="M24 46c5.94 0 10.92-1.97 14.56-5.33l-7.11-5.52c-1.97 1.32-4.49 2.1-7.45 2.1-5.73 0-10.58-3.87-12.31-9.07H4.34v5.7C7.96 41.07 15.4 46 24 46z"/>
+              <path fill="#FBBC05" d="M11.69 28.18c-.44-1.32-.69-2.73-.69-4.18s.25-2.86.69-4.18v-5.7H4.34C2.85 17.09 2 20.45 2 24s.85 6.91 2.34 9.88l7.35-5.7z"/>
+              <path fill="#EA4335" d="M24 10.75c3.23 0 6.13 1.11 8.41 3.29l6.31-6.31C34.91 4.18 29.93 2 24 2 15.4 2 7.96 6.93 4.34 14.12l7.35 5.7c1.73-5.2 6.58-9.07 12.31-9.07z"/>
+            </svg></span>
+            Inloggen met Google
+            <span class="arrow-circle">→</span>
+          </button>
+          <div class="small-priv">🔒 Alleen naam + email. Niks doorverkocht. — David</div>
         </div>
-        <span>${l}</span>
-      </div>`;
-      }).join('');
-      document.getElementById('streak-week').innerHTML = weekHtml;
+        <div class="perks">
+          <div class="perk">
+            <div class="perk-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+              <rect x="3" y="3" width="18" height="18" rx="2" stroke="#0e0d10" stroke-width="2" fill="none"/>
+              <path d="M8 3 v5 h8 v-5" stroke="#0e0d10" stroke-width="2" fill="none" stroke-linejoin="round"/>
+              <path d="M8 13 h8 v6 h-8 z" stroke="#0e0d10" stroke-width="2" fill="none" stroke-linejoin="round"/>
+            </svg></div>
+            <h4>Je punten bewaard</h4>
+            <p>Geen verlies van progressie als je je laptop dichtklapt.</p>
+          </div>
+          <div class="perk">
+            <div class="perk-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+              <path d="M8 4 H16 V10 C16 13 14 15 12 15 C10 15 8 13 8 10 Z" stroke="#0e0d10" stroke-width="2" fill="none" stroke-linejoin="round"/>
+              <path d="M8 6 C5 6 4 7 4 9 C4 11 5 12 8 12" stroke="#0e0d10" stroke-width="2" fill="none" stroke-linecap="round"/>
+              <path d="M16 6 C19 6 20 7 20 9 C20 11 19 12 16 12" stroke="#0e0d10" stroke-width="2" fill="none" stroke-linecap="round"/>
+              <line x1="12" y1="15" x2="12" y2="19" stroke="#0e0d10" stroke-width="2"/>
+              <line x1="8" y1="20" x2="16" y2="20" stroke="#0e0d10" stroke-width="2" stroke-linecap="round"/>
+            </svg></div>
+            <h4>Op het leaderboard</h4>
+            <p>Strijd mee met de top 10 van je jaargang.</p>
+          </div>
+          <div class="perk">
+            <div class="perk-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+              <circle cx="12" cy="12" r="9" stroke="#0e0d10" stroke-width="2"/>
+              <circle cx="12" cy="12" r="5" stroke="#0e0d10" stroke-width="2"/>
+              <circle cx="12" cy="12" r="2" fill="#0e0d10"/>
+            </svg></div>
+            <h4>Verdien punten</h4>
+            <p>+5 per goede flashcard, +2 per oefentoetsvraag.</p>
+          </div>
+          <div class="perk">
+            <div class="perk-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+              <rect x="4" y="14" width="4" height="6" stroke="#0e0d10" stroke-width="2" fill="none"/>
+              <rect x="10" y="9" width="4" height="11" stroke="#0e0d10" stroke-width="2" fill="none"/>
+              <rect x="16" y="5" width="4" height="15" stroke="#0e0d10" stroke-width="2" fill="none"/>
+            </svg></div>
+            <h4>Volg je voortgang</h4>
+            <p>Zie per vak hoe ver je bent en wat je nog moet oefenen.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-      document.getElementById('streak-hint').innerHTML = count === 0
-        ? '<strong>Start je reeks</strong> door een flashcard of oefentoets te maken.'
-        : (count >= 7
-          ? `<strong>Top bezig!</strong> Je bent al ${count} dagen op rij aan het studeren.`
-          : `<strong>Nog één sessie</strong> vandaag en je reeks blijft staan.`);
-    }
+<!-- FAQ -->
+<section id="faq">
+  <div class="wrap wrap-narrow text-center" style="padding-top:40px;padding-bottom:80px">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">? FAQ</div>
+        <h2>Even snel het belangrijkste.</h2>
+      </div>
+    </div>
+    <div class="faq-list" style="text-align:left">
+      <details class="faq" open>
+        <summary><span class="q">Moet ik inloggen?</span><span class="toggle"></span></summary>
+        <p class="a">Nee, je kan zonder account alle samenvattingen, begrippen en flashcards bekijken. Maar inloggen wordt sterk aangeraden — dan worden je punten opgeslagen, kom je op het leaderboard en kan David zien welke vakken het meest worden gebruikt zodat hij die als eerste kan uitbreiden.</p>
+      </details>
+      <details class="faq">
+        <summary><span class="q">Wat doet David met mijn gegevens?</span><span class="toggle"></span></summary>
+        <p class="a">Alleen je naam, profielfoto en email worden opgeslagen — gewoon wat Google deelt. Plus je punten per vak. Dat helpt om te zien welke onderdelen het meest gebruikt worden, zodat de site beter kan worden voor iedereen. Niks wordt doorverkocht of gedeeld.</p>
+      </details>
+      <details class="faq">
+        <summary><span class="q">Is het echt gratis?</span><span class="toggle"></span></summary>
+        <p class="a">Ja, helemaal. FM Atlas is gemaakt door een medestudent (David) om elkaar te helpen. Vind je het nuttig? Een kleine donatie via Ko-fi is altijd welkom, maar nooit verplicht.</p>
+      </details>
+      <details class="faq">
+        <summary><span class="q">Voor welke opleiding is dit bedoeld?</span><span class="toggle"></span></summary>
+        <p class="a">Voor de bachelor Facilitair Management aan de HAN. De vakken en samenvattingen zijn gebaseerd op het curriculum van die opleiding.</p>
+      </details>
+      <details class="faq">
+        <summary><span class="q">Hoe verdien ik punten?</span><span class="toggle"></span></summary>
+        <p class="a">+5 punten voor elke flashcard die je goed beantwoordt, +2 punten per vraag in een oefentoets. Punten worden automatisch opgeslagen als je bent ingelogd.</p>
+      </details>
+      <details class="faq">
+        <summary><span class="q">Wat als ik een fout zie of iets mis?</span><span class="toggle"></span></summary>
+        <p class="a">Heel graag laten weten via het contactformulier hieronder. David werkt de site zelf bij, dus elke tip is goud waard.</p>
+      </details>
+    </div>
+  </div>
+</section>
 
-    // ── Leaderboard ──────────────────────────────────────
-    async function renderLeaderboard(currentUid) {
-      const list = document.getElementById('leaderboard-list');
-      const empty = document.getElementById('lb-empty');
-      try {
-        const snap = await db.collection('scores').orderBy('pts', 'desc').limit(10).get();
-        const entries = snap.docs.map(d => ({ id: d.id, ...d.data() }));
-        if (!entries.length) { list.innerHTML = ''; empty.style.display = 'block'; return; }
-        empty.style.display = 'none';
-        list.innerHTML = entries.map((u, i) => {
-          const initials = (u.name || 'U').split(' ').map(w => w[0]).slice(0, 2).join('').toUpperCase();
-          const avatarHtml = u.photoURL
-            ? `<img src="${u.photoURL}" alt="" referrerpolicy="no-referrer"/>`
-            : initials;
-          const isMe = u.id === currentUid;
-          const rankCls = i === 0 ? 'gold' : i === 1 ? 'silver' : i === 2 ? 'bronze' : '';
-          return `
-        <div class="lb-row ${isMe ? 'me' : ''}">
-          <span class="lb-rank ${rankCls}">${i + 1}</span>
-          <div class="lb-avatar">${avatarHtml}</div>
-          <span class="lb-name ${isMe ? 'me' : ''}">
-            ${u.name || 'Onbekend'}${isMe ? ' <span style="color:var(--accent);font-weight:800">· jij</span>' : ''}
-          </span>
-          <span class="lb-pts">
-            ${faIcon('bolt', { size: 11, color: '#d4a017' })}
-            ${(u.pts || 0).toLocaleString('nl-NL').replace(',', ' ')}
-          </span>
-        </div>`;
-        }).join('');
-      } catch (e) {
-        console.warn('Leaderboard fout:', e);
-        list.innerHTML = '<p style="color:var(--muted);font-size:12px;padding:.5rem 0;font-weight:600">Kon leaderboard niet laden.</p>';
-      }
-    }
+<!-- CONTACT -->
+<section id="contact">
+  <div class="wrap" style="padding-top:40px;padding-bottom:100px">
+    <div class="contact">
+      <div>
+        <div class="eyebrow" style="color:var(--ink)">✉ CONTACT</div>
+        <h2>Mis je iets?<br/>Zie je een fout?</h2>
+        <p class="lede">David bouwt deze site zelf. Elke tip helpt direct voor de volgende toets.</p>
+      </div>
+      <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+        <input type="email" name="email" placeholder="Je email" required/>
+        <textarea name="message" placeholder="Wat is er aan de hand?" rows="3" required></textarea>
+        <button type="submit">Versturen <span class="arrow-circle">→</span></button>
+      </form>
+    </div>
+  </div>
+</section>
 
-    // ── Contact form ────────────────────────────────────
-    function handleFormSubmit(e) {
-      e.preventDefault();
-      const form = document.getElementById('contact-form');
-      const success = document.getElementById('form-success');
-      const btn = form.querySelector('button[type="submit"]');
-      if (form.action.includes('YOUR_FORM_ID')) {
-        success.textContent = 'Stel eerst Formspree in.';
-        success.style.color = '#f59e0b';
-        success.style.display = 'inline';
-        return;
-      }
-      btn.disabled = true; btn.textContent = 'Versturen…';
-      fetch(form.action, { method: 'POST', body: new FormData(form), headers: { 'Accept': 'application/json' } })
-        .then(r => {
-          if (r.ok) { form.reset(); success.textContent = 'Verstuurd! Je hoort snel van me.'; success.style.color = 'var(--ok)'; }
-          else { success.textContent = 'Er ging iets mis.'; success.style.color = '#dc2626'; }
-          success.style.display = 'inline';
-        })
-        .catch(() => { success.textContent = 'Er ging iets mis.'; success.style.color = '#dc2626'; success.style.display = 'inline'; })
-        .finally(() => { btn.disabled = false; btn.innerHTML = '<span data-fa-icon="send" data-fa-size="14"></span> Verstuur bericht'; faRenderIcons(btn); });
-    }
-  </script>
+<footer>
+  <div class="footer-row">
+    <span>FM·Atlas · gemaakt door David Koolstra · 2026</span>
+    <span class="right">niet officieel verbonden met de HAN</span>
+  </div>
+</footer>
 
+<script>
+  // Firebase
+  const firebaseConfig = {
+    apiKey: "AIzaSyBB397Wk2eqpBjic8E7aGV1mTgIjhQ21a8",
+    authDomain: "fmkompas-ff8bc.firebaseapp.com",
+    projectId: "fmkompas-ff8bc",
+    storageBucket: "fmkompas-ff8bc.firebasestorage.app",
+    messagingSenderId: "487972024689",
+    appId: "1:487972024689:web:712c3117080745d14746d0",
+    measurementId: "G-2TDBKR4DKT"
+  };
+  firebase.initializeApp(firebaseConfig);
+  const auth = firebase.auth();
+  const googleProvider = new firebase.auth.GoogleAuthProvider();
+
+  const APP_URL = 'app.html';
+
+  function goToApp(){ window.location.href = APP_URL; }
+
+  function signIn(){
+    document.body.classList.add('loading');
+    document.querySelectorAll('[data-login-error]').forEach(e => e.style.display='none');
+    auth.signInWithPopup(googleProvider).then(()=>{
+      // onAuthStateChanged redirects
+    }).catch(err => {
+      document.body.classList.remove('loading');
+      document.querySelectorAll('[data-login-error]').forEach(e => e.style.display='block');
+      console.error(err);
+    });
+  }
+
+  // Als gebruiker al is ingelogd, meteen door naar de app
+  auth.onAuthStateChanged(user => {
+    if (user) goToApp();
+  });
+
+  document.querySelectorAll('[data-google-login]').forEach(b => b.addEventListener('click', signIn));
+  document.querySelectorAll('[data-continue-guest]').forEach(b => b.addEventListener('click', e => {
+    e.preventDefault();
+    try { sessionStorage.setItem('fa-guest', '1'); } catch(_) {}
+    goToApp();
+  }));
+
+  // Smooth scroll
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const id = a.getAttribute('href').slice(1);
+      const el = document.getElementById(id);
+      if (el) { e.preventDefault(); el.scrollIntoView({behavior:'smooth', block:'start'}); }
+    });
+  });
+</script>
 </body>
-
 </html>

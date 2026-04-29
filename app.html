@@ -1,0 +1,1178 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FMAtlas — studiehulp voor FM</title>
+  <link rel="icon" type="image/svg+xml" href="logo.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/fmatlas.css" />
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+  <style>
+    /* Login screen */
+    #fa-login {
+      position: fixed;
+      inset: 0;
+      background: var(--bg);
+      z-index: 999;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+    }
+
+    .fa-login-card {
+      background: var(--surface);
+      border: 1.5px solid var(--line);
+      border-radius: var(--radius-xl);
+      padding: 40px 36px;
+      width: 100%;
+      max-width: 420px;
+      text-align: center;
+      box-shadow: var(--shadow);
+    }
+
+    .fa-login-logo {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 8px;
+      font-size: 24px;
+      font-weight: 900;
+      letter-spacing: -0.02em;
+    }
+
+    .fa-login-card p {
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 28px;
+      line-height: 1.5;
+    }
+
+    .fa-google-btn {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: #fff;
+      color: #3c4043;
+      border: 1.5px solid #dadce0;
+      border-radius: var(--radius);
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 700;
+      padding: 12px;
+      cursor: pointer;
+      transition: box-shadow 0.15s, border-color 0.15s;
+    }
+
+    .fa-google-btn:hover {
+      border-color: var(--accent);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    }
+
+    .fa-google-btn:disabled {
+      opacity: 0.6;
+      cursor: default;
+    }
+
+    .fa-login-error {
+      color: #dc2626;
+      font-size: 12px;
+      margin-top: 10px;
+      display: none;
+      font-weight: 700;
+    }
+
+    .fa-guest-link {
+      display: block;
+      margin-top: 14px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--muted);
+      cursor: pointer;
+      border: none;
+      background: none;
+      font-family: inherit;
+      width: 100%;
+      padding: 0;
+      transition: color 0.15s;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .fa-guest-link:hover {
+      color: var(--ink);
+    }
+
+    /* Home layout */
+    .home-hero {
+      background: var(--ink);
+      color: var(--surface);
+      border-radius: var(--radius-xl);
+      padding: 36px 40px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 32px;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 28px;
+    }
+
+    .home-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      opacity: 0.06;
+      pointer-events: none;
+      background-image: linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+
+    .home-hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 999px;
+      padding: 5px 12px 5px 10px;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      margin-bottom: 16px;
+      color: var(--accent-soft);
+      position: relative;
+    }
+
+    .home-hero-badge::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      background: var(--accent);
+      border-radius: 50%;
+      box-shadow: 0 0 0 3px rgba(239, 90, 63, 0.2);
+    }
+
+    .home-hero h1 {
+      font-size: 40px;
+      font-weight: 900;
+      line-height: 1.05;
+      letter-spacing: -0.025em;
+      margin-bottom: 10px;
+      position: relative;
+    }
+
+    .home-hero h1 em {
+      color: var(--accent);
+      font-style: normal;
+    }
+
+    .home-hero p {
+      font-size: 15px;
+      color: rgba(255, 255, 255, 0.65);
+      line-height: 1.5;
+      margin-bottom: 20px;
+      max-width: 520px;
+      position: relative;
+    }
+
+    .home-hero-progress {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+      position: relative;
+    }
+
+    .home-hero-progress-bar {
+      flex: 0 1 340px;
+      height: 8px;
+      background: rgba(255, 255, 255, 0.12);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .home-hero-progress-bar>div {
+      height: 100%;
+      background: var(--accent);
+      border-radius: 999px;
+    }
+
+    .home-hero-cta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      position: relative;
+    }
+
+    .home-hero-cta .fa-btn-ghost {
+      border-color: rgba(255, 255, 255, 0.2);
+      color: var(--surface);
+      background: transparent;
+    }
+
+    .home-hero-cta .fa-btn-ghost:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .home-mascot {
+      position: relative;
+      z-index: 1;
+    }
+
+    @media (max-width: 900px) {
+      .home-hero {
+        grid-template-columns: 1fr;
+      }
+
+      .home-mascot {
+        justify-self: center;
+      }
+
+      .home-hero h1 {
+        font-size: 30px;
+      }
+    }
+
+    .home-grid {
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 24px;
+    }
+
+    @media (max-width: 1000px) {
+      .home-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .home-wrap {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 24px 32px 40px;
+    }
+
+    .vak-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    @media (max-width: 700px) {
+      .vak-list {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .vak-card {
+      background: var(--surface);
+      border: 1.5px solid var(--line);
+      border-radius: var(--radius-lg);
+      padding: 16px 18px;
+      cursor: pointer;
+      transition: border-color 0.15s, transform 0.15s;
+      position: relative;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+
+    .vak-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .vak-card.last {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 2px var(--accent-soft);
+    }
+
+    .vak-card-badge {
+      position: absolute;
+      top: -9px;
+      right: 14px;
+      background: var(--accent);
+      color: var(--surface);
+      font-size: 10px;
+      font-weight: 800;
+      padding: 3px 9px;
+      border-radius: 999px;
+      letter-spacing: 0.06em;
+    }
+
+    .vak-card-top {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+
+    .vak-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 11px;
+      flex-shrink: 0;
+      background: var(--surface-alt);
+      color: var(--ink-soft);
+      display: grid;
+      place-items: center;
+      border: 1.5px solid var(--line);
+    }
+
+    .vak-icon.active {
+      background: var(--accent-soft);
+      color: var(--accent-deep);
+      border-color: rgba(239, 90, 63, 0.3);
+    }
+
+    .vak-card h3 {
+      font-size: 15px;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+      margin-bottom: 3px;
+      line-height: 1.2;
+    }
+
+    .vak-card .sub {
+      font-size: 12px;
+      color: var(--muted);
+      font-weight: 600;
+      line-height: 1.4;
+    }
+
+    .vak-grade {
+      flex-shrink: 0;
+      background: var(--surface-alt);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 4px 8px;
+      font-size: 11px;
+      font-weight: 800;
+      color: var(--ink-soft);
+    }
+
+    .vak-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .vak-row .fa-progress {
+      flex: 1;
+    }
+
+    .vak-pct {
+      font-size: 11px;
+      font-weight: 800;
+      color: var(--muted);
+      font-variant-numeric: tabular-nums;
+      width: 32px;
+      text-align: right;
+    }
+
+    .vak-pct.active {
+      color: var(--accent);
+    }
+
+    .vak-actions {
+      display: flex;
+      gap: 6px;
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px dashed var(--line);
+    }
+
+    .vak-actions .fa-btn-ghost {
+      flex: 1;
+      font-size: 11.5px;
+      padding: 6px 10px;
+    }
+
+    /* Sidebar */
+    .streak-card {
+      background: var(--surface);
+      border: 1.5px solid var(--line);
+      border-radius: var(--radius-lg);
+      padding: 22px;
+    }
+
+    .streak-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin-bottom: 14px;
+    }
+
+    .streak-label {
+      font-size: 11px;
+      font-weight: 800;
+      color: var(--accent);
+      letter-spacing: 0.06em;
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .streak-num {
+      font-size: 48px;
+      font-weight: 900;
+      line-height: 1;
+      letter-spacing: -0.03em;
+    }
+
+    .streak-label-sub {
+      font-size: 12px;
+      color: var(--ink-soft);
+      font-weight: 700;
+      margin-top: 4px;
+    }
+
+    .streak-icon-big {
+      width: 56px;
+      height: 56px;
+      background: var(--accent-soft);
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      border: 1.5px solid rgba(239, 90, 63, 0.3);
+    }
+
+    .streak-week {
+      display: flex;
+      gap: 5px;
+      margin-bottom: 10px;
+    }
+
+    .streak-day {
+      flex: 1;
+      text-align: center;
+    }
+
+    .streak-day-box {
+      width: 100%;
+      aspect-ratio: 1;
+      border-radius: 8px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 4px;
+      color: var(--surface);
+    }
+
+    .streak-day-box.done {
+      background: var(--accent);
+      border: 1.5px solid var(--accent);
+    }
+
+    .streak-day-box.today {
+      background: var(--surface);
+      border: 1.5px dashed var(--accent);
+    }
+
+    .streak-day-box.rest {
+      background: var(--line-soft);
+    }
+
+    .streak-day span {
+      font-size: 10px;
+      color: var(--ink-soft);
+      font-weight: 800;
+      letter-spacing: 0.04em;
+    }
+
+    .streak-hint {
+      font-size: 12px;
+      color: var(--ink-soft);
+      font-weight: 600;
+      line-height: 1.5;
+      background: var(--surface-alt);
+      padding: 8px 12px;
+      border-radius: 8px;
+      margin-top: 4px;
+    }
+
+    .lb-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 10px;
+      border-radius: 10px;
+      margin-bottom: 2px;
+      border: 1.5px solid transparent;
+    }
+
+    .lb-row.me {
+      background: var(--accent-soft);
+      border-color: rgba(239, 90, 63, 0.3);
+    }
+
+    .lb-rank {
+      width: 22px;
+      height: 22px;
+      border-radius: 6px;
+      background: var(--surface-alt);
+      display: grid;
+      place-items: center;
+      font-size: 11px;
+      font-weight: 900;
+    }
+
+    .lb-rank.gold {
+      background: #fde68a;
+    }
+
+    .lb-rank.silver {
+      background: #e5e7eb;
+    }
+
+    .lb-rank.bronze {
+      background: #fed7aa;
+    }
+
+    .lb-avatar {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--ink);
+      color: var(--surface);
+      display: grid;
+      place-items: center;
+      font-size: 10px;
+      font-weight: 800;
+      overflow: hidden;
+    }
+
+    .lb-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .lb-name {
+      flex: 1;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--ink);
+      min-width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .lb-name.me {
+      font-weight: 800;
+    }
+
+    .lb-pts {
+      font-size: 11.5px;
+      font-weight: 800;
+      color: var(--ink-soft);
+      font-variant-numeric: tabular-nums;
+      display: flex;
+      align-items: center;
+      gap: 3px;
+    }
+
+    .kofi-card {
+      background: var(--accent-soft);
+      border: 1.5px solid rgba(239, 90, 63, 0.3);
+      border-radius: var(--radius-lg);
+      padding: 22px;
+    }
+
+    .tip-card {
+      background: var(--surface);
+      border: 1.5px solid var(--line);
+      border-radius: var(--radius-lg);
+      padding: 18px 22px;
+    }
+
+    /* Contact */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    @media (max-width: 600px) {
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .form-input,
+    .form-textarea {
+      background: var(--bg);
+      border: 1.5px solid var(--line);
+      border-radius: 10px;
+      padding: 10px 14px;
+      font-family: inherit;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--ink);
+      width: 100%;
+      outline: none;
+      transition: border-color 0.15s;
+    }
+
+    .form-input:focus,
+    .form-textarea:focus {
+      border-color: var(--accent);
+    }
+
+    .form-textarea {
+      min-height: 84px;
+      resize: vertical;
+    }
+
+    .form-success {
+      font-size: 13px;
+      color: var(--ok);
+      font-weight: 700;
+      display: none;
+      margin-left: 10px;
+    }
+
+    .section-title {
+      font-size: 22px;
+      font-weight: 900;
+      letter-spacing: -0.015em;
+      margin-bottom: 18px;
+    }
+
+    .period-head {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .period-label {
+      font-size: 12px;
+      font-weight: 800;
+      color: var(--ink-soft);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .period-head .line {
+      flex: 1;
+      height: 1px;
+      background: var(--line);
+    }
+
+    .period-note {
+      font-size: 11px;
+      color: var(--muted);
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+
+    .period-block {
+      margin-bottom: 28px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ── LOGIN ── -->
+  <div id="fa-login">
+    <div class="fa-login-card">
+      <div class="fa-login-logo">
+        <svg width="34" height="34" viewBox="0 0 32 32" fill="none">
+          <circle cx="16" cy="16" r="14" fill="#ffffff" stroke="#1a2024" stroke-width="2" />
+          <path d="M16 7 L20 16 L16 15 Z" fill="#ef5a3f" stroke="#1a2024" stroke-width="1" stroke-linejoin="round" />
+          <path d="M16 25 L12 16 L16 17 Z" fill="#f1ece2" stroke="#1a2024" stroke-width="1" stroke-linejoin="round" />
+          <circle cx="16" cy="16" r="1.4" fill="#1a2024" />
+        </svg>
+        FMAtlas
+      </div>
+      <p>Log in om je voortgang op te slaan, je reeks bij te houden en het leaderboard te zien.</p>
+      <button class="fa-google-btn" id="google-login-btn" onclick="signInWithGoogle()">
+        <svg width="18" height="18" viewBox="0 0 48 48">
+          <path fill="#EA4335"
+            d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z" />
+          <path fill="#4285F4"
+            d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z" />
+          <path fill="#FBBC05"
+            d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z" />
+          <path fill="#34A853"
+            d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.18 1.48-4.97 2.36-8.16 2.36-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z" />
+        </svg>
+        Inloggen met Google
+      </button>
+      <div class="fa-login-error" id="login-error">Inloggen mislukt. Probeer het opnieuw.</div>
+      <button class="fa-guest-link" onclick="continueAsGuest()">Doorgaan zonder inloggen</button>
+    </div>
+  </div>
+
+  <!-- ── APP ── -->
+  <div id="fa-app" style="display:none">
+    <div id="fa-header-slot"></div>
+
+    <div class="home-wrap">
+      <!-- HERO -->
+      <div class="home-hero">
+        <div>
+          <div class="home-hero-badge" id="hero-badge">GA VERDER WAAR JE WAS</div>
+          <h1 id="hero-title">
+            Goedemiddag <span id="hero-name">student</span>,<br />
+            <em id="hero-section">Evenementenlogistiek</em> wacht op je.
+          </h1>
+          <p id="hero-sub">
+            Kies een vak om verder te gaan met je samenvatting, oefen flashcards of test jezelf met een oefentoets.
+          </p>
+          <div class="home-hero-progress" id="hero-progress-wrap" style="display:none">
+            <div class="home-hero-progress-bar">
+              <div id="hero-progress-fill" style="width:0%"></div>
+            </div>
+            <span style="font-size:13px;font-weight:800;font-variant-numeric:tabular-nums"
+              id="hero-progress-pct">0%</span>
+            <span style="font-size:12px;color:rgba(255,255,255,0.5);font-weight:600" id="hero-progress-note"></span>
+          </div>
+          <div class="home-hero-cta">
+            <a class="fa-btn fa-btn-accent" id="hero-btn-continue" href="#">
+              <span data-fa-icon="play" data-fa-size="15"></span>
+              <span id="hero-btn-label">Kies een vak</span>
+            </a>
+            <a class="fa-btn fa-btn-ghost" href="#vakken">
+              <span data-fa-icon="grid" data-fa-size="15" data-fa-fallback></span>
+              Alle vakken
+            </a>
+          </div>
+        </div>
+
+        <div class="home-mascot">
+          <svg width="180" height="180" viewBox="0 0 200 200" fill="none">
+            <circle cx="100" cy="105" r="88" fill="#fde4dd" opacity="0.15" />
+            <circle cx="100" cy="105" r="72" fill="#fff" stroke="#1a2024" stroke-width="2.5" />
+            <g stroke="#4a5258" stroke-linecap="round">
+              <line x1="100" y1="43" x2="100" y2="50" stroke-width="2.5" />
+              <line x1="100" y1="160" x2="100" y2="167" stroke-width="2.5" />
+              <line x1="38" y1="105" x2="45" y2="105" stroke-width="2.5" />
+              <line x1="155" y1="105" x2="162" y2="105" stroke-width="2.5" />
+            </g>
+            <text x="100" y="58" text-anchor="middle" font-size="11" font-weight="800" fill="#ef5a3f"
+              font-family="Nunito, sans-serif">N</text>
+            <path d="M100 65 L108 105 L100 100 Z" fill="#ef5a3f" stroke="#1a2024" stroke-width="1.5"
+              stroke-linejoin="round" />
+            <path d="M100 145 L92 105 L100 110 Z" fill="#f1ece2" stroke="#1a2024" stroke-width="1.5"
+              stroke-linejoin="round" />
+            <circle cx="100" cy="105" r="4" fill="#1a2024" />
+            <circle cx="82" cy="88" r="1.8" fill="#1a2024" />
+            <circle cx="118" cy="88" r="1.8" fill="#1a2024" />
+            <path d="M93 97 Q100 101 107 97" stroke="#1a2024" stroke-width="1.5" fill="none" stroke-linecap="round" />
+          </svg>
+        </div>
+      </div>
+
+      <!-- GRID -->
+      <div class="home-grid">
+        <!-- LEFT: vakken + contact -->
+        <div>
+          <h2 class="section-title" id="vakken">Jouw vakken</h2>
+
+          <div id="vakken-list"></div>
+
+          <!-- CONTACT -->
+          <div class="fa-card" style="margin-top:8px">
+            <div class="fa-card-title">
+              <span data-fa-icon="chat" data-fa-size="16" style="color:var(--accent)"></span>
+              Stel een vraag
+            </div>
+            <p style="font-size:13px;color:var(--muted);font-weight:600;margin-bottom:14px">
+              Iets onduidelijk, tip of fout gespot? Laat het weten.
+            </p>
+            <form id="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST"
+              onsubmit="handleFormSubmit(event)">
+              <div class="contact-grid">
+                <input class="form-input" name="naam" placeholder="Je naam" required />
+                <input class="form-input" name="email" type="email" placeholder="E-mailadres" required />
+              </div>
+              <textarea class="form-textarea" name="bericht" placeholder="Typ hier je vraag…" required
+                style="margin-bottom:12px"></textarea>
+              <div style="display:flex;align-items:center;flex-wrap:wrap">
+                <button class="fa-btn fa-btn-primary" type="submit">
+                  <span data-fa-icon="send" data-fa-size="14"></span>
+                  Verstuur bericht
+                </button>
+                <span class="form-success" id="form-success">Verstuurd! Je hoort snel van me.</span>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <!-- RIGHT: sidebar -->
+        <div style="display:flex;flex-direction:column;gap:16px">
+          <!-- STREAK -->
+          <div class="streak-card">
+            <div class="streak-top">
+              <div>
+                <div class="streak-label">
+                  <span data-fa-icon="flame" data-fa-size="13" style="color:var(--accent)"></span>
+                  HUIDIGE REEKS
+                </div>
+                <div class="streak-num" id="streak-num">0</div>
+                <div class="streak-label-sub" id="streak-days-label">dagen op rij</div>
+              </div>
+              <div class="streak-icon-big">
+                <span data-fa-icon="flame" data-fa-size="26" style="color:var(--accent)"></span>
+              </div>
+            </div>
+            <div class="streak-week" id="streak-week"></div>
+            <div class="streak-hint" id="streak-hint">
+              <strong>Nog één sessie</strong> vandaag en je reeks blijft staan.
+            </div>
+          </div>
+
+          <!-- LEADERBOARD -->
+          <div class="fa-card">
+            <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:14px">
+              <div class="fa-card-title" style="margin-bottom:0">
+                <span data-fa-icon="trophy" data-fa-size="16"></span>
+                Leaderboard
+              </div>
+              <span style="font-size:11px;color:var(--muted);font-weight:700;letter-spacing:0.04em">DEZE WEEK</span>
+            </div>
+            <div id="leaderboard-list"></div>
+            <p id="lb-empty"
+              style="display:none;font-size:12px;color:var(--muted);font-weight:600;text-align:center;padding:12px 0">
+              Nog geen scores — maak een oefentoets om op het leaderboard te komen!
+            </p>
+          </div>
+
+          <!-- KOFI -->
+          <div class="kofi-card">
+            <div class="fa-card-title" style="margin-bottom:10px">
+              <span
+                style="width:36px;height:36px;background:var(--surface);color:var(--accent);border-radius:10px;display:grid;place-items:center;border:1.5px solid rgba(239,90,63,0.4)">
+                <span data-fa-icon="coffee" data-fa-size="18"></span>
+              </span>
+              <span style="display:flex;flex-direction:column;gap:1px">
+                Trakteer op koffie
+                <span style="font-size:11px;color:var(--accent-deep);font-weight:700">Optioneel — altijd
+                  gewaardeerd</span>
+              </span>
+            </div>
+            <p style="font-size:12.5px;color:var(--ink-soft);font-weight:600;line-height:1.5;margin-bottom:14px">
+              FMAtlas is gratis voor alle FM-studenten. Helpt het je bij je studie? Dan is een kleine bijdrage
+              erg welkom.
+            </p>
+            <a class="fa-btn fa-btn-primary" href="https://ko-fi.com/davidkoolstra" target="_blank" rel="noopener">
+              Steun op Ko-fi
+              <span data-fa-icon="arrow" data-fa-size="14" data-fa-stroke="2.5"></span>
+            </a>
+          </div>
+
+          <!-- TIP -->
+          <div class="tip-card">
+            <div
+              style="font-size:11px;font-weight:800;color:var(--muted);letter-spacing:0.06em;margin-bottom:8px;display:flex;align-items:center;gap:6px">
+              <span data-fa-icon="sparkle" data-fa-size="13" style="color:var(--accent)"></span>
+              TIP VAN VANDAAG
+            </div>
+            <p style="font-size:13px;color:var(--ink);font-weight:600;line-height:1.5;margin-bottom:10px" id="tip-text">
+              Korte sessies van 10–15 min werken beter dan lange marathons. Doe er vandaag twee.
+            </p>
+            <div style="font-size:11px;color:var(--muted);font-weight:700;display:flex;align-items:center;gap:4px">
+              <span data-fa-icon="clock" data-fa-size="11"></span>
+              volgende tip morgen
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="fa-footer">
+      <span>FMAtlas · gemaakt door David Koolstra</span>
+      <span>Facilitair Management · 2026</span>
+    </footer>
+  </div>
+
+  <script src="js/fmatlas.js"></script>
+  <script>
+    // ── Data ──────────────────────────────────────────────
+    const VAKKEN = [
+      { key: 'evenementenlogistiek', title: 'Evenementenlogistiek', sub: 'Schillenmodel · mobiliteit · toegang', period: 4, active: true, icon: 'event', url: 'evenementenlogistiek.html' },
+      { key: 'projectvaardigheden', title: 'Projectvaardigheden', sub: 'Observeren · interviewen · rapporteren', period: 4, active: true, icon: 'mic', url: 'projectvaardigheden.html' },
+      { key: 'eventmanagement1', title: 'Eventmanagement 1', sub: 'Inleiding op eventprocessen', period: 3, grade: '7,8', icon: 'book', url: 'eventmanagement1.html' },
+      { key: 'facilitaire-inkoop', title: 'Facilitaire Inkoop', sub: 'Inkoop + verbintenissenrecht', period: 3, grade: '6,4', icon: 'cart', url: 'facilitaire-inkoop.html' },
+      { key: 'basis-fm-b', title: 'Basis van FM — B', sub: 'Schoonmaak · Catering · Veiligheidszorg', period: 2, grade: '7,2', icon: 'building', url: 'basis-van-fm-b.html' },
+      { key: 'facilitaire-bedrijfseconomie', title: 'Facilitaire Bedrijfseconomie', sub: 'Begroting & kosten', period: 2, grade: '6,9', icon: 'coin', url: 'bedrijfseconomie.html' },
+      { key: 'basis-fm-a', title: 'Basis van FM — A', sub: 'Introductie beroepsprofiel', period: 1, grade: '7,5', icon: 'compass', url: 'basis-van-fm-a.html' },
+      { key: 'trendwatchers', title: 'Trendwatchers', sub: 'Trends & impact op FM', period: 1, grade: '8,0', icon: 'scope', url: 'trendwatchers.html' },
+    ];
+
+    // ── Firebase ──────────────────────────────────────────
+    const firebaseConfig = {
+      apiKey: "AIzaSyBB397Wk2eqpBjic8E7aGV1mTgIjhQ21a8",
+      authDomain: "fmkompas-ff8bc.firebaseapp.com",
+      projectId: "fmkompas-ff8bc",
+      storageBucket: "fmkompas-ff8bc.firebasestorage.app",
+      messagingSenderId: "487972024689",
+      appId: "1:487972024689:web:712c3117080745d14746d0",
+      measurementId: "G-2TDBKR4DKT"
+    };
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+    const db = firebase.firestore();
+    const googleProvider = new firebase.auth.GoogleAuthProvider();
+
+    function signInWithGoogle() {
+      const btn = document.getElementById('google-login-btn');
+      const err = document.getElementById('login-error');
+      btn.disabled = true;
+      err.style.display = 'none';
+      auth.signInWithPopup(googleProvider).catch(e => {
+        err.style.display = 'block';
+        btn.disabled = false;
+        console.error(e);
+      });
+    }
+
+    function continueAsGuest() {
+      document.getElementById('fa-login').style.display = 'none';
+      document.getElementById('fa-app').style.display = 'block';
+      initApp(null);
+      renderLeaderboard(null);
+    }
+
+    auth.onAuthStateChanged(async user => {
+      if (user) {
+        document.getElementById('fa-login').style.display = 'none';
+        document.getElementById('fa-app').style.display = 'block';
+        initApp(user);
+        const ref = db.collection('scores').doc(user.uid);
+        const snap = await ref.get();
+        if (!snap.exists) {
+          await ref.set({
+            name: user.displayName || 'Anoniem',
+            pts: faGetXP(),
+            photoURL: user.photoURL || '',
+            updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+          });
+        } else {
+          // sync local XP upward
+          const fsPts = snap.data().pts || 0;
+          if (faGetXP() > fsPts) {
+            await ref.update({ pts: faGetXP(), updatedAt: firebase.firestore.FieldValue.serverTimestamp() });
+          }
+        }
+        renderLeaderboard(user.uid);
+      } else {
+        if (sessionStorage.getItem('fa-guest') === '1') {
+          continueAsGuest();
+        } else {
+          document.getElementById('fa-login').style.display = 'grid';
+          document.getElementById('fa-app').style.display = 'none';
+          document.getElementById('google-login-btn').disabled = false;
+        }
+      }
+    });
+
+    // ── App render ────────────────────────────────────────
+    function initApp(user) {
+      // Header
+      document.getElementById('fa-header-slot').innerHTML = '';
+      document.getElementById('fa-header-slot').appendChild(faRenderHeader({ user }));
+
+      // Hero
+      const firstName = user?.displayName ? user.displayName.split(' ')[0] : 'student';
+      document.getElementById('hero-name').textContent = firstName;
+
+      const last = faGetLastSeen();
+      const progress = faGetProgress();
+      if (last) {
+        document.getElementById('hero-badge').textContent = 'GA VERDER WAAR JE WAS';
+        document.getElementById('hero-title').innerHTML =
+          `Hoi ${firstName},<br/><em>${last.label}</em> wacht op je.`;
+        const pct = progress[last.key] || 0;
+        document.getElementById('hero-progress-wrap').style.display = 'flex';
+        document.getElementById('hero-progress-fill').style.width = pct + '%';
+        document.getElementById('hero-progress-pct').textContent = pct + '%';
+        document.getElementById('hero-progress-note').textContent = '';
+        document.getElementById('hero-btn-continue').href = last.url;
+        document.getElementById('hero-btn-label').textContent = 'Verder gaan';
+        document.getElementById('hero-sub').textContent =
+          'Je stopte in ' + last.label + '. Nog één sessie en je streak blijft staan.';
+      } else {
+        document.getElementById('hero-badge').textContent = 'WELKOM BIJ FMATLAS';
+        document.getElementById('hero-btn-continue').href = '#vakken';
+      }
+
+      // Vakken per periode
+      renderVakken();
+
+      // Streak
+      renderStreak();
+
+      // Mark active (pings the streak)
+      faMarkActiveToday();
+      renderStreak();
+    }
+
+    function renderVakken() {
+      const container = document.getElementById('vakken-list');
+      const progress = faGetProgress();
+      const last = faGetLastSeen();
+      const byPeriod = [4, 3, 2, 1].map(p => ({
+        num: p,
+        note: p === 4 ? 'Lopend · week 6' : 'Afgerond',
+        courses: VAKKEN.filter(v => v.period === p),
+      }));
+
+      container.innerHTML = byPeriod.map(p => `
+    <div class="period-block">
+      <div class="period-head">
+        <span class="period-label">Periode ${p.num}</span>
+        <span class="line"></span>
+        <span class="period-note">${p.note}</span>
+      </div>
+      <div class="vak-list">
+        ${p.courses.map(c => {
+        const pct = c.active ? (progress[c.key] || 0) : 100;
+        const isLast = last && last.key === c.key;
+        return `
+            <a class="vak-card ${isLast ? 'last' : ''}" href="${c.url}" onclick="faMarkLastSeen('${c.key}','${c.title.replace(/'/g, "\\'")}','${c.url}')">
+              ${isLast ? '<span class="vak-card-badge">LAATST OPEN</span>' : ''}
+              <div class="vak-card-top">
+                <span class="vak-icon ${c.active ? 'active' : ''}" data-fa-icon="${c.icon}" data-fa-size="20"></span>
+                <div style="flex:1;min-width:0">
+                  <h3>${c.title}</h3>
+                  <div class="sub">${c.sub}</div>
+                </div>
+                ${c.grade ? `<div class="vak-grade">${c.grade}</div>` : ''}
+              </div>
+              <div class="vak-row">
+                <div class="fa-progress">
+                  <div class="fa-progress-bar ${c.active ? '' : 'neutral'}" style="width:${pct}%"></div>
+                </div>
+                <span class="vak-pct ${c.active ? 'active' : ''}">${pct}%</span>
+              </div>
+              ${c.active ? `
+                <div class="vak-actions">
+                  <span class="fa-btn fa-btn-ghost">
+                    <span data-fa-icon="book" data-fa-size="13"></span> Samenvatting
+                  </span>
+                  <span class="fa-btn fa-btn-ghost">
+                    <span data-fa-icon="cards" data-fa-size="13"></span> Flashcards
+                  </span>
+                </div>` : ''}
+            </a>
+          `;
+      }).join('')}
+      </div>
+    </div>
+  `).join('');
+      faRenderIcons(container);
+    }
+
+    function renderStreak() {
+      const count = faGetStreak();
+      document.getElementById('streak-num').textContent = count;
+      document.getElementById('streak-days-label').textContent = count === 1 ? 'dag' : 'dagen op rij';
+
+      const today = new Date();
+      const dayIdx = (today.getDay() + 6) % 7; // Mon=0..Sun=6
+      const data = faGetStreakData();
+      const lastDate = data.last ? new Date(data.last) : null;
+      const labels = ['M', 'D', 'W', 'D', 'V', 'Z', 'Z'];
+      const weekHtml = labels.map((l, i) => {
+        let cls = 'rest';
+        if (i < dayIdx) {
+          if (lastDate && count > (dayIdx - i)) cls = 'done';
+        } else if (i === dayIdx) {
+          cls = lastDate && lastDate.toDateString() === today.toDateString() ? 'done' : 'today';
+        }
+        return `
+      <div class="streak-day">
+        <div class="streak-day-box ${cls}">
+          ${cls === 'done' ? faIcon('check', { size: 12, stroke: 3, color: '#fff' }) : ''}
+        </div>
+        <span>${l}</span>
+      </div>`;
+      }).join('');
+      document.getElementById('streak-week').innerHTML = weekHtml;
+
+      document.getElementById('streak-hint').innerHTML = count === 0
+        ? '<strong>Start je reeks</strong> door een flashcard of oefentoets te maken.'
+        : (count >= 7
+          ? `<strong>Top bezig!</strong> Je bent al ${count} dagen op rij aan het studeren.`
+          : `<strong>Nog één sessie</strong> vandaag en je reeks blijft staan.`);
+    }
+
+    // ── Leaderboard ──────────────────────────────────────
+    async function renderLeaderboard(currentUid) {
+      const list = document.getElementById('leaderboard-list');
+      const empty = document.getElementById('lb-empty');
+      try {
+        const snap = await db.collection('scores').orderBy('pts', 'desc').limit(10).get();
+        const entries = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+        if (!entries.length) { list.innerHTML = ''; empty.style.display = 'block'; return; }
+        empty.style.display = 'none';
+        list.innerHTML = entries.map((u, i) => {
+          const initials = (u.name || 'U').split(' ').map(w => w[0]).slice(0, 2).join('').toUpperCase();
+          const avatarHtml = u.photoURL
+            ? `<img src="${u.photoURL}" alt="" referrerpolicy="no-referrer"/>`
+            : initials;
+          const isMe = u.id === currentUid;
+          const rankCls = i === 0 ? 'gold' : i === 1 ? 'silver' : i === 2 ? 'bronze' : '';
+          return `
+        <div class="lb-row ${isMe ? 'me' : ''}">
+          <span class="lb-rank ${rankCls}">${i + 1}</span>
+          <div class="lb-avatar">${avatarHtml}</div>
+          <span class="lb-name ${isMe ? 'me' : ''}">
+            ${u.name || 'Onbekend'}${isMe ? ' <span style="color:var(--accent);font-weight:800">· jij</span>' : ''}
+          </span>
+          <span class="lb-pts">
+            ${faIcon('bolt', { size: 11, color: '#d4a017' })}
+            ${(u.pts || 0).toLocaleString('nl-NL').replace(',', ' ')}
+          </span>
+        </div>`;
+        }).join('');
+      } catch (e) {
+        console.warn('Leaderboard fout:', e);
+        list.innerHTML = '<p style="color:var(--muted);font-size:12px;padding:.5rem 0;font-weight:600">Kon leaderboard niet laden.</p>';
+      }
+    }
+
+    // ── Contact form ────────────────────────────────────
+    function handleFormSubmit(e) {
+      e.preventDefault();
+      const form = document.getElementById('contact-form');
+      const success = document.getElementById('form-success');
+      const btn = form.querySelector('button[type="submit"]');
+      if (form.action.includes('YOUR_FORM_ID')) {
+        success.textContent = 'Stel eerst Formspree in.';
+        success.style.color = '#f59e0b';
+        success.style.display = 'inline';
+        return;
+      }
+      btn.disabled = true; btn.textContent = 'Versturen…';
+      fetch(form.action, { method: 'POST', body: new FormData(form), headers: { 'Accept': 'application/json' } })
+        .then(r => {
+          if (r.ok) { form.reset(); success.textContent = 'Verstuurd! Je hoort snel van me.'; success.style.color = 'var(--ok)'; }
+          else { success.textContent = 'Er ging iets mis.'; success.style.color = '#dc2626'; }
+          success.style.display = 'inline';
+        })
+        .catch(() => { success.textContent = 'Er ging iets mis.'; success.style.color = '#dc2626'; success.style.display = 'inline'; })
+        .finally(() => { btn.disabled = false; btn.innerHTML = '<span data-fa-icon="send" data-fa-size="14"></span> Verstuur bericht'; faRenderIcons(btn); });
+    }
+  </script>
+
+</body>
+
+</html>
