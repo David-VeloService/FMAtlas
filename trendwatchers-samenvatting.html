@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Samenvatting · Trendwatchers — FMAtlas</title>
+<link rel="icon" type="image/svg+xml" href="logo.svg"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="css/fmatlas.css"/>
+<style>
+.sam-wrap { max-width: 1100px; margin: 0 auto; padding: 24px; }
+.sam-intro { background: var(--surface); border: 1.5px solid var(--line); border-radius: var(--radius-xl); padding: 28px 32px; margin-bottom: 18px; }
+.sam-intro-meta { font-size: 11px; font-weight: 800; color: var(--accent); letter-spacing: 0.08em; margin-bottom: 8px; }
+.sam-intro h1 { font-size: 32px; font-weight: 900; letter-spacing: -0.025em; line-height: 1.08; margin-bottom: 10px; }
+.sam-intro p { color: var(--ink-soft); font-size: 14.5px; line-height: 1.6; }
+nav.chapnav { background: var(--surface); border: 1.5px solid var(--line); border-radius: var(--radius-lg); padding: 12px 16px; margin: 0 24px 18px; max-width: 1052px; margin-left: auto; margin-right: auto; display: flex; flex-wrap: wrap; gap: 6px; position: sticky; top: 68px; z-index: 20; }
+nav.chapnav a { color: var(--ink-soft); text-decoration: none; padding: 4px 10px; border-radius: 8px; background: var(--bg); font-weight: 800; font-size: 11.5px; border: 1.5px solid var(--line); transition: all 0.12s; }
+nav.chapnav a:hover { background: var(--accent-soft); color: var(--accent-deep); border-color: var(--accent); }
+.main { max-width: 1052px; margin: 0 auto; padding: 0 24px 60px; display: flex; flex-direction: column; gap: 18px; }
+.card { background: var(--surface); border: 1.5px solid var(--line); border-radius: var(--radius-xl); overflow: hidden; scroll-margin-top: 140px; }
+.card-header { padding: 16px 22px; display: flex; align-items: center; gap: 10px; color: var(--surface); background: var(--ink); }
+.card-header h2 { font-size: 17px; font-weight: 900; letter-spacing: -0.015em; }
+.card-header .icon { font-size: 20px; }
+.card-body { padding: 22px 24px; }
+.h1 { background: var(--accent); }
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+@media (max-width: 740px) { .two-col, .three-col { grid-template-columns: 1fr; } }
+.section { margin-bottom: 18px; }
+.section h3 { font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin-bottom: 8px; padding-bottom: 6px; border-bottom: 1.5px solid var(--line); }
+ul.clean { list-style: none; display: flex; flex-direction: column; gap: 5px; margin: 0; padding: 0; }
+ul.clean li { font-size: 13.5px; line-height: 1.55; padding: 3px 0 3px 16px; position: relative; color: var(--ink-soft); font-weight: 500; }
+ul.clean li::before { content: '›'; position: absolute; left: 0; top: 3px; color: var(--accent); font-weight: 900; }
+ul.clean li strong { color: var(--ink); font-weight: 800; }
+.defbox { background: var(--bg); border: 1.5px solid var(--line); border-left: 4px solid var(--accent); border-radius: 0 var(--radius) var(--radius) 0; padding: 10px 14px; margin-bottom: 10px; font-size: 13.5px; line-height: 1.55; color: var(--ink-soft); }
+.defbox strong { display: block; font-size: 10.5px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); margin-bottom: 4px; }
+.highlight { background: var(--accent-soft); border: 1.5px solid rgba(239, 90, 63, 0.25); border-radius: var(--radius); padding: 10px 14px; font-size: 13.5px; line-height: 1.55; margin-bottom: 10px; color: var(--accent-deep); font-weight: 600; }
+.highlight strong { color: var(--accent-deep); font-weight: 900; }
+.warn { background: #fff7ed; border-left: 3px solid #f59e0b; padding: 9px 14px; border-radius: 0 var(--radius) var(--radius) 0; font-size: 12.5px; color: #92400e; margin-bottom: 10px; font-weight: 600; }
+table.compact { width: 100%; border-collapse: collapse; font-size: 12.5px; margin-top: 6px; }
+table.compact th, table.compact td { padding: 7px 10px; text-align: left; border-bottom: 1.5px solid var(--line); color: var(--ink-soft); }
+table.compact th { font-size: 10.5px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+table.compact td strong { color: var(--ink); font-weight: 800; }
+</style>
+</head>
+<body>
+<div id="fa-header-slot"></div>
+<nav class="fa-breadcrumb">
+  <a href="index.html">Home</a>
+  <span>›</span>
+  <a href="trendwatchers.html">Trendwatchers</a>
+  <span>›</span>
+  <span class="current">Samenvatting</span>
+</nav>
+<div class="sam-wrap">
+  <div class="sam-intro">
+    <div class="sam-intro-meta">PERIODE 1 · AFGEROND · CIJFER 8,0</div>
+    <h1>Trendwatchers</h1>
+    <p>Trends en ontwikkelingen analyseren met het DESTEP-model, verbanden leggen, prioriteren van risico's, ethische afwegingen en impact op het FM-vakgebied.</p>
+  </div>
+</div>
+<nav class="chapnav">
+  <a href="#destep">1 · DESTEP & onderzoek</a>
+  <a href="#trends">2 · Trends per factor</a>
+  <a href="#risico">3 · Prioritering & risico's</a>
+  <a href="#ethiek">4 · Ethiek</a>
+  <a href="#impact">5 · Impact & duurzaamheid</a>
+</nav>
+<div class="main">
+
+  <!-- ── 1. DESTEP & onderzoek ──────────────────────────────── -->
+  <div class="card" id="destep">
+    <div class="card-header h1">
+      <span class="icon">🔍</span>
+      <h2>1 · DESTEP-model & onderzoek</h2>
+    </div>
+    <div class="card-body">
+      <div class="two-col">
+        <div>
+          <div class="section">
+            <h3>Wat is DESTEP?</h3>
+            <div class="defbox"><strong>Definitie</strong>Gestructureerde methode om de externe (macro-) omgeving van een organisatie te analyseren. Factoren zijn altijd buiten de organisatie en altijd in beweging — geen statische feiten.</div>
+            <ul class="clean">
+              <li><strong>D</strong> — Demografisch: bevolkingssamenstelling, vergrijzing, migratie</li>
+              <li><strong>E</strong> — Economisch: koopkracht, conjunctuur, inflatie, BBP</li>
+              <li><strong>S</strong> — Sociaal-cultureel: normen, waarden, levensstijlen, generaties</li>
+              <li><strong>T</strong> — Technologisch: digitalisering, AI, IoT, automatisering</li>
+              <li><strong>E</strong> — Ecologisch: duurzaamheid, klimaat, energieverbruik, afval</li>
+              <li><strong>P</strong> — Politiek-juridisch: wet- en regelgeving, beleid, subsidies</li>
+            </ul>
+          </div>
+          <div class="section">
+            <h3>Wat moet je kunnen met trends?</h3>
+            <ul class="clean">
+              <li>Herkennen vanuit een casus</li>
+              <li>Benoemen en koppelen aan de juiste DESTEP-factor</li>
+              <li>Oorzaken, gevolgen en impact beschrijven</li>
+              <li>Verbanden leggen tussen factoren</li>
+              <li>Toepassen op organisaties en het FM-vakgebied</li>
+            </ul>
+          </div>
+        </div>
+        <div>
+          <div class="section">
+            <h3>Drie typen verbanden tussen factoren</h3>
+            <ul class="clean">
+              <li><strong>Versterkend verband (feedback loop)</strong> — circulair, A ↔ B, factoren versterken elkaar. Voorbeeld: subsidies (P) → betere technologie (T) → duurzamere gebouwen (E) → lagere kosten (Ec) → meer ruimte voor investering (P)</li>
+              <li><strong>Verzwakkend verband</strong> — factoren werken elkaar tegen. Voorbeeld: ecologie eist duurzame renovatie ↔ economie blokkeert door hoge kosten</li>
+              <li><strong>Cascade-effect (domino)</strong> — lineair, A → B → C → D, één trigger start een keten. Voorbeeld: COVID (D) → thuiswerken (S) → technologievraag (T) → kantoorcrash (Ec) → nieuwe wetgeving (P)</li>
+            </ul>
+          </div>
+          <div class="section">
+            <h3>AAOCC-criteria voor bronbeoordeling</h3>
+            <ul class="clean">
+              <li><strong>A</strong>utoriteit — wie schrijft het?</li>
+              <li><strong>A</strong>ccuraatheid — kloppen de gegevens?</li>
+              <li><strong>O</strong>bjectiviteit — is het neutraal?</li>
+              <li><strong>C</strong>urrentheid — hoe actueel (liefst &lt; 5 jaar)?</li>
+              <li><strong>C</strong>ompleetheid — is het volledig?</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 2. Trends per DESTEP-factor ──────────────────────── -->
+  <div class="card" id="trends">
+    <div class="card-header">
+      <span class="icon">📈</span>
+      <h2>2 · Trends per DESTEP-factor</h2>
+    </div>
+    <div class="card-body">
+      <div class="three-col">
+        <div>
+          <div class="section">
+            <h3>Demografisch (D)</h3>
+            <ul class="clean">
+              <li>Vergrijzing en gezinsverdunning</li>
+              <li>Toenemende diversiteit door migratie</li>
+              <li>Arbeidstekort in FM-sector</li>
+              <li>Generatieverschillen (babyboomers, millennials, Gen Z)</li>
+            </ul>
+          </div>
+          <div class="section">
+            <h3>Economisch (E)</h3>
+            <ul class="clean">
+              <li>Conjunctuurcyclus: laag → opgang → hoog → neergang</li>
+              <li>Inflatie en koopkrachtverlies</li>
+              <li>Internationale handel en importheffingen</li>
+              <li>CPB Macro Economische Verkenning (MEV)</li>
+              <li>Conjunctuurklok CBS: 13 indicatoren (verwachting, economie, arbeidsmarkt)</li>
+            </ul>
+          </div>
+        </div>
+        <div>
+          <div class="section">
+            <h3>Sociaal-cultureel (S)</h3>
+            <ul class="clean">
+              <li>Hybride werken & werkplektransformatie</li>
+              <li>Inclusiviteit en diversiteit op de werkvloer</li>
+              <li>Werk-privébalans en wellbeing</li>
+              <li>Generatieverschillen in communicatie en verwachtingen</li>
+            </ul>
+          </div>
+          <div class="section">
+            <h3>Technologisch (T)</h3>
+            <ul class="clean">
+              <li>Digitalisering & Smart Buildings</li>
+              <li>AI en automatisering (repetitieve taken)</li>
+              <li>IoT en sensortechnologie (predictive maintenance)</li>
+              <li>Data-analyse en datagedreven besluitvorming</li>
+              <li>Cybersecurity risico's</li>
+            </ul>
+          </div>
+        </div>
+        <div>
+          <div class="section">
+            <h3>Ecologisch (E)</h3>
+            <ul class="clean">
+              <li>Klimaatverandering en extreme weersomstandigheden</li>
+              <li>Strengere milieunormen en CO₂-reductievereisten</li>
+              <li>Druk op circulaire economie</li>
+              <li>Stijgende energiekosten</li>
+              <li>CSRD: verplichte duurzaamheidsrapportage</li>
+            </ul>
+          </div>
+          <div class="section">
+            <h3>Politiek-juridisch (P)</h3>
+            <ul class="clean">
+              <li>Duurzaamheidswetgeving (CSRD, klimaatakkoord)</li>
+              <li>Dataprivacy (AVG/GDPR)</li>
+              <li>Arbeidsmarktregelgeving (cao, ZZP)</li>
+              <li>Europese aanbestedingsregels</li>
+              <li>Stimuleringsmaatregelen voor verduurzaming</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="section" style="margin-top: 12px;">
+        <h3>Kansen en bedreigingen per factor (voorbeelden)</h3>
+        <table class="compact">
+          <tr><th>Factor</th><th>Trend</th><th>Kans voor FM</th><th>Bedreiging voor FM</th></tr>
+          <tr><td><strong>D</strong></td><td>Arbeidstekort</td><td>Employee value proposition</td><td>Loonkosteninflatie, hoog verloop</td></tr>
+          <tr><td><strong>S</strong></td><td>Hybride werken</td><td>Flexibele werkplekconcepten</td><td>Veranderende verwachtingen medewerkers</td></tr>
+          <tr><td><strong>T</strong></td><td>Smart Buildings</td><td>Predictive maintenance, sensortechnologie</td><td>Cybersecurity risico's, omscholing</td></tr>
+          <tr><td><strong>E (eco)</strong></td><td>Klimaatverandering</td><td>Energie-efficiëntiediensten</td><td>Stijgende energiekosten, regeldruk</td></tr>
+          <tr><td><strong>P</strong></td><td>CSRD</td><td>Stimuleringsmaatregelen duurzaamheid</td><td>Rapportageverplichtingen</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 3. Prioritering & risico's ────────────────────────── -->
+  <div class="card" id="risico">
+    <div class="card-header">
+      <span class="icon">⚠️</span>
+      <h2>3 · Prioritering & risico's</h2>
+    </div>
+    <div class="card-body">
+      <div class="two-col">
+        <div>
+          <div class="section">
+            <h3>Waarom prioriteren?</h3>
+            <ul class="clean">
+              <li>Beperkte middelen: niet op alle factoren reageren</li>
+              <li>Focus op factoren met grootste impact</li>
+              <li>Proactief sturen in plaats van reactief</li>
+              <li>Budget en capaciteit naar de juiste risico's</li>
+            </ul>
+          </div>
+          <div class="section">
+            <h3>Prioriteren: kans × impact</h3>
+            <div class="defbox"><strong>Methode</strong>Bepaal voor elk risico: (1) hoe groot is de kans? (2) hoe groot is de impact op het organisatiedoel? Factoren met hoge kans + hoge impact krijgen hoogste prioriteit.</div>
+            <ul class="clean">
+              <li>Verwaarloosbaar → laag risico → gemiddeld</li>
+              <li>Gemiddeld → hoog risico → extreem hoog</li>
+            </ul>
+          </div>
+        </div>
+        <div>
+          <div class="section">
+            <h3>Vier risicostrategieën</h3>
+            <ul class="clean">
+              <li><strong>Vermijden (Avoid)</strong> — activiteit niet uitvoeren of anders organiseren. Voorbeeld: alleen met gecertificeerde leveranciers werken</li>
+              <li><strong>Accepteren (Accept)</strong> — bewust accepteren omdat maatregelen duurder zijn dan de schade. Voorbeeld: oude liften storen accepteren</li>
+              <li><strong>Overdragen (Transfer)</strong> — risico verplaatsen via verzekering of contract. Voorbeeld: leveranciers contractueel aansprakelijk stellen</li>
+              <li><strong>Reduceren (Reduce)</strong> — kans of impact verkleinen. Voorbeeld: trainingen en flexibele arbeidsvoorwaarden bij vergrijzingsrisico</li>
+            </ul>
+          </div>
+          <div class="section">
+            <h3>Proactief vs. reactief</h3>
+            <div class="highlight"><strong>Proactief:</strong> op basis van DESTEP-analyse vooraf inspelen op risico's en kansen.<br><strong>Reactief:</strong> pas handelen als het probleem er al is. Prioritering maakt proactief sturen mogelijk.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 4. Ethiek ──────────────────────────────────────────── -->
+  <div class="card" id="ethiek">
+    <div class="card-header">
+      <span class="icon">⚖️</span>
+      <h2>4 · Ethiek & waarden</h2>
+    </div>
+    <div class="card-body">
+      <div class="two-col">
+        <div>
+          <div class="section">
+            <h3>Wat is ethiek?</h3>
+            <div class="defbox"><strong>Definitie</strong>Regels, normen en waarden die bepalen wat juist of onjuist handelen is. Gaat dieper dan de wet: iets kan wettelijk zijn maar ethisch incorrect. Ethiek is ook persoonlijk en cultureel bepaald.</div>
+            <ul class="clean">
+              <li><strong>Ethiek</strong> — waaróm is iets goed of fout?</li>
+              <li><strong>Moraal</strong> — gedragsregels en gebruiken binnen een samenleving ("wat gebruikelijk is")</li>
+            </ul>
+          </div>
+          <div class="section">
+            <h3>Ethische dilemma's in FM</h3>
+            <ul class="clean">
+              <li>Veiligheid vs. privacy (camera's op werkvloer)</li>
+              <li>Kosten vs. duurzaamheid (goedkope leverancier)</li>
+              <li>Open kantoortuin vs. afgesloten kantoren</li>
+              <li>Milieu vs. werkgelegenheid (sluit vervuilende fabriek?)</li>
+            </ul>
+          </div>
+        </div>
+        <div>
+          <div class="section">
+            <h3>Drie ethische benaderingen</h3>
+            <ul class="clean">
+              <li><strong>Consequentialisme (gevolgenethiek)</strong> — kijk naar de uitkomst. Kernvraag: "Wat levert de beste uitkomst op voor de meeste mensen?" Voordeel: praktisch. Nadeel: goede doelen kunnen slechte middelen rechtvaardigen.</li>
+              <li><strong>Deontologie (plichtenethiek)</strong> — kijk naar regels en rechten. Kernvraag: "Respecteer ik fundamentele rechten?" Voordeel: beschermt fundamentele waarden. Nadeel: rigide.</li>
+              <li><strong>Deugdenethiek (karakterethiek)</strong> — kijk naar waarden en karakter. Kernvraag: "Wat zou een integer persoon doen?" Voordeel: integere beslissingen. Nadeel: kan vaag zijn.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 5. Impact & duurzaamheid ─────────────────────────── -->
+  <div class="card" id="impact">
+    <div class="card-header">
+      <span class="icon">🌱</span>
+      <h2>5 · Impact & duurzaamheid</h2>
+    </div>
+    <div class="card-body">
+      <div class="two-col">
+        <div>
+          <div class="section">
+            <h3>Drie P's — MVO-kader</h3>
+            <ul class="clean">
+              <li><strong>People</strong> — eerlijke arbeidsomstandigheden, inclusiviteit, ergonomie, sociale betrokkenheid</li>
+              <li><strong>Planet</strong> — ecologische voetafdruk, energiebesparing, circulaire economie, duurzame inkoop</li>
+              <li><strong>Profit</strong> — financieel resultaat, maar ook kennis, reputatie en innovatie</li>
+            </ul>
+            <div class="warn">Balans is essentieel: te veel nadruk op één P schaadt de andere twee. Meervoudige waardecreatie is het doel.</div>
+          </div>
+          <div class="section">
+            <h3>SDG's (17 duurzame ontwikkelingsdoelen VN)</h3>
+            <ul class="clean">
+              <li>Te herleiden naar de 3 P's</li>
+              <li>Voorbeelden: klimaatactie, armoedebestrijding, gendergelijkheid</li>
+              <li>CBS monitort jaarlijks de Nederlandse voortgang</li>
+              <li>FM-professionals kunnen actief bijdragen via verduurzaming, sociaal ondernemerschap en welzijn</li>
+            </ul>
+          </div>
+        </div>
+        <div>
+          <div class="section">
+            <h3>ESG & CSRD</h3>
+            <table class="compact">
+              <tr><th>Aspect</th><th>ESG</th><th>CSRD</th></tr>
+              <tr><td><strong>Wat</strong></td><td>Raamwerk om duurzaamheid te meten</td><td>EU-wetgeving over rapportage</td></tr>
+              <tr><td><strong>E</strong></td><td>CO₂, energie, water, afval</td><td rowspan="3">Verplichting: rapporteer over E, S, G</td></tr>
+              <tr><td><strong>S</strong></td><td>Diversiteit, veiligheid, arbeidsomstandig.</td></tr>
+              <tr><td><strong>G</strong></td><td>Transparantie, compliance, ethiek</td></tr>
+              <tr><td><strong>Verplicht</strong></td><td>Vrijwillig (markt- en reputatiedruk)</td><td>Ja, groot bedrijf: 2024 · mkb: 2026/28</td></tr>
+            </table>
+          </div>
+          <div class="section">
+            <h3>Waardecreatie in FM</h3>
+            <ul class="clean">
+              <li>Niet alleen efficiëntie en kosten, maar ook betekenis, impact en verantwoordelijkheid</li>
+              <li>Reflectievragen: waar wil je op terugkijken? Wat wil je bereikt hebben? Welke sporen laat je achter?</li>
+              <li>FM als strategische discipline die bijdraagt aan duurzame organisatieontwikkeling</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+<footer class="fa-footer">
+  <span>FMAtlas · gemaakt door David Koolstra</span>
+  <span>HAN · Facilitair Management · 2026</span>
+</footer>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+<script src="js/fmatlas.js"></script>
+<script>
+const firebaseConfig = {
+  apiKey: "AIzaSyBB397Wk2eqpBjic8E7aGV1mTgIjhQ21a8",
+  authDomain: "fmkompas-ff8bc.firebaseapp.com",
+  projectId: "fmkompas-ff8bc",
+  storageBucket: "fmkompas-ff8bc.firebasestorage.app",
+  messagingSenderId: "487972024689",
+  appId: "1:487972024689:web:712c3117080745d14746d0"
+};
+firebase.initializeApp(firebaseConfig);
+firebase.auth().onAuthStateChanged(user => {
+  document.getElementById('fa-header-slot').innerHTML = '';
+  document.getElementById('fa-header-slot').appendChild(faRenderHeader({ user }));
+  faMarkActiveToday();
+  faMarkLastSeen('trendwatchers','Trendwatchers','trendwatchers.html');
+});
+</script>
+</body>
+</html>

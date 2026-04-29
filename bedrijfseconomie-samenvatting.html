@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Samenvatting · Facilitaire Bedrijfseconomie — FMAtlas</title>
+<link rel="icon" type="image/svg+xml" href="logo.svg"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="css/fmatlas.css"/>
+<style>
+.sam-wrap { max-width: 1100px; margin: 0 auto; padding: 24px; }
+.sam-intro { background: var(--surface); border: 1.5px solid var(--line); border-radius: var(--radius-xl); padding: 28px 32px; margin-bottom: 18px; }
+.sam-intro-meta { font-size: 11px; font-weight: 800; color: var(--accent); letter-spacing: 0.08em; margin-bottom: 8px; }
+.sam-intro h1 { font-size: 32px; font-weight: 900; letter-spacing: -0.025em; line-height: 1.08; margin-bottom: 10px; }
+.sam-intro p { color: var(--ink-soft); font-size: 14.5px; line-height: 1.6; }
+
+nav.chapnav { background: var(--surface); border: 1.5px solid var(--line); border-radius: var(--radius-lg); padding: 12px 16px; margin: 0 24px 18px; max-width: 1052px; margin-left: auto; margin-right: auto; display: flex; flex-wrap: wrap; gap: 6px; position: sticky; top: 68px; z-index: 20; }
+nav.chapnav a { color: var(--ink-soft); text-decoration: none; padding: 4px 10px; border-radius: 8px; background: var(--bg); font-weight: 800; font-size: 11.5px; border: 1.5px solid var(--line); transition: all 0.12s; }
+nav.chapnav a:hover { background: var(--accent-soft); color: var(--accent-deep); border-color: var(--accent); }
+
+.main { max-width: 1052px; margin: 0 auto; padding: 0 24px 60px; display: flex; flex-direction: column; gap: 18px; }
+
+.card { background: var(--surface); border: 1.5px solid var(--line); border-radius: var(--radius-xl); overflow: hidden; scroll-margin-top: 140px; }
+.card-header { padding: 16px 22px; display: flex; align-items: center; gap: 10px; color: var(--surface); background: var(--ink); }
+.card-header h2 { font-size: 17px; font-weight: 900; letter-spacing: -0.015em; }
+.card-header .icon { font-size: 20px; }
+.card-body { padding: 22px 24px; }
+
+.h1 { background: var(--accent); }
+.h2, .h3, .h4, .h5, .h6 { background: var(--ink); }
+
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+@media (max-width: 740px) { .two-col, .three-col { grid-template-columns: 1fr; } }
+
+.section { margin-bottom: 18px; }
+.section h3 { font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin-bottom: 8px; padding-bottom: 6px; border-bottom: 1.5px solid var(--line); }
+
+ul.clean { list-style: none; display: flex; flex-direction: column; gap: 5px; margin: 0; padding: 0; }
+ul.clean li { font-size: 13.5px; line-height: 1.55; padding: 3px 0 3px 16px; position: relative; color: var(--ink-soft); font-weight: 500; }
+ul.clean li::before { content: '›'; position: absolute; left: 0; top: 3px; color: var(--accent); font-weight: 900; }
+ul.clean li strong { color: var(--ink); font-weight: 800; }
+
+.defbox { background: var(--bg); border: 1.5px solid var(--line); border-left: 4px solid var(--accent); border-radius: 0 var(--radius) var(--radius) 0; padding: 10px 14px; margin-bottom: 10px; font-size: 13.5px; line-height: 1.55; color: var(--ink-soft); }
+.defbox strong { display: block; font-size: 10.5px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); margin-bottom: 4px; }
+
+.highlight { background: var(--accent-soft); border: 1.5px solid rgba(239, 90, 63, 0.25); border-radius: var(--radius); padding: 10px 14px; font-size: 13.5px; line-height: 1.55; margin-bottom: 10px; color: var(--accent-deep); font-weight: 600; }
+.highlight strong { color: var(--accent-deep); font-weight: 900; }
+
+.warn { background: #fff7ed; border-left: 3px solid #f59e0b; padding: 9px 14px; border-radius: 0 var(--radius) var(--radius) 0; font-size: 12.5px; color: #92400e; margin-bottom: 10px; font-weight: 600; }
+
+.formula-box { background: #0f172a; border-radius: var(--radius); padding: 12px 16px; margin-bottom: 10px; font-family: 'SFMono-Regular', Menlo, monospace; font-size: 13px; color: #fcd34d; line-height: 1.7; }
+.formula-box .comment { color: #6b7280; font-style: italic; font-family: inherit; }
+
+table.compact { width: 100%; border-collapse: collapse; font-size: 12.5px; margin-top: 6px; }
+table.compact th, table.compact td { padding: 7px 10px; text-align: left; border-bottom: 1.5px solid var(--line); color: var(--ink-soft); }
+table.compact th { font-size: 10.5px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+table.compact td strong { color: var(--ink); font-weight: 800; }
+
+.box { background: var(--bg); border: 1.5px solid var(--line); border-radius: var(--radius); padding: 12px 14px; }
+.box h4 { font-size: 12.5px; font-weight: 900; margin-bottom: 8px; color: var(--ink); letter-spacing: -0.005em; }
+
+.nummer { display: inline-flex; align-items:center; justify-content:center; background: var(--accent); color: var(--surface); width: 22px; height: 22px; border-radius: 50%; font-size: 11px; font-weight: 900; margin-right: 8px; flex-shrink: 0; }
+.stap { display: flex; align-items: flex-start; gap: 4px; font-size: 13.5px; color: var(--ink-soft); padding: 4px 0; line-height: 1.5; }
+.stap strong { color: var(--ink); }
+
+.tag { display: inline-block; padding: 2px 8px; border-radius: 999px; font-size: 11px; font-weight: 800; }
+.blue   { background: #dbeafe; color: #1e40af; }
+.green  { background: #dcfce7; color: #166534; }
+.purple { background: #ede9fe; color: #5b21b6; }
+.orange { background: #ffedd5; color: #9a3412; }
+.red    { background: #fee2e2; color: #991b1b; }
+.yellow { background: #fef3c7; color: #854d0e; }
+</style>
+</head>
+<body>
+
+<div id="fa-header-slot"></div>
+
+<nav class="fa-breadcrumb">
+  <a href="index.html">Home</a>
+  <span>›</span>
+  <a href="bedrijfseconomie.html">Facilitaire Bedrijfseconomie</a>
+  <span>›</span>
+  <span class="current">Samenvatting</span>
+</nav>
+
+<div class="sam-wrap">
+  <div class="sam-intro">
+    <div class="sam-intro-meta">SAMENVATTING · 6 modules · alle formules</div>
+    <h1>Facilitaire Bedrijfseconomie — volledige studiesamenvatting</h1>
+    <p>Basisprincipes, financiële overzichten (balans, resultatenrekening, kasstroomoverzicht), kosten en geldstromen, BTW, break-even, kostprijsberekeningen, personeelskosten, kengetallen en investeringsbeoordeling.</p>
+  </div>
+</div>
+
+<nav class="chapnav">
+  <a href="#h1">Basisprincipes</a>
+  <a href="#h2">Financiële overzichten</a>
+  <a href="#h3">Kosten en geldstromen</a>
+  <a href="#h4">Managen en calculatie</a>
+  <a href="#h5">Kengetallen</a>
+  <a href="#h6">Investering beoordelen</a>
+</nav>
+
+<div class="main">
+
+<!-- ===== H1: BASISPRINCIPES ===== -->
+<div class="card" id="h1">
+  <div class="card-header h1"><span class="icon">💰</span><h2>Module 1 — Basisprincipes</h2></div>
+  <div class="card-body">
+    <div class="two-col">
+      <div>
+        <div class="section">
+          <h3>Investering</h3>
+          <div class="defbox">
+            <strong>Investering</strong>
+            Een grote uitgave aan iets wat je voor een langere periode gebruikt. Bedoeld om geld mee te verdienen, te besparen of te voorkomen dat je geld gaat verliezen.
+          </div>
+          <div class="highlight"><strong>Op het moment van investeren word je niet armer of rijker.</strong> Hetzelfde geldt voor lenen: op het moment van lenen word je niet armer of rijker.</div>
+        </div>
+        <div class="section">
+          <h3>Kosten vs. opbrengsten</h3>
+          <div class="defbox">
+            <strong>Kosten</strong>
+            Aan perioden toegerekende uitgaven. Kosten verlagen je winst.
+          </div>
+          <div class="defbox">
+            <strong>Opbrengsten</strong>
+            Aan perioden toegerekende ontvangsten. Opbrengsten verhogen je winst.
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="section">
+          <h3>Typen kosten</h3>
+          <table class="compact">
+            <thead><tr><th>Type</th><th>Kenmerken</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Variabele kosten (v)</strong></td><td>Veranderen mee met productie-omvang</td></tr>
+              <tr><td><strong>Vaste (constante) kosten (C)</strong></td><td>Blijven gelijk, ongeacht omvang</td></tr>
+              <tr><td><strong>Directe kosten</strong></td><td>Direct toe te wijzen aan één product/dienst</td></tr>
+              <tr><td><strong>Indirecte kosten</strong></td><td>Niet direct toe te wijzen — verdeeld via opslag</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="section">
+          <h3>Onthoud dit altijd</h3>
+          <table class="compact">
+            <thead><tr><th>Post</th><th>Kosten?</th><th>Uitgave?</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Afschrijving</strong></td><td><span class="tag green">Ja</span></td><td><span class="tag red">Nee</span></td></tr>
+              <tr><td><strong>Aflossing</strong></td><td><span class="tag red">Nee</span></td><td><span class="tag green">Ja</span></td></tr>
+              <tr><td><strong>Rente</strong></td><td><span class="tag green">Ja</span></td><td><span class="tag green">Ja</span></td></tr>
+              <tr><td><strong>Geleend geld</strong></td><td colspan="2"><span class="tag orange">Nooit opbrengst</span></td></tr>
+              <tr><td><strong>Voorziening</strong></td><td><span class="tag green">Ja</span></td><td><span class="tag red">Nee</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== H2: FINANCIËLE OVERZICHTEN ===== -->
+<div class="card" id="h2">
+  <div class="card-header h2"><span class="icon">📊</span><h2>Module 2 — Financiële overzichten</h2></div>
+  <div class="card-body">
+    <div class="two-col">
+      <div>
+        <div class="section">
+          <h3>De balans</h3>
+          <div class="defbox">
+            <strong>Balans</strong>
+            Overzicht van bezittingen en schulden op één bepaald moment. Debet (links) = activa. Credit (rechts) = passiva. Totaal debet = Totaal credit (altijd!).
+          </div>
+          <table class="compact">
+            <thead><tr><th>DEBET (Activa)</th><th>CREDIT (Passiva)</th></tr></thead>
+            <tbody>
+              <tr><td>Vaste activa</td><td>Eigen vermogen</td></tr>
+              <tr><td>Vlottende activa</td><td>Vreemd vermogen lang</td></tr>
+              <tr><td>— Voorraden</td><td>Vreemd vermogen kort</td></tr>
+              <tr><td>— Debiteuren</td><td>— Crediteuren</td></tr>
+              <tr><td>— Te vorderen BTW</td><td>— Te betalen BTW</td></tr>
+              <tr><td>— Liquide middelen</td><td>— Voorzieningen</td></tr>
+            </tbody>
+          </table>
+          <div class="highlight" style="margin-top:8px;"><strong>EV = Bezittingen - Schulden.</strong> Activa worden altijd exclusief BTW op de balans gezet (behalve debiteuren en crediteuren: inclusief BTW).</div>
+        </div>
+      </div>
+      <div>
+        <div class="section">
+          <h3>Resultatenrekening — EBITDA naar EAT</h3>
+          <div class="formula-box">
+Omzet (q × p, excl. BTW)
+− Inkoopwaarde omzet (IWO)
+= <strong>Brutowinst</strong>
+− Overige kosten
+= <strong>EBITDA</strong>  <span class="comment">// vóór rente, belasting, afschrijving</span>
+− Afschrijvingen
+= <strong>EBIT</strong>  <span class="comment">// vóór rente en belasting</span>
+− Rentekosten
+= <strong>EBT</strong>  <span class="comment">// vóór belasting</span>
+− Vennootschapsbelasting (EBT × %)
+= <strong>EAT</strong>  <span class="comment">// nettowinst</span>
+          </div>
+        </div>
+        <div class="section">
+          <h3>Kasstroomoverzicht</h3>
+          <div class="defbox">
+            <strong>Kasstroomoverzicht (liquiditeitsbegroting)</strong>
+            Overzicht van alle ontvangsten en uitgaven over een periode. Niet kosten/opbrengsten, maar daadwerkelijke geldstromen. Beginsaldo + ontvangsten - uitgaven = eindsaldo.
+          </div>
+          <div class="warn">Factuurmoment ≠ betaalmoment. Ontvangen/verstuurde rekening = nog géén ontvangst/uitgave. Betaling = wel ontvangst/uitgave.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== H3: KOSTEN EN GELDSTROMEN ===== -->
+<div class="card" id="h3">
+  <div class="card-header h3"><span class="icon">🔄</span><h2>Module 3 — Kosten en geldstromen</h2></div>
+  <div class="card-body">
+    <div class="two-col">
+      <div>
+        <div class="section">
+          <h3>Primaire vs. secundaire geldstromen</h3>
+          <div class="box" style="margin-bottom:8px;">
+            <h4>Primaire geldstroom</h4>
+            <p style="font-size:13px;color:var(--ink-soft);margin:0;">Geldstromen die direct samenhangen met productie en verkoop. Worden gebruikt bij investeringsbeoordelingen (BTP/NCW/ETP).</p>
+          </div>
+          <div class="box">
+            <h4>Secundaire geldstroom</h4>
+            <p style="font-size:13px;color:var(--ink-soft);margin:0;">Geldstromen die samenhangen met de vermogensmarkt: leningen, aflossingen, rentebetalingen, aandelenkapitaal, dividend.</p>
+          </div>
+          <div class="formula-box" style="margin-top:10px;">
+Primaire geldstroom = EAT + Rentekosten + Afschrijvingen
+<span class="comment">// Rente = secundair; afschrijving = geen geldstroom → beide optellen</span>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="section">
+          <h3>BTW (omzetbelasting)</h3>
+          <div class="defbox">
+            <strong>Factuurstelsel</strong>
+            BTW boeken op het moment van factuur (niet betaling). Inkoop-BTW terugvragen (te vorderen BTW, debet). Verkoop-BTW afdragen (te betalen BTW, credit).
+          </div>
+          <div class="formula-box">
+Excl. BTW → Incl. BTW: bedrag × 1,21
+Incl. BTW → Excl. BTW: bedrag / 1,21
+BTW-bedrag (21%): excl. × 0,21
+BTW-bedrag (9%): excl. × 0,09
+          </div>
+          <div class="warn">Activa en kosten staan altijd EXCLUSIEF BTW op de balans/resultatenrekening. Debiteuren en crediteuren staan INCLUSIEF BTW.</div>
+        </div>
+        <div class="section">
+          <h3>Afschrijving</h3>
+          <div class="formula-box">
+Afschrijving per jaar = (Aanschafwaarde − Restwaarde) / Aantal jaren
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== H4: MANAGEN EN CALCULATIE ===== -->
+<div class="card" id="h4">
+  <div class="card-header h4"><span class="icon">🧮</span><h2>Module 4 — Managen en calculatie</h2></div>
+  <div class="card-body">
+    <div class="two-col">
+      <div>
+        <div class="section">
+          <h3>Break-even analyse</h3>
+          <div class="formula-box">
+TO = q × p       <span class="comment">// totale opbrengst</span>
+TK = (q × v) + C <span class="comment">// totale kosten</span>
+Break-even: TO = TK
+
+Dekkingsbijdrage = p − v
+BEA = C / (p − v)   <span class="comment">// break-even afzet, altijd ↑ afronden</span>
+BEO = BEA × p       <span class="comment">// break-even omzet (1 product)</span>
+
+Veiligheidsmarge (€) = Werkelijke omzet − BEO
+Veiligheidsmarge (%) = VM / WO × 100%
+          </div>
+        </div>
+        <div class="section">
+          <h3>Kostprijsberekeningen</h3>
+          <div class="formula-box">
+<span class="comment">// Integrale kostprijs</span>
+IK = (C / N) + (V / W)
+<span class="comment">// C=constante kosten, N=normaal aantal</span>
+<span class="comment">// V=variabele kosten totaal, W=werkelijk aantal</span>
+
+<span class="comment">// Enkelvoudige opslagmethode</span>
+Opslag% = Totale indirecte kosten / Totale directe kosten × 100%
+Kostprijs = DC + (DC × Opslag%)
+<span class="comment">// Nooit opslagpercentage afronden!</span>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="section">
+          <h3>Personeelskosten en uurtarief</h3>
+          <div class="section">
+            <h3>Productieve uren berekening</h3>
+            <div class="stap"><span class="nummer">1</span><span><strong>Contracturen</strong> = uren per week × 52</span></div>
+            <div class="stap"><span class="nummer">2</span><span>− Vakantiedagen (dagen × uren/dag)</span></div>
+            <div class="stap"><span class="nummer">3</span><span>− Ziekteverzuim (% van overgebleven uren)</span></div>
+            <div class="stap"><span class="nummer">4</span><span>− Pauze (dagen/week × 52 × pauze-uren/dag)</span></div>
+            <div class="stap"><span class="nummer">5</span><span>− Leegloop (% van overgebleven uren) = <strong>Productieve uren</strong></span></div>
+          </div>
+          <div class="formula-box">
+Werkgeverslasten = Brutoloon + vakantiegeld + sociale lasten + overig
+Kostprijs/uur = Werkgeverslasten / Productieve uren
+Uurtarief = Kostprijs × (1 + overhead%) × (1 + winst%) × (1 + BTW%)
+          </div>
+        </div>
+        <div class="section">
+          <h3>Differentiële calculatie</h3>
+          <div class="defbox">
+            <strong>Differentieel resultaat</strong>
+            Extra opbrengsten − extra kosten door de opdracht. Constante kosten zijn al gedekt en worden NIET meegenomen. Sunk costs worden NIET meegenomen.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== H5: KENGETALLEN ===== -->
+<div class="card" id="h5">
+  <div class="card-header h5"><span class="icon">📈</span><h2>Module 5 — Financiële kengetallen</h2></div>
+  <div class="card-body">
+    <div class="three-col">
+      <div>
+        <div class="section">
+          <h3>Solvabiliteit (lange termijn)</h3>
+          <div class="defbox">
+            <strong>Wat?</strong>
+            Kan het bedrijf op lange termijn aan zijn financiële verplichtingen voldoen? Interessant voor: directie, leveranciers, banken.
+          </div>
+          <div class="formula-box">
+Solvabiliteits% = EV / TV × 100%
+Debt ratio = VV / TV
+<span class="comment">// TV = EV + VV</span>
+<span class="comment">// Gebruik 1 moment, GEEN gemiddelden!</span>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="section">
+          <h3>Liquiditeit (korte termijn)</h3>
+          <div class="defbox">
+            <strong>Wat?</strong>
+            Kan het bedrijf op korte termijn zijn rekeningen betalen? Interessant voor: directie, leveranciers, banken.
+          </div>
+          <div class="formula-box">
+NWK = Vlottende activa − Kort VV
+CR = Vlottende activa / Kort VV
+QR = (Vlottende activa − Voorraden) / Kort VV
+<span class="comment">// Gebruik 1 moment, GEEN gemiddelden!</span>
+<span class="comment">// Voorzieningen = GEEN Kort VV</span>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="section">
+          <h3>Rentabiliteit</h3>
+          <div class="defbox">
+            <strong>Wat?</strong>
+            Hoeveel rendement behaalt het bedrijf? Gebruik WEL gemiddelden (begin- + eindbalans / 2).
+          </div>
+          <div class="formula-box">
+REV = EAT / Gem. EV × 100%
+RTV = EBIT / Gem. TV × 100%
+KVV = Rente / Gem. VV × 100%
+<span class="comment">// Gemiddeld VV = (VV begin + VV eind) / 2</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="section" style="margin-top:4px; border-top:1.5px solid var(--line); padding-top:16px;">
+      <h3>Waardecreatiemodel — 6 waarden (FIM MNS)</h3>
+      <table class="compact">
+        <thead><tr><th>Waarde</th><th>Wat?</th><th>Signaalwoorden</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Financieel</strong></td><td>Geld, kapitaal, rendement</td><td>budget, winst, schuld, besparing</td></tr>
+          <tr><td><strong>Intellectueel</strong></td><td>Kennis, innovatie</td><td>training, software, reputatie, data</td></tr>
+          <tr><td><strong>Menselijk</strong></td><td>Welzijn eigen medewerkers</td><td>gezondheid, veiligheid, motivatie, ziekteverzuim</td></tr>
+          <tr><td><strong>Materieel</strong></td><td>Fysieke bezittingen</td><td>gebouw, machines, inventaris, apparatuur</td></tr>
+          <tr><td><strong>Natuurlijk</strong></td><td>Milieu, duurzaamheid</td><td>CO₂, energie, groen, afval, recycling</td></tr>
+          <tr><td><strong>Sociaal-relationeel</strong></td><td>Relaties met externen</td><td>partnership, leveranciers, klanten, samenwerking</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ===== H6: INVESTERING BEOORDELEN ===== -->
+<div class="card" id="h6">
+  <div class="card-header h6"><span class="icon">🏦</span><h2>Module 6 — Investering beoordelen</h2></div>
+  <div class="card-body">
+    <div class="two-col">
+      <div>
+        <div class="section">
+          <h3>DPG en BTP</h3>
+          <div class="defbox">
+            <strong>DPG — Differentiële Primaire Geldstromen</strong>
+            Alleen de primaire geldstromen die veranderen door jouw investering.
+          </div>
+          <div class="formula-box">
+BTP = optellen DPG's per jaar totdat investering overschreden
+BTP maanden = (Benodigd bedrag in jaar / Jaarbedrag) × 12
+<span class="comment">// Altijd naar BOVEN afronden</span>
+<span class="comment">// BTP houdt GEEN rekening met tijdswaarde van geld</span>
+          </div>
+        </div>
+        <div class="section">
+          <h3>Tijdswaarde van geld</h3>
+          <div class="highlight">
+            <strong>Geld dat je eerder krijgt is meer waard</strong> dan geld dat je later krijgt — omdat je er meer geld van kan maken. Uitgaven zo laat mogelijk, ontvangsten zo vroeg mogelijk.
+          </div>
+          <div class="formula-box">
+Toekomstige waarde (TW) = Waarde nu × (1 + r)^n
+Contante waarde (CW)    = TW / (1 + r)^n
+<span class="comment">// r = rente/vermogenskostenvoet, n = aantal jaren</span>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="section">
+          <h3>NCW en ETP</h3>
+          <div class="formula-box">
+NCW = Som van alle contante DPG's − Investering
+
+CW jaar 1 = DPG jaar 1 / (1 + r)^1
+CW jaar 2 = DPG jaar 2 / (1 + r)^2
+...
+
+NCW &gt; 0 → Investering is rendabel ✓
+NCW &lt; 0 → Investering haalt rendement niet ✗
+          </div>
+          <div class="defbox">
+            <strong>ETP — Economische Terugverdienperiode</strong>
+            Zelfde als BTP maar dan met contant gemaakte DPG's. Houdt WEL rekening met tijdswaarde van geld. Verschil: ETP ≥ BTP (want contante waarden zijn lager).
+          </div>
+          <table class="compact">
+            <thead><tr><th>Methode</th><th>Tijdswaarde?</th></tr></thead>
+            <tbody>
+              <tr><td><strong>BTP</strong></td><td><span class="tag red">Nee</span> — gebruikt gewone DPG's</td></tr>
+              <tr><td><strong>ETP</strong></td><td><span class="tag green">Ja</span> — gebruikt contante DPG's</td></tr>
+              <tr><td><strong>NCW</strong></td><td><span class="tag green">Ja</span> — vergelijkt contante waarden</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div><!-- .main -->
+
+<footer class="fa-footer">
+  <span>FMAtlas · gemaakt door David Koolstra</span>
+  <span>HAN · Facilitair Management · 2026</span>
+</footer>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+<script src="js/fmatlas.js"></script>
+<script>
+const firebaseConfig = {
+  apiKey: "AIzaSyBB397Wk2eqpBjic8E7aGV1mTgIjhQ21a8",
+  authDomain: "fmkompas-ff8bc.firebaseapp.com",
+  projectId: "fmkompas-ff8bc",
+  storageBucket: "fmkompas-ff8bc.firebasestorage.app",
+  messagingSenderId: "487972024689",
+  appId: "1:487972024689:web:712c3117080745d14746d0"
+};
+firebase.initializeApp(firebaseConfig);
+firebase.auth().onAuthStateChanged(user => {
+  document.getElementById('fa-header-slot').innerHTML = '';
+  document.getElementById('fa-header-slot').appendChild(faRenderHeader({ user }));
+  faMarkActiveToday();
+});
+</script>
+</body>
+</html>
