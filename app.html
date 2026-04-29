@@ -1019,9 +1019,54 @@
       // Streak
       renderStreak();
 
+      // Tip van de dag
+      renderTip();
+
       // Mark active (pings the streak)
       faMarkActiveToday();
       renderStreak();
+    }
+
+    // ── Tips ──────────────────────────────────────────────
+    const TIPS = [
+      "Korte sessies van 10–15 min werken beter dan lange marathons. Doe er vandaag twee.",
+      "Zeg de stof hardop uit. Uitleggen aan jezelf is effectiever dan stil herlezen.",
+      "Maak na elk hoofdstuk drie eigen vragen. Antwoord geven dwingt je brein om te ordenen.",
+      "Plan je studietijd vooraf in je agenda — dan hoef je niet meer te kiezen wanneer.",
+      "Wissel vakken af binnen één sessie. Je geheugen onthoudt beter door variatie.",
+      "Sluit je telefoon weg in een andere kamer. Alleen al zichtbaar liggen kost focus.",
+      "Slaap is studie. Een korte powernap van 20 min versterkt wat je net hebt geleerd.",
+      "Begin met het moeilijkste vak. Je energie is het hoogst aan het begin van een sessie.",
+      "Maak schema's en mindmaps. Visuele structuren blijven langer hangen dan losse zinnen.",
+      "Test jezelf zonder boek. Falen tijdens oefenen voorkomt falen tijdens de toets.",
+      "Drink genoeg water. Uitdroging verlaagt je concentratie merkbaar.",
+      "Studeer niet op je bed. Je brein koppelt die plek aan slapen, niet aan focus.",
+      "Herhaal stof na 1 dag, 3 dagen en 7 dagen. Spaced repetition werkt echt.",
+      "Schrijf samenvattingen met de hand. Trager schrijven = beter onthouden.",
+      "Loop 10 minuten buiten tussen sessies. Beweging boost je geheugen.",
+      "Leer in de ochtend de zware stof, in de avond de lichtere herhaling.",
+      "Gebruik de Pomodoro-methode: 25 min focus, 5 min pauze. Vier rondes, dan langer rusten.",
+      "Onthoud: begrijpen > stampen. Snap je het echt? Leg het uit aan iemand anders.",
+      "Maak oude toetsen. Niets bereidt je beter voor dan oefenen op het echte werk.",
+      "Beloon jezelf na een sessie. Je brein leert sneller met positieve associaties.",
+      "Studeer vlak voor het slapen kort de moeilijke stof. Je brein verwerkt 's nachts.",
+      "Zet doelen per sessie ('3 hoofdstukken samenvatten'), niet per tijd ('2 uur leren').",
+      "Eet iets met eiwitten voor je gaat leren. Suiker geeft een dip na 30 minuten.",
+      "Laat perfectionisme los. Een ruwe samenvatting is beter dan een mooie die er niet komt.",
+      "Praat met klasgenoten over de stof. Discussie onthult wat je nog niet snapt.",
+      "Zet een timer als je 'even' op je telefoon kijkt. Anders ben je 40 minuten verder.",
+      "Lees de samenvatting eerst, dan het hoofdstuk. Je weet dan al waar je naar zoekt.",
+      "Maak fouten zichtbaar. Houd bij welke vragen je fout had — dat zijn je gouden oefenpunten.",
+      "Gebruik geuren of muziek tijdens leren. Dezelfde geur/muziek tijdens de toets helpt herinneren.",
+      "Vier kleine wins. Een week op rij gestudeerd? Dat verdient erkenning.",
+    ];
+
+    function renderTip() {
+      const start = new Date(new Date().getFullYear(), 0, 0);
+      const dayOfYear = Math.floor((Date.now() - start.getTime()) / 86400000);
+      const tip = TIPS[dayOfYear % TIPS.length];
+      const el = document.getElementById('tip-text');
+      if (el) el.textContent = tip;
     }
 
     function renderVakken() {
@@ -1030,7 +1075,7 @@
       const last = faGetLastSeen();
       const byPeriod = [4, 3, 2, 1].map(p => ({
         num: p,
-        note: p === 4 ? 'Lopend · week 6' : 'Afgerond',
+        note: p === 4 ? 'Lopend · week 6' : '',
         courses: VAKKEN.filter(v => v.period === p),
       }));
 
@@ -1043,7 +1088,7 @@
       </div>
       <div class="vak-list">
         ${p.courses.map(c => {
-        const pct = c.active ? (progress[c.key] || 0) : 100;
+        const pct = progress[c.key] || 0;
         const isLast = last && last.key === c.key;
         return `
             <a class="vak-card ${isLast ? 'last' : ''}" href="${c.url}" onclick="faMarkLastSeen('${c.key}','${c.title.replace(/'/g, "\\'")}','${c.url}')">
@@ -1054,23 +1099,21 @@
                   <h3>${c.title}</h3>
                   <div class="sub">${c.sub}</div>
                 </div>
-                ${c.grade ? `<div class="vak-grade">${c.grade}</div>` : ''}
               </div>
               <div class="vak-row">
                 <div class="fa-progress">
-                  <div class="fa-progress-bar ${c.active ? '' : 'neutral'}" style="width:${pct}%"></div>
+                  <div class="fa-progress-bar" style="width:${pct}%"></div>
                 </div>
-                <span class="vak-pct ${c.active ? 'active' : ''}">${pct}%</span>
+                <span class="vak-pct active">${pct}%</span>
               </div>
-              ${c.active ? `
-                <div class="vak-actions">
-                  <span class="fa-btn fa-btn-ghost">
-                    <span data-fa-icon="book" data-fa-size="13"></span> Samenvatting
-                  </span>
-                  <span class="fa-btn fa-btn-ghost">
-                    <span data-fa-icon="cards" data-fa-size="13"></span> Flashcards
-                  </span>
-                </div>` : ''}
+              <div class="vak-actions">
+                <span class="fa-btn fa-btn-ghost">
+                  <span data-fa-icon="book" data-fa-size="13"></span> Samenvatting
+                </span>
+                <span class="fa-btn fa-btn-ghost">
+                  <span data-fa-icon="cards" data-fa-size="13"></span> Flashcards
+                </span>
+              </div>
             </a>
           `;
       }).join('')}
