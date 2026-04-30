@@ -32,7 +32,7 @@ EM1.begrippen = [
   {cat:"project", term:"Mijlpaal", def:"Meetbaar tussentijds resultaat of formeel beslismoment binnen een project. Geen doorlooptijd, wel een concreet resultaat."},
   {cat:"project", term:"Scope creep", def:"Ongecontroleerde, niet-geplande uitbreiding van de projectomvang zonder formele goedkeuring of aanpassing van budget en doorlooptijd."},
   {cat:"project", term:"Deliverable", def:"Een op te leveren resultaat (product, rapport, ontwerp). Niet hetzelfde als een activiteit — dat is de taak die nodig is om de deliverable te maken."},
-  {cat:"project", term:"P6-methode", def:"Methode van Roel Grit voor het schrijven van een Plan van Aanpak: Probleemstelling, Producten, Planning, Personeel, Prijs, Plan van Aanpak."},
+  {cat:"project", term:"P6-methode", def:"Projectaanpak van Roel Grit met zes stappen: 1) Opstarten (idee/initiatief), 2) Inrichten (team en afspraken), 3) Plan van Aanpak (resultaat en aanpak vaststellen), 4) Uitvoeren (TGKIO bewaken), 5) Opleveren (testen en goedkeuren), 6) Afsluiten (overdracht, evaluatie). Verschil met traditioneel: ontwerp, voorbereiding en realisatie zijn samengevoegd in stap 4."},
   {cat:"project", term:"Plan van Aanpak", def:"Het centrale projectdocument. Bevat: aanleiding, doelstelling, resultaat, aanpak, planning, begroting, risicoanalyse en organisatie."},
   {cat:"project", term:"SMART", def:"Methode om doelstellingen concreet te formuleren: Specifiek, Meetbaar, Acceptabel, Realistisch, Tijdgebonden. Garandeert niet dat een doel haalbaar is."},
 
@@ -132,7 +132,7 @@ EM1.begrippen = [
   {cat:"kwaliteit", term:"SAT (Site Acceptance Test)", def:"Acceptatietest die plaatsvindt bij de KLANT/locatie. Controle of het geïnstalleerde systeem correct werkt in de echte omgeving."},
 
   /* 10. Overig */
-  {cat:"overig", term:"Probleemstelling", def:"Beschrijving van de aanleiding en het probleem dat het project moet oplossen. Eerste stap in de P6-methode."},
+  {cat:"overig", term:"Probleemstelling", def:"Beschrijving van de aanleiding en het probleem dat het project moet oplossen. Wordt vastgesteld in stap 1 (Opstarten) van de P6-methode en uitgewerkt in het Plan van Aanpak (stap 3)."},
   {cat:"overig", term:"Projectdoelstelling", def:"SMART geformuleerde beschrijving van wat het project beoogt te bereiken. Antwoord op: waarom doen we dit project?"},
   {cat:"overig", term:"Businesscase", def:"Onderbouwing van de toegevoegde waarde van het project: kosten, baten, risico's en alternatieve opties."},
   {cat:"overig", term:"Vergaderen — voorzitter", def:"De voorzitter stelt de agenda op, leidt de vergadering, bewaakt de tijd en zorgt voor besluiten. De notulist legt besluiten vast."},

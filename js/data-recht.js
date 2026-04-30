@@ -30,6 +30,12 @@ RECHT.cats = [
     "label": "Tekortkoming & Acties",
     "short": "Tekortkoming",
     "color": "#ef4444"
+  },
+  {
+    "key": "onrechtmatige_daad",
+    "label": "Onrechtmatige daad",
+    "short": "OD",
+    "color": "#0ea5e9"
   }
 ];
 RECHT.begrippen = [
@@ -240,6 +246,48 @@ RECHT.begrippen = [
   {cat:"tekortkoming", term:"Combinaties van acties bij wanprestatie",
    def:"Toegestaan: nakoming + gevolgschade; opschorting + gevolgschade; ontbinding + gevolgschade; vervangende schadevergoeding + gevolgschade. Niet toegestaan: ontbinding + vervangende schadevergoeding tegelijk (vervangende schadevergoeding vervangt de nakoming)."},
 
+  /* ══════════════════════════════════════════
+     6. ONRECHTMATIGE DAAD (Week 6)
+  ══════════════════════════════════════════ */
+  {cat:"onrechtmatige_daad", term:"Onrechtmatige daad (art. 6:162 BW)",
+   def:"Buitencontractuele grondslag voor aansprakelijkheid: wie jegens een ander een onrechtmatige daad pleegt en daarvoor verantwoordelijk is, moet de daardoor veroorzaakte schade vergoeden. Geen overeenkomst tussen partijen vereist (verschil met wanprestatie).",
+   art:"art. 6:162 BW"},
+  {cat:"onrechtmatige_daad", term:"Vijf vereisten onrechtmatige daad",
+   def:"Cumulatief: (1) onrechtmatige gedraging, (2) toerekenbaarheid, (3) schade, (4) causaal verband, (5) relativiteit. Pas als alle vijf voldaan zijn, is er aansprakelijkheid.",
+   art:"art. 6:162–6:163 BW"},
+  {cat:"onrechtmatige_daad", term:"Onrechtmatige gedraging",
+   def:"Drie categorieën: (a) inbreuk op een recht (eigendom, lichamelijke integriteit, eer en goede naam), (b) doen of nalaten in strijd met een wettelijke plicht, (c) doen of nalaten in strijd met de maatschappelijke zorgvuldigheid (ongeschreven recht).",
+   art:"art. 6:162 lid 2 BW"},
+  {cat:"onrechtmatige_daad", term:"Maatschappelijke zorgvuldigheid",
+   def:"Ongeschreven norm: gedrag dat in het maatschappelijk verkeer betamelijk is. Beoordeling per geval. Klassiek voorbeeld: Kelderluik-arrest (HR 1965) — wie een gevaarlijke situatie schept, moet maatregelen nemen om ongelukken te voorkomen."},
+  {cat:"onrechtmatige_daad", term:"Toerekenbaarheid bij OD",
+   def:"De daad moet aan de dader toe te rekenen zijn op grond van: (1) schuld (verwijtbaarheid), (2) wet (risicoaansprakelijkheid), of (3) verkeersopvattingen. Bij risicoaansprakelijkheid is schuld niet vereist.",
+   art:"art. 6:162 lid 3 BW"},
+  {cat:"onrechtmatige_daad", term:"Risicoaansprakelijkheid",
+   def:"Aansprakelijkheid die op een specifieke persoon rust ongeacht schuld. De wet wijst de drager aan: ouders voor kinderen onder 14, werkgever voor werknemer, bezitter dier of opstal, producent voor gebrekkig product."},
+  {cat:"onrechtmatige_daad", term:"Aansprakelijkheid voor kinderen onder 14",
+   def:"Ouders of voogd zijn aansprakelijk voor schade door doen of nalaten van kinderen jonger dan 14 jaar — risicoaansprakelijkheid, geen schuld vereist. Bij 14–15 jaar: ouders aansprakelijk tenzij zij niet kan worden verweten dat zij de gedraging niet hebben belet (art. 6:169 lid 2 BW).",
+   art:"art. 6:169 lid 1 BW"},
+  {cat:"onrechtmatige_daad", term:"Werkgeversaansprakelijkheid",
+   def:"De werkgever is aansprakelijk voor fouten van een ondergeschikte (werknemer) gemaakt in de uitoefening van zijn functie. De kans op de fout moet door de opgedragen taak zijn vergroot en de werkgever moet zeggenschap hebben gehad over de gedraging.",
+   art:"art. 6:170 BW"},
+  {cat:"onrechtmatige_daad", term:"Aansprakelijkheid bezitter opstal",
+   def:"De bezitter van een gebouw of werk is aansprakelijk voor schade door een gebrekkige toestand ervan. Risicoaansprakelijkheid: schuld niet vereist. Voor FM relevant bij vallende delen, glibberige vloeren, defecte trappen.",
+   art:"art. 6:174 BW"},
+  {cat:"onrechtmatige_daad", term:"Productaansprakelijkheid",
+   def:"De producent is aansprakelijk voor schade door een gebrekkig product. Schuld niet vereist. Bedoeld voor consumentenbescherming: lichamelijk letsel of schade aan privé-zaken.",
+   art:"art. 6:185 e.v. BW"},
+  {cat:"onrechtmatige_daad", term:"Relativiteit (Schutznorm)",
+   def:"De geschonden norm moet strekken tot bescherming tegen de schade die de benadeelde lijdt. Niet elke wetsovertreding levert aansprakelijkheid op tegenover iedereen. Klassieker: de norm 'rij niet door rood' beschermt verkeersdeelnemers, niet bijv. een aandeelhouder die door de file in waarde verliest.",
+   art:"art. 6:163 BW"},
+  {cat:"onrechtmatige_daad", term:"Rechtvaardigingsgronden",
+   def:"Omstandigheden die het onrechtmatige karakter wegnemen: noodweer, overmacht, wettelijk voorschrift, bevoegd gegeven ambtelijk bevel, toestemming van de benadeelde. Bewijslast bij wie zich erop beroept."},
+  {cat:"onrechtmatige_daad", term:"Verschil OD versus wanprestatie",
+   def:"Wanprestatie: binnen een bestaande overeenkomst (art. 6:74 BW), schadevergoeding vereist verzuim en toerekenbaarheid. OD: buitencontractueel (art. 6:162 BW), geen verzuim vereist, wél relativiteit. Bij samenloop kan benadeelde kiezen, tenzij wet of overeenkomst dat uitsluit."},
+  {cat:"onrechtmatige_daad", term:"Verjaring OD-vordering",
+   def:"De vordering uit onrechtmatige daad verjaart vijf jaar nadat de benadeelde bekend is geworden met zowel de schade als de aansprakelijke persoon. Absolute uiterste termijn: 20 jaar na de gebeurtenis (30 jaar bij milieuschade).",
+   art:"art. 3:310 BW"},
+
 ];;
 RECHT.flashcards = [
   /* ── INLEIDING IN HET RECHT ── */
@@ -314,4 +362,20 @@ RECHT.flashcards = [
   {cat:"tekortkoming",term:"Wederkerige overeenkomst",def:"Een overeenkomst met twee tegenover elkaar staande verbintenissen. Bijv. koop: levering (verkoper) tegenover betaling (koper). Vereiste voor ontbinding."},
   {cat:"tekortkoming",term:"Ongedaanmaking",def:"Na ontbinding moeten al verrichte prestaties ongedaan worden gemaakt (teruggeven). Als ongedaanmaking onmogelijk is, moet de waarde worden vergoed.",art:"art. 6:272 BW"},
   {cat:"tekortkoming",term:"Combinaties van acties bij wanprestatie",def:"Toegestaan: nakoming + gevolgschade; opschorting + gevolgschade; ontbinding + gevolgschade. NIET toegestaan: ontbinding + vervangende schadevergoeding tegelijk."},
+
+  /* ── ONRECHTMATIGE DAAD ── */
+  {cat:"onrechtmatige_daad",term:"Onrechtmatige daad",def:"Buitencontractuele grondslag voor aansprakelijkheid: wie onrechtmatig schade veroorzaakt aan een ander, moet die schade vergoeden. Geen overeenkomst tussen partijen vereist.",art:"art. 6:162 BW"},
+  {cat:"onrechtmatige_daad",term:"Vijf vereisten OD",def:"Cumulatief: (1) onrechtmatige gedraging, (2) toerekenbaarheid, (3) schade, (4) causaal verband, (5) relativiteit. Pas als alle vijf voldaan zijn ontstaat aansprakelijkheid.",art:"art. 6:162-6:163 BW"},
+  {cat:"onrechtmatige_daad",term:"Onrechtmatige gedraging — drie categorieën",def:"(a) inbreuk op een recht (eigendom, lichaam, eer); (b) doen of nalaten in strijd met een wettelijke plicht; (c) doen of nalaten in strijd met de maatschappelijke zorgvuldigheid (ongeschreven recht).",art:"art. 6:162 lid 2 BW"},
+  {cat:"onrechtmatige_daad",term:"Maatschappelijke zorgvuldigheid",def:"Ongeschreven norm voor wat in het maatschappelijk verkeer betamelijk is. Klassiek voorbeeld: Kelderluik-arrest — wie een gevaar schept moet maatregelen nemen om ongelukken te voorkomen."},
+  {cat:"onrechtmatige_daad",term:"Toerekenbaarheid bij OD",def:"Drie gronden: schuld (verwijtbaarheid), wet (risicoaansprakelijkheid) of verkeersopvattingen. Bij risicoaansprakelijkheid is schuld niet vereist.",art:"art. 6:162 lid 3 BW"},
+  {cat:"onrechtmatige_daad",term:"Risicoaansprakelijkheid",def:"Aansprakelijkheid zonder dat schuld bewezen hoeft te worden. De wet wijst de drager aan: ouders, werkgever, bezitter dier, bezitter opstal, producent."},
+  {cat:"onrechtmatige_daad",term:"Aansprakelijkheid kinderen onder 14",def:"Ouders/voogd zijn aansprakelijk voor schade door kinderen jonger dan 14. Risicoaansprakelijkheid — schuld niet vereist.",art:"art. 6:169 lid 1 BW"},
+  {cat:"onrechtmatige_daad",term:"Werkgeversaansprakelijkheid",def:"Werkgever is aansprakelijk voor fouten van werknemer in de functie-uitoefening. Voorwaarden: kans op fout vergroot door taak, en werkgever had zeggenschap over gedraging.",art:"art. 6:170 BW"},
+  {cat:"onrechtmatige_daad",term:"Aansprakelijkheid bezitter opstal",def:"Bezitter van gebouw of werk is aansprakelijk voor schade door gebrekkige toestand. Voor FM relevant bij defecte trappen, glibberige vloeren, vallende plafondonderdelen.",art:"art. 6:174 BW"},
+  {cat:"onrechtmatige_daad",term:"Productaansprakelijkheid",def:"Producent is aansprakelijk voor schade door gebrekkig product. Schuld niet vereist. Vooral bij lichamelijk letsel of schade aan privé-zaken.",art:"art. 6:185 e.v. BW"},
+  {cat:"onrechtmatige_daad",term:"Relativiteit (Schutznorm)",def:"De geschonden norm moet strekken tot bescherming tegen de schade die de benadeelde lijdt. Niet elke regelovertreding levert aansprakelijkheid op tegenover iedereen.",art:"art. 6:163 BW"},
+  {cat:"onrechtmatige_daad",term:"Rechtvaardigingsgronden",def:"Heffen het onrechtmatige karakter op: noodweer, overmacht, wettelijk voorschrift, bevoegd gegeven ambtelijk bevel, toestemming van de benadeelde. Wie zich erop beroept moet bewijzen."},
+  {cat:"onrechtmatige_daad",term:"OD versus wanprestatie",def:"Wanprestatie = binnen overeenkomst (6:74), verzuim vereist. OD = buitencontractueel (6:162), geen verzuim, wél relativiteit. Bij samenloop kan de benadeelde kiezen tenzij wet of overeenkomst dat uitsluit."},
+  {cat:"onrechtmatige_daad",term:"Verjaring OD-vordering",def:"5 jaar na bekendheid met schade én aansprakelijke persoon. Absolute uiterste termijn: 20 jaar na de gebeurtenis (30 jaar bij milieuschade).",art:"art. 3:310 BW"},
 ];;
