@@ -47,9 +47,9 @@ EM1.begrippen = [
   {cat:"fasering", term:"Fase-gate", def:"Controlemoment aan het einde van elke fase. De stuurgroep beoordeelt of aan de criteria is voldaan en neemt een go/no-go beslissing."},
 
   /* 3. Planning & beheersaspecten */
-  {cat:"planning", term:"GOKIT", def:"Afkorting voor de vijf beheersaspecten: Geld, Organisatie, Kwaliteit, Informatie, Tijd. Zelfde als TGKIO en KOFTIG — andere volgorde."},
-  {cat:"planning", term:"TGKIO", def:"Alternatieve volgorde van dezelfde vijf beheersaspecten: Tijd, Geld, Kwaliteit, Informatie, Organisatie."},
-  {cat:"planning", term:"KOFTIG", def:"Nog een alternatieve volgorde van de vijf beheersaspecten. Alle drie (GOKIT, TGKIO, KOFTIG) verwijzen naar exact dezelfde vijf aspecten."},
+  {cat:"planning", term:"GOKIT", def:"Afkorting voor de vijf beheersaspecten van een project: Geld, Organisatie, Kwaliteit, Informatie, Tijd. Inhoudelijk gelijk aan TGKIO (alleen andere volgorde)."},
+  {cat:"planning", term:"TGKIO", def:"Alternatieve volgorde van dezelfde vijf beheersaspecten: Tijd, Geld, Kwaliteit, Informatie, Organisatie. Inhoudelijk identiek aan GOKIT."},
+  {cat:"planning", term:"KOFTIG", def:"Variant met zes beheersaspecten, specifiek voor evenementen: Kwaliteit, Organisatie, Facilitair, Tijd, Informatie, Geld. Bevat dezelfde aspecten als GOKIT/TGKIO plus één extra: Facilitair (faciliteiten/locatie/voorzieningen)."},
   {cat:"planning", term:"Duivelsdriehoek (IJzeren driehoek)", def:"Model dat de drie basisbeperkingen van een project toont: Geld, Tijd en Kwaliteit/Scope. Als één kant verandert zonder aanpassing van de andere, daalt de kwaliteit."},
   {cat:"planning", term:"Gantt-chart", def:"Balkplanningsdiagram waarbij activiteiten als balken in de tijd worden weergegeven. Toont tijdsvolgorde, maar niet de inhoudelijke afhankelijkheid tussen activiteiten."},
   {cat:"planning", term:"WBS (Werkbreakdownstructuur)", def:"Hiërarchische opdeling van alle projectactiviteiten en -resultaten. Toont structuur, géén chronologische volgorde — dat doet een Gantt-chart."},
@@ -70,6 +70,11 @@ EM1.begrippen = [
   {cat:"evm", term:"SV (Schedule Variance)", def:"Planningsverschil. Negatief = minder gedaan dan gepland = achter op schema.", formula:"SV = EV − PV"},
   {cat:"evm", term:"EAC (Estimate at Completion)", def:"Verwachte totale projectkosten op basis van huidige CPI. Als CPI = 0,80 en BAC = €200k, dan EAC = €250k — meer dan gepland!", formula:"EAC = BAC ÷ CPI"},
   {cat:"evm", term:"ETC (Estimate to Complete)", def:"Verwachte resterende kosten om het project af te ronden.", formula:"ETC = EAC − AC"},
+
+  /* 4b. Stakeholdermanagement */
+  {cat:"project", term:"Stakeholder", def:"Persoon of partij die invloed heeft op het project of erdoor beïnvloed wordt: opdrachtgever, gebruikers, leveranciers, omwonenden, vergunningverleners, eigen medewerkers."},
+  {cat:"project", term:"Stakeholderanalyse", def:"Stelselmatig in kaart brengen van alle stakeholders en hun belangen. Werkwijze: lijst opstellen → scoren op macht en belang → in matrix plotten → strategie per kwadrant kiezen → herzien per fase."},
+  {cat:"project", term:"Power/interest-matrix", def:"Stakeholdermatrix met twee assen — macht (kunnen ze beslissingen forceren?) en belang (raakt het project hen direct?). Vier kwadranten: hoge macht/hoog belang = manage closely; hoge macht/laag belang = tevreden houden; lage macht/hoog belang = informeren; lage macht/laag belang = monitoren."},
 
   /* 5. Risicobeheersing */
   {cat:"risico", term:"Risico", def:"Een onzekere gebeurtenis die een positief (kans) of negatief (bedreiging) effect kan hebben op projectdoelen."},

@@ -80,6 +80,12 @@ BECO.begrippen = [
   {cat:"beoordelen", term:"Contante waarde (CW)", def:"De waarde van een toekomstig bedrag in het heden. Formule: CW = TW / (1 + rente%)^jaren. Een contante waarde is altijd lager dan de toekomstige waarde."},
   {cat:"beoordelen", term:"Netto Contante Waarde (NCW)", def:"Som van alle contante waarden van toekomstige DPG's minus de investering. NCW > 0: investering is rendabel. NCW < 0: investering haalt gewenst rendement niet."},
   {cat:"beoordelen", term:"ETP (Economische Terugverdienperiode)", def:"Aantal jaren dat nodig is om investering terug te verdienen met contant gemaakte DPG's. Houdt WEL rekening met tijdswaarde (verschil met BTP)."},
+
+  /* 7. FM-economie */
+  {cat:"fm-economie", term:"TCO (Total Cost of Ownership)", def:"Alle kosten die een product of dienst gedurende zijn hele levensduur veroorzaakt: pre-transactie (selectie/aanbesteding), transactie (aanschaf/installatie) en post-transactie (gebruik, energie, onderhoud, afvoer) minus restwaarde. Bij FM-investeringen vaak doorslaggevend: de goedkoopste aanschaf is zelden de goedkoopste over de levensduur."},
+  {cat:"fm-economie", term:"NEN 2748", def:"Nederlandse norm die facilitaire kosten en prestaties uniform indeelt in vijf rubrieken: huisvesting, diensten en middelen, ICT, externe voorzieningen en facility management. Maakt benchmarking tussen FM-organisaties mogelijk."},
+  {cat:"fm-economie", term:"Forfaitaire calculatie", def:"Kostprijsmethode waarbij alle indirecte kosten worden gedekt door één vast bedrag of vast percentage, zonder verfijnde verdeling. Snel en eenvoudig, maar minder precies dan de integrale of opslagmethode."},
+  {cat:"fm-economie", term:"Benchmarking", def:"Vergelijken van eigen prestatiecijfers met die van anderen om verbeterpotentieel zichtbaar te maken. Intern: locaties of jaren onderling vergelijken. Extern: met sectorgenoten via bijvoorbeeld FMN. Vraagt om uniforme afbakening (NEN 2748)."},
 ];
 
 /* ─── Flashcards (= begrippen hergebruikt) ──── */

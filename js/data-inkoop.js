@@ -57,10 +57,12 @@ INKOOP.begrippen = [
    def:"Metafoor voor de inkoper: inkoop raakt alle bedrijfsfuncties en vormt de schakel tussen de interne organisatie en de externe leveranciersmarkt."},
   {cat:"basis", term:"Primaire (directe) inkoop",
    def:"Inkoop van goederen en diensten die rechtstreeks terechtkomen in het eindproduct of de kernactiviteit van de organisatie. Bijv. grondstoffen voor een fabriek, medicijnen in een ziekenhuis."},
-  {cat:"basis", term:"Indirecte inkoop / Facilitaire inkoop",
-   def:"Alle inkoop voor het functioneren van de organisatie in het algemeen, los van het primaire proces. Bijv. schoonmaak, catering, beveiliging, ICT, bedrijfskleding. Dit is het werkterrein van de Facility Manager."},
+  {cat:"basis", term:"Indirecte inkoop",
+   def:"Inkoop van alles wat de organisatie nodig heeft om te functioneren, maar niet direct in het eindproduct of de kernactiviteit terechtkomt. Bijv. ICT, schoonmaak, catering, beveiliging, kantoorartikelen."},
+  {cat:"basis", term:"Facilitaire inkoop",
+   def:"Een specifieke vorm van indirecte inkoop: het inkopen van facilitaire diensten en producten (schoonmaak, catering, beveiliging, bedrijfskleding, hospitality). Dit is het werkterrein van de Facility Manager. Niet álle indirecte inkoop is facilitair (bijv. ICT en HR-inhuur vallen meestal buiten facilitair)."},
   {cat:"basis", term:"MRO (Maintenance, Repair & Operations)",
-   def:"Goederen en activiteiten die nodig zijn voor het dagelijkse onderhoud, reparatie en functioneren van een organisatie. Synoniem voor indirecte/facilitaire inkoop."},
+   def:"Productcategorie binnen indirecte inkoop: goederen en diensten voor dagelijks onderhoud, reparatie en bedrijfsvoering (smeermiddelen, reserveonderdelen, gereedschap, schoonmaakartikelen). MRO wordt vaak via indirecte/facilitaire inkoop ingekocht, maar is geen synoniem ervan: het is een productsoort, niet de inkoopfunctie zelf."},
   {cat:"basis", term:"Inkoopquote",
    def:"Percentage van de omzet dat besteed wordt aan inkoop. Formule: (totale inkoopkosten / totale omzet) × 100%",
    formula:"Inkoopquote = (inkoopkosten / omzet) × 100%"},
@@ -251,6 +253,28 @@ INKOOP.begrippen = [
    def:"Tools (Power BI, Qlikview) die data uit meerdere bronnen combineren en visualiseren. Algoritmen ondersteunen besluitvorming in inkoop: spend-analyse, leveranciersprestaties, contractverloop."},
   {cat:"digitaal", term:"Inkoper van de toekomst",
    def:"De toekomstvisie: operationele inkoop wordt volledig geautomatiseerd door computers. De inkoper wordt een businessanalist die zich richt op strategie, leveranciersrelaties en innovatie in plaats van routinetransacties."},
+
+  /* MVI — duurzaam inkopen */
+  {cat:"mvi", term:"MVI (Maatschappelijk Verantwoord Inkopen)",
+   def:"Inkopen waarbij naast prijs en kwaliteit ook gelet wordt op de impact op mens, milieu en maatschappij (3 P's: Planet, People, Profit). Voor Nederlandse overheden verplicht; in de private sector gestimuleerd door CSRD-rapportage."},
+  {cat:"mvi", term:"Circulair inkopen",
+   def:"Inkoopstrategie gericht op zo lang mogelijk hergebruiken van grondstoffen en producten. Instrumenten: kopen op gebruik (Product-as-a-Service), retourgaranties, hergebruik en remanufacturing als contractvoorwaarde."},
+  {cat:"mvi", term:"SROI (Social Return on Investment)",
+   def:"Verplichting in een inkoopcontract om een percentage van de loonsom (vaak 5%) in te zetten voor mensen met afstand tot de arbeidsmarkt. Vooral in publieke aanbestedingen toegepast."},
+  {cat:"mvi", term:"BPKV / EMVI",
+   def:"Beste Prijs-Kwaliteit Verhouding (in Aanbestedingswet sinds 2016 de standaardterm; eerder EMVI = Economisch Meest Voordelige Inschrijving). Gunningscriterium waarbij prijs én kwaliteit én duurzaamheid wegen — niet alleen de laagste prijs."},
+  {cat:"mvi", term:"CO₂-prestatieladder",
+   def:"Nederlands certificeringsinstrument dat organisaties beoordeelt op hun inspanning om CO₂-uitstoot te reduceren. Veel gebruikt als geschiktheidseis of gunningsvoordeel in (publieke) aanbestedingen."},
+
+  /* Wanprestatie van leveranciers */
+  {cat:"wanprestatie", term:"Wanprestatie (toerekenbare tekortkoming)",
+   def:"De leverancier komt zijn verbintenis niet, niet op tijd of niet goed na (art. 6:74 BW). Inkoop reageert via het BW: tekortkoming vaststellen → ingebrekestelling (6:82) → verzuim (6:81) → schadevergoeding of ontbinding (6:265)."},
+  {cat:"wanprestatie", term:"Opschorting (art. 6:262 BW)",
+   def:"De afnemer mag zijn eigen prestatie (bijv. betaling) tijdelijk uitstellen zolang de leverancier zijn verplichting niet nakomt. Drukmiddel zonder dat het contract eindigt."},
+  {cat:"wanprestatie", term:"Bankgarantie / boete-/bonusregeling",
+   def:"Contractuele zekerheden die wanprestatie verzachten of belonen. Bankgarantie: bank betaalt afnemer een afgesproken bedrag bij tekortkoming. Boete: vooraf afgesproken bedrag dat de leverancier verschuldigd is. Bonus: extra vergoeding bij overprestatie."},
+  {cat:"wanprestatie", term:"Escalatieladder (in SLA)",
+   def:"Vooraf vastgelegde stappen om geschillen op te lossen: operationeel overleg → tactisch overleg → directieoverleg → mediation → arbitrage of rechter. Voorkomt dat één incident direct in een rechtszaak eindigt."},
 
 ];;
 INKOOP.flashcards = [

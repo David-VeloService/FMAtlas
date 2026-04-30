@@ -60,7 +60,7 @@ PVRD.begrippen = [
   {cat:"interviewen", term:"LSD-techniek", def:"Luisteren, Samenvatten, Doorvragen. Techniek om de regie in het interview te houden en de geïnterviewde te helpen zonder te sturen."},
   {cat:"interviewen", term:"Post-it methode", def:"Interviewtechniek waarbij de geïnterviewde zelf de analyse uitvoert door trefwoorden op post-its te schrijven en te ordenen. Transcripten worden overbodig."},
   {cat:"interviewen", term:"Member check", def:"Goedkeuring van de respondent achteraf over de weergave van zijn of haar antwoorden. Verhoogt de validiteit van het onderzoek."},
-  {cat:"interviewen", term:"Wanneer kiezen voor interviewen?", def:"Als het aantal respondenten overzichtelijk is (max. 25), als je het 'waarom' en 'hoe' wilt begrijpen, als je op zoek bent naar patronen, en als je niet wilt generaliseren naar een hele groep."},
+  {cat:"interviewen", term:"Wanneer kiezen voor interviewen?", def:"Als het aantal respondenten overzichtelijk is (vuistregel circa 10–25, afhankelijk van onderzoeksopzet en saturatie), als je het 'waarom' en 'hoe' wilt begrijpen, als je op zoek bent naar patronen, en als je niet wilt generaliseren naar een hele groep."},
 
   /* 4. Enquêteren */
   {cat:"enquêteren", term:"Operationaliseren (enquête)", def:"Een abstract begrip meetbaar maken door het op te splitsen in dimensies, indicatoren en enquêtevragen. Gebruik bronnen bij het opstellen van een operationaliseringsschema."},
@@ -75,6 +75,18 @@ PVRD.begrippen = [
   {cat:"enquêteren", term:"Betrouwbaarheid", def:"Is het onderzoek vrij van toevallige fouten? Kwantitatief: levert herhaling hetzelfde resultaat? Kwalitatief: heeft de onderzoeker niet te veel gestuurd en zijn de data goed vastgelegd?"},
   {cat:"enquêteren", term:"Meest gemaakte fouten bij enquêtes", def:"Suggestieve vragen, dubbele vragen, dubbele ontkenningen, slechte antwoordopties, ontbrekende inleiding, verkeerde doelgroep, te veel open vragen."},
   {cat:"enquêteren", term:"Selecte steekproef", def:"Een niet-representatieve steekproef waarbij de respondenten niet goed aansluiten bij de onderzoeksgroep. Maakt het onderzoek niet valide."},
+
+  /* 5. Steekproef en data-analyse */
+  {cat:"analyse", term:"Steekproefgrootte (formule)", def:"n = (Z² × p × (1−p)) / e². Z = z-score (95% → 1,96), p = verwachte spreiding (onbekend → 0,5), e = foutmarge. Voor 95% betrouwbaarheid en 5% foutmarge bij onbekende verdeling: n ≈ 385. Bij eindige populatie corrigeren met n_corr = n / (1 + (n−1)/N)."},
+  {cat:"analyse", term:"Aselecte (random) steekproef", def:"Elk lid van de populatie maakt evenveel kans om geselecteerd te worden. Voorwaarde voor representativiteit en generalisatie."},
+  {cat:"analyse", term:"Gestratificeerde steekproef", def:"Populatie wordt verdeeld in groepen (strata: leeftijd, afdeling) en in elk stratum wordt aselect getrokken. Garandeert dat alle relevante subgroepen vertegenwoordigd zijn."},
+  {cat:"analyse", term:"Clustersteekproef", def:"Eerst clusters trekken (bijv. afdelingen), dan binnen elk cluster alle leden onderzoeken. Praktisch wanneer een lijst van alle individuen ontbreekt."},
+  {cat:"analyse", term:"Standaarddeviatie", def:"Maat voor de spreiding rond het gemiddelde. Kleine standaarddeviatie = consistente antwoorden; grote standaarddeviatie = sterk uiteenlopende antwoorden."},
+  {cat:"analyse", term:"Open coderen", def:"Eerste stap in kwalitatieve data-analyse: fragment voor fragment een label (code) toekennen. Eén code per begrip of zin. Levert een lange, ruwe codelijst op."},
+  {cat:"analyse", term:"Axiaal coderen", def:"Tweede stap: open codes groeperen in thema's of categorieën die bij elkaar horen. Verbindt losse codes tot een structuur."},
+  {cat:"analyse", term:"Selectief coderen", def:"Derde stap: kernthema's destilleren die antwoord geven op de onderzoeksvraag. Hier verbind je de analyse weer met je oorspronkelijke probleemstelling."},
+  {cat:"analyse", term:"Codeboek", def:"Document waarin je vastlegt welke code welke betekenis heeft. Maakt analyse reproduceerbaar: een tweede onderzoeker zou dezelfde fragmenten op dezelfde manier moeten coderen. Belangrijke betrouwbaarheids­borging."},
+  {cat:"analyse", term:"Triangulatie", def:"Methode om de geloofwaardigheid van onderzoek te versterken door meerdere methoden, bronnen of onderzoekers te combineren. Methode-triangulatie: interview + observatie + enquête. Bron-triangulatie: managers, medewerkers en klanten. Onderzoeker-triangulatie: twee onderzoekers analyseren onafhankelijk."},
 ];
 
 /* ─── Flashcards (= begrippen hergebruikt) ──── */

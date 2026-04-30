@@ -102,6 +102,7 @@ table.compact td strong { color: var(--ink); font-weight: 800; }
   <a href="#h4">Managen en calculatie</a>
   <a href="#h5">Kengetallen</a>
   <a href="#h6">Investering beoordelen</a>
+  <a href="#h7">FM-economie</a>
 </nav>
 
 <div class="main">
@@ -236,8 +237,12 @@ Omzet (q × p, excl. BTW)
             <p style="font-size:13px;color:var(--ink-soft);margin:0;">Geldstromen die samenhangen met de vermogensmarkt: leningen, aflossingen, rentebetalingen, aandelenkapitaal, dividend.</p>
           </div>
           <div class="formula-box" style="margin-top:10px;">
-Primaire geldstroom = EAT + Rentekosten + Afschrijvingen
-<span class="comment">// Rente = secundair; afschrijving = geen geldstroom → beide optellen</span>
+Primaire geldstroom (voor investeringsbeoordeling)
+= EAT + Rentekosten + Afschrijvingen
+<span class="comment">// Afschrijving terug: is geen geldstroom (boekhoudkundig).
+// Rente terug: hoort bij financiering (secundair),
+// niet bij het project zelf — zo blijft de beoordeling
+// onafhankelijk van hoe het project gefinancierd wordt.</span>
           </div>
         </div>
       </div>
@@ -291,15 +296,21 @@ Veiligheidsmarge (%) = VM / WO × 100%
         <div class="section">
           <h3>Kostprijsberekeningen</h3>
           <div class="formula-box">
-<span class="comment">// Integrale kostprijs</span>
+<span class="comment">// Integrale kostprijs (per eenheid)</span>
 IK = (C / N) + (V / W)
-<span class="comment">// C=constante kosten, N=normaal aantal</span>
-<span class="comment">// V=variabele kosten totaal, W=werkelijk aantal</span>
+<span class="comment">// C/N = constante kosten gedeeld door normaal aantal eenheden
+// V/W = variabele kosten gedeeld door werkelijk aantal eenheden
+// Beide termen zijn dus al per-eenheid voordat je optelt.</span>
 
 <span class="comment">// Enkelvoudige opslagmethode</span>
 Opslag% = Totale indirecte kosten / Totale directe kosten × 100%
 Kostprijs = DC + (DC × Opslag%)
 <span class="comment">// Nooit opslagpercentage afronden!</span>
+
+<span class="comment">// Forfaitaire calculatie</span>
+Kostprijs = directe kosten + vast bedrag of vast % indirecte kosten
+<span class="comment">// Geen verfijnde verdeling: één forfait dekt alle indirecte kosten.
+// Snel en simpel, maar minder precies dan opslag- of integrale methode.</span>
           </div>
         </div>
       </div>
@@ -457,6 +468,64 @@ NCW &lt; 0 → Investering haalt rendement niet ✗
               <tr><td><strong>NCW</strong></td><td><span class="tag green">Ja</span> — vergelijkt contante waarden</td></tr>
             </tbody>
           </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== H7: FM-ECONOMIE — TCO en NEN 2748 ===== -->
+<div class="card" id="h7">
+  <div class="card-header h6"><span class="icon">🏢</span><h2>Module 7 — FM-economie: TCO en NEN 2748</h2></div>
+  <div class="card-body">
+    <div class="two-col">
+      <div>
+        <div class="section">
+          <h3>Total Cost of Ownership (TCO)</h3>
+          <div class="defbox">
+            <strong>TCO</strong>
+            Alle kosten die een product of dienst gedurende zijn hele levensduur veroorzaakt — niet alleen de aankoopprijs. Vooral relevant bij FM-investeringen (gebouwen, installaties, wagenpark, ICT, koffieautomaten).
+          </div>
+          <p style="font-size:13px;color:var(--ink-soft);margin:0 0 6px;">Drie kostenfasen:</p>
+          <ul class="clean">
+            <li><strong>Pre-transactie</strong> — selectie, marktonderzoek, specificeren, aanbesteden</li>
+            <li><strong>Transactie</strong> — aanschaf, installatie, training</li>
+            <li><strong>Post-transactie</strong> — gebruik, energie, onderhoud, reparatie, verzekering, afvoer</li>
+          </ul>
+          <div class="formula-box" style="margin-top:8px;">
+TCO = Aanschafkosten
+    + Som(jaarlijkse exploitatiekosten × levensduur)
+    + Onderhouds- en reparatiekosten
+    + Eindafvoerkosten
+    − Restwaarde
+          </div>
+          <div class="highlight">De goedkoopste optie bij aankoop is vaak de duurste over de levensduur. TCO maakt dat verschil zichtbaar en is daarmee een betere basis dan kale offertevergelijking.</div>
+        </div>
+      </div>
+      <div>
+        <div class="section">
+          <h3>NEN 2748 — kostenrubricering FM</h3>
+          <div class="defbox">
+            <strong>NEN 2748</strong>
+            Nederlandse norm die facilitaire kosten en prestaties uniform indeelt. Maakt benchmarken mogelijk doordat organisaties dezelfde "categorieën-taal" hanteren.
+          </div>
+          <table class="compact">
+            <tr><th>Rubriek</th><th>Inhoud</th></tr>
+            <tr><td><strong>1. Huisvesting</strong></td><td>Gebouw, terrein, energie, schoonmaak gebouwgebonden, beveiliging</td></tr>
+            <tr><td><strong>2. Diensten en middelen</strong></td><td>Catering, drankvoorziening, werkplekservices, risicobeheersing</td></tr>
+            <tr><td><strong>3. ICT</strong></td><td>Apparatuur, software, telecom, gebruikersondersteuning</td></tr>
+            <tr><td><strong>4. Externe voorzieningen</strong></td><td>Wagenpark, verhuizingen, externe diensten op afstand</td></tr>
+            <tr><td><strong>5. Facility management</strong></td><td>Beleid, planning, control, contractmanagement</td></tr>
+          </table>
+          <p style="font-size:12px;color:var(--muted);margin-top:6px;">Voorbeeldkengetal: facilitaire kosten per fte per jaar — alleen vergelijkbaar als alle organisaties NEN 2748 gebruiken voor de afbakening.</p>
+        </div>
+        <div class="section">
+          <h3>Benchmarking</h3>
+          <ul class="clean">
+            <li><strong>Intern</strong> — eigen locaties of jaren naast elkaar leggen (zelfde definities, snel beschikbaar)</li>
+            <li><strong>Extern</strong> — vergelijken met sectorgenoten via Facility Management Nederland (FMN), branchecijfers of benchmarkdiensten</li>
+            <li><strong>Best practice</strong> — leren van organisaties die op een KPI excelleren, niet alleen vergelijken</li>
+          </ul>
         </div>
       </div>
     </div>

@@ -28,7 +28,13 @@ BVFMA.begrippen = [
   /* 2. Dienstverlening & processen */
   {cat:"dienstverlening", term:"Proces", def:"Een opvolging van afhankelijke activiteiten met een begin, een eind en een duidelijk omschreven input en output. Drie stappen: input (mensen/middelen) → throughput (verwerking) → output (resultaat)."},
   {cat:"dienstverlening", term:"Primair proces", def:"De kernactiviteit van een organisatie. Facility management ondersteunt dit proces maar voert het zelf niet uit."},
-  {cat:"dienstverlening", term:"KSF (Kritische Succesfactor)", def:"Factor die beschrijft waarin een organisatie moet uitblinken om haar doel te behalen. Bepalend voor het managen van processen."},
+  {cat:"dienstverlening", term:"KSF (Kritische Succesfactor)", def:"Kwalitatieve factor die beschrijft waarin een organisatie of dienst moet uitblinken om haar doel te behalen. Richtinggevend, niet zelf meetbaar — vraagt om vertaling naar KPI's."},
+  {cat:"dienstverlening", term:"KPI (Kritieke Prestatie Indicator)", def:"Meetbaar getal dat aangeeft of een KSF wordt gerealiseerd. Een goede KPI is SMART (Specifiek, Meetbaar, Acceptabel, Realistisch, Tijdgebonden)."},
+  {cat:"dienstverlening", term:"SLA (Service Level Agreement)", def:"Schriftelijke afspraak (dienstverleningsovereenkomst) tussen leverancier en afnemer over wat geleverd wordt, op welk niveau, tegen welke prijs, gemeten via welke KPI's en met welke gevolgen bij overschrijding."},
+  {cat:"dienstverlening", term:"NEN 2748", def:"Nederlandse norm die facilitaire kosten en prestaties indeelt in vijf hoofdrubrieken: huisvesting, diensten en middelen, ICT, externe voorzieningen en facility management. Maakt benchmarking tussen FM-organisaties mogelijk."},
+  {cat:"dienstverlening", term:"Schillenmodel", def:"Concentrische voorstelling van een organisatie: in het hart het primaire proces, daaromheen schillen van direct ondersteunende processen, algemeen ondersteunende diensten (waaronder FM) en management/strategie. Hoe verder van de kern, hoe makkelijker uit te besteden."},
+  {cat:"dienstverlening", term:"Sourcingmodel", def:"Keuze hoe een dienst geleverd wordt: in-house (zelf doen), out-tasking (losse taak uitbesteden, regie blijft intern), outsourcing (volledige dienst extern, sturen via SLA) of co-sourcing (gedeeld eigenaarschap)."},
+  {cat:"dienstverlening", term:"Regiefunctie", def:"Interne FM-rol die de externe leveranciers aanstuurt en de SLA en KPI's bewaakt. Onmisbaar bij outsourcing: zonder regie verliest de organisatie grip op kwaliteit en kosten."},
   {cat:"dienstverlening", term:"R-ladder", def:"Circulair-economiemodel met 7 niveaus: Refuse/Rethink → Reduce → Reuse → Repair/Refurbish/Remanufacture → Recycle → Recover. Van meest duurzaam naar minst duurzaam."},
   {cat:"dienstverlening", term:"Facilitaire servicedesk", def:"Centraal aanspreekpunt van het facilitair bedrijf. Verwerkt meldingen (reserveringen, klachten, aanvragen) via selfservice, telefoon, balie of chatbot."},
   {cat:"dienstverlening", term:"BHV (Bedrijfshulpverlening)", def:"Verplichte organisatie voor noodsituaties: eerste hulp verlenen, beginnende brand bestrijden, medewerkers evacueren. Gebaseerd op de RI&E."},
@@ -47,6 +53,8 @@ BVFMA.begrippen = [
   {cat:"huisvesting", term:"Clean desk policy", def:"Beleid waarbij medewerkers na gebruik hun werkplek volledig opgeruimd achterlaten, zodat anderen de plek direct kunnen gebruiken."},
   {cat:"huisvesting", term:"Programma van eisen (PvE) — huisvesting", def:"Document dat de functionele, ruimtelijke en esthetische wensen en eisen van de organisatie beschrijft als basis voor huisvestingsinrichting. Drie stappen: functioneel PvE → ruimtelijk PvE → ruimtelijk ontwerp."},
   {cat:"huisvesting", term:"Vlekkenplan", def:"Eerste ontwerpstap: schematische plattegrond waarbij functies als 'vlekken' worden weergegeven op basis van gevraagde oppervlakte, relaties en beschikbare ruimte."},
+  {cat:"huisvesting", term:"Wandenplan", def:"Tweede ontwerpstap, na het vlekkenplan: de vlekken worden uitgewerkt tot daadwerkelijke ruimtes door wanden te plaatsen. Bepaalt definitieve afmetingen en doorgangen per ruimte."},
+  {cat:"huisvesting", term:"Inrichtingsplan", def:"Derde en laatste ontwerpstap: per ruimte wordt het meubilair, de werkplekken en de verdere inrichting ingetekend. Output is de uitvoeringstekening voor de huisvesting."},
   {cat:"huisvesting", term:"Relatiediagram", def:"Schema dat de relaties tussen functies in kaart brengt: primair (p) = sterke relatie, secundair (s) = minder sterk, anti-relatie (a) = moeten juist niet naast elkaar."},
 
   /* 4. Hospitality & gastvrijheid */

@@ -28,7 +28,7 @@ BVFMB.begrippen = [
      SCHOONMAAK (Les 1–4)
   ══════════════════════════════════════════ */
   {cat:"schoonmaak", term:"Sinner-cirkel",
-   def:"De vier factoren die samen de schoonmaakkwaliteit bepalen: Temperatuur, Arbeid, Chemie en Tijd (TACT). Als één factor wordt verhoogd, kunnen de anderen worden verlaagd — het totaal blijft constant."},
+   def:"De vier factoren die samen de schoonmaakkwaliteit bepalen: Temperatuur, Arbeid, Chemie en Tijd (TACT). Het is een principe van uitwisseling: dezelfde prestatie kan via verschillende combinaties bereikt worden — als één factor afneemt, kunnen de andere ter compensatie worden verhoogd. Geen wiskundige optelsom, maar een ontwerpregel."},
 
   {cat:"schoonmaak", term:"Temperatuur (Sinner)",
    def:"Warmte bevordert de werking van chemicaliën en lost vet en vuil op. Eén van de vier factoren van de Sinner-cirkel."},
@@ -181,12 +181,30 @@ BVFMB.begrippen = [
   {cat:"catering", term:"FIFO-systeem",
    def:"First In First Out. Principe waarbij het oudste product als eerste wordt gebruikt. Essentieel voor voedselveiligheid en het voorkomen van overschreden houdbaarheidsdatums."},
 
+  {cat:"catering", term:"EU-Verordening 1169/2011 (Voedselinformatieverordening)",
+   def:"Europese wet die aanbieders van voedsel verplicht om de aanwezigheid van 14 erkende allergenen kenbaar te maken aan de gast — zowel op verpakte producten (etiket) als bij onverpakt aangeboden voedsel (kaart, bord of mondeling met schriftelijke werkwijze)."},
+
+  {cat:"catering", term:"14 verplichte allergenen",
+   def:"Glutenbevattende granen, schaaldieren, eieren, vis, pinda's, soja, melk (incl. lactose), noten, selderij, mosterd, sesamzaad, sulfiet (>10 mg/kg), lupine en weekdieren. Vermelding is wettelijk verplicht (EU 1169/2011)."},
+
+  {cat:"catering", term:"Kruisbesmetting (allergenen)",
+   def:"Onbedoelde overdracht van een allergeen op een product dat dit allergeen niet als ingrediënt heeft, bijvoorbeeld via gedeeld snijgerei of werkvlak. Moet gemeld worden ('kan sporen bevatten van …') wanneer het risico niet is uitgesloten."},
+
+  {cat:"catering", term:"Traceerbaarheid (EU 178/2002)",
+   def:"Wettelijke verplichting voor levensmiddelenbedrijven om elke grondstof en elk product 'één stap terug en één stap vooruit' te kunnen traceren. Maakt snelle terugroepacties mogelijk bij een voedselveiligheidsincident."},
+
+  {cat:"catering", term:"Lotnummer / batch-code",
+   def:"Uniek nummer per productiebatch dat bij bereiding bewaard blijft. Onmisbaar voor traceerbaarheid: zonder lotnummer is een gerichte recall niet uitvoerbaar."},
+
+  {cat:"catering", term:"Recall-procedure",
+   def:"Vooraf vastgelegde werkwijze om besmet of onveilig voedsel terug te halen: wie meldt aan NVWA, hoe wordt de gast geïnformeerd, hoe wordt resterend product geblokkeerd en hoe wordt afgevoerd. Onderdeel van het HACCP-plan."},
+
   {cat:"catering", term:"10 kritische gevaren (catering)",
    def:"Tien meetpunten in het cateringproces: (1) kerntemperatuur bij ontvangst, (2) verpakking/etiket/THT, (3) temperatuur in opslag, (4) kerntemperatuur na bereiding, (5) temperatuur na assembleren, (6) terugkoeltijd en -temperatuur, (7) kerntemperatuur na regenereren, (8) kerntemperatuur tijdens uitgifte, (9) duur ongekoeld uitgifte, (10) temperatuur na distribueren en serveren."},
 
   {cat:"catering", term:"Kostprijsberekening catering",
-   def:"Formule: ingrediënten + toeslag 25% (dekking personeel, overhead en apparatuur) + non-foodkosten €0,25 (servies, bestek, verpakking, schoonmaak) + BTW 9%.",
-   formula:"Ingrediënten + 25% toeslag + €0,25 non-food + 9% BTW"},
+   def:"Formule: ingrediënten + toeslag (richtlijn circa 25% voor dekking personeel, overhead en apparatuur) + vaste non-foodkosten per portie (servies, bestek, verpakking, schoonmaak; indicatie €0,25–€0,40, actualiseren aan de hand van eigen inkoopcijfers) + BTW 9%.",
+   formula:"Ingrediënten + circa 25% toeslag + vaste non-food per portie + 9% BTW"},
 
   {cat:"catering", term:"Prijsbeleid catering",
    def:"Door de opdrachtgever vastgestelde methode voor berekening van de verkoopprijs op basis van vooraf vastgestelde uitgangspunten: inkoopprijs grondstoffen, jaarbudget catering, onderscheid luxe/sociaal pakket, bedrijfssubsidie en bedrijfsfilosofie."},

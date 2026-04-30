@@ -351,8 +351,8 @@ table.compact td strong { color: var(--ink); font-weight: 800; }
           </ul>
         </div>
         <div class="section">
-          <h3>Beheersaspecten GOKIT ⭐ (ook: TGKIO / KOFTIG)</h3>
-          <div class="warn">⚠️ Drie namen, ZELFDE aspecten! GOKIT = TGKIO = KOFTIG</div>
+          <h3>Beheersaspecten GOKIT ⭐ (ook: TGKIO; KOFTIG = GOKIT + Facilitair)</h3>
+          <div class="warn">⚠️ GOKIT en TGKIO zijn dezelfde 5 aspecten in andere volgorde. KOFTIG voegt een 6e aspect toe: Facilitair.</div>
           <table class="compact">
             <tr><th>Letter</th><th>Beheersaspect</th><th>Wat bewak je?</th></tr>
             <tr><td><span class="tag blue">G</span></td><td>Geld</td><td>Financiën, kosten, baten</td></tr>
@@ -360,8 +360,9 @@ table.compact td strong { color: var(--ink); font-weight: 800; }
             <tr><td><span class="tag purple">K</span></td><td>Kwaliteit</td><td>Eisen van opdrachtgever</td></tr>
             <tr><td><span class="tag orange">I</span></td><td>Informatie</td><td>Communicatie, documentatie</td></tr>
             <tr><td><span class="tag red">T</span></td><td>Tijd</td><td>Planning, doorlooptijd</td></tr>
+            <tr><td><span class="tag" style="background:#0f766e;color:#fff">F</span></td><td>Facilitair (alleen KOFTIG)</td><td>Faciliteiten, locatie, voorzieningen — Expert BEC</td></tr>
           </table>
-          <p style="font-size:11px;color:var(--muted);margin-top:4px;">KOFTIG voegt ook Facilitair toe (Expert BEC)</p>
+          <p style="font-size:11px;color:var(--muted);margin-top:4px;">KOFTIG = K, O, F, T, I, G (6 aspecten). GOKIT/TGKIO = 5 aspecten zonder Facilitair.</p>
         </div>
       </div>
       <div>
@@ -447,6 +448,51 @@ table.compact td strong { color: var(--ink); font-weight: 800; }
           </ul>
         </div>
       </div>
+    </div>
+
+    <div class="section" style="margin-top:18px;">
+      <h3>Earned Value Management (EVM) — rekenvoorbeeld</h3>
+      <p style="font-size:13px;color:var(--ink-soft);margin:0 0 8px;">EVM combineert planning, voortgang en kosten in één set kengetallen. Vier basiswaarden:</p>
+      <table class="compact">
+        <tr><th>Begrip</th><th>Wat het is</th><th>Formule</th></tr>
+        <tr><td><strong>BAC</strong></td><td>Budget at Completion — totaal projectbudget</td><td>vooraf vastgesteld</td></tr>
+        <tr><td><strong>PV</strong></td><td>Planned Value — gepland gewerkt budget tot meetmoment</td><td>% gepland × BAC</td></tr>
+        <tr><td><strong>EV</strong></td><td>Earned Value — daadwerkelijk verdiend budget (waarde van wat af is)</td><td>% gereed × BAC</td></tr>
+        <tr><td><strong>AC</strong></td><td>Actual Cost — werkelijk gemaakte kosten tot meetmoment</td><td>direct meten</td></tr>
+      </table>
+      <div class="formula-box" style="margin-top:8px;">
+<span class="comment">// Afwijkingen</span>
+SV = EV − PV   <span class="comment">// Schedule Variance — &gt; 0 voor op schema, &lt; 0 vertraging</span>
+CV = EV − AC   <span class="comment">// Cost Variance — &gt; 0 onder budget, &lt; 0 over budget</span>
+
+<span class="comment">// Performance-indices</span>
+SPI = EV / PV  <span class="comment">// &gt; 1 op schema, &lt; 1 vertraging</span>
+CPI = EV / AC  <span class="comment">// &gt; 1 onder budget, &lt; 1 over budget</span>
+
+<span class="comment">// Voorspelling eindkosten</span>
+EAC = BAC / CPI <span class="comment">// Estimate at Completion — verwacht eindbudget</span>
+      </div>
+      <div class="defbox" style="margin-top:8px;">
+        <strong>Voorbeeld</strong>
+        Project van € 100.000 (BAC), looptijd 10 maanden. Na 5 maanden zou er volgens planning 50% af moeten zijn (PV = € 50.000). In werkelijkheid is 40% gereed (EV = € 40.000) en is er € 55.000 uitgegeven (AC = € 55.000).
+        <br><br>
+        SV = 40.000 − 50.000 = <strong>−10.000</strong> → vertraging<br>
+        CV = 40.000 − 55.000 = <strong>−15.000</strong> → over budget<br>
+        SPI = 40.000 / 50.000 = <strong>0,80</strong> → 20% achter op schema<br>
+        CPI = 40.000 / 55.000 = <strong>0,73</strong> → 27% duurder dan gepland<br>
+        EAC = 100.000 / 0,73 ≈ <strong>€ 137.000</strong> → bij dezelfde efficiency loopt het project € 37.000 over budget.
+      </div>
+    </div>
+
+    <div class="section" style="margin-top:18px;">
+      <h3>Stakeholdermanagement — power/interest-matrix</h3>
+      <p style="font-size:13px;color:var(--ink-soft);margin:0 0 8px;">Stakeholders zijn alle personen of partijen die invloed hebben op het project of erdoor beïnvloed worden. Plot ze op twee assen: hoeveel <strong>macht</strong> (kunnen ze beslissingen forceren?) en hoeveel <strong>belang</strong> (raakt het project hen direct?).</p>
+      <table class="compact">
+        <tr><th></th><th>Lage macht</th><th>Hoge macht</th></tr>
+        <tr><td><strong>Hoog belang</strong></td><td><em>Informeren</em> — actief op de hoogte houden, behoud betrokkenheid</td><td><em>Manage closely</em> — intensief betrekken, sleutelfiguren</td></tr>
+        <tr><td><strong>Laag belang</strong></td><td><em>Monitor</em> — minimale aandacht, alleen bij verandering</td><td><em>Tevreden houden</em> — niet onnodig storen, wel risico bewaken</td></tr>
+      </table>
+      <p style="font-size:12px;color:var(--muted);margin-top:6px;">Werkwijze: lijst opstellen → scoren op macht en belang → in matrix plotten → strategie per kwadrant kiezen → herzien per fase, want belang en macht verschuiven door de tijd.</p>
     </div>
   </div>
 </div>
@@ -1242,8 +1288,8 @@ table.compact td strong { color: var(--ink); font-weight: 800; }
     <div class="two-col">
       <div>
         <div class="section">
-          <h3>KOFTIG (beheersaspecten evenement)</h3>
-          <div class="warn">⚠️ Dit is DEZELFDE lijst als GOKIT / TGKIO — alleen andere volgorde + Facilitair!</div>
+          <h3>KOFTIG (beheersaspecten evenement) — 6 aspecten</h3>
+          <div class="warn">⚠️ KOFTIG = de 5 aspecten van GOKIT/TGKIO + 1 extra: Facilitair. Dus 6 aspecten in totaal, geen 5.</div>
           <ul class="clean">
             <li><strong>K</strong>waliteit</li>
             <li><strong>O</strong>rganisatie</li>
@@ -1348,11 +1394,11 @@ table.compact td strong { color: var(--ink); font-weight: 800; }
           <ul style="list-style:none;font-size:12px;color:var(--muted)"><li>Voorzitter · Groepswerker · Brononderzoeker</li></ul>
         </div>
         <div class="box" style="margin-top:8px;">
-          <h4>GOKIT = TGKIO = KOFTIG</h4>
+          <h4>GOKIT = TGKIO · KOFTIG = + Facilitair</h4>
           <ul style="list-style:none;font-size:12px;color:var(--muted)">
             <li>G = Geld</li><li>O = Organisatie</li><li>K = Kwaliteit</li><li>I = Informatie</li><li>T = Tijd</li>
           </ul>
-          <p style="font-size:11px;color:#fca5a5;margin-top:4px;">+ Facilitair bij KOFTIG</p>
+          <p style="font-size:11px;color:#fca5a5;margin-top:4px;">KOFTIG voegt 6e aspect toe: F = Facilitair</p>
         </div>
         <div class="box" style="margin-top:8px;">
           <h4>4 manieren risicobeheersing</h4>

@@ -97,6 +97,7 @@ table.compact td strong { color: var(--ink); font-weight: 800; }
   <a href="#h2">Zakelijk communiceren</a>
   <a href="#h3">Interviewen</a>
   <a href="#h4">Enquêteren</a>
+  <a href="#h5">Steekproef &amp; analyse</a>
 </nav>
 
 <div class="main">
@@ -387,7 +388,7 @@ table.compact td strong { color: var(--ink); font-weight: 800; }
           <h3>Wanneer kiezen voor interviewen?</h3>
           <ul class="clean">
             <li>Je wil informatie van een <strong>specifieke groep</strong> mensen</li>
-            <li>Het aantal respondenten is overzichtelijk — <strong>niet groter dan 25</strong></li>
+            <li>Het aantal respondenten is overzichtelijk — vuistregel ongeveer 10–25, afhankelijk van onderzoeksopzet en saturatie</li>
             <li>Je bent op zoek naar meningen, overtuigingen of handelswijzen</li>
             <li>Je bent benieuwd naar het <strong>'waarom'</strong> en het <strong>'hoe'</strong> (niet naar wat of hoeveel)</li>
             <li>Je wilt mensen <strong>persoonlijk</strong> bevragen</li>
@@ -654,6 +655,79 @@ table.compact td strong { color: var(--ink); font-weight: 800; }
       </div>
     </div>
 
+  </div>
+</div>
+
+<!-- ===== Thema 5: Steekproef en data-analyse ===== -->
+<div class="card" id="h5">
+  <div class="card-header h4"><span class="icon">📐</span><h2>Thema 5 — Steekproef en data-analyse</h2></div>
+  <div class="card-body">
+    <div class="two-col">
+      <div>
+        <div class="section">
+          <h3>Steekproefgrootte bij enquêtes</h3>
+          <p style="font-size:13px;color:var(--ink-soft);margin:0 0 8px;">Voor een representatieve steekproef geldt de standaardformule:</p>
+          <div class="formula-box">
+n = (Z² × p × (1−p)) / e²
+
+<span class="comment">// n = benodigde steekproefgrootte
+// Z = z-score bij gewenst betrouwbaarheidsniveau
+//     1,96 (95% — meestal gebruikt)
+//     2,58 (99%)
+// p = verwachte spreiding (onbekend → 0,5 = max)
+// e = foutmarge (bijv. 0,05 = 5%)</span>
+          </div>
+          <div class="defbox" style="margin-top:8px;">
+            <strong>Voorbeeld</strong>
+            Je wilt weten hoe tevreden medewerkers zijn met de catering. 95% betrouwbaarheid (Z=1,96), p=0,5 (geen voorkennis), foutmarge 5%.<br>
+            n = (1,96² × 0,5 × 0,5) / 0,05² = (3,84 × 0,25) / 0,0025 ≈ <strong>385 respondenten</strong>.
+          </div>
+          <p style="font-size:12px;color:var(--muted);margin-top:6px;">Bij een eindige populatie corrigeer je: n_corr = n / (1 + (n−1)/N), waarbij N de totale populatie is. Voor een organisatie van 200 medewerkers wordt n_corr aanzienlijk lager.</p>
+        </div>
+        <div class="section">
+          <h3>Soorten steekproef</h3>
+          <ul class="clean">
+            <li><strong>Aselect (random)</strong> — elk lid van de populatie maakt evenveel kans. Best voor representativiteit.</li>
+            <li><strong>Selecte steekproef</strong> — onderzoeker kiest gericht. Sneller, maar niet generaliseerbaar.</li>
+            <li><strong>Gestratificeerd</strong> — populatie verdelen in groepen (strata: leeftijd, afdeling) en in elk stratum aselect trekken.</li>
+            <li><strong>Cluster</strong> — eerst clusters trekken (bijv. afdelingen), daarbinnen alle leden onderzoeken.</li>
+          </ul>
+        </div>
+      </div>
+      <div>
+        <div class="section">
+          <h3>Kwantitatieve data-analyse</h3>
+          <table class="compact">
+            <tr><th>Maat</th><th>Wat het zegt</th><th>Wanneer</th></tr>
+            <tr><td><strong>Gemiddelde</strong></td><td>Som / aantal</td><td>Symmetrische verdeling, geen uitschieters</td></tr>
+            <tr><td><strong>Mediaan</strong></td><td>Middelste waarde na sorteren</td><td>Bij uitschieters of scheve verdeling</td></tr>
+            <tr><td><strong>Modus</strong></td><td>Meest voorkomende waarde</td><td>Bij categorische data</td></tr>
+            <tr><td><strong>Standaarddeviatie</strong></td><td>Spreiding rond het gemiddelde</td><td>Hoe consistent zijn de antwoorden?</td></tr>
+            <tr><td><strong>Frequentie %</strong></td><td>Aandeel per categorie</td><td>Bij meerkeuzevragen</td></tr>
+          </table>
+          <p style="font-size:12px;color:var(--muted);margin-top:6px;">Visualiseer met staafdiagrammen, histogrammen of boxplots. Excel of SPSS volstaan voor HBO-onderzoek.</p>
+        </div>
+        <div class="section">
+          <h3>Kwalitatieve data-analyse — coderen</h3>
+          <p style="font-size:13px;color:var(--ink-soft);margin:0 0 6px;">Bij interviews en open vragen gebruik je drie analyserondes:</p>
+          <ol class="clean" style="padding-left:20px;">
+            <li><strong>Open coderen</strong> — fragment voor fragment label geven (één begrip of zin per code).</li>
+            <li><strong>Axiaal coderen</strong> — codes groeperen in thema's of categorieën die bij elkaar horen.</li>
+            <li><strong>Selectief coderen</strong> — kernthema's destilleren die antwoord geven op de onderzoeksvraag.</li>
+          </ol>
+          <p style="font-size:12px;color:var(--muted);margin-top:6px;">Tools: een Excel-codeboek volstaat; ATLAS.ti of NVivo zijn handig bij grote datasets. Belangrijk: leg het codeboek vast (welke code betekent wat), zodat een tweede onderzoeker dezelfde uitkomst zou krijgen — dat is je betrouwbaarheidsbewijs.</p>
+        </div>
+        <div class="section">
+          <h3>Triangulatie</h3>
+          <ul class="clean">
+            <li><strong>Methode-triangulatie</strong> — combineer interview + observatie + enquête.</li>
+            <li><strong>Bron-triangulatie</strong> — meerdere bronnen vergelijken (managers, medewerkers, klanten).</li>
+            <li><strong>Onderzoeker-triangulatie</strong> — twee onderzoekers analyseren onafhankelijk; vergelijk uitkomsten.</li>
+          </ul>
+          <p style="font-size:12px;color:var(--muted);margin-top:4px;">Wanneer meerdere methoden of bronnen wijzen op hetzelfde resultaat, neemt de geloofwaardigheid van je conclusie toe.</p>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
