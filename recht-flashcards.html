@@ -149,7 +149,7 @@
       <h1>Flashcards</h1>
       <div class="fc-hero-sub">Klik de kaart of druk op spatie om te draaien</div>
     </div>
-    <a class="fa-btn fa-btn-ghost fa-btn-sm" href="facilitaire-inkoop.html">
+    <a class="fa-btn fa-btn-ghost fa-btn-sm" href="recht.html">
       <span data-fa-icon="arrowL" data-fa-size="13"></span>
       Terug naar vak
     </a>
@@ -259,7 +259,8 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 const _auth = firebase.auth();
 const _db = firebase.firestore();
-_auth.onAuthStateChanged(user => {
+_auth.onAuthStateChanged(async user => {
+  if (user) await faSyncFromCloud(user, _db);
   document.getElementById('fa-header-slot').innerHTML = '';
   document.getElementById('fa-header-slot').appendChild(faRenderHeader({ user }));
   faMarkActiveToday();

@@ -259,7 +259,8 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 const _auth = firebase.auth();
 const _db = firebase.firestore();
-_auth.onAuthStateChanged(user => {
+_auth.onAuthStateChanged(async user => {
+  if (user) await faSyncFromCloud(user, _db);
   document.getElementById('fa-header-slot').innerHTML = '';
   document.getElementById('fa-header-slot').appendChild(faRenderHeader({ user }));
   faMarkActiveToday();

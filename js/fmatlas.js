@@ -175,11 +175,52 @@ function faGetLastSeen() {
 function faLogout() {
   if (typeof firebase !== 'undefined' && firebase.auth) {
     if (firebase.auth().currentUser) {
+      faClearLocalUser();
+      try { sessionStorage.removeItem('fa-guest'); } catch(_) {}
       firebase.auth().signOut();
     } else {
       window.location.href = 'index.html';
     }
   }
+}
+
+/* ─── Cloud-sync (Firestore) ─────────── */
+// Wordt aangeroepen vanuit app.html en de subpagina's bij elke auth state change.
+// Cloud is bij login de bron van waarheid: Firestore → localStorage.
+// Bij allereerste login (nog geen doc) wordt huidige localStorage gepushed,
+// zodat een gast die later inlogt zijn opgebouwde XP behoudt.
+async function faSyncFromCloud(user, db) {
+  if (!user || !db || typeof firebase === 'undefined') return;
+  try {
+    const ref = db.collection('scores').doc(user.uid);
+    const snap = await ref.get();
+    if (snap.exists) {
+      const pts = snap.data().pts || 0;
+      localStorage.setItem('fa_xp', String(pts));
+      // Header-pil(len) bijwerken
+      document.querySelectorAll('[data-fa-xp]').forEach(el => {
+        el.textContent = pts.toLocaleString('nl-NL').replace(',', ' ');
+      });
+    } else {
+      await ref.set({
+        name: user.displayName || 'Anoniem',
+        pts: faGetXP(),
+        photoURL: user.photoURL || '',
+        updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+      });
+    }
+  } catch (e) {
+    console.warn('faSyncFromCloud:', e);
+  }
+}
+
+// Wist alle gebruiker-gebonden lokale state. Wordt aangeroepen bij uitloggen
+// zodat de volgende account op hetzelfde apparaat geen oude waarden erft.
+function faClearLocalUser() {
+  localStorage.removeItem('fa_xp');
+  localStorage.removeItem('fa_progress');
+  localStorage.removeItem('fa_streak');
+  localStorage.removeItem('fa_last');
 }
 
 /* ─── Zoekindex + overlay ─────────── */

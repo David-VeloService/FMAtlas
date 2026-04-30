@@ -259,7 +259,8 @@ const _db = firebase.firestore();
 
 const DATA = window.__FMDATA__ || { flashcards: [], cats: [], key: 'vak', title: 'Vak', url: 'index.html' };
 
-_auth.onAuthStateChanged(user => {
+_auth.onAuthStateChanged(async user => {
+  if (user) await faSyncFromCloud(user, _db);
   document.getElementById('fa-header-slot').innerHTML = '';
   document.getElementById('fa-header-slot').appendChild(faRenderHeader({ user }));
   faMarkActiveToday();

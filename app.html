@@ -954,23 +954,9 @@
       if (user) {
         document.getElementById('fa-login').style.display = 'none';
         document.getElementById('fa-app').style.display = 'block';
+        // Cloud is bron van waarheid voor XP — eerst syncen, dan renderen
+        await faSyncFromCloud(user, db);
         initApp(user);
-        const ref = db.collection('scores').doc(user.uid);
-        const snap = await ref.get();
-        if (!snap.exists) {
-          await ref.set({
-            name: user.displayName || 'Anoniem',
-            pts: faGetXP(),
-            photoURL: user.photoURL || '',
-            updatedAt: firebase.firestore.FieldValue.serverTimestamp()
-          });
-        } else {
-          // sync local XP upward
-          const fsPts = snap.data().pts || 0;
-          if (faGetXP() > fsPts) {
-            await ref.update({ pts: faGetXP(), updatedAt: firebase.firestore.FieldValue.serverTimestamp() });
-          }
-        }
         renderLeaderboard(user.uid);
       } else {
         if (sessionStorage.getItem('fa-guest') === '1') {
