@@ -268,9 +268,9 @@ _auth.onAuthStateChanged(async user => {
 });
 
 // ── Cards (uit gedeeld data-em1.js) ─────────────
+const DATA = window.__FMDATA__ || { flashcards: [], cats: [], key: 'vak', title: 'Vak', url: 'index.html' };
 const allCards = DATA.flashcards || [];
 
-const DATA = window.__FMDATA__ || { flashcards: [], cats: [], key: 'vak', title: 'Vak', url: 'index.html' };
 const catMap = {};
 DATA.cats.forEach(c => catMap[c.key] = c);
 
