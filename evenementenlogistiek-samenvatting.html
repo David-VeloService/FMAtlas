@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Samenvatting · Evenementenlogistiek — FMAtlas</title>
+<link rel="icon" type="image/svg+xml" href="logo.svg"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="css/fmatlas.css"/>
+<style>
+.sam-wrap { max-width: 1100px; margin: 0 auto; padding: 24px; }
+.sam-intro { background: var(--surface); border: 1.5px solid var(--line); border-radius: var(--radius-xl); padding: 28px 32px; margin-bottom: 18px; }
+.sam-intro-meta { font-size: 11px; font-weight: 800; color: var(--accent); letter-spacing: 0.08em; margin-bottom: 8px; }
+.sam-intro h1 { font-size: 32px; font-weight: 900; letter-spacing: -0.025em; line-height: 1.08; margin-bottom: 10px; }
+.sam-intro p { color: var(--ink-soft); font-size: 14.5px; line-height: 1.6; }
+
+nav.chapnav { background: var(--surface); border: 1.5px solid var(--line); border-radius: var(--radius-lg); padding: 12px 16px; margin: 0 24px 18px; max-width: 1052px; margin-left: auto; margin-right: auto; display: flex; flex-wrap: wrap; gap: 6px; position: sticky; top: 68px; z-index: 20; }
+nav.chapnav a { color: var(--ink-soft); text-decoration: none; padding: 4px 10px; border-radius: 8px; background: var(--bg); font-weight: 800; font-size: 11.5px; border: 1.5px solid var(--line); transition: all 0.12s; }
+nav.chapnav a:hover { background: var(--accent-soft); color: var(--accent-deep); border-color: var(--accent); }
+
+.main { max-width: 1052px; margin: 0 auto; padding: 0 24px 60px; display: flex; flex-direction: column; gap: 18px; }
+
+.card { background: var(--surface); border: 1.5px solid var(--line); border-radius: var(--radius-xl); overflow: hidden; scroll-margin-top: 140px; }
+.card-header { padding: 16px 22px; display: flex; align-items: center; gap: 10px; color: var(--surface); background: var(--ink); }
+.card-header h2 { font-size: 17px; font-weight: 900; letter-spacing: -0.015em; }
+.card-header .icon { font-size: 20px; }
+.card-body { padding: 22px 24px; }
+
+.h1 { background: var(--accent); }
+.h2, .h3, .h4 { background: var(--ink); }
+
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+@media (max-width: 740px) { .two-col, .three-col { grid-template-columns: 1fr; } }
+
+.section { margin-bottom: 18px; }
+.section h3 { font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin-bottom: 8px; padding-bottom: 6px; border-bottom: 1.5px solid var(--line); }
+
+ul.clean { list-style: none; display: flex; flex-direction: column; gap: 5px; margin: 0; padding: 0; }
+ul.clean li { font-size: 13.5px; line-height: 1.55; padding: 3px 0 3px 16px; position: relative; color: var(--ink-soft); font-weight: 500; }
+ul.clean li::before { content: '›'; position: absolute; left: 0; top: 3px; color: var(--accent); font-weight: 900; }
+ul.clean li strong { color: var(--ink); font-weight: 800; }
+
+.defbox { background: var(--bg); border: 1.5px solid var(--line); border-left: 4px solid var(--accent); border-radius: 0 var(--radius) var(--radius) 0; padding: 10px 14px; margin-bottom: 10px; font-size: 13.5px; line-height: 1.55; color: var(--ink-soft); }
+.defbox strong { display: block; font-size: 10.5px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); margin-bottom: 4px; }
+
+.highlight { background: var(--accent-soft); border: 1.5px solid rgba(239, 90, 63, 0.25); border-radius: var(--radius); padding: 10px 14px; font-size: 13.5px; line-height: 1.55; margin-bottom: 10px; color: var(--accent-deep); font-weight: 600; }
+.highlight strong { color: var(--accent-deep); font-weight: 900; }
+
+.warn { background: #fff7ed; border-left: 3px solid #f59e0b; padding: 9px 14px; border-radius: 0 var(--radius) var(--radius) 0; font-size: 12.5px; color: #92400e; margin-bottom: 10px; font-weight: 600; }
+
+.tag { display: inline-block; padding: 2px 8px; border-radius: 999px; font-size: 11px; font-weight: 800; }
+.blue   { background: #dbeafe;  color: #1e40af; }
+.green  { background: #dcfce7;  color: #166534; }
+.purple { background: #ede9fe;  color: #5b21b6; }
+.orange { background: #ffedd5;  color: #9a3412; }
+.red    { background: #fee2e2;  color: #991b1b; }
+.yellow { background: #fef3c7;  color: #854d0e; }
+
+.box { background: var(--bg); border: 1.5px solid var(--line); border-radius: var(--radius); padding: 12px 14px; }
+.box h4 { font-size: 12.5px; font-weight: 900; margin-bottom: 8px; color: var(--ink); letter-spacing: -0.005em; }
+
+.nummer { display: inline-flex; align-items:center; justify-content:center; background: var(--accent); color: var(--surface); width: 22px; height: 22px; border-radius: 50%; font-size: 11px; font-weight: 900; margin-right: 8px; flex-shrink: 0; }
+.stap { display: flex; align-items: flex-start; gap: 4px; font-size: 13.5px; color: var(--ink-soft); padding: 4px 0; line-height: 1.5; }
+.stap strong { color: var(--ink); }
+
+table.compact { width: 100%; border-collapse: collapse; font-size: 12.5px; margin-top: 6px; }
+table.compact th, table.compact td { padding: 7px 10px; text-align: left; border-bottom: 1.5px solid var(--line); color: var(--ink-soft); }
+table.compact th { font-size: 10.5px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+table.compact td strong { color: var(--ink); font-weight: 800; }
+</style>
+</head>
+<body>
+
+<div id="fa-header-slot"></div>
+
+<nav class="fa-breadcrumb">
+  <a href="index.html">Home</a>
+  <span>›</span>
+  <a href="evenementenlogistiek.html">Evenementenlogistiek</a>
+  <span>›</span>
+  <span class="current">Samenvatting</span>
+</nav>
+
+<div class="sam-wrap">
+  <div class="sam-intro">
+    <div class="sam-intro-meta">SAMENVATTING · 7 thema's · 6 lesweken</div>
+    <h1>Evenementenlogistiek — volledige studiesamenvatting</h1>
+    <p>De rode draad is procesdenken: elke fase, van mobiliteitskeuze thuis tot het opruimen van het terrein, is een proces waarvan de capaciteit te berekenen, te beïnvloeden en te ontwerpen valt. Bezoekers zijn bij een evenement tegelijk product én klant. Deze samenvatting volgt de logistieke keten via het schillenmodel en behandelt procesanalyse, capaciteit, marketing, site design, risicoanalyse en het draaiboek.</p>
+  </div>
+</div>
+
+<nav class="chapnav">
+  <a href="#h1">Schillenmodel</a>
+  <a href="#h2">Proces &amp; capaciteit</a>
+  <a href="#h3">Marketing &amp; gedrag</a>
+  <a href="#h4">Bereikbaarheid &amp; toegang</a>
+  <a href="#h5">Site design</a>
+  <a href="#h6">Risico &amp; veiligheid</a>
+  <a href="#h7">Opbouw &amp; draaiboek</a>
+</nav>
+
+<div class="main">
+
+<!-- ===== H1: SCHILLENMODEL ===== -->
+<div class="card" id="h1">
+  <div class="card-header h1"><span class="icon">🎯</span><h2>1 — Schillenmodel als logistieke keten</h2></div>
+  <div class="card-body">
+    <div class="two-col">
+      <div>
+        <div class="section">
+          <h3>De vier schillen</h3>
+          <div class="defbox">
+            <strong>Schillenmodel</strong>
+            Beschrijft de logistieke keten van een evenement in vier concentrische schillen, samengevat als "van bed naar bar en van bar naar bed". Je werkt van buiten naar binnen, omdat elke schil de volgende voedt.
+          </div>
+          <table class="compact">
+            <thead><tr><th>Schil</th><th>Wat speelt er</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Schil 1</strong></td><td>Beïnvloedingsprocessen rond de vervoerskeuze (bijv. OV-combiticket)</td></tr>
+              <tr><td><strong>Schil 2</strong></td><td>Sturingsprocessen rond openbare voorzieningen (capaciteit OV, toegangswegen)</td></tr>
+              <tr><td><strong>Schil 3</strong></td><td>Toegangsprocessen naar het terrein (parkeren, entree, kaartverkoop)</td></tr>
+              <tr><td><strong>Kern</strong></td><td>Evenementprocessen op het terrein zelf (installaties, tenten, sanitair)</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div>
+        <div class="section">
+          <h3>Waarom van buiten naar binnen?</h3>
+          <ul class="clean">
+            <li>De buitenste schillen zijn <strong>randvoorwaardelijk</strong>: kloppen bereikbaarheid en toegang niet, dan heeft een perfecte kern geen waarde.</li>
+            <li>Een verkeerde vervoerskeuze (schil 1) geeft files in schil 2 en vastlopende entrees in schil 3.</li>
+            <li>De buitenste schillen hangen af van <strong>derden</strong> (gemeente, NS, verkeersmanagement) en vragen vroeg overleg.</li>
+          </ul>
+          <div class="highlight">Door van buiten naar binnen te werken pak je de grootste logistieke risico's als eerste aan.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== H2: PROCES & CAPACITEIT ===== -->
+<div class="card" id="h2">
+  <div class="card-header h2"><span class="icon">⚙️</span><h2>2 — Procesanalyse, bottlenecks en capaciteit</h2></div>
+  <div class="card-body">
+    <div class="two-col">
+      <div>
+        <div class="section">
+          <h3>Proces en bottleneck</h3>
+          <div class="defbox">
+            <strong>Bottleneck</strong>
+            De schakel in een procesketen met de kleinste capaciteit. Die schakel bepaalt de totale doorstroming. Andere schakels versnellen heeft pas zin als de bottleneck is opgelost; extra capaciteit stapelt anders op als wachtrij.
+          </div>
+          <p style="font-size:13.5px;color:var(--ink-soft);line-height:1.6;">Processen zetten input om in waardevolle output. De capaciteit bepaalt hoeveel bezoekers per tijdseenheid geholpen kunnen worden. Proceslagen lopen van het hele evenement naar de in- en uitgang, accreditatie, tot het omdoen van een polsbandje.</p>
+        </div>
+
+        <div class="section">
+          <h3>Definitie en kwaliteit</h3>
+          <div class="defbox">
+            <strong>Evenementenlogistiek</strong>
+            De eenmalige of frequente organisatie, planning, besturing en uitvoering van zowel goederen- als mensenstromen, via uitbesteding en inhuur, om tegen lage kosten te voldoen aan de behoefte van bezoekers (Van Rijn &amp; Van Damme, 2012).
+          </div>
+          <div class="box">
+            <h4>Five rights (Lamberts &amp; Stock)</h4>
+            <p style="font-size:13px;color:var(--ink-soft);margin:0;">Het juiste product, op de juiste plaats, op het juiste moment, in de juiste conditie, tegen de juiste kosten, voor de juiste klant.</p>
+          </div>
+          <div class="warn">Evenementen zijn tijdelijk en eenmalig: er is maar één kans. Bezoekers zijn tegelijk product én klant, met piekbelasting en afhankelijkheid van externe leveranciers. Dat maakt processen lastiger te beheersen dan in een fabriek.</div>
+        </div>
+      </div>
+      <div>
+        <div class="section">
+          <h3>Rekenvoorbeeld accreditatie</h3>
+          <p style="font-size:13px;color:var(--ink-soft);margin-bottom:6px;">Procestijden: scannen 5 s, polsbandje 10 s, fouilleren 15 s, visiteren 15 s. Capaciteit per medewerker per uur = 3600 / procestijd. Voor 5.000 bezoekers in 60 min:</p>
+          <table class="compact">
+            <thead><tr><th>Onderdeel</th><th>Per mdw/uur</th><th>Mdw nodig</th></tr></thead>
+            <tbody>
+              <tr><td>Scannen (5 s)</td><td>720</td><td>7</td></tr>
+              <tr><td>Polsbandje (10 s)</td><td>360</td><td>14</td></tr>
+              <tr><td><strong>Fouilleren (15 s)</strong></td><td>240</td><td><strong>21</strong></td></tr>
+              <tr><td><strong>Visiteren (15 s)</strong></td><td>240</td><td><strong>21</strong></td></tr>
+            </tbody>
+          </table>
+          <div class="highlight">Fouilleren en visiteren zijn de <strong>bottleneck</strong>: laagste capaciteit, dus de meeste medewerkers.</div>
+        </div>
+
+        <div class="section">
+          <h3>Terrein- en tapcapaciteit</h3>
+          <ul class="clean">
+            <li>Terrein 20.000 m², 30% voor podia/voorzieningen → 14.000 m² publiek.</li>
+            <li>Norm 2,5 m² per persoon → max. terreincapaciteit.</li>
+            <li>3 ingangen × 1.000/uur = 3.000 instroom per uur; bij verblijfsduur 4 u op een event van 8 u is de <strong>instroom</strong> vaak de beperkende factor.</li>
+            <li><strong>Biertap:</strong> 8/min = 480/uur; bij 3 consumpties/uur bedient één tap 160 personen. 2.500 bezoekers → 16 tappunten.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== H3: MARKETING & GEDRAG ===== -->
+<div class="card" id="h3">
+  <div class="card-header h3"><span class="icon">📣</span><h2>3 — Marketing, doelgroepen en gedragsbeïnvloeding</h2></div>
+  <div class="card-body">
+    <div class="two-col">
+      <div>
+        <div class="section">
+          <h3>Drie-componentenmodel</h3>
+          <table class="compact">
+            <thead><tr><th>Component</th><th>Vraag</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Kennis</strong></td><td>Wat moet de doelgroep weten en onthouden?</td></tr>
+              <tr><td><strong>Houding</strong></td><td>Wat moet de doelgroep voelen bij het merk of evenement?</td></tr>
+              <tr><td><strong>Gedrag</strong></td><td>Wat moet de doelgroep doen (kaartje bestellen, dieetwens doorgeven)?</td></tr>
+            </tbody>
+          </table>
+          <div class="warn">Formuleer doelstellingen altijd als <strong>gevolg van</strong> de marketingactiviteiten en meetbaar, zodat je ze kunt evalueren.</div>
+        </div>
+        <div class="section">
+          <h3>Doelgroep bepalen</h3>
+          <p style="font-size:13px;color:var(--ink-soft);margin:0 0 6px;">Vier segmentatiecriteria voor de consumentenmarkt:</p>
+          <p>
+            <span class="tag blue">Geografisch</span>
+            <span class="tag green">Demografisch</span>
+            <span class="tag purple">Psychografisch</span>
+            <span class="tag orange">Gedrag</span>
+          </p>
+          <p style="font-size:13px;color:var(--ink-soft);margin-top:6px;">De <strong>empathy map</strong> maakt de behoefte van een specifiek segment zichtbaar.</p>
+        </div>
+      </div>
+      <div>
+        <div class="section">
+          <h3>Modal split, shift en mental shift</h3>
+          <div class="defbox"><strong>Modal split</strong>De verdeling van bezoekers over vervoerwijzen, geschat op basis van kennis van de doelgroep en de locatie.</div>
+          <div class="defbox"><strong>Modal shift</strong>De gewenste verschuiving naar alternatief vervoer.</div>
+          <div class="defbox"><strong>Mental shift</strong>De bewustzijnsverandering bij de bezoeker die nodig is vóór de gedragsverandering.</div>
+        </div>
+        <div class="section">
+          <h3>Verleiden in plaats van afdwingen</h3>
+          <p style="font-size:13.5px;color:var(--ink-soft);line-height:1.6;">Mobiliteit is gewoontegedrag. De grootste problemen ontstaan door automobiliteit. <strong>Afdwingen</strong> dat mensen niet met de auto komen, vergroot het risico dat ze wegblijven. <strong>Verleiden</strong> werkt beter: maak het alternatief goedkoper (OV-combiticket), betrouwbaarder (extra treinen/bussen) en sneller (dicht bij in- en uitstappen).</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== H4: BEREIKBAARHEID & TOEGANG ===== -->
+<div class="card" id="h4">
+  <div class="card-header h4"><span class="icon">🚧</span><h2>4 — Bereikbaarheid (schil 2), toegang (schil 3) en hospitality</h2></div>
+  <div class="card-body">
+    <div class="two-col">
+      <div>
+        <div class="section">
+          <h3>Schil 2 — hulpdienstroutes</h3>
+          <p style="font-size:13px;color:var(--ink-soft);margin-bottom:6px;">Aanpassingen in het verkeer staan in een <strong>postenplan</strong>. Aanrijdroutes voor hulpdiensten moeten altijd vrij zijn:</p>
+          <ul class="clean">
+            <li>Minimale doorgang <strong>3,5 m breed</strong> en <strong>4,2 m hoog</strong>.</li>
+            <li>Snel verplaatsbare afsluitmiddelen of permanente bemensing.</li>
+            <li>Rijplaten op zachte ondergrond, geen tegenverkeer in eenrichtingsstraten.</li>
+            <li>Aangewezen doorgangen in hekken: "vrijhouden voor hulpdiensten".</li>
+          </ul>
+        </div>
+        <div class="section">
+          <h3>Schil 3 — toegangsprocessen</h3>
+          <p style="font-size:13.5px;color:var(--ink-soft);line-height:1.6;">Alles vóór de bezoeker binnen is: parkeren, fietsenstalling, OV en pendel, looproutes, entree, kaartverkoop en visitatie. Parkeren is zelf een keten: binnenkomst, betalen, instructies, zoeken, parkeren, weglopen en op de terugweg het voertuig terugvinden.</p>
+          <table class="compact">
+            <thead><tr><th>Term</th><th>Wat &amp; juridisch</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Visitatie</strong></td><td>Controle van tassen/jassen. Vrijwillig.</td></tr>
+              <tr><td><strong>Fouilleren</strong></td><td>Onderzoek aan lichaam/kleding. Vrijwillig.</td></tr>
+            </tbody>
+          </table>
+          <div class="warn">Weigert een bezoeker, dan kan de toegang worden geweigerd. Juridische basis: Wet particuliere beveiligingsorganisaties en persoonsbeveiliging.</div>
+        </div>
+      </div>
+      <div>
+        <div class="section">
+          <h3>Hospitality — MOP-model</h3>
+          <p style="font-size:13px;color:var(--ink-soft);margin-bottom:6px;">Vanaf het betreden van het terrein begint de beleving en daarmee de hospitality.</p>
+          <div class="box" style="margin-bottom:8px;"><h4>Mens</h4><p style="font-size:13px;color:var(--ink-soft);margin:0;">Omgang met gasten: training, instructies, briefing en dresscode.</p></div>
+          <div class="box" style="margin-bottom:8px;"><h4>Omgeving</h4><p style="font-size:13px;color:var(--ink-soft);margin:0;">Fysieke en digitale ruimtes met een uniforme uitstraling die past bij de verwachting.</p></div>
+          <div class="box"><h4>Proces</h4><p style="font-size:13px;color:var(--ink-soft);margin:0;">De organisatie rondom de gastvrijheidsbeleving.</p></div>
+        </div>
+        <div class="section">
+          <h3>Customer journey</h3>
+          <p style="font-size:13.5px;color:var(--ink-soft);line-height:1.6;">Visitatie en fouilleren staan op gespannen voet met een gastvrije ontvangst, wat een hospitalityplan noodzakelijk maakt. De customer journey brengt de totale belevingsreis in kaart langs alle schillen. <strong>Persona's</strong> helpen om in de huid van de bezoeker te kruipen en pijnpunten op te sporen, beter dan "de gemiddelde bezoeker" die voor niemand precies klopt.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== H5: SITE DESIGN ===== -->
+<div class="card" id="h5">
+  <div class="card-header h4"><span class="icon">🗺️</span><h2>5 — Site design en PQRST-sleutel</h2></div>
+  <div class="card-body">
+    <div class="two-col">
+      <div>
+        <div class="section">
+          <h3>PQRST-sleutel</h3>
+          <table class="compact">
+            <thead><tr><th>Letter</th><th>Betekenis</th></tr></thead>
+            <tbody>
+              <tr><td><strong>P</strong></td><td>Publiek, personen en producten die zich verplaatsen</td></tr>
+              <tr><td><strong>Q</strong></td><td>Quantity: omvang van de stromen</td></tr>
+              <tr><td><strong>R</strong></td><td>Routering tussen service- en attractiepunten</td></tr>
+              <tr><td><strong>S</strong></td><td>Steunverlenende diensten (EHBO, beveiliging, logistiek)</td></tr>
+              <tr><td><strong>T</strong></td><td>Tijd waarin alles moet worden afgewikkeld</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="section">
+          <h3>Relatieschema</h3>
+          <p style="font-size:13.5px;color:var(--ink-soft);line-height:1.6;">Service- en attractiepunten zijn onder meer podium, Front of House, eerste vak, entree, EHBO, nooduitgangen, eten, merchandise, drank- en muntenverkoop, sanitair en infostand. Het <strong>relatieschema</strong> legt vast welke punten nabij of juist ver van elkaar moeten liggen en vormt de basis voor de eerste inrichtingsschets: eerst publiek versus service scheiden, dan de absoluut noodzakelijke relaties, daarna de zeer belangrijke.</p>
+        </div>
+      </div>
+      <div>
+        <div class="section">
+          <h3>Bezoekersdichtheid (veiligheidsthema)</h3>
+          <table class="compact">
+            <thead><tr><th>m² p.p.</th><th>Effect</th></tr></thead>
+            <tbody>
+              <tr><td><strong>2,5</strong></td><td>Relatief vrij bewegen (operationele norm)</td></tr>
+              <tr><td>1,85</td><td>Bewegen op "sorry-basis"</td></tr>
+              <tr><td>0,46</td><td>Staan zonder elkaar aan te raken</td></tr>
+              <tr><td>0,27</td><td>Onvrijwillige aanraking</td></tr>
+              <tr><td><strong>0,18</strong></td><td>Potentieel gevaarlijke krachten en stress</td></tr>
+            </tbody>
+          </table>
+          <div class="highlight">Zit je structureel onder <strong>2,5 m²</strong> bij de kernpunten op het terrein, dan is ingrijpen noodzakelijk.</div>
+        </div>
+        <div class="section">
+          <h3>Managing flows</h3>
+          <ul class="clean">
+            <li>Simpel ontwerp, duidelijke informatie en bordjes.</li>
+            <li>Vermijd kruisende stromen; gebruik one-way-routing (lus).</li>
+            <li>Voorkom piekmomenten via slimme programmering en arrangementen (campingkorting).</li>
+            <li>Bufferzones, camera's, centrale controlekamer en geschoold personeel.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== H6: RISICO & VEILIGHEID ===== -->
+<div class="card" id="h6">
+  <div class="card-header h2"><span class="icon">🛡️</span><h2>6 — Risicoanalyse, FMEA en veiligheidsketen</h2></div>
+  <div class="card-body">
+    <div class="two-col">
+      <div>
+        <div class="section">
+          <h3>Vier risicoprofielen</h3>
+          <ul class="clean">
+            <li><strong>Publieksprofiel:</strong> anonimiteit, leeftijd, homogeniteit, omvang, verblijfsduur.</li>
+            <li><strong>Activiteitenprofiel:</strong> schaal, aantal partijen, programmering, middelengebruik.</li>
+            <li><strong>Ruimtelijk profiel:</strong> binnen of buiten, complexiteit, zichtlijnen, brandveiligheid.</li>
+            <li><strong>Extern profiel:</strong> orde, weer, stroomuitval.</li>
+          </ul>
+        </div>
+        <div class="section">
+          <h3>FMEA en RPN</h3>
+          <div class="defbox">
+            <strong>FMEA</strong>
+            Failure Mode and Effect Analysis: kwantificeert risico's op drie factoren. Kans (1-10), Effect (1-10) en Hersteltijd. Hersteltijd is een aparte factor: een kapotte toiletunit (laag effect, lange hersteltijd) is iets anders dan een korte ernstige storing.
+          </div>
+          <div class="highlight"><strong>RPN = Kans × Effect × Hersteltijd.</strong> Hoe hoger het getal, hoe urgenter de maatregel. Voorbeeld danceparty: 8 × 6 × 7 = 336 (hoog).</div>
+        </div>
+      </div>
+      <div>
+        <div class="section">
+          <h3>Veiligheidsketen (5 schakels)</h3>
+          <div class="stap"><span class="nummer">1</span><span><strong>Proactief</strong> — bron of oorzaak wegnemen vóór er een probleem is.</span></div>
+          <div class="stap"><span class="nummer">2</span><span><strong>Preventief</strong> — maatregelen om een specifiek incident te voorkomen.</span></div>
+          <div class="stap"><span class="nummer">3</span><span><strong>Preparatief</strong> — voorbereiding voor het geval het toch misgaat.</span></div>
+          <div class="stap"><span class="nummer">4</span><span><strong>Repressief</strong> — handelen tijdens het incident om schade te beperken.</span></div>
+          <div class="stap"><span class="nummer">5</span><span><strong>Nazorg</strong> — hulp en afwikkeling na het incident.</span></div>
+        </div>
+        <div class="section">
+          <h3>Calamiteitenplan en GRIP</h3>
+          <p style="font-size:13.5px;color:var(--ink-soft);line-height:1.6;">Het calamiteitenplan legt de crisisstructuur vast (wie is crisismanager, wie vervangt), het communicatieprotocol en locatiegegevens (brandblussers, EHBO, AED, hoofdschakelaar, nooduitgangen, verzamelplaatsen). De vergunninghouder is als eerste verantwoordelijk. Bij opschaling treedt <strong>GRIP</strong> in werking (Gecoördineerde Regionale Incidentenbestrijdings Procedure), van motorkapoverleg (GRIP 0) tot provinciale rampenstaf (GRIP 3).</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== H7: OPBOUW & DRAAIBOEK ===== -->
+<div class="card" id="h7">
+  <div class="card-header h3"><span class="icon">📋</span><h2>7 — Opbouw, afbouw en draaiboek</h2></div>
+  <div class="card-body">
+    <div class="two-col">
+      <div>
+        <div class="section">
+          <h3>Opbouw (vast stappenplan)</h3>
+          <div class="stap"><span class="nummer">1</span><span>Terrein prepareren: obstakels weg, putten vullen, maaien, leidingen leggen.</span></div>
+          <div class="stap"><span class="nummer">2</span><span>Toe- en afritten met rijplaten, hekwerken plaatsen, faciliteiten uitmeten.</span></div>
+          <div class="stap"><span class="nummer">3</span><span>Logistiek coördinatiecentrum plaatsen.</span></div>
+          <div class="stap"><span class="nummer">4</span><span>Leveranciers binnenlaten; podium vaak als eerste (kost de meeste tijd).</span></div>
+          <div class="warn">Tijdens de opbouw geldt al accreditatie (artiesten, crew, backstage, VIP, pers). Het terrein moet in originele staat worden opgeleverd, op straffe van boetes of intrekken van de vergunning.</div>
+        </div>
+        <div class="section">
+          <h3>Afbouw</h3>
+          <div class="defbox"><strong>LIFO-principe</strong>Last in, first out: wat als laatste is opgebouwd, wordt als eerste afgebroken. Afval wordt als eerste opgeruimd. <strong>Dropzones</strong> laten leveranciers materialen verzamelen en later ophalen.</div>
+        </div>
+      </div>
+      <div>
+        <div class="section">
+          <h3>Draaiboek</h3>
+          <p style="font-size:13px;color:var(--ink-soft);margin-bottom:6px;">Planningstechniek voor concrete activiteiten met nauw tijdsverloop, in drie delen: opbouw, evenement, afbouw. De basis is een <strong>balkenschema</strong> (waar, tijd, wat, wie, opmerkingen) met speling voor onvoorziene omstandigheden.</p>
+          <div class="warn">Begin vroeg met een concept-draaiboek. Pas schrijven als "alles vastligt" is fout: aanpassen in de planfase is goedkoop, op de dag zelf kostbaar en riskant. Het draaiboek is ook een communicatie-instrument naar leveranciers en hulpdiensten.</div>
+        </div>
+        <div class="section">
+          <h3>Vaste bijlagen</h3>
+          <ul class="clean">
+            <li>Programma bezoekers met balkenschema's.</li>
+            <li>Volledig tijdschema inclusief op- en afbouw.</li>
+            <li>Call sheets.</li>
+            <li>Plattegrond.</li>
+            <li>Communicatieplan.</li>
+            <li>Evacuatie- en calamiteitenplan.</li>
+            <li>Materialenlijst.</li>
+          </ul>
+          <p style="font-size:13px;color:var(--ink-soft);margin-top:6px;">Het <strong>communicatieactieplan</strong> (middelen bepalen, planning, taakverdeling, budget, monitoren, evalueren) voedt het draaiboek.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<footer class="fa-footer">
+  <span>FMAtlas · gemaakt door David Koolstra</span>
+  <span>HAN · Facilitair Management · 2026</span>
+</footer>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+<script src="js/fmatlas.js"></script>
+<script>
+const firebaseConfig = {
+  apiKey: "AIzaSyBB397Wk2eqpBjic8E7aGV1mTgIjhQ21a8",
+  authDomain: "fmkompas-ff8bc.firebaseapp.com",
+  projectId: "fmkompas-ff8bc",
+  storageBucket: "fmkompas-ff8bc.firebasestorage.app",
+  messagingSenderId: "487972024689",
+  appId: "1:487972024689:web:712c3117080745d14746d0"
+};
+firebase.initializeApp(firebaseConfig);
+firebase.auth().onAuthStateChanged(user => {
+  document.getElementById('fa-header-slot').innerHTML = '';
+  document.getElementById('fa-header-slot').appendChild(faRenderHeader({ user }));
+  faMarkActiveToday();
+  faMarkLastSeen('evenementenlogistiek','Evenementenlogistiek','evenementenlogistiek.html');
+});
+</script>
+</body>
+</html>
