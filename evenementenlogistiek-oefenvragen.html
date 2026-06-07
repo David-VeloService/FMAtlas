@@ -3,52 +3,177 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Oefenvragen · Evenementenlogistiek — FMAtlas</title>
+<title>Oefentoets · Evenementenlogistiek — FMAtlas</title>
 <link rel="icon" type="image/svg+xml" href="logo.svg"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="css/fmatlas.css"/>
 <style>
-.ov-wrap { max-width: 880px; margin: 0 auto; padding: 28px 24px 80px; }
+.ot-wrap { max-width: 820px; margin: 0 auto; padding: 28px 24px 100px; }
 
-.ov-hero { margin-bottom: 18px; }
-.ov-hero h1 { font-size: 34px; font-weight: 900; letter-spacing: -0.028em; margin-bottom: 6px; line-height: 1.05; }
-.ov-hero-sub { color: var(--muted); font-size: 13.5px; font-weight: 700; letter-spacing: 0.02em; }
+/* Intro */
+.ot-intro {
+  background: var(--surface); border: 1.5px solid var(--line); border-radius: var(--radius-xl);
+  padding: 36px 36px; text-align: left; margin-bottom: 24px;
+}
+.ot-intro-meta {
+  font-size: 11px; font-weight: 800; color: var(--accent); letter-spacing: 0.08em; margin-bottom: 8px;
+}
+.ot-intro h1 { font-size: 36px; font-weight: 900; letter-spacing: -0.028em; line-height: 1.05; margin-bottom: 10px; }
+.ot-intro p { color: var(--ink-soft); font-size: 15px; line-height: 1.6; margin-bottom: 16px; }
+.ot-facts { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin: 18px 0 24px; }
+@media (max-width: 640px) { .ot-facts { grid-template-columns: repeat(2, 1fr); } }
+.ot-fact {
+  background: var(--bg); border: 1.5px solid var(--line); border-radius: var(--radius);
+  padding: 12px 14px;
+}
+.ot-fact-lbl { font-size: 10px; color: var(--muted); font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 4px; }
+.ot-fact-val { font-size: 18px; font-weight: 800; letter-spacing: -0.01em; }
 
-.ov-intro { background: var(--surface); border: 1.5px solid var(--line); border-radius: var(--radius-lg); padding: 16px 18px; margin-bottom: 18px; font-size: 13.5px; color: var(--ink-soft); line-height: 1.6; }
-.ov-intro strong { color: var(--ink); }
-.ov-legend { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
-.ov-type { display: inline-flex; align-items: center; gap: 6px; font-size: 11.5px; font-weight: 800; padding: 3px 10px; border-radius: 999px; }
-.t-R { background: #dbeafe; color: #1e40af; }
-.t-T { background: #ffedd5; color: #9a3412; }
-.t-I { background: #ede9fe; color: #5b21b6; }
+/* Sticky progress strip */
+.ot-strip {
+  position: sticky; top: 70px; z-index: 20;
+  background: var(--surface); border: 1.5px solid var(--line); border-radius: var(--radius-lg);
+  padding: 12px 16px; margin-bottom: 18px;
+  display: flex; align-items: center; gap: 14px;
+}
+.ot-strip-label {
+  font-size: 12px; font-weight: 800; color: var(--ink); letter-spacing: 0.02em; white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+.ot-strip-bar { flex: 1; }
+.ot-strip-score { font-size: 12px; font-weight: 800; color: var(--muted); font-variant-numeric: tabular-nums; }
 
-.ov-toolbar { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 18px; }
-.ov-toolbar button { font-family: inherit; font-size: 12px; font-weight: 800; padding: 7px 13px; border-radius: 999px; border: 1.5px solid var(--line); background: var(--surface); color: var(--ink-soft); cursor: pointer; transition: all 0.12s; }
-.ov-toolbar button:hover { border-color: var(--ink); color: var(--ink); }
+/* Section header */
+.ot-section-title {
+  font-size: 11px; font-weight: 800; color: var(--muted); letter-spacing: 0.08em;
+  text-transform: uppercase; margin: 28px 0 10px;
+  display: flex; align-items: center; gap: 10px;
+}
+.ot-section-title::after { content: ''; flex: 1; height: 1.5px; background: var(--line); }
 
-.ov-section { margin-bottom: 26px; }
-.ov-section-head { display: flex; align-items: baseline; gap: 10px; margin-bottom: 12px; padding-bottom: 6px; border-bottom: 1.5px solid var(--line); }
-.ov-section-title { font-size: 16px; font-weight: 900; letter-spacing: -0.01em; }
-.ov-section-count { font-size: 11px; color: var(--muted); font-weight: 700; }
+/* Question card */
+.ot-q {
+  background: var(--surface); border: 1.5px solid var(--line); border-radius: var(--radius-lg);
+  padding: 20px 22px; margin-bottom: 12px; transition: border-color 0.15s;
+}
+.ot-q.answered.correct { border-color: var(--ok); background: rgba(58, 138, 92, 0.04); }
+.ot-q.answered.wrong { border-color: var(--accent); background: rgba(239, 90, 63, 0.04); }
 
-.ov-q { background: var(--surface); border: 1.5px solid var(--line); border-radius: var(--radius-lg); padding: 16px 18px; margin-bottom: 12px; }
-.ov-q-head { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 10px; }
-.ov-q-num { font-size: 12px; font-weight: 900; color: var(--accent); flex-shrink: 0; padding-top: 1px; }
-.ov-q-text { font-size: 14.5px; font-weight: 700; color: var(--ink); line-height: 1.45; flex: 1; }
-.ov-q-type { flex-shrink: 0; font-size: 10.5px; font-weight: 800; padding: 2px 8px; border-radius: 999px; }
+.ot-q-head {
+  display: flex; align-items: baseline; gap: 12px; margin-bottom: 10px;
+}
+.ot-q-num {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 26px; height: 26px; border-radius: 50%; background: var(--surface-alt);
+  border: 1.5px solid var(--line);
+  font-size: 11px; font-weight: 900; color: var(--ink-soft); flex-shrink: 0;
+  font-variant-numeric: tabular-nums;
+}
+.ot-q.answered.correct .ot-q-num { background: var(--ok); color: #fff; border-color: var(--ok); }
+.ot-q.answered.wrong .ot-q-num { background: var(--accent); color: #fff; border-color: var(--accent); }
 
-.ov-kern { background: var(--bg); border-left: 4px solid var(--accent); border-radius: 0 var(--radius) var(--radius) 0; padding: 8px 12px; font-size: 12.5px; color: var(--ink-soft); line-height: 1.5; margin-bottom: 10px; }
-.ov-kern strong { color: var(--accent-deep); font-weight: 800; text-transform: uppercase; font-size: 10px; letter-spacing: 0.06em; display: block; margin-bottom: 2px; }
+.ot-q-text { font-size: 15.5px; font-weight: 700; color: var(--ink); line-height: 1.45; flex: 1; }
 
-details.ov-model { border: 1.5px solid var(--line); border-radius: var(--radius); overflow: hidden; }
-details.ov-model summary { cursor: pointer; padding: 9px 13px; font-size: 12.5px; font-weight: 800; color: var(--ink); background: var(--surface-alt); list-style: none; display: flex; align-items: center; gap: 7px; user-select: none; }
-details.ov-model summary::-webkit-details-marker { display: none; }
-details.ov-model summary::before { content: '▸'; color: var(--accent); font-weight: 900; transition: transform 0.15s; }
-details.ov-model[open] summary::before { transform: rotate(90deg); }
-details.ov-model summary:hover { background: var(--accent-soft); }
-details.ov-model .ov-model-body { padding: 12px 14px; font-size: 13.5px; color: var(--ink-soft); line-height: 1.6; }
+/* Meerkeuze-opties: volle breedte, met letterbadge */
+.ot-opts { display: flex; flex-direction: column; gap: 8px; margin-top: 12px; }
+.ot-opt {
+  width: 100%; text-align: left; padding: 12px 14px; background: var(--bg);
+  border: 1.5px solid var(--line); border-radius: var(--radius); font-family: inherit;
+  font-size: 14px; font-weight: 700; color: var(--ink-soft); cursor: pointer;
+  transition: all 0.12s; display: flex; align-items: center; gap: 11px;
+}
+.ot-opt:hover:not(:disabled) { border-color: var(--ink); color: var(--ink); background: var(--surface); }
+.ot-opt:disabled { cursor: default; }
+.ot-opt-letter {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 24px; height: 24px; border-radius: 7px; background: var(--surface-alt);
+  border: 1.5px solid var(--line); font-size: 12px; font-weight: 900; flex-shrink: 0;
+}
+.ot-opt.chosen { background: var(--ink); border-color: var(--ink); color: #fff; }
+.ot-opt.chosen .ot-opt-letter { background: rgba(255,255,255,0.18); border-color: transparent; color: #fff; }
+.ot-opt.revealed-correct { background: var(--ok); border-color: var(--ok); color: #fff; }
+.ot-opt.revealed-correct .ot-opt-letter { background: rgba(255,255,255,0.22); border-color: transparent; color: #fff; }
+.ot-opt.revealed-wrong { background: var(--accent); border-color: var(--accent); color: #fff; opacity: 0.92; }
+.ot-opt.revealed-wrong .ot-opt-letter { background: rgba(255,255,255,0.22); border-color: transparent; color: #fff; }
+
+.ot-feedback {
+  margin-top: 14px; padding: 12px 14px; border-radius: var(--radius);
+  font-size: 13.5px; line-height: 1.55; font-weight: 500;
+  display: none;
+}
+.ot-feedback.show { display: block; }
+.ot-feedback.correct { background: rgba(58, 138, 92, 0.1); border: 1.5px solid rgba(58, 138, 92, 0.3); color: #0d5e30; }
+.ot-feedback.wrong { background: var(--accent-soft); border: 1.5px solid rgba(239, 90, 63, 0.3); color: var(--accent-deep); }
+.ot-feedback strong { font-weight: 800; }
+.ot-feedback-label {
+  font-size: 10px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase;
+  margin-bottom: 4px; display: block;
+}
+
+/* Open vragen */
+.ot-open-area {
+  width: 100%; box-sizing: border-box; margin-top: 12px; min-height: 90px;
+  padding: 12px 14px; border: 1.5px solid var(--line); border-radius: var(--radius);
+  font-family: inherit; font-size: 14px; line-height: 1.55; color: var(--ink);
+  background: var(--bg); resize: vertical;
+}
+.ot-open-area:focus { outline: none; border-color: var(--ink); }
+.ot-open-actions { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: 12px; }
+details.ot-model { margin-top: 12px; border: 1.5px solid var(--line); border-radius: var(--radius); overflow: hidden; }
+details.ot-model summary {
+  cursor: pointer; padding: 10px 14px; font-size: 12.5px; font-weight: 800; color: var(--ink);
+  background: var(--surface-alt); list-style: none; display: flex; align-items: center; gap: 7px; user-select: none;
+}
+details.ot-model summary::-webkit-details-marker { display: none; }
+details.ot-model summary::before { content: '▸'; color: var(--accent); font-weight: 900; transition: transform 0.15s; }
+details.ot-model[open] summary::before { transform: rotate(90deg); }
+details.ot-model summary:hover { background: var(--accent-soft); }
+details.ot-model .ot-model-body { padding: 14px; font-size: 13.5px; color: var(--ink-soft); line-height: 1.6; }
+.ot-selfmark { display: none; gap: 8px; margin-top: 12px; align-items: center; flex-wrap: wrap; }
+.ot-selfmark.show { display: flex; }
+.ot-selfmark-label { font-size: 12px; font-weight: 800; color: var(--ink-soft); }
+.ot-mark-btn {
+  font-family: inherit; font-size: 12.5px; font-weight: 800; padding: 7px 14px;
+  border-radius: 999px; border: 1.5px solid var(--line); background: var(--surface);
+  color: var(--ink-soft); cursor: pointer; transition: all 0.12s;
+}
+.ot-mark-btn:hover { border-color: var(--ink); color: var(--ink); }
+.ot-mark-btn.sel-good { background: var(--ok); border-color: var(--ok); color: #fff; }
+.ot-mark-btn.sel-bad { background: var(--accent); border-color: var(--accent); color: #fff; }
+
+/* Submit / final card */
+.ot-submit-card {
+  margin-top: 24px; background: var(--ink); color: var(--surface);
+  border-radius: var(--radius-xl); padding: 28px 32px; text-align: center;
+}
+.ot-submit-card h3 { font-size: 20px; font-weight: 900; letter-spacing: -0.015em; margin-bottom: 6px; }
+.ot-submit-card p { color: rgba(255,255,255,0.72); font-size: 13.5px; font-weight: 500; margin-bottom: 14px; }
+
+/* Results */
+#ot-results { display: none; text-align: center; padding: 28px 0; }
+.ot-score-big {
+  font-size: 80px; font-weight: 900; color: var(--ok); letter-spacing: -0.04em; line-height: 0.95;
+  font-variant-numeric: tabular-nums;
+}
+.ot-score-big.bad { color: var(--accent); }
+.ot-score-pct { font-size: 16px; font-weight: 800; color: var(--muted); letter-spacing: 0.02em; margin-top: 4px; }
+.ot-verdict { font-size: 18px; font-weight: 800; margin: 14px 0 8px; letter-spacing: -0.01em; }
+.ot-verdict-sub { color: var(--ink-soft); font-size: 14px; font-weight: 500; line-height: 1.5; max-width: 480px; margin: 0 auto 24px; }
+.ot-result-cta { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-bottom: 20px; }
+
+/* XP toast */
+.xp-toast {
+  position: fixed; top: 80px; right: 24px; z-index: 500;
+  background: var(--ink); color: var(--surface); padding: 10px 18px;
+  border-radius: 999px; font-size: 13px; font-weight: 800;
+  display: flex; align-items: center; gap: 6px;
+  transform: translateX(420px); transition: transform 0.25s ease;
+  box-shadow: var(--shadow-lg);
+}
+.xp-toast.show { transform: translateX(0); }
+.xp-toast span.yel { color: var(--xp); }
 </style>
 </head>
 <body>
@@ -60,40 +185,81 @@ details.ov-model .ov-model-body { padding: 12px 14px; font-size: 13.5px; color: 
   <span>›</span>
   <a href="evenementenlogistiek.html">Evenementenlogistiek</a>
   <span>›</span>
-  <span class="current">Oefenvragen</span>
+  <span class="current">Oefentoets</span>
 </nav>
 
-<div class="ov-wrap">
-  <div class="ov-hero">
-    <h1>Oefenvragen</h1>
-    <div class="ov-hero-sub">28 vragen · gegroepeerd per onderwerp · met modelantwoorden</div>
-  </div>
-
-  <div class="ov-intro">
-    Beantwoord eerst zelf zonder het modelantwoord te lezen. Vergelijk daarna met de <strong>kern</strong> om te zien of je de essentie te pakken had, en klap pas dan het volledige modelantwoord uit. Drie soorten vragen:
-    <div class="ov-legend">
-      <span class="ov-type t-R">R · recall</span>
-      <span class="ov-type t-T">T · toepassing</span>
-      <span class="ov-type t-I">I · inzicht</span>
+<div class="ot-wrap">
+  <div class="ot-intro">
+    <div class="ot-intro-meta">OEFENTOETS · 25 MEERKEUZE + 5 OPEN</div>
+    <h1>Oefentoets Evenementenlogistiek</h1>
+    <p>Zelfde opbouw als het echte tentamen: <strong>25 meerkeuzevragen</strong> die direct worden nagekeken, plus <strong>5 open vragen</strong> die je zelf nakijkt aan de hand van het modelantwoord. De antwoorden zie je pas nadat je een vraag hebt beantwoord. Cesuur is <strong>55%</strong> — haal je die, dan krijg je +50 XP.</p>
+    <div class="ot-facts">
+      <div class="ot-fact"><div class="ot-fact-lbl">Meerkeuze</div><div class="ot-fact-val">25</div></div>
+      <div class="ot-fact"><div class="ot-fact-lbl">Open</div><div class="ot-fact-val">5</div></div>
+      <div class="ot-fact"><div class="ot-fact-lbl">Duur</div><div class="ot-fact-val">±40 min</div></div>
+      <div class="ot-fact"><div class="ot-fact-lbl">Cesuur</div><div class="ot-fact-val">55%</div></div>
+    </div>
+    <div style="display:flex;gap:10px;flex-wrap:wrap">
+      <button class="fa-btn fa-btn-primary" onclick="startTest()">
+        <span data-fa-icon="play" data-fa-size="13"></span> Begin oefentoets
+      </button>
+      <a class="fa-btn fa-btn-ghost" href="evenementenlogistiek.html">
+        <span data-fa-icon="arrowL" data-fa-size="13"></span> Terug naar vak
+      </a>
     </div>
   </div>
 
-  <div class="ov-toolbar">
-    <button onclick="setAll(true)">Alle antwoorden openen</button>
-    <button onclick="setAll(false)">Alles sluiten</button>
+  <div id="ot-test" style="display:none">
+    <div class="ot-strip">
+      <span class="ot-strip-label"><span id="stripNum">0</span> / <span id="stripTotal">30</span> beantwoord</span>
+      <div class="ot-strip-bar">
+        <div class="fa-progress"><div class="fa-progress-bar" id="stripBar" style="width:0%"></div></div>
+      </div>
+      <span class="ot-strip-score"><span id="stripCorrect">0</span> ✓</span>
+    </div>
+
+    <div id="ot-questions"></div>
+
+    <div class="ot-submit-card" id="ot-submit">
+      <h3>Klaar om te beoordelen?</h3>
+      <p>De 5 open vragen tellen mee als je ze zelf hebt nagekeken. Je kunt deze toets zo vaak herhalen als je wilt.</p>
+      <button class="fa-btn fa-btn-accent" onclick="submitTest()">
+        <span data-fa-icon="check" data-fa-size="13"></span> Lever oefentoets in
+      </button>
+    </div>
   </div>
 
-  <div id="ovMain"></div>
+  <div id="ot-results">
+    <div class="ot-score-big" id="resScoreBig">0 / 30</div>
+    <div class="ot-score-pct" id="resPct">0%</div>
+    <div class="ot-verdict" id="resVerdict">—</div>
+    <div class="ot-verdict-sub" id="resVerdictSub"></div>
+    <div class="ot-result-cta">
+      <button class="fa-btn fa-btn-accent" onclick="retake()">
+        <span data-fa-icon="refresh" data-fa-size="13"></span> Opnieuw proberen
+      </button>
+      <button class="fa-btn fa-btn-ghost" onclick="reviewMistakes()">
+        Bekijk fouten
+      </button>
+      <a class="fa-btn fa-btn-primary" href="evenementenlogistiek.html">
+        Terug naar vak
+      </a>
+    </div>
+  </div>
 </div>
 
+<div class="xp-toast" id="xpToast"><span data-fa-icon="bolt" data-fa-size="13"></span> <span id="xpToastText">+1 XP</span></div>
+
 <footer class="fa-footer">
-  <span>Tip: dek de modelantwoorden af en quiz jezelf hardop</span>
-  <span>FMAtlas · HAN FM</span>
+  <span>FMAtlas · 25 meerkeuze + 5 open · zelfde opbouw als het tentamen</span>
+  <span>HAN · Facilitair Management</span>
 </footer>
 
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
 <script src="js/fmatlas.js"></script>
+<script src="js/data-evenementenlogistiek.js"></script>
 <script>
 const firebaseConfig = {
   apiKey: "AIzaSyBB397Wk2eqpBjic8E7aGV1mTgIjhQ21a8",
@@ -104,167 +270,256 @@ const firebaseConfig = {
   appId: "1:487972024689:web:712c3117080745d14746d0"
 };
 firebase.initializeApp(firebaseConfig);
-firebase.auth().onAuthStateChanged(user => {
+const _auth = firebase.auth();
+const _db = firebase.firestore();
+_auth.onAuthStateChanged(async user => {
+  if (user) await faSyncFromCloud(user, _db);
   document.getElementById('fa-header-slot').innerHTML = '';
   document.getElementById('fa-header-slot').appendChild(faRenderHeader({ user }));
   faMarkActiveToday();
   faMarkLastSeen('evenementenlogistiek','Evenementenlogistiek','evenementenlogistiek.html');
 });
 
-const VRAGEN = [
-  { topic: "Schillenmodel", items: [
-    { n:1, t:"R", q:"Noem de vier onderdelen van het schillenmodel en beschrijf in één zin wat er per onderdeel speelt.",
-      kern:"Alle vier lagen correct benoemd: schil 1 beïnvloeding vervoerskeuze, schil 2 sturing bereikbaarheid, schil 3 toegangsprocessen, kern de evenementprocessen zelf.",
-      a:"Het schillenmodel beschrijft de logistieke keten van buiten naar binnen. Schil 1 zijn de beïnvloedingsprocessen: bezoekers vóór het evenement verleiden tot een vervoerskeuze, bijvoorbeeld via OV-combitickets. Schil 2 zijn de sturingsprocessen: de openbare infrastructuur (wegen, OV, parkeren) rondom het evenement. Schil 3 zijn de toegangsprocessen: alles op en direct rond het terrein voordat de bezoeker binnen is, zoals parkeren, visitatie en kaartverkoop. De kern bevat de evenementprocessen zelf: installaties, tenten, sanitair. Het model heet ook 'van bed naar bar en van bar naar bed'." },
-    { n:2, t:"T", q:"Een festival in een stadscentrum krijgt klachten van omwonenden over parkeeroverlast in de straten rondom de locatie. In welke schil speelt dit en welke maatregel past daarbij?",
-      kern:"Probleem zit in schil 2 (sturing openbare infrastructuur); aanpak via postenplan en parkeermaatregelen, plus beïnvloeding in schil 1 (OV-combiticket, pendel).",
-      a:"Parkeeroverlast in de openbare ruimte valt in schil 2: de sturingsprocessen die de bereikbaarheid regelen. Een directe maatregel is een postenplan met verkeersregelaars die bezoekers naar aangewezen parkeerterreinen leiden. Aanvullend kun je via schil 1 een OV-combiticket of pendeldienst aanbieden om automobiliteit van tevoren te verminderen, zodat de vraag naar parkeerplaatsen daalt nog vóór bezoekers in de woonwijk belanden." },
-    { n:3, t:"I", q:"Waarom is het logisch om het schillenmodel van buiten naar binnen te doorlopen bij het ontwerpen van een evenement, in plaats van bij de kern te beginnen?",
-      kern:"De buitenste schillen zijn randvoorwaardelijk voor de binnenste: kloppen bereikbaarheid en toegang niet, dan heeft een perfecte kern geen waarde.",
-      a:"Iedere schil voedt de volgende. Een verkeerde vervoerskeuze (schil 1) geeft files in schil 2, waardoor de toegangsprocessen in schil 3 vastlopen. Een perfect programma op het terrein helpt niets als bezoekers er niet op tijd of gestrest aankomen. Bovendien zijn de buitenste schillen deels afhankelijk van derden (gemeente, NS, verkeersmanagement) waarvoor vroeg overleg nodig is. Door van buiten naar binnen te werken behandel je de grootste logistieke risico's eerst." },
-  ]},
-  { topic: "Procesanalyse en procesketen", items: [
-    { n:4, t:"R", q:"Wat is een bottleneck in een procesketen en hoe bepaalt hij de totale output?",
-      kern:"De bottleneck is het proces met de kleinste capaciteit; die capaciteit bepaalt de maximale doorstroming van de hele keten, ongeacht hoeveel capaciteit andere schakels hebben.",
-      a:"Een bottleneck is de schakel met de kleinste capaciteit per tijdseenheid. Omdat alle andere processen via deze schakel moeten doorstromen, bepaalt de bottleneck de totale output. Andere schakels versnellen heeft weinig nut als de bottleneck blijft: die extra capaciteit stapelt op als wachtrij vóór de bottleneck. Klassiek voorbeeld is accreditatie waarbij scannen snel gaat maar polsbandjes omdoen veel langer duurt; dat langzaamste onderdeel bepaalt hoeveel bezoekers er per uur naar binnen kunnen." },
-    { n:5, t:"T", q:"Bij accreditatie scannen medewerkers tickets in 5 s, doen een polsbandje om in 10 s, fouilleren in 15 s en visiteren tassen in 15 s. Er moeten 5.000 bezoekers in 60 minuten door. Hoeveel medewerkers per deelproces?",
-      kern:"Per deelproces capaciteit per uur (3600 / procestijd), dan medewerkers (5000 / capaciteit per mdw), naar boven afronden.",
-      a:"Per uur verwerkt één medewerker: scannen 3600/5 = 720, polsbandje 3600/10 = 360, fouilleren 3600/15 = 240, visiteren 3600/15 = 240. Voor 5.000 bezoekers: scannen 5000/720 = 7, polsbandje 5000/360 = 14, fouilleren 5000/240 = 21, visiteren 5000/240 = 21. Totaal 63 medewerkers. Fouilleren en visiteren zijn de bottleneck vanwege de laagste capaciteit per medewerker." },
-    { n:6, t:"I", q:"Waarom zijn processen bij evenementen inherent lastiger te beheersen dan in een productieomgeving?",
-      kern:"Evenementen zijn tijdelijk en eenmalig, geen herhaalde productiecycli om op bij te sturen, met piekbelasting, onvoorspelbaar bezoekersgedrag en afhankelijkheid van externe leveranciers.",
-      a:"In een fabriek kun je processen meerdere keren draaien, bijsturen op ervaringsdata en machines op vaste tijden onderhouden. Bij evenementen is de uitvoering eenmalig: één kans om het goed te doen. Bezoekers zijn tegelijk product én klant, waardoor hun gedrag moeilijk te standaardiseren is. Piekbelasting (iedereen arriveert vlak voor het programma), afhankelijkheid van leveranciers, wisselend weer en weinig IT op locatie maken beheersing extra complex. Variatie in procestijden is moeilijker op te vangen dan in een gecontroleerde fabrieksomgeving." },
-  ]},
-  { topic: "Capaciteitsberekeningen", items: [
-    { n:7, t:"R", q:"Leg uit hoe je de maximale terreincapaciteit berekent op basis van beschikbare oppervlakte en de veiligheidsnorm van 2,5 m² per persoon.",
-      kern:"Netto publieksoppervlak berekenen (totaal minus niet-publieksruimte), daarna delen door 2,5 m² per persoon.",
-      a:"Stap één: het netto publieksoppervlak vaststellen door van het totale terrein alle niet-publieksruimte af te trekken (podia, backstage, horeca, sanitair). Stap twee: de norm van 2,5 m² per persoon toepassen. Je deelt het netto oppervlak door 2,5 om het maximale aantal gelijktijdige bezoekers te vinden. Voorbeeld: 20.000 m² waarvan 30% niet beschikbaar = 14.000 m²; gedeeld door 2,5 = 5.600 bezoekers." },
-    { n:8, t:"T", q:"Eendaags festival. Terrein 20.000 m², waarvan 30% niet-publiek. 3 ingangen met elk 1.000 bezoekers/uur. Evenement duurt 8 uur, gemiddelde verblijfsduur 4 uur. Wat is het realistische maximum?",
-      kern:"Terreincapaciteit (14.000/2,5 = 5.600) vergelijken met instroomcapaciteit (3.000/uur × 4 effectieve uren = 12.000); de laagste is het echte maximum.",
-      a:"Beschikbaar publieksoppervlak: 20.000 − 30% = 14.000 m². Terreincapaciteit bij 2,5 m²: 14.000/2,5 = 5.600 personen tegelijk. Drie ingangen leveren 3.000 bezoekers per uur. Met verblijfsduur 4 uur is het laatste zinvolle instroommoment 8 − 4 = 4 uur na opening, dus instroomcapaciteit 3.000 × 4 = 12.000 totaal. De terreincapaciteit (5.600 tegelijk) is lager, dus die is de beperkende factor. Het realistische maximum is een gestuurde instroom van nooit meer dan 5.600 mensen tegelijk." },
-    { n:9, t:"T", q:"Een concert duurt 3 uur. 2.500 bezoekers. Eén biertap tapt 8 biertjes per minuut, een bezoeker drinkt 3 biertjes per uur. Hoeveel tappunten zijn minimaal nodig?",
-      kern:"Capaciteit per tap per uur (8 × 60 = 480), vraag per tap (480/3 = 160 bezoekers), dan totaal delen door 160.",
-      a:"Eén tappunt levert 480 biertjes per uur. Een bezoeker drinkt 3 per uur, dus één tap bedient 480/3 = 160 bezoekers per uur. Met 2.500 bezoekers: 2.500/160 = 15,6 → 16 tappunten. In de praktijk houd je rekening met verdeling over het terrein en piekbelasting in de pauzes, wat dit aantal eerder hoger dan lager maakt." },
-  ]},
-  { topic: "FMEA en risicoanalyse", items: [
-    { n:10, t:"R", q:"Leg de FMEA-methode uit: wat meet je, hoe scoor je, en hoe bereken je het RPN?",
-      kern:"FMEA scoort drie factoren (kans, effect, hersteltijd) elk 1-10; RPN = Kans × Effect × Hersteltijd; hoge scores krijgen prioriteit.",
-      a:"FMEA staat voor Failure Mode and Effect Analysis. Je scoort elk risico op drie factoren. Kans loopt van 1 (zeer onwaarschijnlijk) tot 10 (publiek staat constant bloot aan gevaar). Effect loopt van 1 (licht ongemak) tot 10 (desastreus: zwaar letsel of overlijden). Hersteltijd kwantificeert hoe lang het duurt om het incident te beheersen. De scores worden vermenigvuldigd: RPN = Kans × Effect × Hersteltijd. Hoe hoger het RPN, hoe urgenter de maatregel." },
-    { n:11, t:"T", q:"Bij een danceparty schat je de kans op overmatig alcoholgebruik op 8, het effect op 6 en de hersteltijd op 7. Bereken het RPN en beschrijf welk type maatregel passend is.",
-      kern:"RPN = 8 × 6 × 7 = 336, hoog; vraagt om preventieve en preparatieve maatregelen uit de veiligheidsketen.",
-      a:"RPN = 8 × 6 × 7 = 336, een hoge score die prioriteit vraagt. Preventief: drankuitgifte beperken (munten- of pasjessysteem) en chill-rooms inrichten. Preparatief: extra EHBO, een protocol voor het afvoeren van onwel geworden bezoekers en ruimte voor ambulances. Repressief: een procedure zodra iemand onwel wordt. De hoge hersteltijd (7) maakt het preventieve en preparatieve werk extra belangrijk." },
-    { n:12, t:"I", q:"Waarom is hersteltijd een afzonderlijke factor in FMEA naast kans en effect, terwijl een lang herstel ook deel van een groot effect lijkt?",
-      kern:"Hersteltijd meet de operationele onbeheersbaarheid in de tijd; effect meet de ernst op het moment zelf. Een snel herstelbaar ernstig incident heeft een andere risicoprojectie dan een aanslepend klein probleem.",
-      a:"Effect beschrijft de ernst van de schade op het moment van het incident. Hersteltijd beschrijft hoe lang de verstoring aanhoudt en hoelang de organisatie verminderd functioneert. Een korte stroomstoring (effect 4, hersteltijd 2) is fundamenteel anders dan een kapotte toiletunit zonder reservecapaciteit (effect 3, hersteltijd 8). Zonder hersteltijd als aparte factor zou je de tweede situatie onderschatten. Een lange hersteltijd legt bovendien resources vast, wat andere risico's vergroot." },
-  ]},
-  { topic: "Marketingdoelstellingen en drie-componentenmodel", items: [
-    { n:13, t:"R", q:"Beschrijf de drie componenten van marketingdoelstellingen en geef per component één concreet voorbeeld voor een evenement.",
-      kern:"Kennis (wat weet de doelgroep), houding (wat voelt de doelgroep) en gedrag (wat doet de doelgroep), elk meetbaar geformuleerd als gevolg van de marketingactiviteiten.",
-      a:"Kennis: wat moet de doelgroep weten of onthouden? Bijvoorbeeld 80% weet vóór het evenement dat het duurzaam is. Houding: wat moet de doelgroep voelen? Bijvoorbeeld 60% heeft na afloop zin in het volgende evenement. Gedrag: wat moet de doelgroep doen? Bijvoorbeeld 40% koopt binnen twee weken na de lancering een ticket. Doelstellingen zijn altijd geformuleerd als gevolg van de marketingactiviteiten, zodat ze evalueerbaar zijn." },
-    { n:14, t:"T", q:"Je organiseert een nieuw, nog onbekend stadsfestival. Schrijf voor elk van de drie componenten één concrete marketingdoelstelling.",
-      kern:"Drie meetbare doelstellingen die elk een eigen component dekken: kennis = bewustzijn, houding = gevoel of associatie, gedrag = een actie zoals kopen of delen.",
-      a:"Kennis: 70% van de doelgroep (18-35 in de regio) weet zes weken voor het evenement dat het festival plaatsvindt en wat het programma is. Houding: 50% van wie de campagne zag, associeert het festival met een ontspannen en gastvrije sfeer. Gedrag: 30% bestelt binnen vier weken na start van de verkoop een kaartje. Zo dek je het hele pad van bewustzijn via overtuiging naar actie." },
-  ]},
-  { topic: "Gedragsbeïnvloeding en modal shift", items: [
-    { n:15, t:"R", q:"Wat is het verschil tussen modal split, modal shift en mental shift bij mobiliteitssturing?",
-      kern:"Modal split = huidige verdeling van vervoermiddelen; modal shift = die verdeling veranderen richting alternatief vervoer; mental shift = de bewustzijnsverandering die daarvoor nodig is.",
-      a:"Modal split is de verwachte of gemeten verdeling van verplaatsingen over vervoerwijzen: hoeveel procent komt met auto, fiets, OV. Modal shift is de actieve sturing om die verdeling te veranderen, bijvoorbeeld meer mensen met de trein. Om een modal shift te bereiken is een mental shift nodig: de bezoeker moet zelf bereid zijn zijn gewoontegedrag te wijzigen. Die mentale stap zet hij alleen als het alternatief goedkoper, betrouwbaarder en sneller is dan de auto." },
-    { n:16, t:"T", q:"Een festival verwacht 15.000 bezoekers waarvan 70% met de auto wil komen. De omgeving biedt onvoldoende parkeercapaciteit. Waarom is autogebruik verbieden riskant en welke aanpak past beter?",
-      kern:"Afdwingen vergroot het risico dat mensen wegblijven; verleiden via goedkoper, betrouwbaarder en sneller alternatief vervoer is effectiever.",
-      a:"Mobiliteit is gewoontegedrag. Afdwingen dat bezoekers niet met de auto mogen komen, vergroot het risico dat een deel helemaal niet gaat, ten koste van bezetting en inkomsten. Verleiden werkt beter: maak het alternatief goedkoper via een OV-combiticket in het entreebewijs, betrouwbaarder via extra treinen of pendelbussen, en sneller via een halte dicht bij de ingang. Communiceer dit ruim van tevoren. Zo verlaag je de drempel zonder mensen weg te jagen." },
-  ]},
-  { topic: "PQRST-sleutel voor site design", items: [
-    { n:17, t:"R", q:"Benoem de vijf elementen van de PQRST-sleutel en leg per element kort uit wat het betekent voor de terreininrichting.",
-      kern:"P = personen en producten, Q = omvang van de stromen, R = routering, S = steunverlenende diensten, T = tijd; samen bepalen ze de lay-out.",
-      a:"P (publiek, personen en producten): wie en wat verplaatst zich, inclusief bezoekers, artiesten, crew en goederen. Q (quantity): de omvang van die stromen. P en Q bepalen de basisschaal van de lay-out. R (routering): hoe mensen en goederen zich tussen service- en attractiepunten bewegen. S (steunverlenende diensten): EHBO, beveiliging en logistiek die de verplaatsingen ondersteunen. T (tijd): wanneer de verplaatsingen plaatsvinden en hoeveel tijd er is. Alle vijf samen vormen de systematische lay-outplanning." },
-    { n:18, t:"T", q:"Je ontwerpt een terrein voor 8.000 bezoekers met twee podia aan weerszijden en wil one-way-routing. Leg uit hoe je de PQRST-elementen R en T concreet toepast.",
-      kern:"R = geen kruisende stromen, duidelijke looproutes van podium A naar B; T = rekening houden met piekmomenten bij artiesteswisselingen.",
-      a:"Voor R ontwerp je een lus zodat bezoekers altijd dezelfde richting op lopen van podium A naar B en terug via een andere route, zodat kruisende stromen en gedrang worden voorkomen. Sanitair en horeca plan je langs deze lus zodat bezoekers ze passeren. Voor T bereken je de piekbelasting bij artiesteswisselingen: als 8.000 mensen tegelijk van A naar B lopen, moet de doorgang die stroom in redelijke tijd verwerken. Je spreidt piekmomenten via programmering (overlap tussen acts) of via bufferzones langs de route." },
-  ]},
-  { topic: "Risicoprofielen en veiligheidsketen", items: [
-    { n:19, t:"R", q:"Noem de vier risicoprofielen waarmee je de risicofactoren bepaalt en geef per profiel één voorbeeldvraag.",
-      kern:"Publieksprofiel, activiteitenprofiel, ruimtelijk profiel en extern profiel; elk levert specifieke risicofactoren.",
-      a:"Publieksprofiel kijkt naar de bezoekers: homogeen of heterogeen, leeftijdsopbouw, vrije toegang. Voorbeeldvraag: zijn er rivaliserende groepen aanwezig? Activiteitenprofiel kijkt naar het type evenement: grootschalig of klein, geprogrammeerd of niet, met of zonder middelengebruik. Voorbeeldvraag: amusement of een groot extern doel zoals een demonstratie? Ruimtelijk profiel kijkt naar de fysieke omgeving: binnen of buiten, complexe inrichting, vluchtwegen. Voorbeeldvraag: zijn er beperkte zichtlijnen of brandveiligheidsknelpunten? Extern profiel omvat factoren van buiten: ordeverstoringen, weer, stroomuitval. Voorbeeldvraag: welk weer is realistisch en wat is het ontruimingsplan?" },
-    { n:20, t:"T", q:"Zware regen dreigt tijdens een openluchtfestival met 20.000 bezoekers. Beschrijf per schakel van de veiligheidsketen (proactief tot nazorg) een passende maatregel.",
-      kern:"Proactief (risico uitsluiten in planfase), preventief (incident voorkomen), preparatief (voorbereiden), repressief (beheersen tijdens), nazorg (afwikkelen).",
-      a:"Proactief: bij locatiekeuze en vergunning al rekening houden met slecht weer via overdekte zones en drainageplannen. Preventief: weersmonitoring en een procedure voor het waarschuwen van bezoekers (schermen, omroep). Preparatief: extra rijplaten voor modderige paden en een geoefend evacuatieplan voor vroeg vertrek. Repressief: zodra de regen begint de OV-pendel opschalen zodat bezoekers snel kunnen vertrekken zonder samendrommen, en extra verkeersregelaars bij de uitritten. Nazorg: communicatie over terugbetalingen of vervangend programma en evaluatie van de weerscalamiteit." },
-  ]},
-  { topic: "Draaiboek", items: [
-    { n:21, t:"R", q:"Beschrijf de drie onderdelen van een draaiboek en noem vier vaste bijlagen.",
-      kern:"Opbouw, evenement en afbouw; bijlagen minimaal plattegrond, communicatieplan, evacuatie- en calamiteitenplan en materialenlijst.",
-      a:"Een draaiboek bestaat uit drie chronologische delen: de opbouwfase met terreinpreparatie en leverancierscoördinatie, het evenement zelf met het tijdschema en call sheets, en de afbouwfase met de omgekeerde logistiek. De basis is een balkenschema met tijdstip, locatie, activiteit en verantwoordelijke, inclusief speling. Vier vaste bijlagen: plattegrond, communicatieplan, evacuatie- en calamiteitenplan en materialenlijst." },
-    { n:22, t:"I", q:"Een organisator zegt: 'Het draaiboek schrijf ik pas als alles vastligt, anders moet ik het steeds aanpassen.' Waarom is die redenering problematisch?",
-      kern:"Het draaiboek is een levend instrument; vroeg beginnen dwingt je knelpunten op tijd te ontdekken terwijl aanpassen nog goedkoop is.",
-      a:"Een draaiboek wordt gebruikt zodra activiteiten concreet worden. Pas beginnen als alles vastligt betekent dat je te laat ontdekt dat processen niet aansluiten, verantwoordelijkheden niet belegd zijn of capaciteiten tekortschieten. Een concept-draaiboek dwingt je vroeg om tijden, locaties, taken en verantwoordelijken te koppelen, wat afhankelijkheden blootlegt. Aanpassen in de planfase is goedkoop, op de dag zelf kostbaar en riskant. Het draaiboek is ook een communicatie-instrument naar leveranciers en hulpdiensten die hun planning erop afstemmen." },
-  ]},
-  { topic: "Doelgroepbepaling en marktsegmentatie", items: [
-    { n:23, t:"R", q:"Noem de vier segmentatiecriteria voor de consumentenmarkt en geef bij elk één toepassing voor een festival.",
-      kern:"Geografisch, demografisch, psychografisch en gedrag; samen vormen ze de basis voor gerichte marketingcommunicatie.",
-      a:"Geografisch: woonplaats of regio, bijvoorbeeld bezoekers uit de vier grote steden en omgeving. Demografisch: meetbare kenmerken zoals leeftijd, geslacht en opleiding, bijvoorbeeld jongvolwassenen 18-30 met middelbaar of hoger opleidingsniveau. Psychografisch: levensstijl en persoonlijkheid, bijvoorbeeld avontuurlijke, sociale personen die nieuwe ervaringen zoeken. Gedrag: gebruik en loyaliteit, bijvoorbeeld early adopters die meerdere festivals per jaar bezoeken en content delen. Combineren levert een precies profiel van de kernbezoeker." },
-  ]},
-  { topic: "Schil 2: sturingsprocessen bereikbaarheid", items: [
-    { n:24, t:"R", q:"Welke minimumeisen gelden voor aanrijdroutes van hulpdiensten op een evenemententerrein?",
-      kern:"Minimale doorgang 3,5 meter breed en vrije doorrijhoogte 4,2 meter; routes te allen tijde vrijhouden.",
-      a:"Vanuit de GHOR gelden vaste eisen. De minimale doorgang is 3,5 meter breed en de vrije doorrijhoogte 4,2 meter. Calamiteitenroutes moeten altijd vrij blijven en afsluitmiddelen moeten snel weg te halen zijn of permanent bemand. Op zachte ondergrond komen rijplaten zodat voertuigen niet vastrijden. Geen tegengesteld verkeer in eenrichtingsstraten, en op vooraf bepaalde plaatsen worden doorgangen in hekken aangewezen met de tekst 'vrijhouden voor hulpdiensten'." },
-  ]},
-  { topic: "Bezoekersdichtheid en crowd safety", items: [
-    { n:25, t:"R", q:"Beschrijf wat er bij verschillende bezoekersdichtheden (m² per persoon) gebeurt, van 2,5 m² tot 0,18 m².",
-      kern:"Van vrij bewegen via 'sorry-basis' en staan zonder aanraking naar onvrijwillige aanraking en uiteindelijk gevaarlijke krachten in de menigte.",
-      a:"Bij 2,5 m² per persoon is relatief vrij bewegen mogelijk. Bij 1,85 m² beweeg je op 'sorry-basis' en wijk je voortdurend mensen uit. Bij 0,46 m² kun je nog staan zonder de ander aan te raken, maar er is weinig ruimte. Bij 0,27 m² ontstaan onvrijwillige aanrakingen. Bij 0,18 m² ontstaan potentieel gevaarlijke krachten op en in de menigte en psychologische stress. De 2,5 m² is de operationele veiligheidsnorm; structureel daaronder bij kernpunten betekent ingrijpen." },
-  ]},
-  { topic: "Hospitality en MOP-model", items: [
-    { n:26, t:"R", q:"Beschrijf de drie elementen van het MOP-model en leg uit waarom visitatie en fouilleren op gespannen voet staan met hospitality.",
-      kern:"Mens, Omgeving en Proces; visitatie is onpersoonlijk en controlegericht terwijl hospitality individuele aandacht en een welkomstgevoel vraagt.",
-      a:"Mens staat voor de omgang van personeel met gasten: training, instructies, briefing en dresscode. Omgeving staat voor de fysieke en digitale ruimtes met een uniforme uitstraling die aansluit bij de gewekte verwachting. Proces staat voor de logistieke organisatie rondom de gastvrijheidsbeleving, het kernonderwerp bij evenementenlogistiek. Visitatie en fouilleren staan op gespannen voet met hospitality omdat het controlemomenten zijn die de bezoeker als wantrouwend kan ervaren, terwijl een gastvrije ontvangst juist echte aandacht vraagt. Het moment waarop de vervoersstroom bezoekerstroom wordt, is waar hospitality begint, en dat wordt direct doorkruist door een beveiligingscheck." },
-  ]},
-  { topic: "Opbouw en afbouw evenementterrein", items: [
-    { n:27, t:"T", q:"Je bouwt een festival op in een stadspark dat de volgende maandagochtend volledig opgeleverd moet zijn. Beschrijf de belangrijkste logistieke principes bij de afbouw.",
-      kern:"LIFO-principe, dropzones voor leveranciers, zo snel mogelijk opruimen en afvoeren, terrein in originele staat opleveren.",
-      a:"Bij de afbouw geldt LIFO: last in, first out. Wat als laatste is opgebouwd, wordt als eerste afgebroken en afgevoerd. Als eerste wordt al het afval opgeruimd. Leveranciers krijgen een dropzone toegewezen waar zij materialen verzamelen voordat ze worden opgehaald, zodat vrachtwagenbewegingen gecoördineerd verlopen. Het terrein moet in originele staat worden opgeleverd, inclusief herstel van beschadigingen. Slecht weer kan de afbouw bemoeilijken, wat extra rijplaten en planning van de afvoervolgorde vraagt. Een strakke coördinatie via het afbouwdeel van het draaiboek is nodig om de harde deadline te halen." },
-  ]},
-  { topic: "Customer journey evenement", items: [
-    { n:28, t:"I", q:"Waarom zijn persona's bij een customer journey nuttiger dan 'de gemiddelde bezoeker' beschrijven?",
-      kern:"Een gemiddelde bezoeker bestaat niet; persona's maken specifieke behoeften en knelpunten zichtbaar die in een gemiddelde verdwijnen, zodat je gericht kunt verbeteren.",
-      a:"Een gemiddelde bezoeker is een abstractie die de diversiteit van het publiek wegmiddelt en voor niemand precies klopt. Een persona is een gedetailleerd profiel van een specifiek type bezoeker, gebaseerd op segmentatie en de empathy map. Door de customer journey vanuit meerdere persona's te doorlopen ontdek je dat een gezin met kinderen andere knelpunten ervaart dan een jonge festivalganger of iemand in een rolstoel. Knelpunten die voor het ene segment onzichtbaar zijn, zijn voor het andere cruciaal. Zo maak je de belevingsreis langs alle schillen concreet en kun je gericht verbeteren." },
-  ]},
-];
+const mcQuestions = window.EVLOG.oefentoets.mc;
+const openQuestions = window.EVLOG.oefentoets.open;
+const total = mcQuestions.length + openQuestions.length;
+const OPT_LETTERS = ['A', 'B', 'C', 'D', 'E', 'F'];
+document.getElementById('stripTotal').textContent = total;
 
-const typeLabel = { R: 'R · recall', T: 'T · toepassing', I: 'I · inzicht' };
+/* state */
+let answers = {};     // mc num -> gekozen index
+let openMarks = {};   // open num -> true (goed) / false (fout)
+let bonusGiven = false;
 
-function render() {
-  const main = document.getElementById('ovMain');
-  main.innerHTML = '';
-  VRAGEN.forEach(sec => {
-    const el = document.createElement('section');
-    el.className = 'ov-section';
-    el.innerHTML = `
-      <div class="ov-section-head">
-        <span class="ov-section-title">${sec.topic}</span>
-        <span class="ov-section-count">${sec.items.length} ${sec.items.length === 1 ? 'vraag' : 'vragen'}</span>
+function startTest() {
+  document.querySelector('.ot-intro').style.display = 'none';
+  document.getElementById('ot-test').style.display = 'block';
+  document.getElementById('ot-results').style.display = 'none';
+  answers = {};
+  openMarks = {};
+  bonusGiven = false;
+  renderQuestions();
+  updateStrip();
+  window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+function renderQuestions() {
+  const box = document.getElementById('ot-questions');
+  box.innerHTML = '';
+
+  mcQuestions.forEach(q => {
+    if (q.section) {
+      const sec = document.createElement('div');
+      sec.className = 'ot-section-title';
+      sec.textContent = q.section;
+      box.appendChild(sec);
+    }
+    const card = document.createElement('div');
+    card.className = 'ot-q';
+    card.id = 'q-' + q.num;
+    card.innerHTML = `
+      <div class="ot-q-head">
+        <span class="ot-q-num">${q.num}</span>
+        <div class="ot-q-text">${q.text}</div>
       </div>
-      ${sec.items.map(q => `
-        <div class="ov-q">
-          <div class="ov-q-head">
-            <span class="ov-q-num">${q.n}</span>
-            <span class="ov-q-text">${q.q}</span>
-            <span class="ov-q-type t-${q.t}">${typeLabel[q.t]}</span>
-          </div>
-          <div class="ov-kern"><strong>Kern</strong>${q.kern}</div>
-          <details class="ov-model">
-            <summary>Modelantwoord</summary>
-            <div class="ov-model-body">${q.a}</div>
-          </details>
-        </div>
-      `).join('')}
+      <div class="ot-opts">
+        ${q.options.map((opt, i) => `
+          <button class="ot-opt" data-idx="${i}" onclick="answer(${q.num}, ${i})">
+            <span class="ot-opt-letter">${OPT_LETTERS[i]}</span>
+            <span>${opt}</span>
+          </button>
+        `).join('')}
+      </div>
+      <div class="ot-feedback" id="fb-${q.num}"></div>
     `;
-    main.appendChild(el);
+    box.appendChild(card);
+  });
+
+  // Open vragen
+  const openSec = document.createElement('div');
+  openSec.className = 'ot-section-title';
+  openSec.textContent = 'Open vragen — kijk zelf na';
+  box.appendChild(openSec);
+
+  openQuestions.forEach(q => {
+    const card = document.createElement('div');
+    card.className = 'ot-q';
+    card.id = 'q-' + q.num;
+    card.innerHTML = `
+      <div class="ot-q-head">
+        <span class="ot-q-num">${q.num}</span>
+        <div class="ot-q-text">${q.text}</div>
+      </div>
+      <textarea class="ot-open-area" id="open-${q.num}" placeholder="Typ hier je antwoord (of beantwoord het op papier)…"></textarea>
+      <details class="ot-model" ontoggle="onModelToggle(${q.num}, this)">
+        <summary>Toon modelantwoord</summary>
+        <div class="ot-model-body">${q.model}</div>
+      </details>
+      <div class="ot-selfmark" id="mark-${q.num}">
+        <span class="ot-selfmark-label">Had je dit goed?</span>
+        <button class="ot-mark-btn" data-mark="good" onclick="selfMark(${q.num}, true)">Ja, goed</button>
+        <button class="ot-mark-btn" data-mark="bad" onclick="selfMark(${q.num}, false)">Net niet</button>
+      </div>
+    `;
+    box.appendChild(card);
   });
 }
 
-function setAll(open) {
-  document.querySelectorAll('details.ov-model').forEach(d => d.open = open);
+/* Meerkeuze beantwoorden */
+function answer(num, idx) {
+  const q = mcQuestions.find(x => x.num === num);
+  if (!q) return;
+  if (num in answers) return; // niet wijzigbaar na eerste keuze
+  answers[num] = idx;
+
+  const card = document.getElementById('q-' + num);
+  const isCorrect = idx === q.answer;
+
+  card.querySelectorAll('.ot-opt').forEach(btn => {
+    btn.disabled = true;
+    const bIdx = +btn.dataset.idx;
+    if (bIdx === q.answer) btn.classList.add('revealed-correct');
+    else if (bIdx === idx) btn.classList.add('revealed-wrong');
+  });
+
+  card.classList.add('answered');
+  card.classList.toggle('correct', isCorrect);
+  card.classList.toggle('wrong', !isCorrect);
+
+  const fb = document.getElementById('fb-' + num);
+  fb.className = 'ot-feedback show ' + (isCorrect ? 'correct' : 'wrong');
+  fb.innerHTML = `
+    <span class="ot-feedback-label">${isCorrect ? '✓ Goed' : '✗ Fout — juist is ' + OPT_LETTERS[q.answer]}</span>
+    ${q.explanation}
+  `;
+
+  if (isCorrect) {
+    faAddXP(2);
+    addFirestorePoints(2);
+    showXpToast('+2 XP');
+  }
+
+  updateStrip();
 }
 
-render();
+/* Open vraag: modelantwoord opengeklapt -> zelf nakijken tonen */
+function onModelToggle(num, el) {
+  if (el.open) {
+    document.getElementById('mark-' + num).classList.add('show');
+  }
+}
+
+function selfMark(num, good) {
+  const first = !(num in openMarks);
+  openMarks[num] = good;
+  const wrap = document.getElementById('mark-' + num);
+  wrap.querySelectorAll('.ot-mark-btn').forEach(b => {
+    b.classList.remove('sel-good', 'sel-bad');
+    if (b.dataset.mark === 'good' && good) b.classList.add('sel-good');
+    if (b.dataset.mark === 'bad' && !good) b.classList.add('sel-bad');
+  });
+
+  const card = document.getElementById('q-' + num);
+  card.classList.add('answered');
+  card.classList.toggle('correct', good);
+  card.classList.toggle('wrong', !good);
+
+  if (first && good) {
+    faAddXP(2);
+    addFirestorePoints(2);
+    showXpToast('+2 XP');
+  }
+  updateStrip();
+}
+
+function updateStrip() {
+  const mcCorrect = Object.entries(answers).filter(([n, v]) => {
+    const q = mcQuestions.find(x => x.num === +n);
+    return q && v === q.answer;
+  }).length;
+  const openCorrect = Object.values(openMarks).filter(Boolean).length;
+  const answered = Object.keys(answers).length + Object.keys(openMarks).length;
+  const correct = mcCorrect + openCorrect;
+
+  document.getElementById('stripNum').textContent = answered;
+  document.getElementById('stripCorrect').textContent = correct;
+  document.getElementById('stripBar').style.width = (answered / total * 100) + '%';
+}
+
+function submitTest() {
+  const mcCorrect = Object.entries(answers).filter(([n, v]) => {
+    const q = mcQuestions.find(x => x.num === +n);
+    return q && v === q.answer;
+  }).length;
+  const openCorrect = Object.values(openMarks).filter(Boolean).length;
+  const correct = mcCorrect + openCorrect;
+  const pct = Math.round(correct / total * 100);
+  const passed = pct >= 55;
+
+  document.getElementById('ot-test').style.display = 'none';
+  document.getElementById('ot-results').style.display = 'block';
+
+  const bigEl = document.getElementById('resScoreBig');
+  bigEl.textContent = `${correct} / ${total}`;
+  bigEl.classList.toggle('bad', !passed);
+  document.getElementById('resPct').textContent = pct + '%';
+  document.getElementById('resVerdict').textContent = passed
+    ? (pct >= 80 ? 'Uitstekend!' : 'Gehaald — je zit boven de cesuur')
+    : 'Nog niet voldoende — herhaal je zwakke onderwerpen';
+  document.getElementById('resVerdictSub').textContent = passed
+    ? `Je scoorde ${pct}% (${mcCorrect}/25 meerkeuze + ${openCorrect}/5 open). Klik 'Bekijk fouten' om te zien wat je nog kunt oefenen.`
+    : `Je scoorde ${pct}% (${mcCorrect}/25 meerkeuze + ${openCorrect}/5 open), de cesuur ligt op 55%. Ga je fouten langs en oefen met de flashcards of de samenvatting.`;
+
+  faSetProgress('evenementenlogistiek', Math.min(100, pct));
+
+  if (passed && !bonusGiven) {
+    bonusGiven = true;
+    faAddXP(50);
+    addFirestorePoints(50);
+    showXpToast('+50 XP — gehaald!');
+  }
+
+  window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+function reviewMistakes() {
+  document.getElementById('ot-test').style.display = 'block';
+  document.getElementById('ot-results').style.display = 'none';
+  const firstWrongMc = mcQuestions.find(q => (q.num in answers) && answers[q.num] !== q.answer);
+  const firstWrongOpen = openQuestions.find(q => openMarks[q.num] === false);
+  const target = firstWrongMc || firstWrongOpen;
+  if (target) {
+    setTimeout(() => {
+      const el = document.getElementById('q-' + target.num);
+      if (el) el.scrollIntoView({behavior:'smooth', block:'center'});
+    }, 50);
+  }
+}
+
+function retake() {
+  startTest();
+}
+
+function showXpToast(txt) {
+  const t = document.getElementById('xpToast');
+  document.getElementById('xpToastText').textContent = txt;
+  t.classList.add('show');
+  clearTimeout(t._h);
+  t._h = setTimeout(() => t.classList.remove('show'), 1600);
+}
+
+async function addFirestorePoints(n) {
+  const u = _auth.currentUser;
+  if (!u) return;
+  try {
+    await _db.collection('scores').doc(u.uid).set({
+      pts: firebase.firestore.FieldValue.increment(n),
+      name: u.displayName || 'Anoniem',
+      photoURL: u.photoURL || '',
+      updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+    }, { merge: true });
+  } catch (e) { console.warn(e); }
+}
 </script>
 </body>
 </html>

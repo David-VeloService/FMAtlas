@@ -81,3 +81,213 @@ EVLOG.begrippen = [
 
 /* ─── Flashcards (= begrippen hergebruikt) ──── */
 EVLOG.flashcards = EVLOG.begrippen;
+
+/* ─── Oefentoets ─────────────────────────────
+   Zelfde opbouw als het tentamen: 25 meerkeuze + 5 open.
+   Meerkeuze: answer = index van het juiste antwoord (0-based).
+   Open: zelfnakijk met modelantwoord, pas zichtbaar na de poging. */
+EVLOG.oefentoets = {
+  mc: [
+    { section: "Schillenmodel & mobiliteit", num: 1,
+      text: "Wat beschrijft het schillenmodel?",
+      options: [
+        "De financiële opbouw van een evenementbegroting",
+        "De logistieke keten van een evenement in vier concentrische schillen",
+        "De vijf schakels van de veiligheidsketen",
+        "De fasering van een project van initiatief tot nazorg"
+      ], answer: 1,
+      explanation: "Het schillenmodel beschrijft de logistieke keten 'van bed naar bar en van bar naar bed' in vier schillen, van buiten naar binnen doorlopen." },
+
+    { section: null, num: 2,
+      text: "In welke schil vallen de beïnvloedingsprocessen rond de vervoerskeuze, zoals een OV-combiticket?",
+      options: ["Schil 1", "Schil 2", "Schil 3", "De kern"], answer: 0,
+      explanation: "Schil 1 = beïnvloeding van de vervoerskeuze. Schil 2 = sturing openbare infrastructuur, schil 3 = toegangsprocessen, kern = de evenementprocessen zelf." },
+
+    { section: null, num: 3,
+      text: "Omwonenden klagen over parkeeroverlast in de openbare straten rondom een festival. In welke schil speelt dit vooral?",
+      options: ["Schil 1", "Schil 2", "Schil 3", "De kern"], answer: 1,
+      explanation: "Overlast in de openbare ruimte (bereikbaarheid en infrastructuur) hoort bij schil 2, de sturingsprocessen. Een postenplan en OV-beïnvloeding (schil 1) horen bij de aanpak." },
+
+    { section: "Proces & capaciteit", num: 4,
+      text: "Wat is een bottleneck in een procesketen?",
+      options: [
+        "De schakel met de grootste capaciteit",
+        "De schakel met de kleinste capaciteit, die de totale doorstroming bepaalt",
+        "Het moment waarop de meeste bezoekers tegelijk arriveren",
+        "De wachtrij die bij de entree ontstaat"
+      ], answer: 1,
+      explanation: "De bottleneck is de schakel met de kleinste capaciteit. Andere schakels versnellen helpt pas als de bottleneck is opgelost; extra capaciteit stapelt anders op als wachtrij." },
+
+    { section: null, num: 5,
+      text: "Het omdoen van een polsbandje duurt 10 seconden. Hoeveel bezoekers verwerkt één medewerker hiermee per uur?",
+      options: ["240", "360", "480", "600"], answer: 1,
+      explanation: "3600 seconden / 10 seconden = 360 bezoekers per medewerker per uur." },
+
+    { section: null, num: 6,
+      text: "Een biertap tapt 8 biertjes per minuut. Een bezoeker drinkt 3 biertjes per uur. Hoeveel bezoekers bedient één tap per uur?",
+      options: ["96", "120", "160", "240"], answer: 2,
+      explanation: "8 × 60 = 480 biertjes per uur. 480 / 3 = 160 bezoekers per tap per uur." },
+
+    { section: null, num: 7,
+      text: "Een terrein is 20.000 m², waarvan 30% niet voor publiek beschikbaar is. Bij een norm van 2,5 m² per persoon: wat is de terreincapaciteit?",
+      options: ["5.600", "6.000", "8.000", "14.000"], answer: 0,
+      explanation: "20.000 − 30% = 14.000 m² publiek. 14.000 / 2,5 = 5.600 bezoekers tegelijk." },
+
+    { section: null, num: 8,
+      text: "Waarom zijn processen bij evenementen lastiger te beheersen dan in een fabriek?",
+      options: [
+        "Omdat evenementen altijd binnen plaatsvinden",
+        "Omdat de uitvoering eenmalig is en bezoekers tegelijk product én klant zijn",
+        "Omdat er bij evenementen nooit leveranciers betrokken zijn",
+        "Omdat de capaciteit van processen niet te berekenen valt"
+      ], answer: 1,
+      explanation: "Een evenement is eenmalig: één kans om het goed te doen. Bezoekers zijn tegelijk product én klant, met piekbelasting en afhankelijkheid van externe leveranciers." },
+
+    { section: null, num: 9,
+      text: "Waar gaan de 'five rights' van Lamberts & Stock over?",
+      options: [
+        "De vijf schakels van de veiligheidsketen",
+        "Het juiste product, op de juiste plaats, op het juiste moment, in de juiste conditie, tegen de juiste kosten, voor de juiste klant",
+        "De vier segmentatiecriteria plus de doelgroep",
+        "De vijf vaste bijlagen van een draaiboek"
+      ], answer: 1,
+      explanation: "De 'five rights' beschrijven logistieke kwaliteit: het juiste product, op de juiste plaats en het juiste moment, in de juiste conditie, tegen de juiste kosten, voor de juiste klant." },
+
+    { section: "Marketing & gedrag", num: 10,
+      text: "Uit welke drie componenten bestaat het model voor marketingdoelstellingen?",
+      options: [
+        "Kennis, houding en gedrag",
+        "Geografisch, demografisch en psychografisch",
+        "Mens, omgeving en proces",
+        "Proactief, preventief en repressief"
+      ], answer: 0,
+      explanation: "Het drie-componentenmodel: kennis (wat weet de doelgroep), houding (wat voelt de doelgroep) en gedrag (wat doet de doelgroep)." },
+
+    { section: null, num: 11,
+      text: "'40% van de doelgroep koopt binnen twee weken een ticket' is een doelstelling op het niveau van:",
+      options: ["Kennis", "Houding", "Gedrag", "Bereik"], answer: 2,
+      explanation: "Gedrag betreft wat de doelgroep daadwerkelijk doet, zoals een ticket kopen. Kennis = weten, houding = voelen." },
+
+    { section: null, num: 12,
+      text: "Leeftijd, geslacht en opleiding zijn voorbeelden van welk segmentatiecriterium?",
+      options: ["Geografisch", "Demografisch", "Psychografisch", "Gedrag"], answer: 1,
+      explanation: "Demografische criteria zijn meetbare persoonskenmerken zoals leeftijd, geslacht en opleiding. Psychografisch gaat over levensstijl en persoonlijkheid." },
+
+    { section: null, num: 13,
+      text: "Wat is een modal shift?",
+      options: [
+        "De huidige verdeling van bezoekers over vervoerwijzen",
+        "De gewenste verschuiving naar alternatief vervoer",
+        "De bewustzijnsverandering bij de bezoeker",
+        "Het verbieden van autoverkeer rond het terrein"
+      ], answer: 1,
+      explanation: "Modal split = de huidige verdeling, modal shift = de gewenste verschuiving naar alternatief vervoer, mental shift = de bewustzijnsverandering die daarvoor nodig is." },
+
+    { section: null, num: 14,
+      text: "Waarom werkt 'verleiden' beter dan 'afdwingen' bij mobiliteitssturing?",
+      options: [
+        "Omdat afdwingen wettelijk verboden is",
+        "Omdat afdwingen het risico vergroot dat bezoekers helemaal wegblijven",
+        "Omdat verleiden altijd goedkoper is voor de organisatie",
+        "Omdat bezoekers geen gewoontegedrag vertonen"
+      ], answer: 1,
+      explanation: "Mobiliteit is gewoontegedrag. Afdwingen vergroot de kans dat bezoekers wegblijven; verleiden maakt het alternatief goedkoper, betrouwbaarder en sneller." },
+
+    { section: "Bereikbaarheid, toegang & hospitality", num: 15,
+      text: "Wat zijn de minimale breedte en hoogte van een aanrijdroute voor hulpdiensten?",
+      options: [
+        "3,0 m breed en 4,0 m hoog",
+        "3,5 m breed en 4,2 m hoog",
+        "4,0 m breed en 4,5 m hoog",
+        "2,5 m breed en 3,5 m hoog"
+      ], answer: 1,
+      explanation: "De minimale doorgang is 3,5 m breed en 4,2 m hoog. Calamiteitenroutes moeten altijd vrij blijven." },
+
+    { section: null, num: 16,
+      text: "Wat is juist over visitatie en fouilleren?",
+      options: [
+        "Beide zijn verplicht voor elke bezoeker",
+        "Beide zijn vrijwillig; bij weigering kan de toegang worden geweigerd",
+        "Fouilleren is controle van tassen, visitatie is onderzoek aan het lichaam",
+        "Alleen de politie mag bezoekers visiteren"
+      ], answer: 1,
+      explanation: "Visitatie = controle van tassen en jassen, fouilleren = onderzoek aan lichaam en kleding. Beide zijn vrijwillig; weigert een bezoeker, dan kan de toegang worden geweigerd." },
+
+    { section: null, num: 17,
+      text: "Waar staat het MOP-model voor hospitality voor?",
+      options: ["Mens, Omgeving, Proces", "Markt, Organisatie, Product", "Modal, Operationeel, Plan", "Mens, Onderhoud, Planning"], answer: 0,
+      explanation: "MOP = Mens (omgang met gasten), Omgeving (fysieke en digitale ruimtes) en Proces (organisatie rond de gastvrijheidsbeleving)." },
+
+    { section: null, num: 18,
+      text: "Waarom staan visitatie en fouilleren op gespannen voet met hospitality?",
+      options: [
+        "Ze kosten te veel personeel",
+        "Het zijn controlemomenten die de bezoeker als wantrouwend kan ervaren, terwijl hospitality juist aandacht en een welkomstgevoel vraagt",
+        "Ze vinden plaats in schil 1, ver van het terrein",
+        "Ze zijn wettelijk verplicht en daarom onpersoonlijk"
+      ], answer: 1,
+      explanation: "Het moment waarop de vervoersstroom bezoekersstroom wordt, is waar hospitality begint, maar dat wordt direct doorkruist door een controlemoment dat als wantrouwend kan voelen." },
+
+    { section: "Site design", num: 19,
+      text: "Waar staat de R in de PQRST-sleutel voor?",
+      options: ["Risico", "Routering tussen service- en attractiepunten", "Respons van hulpdiensten", "Ruimte per persoon"], answer: 1,
+      explanation: "P = publiek/personen/producten, Q = quantity (omvang stromen), R = routering, S = steunverlenende diensten, T = tijd." },
+
+    { section: null, num: 20,
+      text: "Vanaf welke bezoekersdichtheid ontstaan potentieel gevaarlijke krachten in de menigte?",
+      options: ["2,5 m² per persoon", "1,85 m² per persoon", "0,46 m² per persoon", "0,18 m² per persoon"], answer: 3,
+      explanation: "Bij 0,18 m² per persoon ontstaan gevaarlijke krachten en psychologische stress. 2,5 m² is de operationele veiligheidsnorm." },
+
+    { section: null, num: 21,
+      text: "Welke maatregel voorkomt kruisende bezoekersstromen op een terrein?",
+      options: ["Een hogere biertapcapaciteit", "One-way-routing via een lus", "Meer visitatieposten", "Een hoger entreetarief"], answer: 1,
+      explanation: "Met one-way-routing (een lus) lopen bezoekers steeds dezelfde richting op, zodat kruisende stromen en gedrang worden voorkomen." },
+
+    { section: "Risico & veiligheid", num: 22,
+      text: "Onder welk risicoprofiel vallen factoren als het weer en stroomuitval?",
+      options: ["Publieksprofiel", "Activiteitenprofiel", "Ruimtelijk profiel", "Extern profiel"], answer: 3,
+      explanation: "Het externe profiel omvat factoren van buiten het evenement: ordeverstoringen, weer en stroomuitval." },
+
+    { section: null, num: 23,
+      text: "Hoe bereken je het RPN in een FMEA?",
+      options: ["Kans + Effect + Hersteltijd", "Kans × Effect × Hersteltijd", "Kans × Effect", "Effect × Hersteltijd"], answer: 1,
+      explanation: "RPN = Kans × Effect × Hersteltijd. Hoe hoger het getal, hoe urgenter de maatregel." },
+
+    { section: null, num: 24,
+      text: "Welke schakel van de veiligheidsketen richt zich op handelen tíjdens het incident om schade te beperken?",
+      options: ["Proactief", "Preventief", "Repressief", "Nazorg"], answer: 2,
+      explanation: "De volgorde is proactief → preventief → preparatief → repressief → nazorg. Repressief = handelen tijdens het incident." },
+
+    { section: "Opbouw & draaiboek", num: 25,
+      text: "Wat houdt het LIFO-principe bij de afbouw in?",
+      options: [
+        "Het afval wordt als laatste opgeruimd",
+        "Wat als eerste is opgebouwd, wordt als eerste afgebroken",
+        "Wat als laatste is opgebouwd, wordt als eerste afgebroken",
+        "Alle leveranciers bouwen tegelijk af"
+      ], answer: 2,
+      explanation: "LIFO = Last In, First Out: wat als laatste is opgebouwd, wordt als eerste afgebroken. Het afval wordt juist als eerste opgeruimd." },
+  ],
+
+  open: [
+    { num: 26,
+      text: "Leg uit waarom je het schillenmodel van buiten naar binnen doorloopt bij het ontwerpen van een evenement, in plaats van bij de kern te beginnen.",
+      model: "De buitenste schillen zijn randvoorwaardelijk voor de binnenste: kloppen bereikbaarheid en toegang niet, dan heeft een perfecte kern geen waarde. Iedere schil voedt de volgende — een verkeerde vervoerskeuze (schil 1) geeft files in schil 2, waardoor de toegangsprocessen in schil 3 vastlopen. Een perfect programma op het terrein helpt niets als bezoekers er niet op tijd of gestrest aankomen. Bovendien hangen de buitenste schillen af van derden (gemeente, NS, verkeersmanagement) waarvoor vroeg overleg nodig is. Door van buiten naar binnen te werken pak je de grootste logistieke risico's als eerste aan." },
+
+    { num: 27,
+      text: "Bij accreditatie zijn de procestijden: scannen 5 s, polsbandje 10 s, fouilleren 15 s en visiteren 15 s. Er moeten 5.000 bezoekers in 60 minuten naar binnen. Bereken het aantal medewerkers per deelproces en benoem de bottleneck.",
+      model: "Capaciteit per medewerker per uur = 3600 / procestijd. Scannen: 3600/5 = 720 → 5000/720 ≈ 7 medewerkers. Polsbandje: 3600/10 = 360 → 5000/360 ≈ 14 medewerkers. Fouilleren: 3600/15 = 240 → 5000/240 ≈ 21 medewerkers. Visiteren: 3600/15 = 240 → 5000/240 ≈ 21 medewerkers. Totaal ongeveer 63 medewerkers (naar boven afronden). Fouilleren en visiteren zijn de bottleneck: de laagste capaciteit per medewerker, dus daar zijn de meeste mensen nodig." },
+
+    { num: 28,
+      text: "Bij een danceparty schat je de kans op overmatig alcoholgebruik op 8, het effect op 6 en de hersteltijd op 7. Bereken het RPN en noem twee passende maatregelen.",
+      model: "RPN = 8 × 6 × 7 = 336, een hoge score die prioriteit vraagt. Passende maatregelen, gespreid over de veiligheidsketen: preventief de drankuitgifte beperken (munten- of pasjessysteem) en chill-rooms inrichten; preparatief extra EHBO en een protocol voor het afvoeren van onwel geworden bezoekers, inclusief ruimte voor ambulances; repressief een vaste procedure zodra iemand onwel wordt. De hoge hersteltijd (7) maakt het preventieve en preparatieve werk extra belangrijk." },
+
+    { num: 29,
+      text: "Zware regen dreigt tijdens een openluchtfestival met 20.000 bezoekers. Beschrijf per schakel van de veiligheidsketen (proactief tot nazorg) één passende maatregel.",
+      model: "Proactief: bij locatiekeuze en vergunning al rekening houden met slecht weer via overdekte zones en drainage. Preventief: weersmonitoring en een procedure om bezoekers te waarschuwen (schermen, omroep). Preparatief: extra rijplaten voor modderige paden en een geoefend evacuatieplan voor vroeg vertrek. Repressief: zodra de regen begint de OV-pendel opschalen en extra verkeersregelaars inzetten, zodat bezoekers snel kunnen vertrekken zonder samen te drommen. Nazorg: communiceren over terugbetaling of vervangend programma en de weerscalamiteit evalueren." },
+
+    { num: 30,
+      text: "Waarom zijn persona's bij een customer journey nuttiger dan het beschrijven van 'de gemiddelde bezoeker'?",
+      model: "Een gemiddelde bezoeker is een abstractie die de diversiteit van het publiek wegmiddelt en voor niemand precies klopt. Een persona is een gedetailleerd profiel van een specifiek type bezoeker, gebaseerd op segmentatie en de empathy map. Door de customer journey vanuit meerdere persona's te doorlopen ontdek je dat een gezin met kinderen andere knelpunten ervaart dan een jonge festivalganger of iemand in een rolstoel. Knelpunten die voor het ene segment onzichtbaar zijn, zijn voor het andere cruciaal. Zo maak je de belevingsreis langs alle schillen concreet en kun je gericht verbeteren." },
+  ],
+};
