@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Oefentoets 5 · Eventmanagement 1 (tentamenformat) — FMAtlas</title>
+<link rel="icon" type="image/svg+xml" href="logo.svg"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="css/fmatlas.css"/>
+<style>
+.ot-wrap { max-width: 820px; margin: 0 auto; padding: 28px 24px 100px; }
+
+/* Intro */
+.ot-intro {
+  background: var(--surface); border: 1.5px solid var(--line); border-radius: var(--radius-xl);
+  padding: 36px 36px; text-align: left; margin-bottom: 24px;
+}
+.ot-intro-meta {
+  font-size: 11px; font-weight: 800; color: var(--accent); letter-spacing: 0.08em; margin-bottom: 8px;
+}
+.ot-intro h1 { font-size: 36px; font-weight: 900; letter-spacing: -0.028em; line-height: 1.05; margin-bottom: 10px; }
+.ot-intro p { color: var(--ink-soft); font-size: 15px; line-height: 1.6; margin-bottom: 16px; }
+.ot-facts { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin: 18px 0 24px; }
+@media (max-width: 640px) { .ot-facts { grid-template-columns: repeat(2, 1fr); } }
+.ot-fact {
+  background: var(--bg); border: 1.5px solid var(--line); border-radius: var(--radius);
+  padding: 12px 14px;
+}
+.ot-fact-lbl { font-size: 10px; color: var(--muted); font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 4px; }
+.ot-fact-val { font-size: 18px; font-weight: 800; letter-spacing: -0.01em; }
+
+/* Sticky progress strip */
+.ot-strip {
+  position: sticky; top: 70px; z-index: 20;
+  background: var(--surface); border: 1.5px solid var(--line); border-radius: var(--radius-lg);
+  padding: 12px 16px; margin-bottom: 18px;
+  display: flex; align-items: center; gap: 14px;
+}
+.ot-strip-label {
+  font-size: 12px; font-weight: 800; color: var(--ink); letter-spacing: 0.02em; white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+.ot-strip-bar { flex: 1; }
+.ot-strip-score { font-size: 12px; font-weight: 800; color: var(--muted); font-variant-numeric: tabular-nums; }
+
+/* Section header */
+.ot-section-title {
+  font-size: 11px; font-weight: 800; color: var(--muted); letter-spacing: 0.08em;
+  text-transform: uppercase; margin: 28px 0 10px;
+  display: flex; align-items: center; gap: 10px;
+}
+.ot-section-title::after { content: ''; flex: 1; height: 1.5px; background: var(--line); }
+
+/* Question card */
+.ot-q {
+  background: var(--surface); border: 1.5px solid var(--line); border-radius: var(--radius-lg);
+  padding: 20px 22px; margin-bottom: 12px; transition: border-color 0.15s;
+}
+.ot-q.answered.correct { border-color: var(--ok); background: rgba(58, 138, 92, 0.04); }
+.ot-q.answered.wrong { border-color: var(--accent); background: rgba(239, 90, 63, 0.04); }
+
+.ot-q-head {
+  display: flex; align-items: baseline; gap: 12px; margin-bottom: 10px;
+}
+.ot-q-num {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 26px; height: 26px; border-radius: 50%; background: var(--surface-alt);
+  border: 1.5px solid var(--line);
+  font-size: 11px; font-weight: 900; color: var(--ink-soft); flex-shrink: 0;
+  font-variant-numeric: tabular-nums;
+}
+.ot-q.answered.correct .ot-q-num { background: var(--ok); color: #fff; border-color: var(--ok); }
+.ot-q.answered.wrong .ot-q-num { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+.ot-q-text { font-size: 15.5px; font-weight: 700; color: var(--ink); line-height: 1.45; flex: 1; }
+
+/* Meerkeuze-opties: volle breedte, met letterbadge */
+.ot-opts { display: flex; flex-direction: column; gap: 8px; margin-top: 12px; }
+.ot-opt {
+  width: 100%; text-align: left; padding: 12px 14px; background: var(--bg);
+  border: 1.5px solid var(--line); border-radius: var(--radius); font-family: inherit;
+  font-size: 14px; font-weight: 700; color: var(--ink-soft); cursor: pointer;
+  transition: all 0.12s; display: flex; align-items: center; gap: 11px;
+}
+.ot-opt:hover:not(:disabled) { border-color: var(--ink); color: var(--ink); background: var(--surface); }
+.ot-opt:disabled { cursor: default; }
+.ot-opt-letter {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 24px; height: 24px; border-radius: 7px; background: var(--surface-alt);
+  border: 1.5px solid var(--line); font-size: 12px; font-weight: 900; flex-shrink: 0;
+}
+.ot-opt.chosen { background: var(--ink); border-color: var(--ink); color: #fff; }
+.ot-opt.chosen .ot-opt-letter { background: rgba(255,255,255,0.18); border-color: transparent; color: #fff; }
+.ot-opt.revealed-correct { background: var(--ok); border-color: var(--ok); color: #fff; }
+.ot-opt.revealed-correct .ot-opt-letter { background: rgba(255,255,255,0.22); border-color: transparent; color: #fff; }
+.ot-opt.revealed-wrong { background: var(--accent); border-color: var(--accent); color: #fff; opacity: 0.92; }
+.ot-opt.revealed-wrong .ot-opt-letter { background: rgba(255,255,255,0.22); border-color: transparent; color: #fff; }
+
+.ot-feedback {
+  margin-top: 14px; padding: 12px 14px; border-radius: var(--radius);
+  font-size: 13.5px; line-height: 1.55; font-weight: 500;
+  display: none;
+}
+.ot-feedback.show { display: block; }
+.ot-feedback.correct { background: rgba(58, 138, 92, 0.1); border: 1.5px solid rgba(58, 138, 92, 0.3); color: #0d5e30; }
+.ot-feedback.wrong { background: var(--accent-soft); border: 1.5px solid rgba(239, 90, 63, 0.3); color: var(--accent-deep); }
+.ot-feedback strong { font-weight: 800; }
+.ot-feedback-label {
+  font-size: 10px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase;
+  margin-bottom: 4px; display: block;
+}
+
+/* Casusblok */
+.ot-casus {
+  background: var(--surface-alt); border: 1.5px solid var(--line); border-radius: var(--radius-lg);
+  padding: 18px 20px; margin-bottom: 12px; font-size: 14px; color: var(--ink-soft);
+  line-height: 1.65; font-weight: 500; white-space: pre-line;
+}
+
+/* Open vragen */
+.ot-open-area {
+  width: 100%; box-sizing: border-box; margin-top: 12px; min-height: 90px;
+  padding: 12px 14px; border: 1.5px solid var(--line); border-radius: var(--radius);
+  font-family: inherit; font-size: 14px; line-height: 1.55; color: var(--ink);
+  background: var(--bg); resize: vertical;
+}
+.ot-open-area:focus { outline: none; border-color: var(--ink); }
+.ot-open-actions { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: 12px; }
+details.ot-model { margin-top: 12px; border: 1.5px solid var(--line); border-radius: var(--radius); overflow: hidden; }
+details.ot-model summary {
+  cursor: pointer; padding: 10px 14px; font-size: 12.5px; font-weight: 800; color: var(--ink);
+  background: var(--surface-alt); list-style: none; display: flex; align-items: center; gap: 7px; user-select: none;
+}
+details.ot-model summary::-webkit-details-marker { display: none; }
+details.ot-model summary::before { content: '▸'; color: var(--accent); font-weight: 900; transition: transform 0.15s; }
+details.ot-model[open] summary::before { transform: rotate(90deg); }
+details.ot-model summary:hover { background: var(--accent-soft); }
+details.ot-model .ot-model-body { padding: 14px; font-size: 13.5px; color: var(--ink-soft); line-height: 1.6; }
+.ot-selfmark { display: none; gap: 8px; margin-top: 12px; align-items: center; flex-wrap: wrap; }
+.ot-selfmark.show { display: flex; }
+.ot-selfmark-label { font-size: 12px; font-weight: 800; color: var(--ink-soft); }
+.ot-mark-btn {
+  font-family: inherit; font-size: 12.5px; font-weight: 800; padding: 7px 14px;
+  border-radius: 999px; border: 1.5px solid var(--line); background: var(--surface);
+  color: var(--ink-soft); cursor: pointer; transition: all 0.12s;
+}
+.ot-mark-btn:hover { border-color: var(--ink); color: var(--ink); }
+.ot-mark-btn.sel-good { background: var(--ok); border-color: var(--ok); color: #fff; }
+.ot-mark-btn.sel-bad { background: var(--accent); border-color: var(--accent); color: #fff; }
+
+/* Submit / final card */
+.ot-submit-card {
+  margin-top: 24px; background: var(--ink); color: var(--surface);
+  border-radius: var(--radius-xl); padding: 28px 32px; text-align: center;
+}
+.ot-submit-card h3 { font-size: 20px; font-weight: 900; letter-spacing: -0.015em; margin-bottom: 6px; }
+.ot-submit-card p { color: rgba(255,255,255,0.72); font-size: 13.5px; font-weight: 500; margin-bottom: 14px; }
+
+/* Results */
+#ot-results { display: none; text-align: center; padding: 28px 0; }
+.ot-score-big {
+  font-size: 80px; font-weight: 900; color: var(--ok); letter-spacing: -0.04em; line-height: 0.95;
+  font-variant-numeric: tabular-nums;
+}
+.ot-score-big.bad { color: var(--accent); }
+.ot-score-pct { font-size: 16px; font-weight: 800; color: var(--muted); letter-spacing: 0.02em; margin-top: 4px; }
+.ot-verdict { font-size: 18px; font-weight: 800; margin: 14px 0 8px; letter-spacing: -0.01em; }
+.ot-verdict-sub { color: var(--ink-soft); font-size: 14px; font-weight: 500; line-height: 1.5; max-width: 480px; margin: 0 auto 24px; }
+.ot-result-cta { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-bottom: 20px; }
+
+/* XP toast */
+.xp-toast {
+  position: fixed; top: 80px; right: 24px; z-index: 500;
+  background: var(--ink); color: var(--surface); padding: 10px 18px;
+  border-radius: 999px; font-size: 13px; font-weight: 800;
+  display: flex; align-items: center; gap: 6px;
+  transform: translateX(420px); transition: transform 0.25s ease;
+  box-shadow: var(--shadow-lg);
+}
+.xp-toast.show { transform: translateX(0); }
+.xp-toast span.yel { color: var(--xp); }
+</style>
+</head>
+<body>
+
+<div id="fa-header-slot"></div>
+
+<nav class="fa-breadcrumb">
+  <a href="index.html">Home</a>
+  <span>›</span>
+  <a href="eventmanagement1.html">Eventmanagement 1</a>
+  <span>›</span>
+  <span class="current">Oefentoets 5</span>
+</nav>
+
+<div class="ot-wrap">
+  <div class="ot-intro">
+    <div class="ot-intro-meta">OEFENTOETS 5 · 80 MEERKEUZEVRAGEN · TENTAMENFORMAT</div>
+    <h1>Oefentoets 5: Eventmanagement 1 (tentamenformat)</h1>
+    <p>Oefentoets voor <strong>Eventmanagement 1 (Projectmanagement A)</strong> in het <strong>exacte format van het echte tentamen</strong>: <strong>80 meerkeuzevragen met twee antwoordopties</strong>, over de volledige stof: Projectmanagement (Grit H1-H6), Projectvaardigheden en de expertcolleges. Net als op het tentamen geldt de cesuur van <strong>60 van de 80 vragen goed (75%)</strong> voor een 5,5 — haal je die, dan krijg je +50 XP. Er zitten een paar rekenvragen tussen, dus pak eventueel je niet-grafische rekenmachine erbij. Elke vraag is gecontroleerd tegen de PowerPoints en het boek.</p>
+    <div class="ot-facts">
+      <div class="ot-fact"><div class="ot-fact-lbl">Meerkeuze</div><div class="ot-fact-val">80</div></div>
+      <div class="ot-fact"><div class="ot-fact-lbl">Opties per vraag</div><div class="ot-fact-val">2</div></div>
+      <div class="ot-fact"><div class="ot-fact-lbl">Cesuur</div><div class="ot-fact-val">75% (60/80)</div></div>
+    </div>
+    <div style="display:flex;gap:10px;flex-wrap:wrap">
+      <button class="fa-btn fa-btn-primary" onclick="startTest()">
+        <span data-fa-icon="play" data-fa-size="13"></span> Begin oefentoets
+      </button>
+      <a class="fa-btn fa-btn-ghost" href="eventmanagement1.html">
+        <span data-fa-icon="arrowL" data-fa-size="13"></span> Terug naar vak
+      </a>
+    </div>
+  </div>
+
+  <div id="ot-test" style="display:none">
+    <div class="ot-strip">
+      <span class="ot-strip-label"><span id="stripNum">0</span> / <span id="stripTotal">80</span> beantwoord</span>
+      <div class="ot-strip-bar">
+        <div class="fa-progress"><div class="fa-progress-bar" id="stripBar" style="width:0%"></div></div>
+      </div>
+      <span class="ot-strip-score"><span id="stripCorrect">0</span> ✓</span>
+    </div>
+
+    <div id="ot-questions"></div>
+
+    <div class="ot-submit-card" id="ot-submit">
+      <h3>Klaar om te beoordelen?</h3>
+      <p>Alle 80 vragen worden automatisch nagekeken. Je kunt deze toets zo vaak herhalen als je wilt.</p>
+      <button class="fa-btn fa-btn-accent" onclick="submitTest()">
+        <span data-fa-icon="check" data-fa-size="13"></span> Lever oefentoets in
+      </button>
+    </div>
+  </div>
+
+  <div id="ot-results">
+    <div class="ot-score-big" id="resScoreBig">0 / 80</div>
+    <div class="ot-score-pct" id="resPct">0%</div>
+    <div class="ot-verdict" id="resVerdict">—</div>
+    <div class="ot-verdict-sub" id="resVerdictSub"></div>
+    <div class="ot-result-cta">
+      <button class="fa-btn fa-btn-accent" onclick="retake()">
+        <span data-fa-icon="refresh" data-fa-size="13"></span> Opnieuw proberen
+      </button>
+      <button class="fa-btn fa-btn-ghost" onclick="reviewMistakes()">
+        Bekijk fouten
+      </button>
+      <a class="fa-btn fa-btn-primary" href="eventmanagement1.html">
+        Terug naar vak
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="xp-toast" id="xpToast"><span data-fa-icon="bolt" data-fa-size="13"></span> <span id="xpToastText">+1 XP</span></div>
+
+<footer class="fa-footer">
+  <span>FMAtlas · Oefentoets 5 Eventmanagement 1 · 80 meerkeuzevragen · exact het tentamenformat</span>
+  <span>HAN · Facilitair Management</span>
+</footer>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+<script src="js/fmatlas.js"></script>
+<script src="js/data-oefentoets5.js"></script>
+<script>
+const firebaseConfig = {
+  apiKey: "AIzaSyBB397Wk2eqpBjic8E7aGV1mTgIjhQ21a8",
+  authDomain: "fmkompas-ff8bc.firebaseapp.com",
+  projectId: "fmkompas-ff8bc",
+  storageBucket: "fmkompas-ff8bc.firebasestorage.app",
+  messagingSenderId: "487972024689",
+  appId: "1:487972024689:web:712c3117080745d14746d0"
+};
+firebase.initializeApp(firebaseConfig);
+const _auth = firebase.auth();
+const _db = firebase.firestore();
+_auth.onAuthStateChanged(async user => {
+  if (user) await faSyncFromCloud(user, _db);
+  document.getElementById('fa-header-slot').innerHTML = '';
+  document.getElementById('fa-header-slot').appendChild(faRenderHeader({ user }));
+  faMarkActiveToday();
+  faMarkLastSeen('eventmanagement1','Eventmanagement 1','eventmanagement1.html');
+});
+
+const mcQuestions = window.OT5.mc;
+const casussen = window.OT5.casussen;
+const openQuestions = casussen.flatMap(c => c.vragen);
+const total = mcQuestions.length + openQuestions.length;
+const OPT_LETTERS = ['A', 'B', 'C', 'D', 'E', 'F'];
+document.getElementById('stripTotal').textContent = total;
+
+/* state */
+let answers = {};     // mc num -> gekozen index
+let openMarks = {};   // open num -> true (goed) / false (fout)
+let bonusGiven = false;
+
+function startTest() {
+  document.querySelector('.ot-intro').style.display = 'none';
+  document.getElementById('ot-test').style.display = 'block';
+  document.getElementById('ot-results').style.display = 'none';
+  answers = {};
+  openMarks = {};
+  bonusGiven = false;
+  renderQuestions();
+  updateStrip();
+  window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+function renderQuestions() {
+  const box = document.getElementById('ot-questions');
+  box.innerHTML = '';
+
+  mcQuestions.forEach(q => {
+    if (q.section) {
+      const sec = document.createElement('div');
+      sec.className = 'ot-section-title';
+      sec.textContent = q.section;
+      box.appendChild(sec);
+    }
+    const card = document.createElement('div');
+    card.className = 'ot-q';
+    card.id = 'q-' + q.num;
+    card.innerHTML = `
+      <div class="ot-q-head">
+        <span class="ot-q-num">${q.num}</span>
+        <div class="ot-q-text">${q.text}</div>
+      </div>
+      <div class="ot-opts">
+        ${q.options.map((opt, i) => `
+          <button class="ot-opt" data-idx="${i}" onclick="answer(${q.num}, ${i})">
+            <span class="ot-opt-letter">${OPT_LETTERS[i]}</span>
+            <span>${opt}</span>
+          </button>
+        `).join('')}
+      </div>
+      <div class="ot-feedback" id="fb-${q.num}"></div>
+    `;
+    box.appendChild(card);
+  });
+
+  // Casussen met open vragen (zelf nakijken)
+  casussen.forEach((c, ci) => {
+    const openSec = document.createElement('div');
+    openSec.className = 'ot-section-title';
+    openSec.textContent = `Casus ${ci + 1}: ${c.titel} (${c.punten} punten) — kijk zelf na`;
+    box.appendChild(openSec);
+
+    const intro = document.createElement('div');
+    intro.className = 'ot-casus';
+    intro.textContent = c.tekst;
+    box.appendChild(intro);
+
+    c.vragen.forEach(q => {
+    const card = document.createElement('div');
+    card.className = 'ot-q';
+    card.id = 'q-' + q.num;
+    card.innerHTML = `
+      <div class="ot-q-head">
+        <span class="ot-q-num">${q.num}</span>
+        <div class="ot-q-text">${q.text} <span style="color:var(--muted);font-weight:700;white-space:nowrap">(${q.punten} ${q.punten === 1 ? 'punt' : 'punten'})</span></div>
+      </div>
+      <textarea class="ot-open-area" id="open-${q.num}" placeholder="Typ hier je antwoord (of beantwoord het op papier)…"></textarea>
+      <details class="ot-model" ontoggle="onModelToggle(${q.num}, this)">
+        <summary>Toon modelantwoord</summary>
+        <div class="ot-model-body">${q.model}</div>
+      </details>
+      <div class="ot-selfmark" id="mark-${q.num}">
+        <span class="ot-selfmark-label">Had je dit goed?</span>
+        <button class="ot-mark-btn" data-mark="good" onclick="selfMark(${q.num}, true)">Ja, goed</button>
+        <button class="ot-mark-btn" data-mark="bad" onclick="selfMark(${q.num}, false)">Net niet</button>
+      </div>
+    `;
+      box.appendChild(card);
+    });
+  });
+}
+
+/* Meerkeuze beantwoorden */
+function answer(num, idx) {
+  const q = mcQuestions.find(x => x.num === num);
+  if (!q) return;
+  if (num in answers) return; // niet wijzigbaar na eerste keuze
+  answers[num] = idx;
+
+  const card = document.getElementById('q-' + num);
+  const isCorrect = idx === q.answer;
+
+  card.querySelectorAll('.ot-opt').forEach(btn => {
+    btn.disabled = true;
+    const bIdx = +btn.dataset.idx;
+    if (bIdx === q.answer) btn.classList.add('revealed-correct');
+    else if (bIdx === idx) btn.classList.add('revealed-wrong');
+  });
+
+  card.classList.add('answered');
+  card.classList.toggle('correct', isCorrect);
+  card.classList.toggle('wrong', !isCorrect);
+
+  const fb = document.getElementById('fb-' + num);
+  fb.className = 'ot-feedback show ' + (isCorrect ? 'correct' : 'wrong');
+  fb.innerHTML = `
+    <span class="ot-feedback-label">${isCorrect ? '✓ Goed' : '✗ Fout — juist is ' + OPT_LETTERS[q.answer]}</span>
+    ${q.explanation}
+  `;
+
+  if (isCorrect) {
+    faAddXP(2);
+    addFirestorePoints(2);
+    showXpToast('+2 XP');
+  }
+
+  updateStrip();
+}
+
+/* Open vraag: modelantwoord opengeklapt -> zelf nakijken tonen */
+function onModelToggle(num, el) {
+  if (el.open) {
+    document.getElementById('mark-' + num).classList.add('show');
+  }
+}
+
+function selfMark(num, good) {
+  const first = !(num in openMarks);
+  openMarks[num] = good;
+  const wrap = document.getElementById('mark-' + num);
+  wrap.querySelectorAll('.ot-mark-btn').forEach(b => {
+    b.classList.remove('sel-good', 'sel-bad');
+    if (b.dataset.mark === 'good' && good) b.classList.add('sel-good');
+    if (b.dataset.mark === 'bad' && !good) b.classList.add('sel-bad');
+  });
+
+  const card = document.getElementById('q-' + num);
+  card.classList.add('answered');
+  card.classList.toggle('correct', good);
+  card.classList.toggle('wrong', !good);
+
+  if (first && good) {
+    faAddXP(2);
+    addFirestorePoints(2);
+    showXpToast('+2 XP');
+  }
+  updateStrip();
+}
+
+function updateStrip() {
+  const mcCorrect = Object.entries(answers).filter(([n, v]) => {
+    const q = mcQuestions.find(x => x.num === +n);
+    return q && v === q.answer;
+  }).length;
+  const openCorrect = Object.values(openMarks).filter(Boolean).length;
+  const answered = Object.keys(answers).length + Object.keys(openMarks).length;
+  const correct = mcCorrect + openCorrect;
+
+  document.getElementById('stripNum').textContent = answered;
+  document.getElementById('stripCorrect').textContent = correct;
+  document.getElementById('stripBar').style.width = (answered / total * 100) + '%';
+}
+
+function submitTest() {
+  const mcCorrect = Object.entries(answers).filter(([n, v]) => {
+    const q = mcQuestions.find(x => x.num === +n);
+    return q && v === q.answer;
+  }).length;
+  const openCorrect = Object.values(openMarks).filter(Boolean).length;
+  const correct = mcCorrect + openCorrect;
+  const pct = Math.round(correct / total * 100);
+  const passed = pct >= 75;
+
+  document.getElementById('ot-test').style.display = 'none';
+  document.getElementById('ot-results').style.display = 'block';
+
+  const bigEl = document.getElementById('resScoreBig');
+  bigEl.textContent = `${correct} / ${total}`;
+  bigEl.classList.toggle('bad', !passed);
+  document.getElementById('resPct').textContent = pct + '%';
+  document.getElementById('resVerdict').textContent = passed
+    ? (pct >= 80 ? 'Uitstekend!' : 'Gehaald — je zit boven de cesuur')
+    : 'Nog niet voldoende — herhaal je zwakke onderwerpen';
+  document.getElementById('resVerdictSub').textContent = passed
+    ? `Je scoorde ${pct}% (${mcCorrect}/80 meerkeuze). Klik 'Bekijk fouten' om te zien wat je nog kunt oefenen.`
+    : `Je scoorde ${pct}% (${mcCorrect}/80 meerkeuze), de cesuur ligt op 75% (60 van de 80). Ga je fouten langs en oefen met de flashcards of de samenvatting.`;
+
+  faSetProgress('eventmanagement1', Math.min(100, pct));
+
+  if (passed && !bonusGiven) {
+    bonusGiven = true;
+    faAddXP(50);
+    addFirestorePoints(50);
+    showXpToast('+50 XP — gehaald!');
+  }
+
+  window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+function reviewMistakes() {
+  document.getElementById('ot-test').style.display = 'block';
+  document.getElementById('ot-results').style.display = 'none';
+  const firstWrongMc = mcQuestions.find(q => (q.num in answers) && answers[q.num] !== q.answer);
+  const firstWrongOpen = openQuestions.find(q => openMarks[q.num] === false);
+  const target = firstWrongMc || firstWrongOpen;
+  if (target) {
+    setTimeout(() => {
+      const el = document.getElementById('q-' + target.num);
+      if (el) el.scrollIntoView({behavior:'smooth', block:'center'});
+    }, 50);
+  }
+}
+
+function retake() {
+  startTest();
+}
+
+function showXpToast(txt) {
+  const t = document.getElementById('xpToast');
+  document.getElementById('xpToastText').textContent = txt;
+  t.classList.add('show');
+  clearTimeout(t._h);
+  t._h = setTimeout(() => t.classList.remove('show'), 1600);
+}
+
+async function addFirestorePoints(n) {
+  const u = _auth.currentUser;
+  if (!u) return;
+  try {
+    await _db.collection('scores').doc(u.uid).set({
+      pts: firebase.firestore.FieldValue.increment(n),
+      name: u.displayName || 'Anoniem',
+      photoURL: u.photoURL || '',
+      updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+    }, { merge: true });
+  } catch (e) { console.warn(e); }
+}
+</script>
+</body>
+</html>
