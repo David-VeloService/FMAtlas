@@ -197,13 +197,12 @@ details.ot-model .ot-model-body { padding: 14px; font-size: 13.5px; color: var(-
 
 <div class="ot-wrap">
   <div class="ot-intro">
-    <div class="ot-intro-meta">OEFENTOETS 4 · 30 MEERKEUZE + 8 CASUSSEN · EXTRA MOEILIJK</div>
+    <div class="ot-intro-meta">OEFENTOETS 4 · 50 MEERKEUZEVRAGEN · EXTRA MOEILIJK</div>
     <h1>Oefentoets 4: Eventmanagement 1 (extra moeilijk)</h1>
-    <p>Oefentoets voor <strong>Eventmanagement 1 (Projectmanagement A)</strong>, bewust <strong>zwaarder dan het echte tentamen</strong>, over de volledige stof: Projectmanagement (Grit H1-H6), Projectvaardigheden en de expertcolleges. <strong>30 meerkeuzevragen met drie opties</strong> (het tentamen heeft 80 vragen met twee opties) waarin bijna elke vraag een mini-casus is, plus <strong>8 casussen met 32 open deelvragen</strong> die je zelf nakijkt met het modelantwoord — waaronder drie rekenvragen (netwerkplanning, begroting en earned value), dus pak je niet-grafische rekenmachine erbij. Elke vraag is gecontroleerd tegen de PowerPoints en het boek. Cesuur is <strong>55%</strong> — haal je die, dan krijg je +50 XP.</p>
+    <p>Oefentoets voor <strong>Eventmanagement 1 (Projectmanagement A)</strong>, bewust <strong>zwaarder dan het echte tentamen</strong>, over de volledige stof: Projectmanagement (Grit H1-H6), Projectvaardigheden en de expertcolleges. Net als het echte tentamen volledig meerkeuze: <strong>50 vragen met drie opties</strong> (het tentamen heeft 80 vragen met twee opties) waarin bijna elke vraag een mini-casus is — inclusief een paar rekenvragen, dus pak je niet-grafische rekenmachine erbij. Elke vraag is gecontroleerd tegen de PowerPoints en het boek. Cesuur is <strong>55%</strong> — haal je die, dan krijg je +50 XP.</p>
     <div class="ot-facts">
-      <div class="ot-fact"><div class="ot-fact-lbl">Meerkeuze</div><div class="ot-fact-val">30</div></div>
-      <div class="ot-fact"><div class="ot-fact-lbl">Casussen</div><div class="ot-fact-val">8</div></div>
-      <div class="ot-fact"><div class="ot-fact-lbl">Open vragen</div><div class="ot-fact-val">32</div></div>
+      <div class="ot-fact"><div class="ot-fact-lbl">Meerkeuze</div><div class="ot-fact-val">50</div></div>
+      <div class="ot-fact"><div class="ot-fact-lbl">Opties per vraag</div><div class="ot-fact-val">3</div></div>
       <div class="ot-fact"><div class="ot-fact-lbl">Cesuur</div><div class="ot-fact-val">55%</div></div>
     </div>
     <div style="display:flex;gap:10px;flex-wrap:wrap">
@@ -218,7 +217,7 @@ details.ot-model .ot-model-body { padding: 14px; font-size: 13.5px; color: var(-
 
   <div id="ot-test" style="display:none">
     <div class="ot-strip">
-      <span class="ot-strip-label"><span id="stripNum">0</span> / <span id="stripTotal">62</span> beantwoord</span>
+      <span class="ot-strip-label"><span id="stripNum">0</span> / <span id="stripTotal">50</span> beantwoord</span>
       <div class="ot-strip-bar">
         <div class="fa-progress"><div class="fa-progress-bar" id="stripBar" style="width:0%"></div></div>
       </div>
@@ -229,7 +228,7 @@ details.ot-model .ot-model-body { padding: 14px; font-size: 13.5px; color: var(-
 
     <div class="ot-submit-card" id="ot-submit">
       <h3>Klaar om te beoordelen?</h3>
-      <p>De 32 open casusvragen tellen mee als je ze zelf hebt nagekeken. Je kunt deze toets zo vaak herhalen als je wilt.</p>
+      <p>Alle 50 vragen worden automatisch nagekeken. Je kunt deze toets zo vaak herhalen als je wilt.</p>
       <button class="fa-btn fa-btn-accent" onclick="submitTest()">
         <span data-fa-icon="check" data-fa-size="13"></span> Lever oefentoets in
       </button>
@@ -237,7 +236,7 @@ details.ot-model .ot-model-body { padding: 14px; font-size: 13.5px; color: var(-
   </div>
 
   <div id="ot-results">
-    <div class="ot-score-big" id="resScoreBig">0 / 62</div>
+    <div class="ot-score-big" id="resScoreBig">0 / 50</div>
     <div class="ot-score-pct" id="resPct">0%</div>
     <div class="ot-verdict" id="resVerdict">—</div>
     <div class="ot-verdict-sub" id="resVerdictSub"></div>
@@ -258,7 +257,7 @@ details.ot-model .ot-model-body { padding: 14px; font-size: 13.5px; color: var(-
 <div class="xp-toast" id="xpToast"><span data-fa-icon="bolt" data-fa-size="13"></span> <span id="xpToastText">+1 XP</span></div>
 
 <footer class="fa-footer">
-  <span>FMAtlas · Oefentoets 4 Eventmanagement 1 · 30 meerkeuze + 8 casussen · bewust zwaarder dan het tentamen</span>
+  <span>FMAtlas · Oefentoets 4 Eventmanagement 1 · 50 meerkeuzevragen · bewust zwaarder dan het tentamen</span>
   <span>HAN · Facilitair Management</span>
 </footer>
 
@@ -482,8 +481,8 @@ function submitTest() {
     ? (pct >= 80 ? 'Uitstekend!' : 'Gehaald — je zit boven de cesuur')
     : 'Nog niet voldoende — herhaal je zwakke onderwerpen';
   document.getElementById('resVerdictSub').textContent = passed
-    ? `Je scoorde ${pct}% (${mcCorrect}/30 meerkeuze + ${openCorrect}/32 open). Klik 'Bekijk fouten' om te zien wat je nog kunt oefenen.`
-    : `Je scoorde ${pct}% (${mcCorrect}/30 meerkeuze + ${openCorrect}/32 open), de cesuur ligt op 55%. Ga je fouten langs en oefen met de flashcards of de samenvatting.`;
+    ? `Je scoorde ${pct}% (${mcCorrect}/50 meerkeuze). Klik 'Bekijk fouten' om te zien wat je nog kunt oefenen.`
+    : `Je scoorde ${pct}% (${mcCorrect}/50 meerkeuze), de cesuur ligt op 55%. Ga je fouten langs en oefen met de flashcards of de samenvatting.`;
 
   faSetProgress('eventmanagement1', Math.min(100, pct));
 
