@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Toetsing & beoordeling · Huisvesting — FM Atlas</title>
+<link rel="icon" type="image/svg+xml" href="logo.svg"/>
+<meta name="theme-color" content="#f7f3ec"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="css/fmatlas.css"/>
+<style>
+.sam-wrap { max-width: 1100px; margin: 0 auto; padding: 24px; }
+.sam-intro { background: var(--surface); border: 1.5px solid var(--line); border-radius: var(--radius-xl); padding: 28px 32px; margin-bottom: 18px; }
+.sam-intro-meta { font-size: 11px; font-weight: 800; color: var(--accent); letter-spacing: 0.08em; margin-bottom: 8px; }
+.sam-intro h1 { font-size: 32px; font-weight: 900; letter-spacing: -0.025em; line-height: 1.08; margin-bottom: 10px; }
+.sam-intro p { color: var(--ink-soft); font-size: 14.5px; line-height: 1.6; }
+
+nav.chapnav { background: var(--surface); border: 1.5px solid var(--line); border-radius: var(--radius-lg); padding: 12px 16px; margin: 0 24px 18px; max-width: 1052px; margin-left: auto; margin-right: auto; display: flex; flex-wrap: wrap; gap: 6px; position: sticky; top: 68px; z-index: 20; }
+nav.chapnav a { color: var(--ink-soft); text-decoration: none; padding: 4px 10px; border-radius: 8px; background: var(--bg); font-weight: 800; font-size: 11.5px; border: 1.5px solid var(--line); transition: all 0.12s; }
+nav.chapnav a:hover { background: var(--accent-soft); color: var(--accent-deep); border-color: var(--accent); }
+
+.main { max-width: 1052px; margin: 0 auto; padding: 0 24px 60px; display: flex; flex-direction: column; gap: 18px; }
+
+.card { background: var(--surface); border: 1.5px solid var(--line); border-radius: var(--radius-xl); overflow: hidden; scroll-margin-top: 140px; }
+.card-header { padding: 16px 22px; display: flex; align-items: center; gap: 10px; color: var(--surface); background: var(--ink); }
+.card-header h2 { font-size: 17px; font-weight: 900; letter-spacing: -0.015em; }
+.card-header .icon { font-size: 20px; }
+.card-body { padding: 22px 24px; }
+
+.h1 { background: var(--accent); }
+.h2, .h3, .h4 { background: var(--ink); }
+
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+@media (max-width: 740px) { .two-col, .three-col { grid-template-columns: 1fr; } }
+
+.section { margin-bottom: 18px; }
+.section h3 { font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin-bottom: 8px; padding-bottom: 6px; border-bottom: 1.5px solid var(--line); }
+
+ul.clean { list-style: none; display: flex; flex-direction: column; gap: 5px; margin: 0; padding: 0; }
+ul.clean li { font-size: 13.5px; line-height: 1.55; padding: 3px 0 3px 16px; position: relative; color: var(--ink-soft); font-weight: 500; }
+ul.clean li::before { content: '›'; position: absolute; left: 0; top: 3px; color: var(--accent); font-weight: 900; }
+ul.clean li strong { color: var(--ink); font-weight: 800; }
+
+.defbox { background: var(--bg); border: 1.5px solid var(--line); border-left: 4px solid var(--accent); border-radius: 0 var(--radius) var(--radius) 0; padding: 10px 14px; margin-bottom: 10px; font-size: 13.5px; line-height: 1.55; color: var(--ink-soft); }
+.defbox strong { display: block; font-size: 10.5px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); margin-bottom: 4px; }
+
+.highlight { background: var(--accent-soft); border: 1.5px solid rgba(239, 90, 63, 0.25); border-radius: var(--radius); padding: 10px 14px; font-size: 13.5px; line-height: 1.55; margin-bottom: 10px; color: var(--accent-deep); font-weight: 600; }
+.highlight strong { color: var(--accent-deep); font-weight: 900; }
+
+.warn { background: #fff7ed; border-left: 3px solid #f59e0b; padding: 9px 14px; border-radius: 0 var(--radius) var(--radius) 0; font-size: 12.5px; color: #92400e; margin-bottom: 10px; font-weight: 600; }
+
+.tag { display: inline-block; padding: 2px 8px; border-radius: 999px; font-size: 11px; font-weight: 800; }
+.blue   { background: #dbeafe;  color: #1e40af; }
+.green  { background: #dcfce7;  color: #166534; }
+.purple { background: #ede9fe;  color: #5b21b6; }
+.orange { background: #ffedd5;  color: #9a3412; }
+.red    { background: #fee2e2;  color: #991b1b; }
+.yellow { background: #fef3c7;  color: #854d0e; }
+
+.box { background: var(--bg); border: 1.5px solid var(--line); border-radius: var(--radius); padding: 12px 14px; }
+.box h4 { font-size: 12.5px; font-weight: 900; margin-bottom: 8px; color: var(--ink); letter-spacing: -0.005em; }
+
+.nummer { display: inline-flex; align-items:center; justify-content:center; background: var(--accent); color: var(--surface); width: 22px; height: 22px; border-radius: 50%; font-size: 11px; font-weight: 900; margin-right: 8px; flex-shrink: 0; }
+.stap { display: flex; align-items: flex-start; gap: 4px; font-size: 13.5px; color: var(--ink-soft); padding: 4px 0; line-height: 1.5; }
+.stap strong { color: var(--ink); }
+
+table.compact { width: 100%; border-collapse: collapse; font-size: 12.5px; margin-top: 6px; }
+table.compact th, table.compact td { padding: 7px 10px; text-align: left; border-bottom: 1.5px solid var(--line); color: var(--ink-soft); }
+table.compact th { font-size: 10.5px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+table.compact td strong { color: var(--ink); font-weight: 800; }
+.p { font-size: 13.5px; color: var(--ink-soft); line-height: 1.6; margin-bottom: 10px; }
+.p strong { color: var(--ink); }
+.box { margin-bottom: 10px; }
+.box p { font-size: 13px; color: var(--ink-soft); margin: 0; line-height: 1.55; }
+.card-bron { margin-left: auto; font-size: 10.5px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; opacity: 0.7; }
+.table-wrap { overflow-x: auto; margin-bottom: 10px; }
+ol.clean { counter-reset: n; list-style: none; display: flex; flex-direction: column; gap: 5px; margin: 0; padding: 0; }
+ol.clean li { counter-increment: n; font-size: 13.5px; line-height: 1.55; padding: 3px 0 3px 22px; position: relative; color: var(--ink-soft); font-weight: 500; }
+ol.clean li::before { content: counter(n) '.'; position: absolute; left: 0; top: 3px; color: var(--accent); font-weight: 900; font-size: 12.5px; }
+ol.clean li strong { color: var(--ink); font-weight: 800; }
+.sam-note { background: var(--surface); border: 1.5px dashed var(--line); border-radius: var(--radius-lg); padding: 14px 18px; font-size: 13px; color: var(--ink-soft); line-height: 1.55; margin-bottom: 18px; }
+@media (max-width: 760px) { table.compact.wide { min-width: 560px; } .two-col { grid-template-columns: 1fr; } .card-body { padding: 18px 16px; } .sam-intro { padding: 22px 18px; } .sam-intro h1 { font-size: 26px; } nav.chapnav { position: static; margin: 0 16px 16px; } .main { padding: 0 16px 48px; } .sam-wrap { padding: 16px; } }
+</style>
+</head>
+<body>
+
+<div id="fa-header-slot"></div>
+
+<nav class="fa-breadcrumb">
+  <a href="app.html">Vakken</a>
+  <span>›</span>
+  <a href="huisvesting.html">Huisvesting</a>
+  <span>›</span>
+  <span class="current">Toetsing & beoordeling</span>
+</nav>
+
+<div class="sam-wrap">
+  <div class="sam-intro">
+    <div class="sam-intro-meta">TOETSING · HUIVES01 · 2026-2027</div>
+    <h1>Huisvesting: toetsing en beoordeling</h1>
+    <p>Huisvesting heeft twee toetsen. TOETS01 is een individueel meerkeuzetentamen over de lesstof en de literatuur en telt voor 70%. TOETS02 is een portfolio dat je in een duo maakt, met een huisvestingsplan en een meerjarenonderhoudsplan (MJOP), en telt voor 30%. Op deze pagina staat hoe beide eruitzien, wat de beoordelaar per criterium wil zien en hoe je je voorbereidt.</p>
+  </div>
+  <div class="sam-note">Dit is een uitleg in eigen woorden. Bij twijfel gelden de studiehandleiding en het beoordelingsformulier op Brightspace.</div>
+</div>
+
+<nav class="chapnav">
+  <a href="#t1">Overzicht van de toetsing</a>
+  <a href="#t2">Het meerkeuzetentamen (TOETS01)</a>
+  <a href="#t3">Het portfolio (TOETS02): opbouw en puntentelling</a>
+  <a href="#t4">Deel 1: het huisvestingsplan</a>
+  <a href="#t5">Deel 2: het MJOP</a>
+  <a href="#t6">Checklist voor het inleveren</a>
+</nav>
+
+<div class="main">
+<div class="card" id="t1">
+  <div class="card-header h1"><span class="icon">🗂️</span><h2>Overzicht van de toetsing</h2></div>
+  <div class="card-body">
+<div class="table-wrap"><table class="compact wide"><thead><tr><th></th><th>TOETS01 kennistentamen</th><th>TOETS02 portfolio</th></tr></thead><tbody><tr><td>Vorm</td><td>Schriftelijk meerkeuzetentamen (BYO), individueel</td><td>Beroepsproduct in een duo: huisvestingsplan en MJOP</td></tr><tr><td>Weging</td><td>70%</td><td>30%</td></tr><tr><td>Moment</td><td>P1 week 9 (3 november 2026)</td><td>Inleveren in onderwijsweek 8</td></tr><tr><td>Herkansing</td><td>In P2 (of P4)</td><td>In P2 (of P4), in overleg met de docent</td></tr><tr><td>Stof</td><td>Lesstof (dia's, oefeningen, syllabus bouwkundige begrippen) en de boekhoofdstukken per les</td><td>De opdrachten uit de lessen, toegepast op een casus en op een zelfgekozen gebouw</td></tr></tbody></table></div>
+<p class="p">Het vak is 10 EC (280 uur). Per week zijn er drie lesblokken van vier uur. Elke les heeft grofweg drie delen: instructie met een ppt, oefeningen om de stof te verhelderen en werken aan het portfolio. De oefeningen zijn dus tegelijk tentamenvoorbereiding.</p>
+<div class="warn">De exacte datum, tijd en zaal van het tentamen en de inleverdatum van het portfolio kunnen per klas verschillen. Controleer ze altijd zelf in OSIRIS en op Brightspace.</div>
+  </div>
+</div>
+
+<div class="card" id="t2">
+  <div class="card-header h2"><span class="icon">📝</span><h2>Het meerkeuzetentamen (TOETS01)</h2></div>
+  <div class="card-body">
+<p class="p">Het tentamen bestaat uit meerkeuzevragen met vier antwoordopties. Tentamenstof is de lesstof en de literatuur. Welke boekparagrafen per les tentamenstof zijn, staat in de literatuurtabel op Brightspace (bij Literatuur en leermiddelen). De docent zegt er nadrukkelijk bij dat niet alle hoofdstukken van de twee boeken tentamenstof zijn.</p>
+<div class="section" style="margin-bottom:8px"><h3>Wat er allemaal onder de stof valt</h3></div>
+<ul class="clean" style="margin-bottom:10px"><li><strong>De dia's van elke les.</strong> Ook de dia's die vooral een afbeelding of model tonen, zoals de huisvestingscomponenten, de prestatievelden en de NEN 2767-tabellen.</li><li><strong>De Syllabus Bouwkundige Begrippen</strong> (bij les 2.1). Daarin staat letterlijk dat alle vetgedrukte begrippen tentamenstof zijn. Dat zijn ruim honderd termen, van aanlegbreedte tot zwevende vloer.</li><li><strong>De oefeningen en opdrachten</strong> bij de lessen, zoals de tekenoefening Renesse en de maquette-oefening bij les 2.1.</li><li><strong>Twee boeken:</strong> Huisvestingsmanagement (Hoendervanger, Van der Voordt en Wijnja, 2022, 3e druk) en Basisboek Facility Management (Drion en Van Sprang, 2024, 4e druk), alleen de paragrafen uit de literatuurtabel.</li><li><strong>Aanvullende literatuur</strong> op Brightspace, zoals het artikel over het PvE en de white paper over bruis, ruis en rust.</li></ul>
+<div class="section" style="margin-bottom:8px"><h3>Soorten vragen waar je op kunt rekenen</h3></div>
+<p class="p">Hoe de vragen precies gesteld worden is niet bekend. Op basis van de stof zijn dit de typen kennis die je moet beheersen:</p>
+<div class="table-wrap"><table class="compact"><thead><tr><th>Type kennis</th><th>Voorbeelden uit de stof</th></tr></thead><tbody><tr><td>Begrip herkennen of definiëren</td><td>Casco, latei, stramien, peil, crowding, FNO, bestek, conditie</td></tr><tr><td>Indelingen en modellen kennen</td><td>Vier prestatievelden, huisvestingscyclus, bruis-ruis-rust, vier vormen van aanbesteden, contractmodellen, Trias energetica en materia, drie soorten levensduur, vier onderhoudsstrategieën</td></tr><tr><td>Verschil tussen twee verwante begrippen</td><td>Eis tegenover wens, density tegenover crowding, halfsteensmuur tegenover halfsteensverband, peil tegenover maaiveld, BVO tegenover FNO, technische tegenover functionele levensduur</td></tr><tr><td>Rekenen</td><td>Werkplekken op basis van fte, m2 per werkplek, BVO naar FNO, omvang van een gebrek als percentage, schaal van een tekening</td></tr><tr><td>Toepassen op een situatie</td><td>Welke onderhoudsstrategie past bij welk gebouw, welke fundering bij welke bodem, welk contractmodel bij welke opdrachtgever</td></tr></tbody></table></div>
+<div class="section" style="margin-bottom:8px"><h3>Zo leer je ervoor</h3></div>
+<ol class="clean" style="margin-bottom:10px"><li>Leer de begrippen actief: dek de definitie af en zeg hem eerst zelf op. Gebruik de flashcards op deze site. Herkennen is niet genoeg bij meerkeuze met plausibele afleiders.</li><li>Let vooral op begrippenparen die op elkaar lijken. Meerkeuzeafleiders zijn bijna altijd het verwante begrip.</li><li>Oefen de rekenvoorbeelden uit de samenvatting zelf na, zonder te spieken: ruimtestaat, BVO en FNO, NEN 2767-omvang.</li><li>Lees de boekparagrafen uit de literatuurtabel. Deze site dekt alleen wat in de dia's en Brightspace-documenten staat.</li><li>Maak de oefentoetsen op deze site onder tijdsdruk en kijk daarna waarom elk fout antwoord fout was.</li><li>Gebruik het oefententamen dat volgens de planning in de laatste lesweek (les 7.3) wordt besproken.</li></ol>
+<div class="warn">Veel begrippen in dit vak hebben een alledaagse betekenis die net anders is dan de vakbetekenis. 'Halfsteens' kan over de dikte van een muur gaan of over het metselverband, 'peil' is niet het maaiveld, en 'functionele eisen' beschrijven wat een ruimte moet kunnen, niet hoe hij eruitziet. Lees elke vraag tot het eind.</div>
+  </div>
+</div>
+
+<div class="card" id="t3">
+  <div class="card-header h2"><span class="icon">📁</span><h2>Het portfolio (TOETS02): opbouw en puntentelling</h2></div>
+  <div class="card-body">
+<p class="p">Het portfolio bestaat uit twee delen. In deel 1 maak je een huisvestingsplan voor een fictieve casus: een woningcorporatie die een bestaand HAN-gebouw heeft gekocht en daarin haar kantoor en woonunits voor huurders onderbrengt. In deel 2 maak je een MJOP voor 20 jaar voor een gebouw dat je zelf kiest. Je werkt in een duo.</p>
+<div class="table-wrap"><table class="compact wide"><thead><tr><th>Onderdeel</th><th>Criterium</th><th>Max. punten</th></tr></thead><tbody><tr><td>Huisvestingsplan</td><td>1. Contextanalyse en huisvestingsvisie</td><td>20</td></tr><tr><td>Huisvestingsplan</td><td>2. Gebouwanalyse, gebruikersanalyse en Programma van Eisen</td><td>35</td></tr><tr><td>Huisvestingsplan</td><td>3. Ruimtelijke uitwerking: vlekkenplan, inrichtingsplan en moodboard</td><td>35</td></tr><tr><td>Huisvestingsplan</td><td>4. Plantoetsing, haalbaarheid en onderbouwing</td><td>10</td></tr><tr><td>MJOP</td><td>1. Gebouwkeuze, organisatiecontext en onderhoudsbehoefte</td><td>20</td></tr><tr><td>MJOP</td><td>2. Inspectie, inventarisatie en conditiemeting</td><td>25</td></tr><tr><td>MJOP</td><td>3. MJOP voor 20 jaar: maatregelen, planning, kosten en onderbouwing</td><td>35</td></tr><tr><td>MJOP</td><td>4. Duurzaamheid en DMJOP-kansen</td><td>20</td></tr></tbody></table></div>
+<div class="highlight">Voor het huisvestingsplan én voor het MJOP moet je elk minimaal 55 van de 100 punten halen. Het portfoliocijfer is daarna 70% huisvestingsplan en 30% MJOP. Een sterk huisvestingsplan compenseert dus geen onvoldoende MJOP.</div>
+<p class="p">Elk criterium wordt beoordeeld op drie niveaus: <strong>In ontwikkeling</strong> (onder 5,5), <strong>Op niveau</strong> (5,5 tot 8) en <strong>Boven niveau</strong> (boven 8).</p>
+<div class="warn">Het eindproduct is geen bundeling van losse opdrachten maar één professioneel adviesrapport voor de facility manager van de woningcorporatie. Wie de weekopdrachten los achter elkaar plakt, mist de samenhang waar de hogere niveaus om vragen.</div>
+  </div>
+</div>
+
+<div class="card" id="t4">
+  <div class="card-header h2"><span class="icon">🏢</span><h2>Deel 1: het huisvestingsplan</h2></div>
+  <div class="card-body">
+<p class="p">Het plan volgt de huisvestingscyclus: initiatieffase (behoefte en context), programma van eisen, ruimtelijke uitwerking en tot slot toetsing en voorbereiding op realisatie. Elke week levert een hoofdstuk op.</p>
+<div class="table-wrap"><table class="compact wide"><thead><tr><th>Week</th><th>Opdracht</th><th>Hoofdstuk in het verslag</th></tr></thead><tbody><tr><td>1</td><td>Contextanalyse: missie, visie en strategie, doelgroepen, werkzaamheden in het kantoor, bezoekers, maatschappelijke en externe ontwikkelingen, toegevoegde waarde van huisvesting</td><td>H1 Inleiding en opdrachtomschrijving, H2 Contextanalyse</td></tr><tr><td>2</td><td>Tekeningen bestuderen, observatielijst maken en het gebouw bezoeken; beoordelen op functionele prestatie-indicatoren</td><td>H4 Gebouwanalyse en haalbaarheidsstudie</td></tr><tr><td>3</td><td>Behoeften van medewerkers, bezoekers, bewoners en eventueel partners analyseren (persona's); werkplekconcept</td><td>H5 Gebruikersanalyse, H6 Werkplekconcept en woonconcept</td></tr><tr><td>4</td><td>PvE voor kantoorfunctie, woonfunctie en gedeelde functies; ruimtestaat; vlekkenplan voor het hele gebouw; inrichtingsplan met moodboard</td><td>H7 Programma van Eisen, H8 Vlekkenplan, inrichtingsplan en moodboard</td></tr><tr><td>5</td><td>Globale plantoetsing van drie ruimtes of zones aan het Bouwbesluit</td><td>Verwerken in het verslag</td></tr></tbody></table></div>
+<div class="section" style="margin-bottom:8px"><h3>Wat de criteria vragen per niveau</h3></div>
+<div class="table-wrap"><table class="compact wide"><thead><tr><th>Criterium</th><th>In ontwikkeling</th><th>Op niveau</th><th>Boven niveau</th></tr></thead><tbody><tr><td>Contextanalyse en huisvestingsvisie (20)</td><td>Blijft algemeen; relatie tussen organisatie, gebruikers, ontwikkelingen en huisvestingskeuzes beperkt zichtbaar</td><td>Duidelijke analyse en visie; relatie voldoende zichtbaar; toegevoegde waarde passend uitgewerkt</td><td>Scherp; relatie overtuigend zichtbaar in het héle plan; toegevoegde waarde sterk en richtinggevend</td></tr><tr><td>Gebouwanalyse, gebruikersanalyse en PvE (35)</td><td>Deels beschrijvend; vertaling naar eisen voor kantoor, woonunits en ondersteunende functies beperkt</td><td>Kwaliteiten, beperkingen en behoeften vertaald naar passende eisen; eisen voldoende concreet en herleidbaar</td><td>Samenhangend; overtuigend vertaald naar concrete, richtinggevende eisen; goed onderbouwd en duidelijk herleidbaar</td></tr><tr><td>Vlekkenplan, inrichtingsplan en moodboard (35)</td><td>Keuzes beperkt onderbouwd; relatie met PvE, routing, zonering, privacy, comfort en duurzaamheid niet overal duidelijk</td><td>Keuzes sluiten aan op het PvE en houden voldoende rekening met routing, zonering, privacy, comfort en duurzaamheid; functies logisch geplaatst</td><td>Logisch, realistisch en overtuigend onderbouwd; kantoor, woonunits en ondersteunende functies vormen één herkenbaar ontwerpconcept</td></tr><tr><td>Plantoetsing, haalbaarheid en onderbouwing (10)</td><td>Vooral een opsomming van aandachtspunten, beperkt gekoppeld aan het eigen ontwerp; conclusie algemeen</td><td>Ontwerp op hoofdlijnen gecontroleerd en gekoppeld aan het eigen ontwerp; conclusie zegt wat logisch is en wat verder onderzocht moet worden</td><td>Kritisch; aspecten onderbouwen de haalbaarheid; conclusie zegt scherp welke keuzes bevestigd zijn, welke risico's blijven en wat specialisten moeten uitwerken</td></tr></tbody></table></div>
+<div class="highlight">Het verschil tussen de niveaus zit steeds in hetzelfde: van beschrijven, naar koppelen, naar een rode draad door het hele plan. Laat bij elke keuze zien uit welke eis die volgt, en bij elke eis uit welke ambitie of behoefte die komt.</div>
+<div class="section" style="margin-bottom:8px"><h3>Aandachtspunten per onderdeel</h3></div>
+<ul class="clean" style="margin-bottom:10px"><li><strong>Huisvestingsvisie:</strong> vertaal wat de organisatie is en wil zijn naar wat de huisvesting moet uitstralen en mogelijk maken. Gebruik de toegevoegde waarden van huisvesting als kapstok.</li><li><strong>Gebouwanalyse:</strong> werk vanuit de vier prestatievelden (technisch, functioneel, esthetisch, financieel-economisch) en minimaal tien thema's. Kijk naar mogelijkheden en beperkingen voor de nieuwe functie, niet naar losse inrichting die er toch uitgaat.</li><li><strong>PvE:</strong> formuleer eisen, geen oplossingen. Maak onderscheid tussen kantoorfunctie, woonfunctie en gedeelde of ondersteunende functies. Begin met functionele eisen en werk daarna de ruimtelijke eisen uit.</li><li><strong>Ruimtestaat:</strong> reken werkplekken uit op basis van fte, niet op het aantal medewerkers. Gebruik FNO in de ruimtestaat en houd het verschil met BVO aan.</li><li><strong>Vlekkenplan:</strong> elke vlek is even groot als de ruimtestaat aangeeft, met kleuren en een legenda. Gangen binnen een afdeling horen bij de vlek, trappen, liften en toiletten niet.</li><li><strong>Inrichtingsplan:</strong> onderbouw de verdeling over bruis, ruis en rust, laat de flow door het gebouw zien en bereken de investeringskosten voor inrichting en afwerking.</li><li><strong>Moodboard:</strong> een strakke collage van sfeerbeelden, materialen en kleurvlakken die past bij de visie.</li><li><strong>Plantoetsing:</strong> kies drie ruimtes of zones (bijvoorbeeld entree, kantoorruimte en een woonunit) en loop per ruimte gebruiksfuncties, verblijfsruimtes, routing, scheiding van publiek en privé, toegankelijkheid, daglicht, ventilatie, geluid, privacy en vluchtwegen na. Benoem wat een specialist verder moet uitwerken.</li></ul>
+<div class="warn">Hoeveel je moet inrichten verschilt per document: de opdrachtbeschrijving vraagt een inrichtingsplan voor één afdeling en drie woonunits, de dia's spreken over één gebouwvleugel. Volg de opdrachtbeschrijving van jouw jaar en vraag het na bij je docent als het niet duidelijk is.</div>
+  </div>
+</div>
+
+<div class="card" id="t5">
+  <div class="card-header h2"><span class="icon">🔧</span><h2>Deel 2: het MJOP</h2></div>
+  <div class="card-body">
+<p class="p">Je stelt een meerjarenonderhoudsplan voor 20 jaar op voor een gebouw dat je zelf kiest, met een toelichting waarin je de keuzes onderbouwt en kansen voor verduurzaming benoemt. Je werkt alsof je als facilitair professional verantwoordelijk bent voor het beheer van dat gebouw.</p>
+<div class="section" style="margin-bottom:8px"><h3>Eisen aan het gebouw (volgens de opdrachtbeschrijving)</h3></div>
+<ul class="clean" style="margin-bottom:10px"><li>gebouwd vóór 2005;</li><li>minimaal 200 m2 (bij een heel groot gebouw kun je met de docent een deel afbakenen);</li><li>toegang tot binnen- en buitenzijde voor minimaal één inspectie op locatie;</li><li>de afgelopen acht jaar niet volledig gerenoveerd of opnieuw opgebouwd;</li><li>een duidelijke organisatie of gebruiker, waarvan je iets over missie, visie, gebruik of toekomst kunt achterhalen;</li><li>geen woonhuis.</li></ul>
+<div class="warn">De bouwjaar-, oppervlakte- en renovatie-eisen staan in drie bronnen verschillend (Brightspace-module, dia van les 6.2 en de opdrachtbeschrijving). Leg je gebouwkeuze daarom altijd eerst voor aan de docent.</div>
+<div class="section" style="margin-bottom:8px"><h3>Opdrachten per les</h3></div>
+<div class="table-wrap"><table class="compact wide"><thead><tr><th>Les</th><th>Opdracht</th><th>Resultaat</th></tr></thead><tbody><tr><td>6.2</td><td>Gebouw kiezen, organisatie en context beschrijven (missie, gebruik, trends), de vijf factoren die onderhoudsbehoefte bepalen uitwerken, inventarisatie maken</td><td>Hoofdstuk 1 met conclusie: welke aspecten beïnvloeden het onderhoud en welke risico's levert dat op</td></tr><tr><td>6.3 en 7.1</td><td>Elementen uit de inventarisatie inspecteren volgens NEN 2767, conditiescore per element, foto's van gebreken; voorlopige onderhoudsstrategie kiezen en onderbouwen</td><td>Inspectieresultaten en strategiekeuze</td></tr><tr><td>7.2</td><td>MJOP voor 20 jaar opstellen: per element maatregel, moment, hoeveelheid en kosten, inclusief preventief onderhoud; duurzaamheid meenemen via Trias energetica en Trias materia</td><td>MJOP-overzicht</td></tr><tr><td>7.2</td><td>Toelichting van minimaal 2 A4: toegepaste strategie, keuzes, prioriteiten, bewust gecombineerde werkzaamheden, duurzaamheid en duurzame kansen</td><td>Onderbouwing</td></tr></tbody></table></div>
+<div class="section" style="margin-bottom:8px"><h3>Wat de criteria vragen per niveau</h3></div>
+<div class="table-wrap"><table class="compact wide"><thead><tr><th>Criterium</th><th>In ontwikkeling</th><th>Op niveau</th><th>Boven niveau</th></tr></thead><tbody><tr><td>Gebouwkeuze, context en onderhoudsbehoefte (20)</td><td>Algemeen of onvolledig; relatie tussen organisatie, gebruik, gebouwkenmerken, trends en onderhoudsbehoefte beperkt zichtbaar</td><td>Duidelijk; relatie voldoende zichtbaar; risico's en aandachtspunten voor inspectie en MJOP voldoende benoemd</td><td>Scherp; relatie overtuigend; risico's en aandachtspunten sturen zichtbaar de inspectie, strategie en MJOP-keuzes</td></tr><tr><td>Inspectie en conditiemeting (25)</td><td>Beperkt of niet navolgbaar; onderbouwing van scores wisselend</td><td>Gebreken beschreven, met foto's onderbouwd en gekoppeld aan passende conditiescores; relatie met risico's en maatregelen voldoende duidelijk</td><td>Zorgvuldig; gebreken concreet, overtuigend met foto's onderbouwd en logisch gekoppeld aan scores; consistent en navolgbaar</td></tr><tr><td>Onderhoudsplanning met onderbouwing (35)</td><td>Keuzes beperkt onderbouwd; maatregelen te algemeen of niet logisch in de tijd</td><td>Passende maatregelen, logische planning, realistische kosten voor 20 jaar; toegelicht waarom maatregelen op een bepaald moment staan</td><td>Consistent en overtuigend onderbouwd, ook vanuit risico's, kostenpieken en combinatiemogelijkheden; planning aantoonbaar bruikbaar voor dit gebouw</td></tr><tr><td>Duurzaamheid en DMJOP-kansen (20)</td><td>Algemeen of los van het MJOP; Trias energetica en materia beperkt toegepast</td><td>Koppeling met onderhoudsmomenten, energie, materiaalgebruik, levensduur en hergebruik zichtbaar; Trias gebruikt om keuzes te onderbouwen</td><td>Duurzaamheid geïntegreerd in het MJOP; de Trias stuurt zichtbaar de afwegingen</td></tr></tbody></table></div>
+<div class="highlight">Een tabel met maatregelen, jaren en kosten is niet genoeg. De beoordelaar wil zien waarom de planning logisch is voor dít gebouw en déze organisatie: welke strategie, welke prioriteiten, welke werkzaamheden je combineert en hoe je de kosten hebt bepaald.</div>
+  </div>
+</div>
+
+<div class="card" id="t6">
+  <div class="card-header h2"><span class="icon">✅</span><h2>Checklist voor het inleveren</h2></div>
+  <div class="card-body">
+<div class="section" style="margin-bottom:8px"><h3>Huisvestingsplan</h3></div>
+<ul class="clean" style="margin-bottom:10px"><li>De huisvestingsvisie komt terug in het PvE, het vlekkenplan, het inrichtingsplan en het moodboard.</li><li>De contextanalyse noemt interne én externe ontwikkelingen en de toegevoegde waarde die de huisvesting moet leveren.</li><li>De gebouwanalyse noemt kwaliteiten, beperkingen, wat geschikt is voor kantoor en wat voor woonunits, met een conclusie over haalbaarheid en voorwaarden.</li><li>De gebruikersanalyse dekt medewerkers, bezoekers en bewoners.</li><li>Het PvE bevat eisen en geen oplossingen, verdeeld over kantoorfunctie, woonfunctie en gedeelde functies.</li><li>Het aantal werkplekken is onderbouwd vanuit fte en het activiteitenprofiel (bruis, ruis, rust).</li><li>De ruimtestaat rekent in FNO en sluit aan op de beschikbare ruimte in het gebouw.</li><li>Het vlekkenplan heeft kleuren, een legenda en vlekken die kloppen met de ruimtestaat.</li><li>Routing, zonering, privacy, comfort en duurzaamheid zijn bij de ruimtelijke keuzes uitgelegd.</li><li>De investeringskosten voor inrichting en afwerking zijn berekend.</li><li>De plantoetsing koppelt de regels aan het eigen ontwerp en eindigt met wat een specialist moet uitwerken.</li><li>Bronnen (missie en visie van de organisatie, beelden in het moodboard) zijn vermeld.</li></ul>
+<div class="section" style="margin-bottom:8px"><h3>MJOP</h3></div>
+<ul class="clean" style="margin-bottom:10px"><li>Het gebouw voldoet aan de eisen en is akkoord bevonden door de docent.</li><li>Alle vijf factoren (gebruiksintensiteit, doel, materiaalgebruik, klimaat, ontwerp) zijn op het eigen gebouw toegepast.</li><li>Elk gebrek heeft een foto, ernst, intensiteit, omvang en conditiescore.</li><li>Er is een onderhoudsstrategie gekozen en die is in het hele plan terug te zien.</li><li>Het MJOP loopt 20 jaar en bevat naast herstel ook preventief onderhoud.</li><li>Per maatregel staat hoeveelheid, eenheidsprijs en totaal, met de kostenbasis.</li><li>Werkzaamheden die logisch samengaan zijn gecombineerd en dat is uitgelegd.</li><li>Verduurzaming is gekoppeld aan natuurlijke onderhoudsmomenten en onderbouwd met Trias energetica en Trias materia.</li><li>De toelichting is minimaal 2 A4.</li></ul>
+  </div>
+</div>
+</div>
+
+<footer class="fa-site-footer">
+  <span>FM Atlas · gratis studiehulp voor HAN Facilitair Management, gemaakt door een student</span>
+  <span>Niet officieel verbonden aan de HAN · <a href="privacy.html">Privacy</a> · <a href="app.html#contact">Fout gezien?</a></span>
+</footer>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+<script src="js/fmatlas.js"></script>
+<script>
+const firebaseConfig = {
+  apiKey: "AIzaSyBB397Wk2eqpBjic8E7aGV1mTgIjhQ21a8",
+  authDomain: "fmkompas-ff8bc.firebaseapp.com",
+  projectId: "fmkompas-ff8bc",
+  storageBucket: "fmkompas-ff8bc.firebasestorage.app",
+  messagingSenderId: "487972024689",
+  appId: "1:487972024689:web:712c3117080745d14746d0"
+};
+firebase.initializeApp(firebaseConfig);
+firebase.auth().onAuthStateChanged(user => {
+  document.getElementById('fa-header-slot').innerHTML = '';
+  faMarkActiveToday();
+  document.getElementById('fa-header-slot').appendChild(faRenderHeader({ user }));
+  faMarkLastSeen('huisvesting','Huisvesting','huisvesting.html');
+});
+</script>
+</body>
+</html>

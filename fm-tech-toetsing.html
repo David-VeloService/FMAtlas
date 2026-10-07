@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Toetsing & beoordeling · FM Tech — FM Atlas</title>
+<link rel="icon" type="image/svg+xml" href="logo.svg"/>
+<meta name="theme-color" content="#f7f3ec"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="css/fmatlas.css"/>
+<style>
+.sam-wrap { max-width: 1100px; margin: 0 auto; padding: 24px; }
+.sam-intro { background: var(--surface); border: 1.5px solid var(--line); border-radius: var(--radius-xl); padding: 28px 32px; margin-bottom: 18px; }
+.sam-intro-meta { font-size: 11px; font-weight: 800; color: var(--accent); letter-spacing: 0.08em; margin-bottom: 8px; }
+.sam-intro h1 { font-size: 32px; font-weight: 900; letter-spacing: -0.025em; line-height: 1.08; margin-bottom: 10px; }
+.sam-intro p { color: var(--ink-soft); font-size: 14.5px; line-height: 1.6; }
+
+nav.chapnav { background: var(--surface); border: 1.5px solid var(--line); border-radius: var(--radius-lg); padding: 12px 16px; margin: 0 24px 18px; max-width: 1052px; margin-left: auto; margin-right: auto; display: flex; flex-wrap: wrap; gap: 6px; position: sticky; top: 68px; z-index: 20; }
+nav.chapnav a { color: var(--ink-soft); text-decoration: none; padding: 4px 10px; border-radius: 8px; background: var(--bg); font-weight: 800; font-size: 11.5px; border: 1.5px solid var(--line); transition: all 0.12s; }
+nav.chapnav a:hover { background: var(--accent-soft); color: var(--accent-deep); border-color: var(--accent); }
+
+.main { max-width: 1052px; margin: 0 auto; padding: 0 24px 60px; display: flex; flex-direction: column; gap: 18px; }
+
+.card { background: var(--surface); border: 1.5px solid var(--line); border-radius: var(--radius-xl); overflow: hidden; scroll-margin-top: 140px; }
+.card-header { padding: 16px 22px; display: flex; align-items: center; gap: 10px; color: var(--surface); background: var(--ink); }
+.card-header h2 { font-size: 17px; font-weight: 900; letter-spacing: -0.015em; }
+.card-header .icon { font-size: 20px; }
+.card-body { padding: 22px 24px; }
+
+.h1 { background: var(--accent); }
+.h2, .h3, .h4 { background: var(--ink); }
+
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+@media (max-width: 740px) { .two-col, .three-col { grid-template-columns: 1fr; } }
+
+.section { margin-bottom: 18px; }
+.section h3 { font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin-bottom: 8px; padding-bottom: 6px; border-bottom: 1.5px solid var(--line); }
+
+ul.clean { list-style: none; display: flex; flex-direction: column; gap: 5px; margin: 0; padding: 0; }
+ul.clean li { font-size: 13.5px; line-height: 1.55; padding: 3px 0 3px 16px; position: relative; color: var(--ink-soft); font-weight: 500; }
+ul.clean li::before { content: '›'; position: absolute; left: 0; top: 3px; color: var(--accent); font-weight: 900; }
+ul.clean li strong { color: var(--ink); font-weight: 800; }
+
+.defbox { background: var(--bg); border: 1.5px solid var(--line); border-left: 4px solid var(--accent); border-radius: 0 var(--radius) var(--radius) 0; padding: 10px 14px; margin-bottom: 10px; font-size: 13.5px; line-height: 1.55; color: var(--ink-soft); }
+.defbox strong { display: block; font-size: 10.5px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); margin-bottom: 4px; }
+
+.highlight { background: var(--accent-soft); border: 1.5px solid rgba(239, 90, 63, 0.25); border-radius: var(--radius); padding: 10px 14px; font-size: 13.5px; line-height: 1.55; margin-bottom: 10px; color: var(--accent-deep); font-weight: 600; }
+.highlight strong { color: var(--accent-deep); font-weight: 900; }
+
+.warn { background: #fff7ed; border-left: 3px solid #f59e0b; padding: 9px 14px; border-radius: 0 var(--radius) var(--radius) 0; font-size: 12.5px; color: #92400e; margin-bottom: 10px; font-weight: 600; }
+
+.tag { display: inline-block; padding: 2px 8px; border-radius: 999px; font-size: 11px; font-weight: 800; }
+.blue   { background: #dbeafe;  color: #1e40af; }
+.green  { background: #dcfce7;  color: #166534; }
+.purple { background: #ede9fe;  color: #5b21b6; }
+.orange { background: #ffedd5;  color: #9a3412; }
+.red    { background: #fee2e2;  color: #991b1b; }
+.yellow { background: #fef3c7;  color: #854d0e; }
+
+.box { background: var(--bg); border: 1.5px solid var(--line); border-radius: var(--radius); padding: 12px 14px; }
+.box h4 { font-size: 12.5px; font-weight: 900; margin-bottom: 8px; color: var(--ink); letter-spacing: -0.005em; }
+
+.nummer { display: inline-flex; align-items:center; justify-content:center; background: var(--accent); color: var(--surface); width: 22px; height: 22px; border-radius: 50%; font-size: 11px; font-weight: 900; margin-right: 8px; flex-shrink: 0; }
+.stap { display: flex; align-items: flex-start; gap: 4px; font-size: 13.5px; color: var(--ink-soft); padding: 4px 0; line-height: 1.5; }
+.stap strong { color: var(--ink); }
+
+table.compact { width: 100%; border-collapse: collapse; font-size: 12.5px; margin-top: 6px; }
+table.compact th, table.compact td { padding: 7px 10px; text-align: left; border-bottom: 1.5px solid var(--line); color: var(--ink-soft); }
+table.compact th { font-size: 10.5px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+table.compact td strong { color: var(--ink); font-weight: 800; }
+.p { font-size: 13.5px; color: var(--ink-soft); line-height: 1.6; margin-bottom: 10px; }
+.p strong { color: var(--ink); }
+.box { margin-bottom: 10px; }
+.box p { font-size: 13px; color: var(--ink-soft); margin: 0; line-height: 1.55; }
+.card-bron { margin-left: auto; font-size: 10.5px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; opacity: 0.7; }
+.table-wrap { overflow-x: auto; margin-bottom: 10px; }
+ol.clean { counter-reset: n; list-style: none; display: flex; flex-direction: column; gap: 5px; margin: 0; padding: 0; }
+ol.clean li { counter-increment: n; font-size: 13.5px; line-height: 1.55; padding: 3px 0 3px 22px; position: relative; color: var(--ink-soft); font-weight: 500; }
+ol.clean li::before { content: counter(n) '.'; position: absolute; left: 0; top: 3px; color: var(--accent); font-weight: 900; font-size: 12.5px; }
+ol.clean li strong { color: var(--ink); font-weight: 800; }
+.sam-note { background: var(--surface); border: 1.5px dashed var(--line); border-radius: var(--radius-lg); padding: 14px 18px; font-size: 13px; color: var(--ink-soft); line-height: 1.55; margin-bottom: 18px; }
+@media (max-width: 760px) { table.compact.wide { min-width: 560px; } .two-col { grid-template-columns: 1fr; } .card-body { padding: 18px 16px; } .sam-intro { padding: 22px 18px; } .sam-intro h1 { font-size: 26px; } nav.chapnav { position: static; margin: 0 16px 16px; } .main { padding: 0 16px 48px; } .sam-wrap { padding: 16px; } }
+</style>
+</head>
+<body>
+
+<div id="fa-header-slot"></div>
+
+<nav class="fa-breadcrumb">
+  <a href="app.html">Vakken</a>
+  <span>›</span>
+  <a href="fm-tech.html">FM Tech</a>
+  <span>›</span>
+  <span class="current">Toetsing & beoordeling</span>
+</nav>
+
+<div class="sam-wrap">
+  <div class="sam-intro">
+    <div class="sam-intro-meta">TOETSING · FMTECH01 · 2026-2027</div>
+    <h1>FM Tech: toetsing en beoordeling</h1>
+    <p>FM Tech wordt getoetst met een eindpresentatie van 15 minuten in week 8 en een adviesgesprek van 30 minuten direct daarna. Je groep presenteert een onderbouwd technologieadvies voor de praktijkorganisatie: welke technologieën wel en niet passen, hoe ze waarde creëren en worden ingezet, en welke risico's, ethische aspecten en duurzaamheidsoverwegingen meespelen. Beoordeling gebeurt met een rubric van vijf criteria. Hieronder staat wat er per criterium het verschil maakt, een checklist en de vragen die je kunt verwachten.</p>
+  </div>
+  <div class="sam-note">Dit is een uitleg in eigen woorden. Bij twijfel gelden de studiehandleiding en het beoordelingsformulier op Brightspace.</div>
+</div>
+
+<nav class="chapnav">
+  <a href="#t1">Vorm, tijden en regels</a>
+  <a href="#t2">De rubric: vijf criteria in eigen woorden</a>
+  <a href="#t3">Wat er in de presentatie moet</a>
+  <a href="#t4">De brochure en de toetsing</a>
+  <a href="#t5">Voorbereidingschecklist</a>
+  <a href="#t6">Vragen die je kunt verwachten</a>
+</nav>
+
+<div class="main">
+<div class="card" id="t1">
+  <div class="card-header h1"><span class="icon">🗓️</span><h2>Vorm, tijden en regels</h2><span class="card-bron">Cursusinformatie toetsoverzicht, Les 7</span></div>
+  <div class="card-body">
+<div class="table-wrap"><table class="compact wide"><thead><tr><th>Onderdeel</th><th>Tijd</th><th>Wat er gebeurt</th></tr></thead><tbody><tr><td>Eindpresentatie</td><td>15 minuten</td><td>De groep presenteert het technologieadvies; het bouwt voort op de ingevulde brochure</td></tr><tr><td>Adviesgesprek</td><td>30 minuten</td><td>De docenten stellen vragen en bepalen zelf welk groepslid antwoordt; ook de niet-geadviseerde technologieën komen aan bod</td></tr><tr><td>Beoordelen en feedback</td><td>15 minuten</td><td>De docenten beoordelen en geven globale feedback</td></tr></tbody></table></div>
+<ul class="clean" style="margin-bottom:10px"><li>Wanneer: week 8, de eerste tentamenweek. Les 7 noemt donderdag 29 oktober.</li><li>Cijfer: een groepscijfer. Les 7 spreekt van een groepscijfer met individueel component: bij het adviesgesprek kunnen docenten individuele verschillen tussen groepsleden belonen, naar boven of naar beneden.</li><li>Elk van de vijf rubriconderdelen moet voldoende zijn (hoger dan 5,5). Het eindcijfer is het gewogen gemiddelde van de onderdelen; de weging staat niet in de bronnen (TE VERIFIËREN).</li><li>Leeruitkomst: LUK 5.2, plannen opstellen die bijdragen aan de doelen van de organisatie en meten of die doelen worden gehaald.</li><li>Administratie: schrijf je in voor de toets in Osiris, maak in HandIn een beoordeling aan, maak daar een groep aan en voeg de brochure toe.</li></ul>
+<div class="warn">Omdat de docenten kiezen wie antwoordt, kun je niet volstaan met 'mijn deel'. Iedereen moet het volledige verhaal begrijpen en kunnen uitleggen, ook de technologieën uit workshops die jij niet hebt gegeven en de technologieën die jullie afwijzen. Een zwak individueel antwoord kan je eigen cijfer omlaag halen.</div>
+  </div>
+</div>
+
+<div class="card" id="t2">
+  <div class="card-header h2"><span class="icon">📋</span><h2>De rubric: vijf criteria in eigen woorden</h2><span class="card-bron">Beoordelingsformulier, Les 5 en 6, Les 7</span></div>
+  <div class="card-body">
+<p class="p">De niveaus zijn onvoldoende (lager dan 5,5), voldoende (5,5 tot 8,0) en goed (hoger dan 8). Hieronder per criterium wat de niveaus in gewone taal betekenen.</p>
+<div class="section" style="margin-bottom:8px"><h3>1 Waardegerichte analyse vanuit organisatiedoelen, stakeholders en facilitaire context</h3></div>
+<div class="table-wrap"><table class="compact wide"><thead><tr><th>Onvoldoende</th><th>Voldoende</th><th>Goed</th></tr></thead><tbody><tr><td>De koppeling met de organisatie en met FM is oppervlakkig, onvolledig of los zand. People, Process en Place komen maar deels aan bod.</td><td>Het advies is herkenbaar verbonden met organisatiedoelen, facilitaire context en beoogde waarde. De 3P komen grotendeels relevant terug, maar niet overal even scherp.</td><td>Elke keuze is consequent beredeneerd vanuit organisatiedoelen, de positie van FM en de belangen van stakeholders. De beoogde waarde voor People, Process en Place is scherp en stuurt alle keuzes.</td></tr></tbody></table></div>
+<div class="highlight">Het verschil tussen voldoende en goed: bij voldoende staat de analyse vooraan en volgt het advies er ongeveer uit. Bij goed kun je bij élke technologie aanwijzen welk organisatiedoel, welk waardedoel en welke stakeholder haar rechtvaardigen. De 3P zijn geen opsomming, maar de maatstaf voor alle keuzes.</div>
+<div class="section" style="margin-bottom:8px"><h3>2 Onderbouwing van de geadviseerde technologieën</h3></div>
+<div class="table-wrap"><table class="compact wide"><thead><tr><th>Onvoldoende</th><th>Voldoende</th><th>Goed</th></tr></thead><tbody><tr><td>Er is enige onderbouwing, maar die is beperkt, vooral beschrijvend of niet overtuigend gekoppeld aan waardecreatie.</td><td>De meeste geadviseerde technologieën zijn logisch gekozen en onderbouwd met relevante argumenten over de bijdrage aan organisatie en FM. De redenering is overwegend navolgbaar.</td><td>De technologieën zijn doelgericht geselecteerd en sterk onderbouwd vanuit hun bijdrage aan de organisatie en de facilitaire organisatie. De redenering is scherp, consistent en duidelijk waarde-gedreven.</td></tr></tbody></table></div>
+<div class="highlight">Het verschil: voldoende legt uit wat een technologie kan. Goed legt uit waarom juist deze technologie voor juist deze organisatie de meeste waarde levert, consistent met de enquête, de benchmark en de adviesmatrix, en waarom ze beter is dan alternatieven.</div>
+<div class="section" style="margin-bottom:8px"><h3>3 Onderbouwing van de niet-geadviseerde technologieën en alternatieve situaties</h3></div>
+<div class="table-wrap"><table class="compact wide"><thead><tr><th>Onvoldoende</th><th>Voldoende</th><th>Goed</th></tr></thead><tbody><tr><td>Afgewezen technologieën worden genoemd, maar de afwijzing is mager onderbouwd. De situatie waarin het wel zou werken is vaag, weinig passend of niet facilitair.</td><td>Voor meerdere afgewezen technologieën is onderbouwd waarom ze nu niet passen, met een plausibele facilitaire situatie waarin ze wel waardevol zijn.</td><td>Overtuigend duidelijk waarom bepaalde technologieën in deze context niet passen, met per technologie een scherpe, realistische facilitaire situatie waarin ze wél waarde hebben.</td></tr></tbody></table></div>
+<div class="highlight">Het verschil: voldoende doet het voor meerdere technologieën, goed voor elke afgewezen technologie, en de alternatieve situatie is concreet en facilitair (welk type organisatie, welk proces, welk probleem). Eén standaardzin als 'te duur' voor alles haalt dit niet.</div>
+<div class="section" style="margin-bottom:8px"><h3>4 Concretisering van de inzet binnen de facilitaire organisatie</h3></div>
+<div class="table-wrap"><table class="compact wide"><thead><tr><th>Onvoldoende</th><th>Voldoende</th><th>Goed</th></tr></thead><tbody><tr><td>Globaal beschreven hoe de technologie wordt ingezet; het gebruik binnen FM is niet concreet of praktisch uitgewerkt.</td><td>Duidelijk hoe de technologie binnen FM wordt ingezet, met relevante onderdelen, gegevens, stappen of gebruikswijzen. Grotendeels concreet en uitvoerbaar.</td><td>Zeer concreet en realistisch: hoe de technologie wordt ingezet, welke functionele inhoud of onderdelen nodig zijn en hoe medewerkers de toepassing in de praktijk benutten.</td></tr></tbody></table></div>
+<div class="highlight">Het verschil: voldoende beschrijft het systeem en de stappen. Goed laat ook zien wat de schoonmaker, de servicedeskmedewerker of de gebruiker er dagelijks mee doet, welke data en onderdelen daarvoor nodig zijn, en hoe je begint (pilot, planning, middelen, randvoorwaarden).</div>
+<div class="section" style="margin-bottom:8px"><h3>5 Afweging van risico's, uitdagingen, ethiek en duurzaamheid</h3></div>
+<div class="table-wrap"><table class="compact wide"><thead><tr><th>Onvoldoende</th><th>Voldoende</th><th>Goed</th></tr></thead><tbody><tr><td>Deze aspecten worden deels genoemd, maar beperkt uitgewerkt of niet consequent gekoppeld aan de keuze om een technologie wel of niet in te zetten.</td><td>Relevante risico's, uitdagingen, ethische aspecten en duurzaamheid komen herkenbaar terug in de afweging. De koppeling met het advies is grotendeels logisch.</td><td>Risico's, uitdagingen, ethiek en duurzaamheid zijn scherp en evenwichtig verwerkt en aantoonbaar meegewogen in de keuze voor alle behandelde technologieën.</td></tr></tbody></table></div>
+<div class="highlight">Het verschil: voldoende noemt de juiste risico's. Goed laat zien hoe die risico's de adviesstatus hebben bepaald, voor álle behandelde technologieën, dus ook de afgewezen. Evenwichtig betekent: risico's afgewogen tegen de waarde, met maatregelen erbij.</div>
+  </div>
+</div>
+
+<div class="card" id="t3">
+  <div class="card-header h2"><span class="icon">🎤</span><h2>Wat er in de presentatie moet</h2><span class="card-bron">Les 1 toetsvorm, Les 7</span></div>
+  <div class="card-body">
+<ol class="clean" style="margin-bottom:10px"><li>Kort de organisatie, de doelstellingen, de stakeholders en de facilitaire context.</li><li>Welke technologieën toegevoegde waarde kunnen bieden.</li><li>Hoe deze technologieën waarde creëren en hoe ze effectief worden ingezet.</li><li>De risico's, uitdagingen en ethische implicaties, en de gevolgen voor duurzaamheid.</li></ol>
+<p class="p">De kick-off vraagt daarnaast dat je laat zien in hoeverre de technologieën aansluiten bij de organisatiedoelen, wat de relatie is met de rol van FM, welke stakeholders betrokken zijn en wat hun belang is, en welke waarde er ontstaat voor People, Process en Place. Je baseert je argumentatie op data en inzichten uit de afgenomen enquête.</p>
+<div class="warn">De niet-geadviseerde technologieën staan niet in de opzet van de 15 minuten, maar komen in het adviesgesprek zeker aan bod en hebben een eigen rubriccriterium. Zorg dat je adviesmatrix klaarligt en dat iedereen per afgewezen technologie de reden en de alternatieve situatie kan noemen.</div>
+<div class="box"><h4>Een opbouw die op de rubric aansluit</h4><ul class="clean"><li>Organisatie en context: doelen, stakeholders, positie van FM, top drie waardedoelen (criterium 1).</li><li>Waar staat de organisatie: spinnenweb tegenover de gekozen benchmarkgroep en de belangrijkste conclusie (criterium 1).</li><li>Het advies in één beeld: de adviesmatrix met per technologie het eindoordeel (criteria 2 en 3).</li><li>De geadviseerde technologie(ën): waarom deze, welke waarde voor People, Process en Place (criterium 2).</li><li>Zo werkt het in de praktijk: data, onderdelen, stappen, wie gebruikt het en hoe begin je (criterium 4).</li><li>Risico's, ethiek en duurzaamheid en hoe die het advies hebben gevormd (criterium 5).</li></ul></div>
+  </div>
+</div>
+
+<div class="card" id="t4">
+  <div class="card-header h2"><span class="icon">📘</span><h2>De brochure en de toetsing</h2><span class="card-bron">Cursusopbouw, Les 5 en 6, Les 7, format brochure</span></div>
+  <div class="card-body">
+<p class="p">De brochure is een invulbaar technologieadvies voor je opdrachtgever in zes hoofdstukken: inleiding en leeswijzer, adoptiemodel, benchmark Nederland, positionering in de zes lagen, technologieanalyses met adviesmatrix, en conclusie en adviesrichting. Je levert hem in week 7 in, stuurt hem aan het einde van les 7 naar de opdrachtgever en voegt hem toe aan de beoordeling in HandIn.</p>
+<p class="p">Les 5 en 6 noemen als oplevering 'ingevulde brochure + eindpresentatie voor de beoordeling', en alles wat je in de brochure onderbouwt komt terug in de presentatie. De rubric zelf heeft geen apart criterium voor de brochure: de vijf criteria gaan over het advies zoals je het presenteert en verdedigt.</p>
+<div class="warn">Of de brochure een eigen cijfer of eigen eisen heeft, staat niet in de bronnen (TE VERIFIËREN bij de docent). Behandel hem in elk geval als het fundament: docenten kunnen in het adviesgesprek vragen stellen over wat erin staat, zoals de adviesmatrix of de positionering.</div>
+  </div>
+</div>
+
+<div class="card" id="t5">
+  <div class="card-header h2"><span class="icon">✅</span><h2>Voorbereidingschecklist</h2><span class="card-bron">Les 5 en 6, Les 7, rubric</span></div>
+  <div class="card-body">
+<div class="section" style="margin-bottom:8px"><h3>Inhoud</h3></div>
+<ul class="clean" style="margin-bottom:10px"><li>De organisatie is gepositioneerd in alle zes lagen, met de top drie waardedoelen benoemd per P.</li><li>Er is een spinnenweb met een verantwoorde vergelijkingsgroep en een conclusie over wat het verschil betekent.</li><li>Elke technologie heeft de zeven onderdelen uitgewerkt: context, waarde voor doelen, stakeholders, onderbouwing, concretisering, risico's/ethiek/duurzaamheid en adviesstatus.</li><li>De adviesmatrix is ingevuld op alle zeven criteria en elke technologie heeft een eindoordeel.</li><li>Bij elke 'voorwaardelijk' staan concrete voorwaarden; bij elke 'niet adviseren' een realistische facilitaire situatie waarin het wel werkt.</li><li>Voor de geadviseerde technologie is uitgewerkt welke data, onderdelen en stappen nodig zijn en hoe medewerkers ermee werken.</li><li>Risico's, ethiek en duurzaamheid zijn per technologie gekoppeld aan de adviesstatus, met maatregelen.</li><li>Inzichten uit de workshops (uitleg, praktijkvoorbeelden, voor- en nadelen) zijn verwerkt.</li></ul>
+<div class="section" style="margin-bottom:8px"><h3>Presentatie en gesprek</h3></div>
+<ul class="clean" style="margin-bottom:10px"><li>De presentatie past in 15 minuten en volgt de vier onderdelen uit les 7.</li><li>Iedereen kan het hele advies in eigen woorden uitleggen, ook de onderdelen die een ander heeft uitgewerkt.</li><li>Iedereen kan voor elke afgewezen technologie de reden en de alternatieve situatie noemen.</li><li>Jullie hebben elkaar overhoord met vragen per rubriccriterium (zie de oefening adviesgesprek).</li><li>De presentatie is geoefend, inclusief overgangen tussen sprekers.</li></ul>
+<div class="section" style="margin-bottom:8px"><h3>Administratie</h3></div>
+<ul class="clean" style="margin-bottom:10px"><li>Ingeschreven voor de toets in Osiris.</li><li>Beoordeling aangemaakt in HandIn, groep aangemaakt, brochure toegevoegd.</li><li>Brochure verstuurd naar de opdrachtgever.</li></ul>
+  </div>
+</div>
+
+<div class="card" id="t6">
+  <div class="card-header h2"><span class="icon">💬</span><h2>Vragen die je kunt verwachten</h2><span class="card-bron">Rubric, Les 7</span></div>
+  <div class="card-body">
+<p class="p">De bronnen geven geen lijst met gespreksvragen, maar de rubric en les 7 maken duidelijk waar het gesprek over gaat. Deze vragen volgen de vijf criteria; in de oefening adviesgesprek staan ze uitgewerkt met modelantwoorden.</p>
+<div class="table-wrap"><table class="compact"><thead><tr><th>Criterium</th><th>Voorbeeldvragen</th></tr></thead><tbody><tr><td>1 Waardegerichte analyse</td><td>Wat zijn de belangrijkste doelen van de organisatie? Op welke P focust ze en waaruit blijkt dat? Met welke groep hebben jullie vergeleken en waarom? Welke stakeholder heeft het meeste belang bij jullie advies?</td></tr><tr><td>2 Geadviseerde technologie</td><td>Waarom deze technologie en niet een andere? Welke technologie zou de organisatie als eerste moeten invoeren en waarom? Hoe past dit bij het adoptievermogen?</td></tr><tr><td>3 Niet-geadviseerde technologie</td><td>Waarom adviseren jullie IoT, robotica of BIM niet? In welke facilitaire situatie zou het wel waarde hebben? Is 'te duur' genoeg?</td></tr><tr><td>4 Concretisering</td><td>Welke data heb je nodig? Wat zijn de eerste drie stappen? Hoe merkt een medewerker dat dit is ingevoerd? Wie is eigenaar?</td></tr><tr><td>5 Risico's, ethiek, duurzaamheid</td><td>Welk ethisch dilemma speelt? Hoe hebben jullie privacy meegewogen? Is het advies duurzaam? Welk risico zou jullie advies veranderen?</td></tr></tbody></table></div>
+<div class="highlight">Een sterk antwoord in het gesprek heeft steeds dezelfde vorm: keuze, reden vanuit de organisatie (doel, waarde, stakeholder), bewijs uit enquête of benchmark, en de afweging met risico's of voorwaarden.</div>
+  </div>
+</div>
+</div>
+
+<footer class="fa-site-footer">
+  <span>FM Atlas · gratis studiehulp voor HAN Facilitair Management, gemaakt door een student</span>
+  <span>Niet officieel verbonden aan de HAN · <a href="privacy.html">Privacy</a> · <a href="app.html#contact">Fout gezien?</a></span>
+</footer>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+<script src="js/fmatlas.js"></script>
+<script>
+const firebaseConfig = {
+  apiKey: "AIzaSyBB397Wk2eqpBjic8E7aGV1mTgIjhQ21a8",
+  authDomain: "fmkompas-ff8bc.firebaseapp.com",
+  projectId: "fmkompas-ff8bc",
+  storageBucket: "fmkompas-ff8bc.firebasestorage.app",
+  messagingSenderId: "487972024689",
+  appId: "1:487972024689:web:712c3117080745d14746d0"
+};
+firebase.initializeApp(firebaseConfig);
+firebase.auth().onAuthStateChanged(user => {
+  document.getElementById('fa-header-slot').innerHTML = '';
+  faMarkActiveToday();
+  document.getElementById('fa-header-slot').appendChild(faRenderHeader({ user }));
+  faMarkLastSeen('fm-tech','FM Tech','fm-tech.html');
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Samenvatting · FM Tech — FM Atlas</title>
+<link rel="icon" type="image/svg+xml" href="logo.svg"/>
+<meta name="theme-color" content="#f7f3ec"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="css/fmatlas.css"/>
+<style>
+.sam-wrap { max-width: 1100px; margin: 0 auto; padding: 24px; }
+.sam-intro { background: var(--surface); border: 1.5px solid var(--line); border-radius: var(--radius-xl); padding: 28px 32px; margin-bottom: 18px; }
+.sam-intro-meta { font-size: 11px; font-weight: 800; color: var(--accent); letter-spacing: 0.08em; margin-bottom: 8px; }
+.sam-intro h1 { font-size: 32px; font-weight: 900; letter-spacing: -0.025em; line-height: 1.08; margin-bottom: 10px; }
+.sam-intro p { color: var(--ink-soft); font-size: 14.5px; line-height: 1.6; }
+
+nav.chapnav { background: var(--surface); border: 1.5px solid var(--line); border-radius: var(--radius-lg); padding: 12px 16px; margin: 0 24px 18px; max-width: 1052px; margin-left: auto; margin-right: auto; display: flex; flex-wrap: wrap; gap: 6px; position: sticky; top: 68px; z-index: 20; }
+nav.chapnav a { color: var(--ink-soft); text-decoration: none; padding: 4px 10px; border-radius: 8px; background: var(--bg); font-weight: 800; font-size: 11.5px; border: 1.5px solid var(--line); transition: all 0.12s; }
+nav.chapnav a:hover { background: var(--accent-soft); color: var(--accent-deep); border-color: var(--accent); }
+
+.main { max-width: 1052px; margin: 0 auto; padding: 0 24px 60px; display: flex; flex-direction: column; gap: 18px; }
+
+.card { background: var(--surface); border: 1.5px solid var(--line); border-radius: var(--radius-xl); overflow: hidden; scroll-margin-top: 140px; }
+.card-header { padding: 16px 22px; display: flex; align-items: center; gap: 10px; color: var(--surface); background: var(--ink); }
+.card-header h2 { font-size: 17px; font-weight: 900; letter-spacing: -0.015em; }
+.card-header .icon { font-size: 20px; }
+.card-body { padding: 22px 24px; }
+
+.h1 { background: var(--accent); }
+.h2, .h3, .h4 { background: var(--ink); }
+
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+@media (max-width: 740px) { .two-col, .three-col { grid-template-columns: 1fr; } }
+
+.section { margin-bottom: 18px; }
+.section h3 { font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin-bottom: 8px; padding-bottom: 6px; border-bottom: 1.5px solid var(--line); }
+
+ul.clean { list-style: none; display: flex; flex-direction: column; gap: 5px; margin: 0; padding: 0; }
+ul.clean li { font-size: 13.5px; line-height: 1.55; padding: 3px 0 3px 16px; position: relative; color: var(--ink-soft); font-weight: 500; }
+ul.clean li::before { content: '›'; position: absolute; left: 0; top: 3px; color: var(--accent); font-weight: 900; }
+ul.clean li strong { color: var(--ink); font-weight: 800; }
+
+.defbox { background: var(--bg); border: 1.5px solid var(--line); border-left: 4px solid var(--accent); border-radius: 0 var(--radius) var(--radius) 0; padding: 10px 14px; margin-bottom: 10px; font-size: 13.5px; line-height: 1.55; color: var(--ink-soft); }
+.defbox strong { display: block; font-size: 10.5px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); margin-bottom: 4px; }
+
+.highlight { background: var(--accent-soft); border: 1.5px solid rgba(239, 90, 63, 0.25); border-radius: var(--radius); padding: 10px 14px; font-size: 13.5px; line-height: 1.55; margin-bottom: 10px; color: var(--accent-deep); font-weight: 600; }
+.highlight strong { color: var(--accent-deep); font-weight: 900; }
+
+.warn { background: #fff7ed; border-left: 3px solid #f59e0b; padding: 9px 14px; border-radius: 0 var(--radius) var(--radius) 0; font-size: 12.5px; color: #92400e; margin-bottom: 10px; font-weight: 600; }
+
+.tag { display: inline-block; padding: 2px 8px; border-radius: 999px; font-size: 11px; font-weight: 800; }
+.blue   { background: #dbeafe;  color: #1e40af; }
+.green  { background: #dcfce7;  color: #166534; }
+.purple { background: #ede9fe;  color: #5b21b6; }
+.orange { background: #ffedd5;  color: #9a3412; }
+.red    { background: #fee2e2;  color: #991b1b; }
+.yellow { background: #fef3c7;  color: #854d0e; }
+
+.box { background: var(--bg); border: 1.5px solid var(--line); border-radius: var(--radius); padding: 12px 14px; }
+.box h4 { font-size: 12.5px; font-weight: 900; margin-bottom: 8px; color: var(--ink); letter-spacing: -0.005em; }
+
+.nummer { display: inline-flex; align-items:center; justify-content:center; background: var(--accent); color: var(--surface); width: 22px; height: 22px; border-radius: 50%; font-size: 11px; font-weight: 900; margin-right: 8px; flex-shrink: 0; }
+.stap { display: flex; align-items: flex-start; gap: 4px; font-size: 13.5px; color: var(--ink-soft); padding: 4px 0; line-height: 1.5; }
+.stap strong { color: var(--ink); }
+
+table.compact { width: 100%; border-collapse: collapse; font-size: 12.5px; margin-top: 6px; }
+table.compact th, table.compact td { padding: 7px 10px; text-align: left; border-bottom: 1.5px solid var(--line); color: var(--ink-soft); }
+table.compact th { font-size: 10.5px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+table.compact td strong { color: var(--ink); font-weight: 800; }
+.p { font-size: 13.5px; color: var(--ink-soft); line-height: 1.6; margin-bottom: 10px; }
+.p strong { color: var(--ink); }
+.box { margin-bottom: 10px; }
+.box p { font-size: 13px; color: var(--ink-soft); margin: 0; line-height: 1.55; }
+.card-bron { margin-left: auto; font-size: 10.5px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; opacity: 0.7; }
+.table-wrap { overflow-x: auto; margin-bottom: 10px; }
+ol.clean { counter-reset: n; list-style: none; display: flex; flex-direction: column; gap: 5px; margin: 0; padding: 0; }
+ol.clean li { counter-increment: n; font-size: 13.5px; line-height: 1.55; padding: 3px 0 3px 22px; position: relative; color: var(--ink-soft); font-weight: 500; }
+ol.clean li::before { content: counter(n) '.'; position: absolute; left: 0; top: 3px; color: var(--accent); font-weight: 900; font-size: 12.5px; }
+ol.clean li strong { color: var(--ink); font-weight: 800; }
+.sam-note { background: var(--surface); border: 1.5px dashed var(--line); border-radius: var(--radius-lg); padding: 14px 18px; font-size: 13px; color: var(--ink-soft); line-height: 1.55; margin-bottom: 18px; }
+@media (max-width: 760px) { table.compact.wide { min-width: 560px; } .two-col { grid-template-columns: 1fr; } .card-body { padding: 18px 16px; } .sam-intro { padding: 22px 18px; } .sam-intro h1 { font-size: 26px; } nav.chapnav { position: static; margin: 0 16px 16px; } .main { padding: 0 16px 48px; } .sam-wrap { padding: 16px; } }
+</style>
+</head>
+<body>
+
+<div id="fa-header-slot"></div>
+
+<nav class="fa-breadcrumb">
+  <a href="app.html">Vakken</a>
+  <span>›</span>
+  <a href="fm-tech.html">FM Tech</a>
+  <span>›</span>
+  <span class="current">Samenvatting</span>
+</nav>
+
+<div class="sam-wrap">
+  <div class="sam-intro">
+    <div class="sam-intro-meta">SAMENVATTING · 12 onderdelen · ±35 min lezen</div>
+    <h1>FM Tech: studiesamenvatting</h1>
+    <p>FM Tech draait om één vraag: welke facilitaire technologie past écht bij jouw praktijkorganisatie, en welke niet? Je beantwoordt die met het FM waarde-gedreven technologieadoptiemodel (zes lagen, van context tot gerealiseerde waarde), met een enquête die je vergelijkt met de landelijke Trendmonitor Technologie in FM 2026, en met de kennis uit workshops die je zelf geeft en volgt. Alles komt samen in een brochure voor je opdrachtgever en een eindpresentatie met adviesgesprek. De rode draad in elke les: denk waardegericht, niet technologiegericht. Technologie is een middel, waarde voor People, Process en Place is het doel.</p>
+  </div>
+  <div class="sam-note"><strong>Waar dit op gebaseerd is:</strong> De dia's van les 1 (kick-off), 2 (benchmark), 3 (workshop privacy en dataveiligheid en workshopontwerp), 5 en 6 en 7, de technologiekaartjes, de vier casussen, de enquête, het brochureformat, de invulformulieren en de cursusinformatie met rubric en trendmonitor op Brightspace, stand 7 oktober 2026.<br><strong>Wat er (nog) niet in zit:</strong> Week 4 (excursie naar Planon) heeft geen lesmateriaal op Brightspace, en de inhoud van de studentenworkshops in week 5 en 6 staat er ook niet op. De interactieve trendmonitor bevat veel grafieken waarvan de cijfers niet in de tekst staan; alleen de cijfers uit de dia's van les 2 zijn gebruikt.</div>
+</div>
+
+<nav class="chapnav">
+  <a href="#s1">Kick-off: waar het vak over gaat</a>
+  <a href="#s2">Het waarde-gedreven technologieadoptiemodel</a>
+  <a href="#s3">People, Process en Place</a>
+  <a href="#s4">De technologieën en de kaartjes</a>
+  <a href="#s5">Het modelspel en de vier casussen</a>
+  <a href="#s6">De benchmark en de Trendmonitor 2026</a>
+  <a href="#s7">De enquête</a>
+  <a href="#s8">Privacy, dataveiligheid en social engineering</a>
+  <a href="#s9">Hoe maak je een workshop</a>
+  <a href="#s10">Workshop-input verwerken tot advies</a>
+  <a href="#s11">De brochure en de eindpresentatie</a>
+  <a href="#s12">Risico's, ethiek en duurzaamheid</a>
+</nav>
+
+<div class="main">
+<div class="card" id="s1">
+  <div class="card-header h1"><span class="icon">🚀</span><h2>Kick-off: waar het vak over gaat</h2><span class="card-bron">Les 1 kick-off, cursusinformatie</span></div>
+  <div class="card-body">
+<p class="p">Je werkt in dezelfde groep als in het Business Management-project en onderzoekt bij jullie praktijkorganisatie welke FM-technologieën wel of niet passen. Het vak wil dat je technologieën <strong>herkent en vergelijkt</strong>, een technologie <strong>onderbouwd kiest of afwijst</strong>, en <strong>adviseert over de implementatie</strong>. Kort gezegd: niet alleen technologie kennen, maar bepalen welke oplossing echt past.</p>
+<div class="section" style="margin-bottom:8px"><h3>De vijf leerdoelen</h3></div>
+<ol class="clean" style="margin-bottom:10px"><li>Een waardegerichte analyse maken van de organisatie en de facilitaire context: behoeften, processen en belangen van stakeholders.</li><li>De keuze voor specifieke facilitaire technologieën onderbouwen met argumenten uit de organisatiebehoeften en context.</li><li>Uitleggen waarom je bepaalde technologieën niet adviseert en alternatieve toepassingssituaties benoemen.</li><li>Concreet aangeven hoe geadviseerde technologieën worden ingezet, inclusief praktische implementatiestappen.</li><li>Risico's, uitdagingen, ethische overwegingen en duurzaamheid afwegen.</li></ol>
+<div class="highlight">Deze vijf leerdoelen zijn precies de vijf criteria van de rubric waarmee je eindpresentatie en adviesgesprek worden beoordeeld. Alles wat je in het vak doet, werkt daarnaartoe.</div>
+<div class="section" style="margin-bottom:8px"><h3>Opbouw van de acht weken</h3></div>
+<div class="table-wrap"><table class="compact"><thead><tr><th>Week</th><th>Wat er gebeurt</th></tr></thead><tbody><tr><td>1</td><td>Kick-off, uitleg van het waarde-gedreven technologieadoptiemodel, het modelspel en de verdeling van de workshops</td></tr><tr><td>2</td><td>Enquête afnemen bij de praktijkorganisatie en de benchmark: eigen resultaten naast de landelijke trendmonitor</td></tr><tr><td>3</td><td>Workshop privacy en dataveiligheid (OSINT) en hoe je een goede workshop maakt</td></tr><tr><td>4</td><td>Excursie naar Planon en concretisering van de eigen workshop</td></tr><tr><td>5 en 6</td><td>Studentenworkshops: drie per week, elk over één technologie</td></tr><tr><td>7</td><td>Voorbereiding eindpresentatie en inleveren van de brochure</td></tr><tr><td>8</td><td>Eindpresentaties (eerste tentamenweek)</td></tr></tbody></table></div>
+<div class="box"><h4>Wat je oplevert</h4><ul class="clean"><li>Een ingevulde enquête van de opdrachtgever en een benchmarkvergelijking met spinnenweb.</li><li>Een workshop van 45 minuten over één technologie, voor medestudenten.</li><li>Een brochure met technologieadvies voor de opdrachtgever.</li><li>Een eindpresentatie van 15 minuten met aansluitend een adviesgesprek van 30 minuten.</li></ul></div>
+  </div>
+</div>
+
+<div class="card" id="s2">
+  <div class="card-header h2"><span class="icon">🪜</span><h2>Het waarde-gedreven technologieadoptiemodel</h2><span class="card-bron">Les 1 kick-off, trendmonitor, Les 5 en 6</span></div>
+  <div class="card-body">
+<div class="defbox"><strong>FM waarde-gedreven technologieadoptiemodel</strong>Model met zes lagen dat technologie-adoptie als samenhangend systeem ziet. Context en strategie vormen de start, waarde-intenties bepalen de keuzes, adoptievermogen bepaalt of technologie in de praktijk werkt, en de gerealiseerde waarde stuurt nieuwe keuzes.</div>
+<div class="table-wrap"><table class="compact wide"><thead><tr><th>Laag</th><th>Kernvraag</th><th>Waar je naar kijkt</th></tr></thead><tbody><tr><td>1 Context &amp; stakeholders</td><td>Wie zijn we, waar staan we en wie spelen er mee?</td><td>Drijfveren (wensen van medewerkers, externe ontwikkelingen, reorganisatie, duurzaamheid) en belemmeringen (kosten, kennis, regels, privacy, weerstand)</td></tr><tr><td>2 Strategische positionering</td><td>Wat is onze rol als FM en hoe sluiten we aan op de strategie?</td><td>Is FM betrokken bij de strategie, past de FM-strategie bij de organisatiedoelen, heeft FM mandaat, budget en middelen, ziet het management FM als strategische partner?</td></tr><tr><td>3 Waarde-intentie (3P)</td><td>Welke waarde willen we leveren voor People, Process en Place?</td><td>De doelen voor de komende 12 maanden en de top drie; daaruit blijkt op welke P de organisatie focust</td></tr><tr><td>4 Adoptievermogen &amp; capabilities</td><td>Wat hebben we al in huis en wat moeten we nog ontwikkelen?</td><td>Data en IT, organisatie en governance, mensen en vaardigheden</td></tr><tr><td>5 Technologie &amp; oplossingen</td><td>Welke tools, systemen of innovaties helpen ons onze doelen te bereiken?</td><td>Welke technologieën worden gebruikt of verkend, en in welke fase: verkennen, pilot, operationeel of geïntegreerd</td></tr><tr><td>6 Gerealiseerde waarde (3P)</td><td>Wat levert het op voor mensen, processen en plaatsen? Meten we wat echt belangrijk is?</td><td>Bereikte verbeteringen in de afgelopen 12 maanden, vergeleken met de ambities uit laag 3</td></tr></tbody></table></div>
+<p class="p">De lagen bouwen op elkaar voort. Eerst kijk je naar de context en de gewenste strategische bijdrage van FM, daarna naar de gewenste waarde. Pas dan komen adoptievermogen en technologiekeuzes in beeld. Via een <strong>feedbacklus</strong> beïnvloedt de waarde uit laag 6 weer de strategische positie van FM en de volgende keuzes.</p>
+<div class="warn">Laag 3 en laag 6 lijken op elkaar maar zijn verschillend. Laag 3 is <strong>ambitie</strong> en kijkt 12 maanden vooruit. Laag 6 is wat er de afgelopen 12 maanden <strong>bereikt</strong> is. De dia's noemen laag 6 'gerealiseerde waarde', de trendmonitor 'gepercipieerde waarde': het is de waarde die de respondent zelf toekent, geen objectieve meting.</div>
+<div class="section" style="margin-bottom:8px"><h3>Adoptievermogen in drie onderdelen</h3></div>
+<div class="table-wrap"><table class="compact"><thead><tr><th>Onderdeel</th><th>Vragen uit de enquête</th></tr></thead><tbody><tr><td>Data en IT</td><td>Betrouwbare en actuele data over gebouwen en diensten, geïntegreerde systemen, IT-ondersteuning bij implementatie, data-analysecapaciteit</td></tr><tr><td>Organisatie en governance</td><td>Duidelijk eigenaarschap van technologieprojecten, ervaring met projectmanagement en veranderen, cultuur die openstaat voor innovatie, regelmatig pilots</td></tr><tr><td>Mensen en skills</td><td>Digitale vaardigheden van FM-medewerkers, training en ondersteuning, positieve houding tegenover vernieuwing, kennis van FM-technologie in huis</td></tr></tbody></table></div>
+<div class="box"><h4>Voorbeeld uit les 1: schoonmaak- en werkplekbeheer bij KPN</h4><ul class="clean"><li>Laag 1: drie kantoorlocaties, toenemende klachten over schoonmaak en werkplekken door een tekort aan schoonmaakpersoneel. Meldingen gaan via mail of telefoon, er is geen realtime inzicht en het beheer is reactief. Stakeholders: medewerkers, facilitair team, schoonmaakpartner, HR, Finance en IT.</li><li>Laag 2: FM wil van operationele uitvoerder naar regisseur van beleving en efficiëntie. De organisatie wil hybride werken en medewerkerstevredenheid verbeteren; FM wordt enabler van die strategie.</li><li>Laag 3: People: snellere afhandeling van meldingen en hogere tevredenheid. Process: van mailmeldingen naar app-based ticketing en automatische taaktoewijzing. Place: schonere werkplekken en realtime inzicht in bezetting en schoonmaakstatus.</li><li>Laag 4: aanwezig zijn een schoonmaakcontract, een basis-servicedesk en een office management team. Nodig zijn een ticketing-app of IoT-sensoren, data-analysecapaciteit, een nieuwe planningswerkwijze en training van medewerkers.</li><li>Laag 5: een FM-platform (IWMS/FMIS), IoT-sensoren in drukke ruimtes en een dashboard voor FM en schoonmaakpartner.</li><li>Laag 6 (voorbeeldcijfers uit de les): 20 procent hogere tevredenheid, 40 procent snellere responstijd, 30 procent minder onnodige schoonmaakrondes, meetbaar schonere sanitaire ruimtes en betere benutting van vergaderruimtes.</li></ul></div>
+<div class="highlight">Het voorbeeld laat de logica zien die je ook in je advies moet volgen: het probleem en de strategie bepalen de gewenste waarde, en pas daarna kies je technologie die precies die waarde levert. Elke technologie in laag 5 is terug te voeren op een doel in laag 3.</div>
+  </div>
+</div>
+
+<div class="card" id="s3">
+  <div class="card-header h2"><span class="icon">🎯</span><h2>People, Process en Place</h2><span class="card-bron">Les 1, Les 5 en 6, enquête</span></div>
+  <div class="card-body">
+<p class="p">Waarde beoordeel je in FM Tech altijd vanuit drie perspectieven, de 3P. Les 5 en 6 vat ze kort samen: <strong>People</strong> gaat over medewerkers, gebruikers en bezoekers, <strong>Process</strong> over efficiëntie, kwaliteit en sturing, <strong>Place</strong> over gebouw, ruimte en beleving. De enquête maakt het concreet met twaalf waardedoelen.</p>
+<div class="table-wrap"><table class="compact wide"><thead><tr><th>People</th><th>Process</th><th>Place</th></tr></thead><tbody><tr><td>Medewerkerstevredenheid en -ervaring verbeteren</td><td>Efficiency verhogen en kosten besparen</td><td>Gebouwprestaties verbeteren (technisch, functioneel)</td></tr><tr><td>Productiviteit van medewerkers en gebruikers verhogen</td><td>Betrouwbaarheid en kwaliteit van de dienstverlening verbeteren</td><td>Duurzaamheids- en energiedoelstellingen realiseren</td></tr><tr><td>Gezondheid, welzijn en veiligheid van gebruikers bevorderen</td><td>Processen en reactietijd versnellen</td><td>Flexibiliteit in ruimtegebruik creëren (bijvoorbeeld hybride werken)</td></tr><tr><td>Klantervaring verbeteren</td><td>Compliance en naleving van wet- en regelgeving borgen</td><td>Veiligheid en beveiliging van het vastgoed verhogen</td></tr></tbody></table></div>
+<div class="warn">Let op de verdeling van veiligheid: gezondheid, welzijn en veiligheid <em>van gebruikers</em> valt onder People, veiligheid en beveiliging <em>van het vastgoed</em> onder Place. Compliance is Process, duurzaamheid en energie is Place.</div>
+<p class="p">In laag 3 kiest de organisatie haar drie belangrijkste waardedoelen. Zie je bijvoorbeeld vooral Process-doelen terug, dan stuurt dat je advies naar technologieën die processen versnellen en standaardiseren. In de enquête geeft de respondent bovendien per technologie het primaire waardedoel aan; zo zie je waarvoor de organisatie een technologie zou willen gebruiken.</p>
+<div class="highlight">Voor een goed advies is de beoogde waarde voor People, Process en Place 'scherp, samenhangend en richtinggevend voor alle keuzes' (rubric, niveau goed). Dus: noem niet losjes 'het levert iets op voor People', maar welk waardedoel, voor welke stakeholder, en waarom dat past bij de organisatiedoelen.</div>
+  </div>
+</div>
+
+<div class="card" id="s4">
+  <div class="card-header h2"><span class="icon">🔧</span><h2>De technologieën en de kaartjes</h2><span class="card-bron">Les 1 technologiekaartjes, enquête, brochureformat, Les 2 dia 16</span></div>
+  <div class="card-body">
+<p class="p">Het vak werkt met zes kerntechnologieën: de zes van de workshops en de technologiekaartjes. De enquête vraagt naar tien technologieën; de vier extra zijn 3D printing/scanning, XR (AR/VR), biometrie en blockchain. AR/VR staat ook in de cursusbeschrijving, maar volgens de docentnotities vervalt die workshop als er geen VR-brillen zijn.</p>
+<div class="table-wrap"><table class="compact wide"><thead><tr><th>Technologie</th><th>Wat is het?</th><th>Wat kan het binnen FM?</th><th>Voorbeeld van het kaartje</th></tr></thead><tbody><tr><td>Data-gedreven FM</td><td>Beslissingen nemen op basis van data in plaats van alleen ervaring of gevoel (analytics, dashboards, rapportages, big data)</td><td>Bezettingsgraad analyseren, onderhoud voorspellen en slimmer plannen, energieverbruik monitoren, KPI's en prestaties van leveranciers volgen</td><td>Sensordata laat zien dat een vergaderruimte nauwelijks wordt gebruikt; FM kan de ruimte anders inzetten of vrijmaken</td></tr><tr><td>IoT</td><td>Apparaten en sensoren die gegevens verzamelen en delen (sensoren, slimme meters, apparaatmonitoring)</td><td>Slimme gebouwinstallaties aansturen, temperatuur, luchtkwaliteit en bezetting meten, storingen automatisch signaleren, schoonmaak en onderhoud koppelen aan werkelijk gebruik</td><td>Een sensor meldt dat een toilet veel intensiever wordt gebruikt dan normaal; de schoonmaak wordt gericht ingepland</td></tr><tr><td>AI</td><td>Kunstmatige intelligentie die patronen herkent, voorspelt en helpt bij beslissingen (machine learning, natural language processing, predictive analytics)</td><td>Voorspellend onderhoud, meldingen en FM-vragen automatisch afhandelen, energiegebruik voorspellen, data analyseren en adviezen geven</td><td>Een AI-model voorspelt dat een installatie binnenkort storing geeft; FM plant onderhoud vóór de storing</td></tr><tr><td>Robotica &amp; drones</td><td>Machines die fysieke taken of inspecties uitvoeren met weinig menselijke tussenkomst (schoonmaakrobots, inspectiedrones, geautomatiseerde werktuigen)</td><td>Schoonmaak en vloeronderhoud automatiseren, repetitieve logistieke taken, gebouwen, daken en installaties inspecteren, veilig werken op moeilijk bereikbare plekken</td><td>Een drone inspecteert een dak op schade, zodat een medewerker niet zelf het dak op hoeft</td></tr><tr><td>BIM / digital twins</td><td>Een digitaal model van een gebouw of installatie, gekoppeld aan actuele informatie en soms real-time data</td><td>Gebouwinformatie centraal beschikbaar maken, onderhoud en assetmanagement ondersteunen, ruimtes en installaties visualiseren, scenario's testen vóór een fysieke aanpassing</td><td>FM ziet in een digital twin waar een installatie staat, welke onderdelen erbij horen en wanneer onderhoud gepland is</td></tr><tr><td>IWMS / FMIS</td><td>Software waarin FM-processen, vastgoed, ruimtes, assets, onderhoud en meldingen samenkomen</td><td>Werkorders en meldingen beheren, ruimte- en werkplekbeheer, contracten en leveranciers volgen, assets, onderhoud en kosten inzichtelijk maken</td><td>Een medewerker meldt een defect; de melding gaat automatisch naar de juiste leverancier en FM ziet de voortgang</td></tr></tbody></table></div>
+<div class="section" style="margin-bottom:8px"><h3>Waarde voor People, Process en Place</h3></div>
+<p class="p">De bronnen geven per technologie de toepassingen, niet een kant-en-klare 3P-indeling. Onderstaande koppeling is een redeneerhulp: de toepassingen van de kaartjes gekoppeld aan de waardedoelen uit de enquête. Voor je eigen organisatie kies je de koppelingen die passen bij haar top drie waardedoelen.</p>
+<div class="table-wrap"><table class="compact wide"><thead><tr><th>Technologie</th><th>People</th><th>Process</th><th>Place</th></tr></thead><tbody><tr><td>Data-gedreven FM</td><td>Minder frustratie door beter gestuurde dienstverlening</td><td>Sturen op KPI's van leveranciers, slimmer onderhoud plannen</td><td>Ruimtegebruik en energieverbruik optimaliseren</td></tr><tr><td>IoT</td><td>Gezonder binnenklimaat door meten van temperatuur en luchtkwaliteit</td><td>Storingen automatisch gesignaleerd, schoonmaak op werkelijk gebruik</td><td>Inzicht in bezetting, slimme gebouwinstallaties</td></tr><tr><td>AI</td><td>Snellere antwoorden op FM-vragen</td><td>Meldingen automatisch afhandelen, onderhoud voorspellen</td><td>Energiegebruik voorspellen en optimaliseren</td></tr><tr><td>Robotica &amp; drones</td><td>Veiliger werk: geen medewerker op het dak of op moeilijk bereikbare plekken</td><td>Repetitieve schoonmaak- en logistieke taken automatiseren</td><td>Inspectie van gebouwen, daken en installaties</td></tr><tr><td>BIM / digital twins</td><td>Betere samenwerking tussen afdelingen en leveranciers door één bron van gebouwinformatie</td><td>Onderhoud en assetmanagement ondersteunen</td><td>Ruimtes visualiseren, scenario's testen vóór verbouwing, levenscyclusbeheer</td></tr><tr><td>IWMS / FMIS</td><td>Makkelijk melden en zien wat er met je melding gebeurt</td><td>Werkorders, meldingen, contracten en leveranciers in één systeem</td><td>Ruimte- en werkplekbeheer, reserveringen</td></tr></tbody></table></div>
+<div class="section" style="margin-bottom:8px"><h3>Hoe ver is Nederland per technologie?</h3></div>
+<p class="p">Les 2 laat per technologie zien in welke adoptiefase de organisaties in de benchmark zitten (percentages van de respondenten, afgerond).</p>
+<div class="table-wrap"><table class="compact wide"><thead><tr><th>Technologie</th><th>Niet van toepassing</th><th>Verkennen</th><th>Pilot</th><th>Operationeel</th></tr></thead><tbody><tr><td>Data-gedreven FM</td><td>21</td><td>40</td><td>17</td><td>18</td></tr><tr><td>IoT</td><td>25</td><td>32</td><td>19</td><td>23</td></tr><tr><td>AI</td><td>12</td><td>53</td><td>17</td><td>17</td></tr><tr><td>Robotica &amp; drones</td><td>49</td><td>25</td><td>13</td><td>11</td></tr><tr><td>IWMS</td><td>66</td><td>16</td><td>klein</td><td>11</td></tr><tr><td>BIM &amp; digital twins</td><td>68</td><td>20</td><td>klein</td><td>klein</td></tr><tr><td>3D printing/scanning en biometrie</td><td>82</td><td>klein</td><td>klein</td><td>klein</td></tr><tr><td>Blockchain</td><td>82</td><td>13</td><td>klein</td><td>klein</td></tr><tr><td>XR (VR/AR)</td><td>80</td><td>15</td><td>klein</td><td>klein</td></tr></tbody></table></div>
+<p class="p">Opvallend: AI wordt door de meeste organisaties verkend (53 procent), IoT en data-gedreven FM zijn het vaakst echt in gebruik, en bij IWMS, BIM, 3D printing, biometrie, XR en blockchain is de technologie voor de meerderheid nog niet van toepassing. Geïntegreerd en opgeschaald is bij elke technologie een klein deel.</p>
+<div class="section" style="margin-bottom:8px"><h3>Risico's en aandachtspunten per technologie</h3></div>
+<div class="table-wrap"><table class="compact"><thead><tr><th>Technologie</th><th>Waar het brochureformat op wijst</th></tr></thead><tbody><tr><td>Data-gedreven FM</td><td>Privacy, datakwaliteit, acceptatie, energiegebruik, kosten, afhankelijkheid van leveranciers</td></tr><tr><td>IoT</td><td>Privacy, dataveiligheid, datakwaliteit, energiegebruik; ook het beheer van de sensoren en de gebruikerservaring</td></tr><tr><td>AI</td><td>Bias, transparantie, betrouwbaarheid, menselijke controle, privacy</td></tr><tr><td>Robotica &amp; drones</td><td>Wetgeving, veiligheid, acceptatie door medewerkers en gebruikers, kosten</td></tr><tr><td>BIM / digital twins</td><td>Datakwaliteit, beheer van de digitale modellen, kosten</td></tr><tr><td>IWMS / FMIS</td><td>Implementatiekosten, datakwaliteit, veranderbereidheid en gebruiksvriendelijkheid</td></tr></tbody></table></div>
+<div class="section" style="margin-bottom:8px"><h3>Wanneer wel, wanneer niet?</h3></div>
+<p class="p">Of een technologie past, volgt niet uit de technologie zelf maar uit de lagen van het model. Gebruik deze toetsvragen per technologie:</p>
+<ul class="clean" style="margin-bottom:10px"><li><strong>Laag 3:</strong> levert de technologie een van de top drie waardedoelen van de organisatie? Zo niet, dan is ze voor deze organisatie nu weinig waardevol, hoe modern ook.</li><li><strong>Laag 2:</strong> past ze bij de strategie en het mandaat van FM? Bij een FM-afdeling die als kostenpost wordt gezien, is een dure innovatie zonder duidelijke besparing lastig te verantwoorden.</li><li><strong>Laag 4:</strong> zijn de data, de systemen, het eigenaarschap en de vaardigheden er? Technologieën die op data draaien (data-gedreven FM, AI, digital twins) leunen op data en IT, landelijk het zwakste onderdeel.</li><li><strong>Laag 1:</strong> welke belemmeringen spelen, zoals privacy, weerstand of split incentives?</li><li><strong>Adviesmatrix:</strong> weeg toegevoegde waarde, strategische aansluiting, impact op stakeholders, haalbaarheid, kosten/complexiteit, risico's en duurzaamheid.</li></ul>
+<div class="warn">Bij 'niet adviseren' hoort altijd een situatie waarin de technologie wél waarde heeft, en die moet facilitair-specifiek zijn. Bijvoorbeeld: 'drones zijn niet passend voor een kantoororganisatie op één verdieping, maar wel voor een organisatie met veel grote daken die regelmatig geïnspecteerd moeten worden'.</div>
+  </div>
+</div>
+
+<div class="card" id="s5">
+  <div class="card-header h2"><span class="icon">🧩</span><h2>Het modelspel en de vier casussen</h2><span class="card-bron">Les 1 kick-off en casussen</span></div>
+  <div class="card-body">
+<p class="p">In les 1 oefen je het model in drie fasen. In <strong>fase 1 (swipen)</strong> beoordeel je twee korte probleemsituaties, zoals een snelgroeiende tech-startup die moeilijk personeel vindt en een inspirerende flexwerkplek wil, en een fabriek die door strenge milieuregels binnen drie jaar klimaatneutraal moet zijn. In <strong>fase 2</strong> kies je één van vier organisaties en werk je stap 5 en 6 uit; stap 1 tot en met 4 zijn gegeven. In <strong>fase 3</strong> presenteer je in maximaal 10 minuten. De klas beoordeelt elkaar en de ranking bepaalt wie als eerste een technologie voor de workshop mag kiezen.</p>
+<div class="table-wrap"><table class="compact wide"><thead><tr><th>Casus</th><th>Facilitaire afdeling en context</th><th>FM-strategietype</th><th>Waarde-intenties (laag 3)</th></tr></thead><tbody><tr><td>Schiphol</td><td>Airport Facilities &amp; Operations, 24/7: terminals, security support, cleaning, assets, crowd flow, retail. Extreme druk op continuïteit, veiligheid en doorstroming</td><td>Operational excellence: veiligheid, uptime en doorstroming</td><td>Processen en reactietijd versnellen (Process), veiligheid en beveiliging vastgoed (Place), efficiency en kostenbesparing (Process)</td></tr><tr><td>Google</td><td>Workplace Services &amp; Campus Experience: werkplekken, hospitality, smart buildings, data-gedreven spaces. Hybride werken en hoge verwachtingen van werkbeleving</td><td>Productinnovatie en klantgericht: 'workplace as a product', employee experience leidend</td><td>Medewerkerstevredenheid, productiviteit en gezondheid/welzijn (People), reactietijd (Process), duurzaamheid en energiebesparing (Place)</td></tr><tr><td>DUO</td><td>Corporate Facility Services als shared service center voor meerdere kantoren; standaardisatie over locaties heen. Topmanagement ziet FM als kostenpost, budget op normkosten per m2 en per medewerker</td><td>Operational excellence: 'lean' FM, zo goedkoop, snel en uniform mogelijk</td><td>Efficiency, betrouwbaarheid, reactietijd en compliance (Process), gebouwprestaties en flexibiliteit ruimtegebruik (Place)</td></tr><tr><td>Radboud ziekenhuis</td><td>Integrated Healthcare FM, 24/7: gebouwbeheer, schoonmaak, catering, logistiek, hospitality, techniek, veiligheid. FM ondersteunt direct de zorgprocessen</td><td>Customer intimacy: mens- en servicegericht, maatwerk, gastvrijheid, 'healing environment'</td><td>Patiënt- en bezoekerservaring en hygiëne/infectiepreventie (People), 24/7 continuïteit (Process), klimaat, luchtkwaliteit en energie (Place)</td></tr></tbody></table></div>
+<p class="p">In alle vier de casussen is het adoptievermogen 'in orde'. Daardoor moet je je keuze vooral onderbouwen vanuit context, strategie en waarde-intentie. In de casus Schiphol heeft FM expliciet mandaat voor smart airport, sensoring en crowd control; bij Google ziet het topmanagement FM als enabler van innovatie; bij DUO heeft FM een beperkt maar functioneel mandaat om processen lean te optimaliseren; bij het Radboud ziet het management FM als integraal onderdeel van zorgkwaliteit.</p>
+<div class="box"><h4>Opdracht bij elke casus</h4><ul class="clean"><li>Laag 5: welke technologieën adviseer je en waarom leveren ze toegevoegde waarde? Welke adviseer je níét en waarom niet?</li><li>Laag 6: hoe zet je de geadviseerde technologie in en welke waarde levert ze voor People, Process en Place?</li><li>Benoem de belangrijkste risico's, uitdagingen, ethische aspecten en duurzaamheidspunten.</li></ul></div>
+<div class="warn">De bronnen geven bij de casussen geen modelantwoord. Een sterke uitwerking koppelt elke technologie aan een concreet waardedoel uit laag 3 en aan het strategietype. Wie bij DUO (lean, kostenpost) een dure belevingsinnovatie adviseert, of bij Google alleen op kosten stuurt, redeneert langs de casus heen.</div>
+<p class="p">Let op: de casus DUO noemt in de tekst ook belastingkantoren en de Belastingdienst. Dat is een inconsistentie in de bron; voor de oefening gaat het om het profiel van een gestandaardiseerde shared service in de overheid.</p>
+  </div>
+</div>
+
+<div class="card" id="s6">
+  <div class="card-header h2"><span class="icon">📊</span><h2>De benchmark en de Trendmonitor 2026</h2><span class="card-bron">Les 2 benchmark, trendmonitor</span></div>
+  <div class="card-body">
+<div class="defbox"><strong>Benchmark</strong>In drie stappen: <strong>meten</strong> hoe een organisatie scoort, <strong>vergelijken</strong> met een groep vergelijkbare organisaties, en <strong>leren</strong> waar je voorloopt en waar je kunt groeien. Scoort je opdrachtgever bijvoorbeeld laag op betrouwbare en actuele data terwijl vergelijkbare organisaties verder zijn, dan heb je een sterk aanknopingspunt voor je advies.</div>
+<p class="p">De benchmark is de <strong>Trendmonitor Technologie in Facility Management 2026</strong> van de HAN-opleiding Facility Management en het FMN Expertteam Tech. Het onderzoek kijkt niet alleen naar welke technologie organisaties gebruiken, maar ook waarom, hoe ze dat organiseren en welke waarde ze verwachten of ervaren. De dia's spreken van 179 organisaties.</p>
+<div class="section" style="margin-bottom:8px"><h3>Landelijke scores per laag (schaal 1-5)</h3></div>
+<div class="table-wrap"><table class="compact wide"><thead><tr><th>Laag</th><th>Score</th><th>Wat het betekent</th></tr></thead><tbody><tr><td>1 Context &amp; stakeholders</td><td>3,25</td><td>Organisaties kennen hun omgeving redelijk, maar niet uitgesproken sterk</td></tr><tr><td>2 Strategische positionering</td><td>3,42</td><td>FM staat op de agenda, maar nog niet altijd centraal; zonder plek in de strategie blijven technologieplannen uit</td></tr><tr><td>3 Waarde-intentie</td><td>4,16</td><td>Hoogste score: de ambitie is groot</td></tr><tr><td>4 Adoptievermogen</td><td>3,21</td><td>Sterkste voorspeller van gerealiseerde waarde (samenhang r = 0,38): de belangrijkste hefboom</td></tr><tr><td>5 Ingezette technologie</td><td>1,78</td><td>Laagste score: veel plannen, weinig dat al operationeel draait</td></tr><tr><td>6 Gerealiseerde waarde</td><td>2,98</td><td>Flink lager dan de ambitie</td></tr></tbody></table></div>
+<div class="highlight">De kernboodschap: de ambitie (4,16) is hoog, de gerealiseerde waarde (2,98) blijft achter. Die <strong>gap van 1,18</strong> is geen falen, want laag 3 kijkt vooruit en laag 6 terug, maar laat zien waar organisaties nog willen groeien. Juist daar voegt jouw advies waarde toe.</div>
+<div class="two-col"><div><div class="section" style="margin-bottom:8px"><h3>Laag 4 uitgesplitst</h3></div>
+<div class="table-wrap"><table class="compact"><thead><tr><th>Onderdeel</th><th>Score</th></tr></thead><tbody><tr><td>Organisatie &amp; governance</td><td>3,52</td></tr><tr><td>Mens &amp; skills</td><td>3,23</td></tr><tr><td>Data &amp; IT</td><td>2,87</td></tr></tbody></table></div>
+<p class="p">Data &amp; IT is het zwakst en remt vaak de waarde. Kijk bij je opdrachtgever dus niet alleen naar techniek, maar juist naar data, sturing en mensen.</p></div><div><div class="section" style="margin-bottom:8px"><h3>Adoptiefasen over alle technologieën</h3></div>
+<ul class="clean" style="margin-bottom:10px"><li>Ongeveer twee derde van de antwoorden is 'niet van toepassing': veel technologie staat nog niet op de radar.</li><li>De rest zit vooral in verkennen of pilot.</li><li>Volgens de docentnotities is maar 15 procent operationeel of verder.</li></ul></div></div>
+<div class="section" style="margin-bottom:8px"><h3>Koplopers tegenover achterblijvers</h3></div>
+<div class="table-wrap"><table class="compact wide"><thead><tr><th>Laag</th><th>Hoogste 10%</th><th>Laagste 20%</th></tr></thead><tbody><tr><td>1 Context &amp; stakeholders</td><td>3,37</td><td>3,27</td></tr><tr><td>2 Strategische positionering</td><td>3,77</td><td>3,24</td></tr><tr><td>3 Waarde-intentie</td><td>4,15</td><td>4,20</td></tr><tr><td>4 Adoptievermogen</td><td>3,85</td><td>3,00</td></tr><tr><td>5 Ingezette technologie</td><td>2,83</td><td>1,59</td></tr><tr><td>6 Gerealiseerde waarde</td><td>3,62</td><td>2,35</td></tr></tbody></table></div>
+<div class="highlight">Niet de ambitie maakt het verschil, maar de uitvoering. Op laag 3 liggen beide groepen het dichtst bij elkaar; het grote verschil zit in adoptievermogen, ingezette technologie en gerealiseerde waarde, en ook op strategische positionering lopen koplopers voor.</div>
+<div class="section" style="margin-bottom:8px"><h3>Leesregels van de trendmonitor</h3></div>
+<ul class="clean" style="margin-bottom:10px"><li>Alle scores lopen van 1 (laag) tot 5 (hoog); hoger is gunstiger. Bij de belemmeringen in laag 1 betekent hoog dat de belemmering juist weinig wordt ervaren.</li><li>'Weet ik niet' telt niet mee in de gemiddelden.</li><li>Filter je op branche of grootte, dan daalt N. Bij een kleine N lees je de uitkomst als indicatief.</li><li>De gegevens laten verbanden zien, geen oorzaak en gevolg.</li><li>Lees het spinnenweb als samenhangend systeem, niet als losse rapportcijfers. Een lage technologiescore kan ook betekenen dat technologieën nog in verkenning of pilot zitten.</li><li>Antwoorden zijn vertrouwelijk, zonder organisatienamen, en worden alleen geaggregeerd gedeeld.</li></ul>
+<div class="section" style="margin-bottom:8px"><h3>De juiste vergelijkingsgroep</h3></div>
+<div class="table-wrap"><table class="compact"><thead><tr><th>Keuze</th><th>Wanneer</th></tr></thead><tbody><tr><td>Heel Nederland</td><td>Alle organisaties samen: veel data, maar niet altijd een eerlijke vergelijking</td></tr><tr><td>Branche</td><td>Organisaties in dezelfde sector, bijvoorbeeld zorg of onderwijs</td></tr><tr><td>Organisatiegrootte</td><td>Vergelijkbaar aantal fte: klein vergelijk je met klein</td></tr><tr><td>Andere relevante groep</td><td>Een combinatie of specifiek type dat het best past</td></tr></tbody></table></div>
+<div class="warn">Heel Nederland is zelden de eerlijkste vergelijking. Kies de groep die je opdrachtgever het eerlijkst en het meest herkenbaar weerspiegelt, en verantwoord je keuze: een branche of grootteklasse is vaak zuiverder, maar heeft een kleinere N.</div>
+<div class="section" style="margin-bottom:8px"><h3>Spinnenweb maken in Excel</h3></div>
+<ol class="clean" style="margin-bottom:10px"><li>Verzamel de scores van je opdrachtgever per laag.</li><li>Kies de benchmarkvergelijking: heel Nederland, branche of organisatiegrootte.</li><li>Zet beide scorelijnen in één tabel: kolom 1 de zes lagen, kolom 2 de opdrachtgever, kolom 3 de benchmark (zelfde lagen, zelfde volgorde).</li><li>Selecteer de tabel.</li><li>Kies Invoegen, Grafieken, radar- of spinnenwebdiagram.</li><li>Controleer of beide lijnen zichtbaar zijn.</li><li>Geef de grafiek een duidelijke titel.</li><li>Voeg eventueel labels of een korte toelichting toe.</li><li>Plaats het diagram in de brochure.</li><li>Schrijf eronder wat het verschil betekent: daar ontstaat je advies.</li></ol>
+<div class="box"><h4>Aan het eind van les 2 heb je</h4><ul class="clean"><li>Een gekozen vergelijkingsgroep.</li><li>Een eerste vergelijkend spinnenweb.</li><li>Een (deels) ingevulde benchmarkpagina in de brochure.</li><li>Een korte conclusie over hoe je opdrachtgever scoort ten opzichte van de benchmark.</li></ul></div>
+  </div>
+</div>
+
+<div class="card" id="s7">
+  <div class="card-header h2"><span class="icon">📝</span><h2>De enquête</h2><span class="card-bron">Vragenlijst enquête FM Tech-trendonderzoek, Les 1</span></div>
+  <div class="card-body">
+<p class="p">In week 2 neem je de enquête van het trendonderzoek af bij je praktijkorganisatie; de opdrachtgever is daarvan op de hoogte. Vergeet niet de antwoorden op te slaan: die heb je nodig voor de benchmark. De vragenlijst kost ongeveer 15 minuten en volgt precies het zes-lagenmodel.</p>
+<div class="table-wrap"><table class="compact"><thead><tr><th>Sectie</th><th>Wat er gevraagd wordt</th></tr></thead><tbody><tr><td>1 Respondent</td><td>Niveau van de functie (strategisch, tactisch, operationeel), arbeidsrelatie, roltype, functietitel en betrokkenheid bij technologiebeslissingen (beslisser, beïnvloeder, uitvoerder, gebruiker, beperkt betrokken)</td></tr><tr><td>2 Organisatie</td><td>Sector, omvang in fte, hoe FM is georganiseerd (van volledig in-house tot volledig uitbesteed) en het aantal locaties</td></tr><tr><td>3 Laag 1</td><td>Drijfveren (druk vanuit topmanagement, verwachtingen van gebruikers, wet- en regelgeving, budgetdruk, arbeidsmarktkrapte, duurzaamheidsdoelen) en belemmeringen (split incentives, te weinig invloed van FM, FM als kostenpost, weerstand, AVG)</td></tr><tr><td>4 Laag 2</td><td>Is FM betrokken bij de strategie, is de FM-strategie afgestemd, heeft FM mandaat, ziet het topmanagement FM als partner, zijn er budget en middelen</td></tr><tr><td>5 Laag 3</td><td>Belang van dertien waardes voor de komende 12 maanden, plus de top drie waardedoelen</td></tr><tr><td>6 Laag 4</td><td>Data- en IT-capaciteiten, organisatie- en governancecapaciteiten, mensen- en skillscapaciteiten</td></tr><tr><td>7 Laag 5</td><td>Per technologie de adoptiefase en het primaire waardedoel, voor tien technologieën</td></tr><tr><td>8 Laag 6</td><td>In welke mate dertien waarde-uitkomsten de afgelopen 12 maanden zijn gerealiseerd</td></tr><tr><td>9 Afsluiting</td><td>Ruimte voor opmerkingen en de vraag of de respondent de resultaten wil ontvangen</td></tr></tbody></table></div>
+<p class="p">Over privacy zegt de vragenlijst zelf: antwoorden worden vertrouwelijk behandeld, organisatienamen dienen alleen voor steekproefbeheer, benchmarking en sectoranalyse, resultaten worden geanonimiseerd en geaggregeerd gedeeld, en de gegevens worden niet gebruikt om taalmodellen te trainen.</p>
+<div class="warn">Bedenk wie de enquête invult. Een strategisch betrokken beslisser kijkt anders naar technologie dan een operationele gebruiker. Noem in je analyse wie er antwoordde; één respondent is een momentopname van één perspectief.</div>
+  </div>
+</div>
+
+<div class="card" id="s8">
+  <div class="card-header h2"><span class="icon">🔒</span><h2>Privacy, dataveiligheid en social engineering</h2><span class="card-bron">Les 3 deel 1: workshop OSINT, invulformulieren, werkinstructie</span></div>
+  <div class="card-body">
+<p class="p">Les 3 laat zien dat dataveiligheid niet alleen een IT-zaak is. Een kwaadwillende hoeft niet technisch in te breken: soms is losse informatie combineren al genoeg. De centrale vraag: wat geven organisaties, en Facility Management, onbedoeld prijs?</p>
+<div class="defbox"><strong>OSINT</strong>Open Source Intelligence: informatie verzamelen uit open of laagdrempelig beschikbare bronnen, zoals websites, openbare agenda's, nieuwsberichten, socialmediaposts, foto's, plattegronden en leveranciersinformatie. OSINT is op zichzelf niet illegaal; pas de vervolgacties kunnen dat worden. Context, doel en toestemming zijn bepalend.</div>
+<div class="highlight">Elk stukje los is onschuldig, samen vormen ze een geloofwaardig verhaal. Een leveranciersnaam op een website, een badge op een foto, een eventagenda, een plattegrond, een onderhoudspost en een receptieprocedure kunnen samen kwetsbaarheden blootleggen.</div>
+<div class="section" style="margin-bottom:8px"><h3>Waarom FM de sleutel is</h3></div>
+<p class="p">FM is vaak (mede-)eigenaar van precies de processen die social engineering mogelijk maken: toegang en bezoekersstromen, leveranciersprocessen, badges en receptieprocedures, bewegwijzering en gebouwinformatie, en werkplek- en gebouwcommunicatie. Daarom is FM ook de sleutel tot preventie. Kernvraag: wat maken wij als facilitaire organisatie onnodig zichtbaar?</p>
+<div class="section" style="margin-bottom:8px"><h3>De oefening: Noordpoort Campus Services</h3></div>
+<p class="p">Een fictieve campus met onderwijsruimtes, kantoren, een innovatiehub, een restaurant en een gedeeld logistiek ontvangstpunt. Er komt een open netwerkbijeenkomst aan, tegelijk zijn er werkzaamheden aan het klimaatsysteem en komt er nieuwe bewegwijzering. Online staat meer dan handig is. Je krijgt fictieve bronnen: medewerkersprofielen, leverancierspagina's, een eventagenda, badgefoto's, een plattegrondfragment, posts, een receptieprocedure, een interne nieuwsbrief en ruisbronnen zonder bruikbare informatie.</p>
+<div class="table-wrap"><table class="compact wide"><thead><tr><th>Ronde</th><th>Wat je doet</th><th>Output</th></tr></thead><tbody><tr><td>1 Onderzoeken (20 min)</td><td>Elke bron los bekijken: welke informatie is mogelijk gevoelig en waarom?</td><td>Overzicht van gevoelige informatie</td></tr><tr><td>2 Combineren (15 min)</td><td>Maximaal drie combinaties van bronnen die elkaar zo versterken dat er een risico ontstaat</td><td>Overzicht met risico's</td></tr><tr><td>3 Risicoscenario (15 min)</td><td>Op hoofdlijnen beschrijven welk misbruik mogelijk is en welke schade de organisatie kan ervaren: financieel, reputatie, continuïteit, privacy, gestolen materialen of informatie</td><td>Globaal risicoverhaal</td></tr><tr><td>4 Verdedigen (15 min)</td><td>Het scenario van een ander team krijgen en als Facility &amp; Security maatregelen bedenken</td><td>Maatregelenpakket</td></tr><tr><td>Plenair en debrief</td><td>Patronen ophalen: onschuldige informatie, combinatie-effect, FM-maatregel</td><td>Rode draad en ethische reflectie</td></tr></tbody></table></div>
+<div class="warn">De rode lijn: alleen fictieve personen, bedrijven en bronnen; niets opzoeken over echte mensen, bedrijven of gebouwen; nergens toegang proberen te krijgen. Je beschrijft een risico op procesniveau ('welke informatie en welk proces maken dit mogelijk?'), geen stap-voor-stap handleiding.</div>
+<div class="section" style="margin-bottom:8px"><h3>De verstopte risico's</h3></div>
+<div class="table-wrap"><table class="compact"><thead><tr><th>Risico</th><th>Wat er gebeurt</th></tr></thead><tbody><tr><td>Bezoekersdrukte bij de receptie</td><td>Rond 120 bezoekers gaan via een tijdelijke route naar de eventzaal. Bij drukte helpt de balie sneller dan ze controleert; een onbekende valt nauwelijks op</td></tr><tr><td>Leveranciers en badgeherkenning</td><td>Werkzaamheden maken een externe rol geloofwaardig. Controle leunt op badge en werkkleding in plaats van echte verificatie, met toegang tot niet-publieke zones als risico</td></tr><tr><td>Gastvrijheid vóór verificatie</td><td>Medewerkers willen tijdens drukte snel helpen. Een hulpvraag lijkt normaal, waardoor behulpzaamheid wint van controleren via een bekend kanaal</td></tr><tr><td>Zichtbare gebouw- en route-info</td><td>Borden, kaart en badges samen verraden routes, leveranciersstromen en personeelszones; een buitenstaander oriënteert zich moeiteloos</td></tr></tbody></table></div>
+<div class="section" style="margin-bottom:8px"><h3>Maatregelen op drie niveaus</h3></div>
+<div class="table-wrap"><table class="compact"><thead><tr><th>Niveau</th><th>Voorbeelden uit de les</th></tr></thead><tbody><tr><td>Mens en gedrag</td><td>Receptie en bewaking trainen op vriendelijk maar consequent doorvragen, ook onder tijdsdruk; deuren niet openhouden voor onbekenden; vragen of iemand hier hoort</td></tr><tr><td>Proces en procedure</td><td>Daglijsten met verwachte leveranciers; standaard vriendelijke verificatie bij de receptie; badge én afspraak controleren; terugbellen naar de echte dienst bij onaangekondigd 'spoed'-bezoek; bezoekers in niet-publieke zones begeleiden; extra verificatie tijdens events</td></tr><tr><td>Informatie en fysieke omgeving</td><td>Minder leveranciersdetail openbaar; fotobeleid zonder badges, schermen of routes; badgekleur en -formaat niet herkenbaar posten; publieke plattegronden versimpelen; geen open netwerkpoorten in publieke ruimtes</td></tr></tbody></table></div>
+<p class="p">Splits maatregelen daarnaast in <strong>snel uitvoerbaar</strong> (bijvoorbeeld een daglijst) en <strong>beleid of managementbesluit</strong> (bijvoorbeeld een fotobeleid of minder informatie op de website).</p>
+<div class="box"><h4>Twee echte praktijkvoorbeelden uit de les</h4><ul class="clean"><li>Een gedocumenteerde beveiligingstest bij een farmaceutisch bedrijf: een tester liep achter medewerkers mee naar binnen (tailgating), bewoog zich zonder geldige badge door meerdere verdiepingen, sloot een laptop aan op het netwerk in een lege vergaderzaal en onderschepte inloggegevens zonder te worden aangesproken. Les: verificatie boven herkenning, geen open netwerkpoorten, bezoekers begeleiden.</li><li>Een datacenter in Londen: mannen in politie-uniform praatten zich langs de bewaking met een verhaal over indringers op het dak en stalen hardware, ondanks biometrische scanners, camera's en 24/7 bewaking. Les: een uniform is geen identiteit, techniek stopt geen social engineering, gedrag en procedure wel.</li></ul></div>
+<div class="highlight">'Goede beveiliging begint niet met wantrouwen, maar met bewust ontwerp: deel wat nodig is, scherm af wat misbruikt kan worden en train op vriendelijke verificatie.' Voor FM betekent dat: gastvrijheid en veiligheid samen ontwerpen in plaats van tegenover elkaar zetten.</div>
+<p class="p">De werkinstructie van Noordpoort laat zien hoe dat in een procedure staat: bezoekers melden zich bij de receptie die controleert of het bezoek bekend is; een tijdelijke eventbalie vervangt de gewone afspraken over aanmelding en verificatie niet; een leverancier die niet op de lijst staat, via een andere ingang komt of afwijkt van de afspraak, krijgt pas toegang na contact met de interne contactpersoon, ook bij tijdsdruk; bezoekers in niet-publieke zones worden begeleid.</p>
+<div class="warn">Koppel dit aan je technologieadvies. Technologieën als IoT, AI en biometrie verzamelen gegevens over mensen en gebouwen. Privacy en dataveiligheid horen dus bij het vijfde rubriccriterium: welke gegevens verzamel je, wie kan erbij, en wat maak je onnodig zichtbaar? In de enquête staat de AVG bovendien als mogelijke belemmering in laag 1.</div>
+  </div>
+</div>
+
+<div class="card" id="s9">
+  <div class="card-header h2"><span class="icon">🎤</span><h2>Hoe maak je een workshop</h2><span class="card-bron">Les 3 deel 2: workshopontwerp, Les 2 dia 25</span></div>
+  <div class="card-body">
+<p class="p">Elke groep geeft in week 5 of 6 een workshop van <strong>45 minuten</strong> over één facilitaire technologie. Les 2 geeft de startvragen: wat houdt de technologie in, wat is de toegevoegde waarde voor FM, welke ethische dilemma's en uitdagingen zijn er, en hoe vertaal je dat naar een leuke, interessante en interactieve workshop?</p>
+<div class="section" style="margin-bottom:8px"><h3>De vier verplichte bouwstenen</h3></div>
+<ol class="clean" style="margin-bottom:10px"><li><strong>Wat en hoe:</strong> wat de technologie is en hoe ze werkt in een facilitaire context.</li><li><strong>Toegevoegde waarde:</strong> wat de technologie oplevert voor facilitaire organisaties.</li><li><strong>Risico's en uitdagingen:</strong> risico's herkennen, benoemen en beredeneren.</li><li><strong>Ethische dilemma's:</strong> welke dilemma's de technologie oproept.</li></ol>
+<div class="section" style="margin-bottom:8px"><h3>Wat maakt een workshop goed?</h3></div>
+<p class="p">Laat deelnemers ervaren: je vertelt niet alleen, maar laat de klas zelf doen, ontdekken en bespreken. Kenmerken: een helder doel, actieve werkvormen, herkenbare praktijk, een veilige sfeer, energie, een goede opbouw en transfer naar het werk. Mensen onthouden wat ze doen, niet wat ze alleen horen; plan daarom ongeveer elke tien minuten een actief moment.</p>
+<div class="table-wrap"><table class="compact"><thead><tr><th>Fase</th><th>Focus</th></tr></thead><tbody><tr><td>1 Voorbereiding</td><td>Doel, doelgroep en context bepalen</td></tr><tr><td>2 Ontwerp</td><td>Werkvormen en opbouw kiezen</td></tr><tr><td>3 Uitvoering</td><td>Begeleiden, activeren en bijsturen</td></tr><tr><td>4 Afronding</td><td>Samenvatten, reflecteren en afsluiten</td></tr><tr><td>5 Opvolging</td><td>Borgen wat de klas meeneemt</td></tr></tbody></table></div>
+<div class="two-col"><div><div class="section" style="margin-bottom:8px"><h3>Trainer</h3></div>
+<p class="p">Inhoudsexpert: brengt kennis over, legt uit, demonstreert, beantwoordt inhoudelijke vragen en stuurt op begrip.</p></div><div><div class="section" style="margin-bottom:8px"><h3>Facilitator</h3></div>
+<p class="p">Procesexpert: begeleidt het gesprek en bewaakt tempo, tijd en deelname. Bij nieuwe technologie ben je beide: leg kort uit en laat de klas daarna zelf doen.</p></div></div>
+<div class="section" style="margin-bottom:8px"><h3>Werkvormen</h3></div>
+<div class="table-wrap"><table class="compact"><thead><tr><th>Werkvorm</th><th>Wat je doet</th></tr></thead><tbody><tr><td>Demonstratie</td><td>De technologie live laten zien en stap voor stap uitleggen</td></tr><tr><td>Hands-on</td><td>De klas probeert het zelf in een korte oefening</td></tr><tr><td>Casus</td><td>Een herkenbaar facilitair praktijkvoorbeeld uitwerken</td></tr><tr><td>Discussie</td><td>In groepjes voor- en nadelen afwegen</td></tr><tr><td>Quiz of spel</td><td>Begrip speels toetsen met stellingen of een korte quiz</td></tr><tr><td>Rollenspel</td><td>Een dilemma naspelen vanuit verschillende rollen</td></tr></tbody></table></div>
+<div class="section" style="margin-bottom:8px"><h3>Sfeer en energie</h3></div>
+<ul class="clean" style="margin-bottom:10px"><li>Psychologische veiligheid: spelregels vooraf, laagdrempelige opening, fouten mogen, waarderend reageren, ruimte voor stille deelnemers.</li><li>Energie: wissel werkvormen af, lees de groep en las een pauze of activiteit in als de energie zakt.</li><li>Weerstand is een signaal, geen aanval: vraag door en neem het serieus.</li></ul>
+<div class="warn">De meeste workshops mislukken niet op inhoud maar op aandacht. Valkuilen: te veel zenden, te veel stof, geen duidelijk doel, alleen theorie en geen afsluiting. Vuistregel: plan rond wat de klas doet, niet rond wat jij vertelt. Less is more: liever drie sterke onderdelen dan acht halve.</div>
+<div class="box"><h4>Checklist voordat je begint</h4><ul class="clean"><li>Wat moet de klas na afloop kunnen?</li><li>Wie zitten er in de zaal en wat weten ze al?</li><li>Welke werkvormen passen bij dat doel?</li><li>Hoeveel tijd heb je per onderdeel?</li><li>Hoe toets je of het doel is gehaald?</li><li>Inhoud: wat en hoe, toegevoegde waarde, risico's en ethiek zitten erin.</li><li>Vorm: een demo of hands-on, een eigen praktijkvoorbeeld en een korte reflectie.</li><li>Test de tijdsplanning en oefen de afsluiting.</li></ul></div>
+  </div>
+</div>
+
+<div class="card" id="s10">
+  <div class="card-header h2"><span class="icon">🧭</span><h2>Workshop-input verwerken tot advies</h2><span class="card-bron">Les 5 en 6, aantekeningenformulier workshop</span></div>
+  <div class="card-body">
+<p class="p">Na de workshops leg je de kennis vast en vertaal je die naar je brochure en presentatie. Uit elke workshop haal je de uitleg van de technologie in FM-context, praktijkvoorbeelden en toepassingen, en voor- en nadelen, kansen en risico's. Dat landt in de technologieanalyse, de adviesmatrix en de conclusie. Het aantekeningenformulier per workshop volgt dezelfde zeven onderdelen.</p>
+<div class="table-wrap"><table class="compact"><thead><tr><th>Onderdeel</th><th>Vraag</th></tr></thead><tbody><tr><td>1 Technologie in context</td><td>Wat is het en hoe past het in FM?</td></tr><tr><td>2 Waarde voor doelen</td><td>Welke organisatiedoelen ondersteunt het?</td></tr><tr><td>3 Stakeholders en context</td><td>Wie heeft voor- of nadeel?</td></tr><tr><td>4 Onderbouwing en waarde</td><td>Argumenten, bronnen, toegevoegde waarde</td></tr><tr><td>5 Concretisering</td><td>Proces, data, mensen, planning</td></tr><tr><td>6 Risico's en ethiek</td><td>Privacy, kosten, duurzaamheid</td></tr><tr><td>7 Adviesstatus</td><td>Adviseren, voorwaardelijk adviseren of niet adviseren</td></tr></tbody></table></div>
+<div class="section" style="margin-bottom:8px"><h3>De adviesmatrix</h3></div>
+<p class="p">Je scoort alle technologieën op dezelfde zeven criteria en geeft per technologie een eindoordeel. Zo is je afweging vergelijkbaar en navolgbaar.</p>
+<div class="two-col"><div><ul class="clean" style="margin-bottom:10px"><li>Toegevoegde waarde</li><li>Strategische aansluiting</li><li>Impact op stakeholders</li><li>Haalbaarheid</li><li>Kosten / complexiteit</li><li>Risico's</li><li>Duurzaamheid</li></ul></div><div><div class="table-wrap"><table class="compact"><thead><tr><th>Eindoordeel</th><th>Betekenis</th></tr></thead><tbody><tr><td>Adviseren</td><td>Past nu goed bij de organisatie</td></tr><tr><td>Voorwaardelijk adviseren</td><td>Kansrijk, mits aan voorwaarden is voldaan</td></tr><tr><td>Niet adviseren</td><td>Nu niet passend; benoem wél een situatie waarin het wél werkt</td></tr></tbody></table></div></div></div>
+<div class="highlight">Denk waardegericht, niet technologiegericht. Het adoptiemodel helpt je een technologie te beoordelen op de waarde die ze oplevert, niet op hoe modern ze is: van technologie, via adoptie, naar gerealiseerde waarde.</div>
+<div class="box"><h4>Checklist les 5 en 6</h4><ul class="clean"><li>Werk de analyse van de technologieën uit de workshops volledig uit.</li><li>Onderzoek en beschrijf de overige technologieën.</li><li>Vul de adviesmatrix en de conclusie in.</li><li>Verwerk het in je presentatie.</li></ul></div>
+<div class="warn">Voorwaardelijk adviseren zonder concrete voorwaarden is een lege categorie. Noem wat er eerst moet gebeuren, bij voorkeur gekoppeld aan laag 4: bijvoorbeeld eerst de datakwaliteit op orde, eigenaarschap beleggen of medewerkers trainen.</div>
+  </div>
+</div>
+
+<div class="card" id="s11">
+  <div class="card-header h2"><span class="icon">📘</span><h2>De brochure en de eindpresentatie</h2><span class="card-bron">Format brochure, Les 5 en 6, Les 7</span></div>
+  <div class="card-body">
+<p class="p">Je levert twee samenhangende producten op: de ingevulde brochure en de eindpresentatie. Alles wat je in de brochure onderbouwt, komt terug in je presentatie. Hoofdstuk 5, de technologieanalyses, is het zwaartepunt.</p>
+<div class="table-wrap"><table class="compact"><thead><tr><th>Hoofdstuk</th><th>Inhoud</th></tr></thead><tbody><tr><td>01 Inleiding en leeswijzer</td><td>Introductie van de organisatie (sector, omvang, facilitaire context, ontwikkelingen), doel van de brochure, leeswijzer en afbakening</td></tr><tr><td>02 Adoptiemodel</td><td>Het model in eigen woorden, hoe de lagen samenhangen en waarom het relevant is voor facilitaire besluitvorming</td></tr><tr><td>03 Benchmark Nederland</td><td>Algemene stand, trends (digitalisering, smart buildings, datagedreven werken, duurzaamheid, personeelstekorten), sterke punten, aandachtspunten en bronvermelding</td></tr><tr><td>04 Positionering</td><td>De organisatie ingevuld in de zes lagen van het model</td></tr><tr><td>05 Technologieanalyses</td><td>Per technologie de zeven vaste onderdelen, plus de samenvattende adviesmatrix</td></tr><tr><td>06 Conclusie en adviesrichting</td><td>Belangrijkste bevindingen, definitief advies, implementatierichting (pilot, stakeholders, planning, middelen, randvoorwaarden) en reflectie op waarde, risico's en duurzaamheid</td></tr></tbody></table></div>
+<p class="p">Het format bevat analysepagina's voor zes technologieën: data-gedreven FM, IoT, AI, robotica en drones, BIM en digital twins, en IWMS/FMIS. De dia's van les 5 tot en met 7 spreken van zeven technologieën; houd het format aan en vraag na of er een zevende bij moet.</p>
+<div class="section" style="margin-bottom:8px"><h3>Opbouw van de eindpresentatie (15 minuten)</h3></div>
+<ol class="clean" style="margin-bottom:10px"><li>Kort de organisatie, de doelstellingen, de stakeholders en de facilitaire context.</li><li>Welke technologieën toegevoegde waarde kunnen bieden voor de organisatie.</li><li>Hoe deze technologieën waarde creëren en hoe ze effectief worden ingezet.</li><li>De risico's, uitdagingen en ethische implicaties, en de gevolgen voor duurzaamheid.</li></ol>
+<p class="p">Volgens de kick-off onderbouw je daarbij: in hoeverre de technologieën aansluiten bij de organisatiedoelen, wat de relatie is met de rol van FM, welke stakeholders betrokken zijn en wat hun belang is, en welke waarde er ontstaat voor People, Process en Place. Je argumentatie baseer je op data en inzichten uit de afgenomen enquête.</p>
+<div class="box"><h4>Laatste stappen in week 7</h4><ul class="clean"><li>Werk de brochure af en stuur hem naar de opdrachtgever.</li><li>Werk aan een sterke presentatie met een goede onderbouwing en oefen die.</li><li>Kijk nog eens naar de opzet van de presentatie en de beoordelingscriteria.</li><li>Maak de beoordeling aan in HandIn, maak een groep aan en voeg de brochure toe. Schrijf je ook in voor de toets in Osiris.</li></ul></div>
+  </div>
+</div>
+
+<div class="card" id="s12">
+  <div class="card-header h2"><span class="icon">⚖️</span><h2>Risico's, ethiek en duurzaamheid</h2><span class="card-bron">Brochureformat, Les 1, Les 3, enquête, rubric</span></div>
+  <div class="card-body">
+<p class="p">Het vijfde rubriccriterium vraagt dat je risico's, uitdagingen, ethiek en duurzaamheid <strong>meeweegt in de keuze</strong> voor wel of niet inzetten, bij alle behandelde technologieën. Een losse slide 'risico's' aan het eind is dus niet genoeg: het moet zichtbaar zijn in je adviesstatus.</p>
+<div class="table-wrap"><table class="compact wide"><thead><tr><th>Thema</th><th>Wat de bronnen noemen</th><th>Waar het speelt</th></tr></thead><tbody><tr><td>Privacy en dataveiligheid</td><td>Gegevens over mensen en gebouwen beschermen; AVG als belemmering; wat maak je onnodig zichtbaar</td><td>IoT, data-gedreven FM, AI, biometrie, en elk proces rond toegang en bezoekers</td></tr><tr><td>Datakwaliteit</td><td>Een systeem is zo goed als de data erin; data en IT is landelijk het zwakst</td><td>Data-gedreven FM, IoT, BIM/digital twins, IWMS/FMIS</td></tr><tr><td>Bias, transparantie, betrouwbaarheid, menselijke controle</td><td>Weet je hoe een uitkomst tot stand komt en kan een mens bijsturen?</td><td>AI</td></tr><tr><td>Acceptatie en veranderbereidheid</td><td>Weerstand bij FM-medewerkers of gebruikers; training en ondersteuning nodig</td><td>Robotica en drones, IWMS/FMIS, elke nieuwe werkwijze</td></tr><tr><td>Veiligheid en wetgeving</td><td>Veilig werken, regels rond de inzet</td><td>Robotica en drones</td></tr><tr><td>Kosten en afhankelijkheid</td><td>Implementatiekosten, kosten/complexiteit, afhankelijkheid van leveranciers, split incentives</td><td>Alle technologieën, vooral IWMS/FMIS en BIM</td></tr><tr><td>Duurzaamheid</td><td>Energie besparen tegenover het energiegebruik van de technologie zelf; duurzaamheidsdoelen als drijfveer</td><td>IoT, data-gedreven FM, AI (energie monitoren en voorspellen)</td></tr></tbody></table></div>
+<div class="section" style="margin-bottom:8px"><h3>Hoe je het afweegt</h3></div>
+<ul class="clean" style="margin-bottom:10px"><li>Noem per technologie het belangrijkste risico en wat je eraan doet. Een risico zonder maatregel is een zorg, geen afweging.</li><li>Laat zien hoe een risico je adviesstatus verandert, bijvoorbeeld van 'adviseren' naar 'voorwaardelijk adviseren' zolang de datakwaliteit niet op orde is.</li><li>Benoem ethische dilemma's als botsende belangen, bijvoorbeeld bezettingsdata voor efficiënter ruimtegebruik tegenover de privacy van medewerkers.</li><li>Neem duurzaamheid mee als criterium in de adviesmatrix, met zowel de opbrengst als de belasting.</li><li>Betrek de stakeholders: wie draagt het risico en wie heeft het voordeel?</li></ul>
+<div class="highlight">Niveau goed betekent dat risico's, uitdagingen, ethiek en duurzaamheid 'scherp en evenwichtig' zijn verwerkt en 'aantoonbaar zijn meegewogen in de keuze voor wel of niet inzetten van alle behandelde technologieën'. Evenwichtig: niet alleen nadelen opsommen, maar afwegen tegen de waarde.</div>
+  </div>
+</div>
+</div>
+
+<footer class="fa-site-footer">
+  <span>FM Atlas · gratis studiehulp voor HAN Facilitair Management, gemaakt door een student</span>
+  <span>Niet officieel verbonden aan de HAN · <a href="privacy.html">Privacy</a> · <a href="app.html#contact">Fout gezien?</a></span>
+</footer>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+<script src="js/fmatlas.js"></script>
+<script>
+const firebaseConfig = {
+  apiKey: "AIzaSyBB397Wk2eqpBjic8E7aGV1mTgIjhQ21a8",
+  authDomain: "fmkompas-ff8bc.firebaseapp.com",
+  projectId: "fmkompas-ff8bc",
+  storageBucket: "fmkompas-ff8bc.firebasestorage.app",
+  messagingSenderId: "487972024689",
+  appId: "1:487972024689:web:712c3117080745d14746d0"
+};
+firebase.initializeApp(firebaseConfig);
+firebase.auth().onAuthStateChanged(user => {
+  document.getElementById('fa-header-slot').innerHTML = '';
+  faMarkActiveToday();
+  document.getElementById('fa-header-slot').appendChild(faRenderHeader({ user }));
+  faMarkLastSeen('fm-tech','FM Tech','fm-tech.html');
+});
+</script>
+</body>
+</html>

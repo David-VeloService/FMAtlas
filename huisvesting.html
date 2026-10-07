@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Huisvesting — FM Atlas</title>
+<meta name="description" content="Huisvesting: In Huisvesting kruip je in de rol van huisvestingsadviseur. Je leert hoe je de visie en activiteiten van een organisatie en de behoeften van gebruikers vertaalt naar een programma van eisen, een ruimtestaat, een vlekkenplan en een inrichtingsplan. Daarnaast leer je hoe een gebouw in elkaar zit, hoe een bouwproject verloopt en hoe je een gebouw duurzaam beheert met een meerjarenonderhoudsplan. Samenvatting, begrippen, flashcards en oefentoetsen op FM Atlas."/>
+<link rel="canonical" href="https://fmatlas.nl/huisvesting.html"/>
+<meta property="og:title" content="Huisvesting · FM Atlas"/>
+<meta property="og:image" content="https://fmatlas.nl/og-image.png"/>
+<link rel="icon" type="image/svg+xml" href="logo.svg"/>
+<meta name="theme-color" content="#f7f3ec"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="css/fmatlas.css"/>
+<style>
+.vak-hub-wrap { max-width: 900px; margin: 0 auto; padding: 32px 32px 64px; }
+
+.vak-hub-head {
+  background: var(--surface); border: 1.5px solid var(--line); border-radius: var(--radius-xl);
+  padding: 32px 36px; margin-bottom: 28px; position: relative; overflow: hidden;
+}
+.vak-hub-head-top {
+  display: flex; align-items: flex-start; justify-content: space-between; gap: 20px; margin-bottom: 18px;
+}
+.vak-hub-meta {
+  font-size: 11px; font-weight: 800; color: var(--accent); letter-spacing: 0.08em;
+  margin-bottom: 8px;
+}
+.vak-hub-head h1 {
+  font-size: 38px; font-weight: 900; letter-spacing: -0.028em; line-height: 1.05; margin-bottom: 10px;
+}
+.vak-hub-head p {
+  color: var(--ink-soft); font-size: 15px; font-weight: 500; line-height: 1.55; max-width: 520px;
+}
+.vak-hub-icon {
+  width: 64px; height: 64px; background: var(--accent-soft); color: var(--accent-deep);
+  border-radius: 16px; display: grid; place-items: center; border: 1.5px solid rgba(239,90,63,0.3);
+  flex-shrink: 0;
+}
+
+.vak-hub-stats {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 10px; margin-top: 20px;
+  padding-top: 20px; border-top: 1.5px solid var(--line);
+}
+@media (max-width: 700px) { .vak-hub-stats { grid-template-columns: repeat(2, 1fr); } }
+.vak-stat-label { font-size: 10px; color: var(--muted); font-weight: 800; letter-spacing: 0.06em; margin-bottom: 3px; text-transform: uppercase; }
+.vak-stat-val { font-size: 17px; font-weight: 800; letter-spacing: -0.01em; }
+
+.vak-hub-progress {
+  margin-top: 20px; display: flex; align-items: center; gap: 12px;
+}
+.vak-hub-progress .fa-progress { flex: 1; }
+.vak-hub-progress-pct { font-size: 13px; font-weight: 800; font-variant-numeric: tabular-nums; color: var(--accent); }
+
+.sub-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 14px;
+}
+@media (max-width: 700px) { .sub-grid { grid-template-columns: 1fr; } }
+
+.sub-tile {
+  background: var(--surface); border: 1.5px solid var(--line); border-radius: var(--radius-lg);
+  padding: 22px; cursor: pointer; position: relative; transition: all 0.15s; text-decoration: none; color: inherit;
+}
+.sub-tile:hover { border-color: var(--accent); transform: translateY(-2px); box-shadow: var(--shadow); }
+.sub-tile.featured { background: var(--ink); color: var(--surface); border-color: var(--ink); }
+.sub-tile.featured .sub-tile-desc { color: rgba(255,255,255,0.65); }
+.sub-tile.featured .sub-tile-meta { color: rgba(255,255,255,0.5); }
+.sub-tile.featured .sub-icon { background: rgba(255,255,255,0.08); color: var(--accent); border-color: rgba(255,255,255,0.15); }
+
+.sub-tile-badge {
+  position: absolute; top: 14px; right: 14px; font-size: 10px; font-weight: 800;
+  background: var(--accent); color: var(--surface); padding: 3px 10px; border-radius: 999px;
+  letter-spacing: 0.04em;
+}
+.sub-icon {
+  width: 42px; height: 42px; background: var(--surface-alt); color: var(--ink-soft);
+  border-radius: 11px; display: grid; place-items: center; margin-bottom: 14px;
+  border: 1.5px solid var(--line);
+}
+.sub-tile h3 { font-size: 17px; font-weight: 800; letter-spacing: -0.01em; margin-bottom: 4px; }
+.sub-tile-desc { font-size: 13px; color: var(--ink-soft); font-weight: 500; line-height: 1.5; margin-bottom: 12px; }
+.sub-tile-meta {
+  font-size: 11px; font-weight: 700; color: var(--muted); letter-spacing: 0.02em;
+  display: flex; align-items: center; gap: 6px;
+}
+.exam-banner { display:flex; gap:12px; align-items:flex-start; background:#fef3c7; border:1.5px solid #fcd34d; border-radius:var(--radius-lg); padding:14px 18px; margin-bottom:20px; font-size:13.5px; color:#78350f; line-height:1.5; }
+.exam-banner strong { color:#92400e; font-weight:800; }
+.hub-note { margin-top: 22px; font-size: 12.5px; color: var(--muted); line-height: 1.55; }
+.hub-note strong { color: var(--ink-soft); }
+</style>
+</head>
+<body>
+
+<div id="fa-header-slot"></div>
+
+<nav class="fa-breadcrumb">
+  <a href="app.html">Vakken</a>
+  <span>›</span>
+  <span class="current">Huisvesting</span>
+</nav>
+
+<div class="vak-hub-wrap">
+  <div class="vak-hub-head">
+    <div class="vak-hub-head-top">
+      <div>
+        <div class="vak-hub-meta">PERIODE 1 · JAAR 2 · HUIVES01</div>
+        <h1>Huisvesting</h1>
+        <p>In Huisvesting kruip je in de rol van huisvestingsadviseur. Je leert hoe je de visie en activiteiten van een organisatie en de behoeften van gebruikers vertaalt naar een programma van eisen, een ruimtestaat, een vlekkenplan en een inrichtingsplan. Daarnaast leer je hoe een gebouw in elkaar zit, hoe een bouwproject verloopt en hoe je een gebouw duurzaam beheert met een meerjarenonderhoudsplan.</p>
+      </div>
+      <div class="vak-hub-icon">
+        <span data-fa-icon="building" data-fa-size="32" data-fa-stroke="1.8"></span>
+      </div>
+    </div>
+    <div class="vak-hub-stats">
+      <div>
+        <div class="vak-stat-label">EC</div>
+        <div class="vak-stat-val">10</div>
+      </div>
+      <div>
+        <div class="vak-stat-label">Lessen</div>
+        <div class="vak-stat-val">21</div>
+      </div>
+      <div>
+        <div class="vak-stat-label">Weken</div>
+        <div class="vak-stat-val">8</div>
+      </div>
+      <div>
+        <div class="vak-stat-label">Begrippen</div>
+        <div class="vak-stat-val">243</div>
+      </div>
+      <div>
+        <div class="vak-stat-label">Begrippen</div>
+        <div class="vak-stat-val">243</div>
+      </div>
+      <div>
+        <div class="vak-stat-label">Oefenvragen</div>
+        <div class="vak-stat-val">130</div>
+      </div>
+    </div>
+    <div class="vak-hub-progress">
+      <div class="fa-progress"><div class="fa-progress-bar" id="vak-progress-bar" style="width:0%"></div></div>
+      <span class="vak-hub-progress-pct" id="vak-progress-pct">0%</span>
+    </div>
+  </div>
+
+    <div class="exam-banner">
+    <span data-fa-icon="clock" data-fa-size="18"></span>
+    <div><strong>Toetsing Huisvesting (2026-2027):</strong> TOETS01 is een individueel schriftelijk kennistentamen (BYO) met meerkeuzevragen van vier opties, telt voor 70% en wordt afgenomen in week 9 van P1 (3 november 2026). TOETS02 is een portfolio in duo's met een huisvestingsplan en een MJOP, telt voor 30% en wordt ingeleverd in onderwijsweek 8. Check Brightspace voor de actuele stand.</div>
+  </div>
+
+  <div class="sub-grid">
+    <a class="sub-tile featured" href="huisvesting-samenvatting.html" onclick="faMarkLastSeen(&#x27;huisvesting&#x27;,&#x27;Huisvesting&#x27;,&#x27;huisvesting.html&#x27;)">
+      <div class="sub-icon"><span data-fa-icon="book" data-fa-size="22"></span></div>
+      <h3>Studiesamenvatting</h3>
+      <p class="sub-tile-desc">Alle stof per les op een rij: 19 onderdelen met definities, schema's en tentamentips.</p>
+      <div class="sub-tile-meta">
+        <span data-fa-icon="clock" data-fa-size="11"></span>
+        Ongeveer 79 min leestijd
+      </div>
+    </a>
+
+    <a class="sub-tile" href="huisvesting-flashcards.html" onclick="faMarkLastSeen(&#x27;huisvesting&#x27;,&#x27;Huisvesting&#x27;,&#x27;huisvesting.html&#x27;)">
+      <div class="sub-icon"><span data-fa-icon="cards" data-fa-size="22"></span></div>
+      <h3>Flashcards</h3>
+      <p class="sub-tile-desc">243 kernbegrippen per thema. Schud, filter en herhaal wat je nog niet kent.</p>
+      <div class="sub-tile-meta">
+        <span data-fa-icon="bolt" data-fa-size="11"></span>
+        +5 XP per correcte kaart
+      </div>
+    </a>
+
+    <a class="sub-tile" href="huisvesting-begrippen.html" onclick="faMarkLastSeen(&#x27;huisvesting&#x27;,&#x27;Huisvesting&#x27;,&#x27;huisvesting.html&#x27;)">
+      <div class="sub-icon"><span data-fa-icon="book" data-fa-size="22"></span></div>
+      <h3>Begrippenlijst</h3>
+      <p class="sub-tile-desc">Zoekbare lijst van alle 243 vakbegrippen per thema met korte definities.</p>
+      <div class="sub-tile-meta">
+        <span data-fa-icon="search" data-fa-size="11"></span>
+        Zoek op term of thema
+      </div>
+    </a>
+
+    <a class="sub-tile" href="huisvesting-oefentoets.html" onclick="faMarkLastSeen(&#x27;huisvesting&#x27;,&#x27;Huisvesting&#x27;,&#x27;huisvesting.html&#x27;)">
+      <span class="sub-tile-badge">TENTAMENFORMAT</span>
+      <div class="sub-icon"><span data-fa-icon="check" data-fa-size="22"></span></div>
+      <h3>Oefentoets 1 · week 1 t/m 3</h3>
+      <p class="sub-tile-desc">40 meerkeuzevragen over organisatie- en mensgericht huisvesten, tekeningen lezen, bouwkunde en werkplekconcepten.</p>
+      <div class="sub-tile-meta">
+        <span data-fa-icon="sparkle" data-fa-size="11"></span>
+        40 meerkeuze
+      </div>
+    </a>
+
+    <a class="sub-tile" href="huisvesting-oefentoets-2.html" onclick="faMarkLastSeen(&#x27;huisvesting&#x27;,&#x27;Huisvesting&#x27;,&#x27;huisvesting.html&#x27;)">
+      <span class="sub-tile-badge">TENTAMENFORMAT</span>
+      <div class="sub-icon"><span data-fa-icon="check" data-fa-size="22"></span></div>
+      <h3>Oefentoets 2 · week 4 t/m 7</h3>
+      <p class="sub-tile-desc">40 meerkeuzevragen over het pve, de ruimtestaat, het vlekkenplan, plantoetsing, het bouwproces, duurzaamheid en het MJOP.</p>
+      <div class="sub-tile-meta">
+        <span data-fa-icon="sparkle" data-fa-size="11"></span>
+        40 meerkeuze
+      </div>
+    </a>
+
+    <a class="sub-tile" href="huisvesting-oefentoets-3.html" onclick="faMarkLastSeen(&#x27;huisvesting&#x27;,&#x27;Huisvesting&#x27;,&#x27;huisvesting.html&#x27;)">
+      <span class="sub-tile-badge">PROEFTENTAMEN</span>
+      <div class="sub-icon"><span data-fa-icon="check" data-fa-size="22"></span></div>
+      <h3>Proeftentamen · hele stof</h3>
+      <p class="sub-tile-desc">50 meerkeuzevragen over alle lessen, met meer mini-casussen, rekenvragen en tekeningen in woorden.</p>
+      <div class="sub-tile-meta">
+        <span data-fa-icon="sparkle" data-fa-size="11"></span>
+        50 meerkeuze
+      </div>
+    </a>
+
+    <a class="sub-tile" href="huisvesting-toetsing.html" onclick="faMarkLastSeen(&#x27;huisvesting&#x27;,&#x27;Huisvesting&#x27;,&#x27;huisvesting.html&#x27;)">
+      <div class="sub-icon"><span data-fa-icon="compass" data-fa-size="22"></span></div>
+      <h3>Toetsing &amp; beoordeling</h3>
+      <p class="sub-tile-desc">Hoe je beoordeeld wordt, wat het verschil maakt tussen voldoende en goed, en een checklist.</p>
+      <div class="sub-tile-meta">
+        <span data-fa-icon="check" data-fa-size="11"></span>
+        Uitleg bij het beoordelingsformulier
+      </div>
+    </a>
+  </div>
+  <p class="hub-note"><strong>Waar dit op gebaseerd is:</strong> De dia's, oefeningen, opdrachten, de Syllabus Bouwkundige Begrippen, het beoordelingsformulier en de cursusinformatie van les 1.1 tot en met 7.2 op Brightspace, stand 7 oktober 2026.<br><strong>Wat er (nog) niet in zit:</strong> De boeken zitten hier niet in. Tentamenstof die je zelf moet lezen (volgens de literatuurtabel op Brightspace): Huisvestingsmanagement (Hoendervanger, Van der Voordt en Wijnja, 3e druk) par. 1.1, 1.3, 2.1 tot en met 2.3, 3.1, 3.2, 5.2, 5.3, 6.1.1 tot en met 6.1.4, 6.2.1 tot en met 6.2.5, 7.2.1, 8.2.1 en 8.2.2, 9.1 tot en met 9.6.1, 10.1, 10.2, 10.3.1, 10.5, 10.6, 10.9, 11.1 tot en met 11.4 en 11.6; Basisboek Facility Management (Drion en Van Sprang, 4e druk) par. 3.1 tot en met 3.6; 'Zo maak je een facilitair plan' par. 1.5 en 4.4; en de white papers van Planon (IWMS) en NEN (NEN 2767). Deze site dekt die stof alleen voor zover hij op de dia's staat. Les 7.1 (inspectie op locatie), les 7.3 (afronding, spreekuur en oefententamen) en week 8 hebben geen lesmateriaal op Brightspace. Van het gastcollege in les 3.3 zijn geen dia's beschikbaar, en de bestekoefening van les 5.2 is niet als tekst beschikbaar.</p>
+</div>
+
+<footer class="fa-site-footer">
+  <span>FM Atlas · gratis studiehulp voor HAN Facilitair Management, gemaakt door een student</span>
+  <span>Niet officieel verbonden aan de HAN · <a href="privacy.html">Privacy</a> · <a href="app.html#contact">Fout gezien?</a></span>
+</footer>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+<script src="js/fmatlas.js"></script>
+<script>
+const firebaseConfig = {
+  apiKey: "AIzaSyBB397Wk2eqpBjic8E7aGV1mTgIjhQ21a8",
+  authDomain: "fmkompas-ff8bc.firebaseapp.com",
+  projectId: "fmkompas-ff8bc",
+  storageBucket: "fmkompas-ff8bc.firebasestorage.app",
+  messagingSenderId: "487972024689",
+  appId: "1:487972024689:web:712c3117080745d14746d0"
+};
+firebase.initializeApp(firebaseConfig);
+firebase.auth().onAuthStateChanged(user => {
+  document.getElementById('fa-header-slot').innerHTML = '';
+  faMarkActiveToday();
+  document.getElementById('fa-header-slot').appendChild(faRenderHeader({ user }));
+});
+const pct = faGetVakProgress('huisvesting');
+document.getElementById('vak-progress-bar').style.width = pct + '%';
+document.getElementById('vak-progress-pct').textContent = pct + '%';
+</script>
+</body>
+</html>

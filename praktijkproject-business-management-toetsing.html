@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Toetsing & beoordeling · Praktijkproject Business Management — FM Atlas</title>
+<link rel="icon" type="image/svg+xml" href="logo.svg"/>
+<meta name="theme-color" content="#f7f3ec"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="css/fmatlas.css"/>
+<style>
+.sam-wrap { max-width: 1100px; margin: 0 auto; padding: 24px; }
+.sam-intro { background: var(--surface); border: 1.5px solid var(--line); border-radius: var(--radius-xl); padding: 28px 32px; margin-bottom: 18px; }
+.sam-intro-meta { font-size: 11px; font-weight: 800; color: var(--accent); letter-spacing: 0.08em; margin-bottom: 8px; }
+.sam-intro h1 { font-size: 32px; font-weight: 900; letter-spacing: -0.025em; line-height: 1.08; margin-bottom: 10px; }
+.sam-intro p { color: var(--ink-soft); font-size: 14.5px; line-height: 1.6; }
+
+nav.chapnav { background: var(--surface); border: 1.5px solid var(--line); border-radius: var(--radius-lg); padding: 12px 16px; margin: 0 24px 18px; max-width: 1052px; margin-left: auto; margin-right: auto; display: flex; flex-wrap: wrap; gap: 6px; position: sticky; top: 68px; z-index: 20; }
+nav.chapnav a { color: var(--ink-soft); text-decoration: none; padding: 4px 10px; border-radius: 8px; background: var(--bg); font-weight: 800; font-size: 11.5px; border: 1.5px solid var(--line); transition: all 0.12s; }
+nav.chapnav a:hover { background: var(--accent-soft); color: var(--accent-deep); border-color: var(--accent); }
+
+.main { max-width: 1052px; margin: 0 auto; padding: 0 24px 60px; display: flex; flex-direction: column; gap: 18px; }
+
+.card { background: var(--surface); border: 1.5px solid var(--line); border-radius: var(--radius-xl); overflow: hidden; scroll-margin-top: 140px; }
+.card-header { padding: 16px 22px; display: flex; align-items: center; gap: 10px; color: var(--surface); background: var(--ink); }
+.card-header h2 { font-size: 17px; font-weight: 900; letter-spacing: -0.015em; }
+.card-header .icon { font-size: 20px; }
+.card-body { padding: 22px 24px; }
+
+.h1 { background: var(--accent); }
+.h2, .h3, .h4 { background: var(--ink); }
+
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+@media (max-width: 740px) { .two-col, .three-col { grid-template-columns: 1fr; } }
+
+.section { margin-bottom: 18px; }
+.section h3 { font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin-bottom: 8px; padding-bottom: 6px; border-bottom: 1.5px solid var(--line); }
+
+ul.clean { list-style: none; display: flex; flex-direction: column; gap: 5px; margin: 0; padding: 0; }
+ul.clean li { font-size: 13.5px; line-height: 1.55; padding: 3px 0 3px 16px; position: relative; color: var(--ink-soft); font-weight: 500; }
+ul.clean li::before { content: '›'; position: absolute; left: 0; top: 3px; color: var(--accent); font-weight: 900; }
+ul.clean li strong { color: var(--ink); font-weight: 800; }
+
+.defbox { background: var(--bg); border: 1.5px solid var(--line); border-left: 4px solid var(--accent); border-radius: 0 var(--radius) var(--radius) 0; padding: 10px 14px; margin-bottom: 10px; font-size: 13.5px; line-height: 1.55; color: var(--ink-soft); }
+.defbox strong { display: block; font-size: 10.5px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); margin-bottom: 4px; }
+
+.highlight { background: var(--accent-soft); border: 1.5px solid rgba(239, 90, 63, 0.25); border-radius: var(--radius); padding: 10px 14px; font-size: 13.5px; line-height: 1.55; margin-bottom: 10px; color: var(--accent-deep); font-weight: 600; }
+.highlight strong { color: var(--accent-deep); font-weight: 900; }
+
+.warn { background: #fff7ed; border-left: 3px solid #f59e0b; padding: 9px 14px; border-radius: 0 var(--radius) var(--radius) 0; font-size: 12.5px; color: #92400e; margin-bottom: 10px; font-weight: 600; }
+
+.tag { display: inline-block; padding: 2px 8px; border-radius: 999px; font-size: 11px; font-weight: 800; }
+.blue   { background: #dbeafe;  color: #1e40af; }
+.green  { background: #dcfce7;  color: #166534; }
+.purple { background: #ede9fe;  color: #5b21b6; }
+.orange { background: #ffedd5;  color: #9a3412; }
+.red    { background: #fee2e2;  color: #991b1b; }
+.yellow { background: #fef3c7;  color: #854d0e; }
+
+.box { background: var(--bg); border: 1.5px solid var(--line); border-radius: var(--radius); padding: 12px 14px; }
+.box h4 { font-size: 12.5px; font-weight: 900; margin-bottom: 8px; color: var(--ink); letter-spacing: -0.005em; }
+
+.nummer { display: inline-flex; align-items:center; justify-content:center; background: var(--accent); color: var(--surface); width: 22px; height: 22px; border-radius: 50%; font-size: 11px; font-weight: 900; margin-right: 8px; flex-shrink: 0; }
+.stap { display: flex; align-items: flex-start; gap: 4px; font-size: 13.5px; color: var(--ink-soft); padding: 4px 0; line-height: 1.5; }
+.stap strong { color: var(--ink); }
+
+table.compact { width: 100%; border-collapse: collapse; font-size: 12.5px; margin-top: 6px; }
+table.compact th, table.compact td { padding: 7px 10px; text-align: left; border-bottom: 1.5px solid var(--line); color: var(--ink-soft); }
+table.compact th { font-size: 10.5px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+table.compact td strong { color: var(--ink); font-weight: 800; }
+.p { font-size: 13.5px; color: var(--ink-soft); line-height: 1.6; margin-bottom: 10px; }
+.p strong { color: var(--ink); }
+.box { margin-bottom: 10px; }
+.box p { font-size: 13px; color: var(--ink-soft); margin: 0; line-height: 1.55; }
+.card-bron { margin-left: auto; font-size: 10.5px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; opacity: 0.7; }
+.table-wrap { overflow-x: auto; margin-bottom: 10px; }
+ol.clean { counter-reset: n; list-style: none; display: flex; flex-direction: column; gap: 5px; margin: 0; padding: 0; }
+ol.clean li { counter-increment: n; font-size: 13.5px; line-height: 1.55; padding: 3px 0 3px 22px; position: relative; color: var(--ink-soft); font-weight: 500; }
+ol.clean li::before { content: counter(n) '.'; position: absolute; left: 0; top: 3px; color: var(--accent); font-weight: 900; font-size: 12.5px; }
+ol.clean li strong { color: var(--ink); font-weight: 800; }
+.sam-note { background: var(--surface); border: 1.5px dashed var(--line); border-radius: var(--radius-lg); padding: 14px 18px; font-size: 13px; color: var(--ink-soft); line-height: 1.55; margin-bottom: 18px; }
+@media (max-width: 760px) { table.compact.wide { min-width: 560px; } .two-col { grid-template-columns: 1fr; } .card-body { padding: 18px 16px; } .sam-intro { padding: 22px 18px; } .sam-intro h1 { font-size: 26px; } nav.chapnav { position: static; margin: 0 16px 16px; } .main { padding: 0 16px 48px; } .sam-wrap { padding: 16px; } }
+</style>
+</head>
+<body>
+
+<div id="fa-header-slot"></div>
+
+<nav class="fa-breadcrumb">
+  <a href="app.html">Vakken</a>
+  <span>›</span>
+  <a href="praktijkproject-business-management.html">Praktijkproject Business Management</a>
+  <span>›</span>
+  <span class="current">Toetsing & beoordeling</span>
+</nav>
+
+<div class="sam-wrap">
+  <div class="sam-intro">
+    <div class="sam-intro-meta">TOETSING · PRJBUS01 · 2026-2027</div>
+    <h1>Praktijkproject Business Management: toetsing en beoordeling</h1>
+    <p>Dit vak heeft twee toetsen. Toets-01 is de adviespresentatie aan de opdrachtgever (30 minuten plus 15 minuten vragen), die 100% van het cijfer bepaalt. Toets-02 is een portfolio over je eigen ontwikkeling, beoordeeld met voldaan of niet voldaan. Hieronder per toets wat er beoordeeld wordt, per criterium het verschil tussen onder, op en boven niveau, een checklist en een overzicht van alle tussenproducten van het einddossier.</p>
+  </div>
+  <div class="sam-note">Dit is een uitleg in eigen woorden. Bij twijfel gelden de studiehandleiding en het beoordelingsformulier op Brightspace.</div>
+</div>
+
+<nav class="chapnav">
+  <a href="#t1-praktisch">Toets-01 adviespresentatie: praktisch</a>
+  <a href="#t1-rubric">Toets-01: per criterium onder, op en boven niveau</a>
+  <a href="#t1-checklist">Checklist adviespresentatie</a>
+  <a href="#t2-portfolio">Toets-02 portfolio</a>
+  <a href="#einddossier">Tussenproducten van het einddossier per fase</a>
+</nav>
+
+<div class="main">
+<div class="card" id="t1-praktisch">
+  <div class="card-header h1"><span class="icon">🎤</span><h2>Toets-01 adviespresentatie: praktisch</h2><span class="card-bron">Toetsing opzet, Instructie Presentatie</span></div>
+  <div class="card-body">
+<div class="table-wrap"><table class="compact"><thead><tr><th>Onderdeel</th><th>Afspraak</th></tr></thead><tbody><tr><td>Vorm</td><td>Adviespresentatie aan de opdrachtgever, als team</td></tr><tr><td>Duur</td><td>30 minuten presentatie, aansluitend 15 minuten vragen</td></tr><tr><td>Inleveren</td><td>De presentatie vóór aanvang inleveren via Handin</td></tr><tr><td>Weging</td><td>100% van het cijfer; vijf rubriccriteria van elk 20%</td></tr><tr><td>Tentamenmoment</td><td>Periode 2 of periode 4, herkansing in de periode nadat het onderwijs is gevolgd (maximaal 2 gelegenheden)</td></tr></tbody></table></div>
+<p class="p">Je presenteert een helder, gestructureerd en overtuigend advies, afgestemd op de belangrijkste stakeholders en de organisatiecultuur, met een professionele en ondersteunende visualisatie. Vier van de vijf criteria gaan over de inhoud van het advies, één over het presenteren zelf; de trainingen spreken daarom van 80% inhoud en 20% vorm.</p>
+<div class="section" style="margin-bottom:8px"><h3>Verplichte adviesstructuur</h3></div>
+<div class="table-wrap"><table class="compact wide"><thead><tr><th>Onderdeel</th><th>Beantwoord in elk geval</th><th>Komt uit</th></tr></thead><tbody><tr><td>1. Probleem</td><td>Wat is het probleem? Wat zijn de gevolgen voor de organisatie?</td><td>Define en Measure</td></tr><tr><td>2. Oorzaak</td><td>Wat zijn de onderliggende oorzaken van het probleem?</td><td>Analyze</td></tr><tr><td>3. Advies</td><td>Wat is je advies? Hoe ben je ertoe gekomen (analyses en input van stakeholders)? Hoe kan het worden geïmplementeerd? Hoe worden voortgang en resultaat gemonitord? Welke meervoudige toegevoegde waarde levert het op?</td><td>Generate, Improve en Control</td></tr></tbody></table></div>
+<p class="p">In de trainingen heet de kern van deze structuur PROA: Probleem, Risico (de omvang van het probleem), Oorzaak en Advies, binnen de basisstructuur inleiding, kern en slot.</p>
+<div class="highlight">Denk vanuit de beslisser: wat heeft de opdrachtgever nodig om ja te zeggen tegen het advies, en wat maakt dat hij wil investeren?</div>
+  </div>
+</div>
+
+<div class="card" id="t1-rubric">
+  <div class="card-header h2"><span class="icon">📋</span><h2>Toets-01: per criterium onder, op en boven niveau</h2><span class="card-bron">Beoordelingsformulier Toets-01 Presentatie (in eigen woorden)</span></div>
+  <div class="card-body">
+<div class="section" style="margin-bottom:8px"><h3>Criterium 1: onderbouwing van de analyse (20%)</h3></div>
+<p class="p">Je gebruikt bedrijfskundige en facilitaire kennis, theorieën en modellen om grip op het vraagstuk te krijgen en de huidige processen te analyseren.</p>
+<div class="table-wrap"><table class="compact wide"><thead><tr><th>Onder niveau (onder 5,5)</th><th>Op niveau (5,5 tot 7,5)</th><th>Boven niveau (boven 7,5)</th></tr></thead><tbody><tr><td>Onderbouwing ontbreekt of is zwak; modellen zijn oppervlakkig of deels onjuist gebruikt en de keuze ervoor is niet beargumenteerd.</td><td>Logische, passende onderbouwing; relevante modellen correct toegepast, de keuze ervoor voldoende beargumenteerd en ze dragen bij aan het advies.</td><td>Sterke, overtuigende onderbouwing die inzicht toont in complexe relaties; modellen diepgaand, creatief en volledig geïntegreerd toegepast.</td></tr></tbody></table></div>
+<div class="warn">Laat zien waarom je een model koos (bijvoorbeeld swimlane omdat overdrachten het probleem waren) en verbind de modellen tot één verhaal: van klantwaarde en KPI's via metingen naar kernoorzaak. Een losse opsomming van modellen is geen integratie.</div>
+<div class="section" style="margin-bottom:8px"><h3>Criterium 2: concreet en samenhangend advies (20%)</h3></div>
+<p class="p">Je ontwikkelt een concreet en samenhangend advies dat logisch uit de analyse voortkomt, met realistische en uitvoerbare verbetermaatregelen en oog voor randvoorwaarden.</p>
+<div class="table-wrap"><table class="compact wide"><thead><tr><th>Onder niveau (onder 5,5)</th><th>Op niveau (5,5 tot 7,5)</th><th>Boven niveau (boven 7,5)</th></tr></thead><tbody><tr><td>Advies beperkt uitgewerkt en sluit niet aan op de analyse; maatregelen algemeen, weinig concreet of niet uitvoerbaar; onderbouwing oppervlakkig.</td><td>Advies sluit logisch aan op de analyse met concrete, uitvoerbare maatregelen, realistisch in deze organisatie; randvoorwaarden (middelen, stakeholders) op hoofdlijnen meegenomen.</td><td>Sterk samenhangend en overtuigend; maatregelen specifiek en innovatief, met duidelijke prioritering en fasering; middelen, risico's, stakeholders en implementatie concreet en integraal uitgewerkt.</td></tr></tbody></table></div>
+<div class="warn">Het verschil tussen op en boven niveau zit in prioritering en fasering (quick win eerst, structureel daarna) en in het integraal uitwerken van risico's (FMEA-light) en implementatie (zes bouwstenen). Elke maatregel moet terug te voeren zijn op een kernoorzaak.</div>
+<div class="section" style="margin-bottom:8px"><h3>Criterium 3: overtuigend presenteren (20%)</h3></div>
+<p class="p">Je presenteert het advies overtuigend aan de stakeholders en houdt rekening met de dynamiek (context, cultuur) van de organisatie.</p>
+<div class="table-wrap"><table class="compact wide"><thead><tr><th>Onder niveau (onder 5,5)</th><th>Op niveau (5,5 tot 7,5)</th><th>Boven niveau (boven 7,5)</th></tr></thead><tbody><tr><td>Onduidelijk of ongestructureerd, niet overtuigend; weinig afstemming op toehoorders en cultuur; geen of nauwelijks visuele ondersteuning.</td><td>Helder en gestructureerd, de kernboodschap komt over; afgestemd op de belangrijkste stakeholders en in algemene zin op de cultuur; voldoende overtuigend; aantrekkelijk gevisualiseerd.</td><td>Zeer overtuigend met een heldere adviesstructuur, goed afgestemd op de toehoorders en zichtbaar op de cultuur; professioneel, waar passend creatief en interactief, met uitstekende visualisaties.</td></tr></tbody></table></div>
+<div class="warn">Eén boodschap per dia, show, don't tell en geen visuele ruis. 'Zichtbaar afgestemd op de cultuur' betekent dat je de taal en waarden van de organisatie gebruikt (bijvoorbeeld veiligheid in de zorg, gastvrijheid op een hogeschool).</div>
+<div class="section" style="margin-bottom:8px"><h3>Criterium 4: stakeholders en draagvlak (20%)</h3></div>
+<p class="p">Je onderbouwt keuzes in gesprekken met stakeholders overtuigend, speelt in op verschillende belangen en stemt communicatie en advies af op de organisatiecontext.</p>
+<div class="table-wrap"><table class="compact wide"><thead><tr><th>Onder niveau (onder 5,5)</th><th>Op niveau (5,5 tot 7,5)</th><th>Boven niveau (boven 7,5)</th></tr></thead><tbody><tr><td>Stakeholders niet betrokken, weinig aandacht voor hun belangen; onvoldoende rekening met de context, waardoor het advies niet aansluit.</td><td>Advies is tot stand gekomen in samenwerking met stakeholders, rekening houdend met hun belangen en aansluitend op de organisatiecontext.</td><td>Daarnaast rekening gehouden met mogelijke weerstanden en overtuigend aangetoond dat er draagvlak is onder verschillende stakeholders.</td></tr></tbody></table></div>
+<div class="warn">Draagvlak moet je aantonen, niet beweren: laat zien wie meedeed (brownpaper, brainstorms met medewerkers en klanten, PUGH met medewerkers), welke weerstand je zag en wat je ermee deed. Dit criterium wordt ook in de vragenronde getoetst.</div>
+<div class="section" style="margin-bottom:8px"><h3>Criterium 5: meervoudige toegevoegde waarde (20%)</h3></div>
+<p class="p">Je neemt bij het advies meervoudige toegevoegde waarde integraal mee, maakt de impact van maatregelen inzichtelijk en presenteert onderbouwde keuzes door voor- en nadelen af te wegen.</p>
+<div class="table-wrap"><table class="compact wide"><thead><tr><th>Onder niveau (onder 5,5)</th><th>Op niveau (5,5 tot 7,5)</th><th>Boven niveau (boven 7,5)</th></tr></thead><tbody><tr><td>Beperkte of geen aandacht voor meervoudige toegevoegde waarde; impact onduidelijk of niet uitgewerkt.</td><td>Relevante meervoudige toegevoegde waarde meegenomen; impact voldoende inzichtelijk; keuzes onderbouwd met voor- en nadelen.</td><td>Meervoudige toegevoegde waarde overtuigend geïntegreerd in analyse en aanbevelingen; impact helder, concreet en breed; kritische, goed beargumenteerde afweging van financiële én niet-financiële waarde.</td></tr></tbody></table></div>
+<div class="warn">Gebruik de elf facilitaire toegevoegde waarden als lenzen en laat ook nadelen zien. Alleen 'het bespaart geld' of alleen 'mensen worden blijer' is te eenzijdig.</div>
+  </div>
+</div>
+
+<div class="card" id="t1-checklist">
+  <div class="card-header h2"><span class="icon">✅</span><h2>Checklist adviespresentatie</h2><span class="card-bron">Instructie Presentatie, rubric en trainingen presentatievaardigheden</span></div>
+  <div class="card-body">
+<ul class="clean" style="margin-bottom:10px"><li>Het probleem is concreet benoemd mét de gevolgen en de omvang voor de organisatie, onderbouwd met eigen meetdata</li><li>De oorzaken komen uit je analyse (verspillingen, Ishikawa, 5x waarom) en zijn kernoorzaken, geen symptomen</li><li>Je laat zien hoe je tot het advies kwam: longlist, toetsing aan klantwaarde en strategie, PUGH-matrix, input van stakeholders</li><li>Het advies is geprioriteerd en gefaseerd (quick win en structurele verbetering)</li><li>Implementatie: activiteiten, mijlpalen, RACI, middelen, randvoorwaarden, SMART succescriteria, invoeringsstrategie</li><li>Risico's: FMEA-light met top-risico's en maatregelen</li><li>Monitoring en borging: KPI's met norm, eigenaar, evaluatiemoment</li><li>Meervoudige toegevoegde waarde: financieel én niet-financieel, met voor- en nadelen</li><li>Draagvlak aantoonbaar: wie is betrokken, welke weerstand, wat heb je ermee gedaan</li><li>Afgestemd op de toehoorders en de cultuur van deze organisatie</li><li>Eén boodschap per dia, visuals die het verhaal dragen, geen lange teksten</li><li>Tabellen en figuren volgens APA; presentatie vóór aanvang ingeleverd via Handin</li><li>Generale repetitie gedaan met buddy-feedback, tijd bewaakt binnen 30 minuten</li></ul>
+<div class="section" style="margin-bottom:8px"><h3>Wat je kunt verwachten in de 15 minuten vragen</h3></div>
+<p class="p">Vragen raken dezelfde vijf criteria: hoe weet je dat dit de oorzaak is, waarom dit model, wat als je maar één maatregel kunt doen, wie wordt eigenaar, hoe weet je dat er draagvlak is, wat zijn de nadelen? Oefen ze met toets 3 'Oefening vragen na de adviespresentatie'.</p>
+  </div>
+</div>
+
+<div class="card" id="t2-portfolio">
+  <div class="card-header h2"><span class="icon">📁</span><h2>Toets-02 portfolio</h2><span class="card-bron">Instructie Portfolio, Beoordelingsformulier Toets-02, les 1 en de retrospective-formats</span></div>
+  <div class="card-body">
+<p class="p">In het portfolio laat je zien hoe je je tijdens Business Management hebt ontwikkeld als toekomstig FM-professional: waar je stond, hoe je aan je leerdoelen werkte en wat je meeneemt naar je stage. Het is geen lang reflectieverslag van alles wat er gebeurde, maar een onderbouwd verhaal met concrete voorbeelden en feedback. Beoordeling: voldaan of niet voldaan.</p>
+<div class="table-wrap"><table class="compact wide"><thead><tr><th>Onderdeel</th><th>Wat erin staat</th><th>Richtlijn</th></tr></thead><tbody><tr><td>1. Startpunt als projectlid</td><td>Wat neem je mee uit jaar 1 (samenwerken, projectwerk, feedback, je gebruikelijke rol)? Welke kwaliteiten zet je in? Welke twee leerdoelen formuleerde je aan het begin? Gebruik je terugblik op jaar 1 en de 0-meting uit les 1.</td><td>ongeveer 1 A4</td></tr><tr><td>2. Ontwikkeling tijdens het project</td><td>Minimaal drie concrete situaties: wat gebeurde er, wat was je rol, welk gedrag werd zichtbaar, welke feedback kreeg je, wat deed je ermee en wat ging je anders doen?</td><td>ongeveer 1 tot 1,5 A4</td></tr><tr><td>3. Bijdrage aan het project</td><td>Je bijdrage aan communicatie, voortgang, afspraken en kwaliteit: rol in overleggen, deadlines bewaken, contact met opdrachtgever en projectleden, bijdrage aan milestones en deliverables. Onderbouwd met feedback.</td><td>ongeveer 1 A4</td></tr><tr><td>4. Vertaling naar stage</td><td>Welk type organisatie of stageplek spreekt je aan en wat niet, wat vind je belangrijk in begeleiding, met wie werk je graag samen, welke kwaliteiten zet je in, welke ontwikkelpunten en leerdoelen neem je mee?</td><td>ongeveer ½ tot 1 A4</td></tr></tbody></table></div>
+<p class="p">Omvang hoofddeel: ongeveer 4 A4. De ingevulde formats (retrospectives, stageoriëntatie) voeg je toe als bijlagen; die tellen niet mee in de omvang, maar laten zien waar je informatie vandaan komt.</p>
+<div class="section" style="margin-bottom:8px"><h3>Beoordeling: twee criteria van elk 50%</h3></div>
+<div class="table-wrap"><table class="compact wide"><thead><tr><th>Criterium</th><th>Onder niveau</th><th>Op niveau</th><th>Boven niveau</th></tr></thead><tbody><tr><td>Verantwoordelijkheid voor persoonlijke en professionele ontwikkeling (reflecteren met feedback, leerdoelen, vertaling naar stage)</td><td>Reflectie blijft algemeen, feedback beperkt gebruikt, leerdoelen niet concreet of niet gekoppeld aan acties, vertaling naar stage oppervlakkig</td><td>Reflecteert met feedback, formuleert concrete leerdoelen, werkt eraan en vertaalt de opbrengst naar stage</td><td>Reflecteert kritisch met meerdere feedbackbronnen, werkt zichtbaar aan leerdoelen, stelt gedrag of doelen bij en komt tot onderbouwde keuzes en leerdoelen richting stage</td></tr><tr><td>Actieve deelname aan het adviestraject en gestructureerde communicatie met opdrachtgever en projectleden via milestones en deliverables</td><td>Beperkte of passieve deelname, onduidelijke of onregelmatige bijdragen, minimale communicatie</td><td>Actieve deelname met een herkenbare bijdrage, gestructureerde communicatie aan de hand van milestones en deliverables</td><td>Proactief initiatief, substantiële bijdrage, tijdige en doelgerichte communicatie, signaleert knelpunten vroeg en helpt bijsturen</td></tr></tbody></table></div>
+<div class="section" style="margin-bottom:8px"><h3>Bronnen voor je portfolio</h3></div>
+<ul class="clean" style="margin-bottom:10px"><li>Startpunt en twee leerdoelen uit les 1 (inclusief je inbreng in het teamcanvas)</li><li>Teamformat en individueel format van elke retrospective (sprint 1, 2, aanvulling stage in P2 week 4, sprint 4)</li><li>Feedback van projectgroep (top en tip), opdrachtgever en docent</li><li>Het format van sprint 4: situaties voor je portfolio, leerdoelen richting stage en de aanvulling na de eindpresentatie</li></ul>
+<div class="section" style="margin-bottom:8px"><h3>Valkuilen</h3></div>
+<ul class="clean" style="margin-bottom:10px"><li>Algemene zinnen als 'ik kan goed samenwerken' of 'ik wil beter plannen' zonder voorbeeld waaruit dat blijkt</li><li>Een verslag van wat het team deed in plaats van wat jij deed en leerde</li><li>Feedback noemen zonder te laten zien wat je er daarna mee deed</li><li>Slechts één feedbackbron gebruiken, terwijl 'boven niveau' meerdere bronnen vraagt</li><li>Leerdoelen die nergens meer terugkomen of nooit zijn bijgesteld</li><li>Formats achteraf reconstrueren: vul ze direct na elke retrospective in</li><li>De stagevertaling los laten staan van wat je in het project over jezelf hebt geleerd</li></ul>
+<div class="warn">Les 1 noemt in de sprekersnotities een einddocument van ongeveer 3 A4, de instructie op Brightspace ongeveer 4 A4. Houd de instructie aan (ongeveer 4 A4, met de richtlijnen per onderdeel) en check bij twijfel bij je docent.</div>
+  </div>
+</div>
+
+<div class="card" id="einddossier">
+  <div class="card-header h2"><span class="icon">🗂️</span><h2>Tussenproducten van het einddossier per fase</h2><span class="card-bron">Cursusbeschrijving, les 1 (praktijkdagen), opleverslides van alle lessen</span></div>
+  <div class="card-body">
+<p class="p">Het einddossier groeit stap voor stap. De precieze invulling hangt af van je opdracht, maar dit zijn de tussenproducten die de lessen opleveren.</p>
+<div class="table-wrap"><table class="compact wide"><thead><tr><th>Fase</th><th>Week</th><th>Tussenproduct</th></tr></thead><tbody><tr><td>Define</td><td>P1 wk 1</td><td>Scrumboard met rollen, missie-visievertaling met drie FM-kernwoorden, bezoekvoorbereiding, startpunt portfolio</td></tr><tr><td>Define</td><td>P1 wk 2</td><td>KSF's, klantwaarde (SERVQUAL), gap-analyse, projectfocus, stakeholdermap</td></tr><tr><td>Define</td><td>P1 wk 3</td><td>Afgebakend proces (begin, eind, niveau), tabel klantwaarde-KSF-KPI</td></tr><tr><td>Measure</td><td>P1 wk 4</td><td>Brownpaper en digitale procesbeschrijving (Miro), meetplan, review 1, retro sprint 1</td></tr><tr><td>Measure</td><td>P1 wk 5</td><td>Opgeschoonde dataset, grafieken, procesflow met bottlenecks, aangescherpt meetplan</td></tr><tr><td>Analyze</td><td>P1 wk 6</td><td>Root-cause-analyse: VA/BNVA/NVA, verspillingen, Ishikawa, 5x waarom, Pareto</td></tr><tr><td>Analyze</td><td>P1 wk 7</td><td>Kernproblemen en verbeterfocus, tussenrapportage en tussenpresentatie, review 2, retro sprint 2</td></tr><tr><td>Generate</td><td>P2 wk 1</td><td>Longlist, impact/effort-matrix, 3 à 5 ontwerpeisen</td></tr><tr><td>Generate</td><td>P2 wk 2</td><td>Future state, PUGH-matrix, voorkeursoplossing met pilotvoorstel</td></tr><tr><td>Improve</td><td>P2 wk 3</td><td>Stakeholder- en communicatieplan, RACI op hoofdlijnen</td></tr><tr><td>Improve</td><td>P2 wk 4</td><td>Concept-implementatieplan, FMEA-light en invoeringsstrategie, review 3, retro met stageoriëntatie</td></tr><tr><td>Control</td><td>P2 wk 5</td><td>Borgingsplan (borgingsparagraaf)</td></tr><tr><td>Control</td><td>P2 wk 6</td><td>Overdrachtsdossier en lessons learned</td></tr><tr><td>Closure</td><td>P2 wk 7</td><td>Overdrachtspakket: einddossier-check, borgingskaart, overdrachtsplan; retro sprint 4</td></tr><tr><td>Afronding</td><td>daarna</td><td>Adviesnota/overdrachtsdocument, eindpresentatie, portfolio</td></tr></tbody></table></div>
+<div class="warn">De dia's nummeren de sprints niet overal gelijk (sommige P2-dia's noemen week 1-3 al 'sprint 4'). Deze tabel volgt het vakoverzicht: sprint 1 en 2 in periode 1, sprint 3 en 4 in periode 2.</div>
+  </div>
+</div>
+</div>
+
+<footer class="fa-site-footer">
+  <span>FM Atlas · gratis studiehulp voor HAN Facilitair Management, gemaakt door een student</span>
+  <span>Niet officieel verbonden aan de HAN · <a href="privacy.html">Privacy</a> · <a href="app.html#contact">Fout gezien?</a></span>
+</footer>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+<script src="js/fmatlas.js"></script>
+<script>
+const firebaseConfig = {
+  apiKey: "AIzaSyBB397Wk2eqpBjic8E7aGV1mTgIjhQ21a8",
+  authDomain: "fmkompas-ff8bc.firebaseapp.com",
+  projectId: "fmkompas-ff8bc",
+  storageBucket: "fmkompas-ff8bc.firebasestorage.app",
+  messagingSenderId: "487972024689",
+  appId: "1:487972024689:web:712c3117080745d14746d0"
+};
+firebase.initializeApp(firebaseConfig);
+firebase.auth().onAuthStateChanged(user => {
+  document.getElementById('fa-header-slot').innerHTML = '';
+  faMarkActiveToday();
+  document.getElementById('fa-header-slot').appendChild(faRenderHeader({ user }));
+  faMarkLastSeen('praktijkproject-business-management','Praktijkproject Business Management','praktijkproject-business-management.html');
+});
+</script>
+</body>
+</html>

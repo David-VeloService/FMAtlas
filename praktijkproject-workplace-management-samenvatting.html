@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Samenvatting · Praktijkproject Workplace Management — FM Atlas</title>
+<link rel="icon" type="image/svg+xml" href="logo.svg"/>
+<meta name="theme-color" content="#f7f3ec"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="css/fmatlas.css"/>
+<style>
+.sam-wrap { max-width: 1100px; margin: 0 auto; padding: 24px; }
+.sam-intro { background: var(--surface); border: 1.5px solid var(--line); border-radius: var(--radius-xl); padding: 28px 32px; margin-bottom: 18px; }
+.sam-intro-meta { font-size: 11px; font-weight: 800; color: var(--accent); letter-spacing: 0.08em; margin-bottom: 8px; }
+.sam-intro h1 { font-size: 32px; font-weight: 900; letter-spacing: -0.025em; line-height: 1.08; margin-bottom: 10px; }
+.sam-intro p { color: var(--ink-soft); font-size: 14.5px; line-height: 1.6; }
+
+nav.chapnav { background: var(--surface); border: 1.5px solid var(--line); border-radius: var(--radius-lg); padding: 12px 16px; margin: 0 24px 18px; max-width: 1052px; margin-left: auto; margin-right: auto; display: flex; flex-wrap: wrap; gap: 6px; position: sticky; top: 68px; z-index: 20; }
+nav.chapnav a { color: var(--ink-soft); text-decoration: none; padding: 4px 10px; border-radius: 8px; background: var(--bg); font-weight: 800; font-size: 11.5px; border: 1.5px solid var(--line); transition: all 0.12s; }
+nav.chapnav a:hover { background: var(--accent-soft); color: var(--accent-deep); border-color: var(--accent); }
+
+.main { max-width: 1052px; margin: 0 auto; padding: 0 24px 60px; display: flex; flex-direction: column; gap: 18px; }
+
+.card { background: var(--surface); border: 1.5px solid var(--line); border-radius: var(--radius-xl); overflow: hidden; scroll-margin-top: 140px; }
+.card-header { padding: 16px 22px; display: flex; align-items: center; gap: 10px; color: var(--surface); background: var(--ink); }
+.card-header h2 { font-size: 17px; font-weight: 900; letter-spacing: -0.015em; }
+.card-header .icon { font-size: 20px; }
+.card-body { padding: 22px 24px; }
+
+.h1 { background: var(--accent); }
+.h2, .h3, .h4 { background: var(--ink); }
+
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+@media (max-width: 740px) { .two-col, .three-col { grid-template-columns: 1fr; } }
+
+.section { margin-bottom: 18px; }
+.section h3 { font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin-bottom: 8px; padding-bottom: 6px; border-bottom: 1.5px solid var(--line); }
+
+ul.clean { list-style: none; display: flex; flex-direction: column; gap: 5px; margin: 0; padding: 0; }
+ul.clean li { font-size: 13.5px; line-height: 1.55; padding: 3px 0 3px 16px; position: relative; color: var(--ink-soft); font-weight: 500; }
+ul.clean li::before { content: '›'; position: absolute; left: 0; top: 3px; color: var(--accent); font-weight: 900; }
+ul.clean li strong { color: var(--ink); font-weight: 800; }
+
+.defbox { background: var(--bg); border: 1.5px solid var(--line); border-left: 4px solid var(--accent); border-radius: 0 var(--radius) var(--radius) 0; padding: 10px 14px; margin-bottom: 10px; font-size: 13.5px; line-height: 1.55; color: var(--ink-soft); }
+.defbox strong { display: block; font-size: 10.5px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); margin-bottom: 4px; }
+
+.highlight { background: var(--accent-soft); border: 1.5px solid rgba(239, 90, 63, 0.25); border-radius: var(--radius); padding: 10px 14px; font-size: 13.5px; line-height: 1.55; margin-bottom: 10px; color: var(--accent-deep); font-weight: 600; }
+.highlight strong { color: var(--accent-deep); font-weight: 900; }
+
+.warn { background: #fff7ed; border-left: 3px solid #f59e0b; padding: 9px 14px; border-radius: 0 var(--radius) var(--radius) 0; font-size: 12.5px; color: #92400e; margin-bottom: 10px; font-weight: 600; }
+
+.tag { display: inline-block; padding: 2px 8px; border-radius: 999px; font-size: 11px; font-weight: 800; }
+.blue   { background: #dbeafe;  color: #1e40af; }
+.green  { background: #dcfce7;  color: #166534; }
+.purple { background: #ede9fe;  color: #5b21b6; }
+.orange { background: #ffedd5;  color: #9a3412; }
+.red    { background: #fee2e2;  color: #991b1b; }
+.yellow { background: #fef3c7;  color: #854d0e; }
+
+.box { background: var(--bg); border: 1.5px solid var(--line); border-radius: var(--radius); padding: 12px 14px; }
+.box h4 { font-size: 12.5px; font-weight: 900; margin-bottom: 8px; color: var(--ink); letter-spacing: -0.005em; }
+
+.nummer { display: inline-flex; align-items:center; justify-content:center; background: var(--accent); color: var(--surface); width: 22px; height: 22px; border-radius: 50%; font-size: 11px; font-weight: 900; margin-right: 8px; flex-shrink: 0; }
+.stap { display: flex; align-items: flex-start; gap: 4px; font-size: 13.5px; color: var(--ink-soft); padding: 4px 0; line-height: 1.5; }
+.stap strong { color: var(--ink); }
+
+table.compact { width: 100%; border-collapse: collapse; font-size: 12.5px; margin-top: 6px; }
+table.compact th, table.compact td { padding: 7px 10px; text-align: left; border-bottom: 1.5px solid var(--line); color: var(--ink-soft); }
+table.compact th { font-size: 10.5px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+table.compact td strong { color: var(--ink); font-weight: 800; }
+.p { font-size: 13.5px; color: var(--ink-soft); line-height: 1.6; margin-bottom: 10px; }
+.p strong { color: var(--ink); }
+.box { margin-bottom: 10px; }
+.box p { font-size: 13px; color: var(--ink-soft); margin: 0; line-height: 1.55; }
+.card-bron { margin-left: auto; font-size: 10.5px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; opacity: 0.7; }
+.table-wrap { overflow-x: auto; margin-bottom: 10px; }
+ol.clean { counter-reset: n; list-style: none; display: flex; flex-direction: column; gap: 5px; margin: 0; padding: 0; }
+ol.clean li { counter-increment: n; font-size: 13.5px; line-height: 1.55; padding: 3px 0 3px 22px; position: relative; color: var(--ink-soft); font-weight: 500; }
+ol.clean li::before { content: counter(n) '.'; position: absolute; left: 0; top: 3px; color: var(--accent); font-weight: 900; font-size: 12.5px; }
+ol.clean li strong { color: var(--ink); font-weight: 800; }
+.sam-note { background: var(--surface); border: 1.5px dashed var(--line); border-radius: var(--radius-lg); padding: 14px 18px; font-size: 13px; color: var(--ink-soft); line-height: 1.55; margin-bottom: 18px; }
+@media (max-width: 760px) { table.compact.wide { min-width: 560px; } .two-col { grid-template-columns: 1fr; } .card-body { padding: 18px 16px; } .sam-intro { padding: 22px 18px; } .sam-intro h1 { font-size: 26px; } nav.chapnav { position: static; margin: 0 16px 16px; } .main { padding: 0 16px 48px; } .sam-wrap { padding: 16px; } }
+</style>
+</head>
+<body>
+
+<div id="fa-header-slot"></div>
+
+<nav class="fa-breadcrumb">
+  <a href="app.html">Vakken</a>
+  <span>›</span>
+  <a href="praktijkproject-workplace-management.html">Praktijkproject Workplace Management</a>
+  <span>›</span>
+  <span class="current">Samenvatting</span>
+</nav>
+
+<div class="sam-wrap">
+  <div class="sam-intro">
+    <div class="sam-intro-meta">SAMENVATTING · 9 onderdelen · ±40 min lezen</div>
+    <h1>Praktijkproject Workplace Management: studiesamenvatting</h1>
+    <p>Het praktijkproject loopt over twee periodes: in P1 begrijp en ontdek je het vraagstuk, in P2 werk je een oplossing uit en borg je die. De rode draad is design thinking: je begint bij de mensen die het gebouw gebruiken (empathize), scherpt het probleem aan in een design brief (define), bedenkt en kiest ideeën samen met stakeholders (ideate) en gaat in P2 verder met prototype, test en implementatie. Onderzoek is daarbij een middel, geen doel: elke methode die je kiest moet de opdrachtgever verder helpen. Alles wat je doet komt samen in het huisvestingsveranderplan en het eindgesprek, waar je moet kunnen uitleggen waarom je elke keuze maakte.</p>
+  </div>
+  <div class="sam-note"><strong>Waar dit op gebaseerd is:</strong> De dia's van les 1.1 t/m 1.7, het team canvas, de teamrollen, de stakeholder map, het 5W1H-template, de design-brief-formats met toelichting, het feedback-canvas, de handout van les 1.4, het beoordelingsformulier 2026-2027 en de cursusinformatie op Brightspace, stand 7 oktober 2026.<br><strong>Wat er (nog) niet in zit:</strong> De lessen na 1.7 en alle stof van periode 2 (prototype, test, implementatie, nudging, verandermanagement en het investeringsvoorstel) staan nog niet op Brightspace. Theorie over verandermanagement en financiële doorrekening zit hier dus niet in; in P2 lopen daarvoor de vakken Verandermanagement en Veranderingen doorgerekend parallel (overzicht in les 1.1).</div>
+</div>
+
+<nav class="chapnav">
+  <a href="#s1">Les 1.1 · Introductie, team en nieuwsgierigheid</a>
+  <a href="#s2">Les 1.2 · Design thinking en empathize</a>
+  <a href="#s3">Les 1.3 · Onderzoek en observeren</a>
+  <a href="#s4">Les 1.4 · Zakelijk schrijven, AI en presenteren</a>
+  <a href="#s5">Les 1.5 · Ideate en brainstormen</a>
+  <a href="#s6">Les 1.6 · Convergeren: kiezen en uitwerken</a>
+  <a href="#s7">Les 1.7 · Interviewen en focusgroepen</a>
+  <a href="#s8">De design brief: opbouw en toelichting</a>
+  <a href="#s9">Leeruitkomsten en wat het eindproduct moet bevatten</a>
+</nav>
+
+<div class="main">
+<div class="card" id="s1">
+  <div class="card-header h1"><span class="icon">🧭</span><h2>Les 1.1 · Introductie, team en nieuwsgierigheid</h2><span class="card-bron">Les 1.1, teamrollen, team canvas</span></div>
+  <div class="card-body">
+<div class="section" style="margin-bottom:8px"><h3>Wat het project is</h3></div>
+<p class="p">Je werkt in een projectgroep van vijf aan een huisvestingsvraagstuk van een opdrachtgever in de praktijk. Elke groep heeft een eigen opdrachtgever met een eigen vraag. Voorbeelden uit de les: een nieuw hybride werkplekconcept, een nieuwe indeling voor de centrale hal van een zorginstelling, een vlekkenplan en indelingsplan voor een nieuw gebouw, het optimaal benutten van een centrale hub of een huisvestingsplan voor een middelbare school. Het resultaat is <strong>een concrete oplossing op basis van een gedegen onderbouwing</strong>.</p>
+<div class="table-wrap"><table class="compact"><thead><tr><th>Onderdeel</th><th>Wat de dia zegt</th></tr></thead><tbody><tr><td>Plaats in jaar 2</td><td>Loopt over P1 en P2 (10 EC). Parallel: Huisvesting in P1 (10 EC), Verandermanagement en Veranderingen doorgerekend in P2 (elk 5 EC)</td></tr><tr><td>Duur</td><td>Twee periodes van 9 weken, samen een half jaar</td></tr><tr><td>Elke week</td><td>Een lesblok van 4 lesuren (begeleiding, intervisie, workshops) en een praktijkdag van 8 lesuren bij de opdrachtgever, altijd op dinsdag</td></tr><tr><td>Aanwezigheid</td><td>Afspraak: je bent er, bij de les én op de praktijkdag</td></tr><tr><td>Studielast</td><td>10 EC = 280 werkuren per persoon, ongeveer 20 uur per week</td></tr><tr><td>Werkwijze</td><td>Vaste methodiek en stappenplan vanuit design thinking, met feedback op tussenresultaten</td></tr></tbody></table></div>
+<div class="section" style="margin-bottom:8px"><h3>De planning van de praktijkdagen</h3></div>
+<div class="table-wrap"><table class="compact wide"><thead><tr><th>Week</th><th>Periode 1: begrijpen en ontdekken</th><th>Wat je uitwerkt</th></tr></thead><tbody><tr><td>W1</td><td>Geen praktijkdag</td><td>Start in de les</td></tr><tr><td>W2</td><td>Empathize: kennismaking en toelichting opdracht</td><td>Eerste inzichten, situatiefoto's, vraagstuk verhelderen</td></tr><tr><td>W3</td><td>Empathize: meelopen en gesprekken met stakeholders</td><td>Stakeholdermap, customer journey, persona's, opzet design brief</td></tr><tr><td>W4</td><td>Define: fotosafari en observaties</td><td>Concept design brief</td></tr><tr><td>W5</td><td>Define: presentatie en design brief</td><td>Definitieve design brief</td></tr><tr><td>W6</td><td>Ideate: co-creatie of brainstormworkshop</td><td>Ideeënbord</td></tr><tr><td>W7</td><td>Ideate: de 3 beste oplossingen presenteren</td><td>Feedback en gevolgen van de oplossingen</td></tr><tr><td>Daarna</td><td>Herfstvakantie en tentamenweken</td><td>2 à 3 interviews bij vergelijkbare organisaties</td></tr></tbody></table></div>
+<div class="table-wrap"><table class="compact wide"><thead><tr><th>Week</th><th>Periode 2: verwezenlijken</th><th>Wat je uitwerkt</th></tr></thead><tbody><tr><td>W1</td><td>Geen praktijkdag, zelfstandig werk</td><td>Low-fidelity prototype</td></tr><tr><td>W2</td><td>Prototype en test: feedback op het concept-prototype</td><td>Definitief prototype</td></tr><tr><td>W3</td><td>Prototype en test: presentatie definitief prototype</td><td>Prototype en onderbouwing</td></tr><tr><td>W4-W6</td><td>Gastcollege, implement: nudging toepassen en testen, oplossing toetsen</td><td>Nudgingresultaten, eindpresentatie</td></tr><tr><td>W7</td><td>Eindpresentatie en afsluiting bij de opdrachtgever</td><td>Huisvestingsveranderplan</td></tr><tr><td>W8</td><td>Inleveren huisvestingsveranderplan bij de HAN-docenten</td><td>Huisvestingsplan</td></tr></tbody></table></div>
+<div class="warn">De twee planningsdia's in les 1.1 verschillen in P2 over de volgorde van gastcollege en nudging (week 4 of week 5). Check de actuele planning op Brightspace of bij je docent.</div>
+<div class="section" style="margin-bottom:8px"><h3>Team: rollen en team canvas</h3></div>
+<p class="p">Met zeven rolkaarten ontdek je wat je kunt betekenen voor de groep. Iedereen rangschikt de kaarten van ‘past het meest’ naar ‘past het minst’, daarna kijk je samen welke rollen vertegenwoordigd zijn en verdeel je taken. Je hoeft geen projectleider te benoemen: de groep werkt vanuit gedeelde verantwoordelijkheid. Benoem wel <strong>een contactpersoon</strong> (naar opdrachtgever en docent) en <strong>een archivaris of beheerder</strong> (alle stukken op een centrale plek).</p>
+<div class="table-wrap"><table class="compact"><thead><tr><th>Rol</th><th>Verantwoordelijkheid in het kort</th></tr></thead><tbody><tr><td>Planner</td><td>Maakt en bewaakt de planning, houdt team en project op schema</td></tr><tr><td>Beheerder</td><td>Legt de voortgang bij elke stap vast, archiveert, maakt foto's</td></tr><tr><td>Verbinder</td><td>Verbindt het team met gebruikers, experts en ervaringen</td></tr><tr><td>Antropoloog</td><td>Kadert het probleem, observeert nieuwsgierig, levert diepe inzichten</td></tr><tr><td>Tolk</td><td>Zet bevindingen om in inzichten en voorkomt dat het team te snel naar een oplossing sprint</td></tr><tr><td>Hordenloper</td><td>Haalt belemmeringen weg, onderhandelt, vecht voor tijd, middelen en budget</td></tr><tr><td>Verhalenverteller</td><td>Maakt van het project een verhaal en communiceert het naar buiten</td></tr></tbody></table></div>
+<p class="p">Het <strong>team canvas</strong> maakt doelen, verwachtingen en ieders inbreng duidelijk. In het midden staat de purpose (welke impact willen we maken en waarom). Daaromheen: mensen en rollen, gezamenlijke doelstellingen, persoonlijke doelen, waarden, behoeften en verwachtingen, regels en afspraken, sterktes en middelen, zwaktes en ontwikkelgebieden. Pak het canvas tijdens het project regelmatig erbij om te kijken of je nog on track bent. Het hoort als bijlage bij de design brief.</p>
+<div class="section" style="margin-bottom:8px"><h3>Creativiteit en nieuwsgierigheid</h3></div>
+<p class="p">Een opdrachtgever verwacht een creatieve en praktisch toepasbare oplossing. Dat vraagt een out-of-the-box-benadering, en daarvoor moet je nieuwsgierig zijn: zonder dwang en zonder uitzicht op beloning op zoek gaan.</p>
+<ol class="clean" style="margin-bottom:10px"><li><strong>Vragen stellen</strong> aan jezelf en de ander (oefening: vijf keer ‘waarom?’)</li><li><strong>Kennis achterhouden</strong>: inspelen op onwetendheid</li><li><strong>Verwachtingen verstoren</strong>: twijfel of verbazing oproepen</li><li><strong>Open houden</strong>: onvoorspelbaarheid of oneindigheid</li><li><strong>Urgentie</strong>: er speelt iets waarvoor een oplossing moet komen</li></ol>
+<p class="p">Samen weet je meer (wisdom of the crowd), mits er diversiteit, onafhankelijkheid, decentralisatie en aggregatie is.</p>
+<div class="section" style="margin-bottom:8px"><h3>Eerste stappen richting de opdrachtgever</h3></div>
+<ul class="clean" style="margin-bottom:10px"><li>Verdiep je in de organisatie (noteer je bronnen), de contactpersoon, externe ontwikkelingen, de belangrijkste stakeholders (stakeholder canvas), de huisvesting en het vraagstuk</li><li>Formuleer vragen voor het eerste gesprek en maak een poster die je aan de docent pitcht</li><li>Stuur een professionele mail: stel jezelf en je teamleden voor, noem de hoofdcontactpersoon, zet iedereen in de cc, kies een duidelijk onderwerp, kondig het bezoek aan en vraag om planning en mijlpalen te bespreken</li><li>Na de eerste praktijkdag: een visuele presentatie van 10 minuten over organisatie en vraagstuk, zo dat iemand die de organisatie niet kent snapt waar je zit en wat je gaat doen</li><li>Spreek af dat je in week 5 de voortgang presenteert en dat je medewerkers mag bevragen en met ze mag meelopen</li></ul>
+  </div>
+</div>
+
+<div class="card" id="s2">
+  <div class="card-header h2"><span class="icon">🧠</span><h2>Les 1.2 · Design thinking en empathize</h2><span class="card-bron">Les 1.2, stakeholder map template, 5W1H-template</span></div>
+  <div class="card-body">
+<div class="defbox"><strong>Design thinking</strong>Een mensgerichte innovatiemethode om problemen op te lossen. Je vertrekt niet vanuit technologie of harde cijfers, maar vanuit de werkelijke behoeften en ervaringen van de eindgebruiker. Het is een methode én een mindset: denkers die kunnen doen, dus geen vrijblijvende adviezen maar concrete oplossingen.</div>
+<div class="table-wrap"><table class="compact wide"><thead><tr><th>Fase</th><th>Kern</th><th>Wat je doet</th></tr></thead><tbody><tr><td>1 Empathize</td><td>Leef je in, ken de mensen voor wie je ontwerpt</td><td>Onderzoek naar ervaringen, gedrag, meningen, wensen en behoeften; pijnpunten en kansen in hun omgeving</td></tr><tr><td>2 Define</td><td>Bepaal voor wie je ontwerpt en waarmee je hen helpt</td><td>Hét pijnpunt vaststellen; focus houden (niet te breed of vaag); checken tegen het gebruikersprofiel</td></tr><tr><td>3 Ideate</td><td>Genereer ideeën die het probleem oplossen</td><td>Eerst veel ideeën (divergeren), dan ordenen en de beste kiezen (convergeren)</td></tr><tr><td>4 Prototype</td><td>Zet ideeën om in iets testbaars</td><td>Simpel beginnen, alleen bouwen wat je wilt testen, niet te gelikt; faal snel en leer veel</td></tr><tr><td>5 Test</td><td>Krijg feedback van doelgroep en betrokkenen</td><td>Gebruikers in contact brengen met het prototype; verbeterpunten verzamelen voor een nieuwe versie</td></tr></tbody></table></div>
+<p class="p">De fasen komen uit de Design Thinking Toolkit van het Maastricht UMC. Een uitgebreid schema in de les voegt na test nog <strong>implement</strong> en <strong>experiment</strong> toe, met pijlen terug naar eerdere fasen: je kunt en moet dus terug als een test of nieuw inzicht daarom vraagt.</p>
+<div class="two-col"><div><div class="section" style="margin-bottom:8px"><h3>Divergeren en convergeren</h3></div>
+<p class="p">Divergeren is verkennen en kansen zoeken: breed, veel, zonder oordeel. Convergeren is keuzes maken en beslissingen nemen. Design thinking wisselt die twee steeds af.</p></div><div><div class="section" style="margin-bottom:8px"><h3>Double Diamond</h3></div>
+<p class="p">Eerste ruit: Discover en Define, de vraag ‘welke problemen zijn er?’, eindigt in het probleem. Tweede ruit: Develop en Deliver, de vraag ‘welke oplossingen zijn er?’, eindigt in de oplossing. Empathize en define vallen in de eerste ruit, ideate en prototype in de tweede.</p></div></div>
+<div class="section" style="margin-bottom:8px"><h3>Empathize: stakeholders</h3></div>
+<p class="p">Wie zijn de belangrijkste betrokkenen, hoe zijn ze betrokken (wat is hun belang) en welke invloed hebben ze? Dat zet je op een <strong>stakeholder map</strong>: bovenaan het doel van het project, in het midden de <strong>gebruikers</strong>, daaromheen de <strong>interne stakeholders</strong> en buitenaan de <strong>externe stakeholders</strong>. Het template op Brightspace heeft drie ringen (A, B, C) met een legenda, een lijst stakeholders en een lijst relaties tussen stakeholders. De gebruikers uit het midden werk je uit in persona's.</p>
+<div class="section" style="margin-bottom:8px"><h3>Persona's</h3></div>
+<div class="defbox"><strong>Persona</strong>Een fictieve persoon wiens profiel de eigenschappen van een bestaande groep (potentiële) gebruikers in zich verenigt: sociale en demografische achtergrond, behoeften, verlangens, gewoonten, culturele achtergrond.</div>
+<ul class="clean" style="margin-bottom:10px"><li><strong>Wat:</strong> een levendige beschrijving van je doelgroep alsof het een echt persoon is; je maakt er 2 tot 4 op basis van je onderzoeksresultaten</li><li><strong>Waarom:</strong> je leeft je in in verschillende soorten gebruikers, zodat je oplossing past bij hun situaties en behoeften</li><li><strong>Hoe:</strong> inzichten uit interviews, observaties en ander onderzoek; welke soorten gebruikers kun je onderscheiden? Maak ze specifiek voor jouw probleem en pluk ze niet van internet. Onderscheid op wat relevant is: soms leeftijd of geslacht, soms vaardigheden, opleiding of werkstijl</li><li>Voor een werkomgeving vraag je: waar doen medewerkers hun werk, wat hebben ze daarbij nodig en wat verwachten ze van de omgeving en voorzieningen?</li><li>Geef persona's een naam, gezicht en leven, en test ze tegen je bevindingen</li></ul>
+<div class="box"><h4>Voorbeeld uit de les</h4><p>Twee persona's die intern mobiel zijn, dus op verschillende plekken in het gebouw werken: een senior financieel manager wiens werk vooral bestaat uit vergaderen, telefoneren en samenwerken, en een HR-assistent die administratief werk aan een bureau combineert met overleggen. Hun dagen zien er anders uit, dus hun journey ook.</p></div>
+<p class="p"><strong>Persona's valideren:</strong> zoek mensen die bij een persona passen, houd korte informele gesprekjes, bedenk een pitch om contact te leggen en vooraf je vragen, en pas daarna je persona's aan of voeg ze samen. Voor de praktijkdag in week 3 is de opdracht minimaal 10 gesprekjes.</p>
+<div class="section" style="margin-bottom:8px"><h3>Journey mapping</h3></div>
+<p class="p">Per persona maak je een customer journey map (klantreis). Visualiseer je een werkdag van begin tot eind, dan heet het een <strong>medewerkerreis</strong>. Je laat zien hoe de journey verloopt, wat de touchpoints zijn en welke ervaringen er positief of negatief zijn.</p>
+<div class="table-wrap"><table class="compact"><thead><tr><th>Fase</th><th>Wat er gebeurt</th></tr></thead><tbody><tr><td>Onderweg</td><td>Iemand is nog niet fysiek op de locatie</td></tr><tr><td>Aankomst</td><td>Eerste contact met gebouw, omgeving of services</td></tr><tr><td>Verblijf</td><td>De persoon is aanwezig op de locatie</td></tr><tr><td>Vertrek</td><td>Iemand gaat weg en heeft een laatste contact met het gebouw</td></tr></tbody></table></div>
+<div class="section" style="margin-bottom:8px"><h3>Werken vanuit een probleem</h3></div>
+<ol class="clean" style="margin-bottom:10px"><li>De opdrachtgever heeft een probleem.</li><li>Maar is dat ook echt hét probleem?</li><li>Waar ligt de oplossing?</li><li>Waarmee ga je de opdrachtgever helpen, welk product lever je op?</li><li>Hoe kom je dat te weten?</li></ol>
+<div class="highlight">‘De lift is traag’ is een probleem dat om een technische oplossing vraagt. ‘Hoe kunnen we de ervaring van het wachten op de lift verbeteren?’ opent heel andere oplossingen. Het probleem goed herformuleren is volgens de les de echte uitdaging van design thinking.</div>
+<div class="section" style="margin-bottom:8px"><h3>5W1H en de start van de design brief</h3></div>
+<p class="p">Met 5W1H verken je het vraagstuk: wat is de kern, wie hebben ermee te maken of er last van, waarom is het een probleem en waarom nu, waar doet het zich voor, wanneer, en hoe of waardoor is het ontstaan (en wat is al geprobeerd)? Je sluit af met een korte, krachtige vraagstelling waarin alle elementen zitten. Weet je iets nog niet, dan vraag je het op een volgende praktijkdag.</p>
+<ol class="clean" style="margin-bottom:10px"><li>Administratieve projectgegevens invullen</li><li>De context verkennen: interne analyse, externe analyse, stakeholderanalyse en begripsduiding (wat weet je al over het onderwerp?)</li><li>Het vraagstuk verkennen met 5W1H</li><li>Het vraagstuk in een paar zinnen formuleren: wat wil de opdrachtgever bereiken?</li></ol>
+  </div>
+</div>
+
+<div class="card" id="s3">
+  <div class="card-header h2"><span class="icon">🔍</span><h2>Les 1.3 · Onderzoek en observeren</h2><span class="card-bron">Les 1.3</span></div>
+  <div class="card-body">
+<div class="section" style="margin-bottom:8px"><h3>De rol van onderzoek</h3></div>
+<p class="p">Aan de vijf vragen uit les 1.2 voegt les 1.3 er één toe: <strong>wat moet je weten, welke inzichten ga je verzamelen?</strong> Daarvoor moet je dingen opzoeken of uitzoeken. Onderzoek is dus een belangrijk onderdeel van design thinking. Een schema in de les laat het verloop zien: ontdekken (van aanleiding naar inzicht in de probleemsituatie), definiëren (naar een probleemdefinitie), ontwikkelen (naar geteste mogelijke oplossingen) en implementeren (naar functionerende oplossingen). Het begin is rommelig en wordt steeds gerichter.</p>
+<div class="table-wrap"><table class="compact"><thead><tr><th>Eis</th><th>Betekenis</th></tr></thead><tbody><tr><td>Bruikbaarheid</td><td>Onderzoek is voor een FM'er een middel, geen doel. Doe niets waar de opdrachtgever niets aan heeft</td></tr><tr><td>Validiteit</td><td>Doe de goede dingen: meet wat je wilt weten</td></tr><tr><td>Betrouwbaarheid</td><td>Doe de dingen goed</td></tr><tr><td>Herhaalbaarheid</td><td>Wees transparant en beschrijf je aanpak zo dat een ander het kan herhalen</td></tr></tbody></table></div>
+<div class="section" style="margin-bottom:8px"><h3>Van praktijkprobleem naar methode</h3></div>
+<div class="table-wrap"><table class="compact wide"><thead><tr><th>Stap</th><th>Vraag</th><th>Voorbeeld uit de les</th></tr></thead><tbody><tr><td>Praktijkprobleem</td><td>Wat is de aanleiding en situatie, wie is de organisatie?</td><td>Organisatie X gaat verhuizen naar een nieuw kantoorgebouw</td></tr><tr><td>Praktijkvraag</td><td>Hoe kan organisatie X ...?</td><td>Hoe kan organisatie X de werkomgeving in haar nieuwe gebouw inrichten?</td></tr><tr><td>Kennisvragen</td><td>Wat moet ik weten om het probleem op te lossen?</td><td>Wat zijn de wensen en eisen van de gebruikers voor de werkomgeving in het nieuwe gebouw?</td></tr><tr><td>Opzoeken en/of uitzoeken</td><td>Waar vind ik die kennis of wat moet ik doen?</td><td>Bronnen zoeken, observaties, groepsinterviews met bepaalde gebruikers, een enquête onder alle gebruikers</td></tr></tbody></table></div>
+<p class="p">Opzoeken doe je via Google en (vak)literatuur. Uitzoeken doe je zelf: kijken (observeren), vragen (interviewen) en bevragen (enquêteren).</p>
+<div class="section" style="margin-bottom:8px"><h3>Zeven tips voor de empathize-fase</h3></div>
+<ul class="clean" style="margin-bottom:10px"><li><strong>Doe deskresearch:</strong> bij een complex probleem moet je het eerst goed doorgronden</li><li><strong>Interview betrokkenen:</strong> deskresearch alleen is niet genoeg</li><li><strong>Interview ter plaatse:</strong> op de plek zelf zie je details die je telefonisch mist en voelt de geïnterviewde zich comfortabeler</li><li><strong>Vraag flink door:</strong> mensen liegen niet snel bewust, maar laten belangrijke informatie weg, zeker als die negatief op henzelf afstraalt</li><li><strong>Observeer:</strong> wat voor betrokkenen doodnormaal is, kan jou op het spoor van een oplossing zetten</li><li><strong>Ervaar het zelf:</strong> doorloop de handelingen van de doelgroep en leg vast wat je opvalt</li><li><strong>Noteer alleen feiten:</strong> geen meningen of aannames, met tijd, datum en locatie, en vraag vooraf toestemming voor beeld of geluid</li></ul>
+<p class="p">Bronnen gebruik je om van te leren, om je te laten inspireren en om experts te vinden die je kunt interviewen. De les noemt als vindplaatsen onder meer de site van FMN en het magazine van Smart WP.</p>
+<div class="section" style="margin-bottom:8px"><h3>Observeren</h3></div>
+<p class="p">Observatieonderzoek kies je als taal een probleem is, als je mensen zo min mogelijk wilt storen, als je de echte praktijk wilt zien in plaats van de politiek correcte beschrijving, of als je wilt zien of mensen echt doen wat ze zeggen.</p>
+<ul class="clean" style="margin-bottom:10px"><li>Gestructureerd of ongestructureerd</li><li>Participerend of niet-participerend</li><li>Direct of indirect</li><li>Verhuld of onverhuld</li><li>Benadering: kwantiteit observeren (aantallen) of gedrag observeren (wat doet iemand)</li><li>Altijd: ethiek, wat kan wel en wat niet</li></ul>
+<div class="two-col"><div><div class="section" style="margin-bottom:8px"><h3>Voordelen</h3></div>
+<ul class="clean" style="margin-bottom:10px"><li>Gedrag objectief vast te leggen, zonder last van sociale wenselijkheid of selectief geheugen</li><li>Onbewust of routinematig gedrag wordt zichtbaar</li><li>Vergelijkingsmateriaal tussen wat je hoort en wat je ziet</li><li>Unieke gegevens die je via andere methoden niet krijgt</li></ul></div><div><div class="section" style="margin-bottom:8px"><h3>Nadelen</h3></div>
+<ul class="clean" style="margin-bottom:10px"><li>Duur</li><li>Tijdrovend</li><li>Observer effect</li><li>Observatorbias</li><li>Motieven voor gedrag zijn niet te observeren</li></ul></div></div>
+<div class="warn">Risico's: observeren zonder doel, subjectiviteit (op zoek naar je eigen gelijk), een verkeerd gekozen doelgroep of moment, interpretatieve in plaats van observatieve notities, en een methode die niet gestandaardiseerd en dus niet transparant is. Wees concreet: geen ‘soms’ of ‘vaak’, maar classificeerbaar en geoperationaliseerd.</div>
+<div class="table-wrap"><table class="compact"><thead><tr><th>Stap</th><th>Wat je doet</th></tr></thead><tbody><tr><td>1 Voorbereiding</td><td>Bepaal wat je wel en niet observeert, hoe lang en hoe je je rol combineert met die van deelnemer; maak zo nodig een coderingsschema; zorg voor een eenduidige introductie en vraag toestemming</td></tr><tr><td>2 Uitvoering</td><td>Maak een observatieschema (welke informatie en hoe); observeer de vastgestelde periode en maak zo veel mogelijk bruikbare notities; pas zo nodig je coderingsschema aan</td></tr><tr><td>3 Afronding</td><td>Stop bij het verzadigingspunt; reflecteer, vul aan en analyseer; deel je bevindingen met de deelnemers, bijvoorbeeld in een focusgroep of per mail</td></tr></tbody></table></div>
+<p class="p"><strong>Rapporteren:</strong> leg vast met opnamen, veldnotities en een logboek, en noteer datum, locatie, betrokkenen, situatie en afwijkende factoren. In het rapport beschrijf je je aanpak gedetailleerd, verwijs je in de resultaten naar concrete observaties en aantallen, en zet je datafiles, analyseplan, turflijst en observatieoverzichten in de bijlage.</p>
+<div class="section" style="margin-bottom:8px"><h3>Bijzondere vormen</h3></div>
+<div class="table-wrap"><table class="compact"><thead><tr><th>Vorm</th><th>Wat het is</th></tr></thead><tbody><tr><td>Shadowing</td><td>Iemand ‘achtervolgen’ tijdens een actie: keuzes, routes, houding, met wie iemand omgaat, hoe een taak wordt uitgevoerd. Bijvoorbeeld meelopen op een verpleegafdeling</td></tr><tr><td>Day in the life</td><td>Een hele dag van begin tot eind meelopen, bijvoorbeeld met een arts</td></tr><tr><td>Fotosafari</td><td>Data verzamelen met foto's van omgeving, situatie, gedrag of gewoonten (ook: photovoice, snapshotmethode). Liefst maken respondenten de foto's zelf, want de gebruiker is de expert. Analyse met een beoordelingskader, per foto, daarna gebundeld in een overzicht</td></tr></tbody></table></div>
+<p class="p">Opdracht voor de praktijkdag: onderzoek de touchpoints uit je journey maps met een observatievorm die past (traditioneel, shadowing, day in the life of fotosafari), maak een observatieplan en -schema, voer het uit en verwerk de resultaten in de design brief.</p>
+<div class="section" style="margin-bottom:8px"><h3>Design brief uitbreiden</h3></div>
+<p class="p">Je had al het waarom (uitgangspunten en doelen) en het wat (deliverables). Nu komt het <strong>hoe</strong>: hoe komen de resultaten tot stand, en welke randvoorwaarden of design criteria gelden (MoSCoW). Concreet: open eindjes oplossen, relevante bronnen zoeken, het vraagstuk als hoe-kan-vraag formuleren, kennisvragen opstellen, per kennisvraag een methode kiezen en de design criteria bepalen.</p>
+<div class="box"><h4>Vooruitblik</h4><p>Aan het eind van periode 1 bezoek je als groep twee of drie vergelijkbare organisaties. Je interviewt daar iemand en laat je rondleiden, dus geen online afspraak. Bedenk welke organisaties interessant zijn en geef ze door aan je docent.</p></div>
+  </div>
+</div>
+
+<div class="card" id="s4">
+  <div class="card-header h2"><span class="icon">✍️</span><h2>Les 1.4 · Zakelijk schrijven, AI en presenteren</h2><span class="card-bron">Les 1.4 en handout 1.4</span></div>
+  <div class="card-body">
+<p class="p">Doel van de les: een goede probleemanalyse schrijven en de design brief verbeteren, met vijf criteria voor zakelijk schrijven, AI als schrijfhulp, oefeningen en peerfeedback. Een prettig leesbare, begrijpelijke tekst is in het werkveld belangrijk.</p>
+<div class="table-wrap"><table class="compact wide"><thead><tr><th>SABKES</th><th>Focus</th><th>Concreet volgens de handout</th></tr></thead><tbody><tr><td>S · Structuur en samenhang</td><td>Logische opbouw binnen en tussen alinea's</td><td>Elke alinea sluit aan op de vorige; signaalwoorden geven structuur, maar te veel leest als AI-tekst</td></tr><tr><td>A · Alinea's</td><td>Leesbaar en scanbaar voor een opdrachtgever</td><td>Maximaal 5 tot 7 zinnen, één onderwerp, kernzin bovenaan, inhoudelijke kopjes</td></tr><tr><td>B · Bronnen</td><td>Onderbouwd schrijven</td><td>Bron verwerken in de tekst (vooral bij interne en externe analyse en literatuurverkenning), juiste APA, ook persoonlijke communicatie</td></tr><tr><td>KE · Korte en efficiënte zinnen</td><td>Helder en krachtig</td><td>Maximaal 15 tot 20 woorden per zin, actieve zinnen, geen ‘het is belangrijk om te vermelden dat’</td></tr><tr><td>S · Spelling en leestekens</td><td>Professionaliteit</td><td>Spelling, grammatica, leestekens, hoofdletters en consistente termen</td></tr></tbody></table></div>
+<div class="two-col"><div><div class="section" style="margin-bottom:8px"><h3>AI: wel doen</h3></div>
+<ul class="clean" style="margin-bottom:10px"><li>AI pas na je eerste versie gebruiken</li><li>Per onderdeel werken, niet het hele document</li><li>Altijd controleren of de inhoud klopt</li><li>In de prompt zeggen dat AI geen woorden of inhoud toevoegt</li><li>In je eigen woorden rapporteren</li><li>AI-gebruik verantwoorden volgens APA</li></ul></div><div><div class="section" style="margin-bottom:8px"><h3>AI: niet doen</h3></div>
+<ul class="clean" style="margin-bottom:10px"><li>Hele stukken blind overnemen</li><li>Vage prompts (‘maak beter’)</li><li>AI laten bedenken wat je zelf niet begrijpt of weet</li><li>Prompten dat AI je stuk ‘professioneler’ schrijft</li></ul></div></div>
+<p class="p"><strong>APA bij AI.</strong> Alleen spelling en structuur verbeterd: vermeld dat ChatGPT daarvoor is gebruikt, met (OpenAI, 2025). Inhoud laten genereren, bijvoorbeeld bij het formuleren van onderzoeksvragen: verwijs in de tekst en geef de prompt of zet de volledige chat in een bijlage. In de bronnenlijst: Ontwikkelaar. (jaar). Naam AI-tool (Versie) [Generatieve AI]. URL.</p>
+<div class="warn">Let op wat je uploadt: bedrijfsgegevens zonder toestemming, namen en foto's horen niet zomaar in een AI-tool. Niet-verantwoord AI-gebruik valt onder de sanctieladder van de examencommissie (Insite, jouw opleiding).</div>
+<div class="section" style="margin-bottom:8px"><h3>AI-taal herkennen en verbeteren</h3></div>
+<p class="p">Herkenningstekens: vage woorden (factoren, aspecten, elementen), geen concrete context (wie, waar, wanneer), overdreven formeel taalgebruik, geen voorbeelden, alles klinkt netjes maar niet echt, steeds dezelfde zinsbouw met opsommingen van moeilijke begrippen, weinig inhoud.</p>
+<div class="box"><h4>Van vaag naar concreet (voorbeeld uit de les)</h4><ul class="clean"><li>Slecht: ‘In deze paragraaf wordt besproken wat de belangrijkste aspecten zijn van het probleem. Er zijn verschillende factoren die invloed hebben op de huidige situatie.’</li><li>Beter: ‘De interne communicatie binnen de organisatie is onvoldoende. Medewerkers ontvangen weinig duidelijke informatie over veranderingen, waardoor zij zich minder betrokken voelen.’ Met een bron: persoonlijke communicatie met een medewerker, met datum.</li><li>Het verschil: een kernzin met een concrete bewering, oorzaak en gevolg, en een bron.</li></ul></div>
+<p class="p"><strong>Sterke prompt:</strong> begin met de instructie om helder, concreet en professioneel te schrijven zonder standaardzinnen, specifiek voor deze praktijkopdracht, en geen woorden toe te voegen (of ze te markeren). Voeg altijd het doel, de SABKES-criteria waarop je wilt verbeteren en je eigen tekst toe. Vraag eerst om feedback, niet meteen om een verbeterde tekst.</p>
+<p class="p"><strong>AI-check voor jezelf:</strong> kan ik dit concreter maken? Zou ik dit hardop zo zeggen? Verwijs ik naar mijn specifieke organisatie en vraagstuk?</p>
+<p class="p"><strong>Peerfeedback</strong> geef je met het feedbackformulier uit de handout, per onderdeel van de design brief en per SABKES-criterium plus natuurlijk taalgebruik, en uitdrukkelijk zonder AI. Daarna verwerk je de AI-feedback en de peerfeedback in je eigen tekst. De les sluit af met het voorbereiden van de presentatie bij de opdrachtgever in week 5, waarin je de design brief en de probleemanalyse presenteert; daarna lever je de design brief in.</p>
+  </div>
+</div>
+
+<div class="card" id="s5">
+  <div class="card-header h2"><span class="icon">💡</span><h2>Les 1.5 · Ideate en brainstormen</h2><span class="card-bron">Les 1.5 en Feedback Design Brief Canvas</span></div>
+  <div class="card-body">
+<div class="section" style="margin-bottom:8px"><h3>Feedback verwerken in de design brief</h3></div>
+<p class="p">Met het <strong>Feedback Design Brief Canvas</strong> verwerk je de docentfeedback in vijf blokken: wat was de feedback, wat betekent die voor de design brief, wat passen we concreet aan, wat blijft onduidelijk, en wat is de belangrijkste verbetering (before/after). Na verwerking is de basis voor <strong>onderdeel A van het huisvestingsveranderplan</strong> voor ongeveer 80% klaar.</p>
+<ul class="clean" style="margin-bottom:10px"><li>Verwerk de ontvangen feedback</li><li>Voeg nieuwe inzichten en gevonden modellen toe</li><li>Werk de verantwoording verder uit</li><li>Zorg dat het huisvestingsplan één integraal document wordt</li><li>Let op structuur, opmaak en leesbaarheid</li></ul>
+<div class="section" style="margin-bottom:8px"><h3>Drie criteria voor ideeën</h3></div>
+<div class="table-wrap"><table class="compact wide"><thead><tr><th>Criterium</th><th>Cirkel</th><th>Vraag</th></tr></thead><tbody><tr><td>Wenselijk</td><td>People (desirable)</td><td>Voorziet het idee in de behoeften van gebruikers?</td></tr><tr><td>Haalbaar</td><td>Tech (feasible)</td><td>Kan het technisch gerealiseerd worden?</td></tr><tr><td>Levensvatbaar</td><td>Business (viable)</td><td>Is het commercieel aantrekkelijk en rendabel, past het bij missie en doelen?</td></tr></tbody></table></div>
+<div class="defbox"><strong>Brainstormen</strong>Een techniek waarbij een individu of groep snel veel nieuwe ideeën genereert over een onderwerp, probleem of vraagstuk.</div>
+<p class="p">Ben jij een <strong>divergeer-persoon</strong> (breed, creatief, veel ideeën, ‘wat als ...?’) of een <strong>convergeer-persoon</strong> (logisch, selecteren, kiezen, haalbaarheid)? Een team heeft balans nodig.</p>
+<ol class="clean" style="margin-bottom:10px"><li>Leg uit welk probleem moet worden opgelost: formuleer de vraagstelling</li><li>Leg de nadruk op kwantiteit (divergeren)</li><li>Noteer alle ideeën</li><li>Zorg dat de ideeën van alle deelnemers gehoord worden</li><li>Voorkom kritiek</li><li>Houd het kort: 15 tot 30 minuten geeft focus</li><li>Houd het klein: maximaal 10 mensen</li></ol>
+<p class="p"><strong>Voorbereiding:</strong> post-its, markers in verschillende kleuren, papier, een flip-over of whiteboard, een grote muur, een fototoestel, één duidelijk doel per sessie, afspraken over wie wat doet, genoeg tijd van de deelnemers, de juiste en gevarieerde deelnemers, en een voorbereide techniek.</p>
+<div class="highlight">Het grootste voordeel is co-creatie: stakeholders ontwerpen en bepalen mee. Gebruik je stakeholderanalyse om te bepalen wie je uitnodigt.</div>
+<div class="section" style="margin-bottom:8px"><h3>Brainstormtechnieken</h3></div>
+<div class="table-wrap"><table class="compact"><thead><tr><th>Techniek</th><th>Hoe het werkt</th></tr></thead><tbody><tr><td>Disney-methode</td><td>Kamerprincipe: 1 ideeën zonder grenzen, 2 coördineren en uitstippelen, 3 kritische zweetkamer, plus de toeschouwer</td></tr><tr><td>World Café</td><td>Deelnemers over tafels in één ruimte, per tafel een ander onderwerp, een vaste groepsleider noteert in een mindmap, na een afgesproken tijd wisselen; aan het eind één grote mindmap. Gericht op dialoog</td></tr><tr><td>635-methode</td><td>6 personen, elk een vel met 18 vakjes (3 x 6), 3 ideeën per ronde, vel doorgeven: 108 ideeën in 18 minuten</td></tr><tr><td>Alle zintuigen</td><td>Per zintuig (zicht, geur, tast, smaak, gehoor) 20 minuten, minimaal 5 ideeën per deelnemer, daarna combineren</td></tr><tr><td>Delphi-methode</td><td>Anonieme vragenlijst, samenvatten, samenvatting rondsturen voor individuele brainstorm en beoordeling, eventueel herhalen, eindresultaat presenteren</td></tr><tr><td>Ideeënboom</td><td>Kernwoorden in de stam, individuele associaties als takken, één voor één delen, samen kiezen welke takken blijven, daarna vrij associëren</td></tr></tbody></table></div>
+<p class="p">Bij de World Café-dia staat ook een algemene afweging voor groepsgesprekken (Baarda, 2024): het voordeel is dat het relatief weinig tijd kost en dat deelnemers elkaar op ideeën brengen; het nadeel is dat groepsprocessen gaan spelen, zoals dominante deelnemers waardoor anderen hun mening niet durven te geven. Daarom moet een ervaren gespreksleider het leiden.</p>
+<div class="section" style="margin-bottom:8px"><h3>De brainstorm bij de opdrachtgever</h3></div>
+<div class="table-wrap"><table class="compact"><thead><tr><th>Vraag</th><th>Waar je op let</th></tr></thead><tbody><tr><td>Aanpak</td><td>Welke methode, hoe organiseer je de sessie?</td></tr><tr><td>Vraag</td><td>Welke centrale vraag beantwoord je? Kijk kritisch naar je vraagstelling</td></tr><tr><td>Benodigdheden</td><td>Post-its, stiften, papier</td></tr><tr><td>Betrouwbaarheid</td><td>Hoe voorkom je sociaal wenselijke antwoorden?</td></tr><tr><td>Validiteit</td><td>Hoe zorg je dat je echt meet wat je wilt weten?</td></tr><tr><td>Opname</td><td>Mag je opnemen, hoe regel je toestemming?</td></tr><tr><td>Resultaten</td><td>Hoe verzamel, orden en neem je de ideeën mee naar de volgende les?</td></tr></tbody></table></div>
+<div class="warn">Reflecteer na elke brainstorm: is iedereen aan het woord geweest, werkte de opstelling, wat deed de facilitator goed, was er sociaal wenselijk gedrag, werden ideeën ‘meegekletst’ of beïnvloed, en heb je gemeten wat je wilde weten?</div>
+  </div>
+</div>
+
+<div class="card" id="s6">
+  <div class="card-header h2"><span class="icon">🎯</span><h2>Les 1.6 · Convergeren: kiezen en uitwerken</h2><span class="card-bron">Les 1.6</span></div>
+  <div class="card-body">
+<p class="p">Na het divergeren in de brainstorm ga je convergeren. Reflecteer eerst op de sessie: wat ging goed, wat kon beter, hoeveel ideeën zijn er, wat is het resultaat en hoe tevreden ben je? Pak dan de resultaten erbij en leg ze naast de <strong>probleemdefinitie, de hoofdvraag en de design criteria</strong> uit de design brief. Doel: per groep de drie beste ideeën bepalen.</p>
+<div class="section" style="margin-bottom:8px"><h3>How-Now-Wow-Ciao-matrix</h3></div>
+<p class="p">Je verdeelt alle brainstormideeën over vier vakken. Op de dia staat moeilijkheid op de verticale as: boven moeilijk, onder makkelijk. How en Wow, de innovatieve ideeën, staan rechts.</p>
+<div class="table-wrap"><table class="compact wide"><thead><tr><th>Vak</th><th>Plek</th><th>Soort idee</th></tr></thead><tbody><tr><td>How</td><td>Rechtsboven: moeilijk</td><td>Futuristische ideeën en echte gamechangers. Maar hoe?</td></tr><tr><td>Wow</td><td>Rechtsonder: makkelijk</td><td>Innovatieve ideeën, echte doorbraken, en ook nog makkelijk te realiseren</td></tr><tr><td>Now</td><td>Linksonder: makkelijk</td><td>Niet echt spannend, wel makkelijk te realiseren met voldoende draagvlak, effect en weinig risico</td></tr><tr><td>Ciao</td><td>Linksboven</td><td>Niet origineel én het gaat niet werken: ciao</td></tr></tbody></table></div>
+<div class="highlight">Wow is innovatief én makkelijk te realiseren, How is innovatief maar moeilijk, Now is makkelijk maar niet spannend, Ciao valt af. In de pitch in de les presenteer je de How-, Now- en Wow-ideeën.</div>
+<div class="section" style="margin-bottom:8px"><h3>Pitchen en stemmen</h3></div>
+<p class="p">In de les presenteert elke groep kort de organisatie, de context en de onderzoeksvraag en daarna de How-, Now- en Wow-ideeën. Het publiek stemt via Mentimeter op de drie beste oplossingen.</p>
+<div class="table-wrap"><table class="compact"><thead><tr><th>Communicatieanalyse</th><th>Vraag</th></tr></thead><tbody><tr><td>Doelgroep</td><td>Wie is de doelgroep en hoe houd je daar rekening mee?</td></tr><tr><td>Communicatief doel</td><td>Informeren en adviseren, overtuigen, instrueren of motiveren?</td></tr><tr><td>Kwaliteit</td><td>Zijn de drie ideeën goed beargumenteerd en aantrekkelijk gepresenteerd voor de opdrachtgever?</td></tr><tr><td>Praktisch</td><td>Hoe lang, hoe sta je opgesteld, wat draag je, wie presenteert wat, welke hulpmiddelen, is bronvermelding nodig voor beelden of informatie?</td></tr></tbody></table></div>
+<div class="section" style="margin-bottom:8px"><h3>De pitch voor de opdrachtgever</h3></div>
+<ol class="clean" style="margin-bottom:10px"><li>Start met de huisvestingsvraagstelling en de context</li><li>Presenteer alle resultaten van de brainstormsessie</li><li>Licht kort toe wat daaruit naar voren kwam</li><li>Presenteer de drie geselecteerde beste ideeën</li><li>Keuzemoment: bepaal in overleg met de opdrachtgever één idee</li><li>Presenteer de vervolgstappen</li></ol>
+<p class="p">Gebruik de huisstijl van de organisatie, leg uit welke methode je gebruikte en waarom, en zorg voor interactie zodat de opdrachtgever meedenkt. Op de praktijkdag toets je de haalbaarheid van de drie ideeën bij de opdrachtgever en de belangrijkste stakeholders.</p>
+<div class="warn">Werk de drie ideeën uit tot concrete, onderbouwde conceptvarianten, en schrijf daarna op waarom het gekozen concept het best past bij het project en het vraagstuk. Die onderbouwing heb je later nodig voor deelproduct B, en het beoordelingsformulier vraagt er expliciet om.</div>
+<p class="p">De keuze vormt de basis voor de volgende fase: een eerste tastbaar model van het meest geschikte idee, het prototype.</p>
+  </div>
+</div>
+
+<div class="card" id="s7">
+  <div class="card-header h2"><span class="icon">🎤</span><h2>Les 1.7 · Interviewen en focusgroepen</h2><span class="card-bron">Les 1.7</span></div>
+  <div class="card-body">
+<p class="p">Doel: je bezoekt in week 8 als groep twee of drie vergelijkbare organisaties, interviewt er iemand en laat je rondleiden om ideeën op te doen. In periode 2 spreek je ook mensen in je eigen organisatie, één op één of in een groep.</p>
+<div class="defbox"><strong>Interview</strong>Een persoonlijk gesprek waarin meestal één persoon vragen stelt aan een of meer anderen die vooral antwoorden. Face-to-face kun je toelichten, doorvragen bij onduidelijke of onvolledige antwoorden en non-verbale reacties zien. De onderzoeker bepaalt het onderwerp en kiest de respondenten.</div>
+<div class="two-col"><div><div class="section" style="margin-bottom:8px"><h3>Wanneer een interview?</h3></div>
+<ul class="clean" style="margin-bottom:10px"><li>Informatie van een specifieke, overzichtelijke groep (niet groter dan 25 personen)</li><li>Op zoek naar meningen, overtuigingen, handelwijzen</li><li>Benieuwd naar het waarom en hoe, niet naar wat of hoeveel</li><li>Persoonlijk bevragen, niet vastzitten aan een vast format</li><li>Patronen herkennen, niet generaliseren naar een hele groep</li></ul></div><div><div class="section" style="margin-bottom:8px"><h3>Wat heb je nodig?</h3></div>
+<ul class="clean" style="margin-bottom:10px"><li>Open houding en nieuwsgierigheid, en een open respondent</li><li>Een doel: weten waarnaar je zoekt</li><li>Een topiclijst en eventueel een protocol of script</li><li>Nauwkeurig geselecteerde respondenten (theoretical sampling)</li><li>Voorbereiding op de achtergrond van de respondent</li><li>Bij voorkeur een opname</li></ul></div></div>
+<div class="table-wrap"><table class="compact"><thead><tr><th>Soort interview</th><th>Kenmerk</th></tr></thead><tbody><tr><td>Informeel (wandelgangen)</td><td>Informatie on the go, weinig tijd, goed luisteren en doorvragen, geen opname, meteen daarna aantekeningen</td></tr><tr><td>Volledig ongestructureerd</td><td>Eén goede beginvraag, daarna luisteren, samenvatten, doorvragen</td></tr><tr><td>Half-gestructureerd</td><td>Interview guide met onderwerpen en soms een paar richtinggevende open vragen, veel LSD</td></tr><tr><td>Gedeeltelijk gestructureerd</td><td>Interview guide met onderwerpen én een lijst concrete vragen, deels gesloten met antwoordcategorieën</td></tr><tr><td>Geheel gestructureerd</td><td>Vragenlijst met vooral gesloten vragen en antwoordcategorieën</td></tr></tbody></table></div>
+<p class="p"><strong>Dilemma's:</strong> een interview is vaak een statisch spel van vraag en antwoord, het belang ligt vooral bij de interviewer, structuur houden is lastig, uitwerken kost veel tijd (afluisteren, transcriberen, labelen), en de member check (goedkeuring door de respondent) komt vaak laat of niet.</p>
+<div class="table-wrap"><table class="compact wide"><thead><tr><th>Veelgemaakte fout</th><th>Waarom een probleem</th><th>Zo voorkom je het</th></tr></thead><tbody><tr><td>Te veel gesloten vragen</td><td>Beperkt diepgang en nuance</td><td>Open vragen, focus op thema's</td></tr><tr><td>Onlogische volgorde</td><td>Gesprek wordt onrustig en verwarrend</td><td>Onderwerpen vooraf logisch ordenen</td></tr><tr><td>Te strak vasthouden aan vragen</td><td>Remt spontane inzichten</td><td>Ruimte laten om af te wijken</td></tr><tr><td>Onduidelijke formuleringen</td><td>Misinterpretatie door respondenten</td><td>Vragen testen in een proefinterview</td></tr><tr><td>Verkeerde interviewvorm</td><td>Ongeschikte data</td><td>Aanpak afstemmen op je doel, niet onnodig gestructureerd</td></tr></tbody></table></div>
+<div class="section" style="margin-bottom:8px"><h3>Onderzoekscyclus bij interviewen</h3></div>
+<div class="table-wrap"><table class="compact"><thead><tr><th>Fase</th><th>Wat je doet</th></tr></thead><tbody><tr><td>Voorbereiding</td><td>Wat wil ik weten (onderzoeksvragen)? Literatuur: welke theoretische concepten en wat hebben anderen al uitgezocht? Topiclijst en interviewvragen</td></tr><tr><td>Uitvoering</td><td>Afname en opname van het interview</td></tr><tr><td>Uitwerking</td><td>Samenvatting of transcript, analyse op de topics, resultaten. De antwoorden op je vragen zijn je conclusies</td></tr></tbody></table></div>
+<div class="box"><h4>Voorbeeld uit de les</h4><ul class="clean"><li>Vraag: welke factoren bepalen hoe middelbare scholieren hun kleding kiezen? Je interviewt 20 leerlingen.</li><li>Uit literatuur en een expert komen zes topics: merk, seizoen, soort kledingstuk, kleur, materiaal, sociale invloeden.</li><li>Protocol: toelichting op het interview, algemene vragen, vragen per topic, een afsluitende open vraag (‘is er nog iets wat ik vergeten ben?’), bedanken.</li><li>Uitwerking optie 1: transcriberen en coderen (bijvoorbeeld met kleuren per topic). Optie 2: afluisteren en per topic letterlijk noteren of samenvatten.</li><li>Analysetabel: topics als rijen, respondenten als kolommen, en een kolom samenvatting met overeenkomsten en verschillen. Die kolom wordt ‘resultaten van de interviews’ in je verslag.</li></ul></div>
+<p class="p"><strong>Wandelgangengesprekken</strong> leg je ook vast: met wie, wanneer, in welke situatie en wat het opleverde.</p>
+<ol class="clean" style="margin-bottom:10px"><li>Bedenk wat je ook alweer wilt weten en wat je wilt zien en vragen</li><li>Verdiep je in de persoon en de organisatie</li><li>Zoek de belangrijke concepten op; AI mag helpen zoeken, maar raadpleeg de oorspronkelijke bronnen</li><li>Maak een topiclijst</li><li>Maak een interviewprotocol</li><li>Formuleer de interviewvragen</li></ol>
+<div class="section" style="margin-bottom:8px"><h3>Groepen interviewen</h3></div>
+<div class="table-wrap"><table class="compact wide"><thead><tr><th>Kenmerk</th><th>Groepsinterview</th><th>Focusgroep</th></tr></thead><tbody><tr><td>Communicatierichting</td><td>Vooral tussen onderzoeker en deelnemer</td><td>Vooral tussen de deelnemers onderling</td></tr><tr><td>Rol onderzoeker</td><td>Interviewer: stelt vragen, controleert</td><td>Moderator of facilitator: begeleidt, stimuleert de discussie</td></tr><tr><td>Doel</td><td>Snel en efficiënt individuele meningen verzamelen</td><td>Dieperliggende motivaties en groepsdynamiek achterhalen</td></tr><tr><td>Samenstelling</td><td>Kan divers zijn</td><td>Vaak homogeen: deelnemers delen kenmerken</td></tr></tbody></table></div>
+<p class="p">Een <strong>focusgroep</strong> bestaat uit 6 tot 12 mensen die over het onderwerp veel kunnen zeggen. Je zet hem in om thema's te verkennen waarover nog weinig bekend is, om ideeën en suggesties te ontwikkelen (bijvoorbeeld bij een nieuw werkplekconcept) en om gedrag of opinies te doorgronden. Je bevraagt de groep, niet het individu.</p>
+<div class="table-wrap"><table class="compact"><thead><tr><th>Fase</th><th>Werkwijze focusgroep</th></tr></thead><tbody><tr><td>Voorbereiding</td><td>Bij voorkeur met meerdere begeleiders (inhoudelijk en notulist), goede locatie en tafelopstelling, min of meer gestructureerde vragenlijst met een volgorde die je mag loslaten</td></tr><tr><td>Begin</td><td>Introductie is cruciaal, verwachtingen managen, samen het doel bepalen</td></tr><tr><td>Midden</td><td>Start met eenvoudige, positieve en algemene vragen, geef iedereen de kans</td></tr><tr><td>Einde</td><td>Positief afronden als alles voldoende is uitgediept, eventueel een vervolgsessie</td></tr><tr><td>Verwerking</td><td>Notulen, audio of video, post-its en flip-overs; deel de uitkomsten en vervolgstappen met de deelnemers</td></tr></tbody></table></div>
+  </div>
+</div>
+
+<div class="card" id="s8">
+  <div class="card-header h2"><span class="icon">📋</span><h2>De design brief: opbouw en toelichting</h2><span class="card-bron">Formats design brief les 1.2 en 1.3, handout 1.4</span></div>
+  <div class="card-body">
+<p class="p">De design brief is een kort document met alles wat het designteam nodig heeft om het project te realiseren. Het is een communicatiemiddel dat het waarom, wat en hoe vastlegt, en het is work in progress: je werkt hem steeds bij. Analyse-uitwerkingen zet je in bijlagen. Na de feedback in les 1.5 is hij de basis voor onderdeel A van het huisvestingsveranderplan.</p>
+<div class="table-wrap"><table class="compact"><thead><tr><th>Onderdeel</th><th>Wat erin hoort</th></tr></thead><tbody><tr><td>1 Algemene projectgegevens</td><td>Opdrachtgevende organisatie, contactpersoon opdrachtgever (naam, functie, mail), projectgroepsleden, contactpersoon projectgroep, begeleidende docent</td></tr><tr><td>2.1 Vraagstuk opdrachtgever</td><td>Kort en bondig de oorspronkelijke vraag of uitdaging</td></tr><tr><td>2.2 Interne analyse</td><td>Sterktes, zwaktes en kenmerken van de organisatie die invloed hebben op het vraagstuk</td></tr><tr><td>2.3 Externe analyse</td><td>Ontwikkelingen in de omgeving die invloed hebben op het vraagstuk</td></tr><tr><td>2.4 Stakeholders</td><td>Belangrijkste interne en externe belanghebbenden met hun rol of invloed</td></tr><tr><td>2.5 Customer journey</td><td>De journeys van de verschillende persona's</td></tr><tr><td>2.6 Literatuur</td><td>Theoretische inzichten, modellen en best practices om het probleem te begrijpen en op te lossen</td></tr><tr><td>3.1 Probleemanalyse (5W1H)</td><td>Wie heeft het probleem, wat is het precies, waarom is het een probleem, wanneer en waar treedt het op, hoe is het ontstaan of hoe groot is de impact</td></tr><tr><td>3.2 Projectdoelstelling</td><td>Wat opdrachtgever en groep aan het eind bereikt willen hebben, zo SMART mogelijk</td></tr><tr><td>3.3 Deliverables</td><td>Wat je concreet oplevert, bijvoorbeeld een indelingsplan, meubilairtoolkit of nieuwe werkomgeving</td></tr><tr><td>3.4 Design criteria (MoSCoW)</td><td>Waar de oplossing aan moet voldoen: must, should, could, would</td></tr><tr><td>4.1 Praktijkvraag</td><td>Overkoepelende vraag die begint met ‘Hoe kan ...’</td></tr><tr><td>4.2 Kennisvragen</td><td>Deelvragen om de kennis te krijgen die nodig is voor de oplossing en de deliverables</td></tr><tr><td>4.3 Onderzoeksmethoden</td><td>Hoe je de data verzamelt die de kennisvragen beantwoordt</td></tr><tr><td>5 Projectplanning</td><td>Per fase (empathize, define, ideate, prototype, test, deliver) de activiteiten en een deadline</td></tr><tr><td>6 Overige aspecten</td><td>Wat de groep verder relevant vindt</td></tr><tr><td>7 Bijlagen</td><td>Team canvas, interne en externe analyse, stakeholderanalyse, persona's, customer journeys, 5W1H-template en andere relevante bijlagen</td></tr></tbody></table></div>
+<div class="section" style="margin-bottom:8px"><h3>MoSCoW in de design brief</h3></div>
+<div class="table-wrap"><table class="compact"><thead><tr><th>Prioriteit</th><th>Betekenis volgens het format</th></tr></thead><tbody><tr><td>Must</td><td>Eisen waaraan móét worden voldaan voor een effectieve en werkbare innovatie</td></tr><tr><td>Should</td><td>Hoge prioriteit, maar niet per se vereist voor een werkbare innovatie</td></tr><tr><td>Could</td><td>Een optie als er tijd over is</td></tr><tr><td>Would</td><td>Geen prioriteit, kan in de toekomst nog eens worden bekeken</td></tr></tbody></table></div>
+<p class="p">Een voorbeeldpagina uit de toolkit van het MUMC beschrijft de ontwerpuitdaging met vijf W's: <strong>wie</strong> (de doelgroep en de beoogde voordelen), <strong>wat</strong> (het probleem zo scherp mogelijk, zonder al in oplossingen te schrijven), <strong>waarom</strong> (waarom de innovatie belangrijk is voor de doelgroep), <strong>waar</strong> (de context waarin de innovatie gebruikt wordt) en <strong>wanneer</strong> (de grove tijdlijn). Een scherpe samenvatting geeft focus en kaders, haalt ruis weg met de opdrachtgever en helpt eisen van wensen te onderscheiden.</p>
+<div class="warn">Let op: in de toolkit staat bij het ‘wat’ dat je het probleem zo scherp mogelijk beschrijft en vermijdt om in termen van oplossingen te schrijven. De oplossing komt pas in ideate.</div>
+<div class="section" style="margin-bottom:8px"><h3>Waar de peerfeedback op let</h3></div>
+<ul class="clean" style="margin-bottom:10px"><li>Per onderdeel: wat is goed en bruikbaar, en welke tips zijn er voor verbetering</li><li>SABKES: verbanden tussen alinea's, kernzin en één onderwerp, bronnen en APA, bondige actieve zinnen, correcte spelling</li><li>Natuurlijk taalgebruik: klinkt het passend voor een opdrachtgever, zonder vage, overdreven formele of standaard AI-formuleringen?</li></ul>
+  </div>
+</div>
+
+<div class="card" id="s9">
+  <div class="card-header h2"><span class="icon">🏁</span><h2>Leeruitkomsten en wat het eindproduct moet bevatten</h2><span class="card-bron">Cursusinformatie, les 1.1, beoordelingsformulier 2026-2027</span></div>
+  <div class="card-body">
+<div class="section" style="margin-bottom:8px"><h3>De doelen in gewone taal (les 1.1)</h3></div>
+<ol class="clean" style="margin-bottom:10px"><li>Je schrijft een veranderplan voor een huisvestingsvraagstuk</li><li>op basis van een gedegen onderbouwing (onderzoek en analyses);</li><li>je werkt actief aan een verandertraject en houdt rekening met de belangen van stakeholders;</li><li>je raakt bekend met verandermanagement, projectmanagement en werken aan gedragsverandering;</li><li>je werkt samen met stakeholders en overtuigt ze van je plannen;</li><li>je doet verbetervoorstellen voor de toekomst die bijdragen aan de doelen van de organisatie.</li></ol>
+<div class="section" style="margin-bottom:8px"><h3>De officiële leeruitkomsten</h3></div>
+<div class="table-wrap"><table class="compact wide"><thead><tr><th>LUK</th><th>In het kort</th><th>Waar getoetst</th></tr></thead><tbody><tr><td>2.1</td><td>Veranderplan op basis van gedegen analyse, overtuigend presenteren</td><td>Rapportage (c)</td></tr><tr><td>2.2</td><td>Projectleider: communiceren via mijlpalen en deliverables, sturen op tijd, geld en kwaliteit, inlevingsvermogen</td><td>Rapportage (c) en eindgesprek</td></tr><tr><td>2.3</td><td>Deskundig in verandermanagement, projectmanagement, procesanalyse en gedragsbeïnvloeding in FM</td><td>Rapportage (a, c)</td></tr><tr><td>3.2</td><td>Met diverse stakeholders samenwerken naar een afgestemd doel, oog voor morele belangen, cultuur en diversiteit</td><td>Rapportage (a, b) en eindgesprek</td></tr><tr><td>3.3</td><td>Betrokkenen overtuigen met oog voor organisatiedynamiek, gesprekstechnieken, belang van de ander, gedragssignalen</td><td>Rapportage (c) en eindgesprek</td></tr><tr><td>4.2</td><td>Organisatie- en sociaal-sensitief in analyse, oplossing en communicatie</td><td>Rapportage (c) en eindgesprek</td></tr><tr><td>5.1</td><td>Investerings- en verbetervoorstellen op de lange termijn beoordelen</td><td>Rapportage (c)</td></tr></tbody></table></div>
+<div class="section" style="margin-bottom:8px"><h3>Wat het huisvestingsveranderplan moet bevatten</h3></div>
+<div class="table-wrap"><table class="compact"><thead><tr><th>Onderdeel</th><th>Inhoud volgens het beoordelingsformulier</th></tr></thead><tbody><tr><td>a. Analyse en probleemdefinitie (empathize, define)</td><td>Hoe je design thinking gebruikte en waarom; systematische contextanalyse met passende modellen en methoden (interviews, persona's, stakeholders, journeys, canvassen, modellen uit lean); verantwoording van methoden; passende theorie over FM en huisvesting, verandermanagement en gedragsbeïnvloeding; projectdoelstelling met managementvraag (hoe kan ...) en kennisvragen; ontwerpuitdaging met modellen zoals 5W1H en MoSCoW</td></tr><tr><td>b. Oplossingsontwerp (ideate, prototype, test)</td><td>2 tot 3 onderbouwde conceptvarianten, één uitgewerkt; motivatie waarom dat concept het best past; hoe je stakeholders betrok bij varianten en keuze; prototype getest als pilot of anders, met stakeholders; feedback verkregen en gebruikt om het prototype te verbeteren; verantwoording van methoden</td></tr><tr><td>c. Implementatie en impact (implement)</td><td>Hoe het geoptimaliseerde prototype een duurzame oplossing voor de lange termijn wordt; consequenties voor mens, organisatie en maatschappij in een implementatieplanning met mijlpalen, een communicatieplan voor stakeholders, randvoorwaarden en risico's; onderbouwing met verandermanagementtheorie; investeringsvoorstel met de financiële impact</td></tr></tbody></table></div>
+<p class="p">Daarnaast geldt uit les 1.1: het eindverslag laat zien wat je voor de opdrachtgever hebt gemaakt, hoe je dat hebt gedaan en waarom het relevant is voor het vraagstuk. In het eindgesprek onderbouw je het eindresultaat en verantwoord je het groepsproces.</p>
+<div class="warn">De cursusbeschrijving spreekt over drie oplossingsrichtingen, het beoordelingsformulier over 2 tot 3 conceptvarianten. In les 1.6 werk je met drie ideeën. Werk er dus drie uit; dan zit je aan beide kanten goed.</div>
+<div class="highlight">De onderdelen a, b en c moeten elk voldoende zijn, en het verslag moet door de knock-outs komen: checklist taal, een verzorgde eindpresentatie voor de opdrachtgever en een getekende verklaring dat het eigen werk is. Zie de pagina Toetsing voor de niveaus per criterium.</div>
+  </div>
+</div>
+</div>
+
+<footer class="fa-site-footer">
+  <span>FM Atlas · gratis studiehulp voor HAN Facilitair Management, gemaakt door een student</span>
+  <span>Niet officieel verbonden aan de HAN · <a href="privacy.html">Privacy</a> · <a href="app.html#contact">Fout gezien?</a></span>
+</footer>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+<script src="js/fmatlas.js"></script>
+<script>
+const firebaseConfig = {
+  apiKey: "AIzaSyBB397Wk2eqpBjic8E7aGV1mTgIjhQ21a8",
+  authDomain: "fmkompas-ff8bc.firebaseapp.com",
+  projectId: "fmkompas-ff8bc",
+  storageBucket: "fmkompas-ff8bc.firebasestorage.app",
+  messagingSenderId: "487972024689",
+  appId: "1:487972024689:web:712c3117080745d14746d0"
+};
+firebase.initializeApp(firebaseConfig);
+firebase.auth().onAuthStateChanged(user => {
+  document.getElementById('fa-header-slot').innerHTML = '';
+  faMarkActiveToday();
+  document.getElementById('fa-header-slot').appendChild(faRenderHeader({ user }));
+  faMarkLastSeen('praktijkproject-workplace-management','Praktijkproject Workplace Management','praktijkproject-workplace-management.html');
+});
+</script>
+</body>
+</html>

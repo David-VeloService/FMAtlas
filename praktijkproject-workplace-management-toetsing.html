@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Toetsing & beoordeling · Praktijkproject Workplace Management — FM Atlas</title>
+<link rel="icon" type="image/svg+xml" href="logo.svg"/>
+<meta name="theme-color" content="#f7f3ec"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="css/fmatlas.css"/>
+<style>
+.sam-wrap { max-width: 1100px; margin: 0 auto; padding: 24px; }
+.sam-intro { background: var(--surface); border: 1.5px solid var(--line); border-radius: var(--radius-xl); padding: 28px 32px; margin-bottom: 18px; }
+.sam-intro-meta { font-size: 11px; font-weight: 800; color: var(--accent); letter-spacing: 0.08em; margin-bottom: 8px; }
+.sam-intro h1 { font-size: 32px; font-weight: 900; letter-spacing: -0.025em; line-height: 1.08; margin-bottom: 10px; }
+.sam-intro p { color: var(--ink-soft); font-size: 14.5px; line-height: 1.6; }
+
+nav.chapnav { background: var(--surface); border: 1.5px solid var(--line); border-radius: var(--radius-lg); padding: 12px 16px; margin: 0 24px 18px; max-width: 1052px; margin-left: auto; margin-right: auto; display: flex; flex-wrap: wrap; gap: 6px; position: sticky; top: 68px; z-index: 20; }
+nav.chapnav a { color: var(--ink-soft); text-decoration: none; padding: 4px 10px; border-radius: 8px; background: var(--bg); font-weight: 800; font-size: 11.5px; border: 1.5px solid var(--line); transition: all 0.12s; }
+nav.chapnav a:hover { background: var(--accent-soft); color: var(--accent-deep); border-color: var(--accent); }
+
+.main { max-width: 1052px; margin: 0 auto; padding: 0 24px 60px; display: flex; flex-direction: column; gap: 18px; }
+
+.card { background: var(--surface); border: 1.5px solid var(--line); border-radius: var(--radius-xl); overflow: hidden; scroll-margin-top: 140px; }
+.card-header { padding: 16px 22px; display: flex; align-items: center; gap: 10px; color: var(--surface); background: var(--ink); }
+.card-header h2 { font-size: 17px; font-weight: 900; letter-spacing: -0.015em; }
+.card-header .icon { font-size: 20px; }
+.card-body { padding: 22px 24px; }
+
+.h1 { background: var(--accent); }
+.h2, .h3, .h4 { background: var(--ink); }
+
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+@media (max-width: 740px) { .two-col, .three-col { grid-template-columns: 1fr; } }
+
+.section { margin-bottom: 18px; }
+.section h3 { font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin-bottom: 8px; padding-bottom: 6px; border-bottom: 1.5px solid var(--line); }
+
+ul.clean { list-style: none; display: flex; flex-direction: column; gap: 5px; margin: 0; padding: 0; }
+ul.clean li { font-size: 13.5px; line-height: 1.55; padding: 3px 0 3px 16px; position: relative; color: var(--ink-soft); font-weight: 500; }
+ul.clean li::before { content: '›'; position: absolute; left: 0; top: 3px; color: var(--accent); font-weight: 900; }
+ul.clean li strong { color: var(--ink); font-weight: 800; }
+
+.defbox { background: var(--bg); border: 1.5px solid var(--line); border-left: 4px solid var(--accent); border-radius: 0 var(--radius) var(--radius) 0; padding: 10px 14px; margin-bottom: 10px; font-size: 13.5px; line-height: 1.55; color: var(--ink-soft); }
+.defbox strong { display: block; font-size: 10.5px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); margin-bottom: 4px; }
+
+.highlight { background: var(--accent-soft); border: 1.5px solid rgba(239, 90, 63, 0.25); border-radius: var(--radius); padding: 10px 14px; font-size: 13.5px; line-height: 1.55; margin-bottom: 10px; color: var(--accent-deep); font-weight: 600; }
+.highlight strong { color: var(--accent-deep); font-weight: 900; }
+
+.warn { background: #fff7ed; border-left: 3px solid #f59e0b; padding: 9px 14px; border-radius: 0 var(--radius) var(--radius) 0; font-size: 12.5px; color: #92400e; margin-bottom: 10px; font-weight: 600; }
+
+.tag { display: inline-block; padding: 2px 8px; border-radius: 999px; font-size: 11px; font-weight: 800; }
+.blue   { background: #dbeafe;  color: #1e40af; }
+.green  { background: #dcfce7;  color: #166534; }
+.purple { background: #ede9fe;  color: #5b21b6; }
+.orange { background: #ffedd5;  color: #9a3412; }
+.red    { background: #fee2e2;  color: #991b1b; }
+.yellow { background: #fef3c7;  color: #854d0e; }
+
+.box { background: var(--bg); border: 1.5px solid var(--line); border-radius: var(--radius); padding: 12px 14px; }
+.box h4 { font-size: 12.5px; font-weight: 900; margin-bottom: 8px; color: var(--ink); letter-spacing: -0.005em; }
+
+.nummer { display: inline-flex; align-items:center; justify-content:center; background: var(--accent); color: var(--surface); width: 22px; height: 22px; border-radius: 50%; font-size: 11px; font-weight: 900; margin-right: 8px; flex-shrink: 0; }
+.stap { display: flex; align-items: flex-start; gap: 4px; font-size: 13.5px; color: var(--ink-soft); padding: 4px 0; line-height: 1.5; }
+.stap strong { color: var(--ink); }
+
+table.compact { width: 100%; border-collapse: collapse; font-size: 12.5px; margin-top: 6px; }
+table.compact th, table.compact td { padding: 7px 10px; text-align: left; border-bottom: 1.5px solid var(--line); color: var(--ink-soft); }
+table.compact th { font-size: 10.5px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+table.compact td strong { color: var(--ink); font-weight: 800; }
+.p { font-size: 13.5px; color: var(--ink-soft); line-height: 1.6; margin-bottom: 10px; }
+.p strong { color: var(--ink); }
+.box { margin-bottom: 10px; }
+.box p { font-size: 13px; color: var(--ink-soft); margin: 0; line-height: 1.55; }
+.card-bron { margin-left: auto; font-size: 10.5px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; opacity: 0.7; }
+.table-wrap { overflow-x: auto; margin-bottom: 10px; }
+ol.clean { counter-reset: n; list-style: none; display: flex; flex-direction: column; gap: 5px; margin: 0; padding: 0; }
+ol.clean li { counter-increment: n; font-size: 13.5px; line-height: 1.55; padding: 3px 0 3px 22px; position: relative; color: var(--ink-soft); font-weight: 500; }
+ol.clean li::before { content: counter(n) '.'; position: absolute; left: 0; top: 3px; color: var(--accent); font-weight: 900; font-size: 12.5px; }
+ol.clean li strong { color: var(--ink); font-weight: 800; }
+.sam-note { background: var(--surface); border: 1.5px dashed var(--line); border-radius: var(--radius-lg); padding: 14px 18px; font-size: 13px; color: var(--ink-soft); line-height: 1.55; margin-bottom: 18px; }
+@media (max-width: 760px) { table.compact.wide { min-width: 560px; } .two-col { grid-template-columns: 1fr; } .card-body { padding: 18px 16px; } .sam-intro { padding: 22px 18px; } .sam-intro h1 { font-size: 26px; } nav.chapnav { position: static; margin: 0 16px 16px; } .main { padding: 0 16px 48px; } .sam-wrap { padding: 16px; } }
+</style>
+</head>
+<body>
+
+<div id="fa-header-slot"></div>
+
+<nav class="fa-breadcrumb">
+  <a href="app.html">Vakken</a>
+  <span>›</span>
+  <a href="praktijkproject-workplace-management.html">Praktijkproject Workplace Management</a>
+  <span>›</span>
+  <span class="current">Toetsing & beoordeling</span>
+</nav>
+
+<div class="sam-wrap">
+  <div class="sam-intro">
+    <div class="sam-intro-meta">TOETSING · PRJWPM01 · 2026-2027</div>
+    <h1>Praktijkproject Workplace Management: toetsing en beoordeling</h1>
+    <p>Het praktijkproject heeft twee toetsen die allebei aan het einde van het semester (P2) plaatsvinden en elk 50% tellen: het huisvestingsveranderplan (de eindrapportage) en het eindgesprek. Beide worden beoordeeld met het beoordelingsformulier Praktijkproject WPM 2026-2027. Per criterium zijn er drie niveaus; het verschil zit bijna altijd in hetzelfde: beschrijf je alleen wat je deed, of laat je zien waarom je het deed, wat het opleverde en hoe het uit je analyse volgt?</p>
+  </div>
+  <div class="sam-note">Dit is een uitleg in eigen woorden. Bij twijfel gelden de studiehandleiding en het beoordelingsformulier op Brightspace.</div>
+</div>
+
+<nav class="chapnav">
+  <a href="#t1">De twee toetsen in het kort</a>
+  <a href="#t2">1a · Analyse en probleemdefinitie (empathize en define)</a>
+  <a href="#t3">1b · Oplossingsontwerp (ideate, prototype, test)</a>
+  <a href="#t4">1c · Implementatie en impact (implement)</a>
+  <a href="#t5">2a en 2b · Het eindgesprek</a>
+  <a href="#t6">Checklist huisvestingsveranderplan</a>
+  <a href="#t7">Zo bereid je het eindgesprek voor</a>
+  <a href="#t8">Wat nog niet bekend is</a>
+</nav>
+
+<div class="main">
+<div class="card" id="t1">
+  <div class="card-header h1"><span class="icon">📌</span><h2>De twee toetsen in het kort</h2></div>
+  <div class="card-body">
+<div class="table-wrap"><table class="compact wide"><thead><tr><th></th><th>Toets-01 Huisvestingsveranderplan</th><th>Toets-02 Eindgesprek</th></tr></thead><tbody><tr><td>Vorm</td><td>Eindrapportage van de groep</td><td>Gesprek van de groep met de docent of begeleider</td></tr><tr><td>Weging</td><td>50%</td><td>50%</td></tr><tr><td>Moment</td><td>Einde semester (P2); herkansing in de periode nadat het onderwijs is gevolgd</td><td>Einde semester (P2); herkansing in de periode nadat het onderwijs is gevolgd</td></tr><tr><td>Criteria</td><td>1a analyse en probleemdefinitie, 1b oplossingsontwerp, 1c implementatie en impact</td><td>2a onderbouwing en beargumentering, 2b groepsproces</td></tr><tr><td>Cijfer</td><td>Gewogen gemiddelde van 1a, 1b en 1c; elk onderdeel moet voldoende zijn; groepscijfer</td><td>Gemiddelde van 2a en 2b; beide voldoende; in eerste instantie groepscijfer, docent kan individueel naar boven of beneden afwijken</td></tr><tr><td>Leeruitkomsten</td><td>LUK 2.1, 2.2, 2.3, 3.2, 3.3, 4.2, 5.1</td><td>LUK 2.2, 3.2, 3.3, 4.2</td></tr></tbody></table></div>
+<p class="p">Het eindcijfer van het praktijkproject is het gewogen gemiddelde van het cijfer voor de eindrapportage en het eindgesprek. Elk deelcijfer moet 5,5 of hoger zijn.</p>
+<div class="warn">Knock-outs: het formulier noemt drie voorwaarden die op V (voldoende) moeten staan. 1) Het verslag voldoet aan de eisen voor rapportagetechniek volgens de checklist taal. 2) Er is een eindpresentatie voor de opdrachtgever verzorgd. 3) Je hebt getekend dat het ingeleverde product eigen werk is.</div>
+<div class="table-wrap"><table class="compact wide"><thead><tr><th>Niveau</th><th>Cijfer</th><th>Wat het in de praktijk betekent</th></tr></thead><tbody><tr><td>In ontwikkeling</td><td>onder 5,5</td><td>Onduidelijk, beperkt, onvoldoende onderbouwd of niet zichtbaar</td></tr><tr><td>Op niveau</td><td>5,5 tot 8,0</td><td>Voldoende duidelijk, passend en verantwoord</td></tr><tr><td>Boven niveau</td><td>boven 8</td><td>Helder en overtuigend, je laat zien waarom en wat het opleverde, alles volgt logisch uit de analyse</td></tr></tbody></table></div>
+<p class="p">Het formulier zegt niet hoe zwaar 1a, 1b en 1c onderling wegen; er staat alleen ‘gewogen gemiddelde’. Vraag dat na bij je docent.</p>
+  </div>
+</div>
+
+<div class="card" id="t2">
+  <div class="card-header h2"><span class="icon">🔍</span><h2>1a · Analyse en probleemdefinitie (empathize en define)</h2></div>
+  <div class="card-body">
+<p class="p">Wat erin moet: hoe je design thinking gebruikte en waarom; een systematische contextanalyse met passende modellen en methoden (interviews, persona's, stakeholders, journeys, canvassen, modellen uit lean); verantwoording van de methoden; passende theorie over FM en huisvesting, verandermanagement en gedragsbeïnvloeding; een projectdoelstelling met managementvraag (hoe kan ...) en kennisvragen; een ontwerpuitdaging met modellen als 5W1H en MoSCoW. LUK 2.3 en 3.2.</p>
+<div class="table-wrap"><table class="compact wide"><thead><tr><th>Aspect</th><th>In ontwikkeling</th><th>Op niveau</th><th>Boven niveau</th></tr></thead><tbody><tr><td>Design thinking</td><td>Niet duidelijk hoe de methode is gebruikt of wat die met de keuzes deed</td><td>Duidelijk hoe de methode richting gaf aan werkwijze en keuzes</td><td>Overtuigend uitgelegd, je ziet de methode terug in elke keuze</td></tr><tr><td>Contextanalyse</td><td>Beperkt, weinig structuur, weinig onderbouwing</td><td>Duidelijk en gestructureerd, met passende modellen, methoden en theorie</td><td>Zorgvuldig en navolgbaar, goed onderbouwd</td></tr><tr><td>Methoden</td><td>Onvoldoende verantwoord</td><td>Verantwoord welke methoden en waarom ze passen</td><td>Ook wat de methoden hebben opgeleverd</td></tr><tr><td>Doelstelling en vragen</td><td>Onduidelijk, passen niet bij het vraagstuk of niet bij elkaar</td><td>Helder en sluiten voldoende aan op de analyse</td><td>Scherp en volgen logisch uit de analyse</td></tr></tbody></table></div>
+<div class="highlight">De sprong naar boven niveau: maak de keten zichtbaar. Analyse leidt tot probleemdefinitie, die tot praktijkvraag, die tot kennisvragen, die tot methoden. Een lezer moet bij elke stap kunnen zien waar die vandaan komt.</div>
+  </div>
+</div>
+
+<div class="card" id="t3">
+  <div class="card-header h2"><span class="icon">💡</span><h2>1b · Oplossingsontwerp (ideate, prototype, test)</h2></div>
+  <div class="card-body">
+<p class="p">Wat erin moet: 2 tot 3 onderbouwde conceptvarianten waarvan je er één uitwerkt; motivatie waarom het gekozen concept het best past; hoe stakeholders betrokken waren bij de varianten en de keuze; een prototype getest als pilot of anderszins, met stakeholders; hoe feedback is verkregen en gebruikt om het prototype te verbeteren; verantwoording van methoden en modellen. LUK 3.2.</p>
+<div class="table-wrap"><table class="compact wide"><thead><tr><th>Aspect</th><th>In ontwikkeling</th><th>Op niveau</th><th>Boven niveau</th></tr></thead><tbody><tr><td>Conceptvarianten</td><td>Onvoldoende onderbouwd of gekozen richting te weinig uitgewerkt</td><td>Voldoende onderbouwd, één uitgewerkt tot passende oplossingsrichting</td><td>Sterk en goed onderbouwd, overtuigend uitgewerkt</td></tr><tr><td>Keuze</td><td>Niet duidelijk waarom dit concept het best past</td><td>Gemotiveerd waarom het concept past</td><td>Helder waarom het het best aansluit bij vraagstuk, analyse én stakeholders</td></tr><tr><td>Stakeholders</td><td>Betrokkenheid beperkt of niet zichtbaar</td><td>Zichtbaar betrokken bij varianten, keuze en/of prototype</td><td>Actief betrokken bij conceptvorming, keuze en test</td></tr><tr><td>Test en feedback</td><td>Niet of nauwelijks getest, feedback te weinig gebruikt</td><td>Getest, feedback gebruikt om te verbeteren</td><td>Feedback zorgvuldig verwerkt, verbetering zichtbaar</td></tr></tbody></table></div>
+<div class="warn">Bewaar alles uit de ideate-fase: de brainstormresultaten, de How-Now-Wow-Ciao-indeling, de uitslag van de stemronde, de pitch en het keuzemoment met de opdrachtgever. Les 1.6 zegt al dat je de onderbouwing van de keuze nodig hebt voor deelproduct B.</div>
+  </div>
+</div>
+
+<div class="card" id="t4">
+  <div class="card-header h2"><span class="icon">🚀</span><h2>1c · Implementatie en impact (implement)</h2></div>
+  <div class="card-body">
+<p class="p">Wat erin moet: hoe het geoptimaliseerde prototype een duurzame oplossing voor de lange termijn wordt; de consequenties voor stakeholders (mens), organisatie en maatschappij, in een implementatieplanning met mijlpalen, een communicatieplan voor stakeholders, randvoorwaarden en risico's; onderbouwing van de implementatiekeuzes met theorie over verandermanagement; een investeringsvoorstel met de financiële impact. LUK 2.1, 2.2, 2.3, 3.3, 4.2 en 5.1: het onderdeel waar de meeste leeruitkomsten samenkomen.</p>
+<div class="table-wrap"><table class="compact wide"><thead><tr><th>Aspect</th><th>In ontwikkeling</th><th>Op niveau</th><th>Boven niveau</th></tr></thead><tbody><tr><td>Van prototype naar blijvende oplossing</td><td>Onvoldoende beschreven</td><td>Beschreven hoe het prototype een duurzame oplossing wordt</td><td>Helder en overtuigend hoe het wordt doorontwikkeld</td></tr><tr><td>Consequenties</td><td>Oppervlakkig of onduidelijk</td><td>Voldoende uitgewerkt voor mens, organisatie en maatschappij</td><td>Goed zichtbaar wat de gevolgen zijn</td></tr><tr><td>Planning, communicatie, randvoorwaarden, risico's</td><td>Beperkt of sluit niet aan op de oplossing</td><td>Passend uitgewerkt</td><td>Concreet, logisch en passend bij de oplossing</td></tr><tr><td>Verandermanagement</td><td>Onvoldoende theoretisch onderbouwd</td><td>Keuzes onderbouwd met relevante theorie</td><td>Sterk onderbouwd</td></tr><tr><td>Investeringsvoorstel</td><td>Onduidelijk, onvoldoende verantwoord</td><td>Financiële impact voldoende verantwoord</td><td>Maakt de impact inzichtelijk en ondersteunt de haalbaarheid</td></tr></tbody></table></div>
+<p class="p">Theorie over verandermanagement en financiële doorrekening staat niet in de lessen 1.1 tot en met 1.7. In P2 lopen de vakken Verandermanagement en Veranderingen doorgerekend parallel. Plan de koppeling bewust: elk theoretisch begrip dat je gebruikt moet terug te zien zijn in een concrete implementatiekeuze.</p>
+  </div>
+</div>
+
+<div class="card" id="t5">
+  <div class="card-header h2"><span class="icon">🗣️</span><h2>2a en 2b · Het eindgesprek</h2></div>
+  <div class="card-body">
+<div class="table-wrap"><table class="compact"><thead><tr><th>2a Onderbouwing</th><th>Wat de beoordelaar hoort</th></tr></thead><tbody><tr><td>In ontwikkeling</td><td>Beschrijvend of algemeen, niet duidelijk waarom keuzes zijn gemaakt, weinig voorbeelden, oppervlakkig bij doorvragen</td></tr><tr><td>Op niveau</td><td>Helder en voldoende overtuigend, maakt duidelijk waarom belangrijke keuzes zijn gemaakt en hoe ze passen bij opdracht, aanpak en eindresultaat, passende voorbeelden, kan bij doorvragen toelichten</td></tr><tr><td>Boven niveau</td><td>Helder, overtuigend én kritisch, legt uit waarom andere keuzes minder passend waren, sterke voorbeelden, kan het effect van keuzes op het eindresultaat uitleggen en neemt verantwoordelijkheid voor inhoud, aanpak en keuzes</td></tr></tbody></table></div>
+<div class="table-wrap"><table class="compact"><thead><tr><th>2b Groepsproces</th><th>Wat de beoordelaar hoort</th></tr></thead><tbody><tr><td>In ontwikkeling</td><td>Algemeen, weinig concrete situaties, beperkt realistisch zelfbeeld, onduidelijk welke strategieën zijn gebruikt, oppervlakkig bij doorvragen</td></tr><tr><td>Op niveau</td><td>Benoemt wat goed en minder goed ging met voorbeelden, realistisch zelfbeeld, verantwoordelijkheid voor eigen handelen, kan strategieën uitleggen zoals plannen, organiseren, bijsturen, flexibiliteit, elkaar aanspreken, ondersteunen of leren</td></tr><tr><td>Boven niveau</td><td>Kritisch en concreet, analyseert eigen handelen én het functioneren van de groep, legt uit waarom strategieën wel of niet werkten en wat je meeneemt naar volgende projecten</td></tr></tbody></table></div>
+<div class="highlight">In het gesprek motiveer je ‘als groep en individueel’. Het cijfer begint als groepscijfer, maar de docent kan per persoon afwijken. Zorg dus dat iedereen elk deel van het rapport kan uitleggen, niet alleen zijn eigen hoofdstuk.</div>
+  </div>
+</div>
+
+<div class="card" id="t6">
+  <div class="card-header h2"><span class="icon">✅</span><h2>Checklist huisvestingsveranderplan</h2></div>
+  <div class="card-body">
+<div class="section" style="margin-bottom:8px"><h3>Voorwaarden</h3></div>
+<ul class="clean" style="margin-bottom:10px"><li>Voldoet aan de checklist taal (knock-out)</li><li>Eindpresentatie voor de opdrachtgever gegeven (knock-out)</li><li>Verklaring eigen werk getekend door iedereen (knock-out)</li><li>Eén integraal document met heldere structuur, opmaak en leesbaarheid; SABKES toegepast</li><li>Bronnen in de tekst verwerkt en volgens APA, ook persoonlijke communicatie en AI-gebruik</li></ul>
+<div class="section" style="margin-bottom:8px"><h3>Onderdeel A · analyse en probleemdefinitie</h3></div>
+<ul class="clean" style="margin-bottom:10px"><li>Uitleg hoe design thinking is gebruikt en waarom</li><li>Interne en externe analyse, stakeholderanalyse (map), persona's en customer journeys</li><li>Resultaten van observaties, fotosafari en gesprekken, met verantwoording van de methoden</li><li>Literatuur over FM en huisvesting, verandermanagement en gedragsbeïnvloeding</li><li>Probleemanalyse met 5W1H en een scherpe ontwerpuitdaging</li><li>Projectdoelstelling, praktijkvraag (hoe kan ...) en kennisvragen die op elkaar aansluiten</li><li>Design criteria volgens MoSCoW</li><li>Feedback op de design brief verwerkt en nieuwe inzichten en modellen toegevoegd</li></ul>
+<div class="section" style="margin-bottom:8px"><h3>Onderdeel B · oplossingsontwerp</h3></div>
+<ul class="clean" style="margin-bottom:10px"><li>Verslag van de co-creatie- of brainstormsessie: techniek, deelnemers, resultaten</li><li>Ordening en selectie, bijvoorbeeld met de How-Now-Wow-Ciao-matrix en de design criteria</li><li>2 tot 3 onderbouwde conceptvarianten en de motivatie voor het gekozen concept</li><li>Hoe stakeholders bij varianten, keuze en prototype betrokken waren</li><li>Prototype, test (pilot of anders), feedback en de verbeteringen die daaruit volgden</li><li>Interviews bij vergelijkbare organisaties en wat die opleverden</li></ul>
+<div class="section" style="margin-bottom:8px"><h3>Onderdeel C · implementatie en impact</h3></div>
+<ul class="clean" style="margin-bottom:10px"><li>Van prototype naar duurzame oplossing voor de lange termijn</li><li>Gevolgen voor mens, organisatie en maatschappij</li><li>Implementatieplanning met mijlpalen</li><li>Communicatieplan voor de stakeholders</li><li>Randvoorwaarden en risico's</li><li>Onderbouwing met theorie over verandermanagement</li><li>Investeringsvoorstel met de financiële impact</li></ul>
+<div class="section" style="margin-bottom:8px"><h3>Bijlagen</h3></div>
+<ul class="clean" style="margin-bottom:10px"><li>Team canvas, analyses, stakeholder map, persona's, journeys, 5W1H-template</li><li>Observatieschema's, turflijsten, foto-analyses, topiclijsten, interviewprotocollen en analysetabellen</li><li>Waar van toepassing de AI-chats waarnaar je in de tekst verwijst</li></ul>
+  </div>
+</div>
+
+<div class="card" id="t7">
+  <div class="card-header h2"><span class="icon">🎯</span><h2>Zo bereid je het eindgesprek voor</h2></div>
+  <div class="card-body">
+<ol class="clean" style="margin-bottom:10px"><li><strong>Lees het hele rapport,</strong> ook de hoofdstukken die je niet zelf schreef. Je wordt als groep én individueel bevraagd.</li><li><strong>Maak een keuzelijst.</strong> Zet de belangrijkste keuzes onder elkaar (methode, probleemdefinitie, concept, implementatie, investering) en schrijf bij elke keuze: waarom, welk bewijs, welk alternatief viel af en waarom.</li><li><strong>Zoek per keuze een concreet voorbeeld</strong> uit het project: een observatie, een uitspraak van een stakeholder, een testresultaat. ‘Weinig concrete voorbeelden’ is letterlijk een kenmerk van het laagste niveau.</li><li><strong>Ken de zwakke plekken.</strong> Welke beperking heeft je onderzoek, wat had beter gekund? Wie dat zelf noemt, laat een kritische houding zien.</li><li><strong>Bereid 2b voor met situaties.</strong> Kies twee momenten uit het groepsproces (één dat goed ging, één dat niet goed ging) met wat je deed, welke strategie dat was en of die werkte.</li><li><strong>Gebruik je team canvas en rolkaarten</strong> als geheugensteun: welke rollen, afspraken en doelen had je, en kwam je ze na?</li><li><strong>Oefen met doorvragen.</strong> Laat een groepsgenoot na elk antwoord twee keer ‘waarom?’ vragen. Oppervlakkig blijven bij doorvragen kost punten op beide criteria.</li><li><strong>Ken je getallen</strong> uit het investeringsvoorstel en de aannames erachter.</li></ol>
+<div class="warn">Valkuilen: alleen vertellen wat je gedaan hebt in plaats van waarom; steeds ‘wij’ zeggen zonder je eigen rol te noemen; de schuld van een probleem bij een groepsgenoot leggen; theorie noemen zonder te laten zien wat je ermee deed; zeggen dat alles goed ging.</div>
+<p class="p">Oefen met de vragen in de ‘Oefening eindgesprek’ op deze site: die zijn gekoppeld aan de criteria 2a en 2b en aan de leeruitkomsten die in het gesprek terugkomen.</p>
+  </div>
+</div>
+
+<div class="card" id="t8">
+  <div class="card-header h2"><span class="icon">❓</span><h2>Wat nog niet bekend is</h2></div>
+  <div class="card-body">
+<ul class="clean" style="margin-bottom:10px"><li>De onderlinge weging van 1a, 1b en 1c binnen de eindrapportage</li><li>Eisen aan omvang en vorm van het huisvestingsveranderplan, buiten de checklist taal</li><li>Duur en precieze opzet van het eindgesprek</li><li>De lessen en opdrachten van periode 2 (prototype, test, nudging, implementatie), die nog niet op Brightspace staan</li></ul>
+<p class="p">Deze pagina wordt aangevuld zodra die informatie op Brightspace staat. Tot die tijd: vraag het na bij je docent.</p>
+  </div>
+</div>
+</div>
+
+<footer class="fa-site-footer">
+  <span>FM Atlas · gratis studiehulp voor HAN Facilitair Management, gemaakt door een student</span>
+  <span>Niet officieel verbonden aan de HAN · <a href="privacy.html">Privacy</a> · <a href="app.html#contact">Fout gezien?</a></span>
+</footer>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+<script src="js/fmatlas.js"></script>
+<script>
+const firebaseConfig = {
+  apiKey: "AIzaSyBB397Wk2eqpBjic8E7aGV1mTgIjhQ21a8",
+  authDomain: "fmkompas-ff8bc.firebaseapp.com",
+  projectId: "fmkompas-ff8bc",
+  storageBucket: "fmkompas-ff8bc.firebasestorage.app",
+  messagingSenderId: "487972024689",
+  appId: "1:487972024689:web:712c3117080745d14746d0"
+};
+firebase.initializeApp(firebaseConfig);
+firebase.auth().onAuthStateChanged(user => {
+  document.getElementById('fa-header-slot').innerHTML = '';
+  faMarkActiveToday();
+  document.getElementById('fa-header-slot').appendChild(faRenderHeader({ user }));
+  faMarkLastSeen('praktijkproject-workplace-management','Praktijkproject Workplace Management','praktijkproject-workplace-management.html');
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Toetsing & beoordeling · Facilitaire bedrijfskunde — FM Atlas</title>
+<link rel="icon" type="image/svg+xml" href="logo.svg"/>
+<meta name="theme-color" content="#f7f3ec"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="css/fmatlas.css"/>
+<style>
+.sam-wrap { max-width: 1100px; margin: 0 auto; padding: 24px; }
+.sam-intro { background: var(--surface); border: 1.5px solid var(--line); border-radius: var(--radius-xl); padding: 28px 32px; margin-bottom: 18px; }
+.sam-intro-meta { font-size: 11px; font-weight: 800; color: var(--accent); letter-spacing: 0.08em; margin-bottom: 8px; }
+.sam-intro h1 { font-size: 32px; font-weight: 900; letter-spacing: -0.025em; line-height: 1.08; margin-bottom: 10px; }
+.sam-intro p { color: var(--ink-soft); font-size: 14.5px; line-height: 1.6; }
+
+nav.chapnav { background: var(--surface); border: 1.5px solid var(--line); border-radius: var(--radius-lg); padding: 12px 16px; margin: 0 24px 18px; max-width: 1052px; margin-left: auto; margin-right: auto; display: flex; flex-wrap: wrap; gap: 6px; position: sticky; top: 68px; z-index: 20; }
+nav.chapnav a { color: var(--ink-soft); text-decoration: none; padding: 4px 10px; border-radius: 8px; background: var(--bg); font-weight: 800; font-size: 11.5px; border: 1.5px solid var(--line); transition: all 0.12s; }
+nav.chapnav a:hover { background: var(--accent-soft); color: var(--accent-deep); border-color: var(--accent); }
+
+.main { max-width: 1052px; margin: 0 auto; padding: 0 24px 60px; display: flex; flex-direction: column; gap: 18px; }
+
+.card { background: var(--surface); border: 1.5px solid var(--line); border-radius: var(--radius-xl); overflow: hidden; scroll-margin-top: 140px; }
+.card-header { padding: 16px 22px; display: flex; align-items: center; gap: 10px; color: var(--surface); background: var(--ink); }
+.card-header h2 { font-size: 17px; font-weight: 900; letter-spacing: -0.015em; }
+.card-header .icon { font-size: 20px; }
+.card-body { padding: 22px 24px; }
+
+.h1 { background: var(--accent); }
+.h2, .h3, .h4 { background: var(--ink); }
+
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+@media (max-width: 740px) { .two-col, .three-col { grid-template-columns: 1fr; } }
+
+.section { margin-bottom: 18px; }
+.section h3 { font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin-bottom: 8px; padding-bottom: 6px; border-bottom: 1.5px solid var(--line); }
+
+ul.clean { list-style: none; display: flex; flex-direction: column; gap: 5px; margin: 0; padding: 0; }
+ul.clean li { font-size: 13.5px; line-height: 1.55; padding: 3px 0 3px 16px; position: relative; color: var(--ink-soft); font-weight: 500; }
+ul.clean li::before { content: '›'; position: absolute; left: 0; top: 3px; color: var(--accent); font-weight: 900; }
+ul.clean li strong { color: var(--ink); font-weight: 800; }
+
+.defbox { background: var(--bg); border: 1.5px solid var(--line); border-left: 4px solid var(--accent); border-radius: 0 var(--radius) var(--radius) 0; padding: 10px 14px; margin-bottom: 10px; font-size: 13.5px; line-height: 1.55; color: var(--ink-soft); }
+.defbox strong { display: block; font-size: 10.5px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); margin-bottom: 4px; }
+
+.highlight { background: var(--accent-soft); border: 1.5px solid rgba(239, 90, 63, 0.25); border-radius: var(--radius); padding: 10px 14px; font-size: 13.5px; line-height: 1.55; margin-bottom: 10px; color: var(--accent-deep); font-weight: 600; }
+.highlight strong { color: var(--accent-deep); font-weight: 900; }
+
+.warn { background: #fff7ed; border-left: 3px solid #f59e0b; padding: 9px 14px; border-radius: 0 var(--radius) var(--radius) 0; font-size: 12.5px; color: #92400e; margin-bottom: 10px; font-weight: 600; }
+
+.tag { display: inline-block; padding: 2px 8px; border-radius: 999px; font-size: 11px; font-weight: 800; }
+.blue   { background: #dbeafe;  color: #1e40af; }
+.green  { background: #dcfce7;  color: #166534; }
+.purple { background: #ede9fe;  color: #5b21b6; }
+.orange { background: #ffedd5;  color: #9a3412; }
+.red    { background: #fee2e2;  color: #991b1b; }
+.yellow { background: #fef3c7;  color: #854d0e; }
+
+.box { background: var(--bg); border: 1.5px solid var(--line); border-radius: var(--radius); padding: 12px 14px; }
+.box h4 { font-size: 12.5px; font-weight: 900; margin-bottom: 8px; color: var(--ink); letter-spacing: -0.005em; }
+
+.nummer { display: inline-flex; align-items:center; justify-content:center; background: var(--accent); color: var(--surface); width: 22px; height: 22px; border-radius: 50%; font-size: 11px; font-weight: 900; margin-right: 8px; flex-shrink: 0; }
+.stap { display: flex; align-items: flex-start; gap: 4px; font-size: 13.5px; color: var(--ink-soft); padding: 4px 0; line-height: 1.5; }
+.stap strong { color: var(--ink); }
+
+table.compact { width: 100%; border-collapse: collapse; font-size: 12.5px; margin-top: 6px; }
+table.compact th, table.compact td { padding: 7px 10px; text-align: left; border-bottom: 1.5px solid var(--line); color: var(--ink-soft); }
+table.compact th { font-size: 10.5px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+table.compact td strong { color: var(--ink); font-weight: 800; }
+.p { font-size: 13.5px; color: var(--ink-soft); line-height: 1.6; margin-bottom: 10px; }
+.p strong { color: var(--ink); }
+.box { margin-bottom: 10px; }
+.box p { font-size: 13px; color: var(--ink-soft); margin: 0; line-height: 1.55; }
+.card-bron { margin-left: auto; font-size: 10.5px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; opacity: 0.7; }
+.table-wrap { overflow-x: auto; margin-bottom: 10px; }
+ol.clean { counter-reset: n; list-style: none; display: flex; flex-direction: column; gap: 5px; margin: 0; padding: 0; }
+ol.clean li { counter-increment: n; font-size: 13.5px; line-height: 1.55; padding: 3px 0 3px 22px; position: relative; color: var(--ink-soft); font-weight: 500; }
+ol.clean li::before { content: counter(n) '.'; position: absolute; left: 0; top: 3px; color: var(--accent); font-weight: 900; font-size: 12.5px; }
+ol.clean li strong { color: var(--ink); font-weight: 800; }
+.sam-note { background: var(--surface); border: 1.5px dashed var(--line); border-radius: var(--radius-lg); padding: 14px 18px; font-size: 13px; color: var(--ink-soft); line-height: 1.55; margin-bottom: 18px; }
+@media (max-width: 760px) { table.compact.wide { min-width: 560px; } .two-col { grid-template-columns: 1fr; } .card-body { padding: 18px 16px; } .sam-intro { padding: 22px 18px; } .sam-intro h1 { font-size: 26px; } nav.chapnav { position: static; margin: 0 16px 16px; } .main { padding: 0 16px 48px; } .sam-wrap { padding: 16px; } }
+</style>
+</head>
+<body>
+
+<div id="fa-header-slot"></div>
+
+<nav class="fa-breadcrumb">
+  <a href="app.html">Vakken</a>
+  <span>›</span>
+  <a href="facilitaire-bedrijfskunde.html">Facilitaire bedrijfskunde</a>
+  <span>›</span>
+  <span class="current">Toetsing & beoordeling</span>
+</nav>
+
+<div class="sam-wrap">
+  <div class="sam-intro">
+    <div class="sam-intro-meta">TOETSING · FACBDK01 · 2026-2027</div>
+    <h1>Facilitaire bedrijfskunde: toetsing en beoordeling</h1>
+    <p>Facilitaire bedrijfskunde wordt op twee manieren getoetst: een casustoets met open vragen en een uitgewerkt 7S-model voor het praktijkproject van Business Management. Hieronder staat wat de bronnen over de vorm zeggen, hoe je een open casusvraag aanpakt en hoe je het 7S-model per S invult. Wat niet in de bronnen staat, zoals duur, aantal vragen, cesuur of een beoordelingsformulier, staat er bewust niet bij.</p>
+  </div>
+  <div class="sam-note">Dit is een uitleg in eigen woorden. Bij twijfel gelden de studiehandleiding en het beoordelingsformulier op Brightspace.</div>
+</div>
+
+<nav class="chapnav">
+  <a href="#t1">Zo werkt de casustoets</a>
+  <a href="#t2">Zo beantwoord je een open casusvraag</a>
+  <a href="#t3">Het uitgewerkte 7S-model voor het praktijkproject</a>
+  <a href="#t4">Checklist voor je 7S-model</a>
+</nav>
+
+<div class="main">
+<div class="card" id="t1">
+  <div class="card-header h1"><span class="icon">📝</span><h2>Zo werkt de casustoets</h2><span class="card-bron">Les 1.1 dia 10, ondernemingsrecht les 1 en 2, cursusinfo</span></div>
+  <div class="card-body">
+<div class="table-wrap"><table class="compact"><thead><tr><th>Onderdeel</th><th>Wat de bronnen zeggen</th></tr></thead><tbody><tr><td>Vorm</td><td>Casustoets in ANS, met alleen open vragen</td></tr><tr><td>Apparaat</td><td>BYOD: je neemt je eigen laptop mee</td></tr><tr><td>Niveaus</td><td>Toepassen, onthouden en herkennen</td></tr><tr><td>Stof bedrijfskunde</td><td>Ten Berge en Oteman (2025), Inleiding organisatiekunde, 8e druk, hoofdstuk 1 t/m 8. Bij hoofdstuk 4 noemt de dia paragraaf 4.1, 4.2, 4.3 (t/m blz. 153) en 4.5 als tentamenstof</td></tr><tr><td>Stof recht</td><td>De stof van de rechtlessen uit De Ruiter en Westra (2024): hoofdstuk 16 en 17 (les 1), hoofdstuk 20 par. 1 t/m 5, hoofdstuk 22 par. 1 t/m 4 en 7 t/m 8, en hoofdstuk 23 par. 1 t/m 4 (les 2)</td></tr><tr><td>Recht op de toets</td><td>Open vragen over het onderdeel ondernemingsrecht</td></tr><tr><td>Hulpmiddel recht</td><td>Je mag de wettenbundel gebruiken. Markeren, onderstrepen en onbeschreven tabjes zijn toegestaan</td></tr><tr><td>Voorbereiding</td><td>Week 7 is tentamentraining. Na week 6 was het huiswerk: de gehele tentamenstof bestuderen en je vragen voorbereiden</td></tr></tbody></table></div>
+<div class="warn">Duur, aantal vragen, puntenverdeling, cesuur en datum staan niet in de bronnen. Kijk daarvoor op Brightspace of vraag het bij de tentamentraining.</div>
+<div class="section" style="margin-bottom:8px"><h3>Wat elk niveau van je vraagt</h3></div>
+<p class="p">De dia noemt de niveaus, maar legt ze niet uit. Zo kun je ze lezen, met voorbeelden uit de oefentoetsen:</p>
+<div class="table-wrap"><table class="compact wide"><thead><tr><th>Niveau</th><th>Wat je laat zien</th><th>Voorbeeldvraag</th></tr></thead><tbody><tr><td>Onthouden</td><td>Een begrip of model correct weergeven: definitie, onderdelen, kenmerken</td><td>Noem de drie fasen van het IDU-model met per fase twee instrumenten.</td></tr><tr><td>Herkennen</td><td>In een casus aanwijzen welk begrip, type of model van toepassing is, met het casusfeit dat het laat zien</td><td>Welke leiderschapsstijl en welk mensbeeld herken je bij de teamleider?</td></tr><tr><td>Toepassen</td><td>Een model gebruiken om de casus te analyseren en tot een conclusie of advies te komen</td><td>Adviseer de teamleider met Hersey en Blanchard hoe hij twee medewerkers moet aansturen.</td></tr></tbody></table></div>
+  </div>
+</div>
+
+<div class="card" id="t2">
+  <div class="card-header h2"><span class="icon">✍️</span><h2>Zo beantwoord je een open casusvraag</h2><span class="card-bron">Afgeleid uit de oefenvragen en werkcolleges</span></div>
+  <div class="card-body">
+<p class="p">Een open casusvraag levert punten op voor elk onderdeel dat de nakijker verwacht. Het patroon dat in alle modelantwoorden van deze site terugkomt:</p>
+<ol class="clean" style="margin-bottom:10px"><li><strong>Begrip noemen</strong>: welk model, welke strategie, welk type? Gebruik de precieze vakterm (taakverrijking, niet 'meer verantwoordelijkheid').</li><li><strong>Uitleggen</strong>: wat houdt dat begrip in? Eén zin is genoeg, maar laat hem niet weg: daarmee laat je zien dat je het niet gokt.</li><li><strong>Koppelen aan de casus</strong>: welk feit uit de casus wijst hierop? Citeer of parafraseer het.</li><li><strong>Concluderen of adviseren</strong> als de vraag daarom vraagt: wat betekent dit voor de organisatie, wat moet er gebeuren?</li></ol>
+<div class="box"><h4>Voorbeeld: zwak tegenover sterk antwoord</h4><ul class="clean"><li>Vraag: welke concurrentiestrategie van Porter volgt het schoonmaakbedrijf?</li><li>Zwak: 'Kostenleiderschap.' Dat is herkennen zonder onderbouwing.</li><li>Sterk: 'Kostenleiderschap: concurrentievoordeel door de laagste kosten, gericht op de brede markt. Dat blijkt uit de casus: het bedrijf wint aanbestedingen met de laagste prijs, werkt met vaste roosters en een beperkt pakket, en bedient kantoren in heel Nederland. Risico: klanten kiezen alleen op prijs en stappen makkelijk over.'</li></ul></div>
+<div class="section" style="margin-bottom:8px"><h3>Extra aanpak bij recht</h3></div>
+<ol class="clean" style="margin-bottom:10px"><li>Benoem de rechtsvraag: gaat het om oprichting, organen, vertegenwoordiging of aansprakelijkheid?</li><li>Noem de regel en zoek het artikel op in de wettenbundel.</li><li>Pas de regel toe op de feiten: wie handelde, namens wie, was de organisatie ingeschreven, wat staat er in de statuten?</li><li>Sluit af met een duidelijke conclusie: wie kan worden aangesproken, mag het wel of niet.</li></ol>
+<div class="section" style="margin-bottom:8px"><h3>Veelgemaakte fouten</h3></div>
+<ul class="clean" style="margin-bottom:10px"><li>Alleen het begrip noemen zonder uitleg of casusfeit.</li><li>Begrippen verwisselen die op elkaar lijken: missie en visie, spanwijdte en spandiepte, taakverruiming en taakverrijking, differentiatie bij Porter en differentiatie in de bedrijfskolom, KSF en KPI.</li><li>Bij Handy maar één as noemen; noem altijd machtsspreiding én samenwerkingsgraad.</li><li>Denken dat inschrijving in het handelsregister een oprichtingseis is.</li><li>De samenhang vergeten: als de vraag naar een andere S vraagt, laat zien hoe de ene S de andere beïnvloedt.</li></ul>
+<div class="section" style="margin-bottom:8px"><h3>Typen vragen die in de lessen terugkwamen</h3></div>
+<p class="p">De quizvragen in de les en de oefenvragen recht geven een beeld van wat er gevraagd kan worden. Ze zijn meerkeuze, maar je kunt ze open oefenen:</p>
+<ul class="clean" style="margin-bottom:10px"><li>Een voorbeeld indelen bij een model: welke groeistrategie, welke indeling (f, p, g, m), welk cultuurtype, welk soort proces?</li><li>Een begrip definiëren of een model opsommen: de cultuurniveaus van Schein, de configuraties van Mintzberg, de drie B's.</li><li>Een stelling beoordelen, bijvoorbeeld over efficiency en effectiviteit of over de strategische kloof.</li><li>Een rechtsvraag over een korte casus: wie is aansprakelijk, hoe richt je op, wie mag vertegenwoordigen.</li></ul>
+  </div>
+</div>
+
+<div class="card" id="t3">
+  <div class="card-header h2"><span class="icon">🧩</span><h2>Het uitgewerkte 7S-model voor het praktijkproject</h2><span class="card-bron">Les 1.1 dia 10, opdrachtomschrijvingen en werkcolleges week 2 t/m 7</span></div>
+  <div class="card-body">
+<p class="p">Het tweede toetsonderdeel is een uitgewerkt 7S-model van de opdrachtgever van je praktijkproject Business Management. In de werkcolleges werk je dat week voor week op: elke week pas je de theorie van één of twee S'en toe op je eigen opdrachtgever en maak je daarvan een poster of analyse. Samen vormen die de bouwstenen van het 7S-model.</p>
+<div class="highlight">Gebruik als bronnen steeds interviews, de website van de organisatie, jaarverslagen, beleidsdocumenten en eigen observaties. Onderbouw je analyses, maak visuals en sluit af met aanbevelingen voor de toekomst.</div>
+<div class="table-wrap"><table class="compact wide"><thead><tr><th>S</th><th>Wat je in het werkcollege uitwerkt</th><th>Modellen</th><th>Kernvraag van het werkcollege</th></tr></thead><tbody><tr><td>Strategy</td><td>Missie, visie en strategische doelstellingen van de organisatie en de facilitaire afdeling; marktbeschrijving; vijf krachten met scores van 1 tot 5; strategische poster met advies</td><td>Vijfkrachtenmodel, concurrentiestrategieën van Porter, Treacy en Wiersema, Ansoff, Kotler, blauwe en rode oceaan</td><td>Wat is de huidige strategie van de opdrachtgever en welke strategische keuzes adviseren wij voor de toekomst?</td></tr><tr><td>Structure</td><td>Verkenning van de organisatie; tabel met afdelingen en taken; organogram met niveaus, afdelingen en staf; verticale en horizontale arbeidsverdeling</td><td>Arbeidsverdeling, organogram, spanwijdte en spandiepte, centralisatie, configuraties van Mintzberg</td><td>Hoe is de arbeid binnen de organisatie verdeeld en hoe kan de structuur getypeerd worden?</td></tr><tr><td>Systems</td><td>De organisatie als open systeem (input, throughput, output, feedback); één belangrijk proces in een ITO-schema; de keten proces A, jouw proces, proces B; twee recente artikelen over de invloed van systemen op een andere S</td><td>Open systeem, ITO-model, primaire, secundaire en bestuurlijke processen</td><td>Hoe hangen de processen samen en hoe beïnvloeden systemen de andere S'en?</td></tr><tr><td>Staff</td><td>Personeelsopbouw; instroom en onboarding; beloning en ontwikkeling; lerende organisatie en de drie B's; uitstroom; minimaal drie concrete aanbevelingen</td><td>IDU-model, drie B's, arbeidsvoorwaarden, Ulrich</td><td>In hoeverre beschikt de organisatie over het juiste personeel en hoe goed ondersteunt het personeelsbeleid de doelstellingen?</td></tr><tr><td>Style</td><td>Leiderschapsstijl; minstens twee situaties met situationeel leiderschap; een conflictvoorbeeld en de gebruikte conflictstijl; conclusie over motivatie samen met Staff</td><td>Autocratisch, democratisch, participatief; Hersey en Blanchard; conflictstijlen; Maslow</td><td>In hoeverre ondersteunt de huidige stijl van leidinggeven het succesvol functioneren van de organisatie?</td></tr><tr><td>Skills</td><td>Unieke sleutelpositie en USP's ten opzichte van concurrenten en het effect op de skills; toegevoegde waarde per stakeholder; koppeling met de twaalf toegevoegde waarden van FM; kwaliteitssystemen; één BSC-item met een KSF en drie KPI's</td><td>USP-check, twaalf toegevoegde waarden (Drion en van Sprang), kwaliteitssystemen, Balanced Scorecard</td><td>Lever een skillsanalyse van de organisatie aan.</td></tr><tr><td>Shared values</td><td>Minstens vijf artefacten, de beleden waarden en (via de facility manager) de onderliggende waarden; typering volgens Handy met beide assen en de bijbehorende Mintzberg-typologie; typering volgens Hofstede en volgens Deal en Kennedy</td><td>Schein, Harrison en Handy, Hofstede, Deal en Kennedy</td><td>Lever een shared values- of cultuurscan van de organisatie aan.</td></tr></tbody></table></div>
+<div class="warn">Een beoordelingsformulier of rubric voor het 7S-model staat niet in de bronnen. Wat hierboven staat, zijn de opdrachten uit de werkcolleges. Check op Brightspace hoe het eindproduct wordt beoordeeld en wanneer het ingeleverd moet worden.</div>
+  </div>
+</div>
+
+<div class="card" id="t4">
+  <div class="card-header h2"><span class="icon">✅</span><h2>Checklist voor je 7S-model</h2><span class="card-bron">Opdrachtomschrijvingen werkcolleges</span></div>
+  <div class="card-body">
+<ul class="clean" style="margin-bottom:10px"><li>Elke S is uitgewerkt met de modellen uit het werkcollege van die week, niet alleen beschreven.</li><li>Elke bewering is onderbouwd met een bron: interview, website, jaarverslag, beleidsdocument of eigen observatie. Bij Skills en Shared values wordt verantwoording van bronnen expliciet gevraagd.</li><li>De facilitaire afdeling komt terug: bij Strategy de missie, visie en doelen van de facilitaire afdeling, bij Structure welke taken onder FM vallen, bij Systems welke waarde facilitaire processen toevoegen.</li><li>Er zijn visuals: posters met organogram, ITO-schema, Mintzberg-typering, strategische modellen.</li><li>Bij Strategy heb je de modellen vergeleken: geven ze hetzelfde beeld, versterken of spreken ze elkaar tegen?</li><li>De samenhang tussen de S'en is zichtbaar, bijvoorbeeld hoe systemen een andere S beïnvloeden en hoe Staff en Style samen de motivatie bepalen.</li><li>Elke S eindigt met aanbevelingen voor de toekomst; bij Staff minimaal drie concrete aanbevelingen.</li></ul>
+  </div>
+</div>
+</div>
+
+<footer class="fa-site-footer">
+  <span>FM Atlas · gratis studiehulp voor HAN Facilitair Management, gemaakt door een student</span>
+  <span>Niet officieel verbonden aan de HAN · <a href="privacy.html">Privacy</a> · <a href="app.html#contact">Fout gezien?</a></span>
+</footer>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+<script src="js/fmatlas.js"></script>
+<script>
+const firebaseConfig = {
+  apiKey: "AIzaSyBB397Wk2eqpBjic8E7aGV1mTgIjhQ21a8",
+  authDomain: "fmkompas-ff8bc.firebaseapp.com",
+  projectId: "fmkompas-ff8bc",
+  storageBucket: "fmkompas-ff8bc.firebasestorage.app",
+  messagingSenderId: "487972024689",
+  appId: "1:487972024689:web:712c3117080745d14746d0"
+};
+firebase.initializeApp(firebaseConfig);
+firebase.auth().onAuthStateChanged(user => {
+  document.getElementById('fa-header-slot').innerHTML = '';
+  faMarkActiveToday();
+  document.getElementById('fa-header-slot').appendChild(faRenderHeader({ user }));
+  faMarkLastSeen('facilitaire-bedrijfskunde','Facilitaire bedrijfskunde','facilitaire-bedrijfskunde.html');
+});
+</script>
+</body>
+</html>
