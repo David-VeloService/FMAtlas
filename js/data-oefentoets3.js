@@ -107,7 +107,7 @@ window.OT3 = {
       "text": "Bij de toegangscontrole van een voetbalwedstrijd vraagt een beveiliger bezoekers hun tas te openen. Bij dezelfde ingang onderzoekt een collega bij een deel van de bezoekers ook de kleding. Welke uitspraak over deze twee controles is juist?",
       "options": [
         "De tascontrole is visitatie en het onderzoek aan de kleding is fouilleren; de bevoegdheid om te fouilleren moet vooraf zijn gecommuniceerd en in de huisregels zijn opgenomen.",
-        "Beide controles zijn vormen van fouilleren, omdat ze op grond van de Wet particuliere beveiligingsorganisaties en persoonsbeveiliging door gediplomeerde beveiligers worden uitgevoerd.",
+        "Beide controles zijn vormen van fouilleren, omdat ze op grond van de Wet particuliere beveiligingsorganisaties en recherchebureaus (Wpbr) door gediplomeerde beveiligers worden uitgevoerd.",
         "De tascontrole mag worden afgedwongen; alleen het onderzoek aan de kleding is vrijwillig, omdat dat het lichaam betreft."
       ],
       "answer": 0,
@@ -413,7 +413,7 @@ window.OT3 = {
           "num": 36,
           "text": "Een bezoeker weigert bij de entree zijn tas te laten controleren. Leg uit wat de beveiliger in deze situatie wel en niet mag doen, en benoem de wettelijke basis waarop de controle rust.",
           "punten": 2,
-          "model": "Visitatie gebeurt op basis van vrijwilligheid: de beveiliger mag de bezoeker niet dwingen de tas te openen, maar bij weigering mag de toegang tot het evenement worden geweigerd (1 punt).<br>De controle rust op de Wet particuliere beveiligingsorganisaties en persoonsbeveiliging (Wpbp) en wordt uitgevoerd door gediplomeerde beveiligers; de werkwijze moet objectief, steekproefsgewijs en met de nodige discretie zijn (1 punt).<br>(Bron: EVL week 3 — procestijden en capaciteitsberekening, bottleneck, visitatie en Wpbp.)"
+          "model": "Visitatie gebeurt op basis van vrijwilligheid: de beveiliger mag de bezoeker niet dwingen de tas te openen, maar bij weigering mag de toegang tot het evenement worden geweigerd (1 punt).<br>De les koppelt de controle aan de Wet particuliere beveiligingsorganisaties (officieel: en recherchebureaus, Wpbr) en wordt uitgevoerd door gediplomeerde beveiligers; de werkwijze moet objectief, steekproefsgewijs en met de nodige discretie zijn (1 punt).<br>(Bron: EVL week 3 — procestijden en capaciteitsberekening, bottleneck, visitatie en Wpbp.)"
         }
       ]
     },

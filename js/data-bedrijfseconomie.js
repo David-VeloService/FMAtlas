@@ -85,9 +85,46 @@ BECO.begrippen = [
   /* 7. FM-economie */
   {cat:"fm-economie", term:"TCO (Total Cost of Ownership)", def:"Alle kosten die een product of dienst gedurende zijn hele levensduur veroorzaakt: pre-transactie (selectie/aanbesteding), transactie (aanschaf/installatie) en post-transactie (gebruik, energie, onderhoud, afvoer) minus restwaarde. Bij FM-investeringen vaak doorslaggevend: de goedkoopste aanschaf is zelden de goedkoopste over de levensduur."},
   {cat:"fm-economie", term:"NEN 2748", def:"Nederlandse norm die facilitaire kosten en prestaties uniform indeelt in vijf rubrieken: huisvesting, diensten en middelen, ICT, externe voorzieningen en facility management. Maakt benchmarking tussen FM-organisaties mogelijk."},
-  {cat:"fm-economie", term:"Forfaitaire calculatie", def:"Kostprijsmethode waarbij alle indirecte kosten worden gedekt door één vast bedrag of vast percentage, zonder verfijnde verdeling. Snel en eenvoudig, maar minder precies dan de integrale of opslagmethode."},
   {cat:"fm-economie", term:"Benchmarking", def:"Vergelijken van eigen prestatiecijfers met die van anderen om verbeterpotentieel zichtbaar te maken. Intern: locaties of jaren onderling vergelijken. Extern: met sectorgenoten via bijvoorbeeld FMN. Vraagt om uniforme afbakening (NEN 2748)."},
 ];
 
 /* ─── Flashcards (= begrippen hergebruikt) ──── */
 BECO.flashcards = BECO.begrippen;
+
+/* ─── Periode 2: offertes (bron: 02.01 Algemeen-student.pptx, les 2.1) ─── */
+BECO.cats.push(
+  { key:"offertes",     label:"Offertes: inhoud en rollen",     short:"Offertes",     color:"#14b8a6" },
+  { key:"uurtarieven",  label:"Tarief opbouwen voor een offerte", short:"Tarieven",   color:"#65a30d" },
+);
+
+BECO.begrippen.push(
+  /* 8. Offertes: inhoud en rollen */
+  {cat:"offertes", term:"Offerte", def:"Een uitgebreide prijsopgave voor een (mogelijke) klant. Je laat zien wat de dienst of het product gaat kosten, hoe je de opdracht wilt uitvoeren en hoe je aan het bedrag komt: op basis van een uurtarief, materiaalkosten of een toeslag omdat het om een spoedklus gaat. Alleen een bedrag noemen is niet genoeg."},
+  {cat:"offertes", term:"Dienst", def:"Werk dat iemand voor je doet, zoals schoonmaak, catering, beveiliging of advies. Een dienst kun je niet bewaren: hij is uitgevoerd of niet. Financieel is een dienst altijd een kostenpost en nooit een bezit op de balans."},
+  {cat:"offertes", term:"Product", def:"Iets tastbaars dat je kunt vastpakken, bewaren en eventueel doorverkopen. Een product heeft financieel een waarde en kan als bezit op de balans staan. Tegenhanger van een dienst."},
+  {cat:"offertes", term:"Verkopende kant", def:"De FM'er als aanbieder: je biedt zelf diensten als catering, schoonmaak, beveiliging of advies aan een klant aan. Vanuit deze kant stel je de offerte op en bepaal je de tarieven."},
+  {cat:"offertes", term:"Inkopende kant", def:"De FM'er als afnemer: je koopt diensten als catering, schoonmaak of beveiliging in bij een andere partij, of je besluit het zelf te doen. Vanuit deze kant beoordeel je een offerte en vraag je je af of het niet beter zelf kan."},
+  {cat:"offertes", term:"Uitbestedingspercentage", def:"Het deel van een facilitaire deelmarkt dat organisaties uitbesteden aan een externe leverancier. Volgens het marktonderzoek van Twijstra Gudde (2025) wordt schoonmaak voor 92% uitbesteed, technisch beheer voor 86% en beveiliging voor 81%. Daarom krijgt een FM'er zo vaak met offertes te maken."},
+  {cat:"offertes", term:"Verplichte onderdelen van een offerte", def:"Je bedrijfsgegevens (met KvK-nummer en btw-id), de gegevens van de klant, een offertenummer, de datum en geldigheidsduur, een beschrijving van de diensten of producten, de totaalprijs exclusief btw, het btw-percentage, een verwijzing naar je algemene voorwaarden en de manier waarop de klant akkoord kan geven."},
+  {cat:"offertes", term:"Omvang van de dienstverlening", def:"De specifieke taken en verantwoordelijkheden die de aanbieder gaat uitvoeren: wat er gedaan wordt en hoeveel. In de voorbeeldofferte van CleanUp B.V. is dat een lijst werkzaamheden (looproutes, kantoorruimtes, gevelglas, toezicht) met per regel aantal, eenheid en tarief."},
+  {cat:"offertes", term:"Tarief en aantal", def:"Elke regel op een offerte combineert een prijs per eenheid met een hoeveelheid. Die eenheid kan een uur, functie, stuk, liter, keer of m² zijn. Voorbeeld CleanUp: 2.000 uur reiniging looproutes à € 30,55 is € 61.100,00.", formula:"Regelbedrag = aantal × tarief per eenheid"},
+  {cat:"offertes", term:"Tarief per functie", def:"Een aanbieder rekent niet voor iedereen hetzelfde uurtarief, maar per soort medewerker. CleanUp B.V. rekent € 30,55 per uur voor schoonmaak categorie 1 en € 52,00 per uur voor specialistische schoonmaak en voor de leidinggevende (toezicht)."},
+  {cat:"offertes", term:"Geldigheidsduur", def:"De periode waarin de offerte geldt; datum en geldigheidsduur moeten erop staan. De offerte van CleanUp B.V. is 30 dagen geldig: offertedatum 28-10-2025, vervaldag 27-11-2025.", formula:"Vervaldag = offertedatum + geldigheidsduur"},
+  {cat:"offertes", term:"Totaalprijs exclusief btw", def:"Het bedrag zonder btw. Op een offerte staan de totaalprijs exclusief btw en het btw-percentage verplicht vermeld. Voorbeeld CleanUp: € 248.260,00 exclusief btw, plus 21% btw (€ 52.134,60), geeft een totaalbedrag van € 300.394,60.", formula:"Btw = bedrag excl. btw × btw%   |   Totaalbedrag = bedrag excl. btw + btw"},
+  {cat:"offertes", term:"Btw op een offerte", def:"Btw is niet voor elke organisatie terug te vragen. Voor sommige organisaties is de btw op een offerte dus gewoon een kostenpost. Daarom is de btw van belang als je een offerte beoordeelt."},
+  {cat:"offertes", term:"Onder voorbehoud van wijzigingen", def:"Zinsnede op een offerte die betekent dat de prijzen nog kunnen veranderen. CleanUp B.V. zet onder de offerte dat bedragen en tarieven onder voorbehoud van wijzigingen zijn."},
+  {cat:"offertes", term:"Algemene voorwaarden", def:"De vaste afspraken van de aanbieder waar een offerte naar moet verwijzen. In het voorbeeld van CleanUp B.V. staan daar de wijze van aanvragen, uitvoeren en verrekenen van werk en de betalingsvoorwaarden in."},
+  {cat:"offertes", term:"Extra werk op een offerte", def:"Werk dat buiten de vaste afspraken valt, zoals een calamiteit of een spoedklus, en dat apart betaald wordt. CleanUp B.V. noemt onder 'aanbod extra kosten' de tarieven voor eventueel extra werk: per uur voor schoonmaak en specialistische schoonmaak, per beurt voor gevelglas."},
+  {cat:"offertes", term:"Offerte uit elkaar trekken", def:"Een offerte ontleden in haar onderdelen: wat staat erop, welke getallen worden gebruikt en wat moest de aanbieder weten om die getallen te bepalen. Startpunt van periode 2 en basis voor het later zelf opstellen en beoordelen van offertes."},
+  {cat:"offertes", term:"Zelf doen of uitbesteden", def:"De vraag die de inkopende FM'er stelt bij een offerte: kunnen we deze dienst niet beter zelf doen in plaats van hem bij een andere partij in te kopen? Komt in periode 2 aan bod na het opstellen en beoordelen van offertes."},
+  {cat:"offertes", term:"Offertes (KT) en investeringen (LT)", def:"Periode 1 van het vak gaat over investeren, beslissingen voor de lange termijn (LT). Periode 2 gaat over offertes, beslissingen voor de korte termijn (KT). Aan het eind van periode 2 komt de samenhang tussen offertes en investeringen (eenmalige opdrachten) aan bod."},
+
+  /* 9. Tarief opbouwen voor een offerte */
+  {cat:"uurtarieven", term:"Klantgegevens en eigen gegevens", def:"Om een offerte op te stellen heb je twee soorten getallen nodig. Hoeveelheden vraag je op bij de klant, zoals het aantal m² (CleanUp: 3.500 m² looproutes, 7.500 m² kantoor en lokalen, 5.700 m² gevelglas). Tarieven bepaal je zelf als aanbieder."},
+  {cat:"uurtarieven", term:"Bouwstenen van een tarief", def:"Vijf vragen bepalen je tarief: wat kost een medewerker jou, hoeveel uur werkt die voor je klanten, wat ben je kwijt aan materiaal (zoals schoonmaakmiddelen), wat moet je verder nog terugverdienen (overhead) en hoeveel winst wil je maken."},
+  {cat:"uurtarieven", term:"Loonkosten van een medewerker", def:"Wat een medewerker de werkgever kost. Dat is meer dan het uurloon: ook werkgeverslasten, vakantiegeld en vergoedingen tellen mee. Eerste bouwsteen van een tarief."},
+  {cat:"uurtarieven", term:"Uren voor de klant", def:"Niet alle uren uit het contract zijn uren die een medewerker voor klanten werkt. Je begint bij de contracturen en houdt rekening met verlof (vrije dagen), ziekte en pauzes. Alleen de overgebleven uren kun je aan klanten doorberekenen."},
+  {cat:"uurtarieven", term:"Materiaalkosten (schoonmaakkosten)", def:"Wat de aanbieder kwijt is aan middelen om het werk te doen. Bij schoonmaak: hoeveel liter schoonmaakmiddel en hoeveel sponsjes per m² nodig zijn en tegen welke inkoopprijs, plus de afschrijving op schoonmaakapparatuur."},
+  {cat:"uurtarieven", term:"Overhead", def:"Kosten die niet bij één bepaalde klant horen, maar die je wel moet terugverdienen via je tarieven. Ook wel indirecte kosten. Voorbeelden: de directeur, het eigen hoofdkantoor (huur, schoonmaak, receptie, beveiliging, administratie) en marketing."},
+  {cat:"uurtarieven", term:"Winstpercentage", def:"Het percentage winst dat je bovenop je kosten in je tarief verwerkt. Afweging: wordt het tarief daardoor te hoog, dan kan de klant de opdracht aan een andere leverancier geven."},
+);

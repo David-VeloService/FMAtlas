@@ -24,14 +24,14 @@ EM1.begrippen = [
   {cat:"project", term:"Lijnorganisatie", def:"De vaste, permanente organisatiestructuur van een bedrijf; tegenover projectorganisatie (tijdelijk)."},
   {cat:"project", term:"Opdrachtgever", def:"De persoon of organisatie die het project opdraagt, het budget verstrekt en het eindresultaat accepteert. Staat buiten het projectteam."},
   {cat:"project", term:"Projectleider", def:"Verantwoordelijk voor de dagelijkse uitvoering, planning en coördinatie van het project. Rapporteert aan de opdrachtgever."},
-  {cat:"project", term:"Stuurgroep", def:"Strategisch beslisorgaan bestaande uit de opdrachtgever en andere beslissingsbevoegde stakeholders. Neemt go/no-go beslissingen bij faseovergangen."},
+  {cat:"project", term:"Stuurgroep", def:"Tactisch orgaan bij meerdere van elkaar afhankelijke projecten: bestaat uit een directielid en de projectleiders, zorgt voor informatie-uitwisseling, coördineert en bewaakt de voortgang. Strategie en budget liggen bij de directie."},
   {cat:"project", term:"Projectresultaat", def:"Het tastbare of ontastbare eindproduct van het project: kan een product, dienst, rapport, evenement of verandering zijn."},
   {cat:"project", term:"Kick-off meeting", def:"Officiële startbijeenkomst aan het begin van een project. Alle betrokkenen worden geïnformeerd over doel, aanpak en rolverdeling."},
-  {cat:"project", term:"Go/no-go beslissing", def:"Formele beslissing aan het einde van een projectfase: gaan we door naar de volgende fase of stoppen we? Genomen door de stuurgroep."},
+  {cat:"project", term:"Go/no-go beslissing", def:"Formele beslissing aan het einde van een projectfase: gaan we door (eventueel met aanpassingen) of stoppen we? Genomen door de opdrachtgever."},
   {cat:"project", term:"Mijlpaal", def:"Meetbaar tussentijds resultaat of formeel beslismoment binnen een project. Geen doorlooptijd, wel een concreet resultaat."},
   {cat:"project", term:"Scope creep", def:"Ongecontroleerde, niet-geplande uitbreiding van de projectomvang zonder formele goedkeuring of aanpassing van budget en doorlooptijd."},
   {cat:"project", term:"Deliverable", def:"Een op te leveren resultaat (product, rapport, ontwerp). Niet hetzelfde als een activiteit — dat is de taak die nodig is om de deliverable te maken."},
-  {cat:"project", term:"P6-methode", def:"Projectaanpak van Roel Grit met zes stappen: 1) Opstarten (idee/initiatief), 2) Inrichten (team en afspraken), 3) Plan van Aanpak (resultaat en aanpak vaststellen), 4) Uitvoeren (TGKIO bewaken), 5) Opleveren (testen en goedkeuren), 6) Afsluiten (overdracht, evaluatie). Verschil met traditioneel: ontwerp, voorbereiding en realisatie zijn samengevoegd in stap 4."},
+  {cat:"project", term:"6P-methode", def:"Projectaanpak van Roel Grit met zes stappen: 1) Opstarten (idee/initiatief), 2) Inrichten (team en afspraken), 3) Plan van Aanpak (resultaat en aanpak vaststellen), 4) Uitvoeren (TGKIO bewaken), 5) Opleveren (testen en goedkeuren), 6) Afsluiten (overdracht, evaluatie). Verschil met traditioneel: ontwerp, voorbereiding en realisatie zijn samengevoegd in stap 4."},
   {cat:"project", term:"Plan van Aanpak", def:"Het centrale projectdocument. Bevat: aanleiding, doelstelling, resultaat, aanpak, planning, begroting, risicoanalyse en organisatie."},
   {cat:"project", term:"SMART", def:"Methode om doelstellingen concreet te formuleren: Specifiek, Meetbaar, Acceptabel, Realistisch, Tijdgebonden. Garandeert niet dat een doel haalbaar is."},
 
@@ -43,7 +43,7 @@ EM1.begrippen = [
   {cat:"fasering", term:"Realisatiefase", def:"Vijfde fase: de daadwerkelijke uitvoering. Hier wordt het eindresultaat gebouwd of gerealiseerd."},
   {cat:"fasering", term:"Nazorgfase", def:"Zesde fase: overdracht, evaluatie en afbouw van de projectorganisatie. Het resultaat wordt overgedragen aan de opdrachtgever of beheerorganisatie."},
   {cat:"fasering", term:"Watervalmodel", def:"Lineaire, sequentiële aanpak waarbij elke fase volledig wordt afgerond voor de volgende begint. Moeilijk om halverwege grote wijzigingen door te voeren."},
-  {cat:"fasering", term:"Fase-gate", def:"Controlemoment aan het einde van elke fase. De stuurgroep beoordeelt of aan de criteria is voldaan en neemt een go/no-go beslissing."},
+  {cat:"fasering", term:"Fase-gate", def:"Controlemoment aan het einde van elke fase. Er wordt beoordeeld of aan de criteria is voldaan en er volgt een go/no-go-beslissing."},
 
   /* 3. Planning & beheersaspecten */
   {cat:"planning", term:"GOKIT", def:"Afkorting voor de vijf beheersaspecten van een project: Geld, Organisatie, Kwaliteit, Informatie, Tijd. Inhoudelijk gelijk aan TGKIO (alleen andere volgorde)."},
@@ -84,7 +84,6 @@ EM1.begrippen = [
   {cat:"risico", term:"Risicorespons: Overdragen (Transfer)", def:"Het risico neerleggen bij een andere partij, bijv. via verzekering of uitbesteding. Kost doorgaans extra geld (premie, contractkosten)."},
   {cat:"risico", term:"Risicorespons: Accepteren", def:"Het risico bewust accepteren, eventueel met een contingency plan (noodplan) als het toch optreedt."},
   {cat:"risico", term:"Contingency plan (noodplan)", def:"Vooraf opgesteld plan dat in werking treedt als een geaccepteerd risico zich daadwerkelijk voordoet."},
-  {cat:"risico", term:"Oorzaak-gevolgdiagram (visgraatdiagram / Ishikawa)", def:"Hulpmiddel om oorzaken van een probleem systematisch in kaart te brengen. Categorieën: mens, machine, methode, materiaal, milieu, management."},
 
   /* 6. Organisatie & MVO */
   {cat:"organisatie", term:"Matrixorganisatie", def:"Organisatievorm waarbij een medewerker rapporteert aan zowel de lijnmanager (functioneel) als de projectleider (projectmatig). Dubbele rapportagelijn."},
@@ -110,8 +109,8 @@ EM1.begrippen = [
   /* 8. Agile & Scrum */
   {cat:"scrum", term:"Agile", def:"Verzameling van waarden en principes voor flexibele softwareontwikkeling (Agile Manifesto 2001). Geschikt voor veranderende of onduidelijke eisen."},
   {cat:"scrum", term:"Agile Manifesto — 4 kernwaarden", def:"1) Mensen & interactie > processen & tools. 2) Werkende software > uitgebreide documentatie. 3) Klantcollaboratie > contractonderhandeling. 4) Inspelen op verandering > plan volgen."},
-  {cat:"scrum", term:"Scrum", def:"Agile framework met vaste rollen, ceremonies en artefacten. Werk in sprints van 1–4 weken."},
-  {cat:"scrum", term:"Sprint", def:"Timeboxed iteratie van 1–4 weken. Het team levert aan het einde een werkend increment op. De duur is vast gedurende het project."},
+  {cat:"scrum", term:"Scrum", def:"Agile framework met vaste rollen, ceremonies en artefacten. Werk in sprints: vaste, korte werkcycli."},
+  {cat:"scrum", term:"Sprint", def:"Vaste, korte werkcyclus (volgens de Scrum Guide hooguit een maand; de les noemt geen vast aantal weken). Het team levert aan het einde een werkend (tussen)resultaat op."},
   {cat:"scrum", term:"Product Owner", def:"Verantwoordelijk voor de product backlog: prioriteert, beheert en communiceert wat er gebouwd moet worden. Vertegenwoordigt de klant/business."},
   {cat:"scrum", term:"Scrum Master", def:"Dienende leider die het Scrum-proces begeleidt en obstakels wegneemt. Heeft geen inhoudelijke bevoegdheid en is niet verantwoordelijk voor de backlog."},
   {cat:"scrum", term:"Developers (vroeger Development Team)", def:"Zelforganiserend, cross-functioneel team dat het werk uitvoert. Bepaalt zelf hoeveel werk het in een sprint kan verwerken (velocity)."},
@@ -131,7 +130,7 @@ EM1.begrippen = [
   {cat:"kwaliteit", term:"SAT (Site Acceptance Test)", def:"Acceptatietest die plaatsvindt bij de KLANT/locatie. Controle of het geïnstalleerde systeem correct werkt in de echte omgeving."},
 
   /* 10. Overig */
-  {cat:"overig", term:"Probleemstelling", def:"Beschrijving van de aanleiding en het probleem dat het project moet oplossen. Wordt vastgesteld in stap 1 (Opstarten) van de P6-methode en uitgewerkt in het Plan van Aanpak (stap 3)."},
+  {cat:"overig", term:"Probleemstelling", def:"Beschrijving van de aanleiding en het probleem dat het project moet oplossen. Wordt vastgesteld in stap 1 (Opstarten) van de 6P-methode en uitgewerkt in het Plan van Aanpak (stap 3)."},
   {cat:"overig", term:"Projectdoelstelling", def:"SMART geformuleerde beschrijving van wat het project beoogt te bereiken. Antwoord op: waarom doen we dit project?"},
   {cat:"overig", term:"Businesscase", def:"Onderbouwing van de toegevoegde waarde van het project: kosten, baten, risico's en alternatieve opties."},
   {cat:"overig", term:"Vergaderen — voorzitter", def:"De voorzitter stelt de agenda op, leidt de vergadering, bewaakt de tijd en zorgt voor besluiten. De notulist legt besluiten vast."},
@@ -172,7 +171,7 @@ EM1.oefentoets1 = [
   { section: null, num: 20, text: "Scrum wordt aanbevolen wanneer de opdrachtgever precies weet wat hij wil.", answer: false, explanation: "Scrum wordt juist aanbevolen als de opdrachtgever niet precies weet wat hij wil. De flexibele aanpak maakt het mogelijk om gaandeweg bij te sturen." },
   { section: null, num: 21, text: "Een risico wordt bepaald door de kans vermenigvuldigd met het gevolg.", answer: true, explanation: "Correct. Risico = kans × gevolg. Dit bepaalt hoe groot de impact van een risico op het project is." },
   { section: null, num: 22, text: "De duivelsdriehoek beschrijft de spanning tussen Tijd, Geld en Kwaliteit.", answer: true, explanation: "Correct. Deze drie factoren staan op gespannen voet met elkaar. Als je één aanpast, heeft dat altijd effect op de andere twee." },
-  { section: null, num: 23, text: "De P6-methode is een projectmanagementmethode die specifiek is ontwikkeld voor grote internationale projecten.", answer: false, explanation: "De P6-methode is een synthese van verschillende methoden en is juist bruikbaar voor kleine en middelgrote projecten." },
+  { section: null, num: 23, text: "De 6P-methode is een projectmanagementmethode die specifiek is ontwikkeld voor grote internationale projecten.", answer: false, explanation: "De 6P-methode is een synthese van verschillende methoden en is juist bruikbaar voor kleine en middelgrote projecten." },
   { section: null, num: 24, text: "Risicobeheersing bestaat uit vier strategieën: voorkomen, verminderen, overdragen en accepteren.", answer: true, explanation: "Correct. Dit zijn de vier manieren om met risico's om te gaan bij het uitvoeren van een project." },
 
   // H4 — Planning
@@ -183,13 +182,13 @@ EM1.oefentoets1 = [
   { section: null, num: 29, text: "Een planning en een Plan van Aanpak zijn hetzelfde document.", answer: false, explanation: "Een planning is slechts één onderdeel van het Plan van Aanpak. Het PvA bevat ook activiteiten, organisatie, kosten-baten, risicoanalyse en meer." },
 
   // H5 — P6-Methode
-  { section: "H5 — De P6-Methode", num: 30, text: "In de P6-methode worden de ontwerp-, voorbereidings- en realisatiefase samengevoegd tot stap 4 'Uitvoeren'.", answer: true, explanation: "Correct. De P6-methode wijkt hierin af van de traditionele watervalfasering, waarbij ontwerp, voorbereiding en realisatie drie afzonderlijke fasen zijn." },
-  { section: null, num: 31, text: "In stap 4 van de P6-methode worden de beheersaspecten TGKIO bewaakt.", answer: true, explanation: "Correct. Per uitvoeringsfase worden Tijd, Geld, Kwaliteit, Informatie en Organisatie bewaakt." },
-  { section: null, num: 32, text: "De zesde stap van de P6-methode heet 'Evalueren'.", answer: false, explanation: "De zesde stap heet 'Afsluiten'. In deze stap worden het project financieel afgehandeld, handleidingen gemaakt en projectleden teruggeleid naar de lijnorganisatie." },
-  { section: null, num: 33, text: "Het Plan van Aanpak wordt opgesteld in stap 3 van de P6-methode.", answer: true, explanation: "Correct. Stap 3 is specifiek gewijd aan het maken van het Plan van Aanpak, inclusief de stakeholderanalyse en het vaststellen van het projectresultaat." },
-  { section: null, num: 34, text: "In stap 5 van de P6-methode wordt het projectresultaat getest en formeel goedgekeurd door de opdrachtgever.", answer: true, explanation: "Correct. In stap 5 'Opleveren' wordt een testplan uitgevoerd en vindt formele acceptatie van het resultaat door de opdrachtgever plaats." },
-  { section: null, num: 35, text: "De P6-methode kan alleen worden toegepast op projecten, niet op onderzoek.", answer: false, explanation: "De P6-methode kan ook worden toegepast op onderzoeksprojecten. De stappen blijven hetzelfde, maar de namen van producten veranderen (bijv. onderzoeksvoorstel i.p.v. projectvoorstel)." },
-  { section: null, num: 36, text: "In stap 2 van de P6-methode wordt het projectteam samengesteld en worden afspraken gemaakt over de samenwerking.", answer: true, explanation: "Correct. Stap 2 heet 'Inrichten'. Hierin worden geschikte projectleden geselecteerd, taken verdeeld en communicatieafspraken vastgelegd." },
+  { section: "H5 — De P6-Methode", num: 30, text: "In de 6P-methode worden de ontwerp-, voorbereidings- en realisatiefase samengevoegd tot stap 4 'Uitvoeren'.", answer: true, explanation: "Correct. De 6P-methode wijkt hierin af van de traditionele watervalfasering, waarbij ontwerp, voorbereiding en realisatie drie afzonderlijke fasen zijn." },
+  { section: null, num: 31, text: "In stap 4 van de 6P-methode worden de beheersaspecten TGKIO bewaakt.", answer: true, explanation: "Correct. Per uitvoeringsfase worden Tijd, Geld, Kwaliteit, Informatie en Organisatie bewaakt." },
+  { section: null, num: 32, text: "De zesde stap van de 6P-methode heet 'Evalueren'.", answer: false, explanation: "De zesde stap heet 'Afsluiten'. In deze stap worden het project financieel afgehandeld, handleidingen gemaakt en projectleden teruggeleid naar de lijnorganisatie." },
+  { section: null, num: 33, text: "Het Plan van Aanpak wordt opgesteld in stap 3 van de 6P-methode.", answer: true, explanation: "Correct. Stap 3 is specifiek gewijd aan het maken van het Plan van Aanpak, inclusief de stakeholderanalyse en het vaststellen van het projectresultaat." },
+  { section: null, num: 34, text: "In stap 5 van de 6P-methode wordt het projectresultaat getest en formeel goedgekeurd door de opdrachtgever.", answer: true, explanation: "Correct. In stap 5 'Opleveren' wordt een testplan uitgevoerd en vindt formele acceptatie van het resultaat door de opdrachtgever plaats." },
+  { section: null, num: 35, text: "De 6P-methode kan alleen worden toegepast op projecten, niet op onderzoek.", answer: false, explanation: "De 6P-methode kan ook worden toegepast op onderzoeksprojecten. De stappen blijven hetzelfde, maar de namen van producten veranderen (bijv. onderzoeksvoorstel i.p.v. projectvoorstel)." },
+  { section: null, num: 36, text: "In stap 2 van de 6P-methode wordt het projectteam samengesteld en worden afspraken gemaakt over de samenwerking.", answer: true, explanation: "Correct. Stap 2 heet 'Inrichten'. Hierin worden geschikte projectleden geselecteerd, taken verdeeld en communicatieafspraken vastgelegd." },
 
   // H6 — Plan van Aanpak
   { section: "H6 — Plan van Aanpak", num: 37, text: "Het Plan van Aanpak is het contract tussen het projectteam en de opdrachtgever.", answer: true, explanation: "Correct. Het PvA maakt voor iedereen duidelijk wat er gaat gebeuren en fungeert als formeel contract tussen projectmanager en opdrachtgever." },
@@ -203,7 +202,7 @@ EM1.oefentoets1 = [
 
   // H7 — Agile en Scrum
   { section: "H7 — Agile en Scrum", num: 45, text: "Agile is een specifieke projectmanagementmethode met vaste stappen en procedures.", answer: false, explanation: "Agile is een manier van denken (mindset), een parapluterm voor verschillende methoden zoals Scrum. Het is geen methode op zichzelf." },
-  { section: null, num: 46, text: "Een sprint duurt bij Scrum doorgaans 2 tot 4 weken.", answer: true, explanation: "Correct. Scrum werkt in korte, vaste werkcycli (sprints) van 2 tot 4 weken, waarbij aan het einde een werkend (tussen)product wordt opgeleverd." },
+  { section: null, num: 46, text: "Een sprint heeft bij Scrum een vaste, korte duur.", answer: true, explanation: "Correct. Scrum werkt in korte, vaste werkcycli (sprints), waarbij aan het einde een werkend (tussen)product wordt opgeleverd. De Scrum Guide noemt hooguit een maand." },
   { section: null, num: 47, text: "De Scrum Master wijst de taken toe aan de teamleden.", answer: false, explanation: "Het Scrum-team is zelfsturend en pakt zelf taken op. De Scrum Master coacht het proces en lost belemmeringen op, maar wijst geen taken toe." },
   { section: null, num: 48, text: "De Product Owner is de enige die de prioriteiten in de product backlog bepaalt.", answer: true, explanation: "Correct. De Product Owner vertegenwoordigt de stakeholders en bepaalt welke user stories worden gerealiseerd en in welke volgorde. Dit is zijn exclusieve bevoegdheid." },
   { section: null, num: 49, text: "De Daily Standup duurt maximaal 15 minuten.", answer: true, explanation: "Correct. De Daily Standup (daily scrum meeting) is een dagelijks overleg van maximaal 15 minuten waarbij teamleden rapporteren aan elkaar." },
@@ -247,7 +246,7 @@ EM1.oefentoets1 = [
   { section: null, num: 75, text: "BUMA/STEMRA beheert de auteursrechten van componisten en tekstschrijvers bij muziekgebruik.", answer: true, explanation: "Correct. BUMA/STEMRA beheert auteursrechten. Sena beheert naburige rechten van uitvoerende artiesten en producenten. Voor een evenement heb je vaak licenties van beiden nodig." },
   { section: null, num: 76, text: "De 3 E's van eventmarketing staan voor Entertainment, Excitement en Enterprise.", answer: true, explanation: "Correct. Deze drie E's vormen de basis van eventmarketing: wat bied je (Entertainment), waar worden mensen enthousiast van (Excitement) en wat maakt het uniek (Enterprise)." },
   { section: null, num: 77, text: "KOFTIG staat voor Kwaliteit, Organisatie, Financieel, Tijd, Informatie en Geld.", answer: false, explanation: "KOFTIG staat voor Kwaliteit, Organisatie, Facilitair, Tijd, Informatie en Geld. Het is 'Facilitair', niet 'Financieel'. Geld staat apart als de G." },
-  { section: null, num: 78, text: "Vaste kosten bij een evenement zijn onafhankelijk van het aantal bezoekers.", answer: true, explanation: "Correct. Vaste kosten (bijv. locatiehuur) blijven gelijk ongeacht het aantal bezoekers. Variabele kosten (bijv. catering per persoon) stijgen mee met het aantal bezoekers." },
+  { section: null, num: 78, text: "Vaste kosten bij een evenement zijn onafhankelijk van het aantal bezoekers.", answer: true, explanation: "Correct. Vaste kosten (bijv. vergoeding sprekers/artiesten, verzekeringen) heb je ongeacht het aantal bezoekers. Variabele kosten hangen af van de opkomst; in het expertcollege BEC valt daaronder ook de huur van de locatie inclusief parkeerterrein, naast catering en schoonmaak." },
   { section: null, num: 79, text: "Marktsegmentatie op basis van leeftijd, geslacht en inkomen is demografische segmentatie.", answer: true, explanation: "Correct. Demografische segmentatie omvat kenmerken zoals leeftijd, geslacht, gezinsgrootte, inkomen, beroep en opleiding." },
   { section: null, num: 80, text: "Als organisator van een evenement heb je een zorgplicht en kun je aansprakelijk worden gesteld voor schade.", answer: true, explanation: "Correct. De organisator heeft een juridische zorgplicht. Aansprakelijkheid wordt bepaald op basis van de kans op schade, de ernst ervan en de kosten van preventie." },
 ];

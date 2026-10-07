@@ -1,5 +1,25 @@
 /* FM Atlas — gedeelde helpers: icons, streak, XP, zoek, header-render */
 
+/* Als de Firebase-scripts niet laden (adblocker, schoolnetwerk, slechte verbinding),
+   werkt de pagina gewoon door als gast in plaats van leeg te blijven. */
+if (typeof window.firebase === 'undefined') {
+  const none = () => Promise.resolve();
+  const query = { get: () => Promise.resolve({ docs: [], exists: false, data: () => ({}) }), orderBy: () => query, limit: () => query };
+  const doc = { get: () => Promise.resolve({ exists: false, data: () => ({}) }), set: none };
+  const fs = () => ({ collection: () => ({ doc: () => doc, orderBy: () => query, limit: () => query, get: query.get }) });
+  fs.FieldValue = { increment: n => n, serverTimestamp: () => null };
+  const authObj = {
+    currentUser: null,
+    onAuthStateChanged: cb => { setTimeout(() => cb(null), 0); return () => {}; },
+    signInWithPopup: () => Promise.reject(new Error('Firebase niet geladen')),
+    signInWithRedirect: () => Promise.reject(new Error('Firebase niet geladen')),
+    signOut: none,
+  };
+  const auth = () => authObj;
+  auth.GoogleAuthProvider = function () {};
+  window.firebase = { initializeApp: () => ({}), auth, firestore: fs, _stub: true };
+}
+
 /* Tekst veilig in innerHTML zetten */
 function faEsc(v) {
   return String(v ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
@@ -107,7 +127,7 @@ function faRenderHeader({ homeUrl = 'app.html', user = null, breadcrumb = null }
           <div class="fa-account-name">${faEsc(user?.displayName || 'Je bent niet ingelogd')}</div>
           ${user
             ? `<button type="button" role="menuitem" onclick="faLogout()">Uitloggen</button>`
-            : `<a role="menuitem" href="app.html">Inloggen</a>`}
+            : `<a role="menuitem" href="app.html?login=1">Inloggen</a>`}
           <a role="menuitem" href="privacy.html">Privacy</a>
         </div>
       </div>
@@ -360,38 +380,47 @@ const FA_SEARCH_INDEX = [
   { title: 'Basis van FM A — Samenvatting', sub: 'Basis van FM A', url: 'bvfma-samenvatting.html', icon: 'book' },
   { title: 'Basis van FM A — Begrippenlijst', sub: 'Basis van FM A', url: 'bvfma-begrippen.html', icon: 'book' },
   { title: 'Basis van FM A — Flashcards', sub: 'Basis van FM A', url: 'bvfma-flashcards.html', icon: 'cards' },
+  { title: 'Basis van FM A — Begrippentoets', sub: 'Basis van FM A · meerkeuze op begrippen', url: 'begrippentoets.html?vak=bvfma', icon: 'check' },
   { title: 'Trendwatchers', sub: 'P1 · vakpagina · DESTEP, trends, risico, impact op FM', url: 'trendwatchers.html', icon: 'scope' },
   { title: 'Trendwatchers — Samenvatting', sub: 'Trendwatchers', url: 'trendwatchers-samenvatting.html', icon: 'book' },
   { title: 'Trendwatchers — Begrippenlijst', sub: 'Trendwatchers', url: 'trendwatchers-begrippen.html', icon: 'book' },
   { title: 'Trendwatchers — Flashcards', sub: 'Trendwatchers', url: 'trendwatchers-flashcards.html', icon: 'cards' },
+  { title: 'Trendwatchers — Begrippentoets', sub: 'Trendwatchers · meerkeuze op begrippen', url: 'begrippentoets.html?vak=trendwatchers', icon: 'check' },
   { title: 'Basis van FM B', sub: 'P2 · vakpagina · schoonmaak, catering, veiligheidszorg', url: 'basis-van-fm-b.html', icon: 'building' },
   { title: 'Basis van FM B — Samenvatting', sub: 'Basis van FM B', url: 'bvfmb-samenvatting.html', icon: 'book' },
   { title: 'Basis van FM B — Begrippenlijst', sub: 'Basis van FM B', url: 'bvfmb-begrippen.html', icon: 'book' },
   { title: 'Basis van FM B — Flashcards', sub: 'Basis van FM B', url: 'bvfmb-flashcards.html', icon: 'cards' },
+  { title: 'Basis van FM B — Begrippentoets', sub: 'Basis van FM B · meerkeuze op begrippen', url: 'begrippentoets.html?vak=bvfmb', icon: 'check' },
   { title: 'Facilitaire Bedrijfseconomie', sub: 'P1–P2 · vakpagina · investeren, terugverdientijd, NCW, kostprijs', url: 'bedrijfseconomie.html', icon: 'coin' },
   { title: 'Facilitaire Bedrijfseconomie — Samenvatting', sub: 'Facilitaire Bedrijfseconomie', url: 'bedrijfseconomie-samenvatting.html', icon: 'book' },
   { title: 'Facilitaire Bedrijfseconomie — Begrippenlijst', sub: 'Facilitaire Bedrijfseconomie', url: 'bedrijfseconomie-begrippen.html', icon: 'book' },
   { title: 'Facilitaire Bedrijfseconomie — Flashcards', sub: 'Facilitaire Bedrijfseconomie', url: 'bedrijfseconomie-flashcards.html', icon: 'cards' },
+  { title: 'Facilitaire Bedrijfseconomie — Begrippentoets', sub: 'Facilitaire Bedrijfseconomie · meerkeuze op begrippen', url: 'begrippentoets.html?vak=bedrijfseconomie', icon: 'check' },
   { title: 'Eventmanagement 1', sub: 'P3 · vakpagina · projectmanagement, Grit, fasering, EVM', url: 'eventmanagement1.html', icon: 'event' },
   { title: 'Eventmanagement 1 — Samenvatting', sub: 'Eventmanagement 1', url: 'em1-samenvatting.html', icon: 'book' },
   { title: 'Eventmanagement 1 — Begrippenlijst', sub: 'Eventmanagement 1', url: 'em1-begrippen.html', icon: 'book' },
   { title: 'Eventmanagement 1 — Flashcards', sub: 'Eventmanagement 1', url: 'em1-flashcards.html', icon: 'cards' },
+  { title: 'Eventmanagement 1 — Begrippentoets', sub: 'Eventmanagement 1 · meerkeuze op begrippen', url: 'begrippentoets.html?vak=em1', icon: 'check' },
   { title: 'Facilitaire Inkoop', sub: 'P3 · vakpagina · inkoopproces, Kraljic, contractmanagement', url: 'facilitaire-inkoop.html', icon: 'cart' },
   { title: 'Facilitaire Inkoop — Samenvatting', sub: 'Facilitaire Inkoop', url: 'inkoop-samenvatting.html', icon: 'book' },
   { title: 'Facilitaire Inkoop — Begrippenlijst', sub: 'Facilitaire Inkoop', url: 'inkoop-begrippen.html', icon: 'book' },
   { title: 'Facilitaire Inkoop — Flashcards', sub: 'Facilitaire Inkoop', url: 'inkoop-flashcards.html', icon: 'cards' },
+  { title: 'Facilitaire Inkoop — Begrippentoets', sub: 'Facilitaire Inkoop · meerkeuze op begrippen', url: 'begrippentoets.html?vak=inkoop', icon: 'check' },
   { title: 'Recht', sub: 'P3 · vakpagina · verbintenissenrecht, overeenkomst, wanprestatie', url: 'recht.html', icon: 'book' },
   { title: 'Recht — Samenvatting', sub: 'Recht', url: 'recht-samenvatting.html', icon: 'book' },
   { title: 'Recht — Begrippenlijst', sub: 'Recht', url: 'recht-begrippen.html', icon: 'book' },
   { title: 'Recht — Flashcards', sub: 'Recht', url: 'recht-flashcards.html', icon: 'cards' },
+  { title: 'Recht — Begrippentoets', sub: 'Recht · meerkeuze op begrippen', url: 'begrippentoets.html?vak=recht', icon: 'check' },
   { title: 'Evenementenlogistiek', sub: 'P4 · vakpagina · Eventmanagement 2, schillenmodel, site design', url: 'evenementenlogistiek.html', icon: 'event' },
   { title: 'Evenementenlogistiek — Samenvatting', sub: 'Evenementenlogistiek', url: 'evenementenlogistiek-samenvatting.html', icon: 'book' },
   { title: 'Evenementenlogistiek — Begrippenlijst', sub: 'Evenementenlogistiek', url: 'evenementenlogistiek-begrippen.html', icon: 'book' },
   { title: 'Evenementenlogistiek — Flashcards', sub: 'Evenementenlogistiek', url: 'evenementenlogistiek-flashcards.html', icon: 'cards' },
+  { title: 'Evenementenlogistiek — Begrippentoets', sub: 'Evenementenlogistiek · meerkeuze op begrippen', url: 'begrippentoets.html?vak=evenementenlogistiek', icon: 'check' },
   { title: 'Projectvaardigheden', sub: 'P4 · vakpagina · Eventmanagement 2, observeren, interviewen', url: 'projectvaardigheden.html', icon: 'mic' },
   { title: 'Projectvaardigheden — Samenvatting', sub: 'Projectvaardigheden', url: 'projectvaardigheden-samenvatting.html', icon: 'book' },
   { title: 'Projectvaardigheden — Begrippenlijst', sub: 'Projectvaardigheden', url: 'projectvaardigheden-begrippen.html', icon: 'book' },
   { title: 'Projectvaardigheden — Flashcards', sub: 'Projectvaardigheden', url: 'projectvaardigheden-flashcards.html', icon: 'cards' },
+  { title: 'Projectvaardigheden — Begrippentoets', sub: 'Projectvaardigheden · meerkeuze op begrippen', url: 'begrippentoets.html?vak=projectvaardigheden', icon: 'check' },
   { title: 'Eventmanagement 1 — Oefentoets 1', sub: '80 juist/onjuist-vragen', url: 'em1-oefentoets.html', icon: 'check' },
   { title: 'Eventmanagement 1 — Oefentoets 4', sub: 'extra moeilijk, 50 meerkeuze', url: 'eventmanagement-1-oefentoets-4.html', icon: 'check' },
   { title: 'Eventmanagement 1 — Oefentoets 5', sub: 'tentamenformat, 80 meerkeuze', url: 'eventmanagement-1-oefentoets-5.html', icon: 'check' },
@@ -420,13 +449,18 @@ function faOpenSearch() {
     document.body.appendChild(overlay);
     overlay.querySelector('#fa-search-input').addEventListener('input', faRunSearch);
   }
+  _faSearchOpener = document.activeElement;
   overlay.classList.add('open');
   setTimeout(() => document.getElementById('fa-search-input').focus(), 50);
   faRunSearch();
 }
+let _faSearchOpener = null;
 function faCloseSearch() {
   const overlay = document.getElementById('fa-search-overlay');
-  if (overlay) overlay.classList.remove('open');
+  if (overlay && overlay.classList.contains('open')) {
+    overlay.classList.remove('open');
+    if (_faSearchOpener && _faSearchOpener.focus) _faSearchOpener.focus();
+  }
 }
 function faRunSearch() {
   const q = (document.getElementById('fa-search-input')?.value || '').trim().toLowerCase();
@@ -459,6 +493,16 @@ document.addEventListener('keydown', e => {
     faOpenSearch();
   }
   if (e.key === 'Escape') faCloseSearch();
+  // Tab blijft binnen het zoekvenster zolang het open is
+  const ov = document.getElementById('fa-search-overlay');
+  if (e.key === 'Tab' && ov && ov.classList.contains('open')) {
+    const f = [...ov.querySelectorAll('input, button, a[href]')];
+    if (f.length) {
+      const i = f.indexOf(document.activeElement);
+      const next = e.shiftKey ? (i <= 0 ? f.length - 1 : i - 1) : (i === f.length - 1 ? 0 : i + 1);
+      e.preventDefault(); f[next].focus();
+    }
+  }
   // Enter in het zoekveld opent het eerste resultaat
   if (e.key === 'Enter' && e.target && e.target.id === 'fa-search-input') {
     const first = document.querySelector('#fa-search-results a');

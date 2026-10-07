@@ -162,14 +162,14 @@ window.OT4 = {
     {
       "section": null,
       "num": 14,
-      "text": "Een projectmanager twijfelt tussen de traditionele (waterval)fasering en de P6-methode. Wat doet de P6-methode anders dan de traditionele fasering?",
+      "text": "Een projectmanager twijfelt tussen de traditionele (waterval)fasering en de 6P-methode. Wat doet de 6P-methode anders dan de traditionele fasering?",
       "options": [
         "De ontwerp-, voorbereidings- en realisatiefase worden samengevoegd tot één stap 'uitvoeren project', met meer nadruk op opleveren en afsluiten.",
         "Het project wordt opgedeeld in fasen, zodat er een logische structuur ontstaat en evaluatie wordt ingebouwd.",
         "De opstartfase levert een projectvoorstel op, waarna de opdrachtgever een go/no-go-beslissing neemt."
       ],
       "answer": 0,
-      "explanation": "De P6-methode voegt de ontwerp-, voorbereidings- en realisatiefase samen tot één stap 'uitvoeren project' en legt extra nadruk op opstarten, inrichten, opleveren en afsluiten. Distractors B en C zijn verleidelijk omdat ze waar zijn, maar ze gelden voor béide methoden en beschrijven dus niet wat de P6-methode ánders doet. (Bron: Week 4 PowerPoint H5/H6, slide 5-8; Grit H5 (P6-Methode: samenvoeging tot stap 4 'uitvoeren project', extra nadruk op opstarten/inrichten/opleveren/afsluiten).)"
+      "explanation": "De 6P-methode voegt de ontwerp-, voorbereidings- en realisatiefase samen tot één stap 'uitvoeren project' en legt extra nadruk op opstarten, inrichten, opleveren en afsluiten. Distractors B en C zijn verleidelijk omdat ze waar zijn, maar ze gelden voor béide methoden en beschrijven dus niet wat de 6P-methode ánders doet. (Bron: Week 4 PowerPoint H5/H6, slide 5-8; Grit H5 (P6-Methode: samenvoeging tot stap 4 'uitvoeren project', extra nadruk op opstarten/inrichten/opleveren/afsluiten).)"
     },
     {
       "section": null,
@@ -433,7 +433,7 @@ window.OT4 = {
         "Stoppen met het project"
       ],
       "answer": 1,
-      "explanation": "De drie beslissingen op een go/no-go-moment zijn: doorgaan op de ingeslagen weg, doorgaan met aanpassingen (A) en stoppen (C). Het juiste antwoord B is verleidelijk om fout te doorzien, omdat 'oplossen in de lijn door het dagelijks management' echt in de stof staat — maar dat is een manier om met een aanleiding om te gaan vóórdat een project start, geen beslissing binnen een lopend project. (Bron: Samenvatting boek Grit, 'Doel van fasering' en H3 'Van aanleiding tot project'; PowerPoint week 3 (H3), slide 5 en 8.)"
+      "explanation": "De drie beslissingen op een go/no-go-moment zijn: doorgaan op de ingeslagen weg, doorgaan met aanpassingen (A) en stoppen (C). B is dus het juiste antwoord. Die optie is verleidelijk, omdat 'oplossen in de lijn door het dagelijks management' echt in de stof staat, maar dat is een manier om met een aanleiding om te gaan vóórdat een project start, geen beslissing binnen een lopend project. (Bron: Samenvatting boek Grit, 'Doel van fasering' en H3 'Van aanleiding tot project'; PowerPoint week 3 (H3), slide 5 en 8.)"
     },
     {
       "section": null,
@@ -546,14 +546,14 @@ window.OT4 = {
     {
       "section": null,
       "num": 46,
-      "text": "Een ICT-projectteam heeft binnen stap 4 van de P6-methode het functioneel ontwerp afgerond en wil beginnen aan het technisch ontwerp. Wat moet er volgens de P6-methode gebeuren voordat het team naar deze volgende uitvoeringsfase overgaat?",
+      "text": "Een ICT-projectteam heeft binnen stap 4 van de 6P-methode het functioneel ontwerp afgerond en wil beginnen aan het technisch ontwerp. Wat moet er volgens de 6P-methode gebeuren voordat het team naar deze volgende uitvoeringsfase overgaat?",
       "options": [
         "Het projectresultaat wordt formeel opgeleverd en het project wordt financieel afgehandeld met een nacalculatie.",
         "De opdrachtgever voert samen met de eindgebruikers een acceptatietest uit op het volledige systeem.",
         "Er wordt een product opgeleverd en de opdrachtgever besluit over het vervolg: volledig doorgaan, op punten bijstellen of voortijdig stoppen."
       ],
       "answer": 2,
-      "explanation": "Iedere uitvoeringsfase binnen stap 4 wordt afgesloten met een op te leveren product, waarna de opdrachtgever besluit: volledig doorgaan, op punten bijstellen of voortijdig stoppen. Distractor A is verleidelijk maar beschrijft stap 5 en 6 van de P6-methode (opleveren en financieel afhandelen met nacalculatie), niet de overgang tussen twee uitvoeringsfasen. (Bron: Week 6, PowerPoint H5 uitvoeringsfasen, slides 8, 10-11; samenvatting H5 stap 5 en 6.)"
+      "explanation": "Iedere uitvoeringsfase binnen stap 4 wordt afgesloten met een op te leveren product, waarna de opdrachtgever besluit: volledig doorgaan, op punten bijstellen of voortijdig stoppen. Distractor A is verleidelijk maar beschrijft stap 5 en 6 van de 6P-methode (opleveren en financieel afhandelen met nacalculatie), niet de overgang tussen twee uitvoeringsfasen. (Bron: Week 6, PowerPoint H5 uitvoeringsfasen, slides 8, 10-11; samenvatting H5 stap 5 en 6.)"
     },
     {
       "section": null,

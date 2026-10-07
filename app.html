@@ -812,6 +812,7 @@
             </p>
             <form id="contact-form" action="https://formspree.io/f/mpqbarbd" method="POST"
               onsubmit="handleFormSubmit(event)">
+              <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px">
               <div class="contact-grid">
                 <input class="form-input" name="naam" placeholder="Je naam" aria-label="Je naam" autocomplete="name" required />
                 <input class="form-input" name="email" type="email" placeholder="E-mailadres" aria-label="E-mailadres" autocomplete="email" required />
@@ -929,12 +930,12 @@
       { key: 'praktijkproject-business-management', title: 'Praktijkproject Business Management', sub: 'DMAGIC · procesverbetering bij een echte opdrachtgever · scrum-light · adviespresentatie (P1 + P2)', year: 2, period: 1, icon: 'refresh', url: 'praktijkproject-business-management.html', parts: ['Samenvatting', 'Begrippen', 'Flashcards', '3 oefentoetsen', 'Toetsing'] },
       { key: 'praktijkproject-workplace-management', title: 'Praktijkproject Workplace Management', sub: 'Design thinking · stakeholders · design brief · huisvestingsveranderplan (P1 + P2)', year: 2, period: 1, icon: 'compass', url: 'praktijkproject-workplace-management.html', parts: ['Samenvatting', 'Begrippen', 'Flashcards', '2 oefentoetsen', 'Toetsing'] },
       /* <<< jaar 2 */
-      { key: 'basis-van-fm-a', title: 'Basis van FM — A', sub: 'FM-basisprincipes · dienstverlening · huisvesting', year: 1, period: 1, icon: 'compass', url: 'basis-van-fm-a.html', parts: ['Samenvatting', 'Begrippen', 'Flashcards'] },
-      { key: 'trendwatchers', title: 'Trendwatchers', sub: 'DESTEP · trends · impact op FM', year: 1, period: 1, icon: 'scope', url: 'trendwatchers.html', parts: ['Samenvatting', 'Begrippen', 'Flashcards'] },
-      { key: 'basis-fm-b', title: 'Basis van FM — B', sub: 'Schoonmaak · catering · veiligheidszorg', year: 1, period: 2, icon: 'building', url: 'basis-van-fm-b.html', parts: ['Samenvattingen', 'Begrippen', 'Flashcards'] },
-      { key: 'facilitaire-bedrijfseconomie', title: 'Facilitaire Bedrijfseconomie', sub: 'Investeren · terugverdientijd · kostprijs (P1 + P2)', year: 1, period: 2, icon: 'coin', url: 'bedrijfseconomie.html', parts: ['Samenvatting', 'Begrippen', 'Flashcards'] },
+      { key: 'basis-van-fm-a', title: 'Basis van FM — A', sub: 'FM-basisprincipes · dienstverlening · huisvesting', year: 1, period: 1, icon: 'compass', url: 'basis-van-fm-a.html', parts: ['Samenvatting', 'Begrippen', 'Flashcards', 'Begrippentoets'] },
+      { key: 'trendwatchers', title: 'Trendwatchers', sub: 'DESTEP · trends · impact op FM', year: 1, period: 1, icon: 'scope', url: 'trendwatchers.html', parts: ['Samenvatting', 'Begrippen', 'Flashcards', 'Begrippentoets'] },
+      { key: 'basis-fm-b', title: 'Basis van FM — B', sub: 'Schoonmaak · catering · veiligheidszorg', year: 1, period: 2, icon: 'building', url: 'basis-van-fm-b.html', parts: ['Samenvattingen', 'Begrippen', 'Flashcards', 'Begrippentoets'] },
+      { key: 'facilitaire-bedrijfseconomie', title: 'Facilitaire Bedrijfseconomie', sub: 'Investeren · terugverdientijd · kostprijs (P1 + P2)', year: 1, period: 2, icon: 'coin', url: 'bedrijfseconomie.html', parts: ['Samenvatting', 'Begrippen', 'Flashcards', 'Begrippentoets'] },
       { key: 'eventmanagement1', title: 'Eventmanagement 1', sub: 'Projectmanagement (Grit) · projectvaardigheden', year: 1, period: 3, icon: 'event', url: 'eventmanagement1.html', parts: ['Samenvatting', 'Begrippen', 'Flashcards', '3 oefentoetsen'] },
-      { key: 'facilitaire-inkoop', keys: ['facilitaire-inkoop', 'recht'], title: 'Facilitaire Inkoop', sub: 'Inkoopmanagement + verbintenissenrecht', year: 1, period: 3, icon: 'cart', url: 'facilitaire-inkoop.html', parts: ['Samenvattingen', 'Begrippen', 'Flashcards'] },
+      { key: 'facilitaire-inkoop', keys: ['facilitaire-inkoop', 'recht'], title: 'Facilitaire Inkoop', sub: 'Inkoopmanagement + verbintenissenrecht', year: 1, period: 3, icon: 'cart', url: 'facilitaire-inkoop.html', parts: ['Samenvattingen', 'Begrippen', 'Flashcards', 'Begrippentoets'] },
       { key: 'evenementenlogistiek', title: 'Evenementenlogistiek', sub: 'Eventmanagement 2 · schillenmodel · site design', year: 1, period: 4, icon: 'event', url: 'evenementenlogistiek.html', parts: ['Samenvatting', 'Begrippen', 'Flashcards', '3 oefentoetsen'] },
       { key: 'projectvaardigheden', title: 'Projectvaardigheden', sub: 'Eventmanagement 2 · observeren · interviewen', year: 1, period: 4, icon: 'mic', url: 'projectvaardigheden.html', parts: ['Samenvatting', 'Begrippen', 'Flashcards', '2 oefentoetsen'] },
     ];
@@ -964,6 +965,10 @@
       btn.disabled = true;
       err.style.display = 'none';
       auth.signInWithPopup(googleProvider).catch(e => {
+        // In-app-browsers (WhatsApp, Instagram) blokkeren popups: dan via een redirect
+        if (e && /popup-blocked|operation-not-supported|popup-closed-by-browser/.test(e.code || '')) {
+          return auth.signInWithRedirect(googleProvider);
+        }
         err.style.display = 'block';
         btn.disabled = false;
         console.error(e);
@@ -971,6 +976,7 @@
     }
 
     function continueAsGuest() {
+      try { localStorage.setItem('fa-guest', '1'); } catch (_) {}
       document.getElementById('fa-login').style.display = 'none';
       document.getElementById('fa-app').style.display = 'block';
       initApp(null);
@@ -986,7 +992,13 @@
         initApp(user);
         renderLeaderboard(user.uid);
       } else {
-        if (sessionStorage.getItem('fa-guest') === '1') {
+        // ?login=1 (vanuit het accountmenu) toont altijd het inlogscherm
+        if (new URLSearchParams(location.search).get('login') === '1') {
+          try { sessionStorage.removeItem('fa-guest'); localStorage.removeItem('fa-guest'); } catch (_) {}
+        }
+        let guest = false;
+        try { guest = sessionStorage.getItem('fa-guest') === '1' || localStorage.getItem('fa-guest') === '1'; } catch (_) {}
+        if (guest) {
           continueAsGuest();
         } else {
           document.getElementById('fa-login').style.display = 'grid';

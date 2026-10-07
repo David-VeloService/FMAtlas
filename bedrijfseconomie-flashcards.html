@@ -175,7 +175,7 @@ let deck=[],current=0,known=0,missed=[],flipped=false;
 function shuffleArr(arr){for(let i=arr.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[arr[i],arr[j]]=[arr[j],arr[i]];}return arr;}
 function loadDeck(){const cat=document.getElementById('catFilter').value;deck=(cat==='all'?[...allCards]:allCards.filter(c=>c.cat===cat));current=0;known=0;missed=[];flipped=false;document.getElementById('flipWrap').classList.remove('flipped');document.getElementById('fc-done').style.display='none';document.getElementById('fc-main').style.display='block';updateStats();showCard();}
 function shuffleDeck(){loadDeck();deck=shuffleArr(deck);showCard();}
-function showCard(){if(current>=deck.length){showDone();return;}const c=deck[current];document.getElementById('cardCounter').textContent=`Kaart ${current+1} van ${deck.length}`;const frontCat=document.getElementById('frontCat');frontCat.textContent=(catMap[c.cat]&&catMap[c.cat].label)||c.cat;frontCat.className='fc-cat';frontCat.style.background=catSoftBg(c.cat);frontCat.style.color=(catMap[c.cat]&&catMap[c.cat].color)||'var(--ink)';document.getElementById('frontTerm').textContent=c.term;document.getElementById('backDef').textContent=c.def;flipped=false;document.getElementById('flipWrap').classList.remove('flipped');}
+function showCard(){if(current>=deck.length){showDone();return;}const c=deck[current];document.getElementById('cardCounter').textContent=`Kaart ${current+1} van ${deck.length}`;const frontCat=document.getElementById('frontCat');frontCat.textContent=(catMap[c.cat]&&catMap[c.cat].label)||c.cat;frontCat.className='fc-cat';frontCat.style.background=catSoftBg(c.cat);frontCat.style.color=(catMap[c.cat]&&catMap[c.cat].color)||'var(--ink)';document.getElementById('frontTerm').textContent=c.term;document.getElementById('backDef').textContent=c.def+(c.formula?'  Formule: '+c.formula:'');flipped=false;document.getElementById('flipWrap').classList.remove('flipped');}
 function flipCard(){flipped=!flipped;document.getElementById('flipWrap').classList.toggle('flipped',flipped);}
 function markCard(isKnown){if(!flipped){flipCard();setTimeout(()=>_mark(isKnown),400);}else _mark(isKnown);}
 function _mark(isKnown){if(isKnown){known++;if (faOnce(location.pathname + '#' + faToday() + '#' + document.getElementById('frontTerm').textContent)) {  faAddXP(5); addFirestorePoints(5); showXpToast('+5 XP');}}else{missed.push(deck[current]);}current++;updateStats();setTimeout(showCard,150);}
@@ -188,5 +188,6 @@ async function addFirestorePoints(n){const u=_auth.currentUser;if(!u)return;try{
 document.addEventListener('keydown',e=>{if(document.getElementById('fc-done').style.display==='block')return;if(e.target.tagName==='SELECT'||e.target.tagName==='INPUT')return;if(e.key===' '||e.key==='Enter'){e.preventDefault();flipCard();}if(e.key==='ArrowRight')markCard(true);if(e.key==='ArrowLeft')markCard(false);if(e.key==='ArrowDown'){e.preventDefault();nextCard();}});
 loadDeck();
 </script>
+<script src="js/studie-extra.js"></script>
 </body>
 </html>

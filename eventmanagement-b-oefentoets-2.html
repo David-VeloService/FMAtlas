@@ -474,7 +474,7 @@ function submitTest() {
   const openCorrect = Object.values(openMarks).filter(Boolean).length;
   const correct = mcCorrect + openCorrect;
   const pct = Math.round(correct / total * 100);
-  const passed = pct >= 55;
+  const passed = correct >= Math.ceil(total * 0.55);
 
   document.getElementById('ot-test').style.display = 'none';
   document.getElementById('ot-results').style.display = 'block';
@@ -487,8 +487,8 @@ function submitTest() {
     ? (pct >= 80 ? 'Uitstekend!' : 'Gehaald — je zit boven de cesuur')
     : 'Nog niet voldoende — herhaal je zwakke onderwerpen';
   document.getElementById('resVerdictSub').textContent = passed
-    ? `Je scoorde ${pct}% (${mcCorrect}/25 meerkeuze + ${openCorrect}/15 open). Klik 'Bekijk fouten' om te zien wat je nog kunt oefenen.`
-    : `Je scoorde ${pct}% (${mcCorrect}/25 meerkeuze + ${openCorrect}/15 open), de cesuur ligt op 55%. Ga je fouten langs en oefen met de flashcards of de samenvatting.`;
+    ? `Je scoorde ${pct}% (${mcCorrect}/${mcQuestions.length} meerkeuze + ${openCorrect}/${openQuestions.length} open). Klik 'Bekijk fouten' om te zien wat je nog kunt oefenen.`
+    : `Je scoorde ${pct}% (${mcCorrect}/${mcQuestions.length} meerkeuze + ${openCorrect}/${openQuestions.length} open), de cesuur ligt op 55%. Ga je fouten langs en oefen met de flashcards of de samenvatting.`;
 
   faSetProgress('evenementenlogistiek', Math.min(100, pct));
   faSetProgress('projectvaardigheden', Math.min(100, pct));
@@ -542,5 +542,6 @@ async function addFirestorePoints(n) {
   } catch (e) { console.warn(e); }
 }
 </script>
+<script src="js/oefentoets-extra.js"></script>
 </body>
 </html>

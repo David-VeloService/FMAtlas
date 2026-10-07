@@ -305,10 +305,10 @@ table.compact td strong { color: var(--ink); font-weight: 800; }
         <div class="box">
           <h4>Kleurcodering materialen</h4>
           <ul class="clean">
-            <li><span class="tag blue">Blauw</span> — interieur (bureaus, ruimten)</li>
-            <li><span class="tag red">Rood</span> — sanitair (toiletten, wastafels)</li>
+            <li><span class="tag blue">Blauw</span> — interieur</li>
+            <li><span class="tag red">Rood</span> — sanitair</li>
             <li><span class="tag green">Groen</span> — vloer</li>
-            <li><span class="tag gray">Wit/apart</span> — desinfectanten</li>
+            <li><span class="tag gray">Desinfectanten</span> — aparte categorie, geen kleur genoemd</li>
           </ul>
         </div>
       </div>
@@ -630,7 +630,7 @@ table.compact td strong { color: var(--ink); font-weight: 800; }
           <tr><td><strong>Zitruimte — krap</strong></td><td>1,25 m² per zitplaats</td></tr>
           <tr><td><strong>Zitruimte — normaal</strong></td><td>1,40 m² per zitplaats</td></tr>
           <tr><td><strong>Zitruimte — bij bediening</strong></td><td>1,60 m² per zitplaats</td></tr>
-          <tr><td><strong>Bezettingsgraad</strong></td><td>Aantal zitplaatsen × 120%</td></tr>
+          <tr><td><strong>Niet alle tafels vol bezet</strong></td><td>Benodigde zitplaatsen × 120%</td></tr>
           <tr><td><strong>Kleine locatie</strong></td><td>10 bezoekers = 1 uur personeelsinzet</td></tr>
           <tr><td><strong>Grote locatie</strong></td><td>12 bezoekers = 1 uur personeelsinzet</td></tr>
         </tbody>
@@ -900,10 +900,10 @@ table.compact td strong { color: var(--ink); font-weight: 800; }
       <table class="compact">
         <thead><tr><th>Kwadrant</th><th>Kans</th><th>Schade</th><th>Aanpak</th></tr></thead>
         <tbody>
-          <tr><td><strong>Ad 1</strong></td><td>Hoog</td><td>Hoog</td><td>Verzekeren (bijv. brand- en inboedelverzekering)</td></tr>
-          <tr><td><strong>Ad 2</strong></td><td>Hoog</td><td>Laag</td><td>Niet te verzekeren, preventie is onvoldoende — aanpakken!</td></tr>
-          <tr><td><strong>Ad 3</strong></td><td>Laag</td><td>Laag</td><td>Zelf het (financiële) risico dragen</td></tr>
-          <tr><td><strong>Ad 4</strong></td><td>Laag</td><td>Hoog</td><td>Beveiligingsmaatregelen nemen (OBE)</td></tr>
+          <tr><td><strong>Ad 1</strong></td><td>Klein</td><td>Hoog</td><td>Verzekeren (bijv. brand- en inboedelverzekering)</td></tr>
+          <tr><td><strong>Ad 2</strong></td><td>Groot</td><td>Hoog</td><td>Vermijden: niet te verzekeren en preventie is niet voldoende</td></tr>
+          <tr><td><strong>Ad 3</strong></td><td>Klein</td><td>Laag</td><td>Aanvaarden: zelf het (financiële) risico dragen</td></tr>
+          <tr><td><strong>Ad 4</strong></td><td>Groot</td><td>Laag</td><td>Beveiligen/schade beperken (OBE)</td></tr>
         </tbody>
       </table>
     </div>
@@ -1138,11 +1138,11 @@ table.compact td strong { color: var(--ink); font-weight: 800; }
       <div class="grid2">
         <div class="box">
           <h4>Type I — technologisch</h4>
-          <p style="font-size:12.5px;color:var(--ink-soft)">Voornamelijk technologisch van aard. Bijv. hacking, malware, DDoS-aanvallen.</p>
+          <p style="font-size:12.5px;color:var(--ink-soft)">Voornamelijk technologisch van aard. Bijv. phishing, identiteits- of datadiefstal, hacking (indeling Gordon & Ford; de les geeft zelf geen voorbeelden).</p>
         </div>
         <div class="box">
           <h4>Type II — menselijke factor</h4>
-          <p style="font-size:12.5px;color:var(--ink-soft)">Meer uitgesproken menselijke factor. Bijv. phishing, CEO-fraude, social engineering.</p>
+          <p style="font-size:12.5px;color:var(--ink-soft)">Meer uitgesproken menselijke factor, vaak herhaald contact. Bijv. cyberstalking, afpersing, chantage, bedrijfsspionage.</p>
         </div>
       </div>
     </div>
@@ -1161,7 +1161,7 @@ table.compact td strong { color: var(--ink); font-weight: 800; }
           <tr>
             <td><strong>NCSC</strong> (Nationaal Cyber Security Centrum)</td>
             <td>Nationaal</td>
-            <td>Rijksoverheid, vitale infrastructuur, bedrijfsleven, kennisinstellingen</td>
+            <td>Rijksoverheid, vitale infrastructuur</td>
             <td>Response, weerbaarder maken, samenwerken</td>
           </tr>
           <tr>
@@ -1185,7 +1185,7 @@ table.compact td strong { color: var(--ink); font-weight: 800; }
         </ul>
         <ul class="clean">
           <li>Doe aangifte bij cybercrime</li>
-          <li>Meld je aan bij Digital Trust Centre</li>
+          <li>Meld je aan bij het Digital Trust Center (les; sinds 2026 onderdeel van het NCSC)</li>
           <li>Zorg voor structurele en systematische aanpak</li>
           <li>Schakel externe partij in voor ICT-security indien nodig</li>
           <li>Laat een beveiligingsscan uitvoeren</li>

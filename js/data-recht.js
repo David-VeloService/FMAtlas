@@ -379,3 +379,6 @@ RECHT.flashcards = [
   {cat:"onrechtmatige_daad",term:"OD versus wanprestatie",def:"Wanprestatie = binnen overeenkomst (6:74), verzuim vereist. OD = buitencontractueel (6:162), geen verzuim, wél relativiteit. Bij samenloop kan de benadeelde kiezen tenzij wet of overeenkomst dat uitsluit."},
   {cat:"onrechtmatige_daad",term:"Verjaring OD-vordering",def:"5 jaar na bekendheid met schade én aansprakelijke persoon. Absolute uiterste termijn: 20 jaar na de gebeurtenis (30 jaar bij milieuschade).",art:"art. 3:310 BW"},
 ];;
+
+/* Flashcards = de begrippen (met wetsartikel), zodat kaart en begrippenlijst nooit uiteenlopen */
+RECHT.flashcards = RECHT.begrippen.slice();

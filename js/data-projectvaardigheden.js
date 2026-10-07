@@ -17,7 +17,7 @@ PVRD.begrippen = [
   {cat:"observeren", term:"Onderzoek", def:"Het verkennen, verklaren of veranderen van de bestaande situatie. Je bedenkt een plan van aanpak, raadpleegt bronnen, verzamelt gegevens, trekt conclusies en levert een bijdrage aan de oplossing (Baarda, 2025)."},
   {cat:"observeren", term:"Kwantitatief onderzoek", def:"Smalle vraagstelling, vaste richtlijnen, gesloten categorieën. Data zijn getallen. Stelt de 'wat' en 'hoeveel'-vraag. Generaliseren naar een grote groep."},
   {cat:"observeren", term:"Kwalitatief onderzoek", def:"Brede vraagstelling, open en flexibel, gericht op inzicht. Data zijn teksten, foto's, verslagen. Stelt de 'waarom' en 'hoe'-vraag. Kleine 'n', patronen herkennen."},
-  {cat:"observeren", term:"Mixed methods", def:"Combinatie van kwantitatief en kwalitatief onderzoek. Wordt ook triangulatie genoemd — beide methoden valideren elkaar."},
+  {cat:"observeren", term:"Mixed methods", def:"Combinatie van kwantitatief en kwalitatief onderzoek in één onderzoek. Niet hetzelfde als triangulatie: dat is in de les een manier om de betrouwbaarheid te borgen door meerdere methoden of bronnen te combineren."},
   {cat:"observeren", term:"Observatieonderzoek", def:"Een onderzoeksmethode gericht op systematische waarneming van gedrag. De onderzoeker verandert de bestaande situatie niet, maar observeert en legt observaties vast."},
   {cat:"observeren", term:"Participerende observatie", def:"De onderzoeker neemt actief deel aan het onderzochte proces of de groep. Meer begrip voor context, maar groter risico op subjectiviteit."},
   {cat:"observeren", term:"Niet-participerende observatie", def:"De onderzoeker observeert van buitenaf, zonder deel te nemen. Meer objectief, maar minder diep begrip van de context."},

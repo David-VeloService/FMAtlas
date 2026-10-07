@@ -38,7 +38,7 @@ EVLOG.begrippen = [
   /* 3. Toegang & hospitality */
   {cat:"toegang", term:"Accreditatie", def:"Systeem waarmee personen op een evenementterrein worden gecategoriseerd en toegang krijgen tot specifieke zones op basis van hun rol (bezoeker, crew, pers, VIP, artiest)."},
   {cat:"toegang", term:"Visitatie", def:"Het controleren van tassen en jassen van bezoekers door beveiligingspersoneel aan de ingang. Vrijwillig van aard en onderscheiden van fouilleren, dat het lichaam betreft."},
-  {cat:"toegang", term:"Fouilleren", def:"Lichamelijk onderzoek door gediplomeerde beveiligers aan het lichaam en de kleding van een bezoeker. Juridisch onderscheiden van visitatie en gebaseerd op de Wet particuliere beveiligingsorganisaties."},
+  {cat:"toegang", term:"Fouilleren", def:"Lichamelijk onderzoek door gediplomeerde beveiligers aan het lichaam en de kleding van een bezoeker. Verschilt van visitatie (tassen en jassen). De bevoegdheid om te fouilleren moet vooraf zijn gecommuniceerd en in de huisregels staan; weigert de bezoeker, dan kan de toegang worden geweigerd."},
   {cat:"toegang", term:"Hospitality (MOP-model)", def:"Gastvrijheid op een evenement, opgebouwd uit drie elementen: Mens (personeel en training), Omgeving (fysieke en digitale uitstraling) en Proces (logistieke organisatie van de gastvrije ontvangst)."},
   {cat:"toegang", term:"Customer journey", def:"Overzicht van de volledige belevingsreis van een bezoeker langs alle schillen van het evenement, van de oriëntatiefase thuis tot en met de nafase. Gebruikt persona's om knelpunten in de beleving te identificeren."},
   {cat:"toegang", term:"Persona", def:"Fictief maar realistisch profiel van een typische bezoeker uit een doelgroepsegment, gebruikt om de customer journey vanuit het perspectief van die bezoeker te doorlopen en knelpunten te ontdekken."},
@@ -129,9 +129,9 @@ EVLOG.oefentoets = {
       explanation: "8 × 60 = 480 biertjes per uur. 480 / 3 = 160 bezoekers per tap per uur." },
 
     { section: null, num: 7,
-      text: "Een terrein is 20.000 m², waarvan 30% niet voor publiek beschikbaar is. Bij een norm van 2,5 m² per persoon: wat is de terreincapaciteit?",
-      options: ["5.600", "6.000", "8.000", "14.000"], answer: 0,
-      explanation: "20.000 − 30% = 14.000 m² publiek. 14.000 / 2,5 = 5.600 bezoekers tegelijk." },
+      text: "Een terrein is 20.000 m², waarvan 30% niet voor publiek beschikbaar is. De gemeente hanteert een veiligheidsnorm van maximaal 2,5 personen per m². Wat is de maximale terreincapaciteit?",
+      options: ["35.000", "14.000", "5.600", "12.000"], answer: 0,
+      explanation: "20.000 × 0,30 = 6.000 m² niet beschikbaar, dus 14.000 m² publiek. 14.000 × 2,5 = 35.000 personen (rekenwijze uit de les, week 3 dia 38). Let op: in de Fruin-tabel (week 4) staat 2,5 juist als m² per persoon voor 'relatief vrij bewegen'. Lees dus goed welke eenheid er in de opgave staat." },
 
     { section: null, num: 8,
       text: "Waarom zijn processen bij evenementen lastiger te beheersen dan in een fabriek?",
@@ -236,7 +236,7 @@ EVLOG.oefentoets = {
     { section: null, num: 20,
       text: "Vanaf welke bezoekersdichtheid ontstaan potentieel gevaarlijke krachten in de menigte?",
       options: ["2,5 m² per persoon", "1,85 m² per persoon", "0,46 m² per persoon", "0,18 m² per persoon"], answer: 3,
-      explanation: "Bij 0,18 m² per persoon ontstaan gevaarlijke krachten en psychologische stress. 2,5 m² is de operationele veiligheidsnorm." },
+      explanation: "Bij 0,18 m² per persoon ontstaan gevaarlijke krachten en psychologische stress. Bij 2,5 m² per persoon kun je volgens de Fruin-tabel nog relatief vrij bewegen." },
 
     { section: null, num: 21,
       text: "Welke maatregel voorkomt kruisende bezoekersstromen op een terrein?",

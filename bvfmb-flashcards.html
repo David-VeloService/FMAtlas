@@ -282,7 +282,7 @@ DATA.cats.forEach(c => catMap[c.key] = c);
   });
   // Pre-select category from URL param
   const urlCat = new URLSearchParams(window.location.search).get('cat');
-  if(urlCat) sel.value = urlCat;
+  if(urlCat && [...sel.options].some(o => o.value === urlCat)) sel.value = urlCat;
 })();
 
 function hexToRgb(h){h=h.replace('#','');if(h.length===3)h=h.split('').map(c=>c+c).join('');const n=parseInt(h,16);return [n>>16&255,n>>8&255,n&255];}
@@ -442,5 +442,6 @@ document.addEventListener('keydown', e => {
 
 loadDeck();
 </script>
+<script src="js/studie-extra.js"></script>
 </body>
 </html>

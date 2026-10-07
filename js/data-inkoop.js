@@ -382,5 +382,5 @@ INKOOP.flashcards = [
   {cat:"digitaal",term:"Inkoper van de toekomst",def:"Operationele inkoop wordt volledig geautomatiseerd. De inkoper wordt een businessanalist die zich richt op strategie, leveranciersrelaties en innovatie in plaats van routinetransacties."},
 ];;
 
-/* MVI- en wanprestatiebegrippen ook als flashcard (ontbraken eerder) */
-INKOOP.flashcards = INKOOP.flashcards.concat(INKOOP.begrippen.filter(b => b.cat === 'mvi' || b.cat === 'wanprestatie'));
+/* Flashcards = de begrippen, zodat kaart en begrippenlijst nooit uiteenlopen */
+INKOOP.flashcards = INKOOP.begrippen.slice();

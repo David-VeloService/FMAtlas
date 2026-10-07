@@ -73,7 +73,7 @@ BVFMB.begrippen = [
    def:"Schoonmaakmethode waarbij microvezeldoeken vuil mechanisch hechten. Vereist minder chemie dan de traditionele katoenen moppenmethode en werkt efficiënter."},
 
   {cat:"schoonmaak", term:"Kleurcodering materialen",
-   def:"Systeem om kruisbesmetting te voorkomen: Blauw = interieur (bureaus, ruimten), Rood = sanitair (toiletten, wastafels), Groen = vloer, Wit/apart = desinfectanten."},
+   def:"Indeling van schoonmaakmiddelen en -materialen in de les: interieur (blauw), sanitair (rood), vloer (groen) en desinfectanten (geen kleur genoemd)."},
 
   {cat:"schoonmaak", term:"VSR-KMS",
    def:"Kwaliteits Meetsysteem van de VSR. Een visuele kwaliteitscontrolemethode waarbij de schoonheid van oppervlakken objectief wordt gemeten. Vergelijkbaar met DKS."},
@@ -157,10 +157,10 @@ BVFMB.begrippen = [
    def:"Derde en laatste stap in de ruimtelijke indeling. Een gedetailleerde tekening met de plaatsing van meubilair en apparatuur in elke ruimte."},
 
   {cat:"catering", term:"Kengetallen catering",
-   def:"Normen voor ruimtelijke planning: bedrijfskeuken maximaal 1/3 van de totale ruimte, zitruimte 1,25 m² per zitplaats (krap), 1,40 m² (normaal) of 1,60 m² (bij bediening). Bezettingsgraad = zitplaatsen × 120%."},
+   def:"Normen voor ruimtelijke planning: bedrijfskeuken maximaal 1/3 van de totale ruimte, zitruimte 1,25 m² per zitplaats (krap), 1,40 m² (normaal) of 1,60 m² (bij bediening). Omdat niet alle tafels helemaal bezet zijn: × 120%."},
 
-  {cat:"catering", term:"Bezettingsgraad (catering)",
-   def:"Norm voor het benodigde aantal zitplaatsen ten opzichte van de totale gebruikers. Berekening: aantal zitplaatsen × 120%.",
+  {cat:"catering", term:"Correctie niet-volle tafels (catering)",
+   def:"Niet alle tafels raken helemaal bezet, daarom reken je het benodigde aantal zitplaatsen × 120% (les 6, dia algemene kengetallen).",
    formula:"Zitplaatsen × 120%"},
 
   {cat:"catering", term:"HACCP",
@@ -247,7 +247,7 @@ BVFMB.begrippen = [
    formula:"Risico = Kans × Schade"},
 
   {cat:"veiligheid", term:"Risicomatrix (4 kwadranten)",
-   def:"Heatmap voor risicobeoordeling: Kwadrant 1 (hoge kans, hoge schade) → verzekeren; Kwadrant 2 (hoge kans, lage schade) → niet te verzekeren, aanpakken; Kwadrant 3 (lage kans, lage schade) → zelf risico dragen; Kwadrant 4 (lage kans, hoge schade) → OBE-beveiligingsmaatregelen nemen."},
+   def:"Heatmap met kans en schade. Kwadrant 1 (kleine kans, hoge schade): verzekeren (calamiteitenrisico, bijv. brand en inboedel). Kwadrant 2 (grote kans, hoge schade): vermijden, want niet te verzekeren en preventie is niet voldoende. Kwadrant 3 (kleine kans, lage schade): aanvaarden, zelf het financiële risico dragen. Kwadrant 4 (grote kans, lage schade): beveiligen/schade beperken met OBE-maatregelen."},
 
   {cat:"veiligheid", term:"OBE-maatregelen",
    def:"Driedeling van beveiligingsmaatregelen: O = Organisatorisch (procedures, bewustwording, bewaking), B = Bouwkundig (situering, hang- en sluitwerk, slagbomen) en E = Elektrotechnisch (alarmsystemen, toegangscontrole, camerabewaking)."},
@@ -307,22 +307,22 @@ BVFMB.begrippen = [
    def:"Deelplan 6 van het calamiteitenplan. Richt zich op preventie van fraude (intern), beveiliging van bedrijfsgegevens, uitwijkmogelijkheden (ICT), herstelplannen en antivirusmaatregelen."},
 
   {cat:"veiligheid", term:"Cybercrime",
-   def:"Elke misdaad die wordt gefaciliteerd of gepleegd met gebruik van een computer, netwerk of hardware device. Twee typen: Type I (technologisch, bijv. hacking/malware) en Type II (menselijke factor, bijv. phishing/CEO-fraude)."},
+   def:"Elke misdaad die wordt gefaciliteerd of gepleegd met gebruik van een computer, netwerk of hardware device. Twee typen: Type I (vooral technologisch, bijv. phishing, hacking, malware) en Type II (meer uitgesproken menselijke factor, bijv. cyberstalking, afpersing)."},
 
   {cat:"veiligheid", term:"Cybercrime Type I",
-   def:"Cybercrime dat voornamelijk technologisch van aard is. Voorbeelden: hacking, malware en DDoS-aanvallen. Verschilt van Type II waarbij de menselijke factor centraal staat."},
+   def:"Cybercrime dat voornamelijk technologisch van aard is, meestal een losse gebeurtenis met malware. Voorbeelden (indeling Gordon & Ford; de les noemt zelf geen voorbeelden): phishing, identiteits- of datadiefstal, bankfraude, hacking."},
 
   {cat:"veiligheid", term:"Cybercrime Type II",
-   def:"Cybercrime waarbij de menselijke factor uitdrukkelijk aanwezig is. Voorbeelden: phishing, CEO-fraude en social engineering. Verschilt van Type I dat puur technologisch is."},
+   def:"Cybercrime met een meer uitgesproken menselijke factor, vaak herhaald contact met het slachtoffer. Voorbeelden (indeling Gordon & Ford): cyberstalking, intimidatie, afpersing en chantage, bedrijfsspionage."},
 
   {cat:"veiligheid", term:"EC3",
    def:"Europol's European CyberCrime Center. Europese instantie die de opsporing van cybercriminaliteit coördineert tussen de EU-lidstaten."},
 
   {cat:"veiligheid", term:"NCSC",
-   def:"Nationaal Cyber Security Centrum. Nationale instantie gericht op de rijksoverheid, vitale infrastructuur en het bedrijfsleven. Taken: response op incidenten, weerbaarheid vergroten en samenwerken."},
+   def:"Nationaal Cyber Security Centrum. Volgens de les gericht op de rijksoverheid en de vitale infrastructuur. Sinds 1 januari 2026 is het DTC opgegaan in het NCSC, dat nu het aanspreekpunt is voor alle Nederlandse organisaties."},
 
   {cat:"veiligheid", term:"DTC (Digital Trust Centre)",
-   def:"Nationale instantie gericht op ondernemers in niet-vitale sectoren. Taken: bewust worden van cyberdreigingen, kennis overdragen en samenwerken per regio of branche."},
+   def:"Digital Trust Center. Volgens de les gericht op ondernemers. Taken: response (monitoren, waarschuwen, adviseren), weerbaarder maken (bewust worden, kennis overdragen) en samenwerken per regio, branche of sector. Sinds 1 januari 2026 opgegaan in het NCSC."},
 
   {cat:"veiligheid", term:"Veiligheidscultuur",
    def:"Alle aspecten van de organisatiecultuur die impact hebben op houding en gedrag in relatie tot het vergroten of verkleinen van risico's. Drie niveaus: (1) zichtbaar/tastbaar, (2) uitgesproken meningen, (3) impliciet/onzichtbaar."},

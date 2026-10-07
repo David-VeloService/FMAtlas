@@ -510,3 +510,34 @@ h1, h2, h3 { overflow-wrap: anywhere; hyphens: auto; }
   .vak-hub-head h1 { font-size: clamp(26px, 8vw, 38px) !important; }
   .fa-breadcrumb { flex-wrap: wrap; }
 }
+
+
+/* ─── Samenvattingen: tabellen scrollen op mobiel, kolommen mogen krimpen ─────────── */
+body .card-body table, body .section table { display: block; max-width: 100%; overflow-x: auto; }
+body .two-col > *, body .grid-2 > *, body .grid-3 > * { min-width: 0; }
+/* Hoofdstuknavigatie: op desktop één scrollende regel, op mobiel niet vastgeplakt */
+body nav.chapnav { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: thin; }
+body nav.chapnav a { flex-shrink: 0; }
+@media (max-width: 760px) { body nav.chapnav { position: static; } }
+/* Header blijft bovenaan staan op grotere schermen */
+@media (min-width: 761px) { #fa-header-slot { position: sticky; top: 0; z-index: 50; } }
+
+/* ─── Flashcards: kaart groeit mee met lange definities ─────────── */
+body .fc-flip-inner { display: grid; }
+body .fc-face { position: relative; inset: auto; grid-area: 1 / 1; }
+@media (prefers-reduced-motion: reduce) { body .fc-flip-inner { transition: none !important; } }
+
+/* ─── Begrippen: kaarten passen ook op 320px ─────────── */
+body .bl-grid { grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr)); }
+
+/* ─── Afdrukken ─────────── */
+@media print {
+  #fa-header-slot, .fa-header, .fa-breadcrumb, nav.chapnav, .fa-site-footer, .fa-search-overlay, .xp-toast { display: none !important; }
+  body { background: #fff; }
+  .card, .defbox, .highlight, .warn, table, .bl-card, .sub-tile { break-inside: avoid; }
+  .card-header, .card-header h2 { background: #fff !important; color: #000 !important; }
+  a { color: inherit; text-decoration: none; }
+}
+
+.fa-brand-name, .fa-brand-tag { white-space: nowrap; }
+@media (max-width: 900px) { .fa-brand-tag { display: none; } }

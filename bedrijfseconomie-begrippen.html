@@ -213,6 +213,7 @@ function render() {
           <div class="bl-card">
             <div class="bl-term">${highlight(b.term, query)}</div>
             <div class="bl-def">${highlight(b.def, query)}</div>
+            ${b.formula ? `<div class="bl-def" style="margin-top:6px;font-family:ui-monospace,Menlo,monospace;font-size:12.5px;color:var(--ink)">${highlight(b.formula, query)}</div>` : ''}
           </div>
         `).join('')}
       </div>
@@ -232,5 +233,6 @@ document.getElementById('blSearch').addEventListener('input', e => {
 
 render();
 </script>
+<script src="js/studie-extra.js"></script>
 </body>
 </html>

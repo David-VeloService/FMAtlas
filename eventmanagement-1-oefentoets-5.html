@@ -200,7 +200,7 @@ details.ot-model .ot-model-body { padding: 14px; font-size: 13.5px; color: var(-
   <div class="ot-intro">
     <div class="ot-intro-meta">OEFENTOETS 5 · 80 MEERKEUZEVRAGEN · TENTAMENFORMAT</div>
     <h1>Oefentoets 5: Eventmanagement 1 (tentamenformat)</h1>
-    <p>Oefentoets voor <strong>Eventmanagement 1 (Projectmanagement A)</strong> in het <strong>exacte format van het echte tentamen</strong>: <strong>80 meerkeuzevragen met twee antwoordopties</strong>, over de volledige stof: Projectmanagement (Grit H1-H6), Projectvaardigheden en de expertcolleges. Net als op het tentamen geldt de cesuur van <strong>60 van de 80 vragen goed (75%)</strong> voor een 5,5 — haal je die, dan krijg je +50 XP. Er zitten een paar rekenvragen tussen, dus pak eventueel je niet-grafische rekenmachine erbij. Elke vraag is gecontroleerd tegen de PowerPoints en het boek.</p>
+    <p>Oefentoets voor <strong>Eventmanagement 1 (Projectmanagement A)</strong> in het <strong>exacte format van het echte tentamen</strong>: <strong>80 meerkeuzevragen met twee antwoordopties</strong>, over de volledige stof: Projectmanagement (Grit, alle hoofdstukken; de lessen behandelden H1 t/m H6), Projectvaardigheden en de expertcolleges. Net als op het tentamen geldt de cesuur van <strong>60 van de 80 vragen goed (75%)</strong> voor een 5,5 — haal je die, dan krijg je +50 XP. Er zitten een paar rekenvragen tussen, dus pak eventueel je niet-grafische rekenmachine erbij. Elke vraag is gecontroleerd tegen de PowerPoints en het boek.</p>
     <div class="ot-facts">
       <div class="ot-fact"><div class="ot-fact-lbl">Meerkeuze</div><div class="ot-fact-val">80</div></div>
       <div class="ot-fact"><div class="ot-fact-lbl">Opties per vraag</div><div class="ot-fact-val">2</div></div>
@@ -473,7 +473,7 @@ function submitTest() {
   const openCorrect = Object.values(openMarks).filter(Boolean).length;
   const correct = mcCorrect + openCorrect;
   const pct = Math.round(correct / total * 100);
-  const passed = pct >= 75;
+  const passed = correct >= Math.ceil(total * 0.75);
 
   document.getElementById('ot-test').style.display = 'none';
   document.getElementById('ot-results').style.display = 'block';
@@ -486,8 +486,8 @@ function submitTest() {
     ? (pct >= 80 ? 'Uitstekend!' : 'Gehaald — je zit boven de cesuur')
     : 'Nog niet voldoende — herhaal je zwakke onderwerpen';
   document.getElementById('resVerdictSub').textContent = passed
-    ? `Je scoorde ${pct}% (${mcCorrect}/80 meerkeuze). Klik 'Bekijk fouten' om te zien wat je nog kunt oefenen.`
-    : `Je scoorde ${pct}% (${mcCorrect}/80 meerkeuze), de cesuur ligt op 75% (60 van de 80). Ga je fouten langs en oefen met de flashcards of de samenvatting.`;
+    ? `Je scoorde ${pct}% (${mcCorrect}/${mcQuestions.length} meerkeuze). Klik 'Bekijk fouten' om te zien wat je nog kunt oefenen.`
+    : `Je scoorde ${pct}% (${mcCorrect}/${mcQuestions.length} meerkeuze), de cesuur ligt op 75% (60 van de 80). Ga je fouten langs en oefen met de flashcards of de samenvatting.`;
 
   faSetProgress('eventmanagement1', Math.min(100, pct));
 
@@ -540,5 +540,6 @@ async function addFirestorePoints(n) {
   } catch (e) { console.warn(e); }
 }
 </script>
+<script src="js/oefentoets-extra.js"></script>
 </body>
 </html>

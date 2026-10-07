@@ -182,13 +182,13 @@ window.OT5 = {
     {
       "section": null,
       "num": 17,
-      "text": "De P6-methode voegt een aantal fasen uit de traditionele (waterval)fasering samen tot één stap 4 'uitvoeren project'. Welke fasen zijn dat?",
+      "text": "De 6P-methode voegt een aantal fasen uit de traditionele (waterval)fasering samen tot één stap 4 'uitvoeren project'. Welke fasen zijn dat?",
       "options": [
         "De ontwerpfase, de voorbereidingsfase en de realisatiefase",
         "De initiatieffase, de definitiefase en de ontwerpfase"
       ],
       "answer": 0,
-      "explanation": "Volgens de stof worden in de P6-methode de ontwerpfase, voorbereidingsfase en realisatiefase samengevoegd tot één stap 4: uitvoeren project. Optie B is fout: de initiatieffase en definitiefase komen in de P6-methode juist terug in de eigen stappen vóór de uitvoering (opstarten, inrichten en het maken van het Plan van Aanpak) en worden dus niet samengevoegd tot stap 4. Bron: Grit H5 (samenvatting boek, 'P6-methode'); slides week 4 H5/H6, slide 6-7"
+      "explanation": "Volgens de stof worden in de 6P-methode de ontwerpfase, voorbereidingsfase en realisatiefase samengevoegd tot één stap 4: uitvoeren project. Optie B is fout: de initiatieffase en definitiefase komen in de 6P-methode juist terug in de eigen stappen vóór de uitvoering (opstarten, inrichten en het maken van het Plan van Aanpak) en worden dus niet samengevoegd tot stap 4. Bron: Grit H5 (samenvatting boek, '6P-methode'); slides week 4 H5/H6, slide 6-7"
     },
     {
       "section": null,
@@ -754,7 +754,7 @@ window.OT5 = {
     {
       "section": null,
       "num": 69,
-      "text": "Een projectmanager selecteert geschikte teamleden, maakt teamafspraken over de samenwerking en regelt de tijdregistratie en het projectarchief. Bij welke stap van de P6-methode horen deze activiteiten?",
+      "text": "Een projectmanager selecteert geschikte teamleden, maakt teamafspraken over de samenwerking en regelt de tijdregistratie en het projectarchief. Bij welke stap van de 6P-methode horen deze activiteiten?",
       "options": [
         "Stap 3: maken van het Plan van Aanpak",
         "Stap 2: inrichten van het project"
@@ -801,10 +801,10 @@ window.OT5 = {
       "text": "In het organigram van een hotelketen staat de afdeling Personeelszaken als stafafdeling getekend. Daarnaast loopt een tijdelijk project 'Verduurzaming gebouwbeheer' dat buiten de lijn staat, onder leiding van een aparte projectleider. Welke uitspraak over deze situatie is juist?",
       "options": [
         "De stafafdeling geeft advies en ondersteuning maar kan afdelingen niets dwingend voorschrijven; de projectorganisatie staat buiten de normale lijn en heeft een eigen, tijdelijke projectleider.",
-        "De stafafdeling heeft een machtsverhouding ten opzichte van de lijnafdelingen; het project valt hierarchisch onder de stafafdeling omdat beide ondersteunend zijn."
+        "De stafafdeling heeft een machtsverhouding ten opzichte van de lijnafdelingen; het project valt hiërarchisch onder de stafafdeling omdat beide ondersteunend zijn."
       ],
       "answer": 0,
-      "explanation": "A is juist en combineert twee begrippen correct: een stafafdeling (zoals personeelszaken of administratie) geeft meestal advies of ondersteuning maar kan zaken niet dwingend voorschrijven, en de projectorganisatie staat 'buiten' de normale lijnorganisatie met een aparte, tijdelijke projectleider (boek H2 'Lijnorganisatie' en 'Projectorganisatie'). B is fout: juist binnen de lijnafdelingen is sprake van een machtsverhouding, niet bij de staf, en een project valt niet hierarchisch onder een stafafdeling. Bron: Grit H2 'Lijnorganisatie' en 'Projectorganisatie'; PowerPoint week 2, slides 5-7"
+      "explanation": "A is juist en combineert twee begrippen correct: een stafafdeling (zoals personeelszaken of administratie) geeft meestal advies of ondersteuning maar kan zaken niet dwingend voorschrijven, en de projectorganisatie staat 'buiten' de normale lijnorganisatie met een aparte, tijdelijke projectleider (boek H2 'Lijnorganisatie' en 'Projectorganisatie'). B is fout: juist binnen de lijnafdelingen is sprake van een machtsverhouding, niet bij de staf, en een project valt niet hiërarchisch onder een stafafdeling. Bron: Grit H2 'Lijnorganisatie' en 'Projectorganisatie'; PowerPoint week 2, slides 5-7"
     },
     {
       "section": null,
