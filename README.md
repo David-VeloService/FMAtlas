@@ -28,6 +28,8 @@ Regels die horen bij de huidige code (Firebase-console → Firestore → Regels)
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
+    function isBeheerder() { return request.auth != null && request.auth.uid == 'EFkA4kexkLNjBKCGuKD9eiyUvfM2'; }
+
     match /scores/{uid} {
       allow read: if true;
       allow create: if request.auth != null && request.auth.uid == uid
@@ -40,6 +42,21 @@ service cloud.firestore {
     match /voortgang/{uid} {
       allow read, write: if request.auth != null && request.auth.uid == uid;
     }
+    match /feedback/{id} {
+      // Iedereen mag een melding toevoegen (ook zonder login), maar niets lezen.
+      allow create: if request.resource.data.keys().hasOnly(['type','bericht','pagina','titel','selectie','email','uid','status','aangemaakt'])
+        && request.resource.data.type in ['feedback','onjuistheid']
+        && request.resource.data.bericht is string
+        && request.resource.data.bericht.size() >= 5 && request.resource.data.bericht.size() <= 2000
+        && request.resource.data.pagina is string && request.resource.data.pagina.size() <= 300
+        && request.resource.data.status == 'nieuw'
+        && request.resource.data.aangemaakt == request.time
+        && (!('titel' in request.resource.data) || request.resource.data.titel.size() <= 200)
+        && (!('selectie' in request.resource.data) || request.resource.data.selectie.size() <= 500)
+        && (!('email' in request.resource.data) || request.resource.data.email.size() <= 200)
+        && (!('uid' in request.resource.data) || request.resource.data.uid.size() <= 128);
+      allow read, update, delete: if isBeheerder();
+    }
   }
 }
 ```
@@ -47,3 +64,18 @@ service cloud.firestore {
 De update-regel laat per schrijfactie hooguit 60 punten bij (de grootste beloning is de bonus van
 50) en nooit minder punten. Zonder de `voortgang`-regel weigert Firestore de sync; de site werkt dan
 gewoon door met alleen lokale voortgang.
+
+## Feedback en automatische verwerking
+
+Op elke pagina die `js/fmatlas.js` laadt staan twee knoppen (`js/feedback.js`): "Feedback" en
+"Meld een onjuistheid". Een melding komt in Firestore `feedback/{id}` met status `nieuw`.
+`beheer.html` toont alles aan de beheerder.
+
+Zolang de Firestore-regel voor `feedback` er niet staat, gaat een melding via Formspree naar de
+mail van de beheerder (met pagina en geselecteerde tekst).
+
+In voorbereiding: een verwerker op de Mac mini die nieuwe meldingen toetst aan de tekst van het
+lesmateriaal (`_beheer/feedback/bronnen-tekst.py` maakt die tekst), een correctie op een branch
+`feedback/<id>` klaarzet en die pas na "Live zetten" op `beheer.html` naar main brengt. Vincent
+meldt via `vincent.py --meld david "..."` wat er openstaat. Jaar 2 wordt gegenereerd uit
+`fmatlas-vakken` en gaat daarom naar status `voor_david`.

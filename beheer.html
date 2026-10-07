@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="robots" content="noindex, nofollow"/>
+<title>Beheer — FM Atlas</title>
+<link rel="icon" type="image/svg+xml" href="logo.svg"/>
+<meta name="theme-color" content="#f7f3ec"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="css/fmatlas.css"/>
+<style>
+.bh-wrap { max-width: 980px; margin: 0 auto; padding: 24px 16px 40px; }
+.bh-wrap h1 { font-size: clamp(26px, 6vw, 34px); font-weight: 900; margin-bottom: 4px; }
+.bh-sub { color: var(--ink-soft); font-size: 14px; margin-bottom: 18px; }
+.bh-tellers { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+.bh-teller { font: inherit; font-size: 13px; font-weight: 800; background: var(--surface); border: 1.5px solid var(--line); border-radius: 999px; padding: 6px 12px; cursor: pointer; }
+.bh-teller.actief { background: var(--ink); color: var(--surface); border-color: var(--ink); }
+.bh-lijst { display: flex; flex-direction: column; gap: 12px; }
+.bh-item { background: var(--surface); border: 1.5px solid var(--line); border-radius: var(--radius-lg); padding: 16px; }
+.bh-kop { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 8px; font-size: 12.5px; color: var(--muted); }
+.bh-badge { font-size: 11px; font-weight: 800; letter-spacing: .03em; border-radius: 999px; padding: 2px 9px; text-transform: uppercase; }
+.bh-type-onjuistheid { background: #fff7ed; color: #9a3412; border: 1px solid #fdba74; }
+.bh-type-feedback { background: #eff6ff; color: #1e40af; border: 1px solid #93c5fd; }
+.bh-st-nieuw { background: var(--surface-alt); color: var(--ink); }
+.bh-st-bezig { background: #fef9c3; color: #854d0e; }
+.bh-st-verholpen { background: #dcfce7; color: #166534; }
+.bh-st-afgewezen { background: #f1f5f9; color: #475569; }
+.bh-st-voor_david { background: #fde4dd; color: var(--accent-deep); }
+.bh-st-mislukt { background: #fee2e2; color: #991b1b; }
+.bh-st-afgehandeld { background: #e0e7ff; color: #3730a3; }
+.bh-st-wacht_op_akkoord { background: #fef3c7; color: #92400e; }
+.bh-st-goedgekeurd { background: #dcfce7; color: #166534; }
+.bh-st-geweigerd { background: #f1f5f9; color: #475569; }
+.bh-diff { font: 12px/1.45 ui-monospace, Menlo, monospace; background: var(--surface-alt); border-radius: 10px; padding: 10px 12px; overflow-x: auto; white-space: pre; margin: 8px 0; max-height: 360px; }
+.bh-diff .plus { color: #166534; background: #dcfce7; display: block; }
+.bh-diff .min { color: #991b1b; background: #fee2e2; display: block; }
+.bh-uitleg-akkoord { font-size: 13px; color: var(--ink-soft); margin-top: 6px; }
+.bh-bericht { font-size: 15px; line-height: 1.55; white-space: pre-wrap; margin-bottom: 8px; }
+.bh-sel { font-size: 13px; font-style: italic; background: var(--surface-alt); border-radius: 8px; padding: 6px 10px; margin-bottom: 8px; }
+.bh-reactie { font-size: 13.5px; line-height: 1.5; border-left: 3px solid var(--line); padding-left: 10px; color: var(--ink-soft); margin: 8px 0; white-space: pre-wrap; }
+.bh-acties { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+.bh-leeg, .bh-melding { text-align: center; color: var(--ink-soft); padding: 40px 0; }
+</style>
+</head>
+<body data-no-feedback>
+
+<div id="fa-header-slot"></div>
+<nav class="fa-breadcrumb"><a href="app.html">Vakken</a><span aria-hidden="true">›</span><span class="current">Beheer</span></nav>
+
+<main class="bh-wrap">
+  <h1>Feedback en meldingen</h1>
+  <p class="bh-sub">Alles wat via de knoppen binnenkomt. De Mac mini bekijkt nieuwe meldingen elk kwartier en zet een voorgestelde correctie klaar; met "Live zetten" gaat die de site op.</p>
+  <div id="bh-inhoud"><p class="bh-melding">Laden…</p></div>
+</main>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+<script src="js/fmatlas.js"></script>
+<script>
+const BEHEERDER = 'EFkA4kexkLNjBKCGuKD9eiyUvfM2';
+const STATUSSEN = { wacht_op_akkoord: 'Wacht op akkoord', voor_david: 'Voor David', nieuw: 'Nieuw', bezig: 'Bezig', goedgekeurd: 'Gaat live', verholpen: 'Verholpen', afgewezen: 'Afgewezen', geweigerd: 'Geweigerd', mislukt: 'Mislukt', afgehandeld: 'Afgehandeld' };
+firebase.initializeApp({
+  apiKey: "AIzaSyBB397Wk2eqpBjic8E7aGV1mTgIjhQ21a8",
+  authDomain: "fmkompas-ff8bc.firebaseapp.com",
+  projectId: "fmkompas-ff8bc",
+  storageBucket: "fmkompas-ff8bc.firebasestorage.app",
+  messagingSenderId: "487972024689",
+  appId: "1:487972024689:web:712c3117080745d14746d0"
+});
+const auth = firebase.auth(), db = firebase.firestore();
+const box = document.getElementById('bh-inhoud');
+let alle = [], filter = 'open', stopLuisteren = null;
+
+auth.onAuthStateChanged(user => {
+  faMarkActiveToday();
+  const slot = document.getElementById('fa-header-slot');
+  slot.innerHTML = ''; slot.appendChild(faRenderHeader({ user }));
+  if (stopLuisteren) { stopLuisteren(); stopLuisteren = null; }
+  if (!user) {
+    box.innerHTML = '<p class="bh-melding">Log in met het beheerdersaccount. <button class="fa-btn fa-btn-primary" id="bh-login">Inloggen met Google</button></p>';
+    document.getElementById('bh-login').onclick = () => auth.signInWithPopup(new firebase.auth.GoogleAuthProvider()).catch(e => {
+      if (/popup-blocked|operation-not-supported/.test(e.code || '')) auth.signInWithRedirect(new firebase.auth.GoogleAuthProvider());
+    });
+    return;
+  }
+  if (user.uid !== BEHEERDER) { box.innerHTML = '<p class="bh-melding">Deze pagina is alleen voor de beheerder.</p>'; return; }
+  stopLuisteren = db.collection('feedback').orderBy('aangemaakt', 'desc').limit(300).onSnapshot(snap => {
+    alle = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+    teken();
+  }, err => { box.innerHTML = `<p class="bh-melding">Kon de meldingen niet laden (${faEsc(err.code || err.message)}). Staan de Firestore-regels voor <code>feedback</code> erin?</p>`; });
+});
+
+function datum(ts) {
+  const d = ts && ts.toDate ? ts.toDate() : null;
+  return d ? d.toLocaleString('nl-NL', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' }) : '';
+}
+function teken() {
+  const open = x => ['wacht_op_akkoord', 'voor_david', 'mislukt', 'nieuw', 'bezig', 'goedgekeurd'].includes(x.status);
+  const tel = { open: alle.filter(open).length, alles: alle.length };
+  Object.keys(STATUSSEN).forEach(s => tel[s] = alle.filter(x => x.status === s).length);
+  const lijst = alle.filter(x => filter === 'alles' ? true : filter === 'open' ? open(x) : x.status === filter);
+  const knoppen = [['open', 'Open'], ['alles', 'Alles'], ...Object.entries(STATUSSEN)].filter(([k]) => k === 'open' || k === 'alles' || tel[k])
+    .map(([k, l]) => `<button class="bh-teller ${filter === k ? 'actief' : ''}" data-f="${k}">${l} · ${tel[k]}</button>`).join('');
+  box.innerHTML = `<div class="bh-tellers">${knoppen}</div>` + (lijst.length ? `<div class="bh-lijst">${lijst.map(item).join('')}</div>` : '<p class="bh-leeg">Niets in deze lijst.</p>');
+  box.querySelectorAll('[data-f]').forEach(b => b.onclick = () => { filter = b.dataset.f; teken(); });
+  box.querySelectorAll('[data-actie]').forEach(b => b.onclick = () => actie(b.dataset.id, b.dataset.actie));
+}
+function item(x) {
+  const st = x.status || 'nieuw';
+  const pagina = x.pagina ? `<a href="${faEsc(x.pagina)}" target="_blank" rel="noopener">${faEsc((x.titel || x.pagina).replace(/ — FM Atlas$/, ''))}</a>` : '';
+  const commit = x.commit ? ` · <a href="https://github.com/David-VeloService/FMAtlas/commit/${faEsc(x.commit)}" target="_blank" rel="noopener">wijziging ${faEsc(String(x.commit).slice(0, 7))}</a>` : '';
+  return `<article class="bh-item">
+    <div class="bh-kop">
+      <span class="bh-badge bh-type-${faEsc(x.type)}">${x.type === 'onjuistheid' ? 'Onjuistheid' : 'Feedback'}</span>
+      <span class="bh-badge bh-st-${faEsc(st)}">${faEsc(STATUSSEN[st] || st)}</span>
+      <span>${datum(x.aangemaakt)}</span><span>·</span><span>${pagina}</span>${commit}
+    </div>
+    ${x.selectie ? `<div class="bh-sel">“${faEsc(x.selectie)}”</div>` : ''}
+    <div class="bh-bericht">${faEsc(x.bericht)}</div>
+    ${x.email ? `<div class="bh-kop">Antwoord gewenst: <a href="mailto:${faEsc(x.email)}">${faEsc(x.email)}</a></div>` : ''}
+    ${x.diff ? `<details ${st === 'wacht_op_akkoord' ? 'open' : ''}><summary style="cursor:pointer;font-size:13px;font-weight:800">Voorgestelde wijziging${x.bestanden ? ' in ' + faEsc([].concat(x.bestanden).join(', ')) : ''}</summary><div class="bh-diff">${toonDiff(x.diff)}</div></details>` : ''}
+    ${x.reactie ? `<div class="bh-reactie"><strong>Mini (${datum(x.verwerkt)}):</strong> ${faEsc(x.reactie)}${x.bron ? `\nBron: ${faEsc(x.bron)}` : ''}</div>` : ''}
+    <div class="bh-acties">
+      ${st === 'wacht_op_akkoord' ? `<button class="fa-btn fa-btn-accent fa-btn-sm" data-id="${x.id}" data-actie="goedgekeurd">Live zetten</button><button class="fa-btn fa-btn-ghost fa-btn-sm" data-id="${x.id}" data-actie="geweigerd">Weigeren</button>` : ''}
+      ${st === 'goedgekeurd' ? '<span class="bh-uitleg-akkoord">De mini zet dit binnen een kwartier live.</span>' : ''}
+      ${st !== 'afgehandeld' ? `<button class="fa-btn fa-btn-ghost fa-btn-sm" data-id="${x.id}" data-actie="afgehandeld">Markeer afgehandeld</button>` : ''}
+      ${st !== 'nieuw' && st !== 'bezig' ? `<button class="fa-btn fa-btn-ghost fa-btn-sm" data-id="${x.id}" data-actie="nieuw">Opnieuw laten verwerken</button>` : ''}
+      <button class="fa-btn fa-btn-ghost fa-btn-sm" data-id="${x.id}" data-actie="verwijder">Verwijderen</button>
+    </div>
+  </article>`;
+}
+function toonDiff(d) {
+  return String(d).split('\n').filter(l => !/^(diff --git|index |--- |\+\+\+ )/.test(l)).map(l =>
+    l.startsWith('+') ? `<span class="plus">${faEsc(l)}</span>` : l.startsWith('-') ? `<span class="min">${faEsc(l)}</span>` : faEsc(l) + '\n').join('');
+}
+async function actie(id, wat) {
+  const ref = db.collection('feedback').doc(id);
+  try {
+    if (wat === 'verwijder') { if (!confirm('Deze melding definitief verwijderen?')) return; await ref.delete(); }
+    else await ref.update({ status: wat, ...(wat === 'nieuw' ? { pogingen: 0 } : {}) });
+  } catch (e) { console.warn(e); }
+}
+</script>
+</body>
+</html>

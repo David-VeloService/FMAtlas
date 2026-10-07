@@ -512,3 +512,12 @@ document.addEventListener('keydown', e => {
 
 /* Auto-render icons on load */
 document.addEventListener('DOMContentLoaded', () => faRenderIcons());
+
+/* Feedbackknoppen op elke pagina (niet op de beheerpagina zelf) */
+document.addEventListener('DOMContentLoaded', () => {
+  if (document.body.dataset.noFeedback !== undefined) return;
+  const sc = document.createElement('script');
+  sc.src = 'js/feedback.js';
+  sc.defer = true;
+  document.body.appendChild(sc);
+});
