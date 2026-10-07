@@ -25,7 +25,7 @@ EVLOG.begrippen = [
 
   /* 2. Proces & capaciteit */
   {cat:"proces", term:"Evenementenlogistiek", def:"De eenmalige of frequente organisatie, planning en uitvoering van goederen- en mensenstromen bij een evenement, waarbij bezoekers tegelijk product én klant zijn en gebruik wordt gemaakt van inhuur en uitbesteding (Van Rijn & Van Damme, 2012)."},
-  {cat:"proces", term:"Five rights", def:"Logistiek principe van Lamberts en Stock: het juiste product, op de juiste plaats, op het juiste moment, in de juiste conditie, tegen de juiste kosten aan de juiste klant."},
+  {cat:"proces", term:"Five rights", def:"Logistiek principe van Lambert en Stock: het juiste product, in de juiste hoeveelheid, op de juiste plaats, op het juiste moment, in de juiste conditie, tegen de juiste kosten. De naam 'five rights' is historisch; in de meeste uitwerkingen staan er zes."},
   {cat:"proces", term:"Beleveniseconomie", def:"Economische fase waarin ervaringen meer waarde hebben dan tastbare producten of diensten. Evenementen zijn bij uitstek het domein van de beleveniseconomie omdat ze niet-tastbaar en tijdelijk zijn."},
   {cat:"proces", term:"Procesanalyse", def:"Methode om alle stappen in een handeling in kaart te brengen, de capaciteit per stap te bepalen en de bottleneck te identificeren die de totale doorstroom beperkt."},
   {cat:"proces", term:"Bottleneck", def:"De schakel in een procesketen met de kleinste capaciteit, die daarmee de totale doorstroming van het hele proces bepaalt. Het versnellen van andere schakels heeft pas zin als de bottleneck is opgelost."},
@@ -47,7 +47,7 @@ EVLOG.begrippen = [
   {cat:"sitedesign", term:"PQRST-sleutel", def:"Systematisch kader voor het ontwerpen van een terreinindeling met vijf elementen: P (personen en producten), Q (omvang stromen), R (routering), S (steunverlenende diensten) en T (tijd)."},
   {cat:"sitedesign", term:"Relatieschema (relatiediagram)", def:"Overzicht dat aangeeft welke service- en attractiepunten op het terrein absoluut nabij of juist ver van elkaar moeten liggen. Vormt de basis voor de eerste terreinschets."},
   {cat:"sitedesign", term:"Bezoekersdichtheid", def:"Maatstaf voor het aantal personen per vierkante meter. Vanaf 0,27 m² per persoon ontstaan onvrijwillige aanrakingen en bij 0,18 m² per persoon potentieel gevaarlijke krachten in de menigte. De norm 2,5 m² per persoon staat voor vrij bewegen."},
-  {cat:"sitedesign", term:"Crowd safety (crowd control)", def:"Het geheel van maatregelen om menigten veilig te geleiden en gevaarlijke bezoekersdichtheden te voorkomen, waaronder compartimenteren, bewegwijzering en het vermijden van kruisende stromen."},
+  {cat:"sitedesign", term:"Crowd safety (crowd management)", def:"Het geheel van maatregelen om menigten veilig te geleiden en gevaarlijke bezoekersdichtheden te voorkomen, waaronder compartimenteren, bewegwijzering en het vermijden van kruisende stromen."},
   {cat:"sitedesign", term:"Managing flows", def:"Het actief beheersen van bezoekersstromen door eenvoudig terreinontwerp, goede bewegwijzering, het vermijden van kruisende routes, bufferzones en een centrale controlekamer."},
   {cat:"sitedesign", term:"Bufferzone", def:"Wachtruimte buiten het evenementterrein waar vrachtwagens of bezoekers tijdelijk kunnen worden opgevangen om piekbelasting op het terrein te voorkomen."},
   {cat:"sitedesign", term:"FOH (Front of House)", def:"Het eerste publieksvak direct voor het podium. Een specifieke attractiezone met eigen capaciteitsberekening en veiligheidsmaatregelen."},
@@ -57,7 +57,7 @@ EVLOG.begrippen = [
   {cat:"veiligheid", term:"Risico Prioriteits Getal (RPN)", def:"Uitkomst van de FMEA-methode, berekend als Kans × Effect × Hersteltijd. Hoe hoger het getal, hoe urgenter de maatregel die nodig is."},
   {cat:"veiligheid", term:"Veiligheidsketen", def:"Indeling van veiligheidsmaatregelen in vijf opeenvolgende fasen: proactief (oorzaak wegnemen), preventief (incident voorkomen), preparatief (voorbereiden op incident), repressief (schade beperken tijdens incident) en nazorg (afwikkeling achteraf)."},
   {cat:"veiligheid", term:"Calamiteitenplan", def:"Document dat de crisisstructuur, het communicatieprotocol en de locatiegegevens (vluchtwegen, EHBO-posten, AED, nooduitgangen) vastlegt voor het geval van een incident tijdens een evenement."},
-  {cat:"veiligheid", term:"GRIP", def:"Gecoördineerde Regionale Incidentenbestrijdings Procedure: landelijk opschalingsmodel voor hulpdiensten met niveaus 0 tot 3, waarbij elke stap meer coördinatie en beslissingsbevoegdheid samenbrengt bij grotere incidenten."},
+  {cat:"veiligheid", term:"GRIP", def:"Gecoördineerde Regionale Incidentenbestrijdings Procedure: landelijk opschalingsmodel voor hulpdiensten met de niveaus GRIP 1 tot en met 5 en GRIP Rijk, waarbij elke stap meer coördinatie en beslissingsbevoegdheid samenbrengt bij grotere incidenten."},
   {cat:"veiligheid", term:"Publieksprofiel", def:"Risicobepalend profiel dat kenmerken van het publiek beschrijft, zoals leeftijdsopbouw, omvang, verblijfsduur, homogeniteit en de kans op ongewenst groepsgedrag."},
   {cat:"veiligheid", term:"Activiteitenprofiel", def:"Risicoprofiel dat het type evenement beschrijft: groot versus kleinschalig, één partij versus meerdere partijen, geprogrammeerd versus ongestructureerd publiek en middelengebruik."},
   {cat:"veiligheid", term:"Ruimtelijk profiel", def:"Risicofactor die betrekking heeft op de fysieke locatiekenmerken, zoals bereikbaarheid, complexe inrichting, zichtlijnen, brandveiligheid en publiek versus privaat terrein."},
@@ -144,7 +144,7 @@ EVLOG.oefentoets = {
       explanation: "Een evenement is eenmalig: één kans om het goed te doen. Bezoekers zijn tegelijk product én klant, met piekbelasting en afhankelijkheid van externe leveranciers." },
 
     { section: null, num: 9,
-      text: "Waar gaan de 'five rights' van Lamberts & Stock over?",
+      text: "Waar gaan de 'five rights' van Lambert & Stock over?",
       options: [
         "De vijf schakels van de veiligheidsketen",
         "Het juiste product, op de juiste plaats, op het juiste moment, in de juiste conditie, tegen de juiste kosten, voor de juiste klant",

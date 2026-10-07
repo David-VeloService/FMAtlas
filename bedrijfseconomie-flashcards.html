@@ -3,8 +3,9 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Flashcards · Facilitaire Bedrijfseconomie — FMAtlas</title>
+<title>Flashcards · Facilitaire Bedrijfseconomie — FM Atlas</title>
 <link rel="icon" type="image/svg+xml" href="logo.svg"/>
+<meta name="theme-color" content="#f7f3ec"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet"/>
@@ -67,7 +68,7 @@
 <body>
 <div id="fa-header-slot"></div>
 <nav class="fa-breadcrumb">
-  <a href="index.html">Home</a><span>›</span>
+  <a href="app.html">Vakken</a><span>›</span>
   <a href="bedrijfseconomie.html">Facilitaire Bedrijfseconomie</a><span>›</span>
   <span class="current">Flashcards</span>
 </nav>
@@ -126,9 +127,9 @@
   </div>
 </div>
 <div class="xp-toast" id="xpToast"><span data-fa-icon="bolt" data-fa-size="13"></span> <span id="xpToastText">+5 XP</span></div>
-<footer class="fa-footer">
-  <span>Tip: ← nog niet · → gekend · ↓ overslaan · spatie = flip</span>
-  <span>FMAtlas · HAN FM</span>
+<footer class="fa-site-footer">
+  <span>FM Atlas · gratis studiehulp voor HAN Facilitair Management, gemaakt door een student</span>
+  <span>Niet officieel verbonden aan de HAN · <a href="privacy.html">Privacy</a> · <a href="app.html#contact">Fout gezien?</a></span>
 </footer>
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
@@ -159,8 +160,8 @@ const _db = firebase.firestore();
 _auth.onAuthStateChanged(async user => {
   if (user) await faSyncFromCloud(user, _db);
   document.getElementById('fa-header-slot').innerHTML = '';
-  document.getElementById('fa-header-slot').appendChild(faRenderHeader({ user }));
   faMarkActiveToday();
+  document.getElementById('fa-header-slot').appendChild(faRenderHeader({ user }));
   faMarkLastSeen(DATA.key, DATA.title, DATA.url);
 });
 const DATA = window.__FMDATA__ || { flashcards: [], cats: [], key: 'vak', title: 'Vak', url: 'index.html' };
@@ -177,7 +178,7 @@ function shuffleDeck(){loadDeck();deck=shuffleArr(deck);showCard();}
 function showCard(){if(current>=deck.length){showDone();return;}const c=deck[current];document.getElementById('cardCounter').textContent=`Kaart ${current+1} van ${deck.length}`;const frontCat=document.getElementById('frontCat');frontCat.textContent=(catMap[c.cat]&&catMap[c.cat].label)||c.cat;frontCat.className='fc-cat';frontCat.style.background=catSoftBg(c.cat);frontCat.style.color=(catMap[c.cat]&&catMap[c.cat].color)||'var(--ink)';document.getElementById('frontTerm').textContent=c.term;document.getElementById('backDef').textContent=c.def;flipped=false;document.getElementById('flipWrap').classList.remove('flipped');}
 function flipCard(){flipped=!flipped;document.getElementById('flipWrap').classList.toggle('flipped',flipped);}
 function markCard(isKnown){if(!flipped){flipCard();setTimeout(()=>_mark(isKnown),400);}else _mark(isKnown);}
-function _mark(isKnown){if(isKnown){known++;faAddXP(5);addFirestorePoints(5);showXpToast('+5 XP');}else{missed.push(deck[current]);}current++;updateStats();setTimeout(showCard,150);}
+function _mark(isKnown){if(isKnown){known++;if (faOnce(location.pathname + '#' + faToday() + '#' + document.getElementById('frontTerm').textContent)) {  faAddXP(5); addFirestorePoints(5); showXpToast('+5 XP');}}else{missed.push(deck[current]);}current++;updateStats();setTimeout(showCard,150);}
 function nextCard(){missed.push(deck[current]);current++;updateStats();flipped=false;document.getElementById('flipWrap').classList.remove('flipped');showCard();}
 function updateStats(){const total=deck.length;document.getElementById('statTotal').textContent=total;document.getElementById('statKnown').textContent=known;document.getElementById('statUnknown').textContent=missed.length;const pct=total?Math.round(current/total*100):0;document.getElementById('progBar').style.width=pct+'%';document.getElementById('progPct').textContent=pct+'%';document.getElementById('progLabel').textContent=`${known} / ${total} bekend`;faSetProgress(DATA.key,Math.min(100,(known/allCards.length)*100));}
 function showDone(){document.getElementById('fc-main').style.display='none';const d=document.getElementById('fc-done');d.style.display='block';const pct=deck.length?Math.round(known/deck.length*100):0;const scoreEl=document.getElementById('doneScore');scoreEl.textContent=`${known} / ${deck.length}`;scoreEl.className='score-big'+(pct<60?' bad':'');document.getElementById('doneText').textContent=pct>=80?'Uitstekend! Je beheerst deze stof goed.':pct>=60?'Goed bezig! Herhaal de niet-gekende kaarten nog een keer.':'Nog wat herhalen. Ga de gemiste kaarten nog eens door.';const btn=document.getElementById('btnMissed');const list=document.getElementById('missedList');if(missed.length){btn.style.display='inline-flex';list.style.display='block';document.getElementById('missedItems').innerHTML=missed.map(c=>`<div class="missed-item"><strong>${c.term}</strong><span>${c.def.substring(0,130)}${c.def.length>130?'…':''}</span></div>`).join('');}else{btn.style.display='none';list.style.display='none';}}

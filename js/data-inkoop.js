@@ -42,7 +42,9 @@ INKOOP.cats = [
     "label": "Digitalisering",
     "short": "Digitalisering",
     "color": "#ec4899"
-  }
+  },
+  { "key": "mvi", "label": "Maatschappelijk verantwoord inkopen", "short": "MVI", "color": "#16a34a" },
+  { "key": "wanprestatie", "label": "Wanprestatie en contractrisico", "short": "Wanprestatie", "color": "#dc2626" }
 ];
 INKOOP.begrippen = [
 
@@ -93,9 +95,9 @@ INKOOP.begrippen = [
      2. VAN WEELE — 6 STAPPEN (Week 2-3)
   ══════════════════════════════════════════ */
   {cat:"vanweele", term:"Lineair inkoopproces van Van Weele",
-   def:"Het inkoopproces bestaat uit zes stappen: 1. Specificeren → 2. Selecteren → 3. Contracteren (tactisch, éénmalig) → 4. Bestellen → 5. Bewaken → 6. Nazorg & Evaluatie (operationeel, herhaald)."},
+   def:"Het inkoopproces bestaat uit zes stappen: 1. Specificeren → 2. Selecteren → 3. Contracteren (tactisch, eenmalig) → 4. Bestellen → 5. Bewaken → 6. Nazorg & Evaluatie (operationeel, herhaald)."},
   {cat:"vanweele", term:"Tactische inkoop (stappen 1-3)",
-   def:"De éénmalige, strategische fase van het inkoopproces: specificeren, selecteren en contracteren. Bepaalt wat, bij wie en onder welke voorwaarden wordt ingekocht."},
+   def:"De eenmalige, tactische fase van het inkoopproces: specificeren, selecteren en contracteren. Bepaalt wat, bij wie en onder welke voorwaarden wordt ingekocht."},
   {cat:"vanweele", term:"Operationele inkoop (stappen 4-6)",
    def:"De herhaalde, uitvoerende fase van het inkoopproces: bestellen, bewaken en nazorg & evaluatie. Wordt gedurende de looptijd van een contract steeds opnieuw doorlopen."},
   {cat:"vanweele", term:"Stap 1: Specificeren",
@@ -131,13 +133,13 @@ INKOOP.begrippen = [
   {cat:"tactisch", term:"Prekwalificatie",
    def:"Toetsen of potentiële leveranciers voldoen aan basisvereisten (financiële stabiliteit, certificeringen, referenties) vóórdat een formele offerteaanvraag wordt gedaan. Longlist → shortlist."},
   {cat:"tactisch", term:"Gewogen factorscore / BPKV",
-   def:"Offertebeoordelingsmethode waarbij meerdere criteria elk een wegingsfactor krijgen. Scores per criterium worden gewogen opgeteld. Meest gebruikt bij complexe aankopen. BPKV = Best Price to Quality Value."},
+   def:"Offertebeoordelingsmethode waarbij meerdere criteria elk een wegingsfactor krijgen. Scores per criterium worden gewogen opgeteld. Meest gebruikt bij complexe aankopen. Zo wordt in de praktijk het gunningscriterium BPKV (beste prijs-kwaliteitverhouding) uitgewerkt."},
   {cat:"tactisch", term:"Indexmethode",
    def:"Offertebeoordelingsmethode waarbij een vaste prijs/kwaliteitsverhouding is vastgesteld (bijv. 50/50). 1% hogere kwaliteit rechtvaardigt 1% hogere prijs."},
   {cat:"tactisch", term:"Waardering in euro's",
    def:"Offertebeoordelingsmethode waarbij kwaliteitsverschillen worden uitgedrukt in euro's en in mindering worden gebracht op de aangeboden prijs. De laagste gecorrigeerde prijs wint."},
   {cat:"tactisch", term:"Accountportfolio",
-   def:"Spiegel van de Kraljic-matrix vanuit leveranciersperspectief: hoe segmenteert de leverancier zijn klanten? Core account (hoge omzet, strategisch), Development account (groeiend), Nuisance account (kleine klant, hoge behoefte)."},
+   def:"Spiegel van de Kraljic-matrix vanuit leveranciersperspectief: hoe segmenteert de leverancier zijn klanten? Core account (hoge omzet, aantrekkelijke klant), Development account (groeiend), Exploitable account (hoge omzet, weinig aandacht), Nuisance account (kleine klant, veel gedoe)."},
   {cat:"tactisch", term:"Resultaatcontract",
    def:"Contract waarbij de leverancier een concreet resultaat garandeert. Betaling is gekoppeld aan het resultaat. Makkelijker toetsbaar — voorkeur van de inkoper."},
   {cat:"tactisch", term:"Inspanningscontract",
@@ -262,7 +264,7 @@ INKOOP.begrippen = [
   {cat:"mvi", term:"SROI (Social Return on Investment)",
    def:"Verplichting in een inkoopcontract om een percentage van de loonsom (vaak 5%) in te zetten voor mensen met afstand tot de arbeidsmarkt. Vooral in publieke aanbestedingen toegepast."},
   {cat:"mvi", term:"BPKV / EMVI",
-   def:"Beste Prijs-Kwaliteit Verhouding (in Aanbestedingswet sinds 2016 de standaardterm; eerder EMVI = Economisch Meest Voordelige Inschrijving). Gunningscriterium waarbij prijs én kwaliteit én duurzaamheid wegen — niet alleen de laagste prijs."},
+   def:"Beste Prijs-Kwaliteitverhouding. Sinds de Aanbestedingswet van 2016 is EMVI (Economisch Meest Voordelige Inschrijving) de overkoepelende term met drie criteria: BPKV, laagste kosten en laagste prijs. BPKV is daarvan de standaard. Gunningscriterium waarbij prijs én kwaliteit én duurzaamheid wegen — niet alleen de laagste prijs."},
   {cat:"mvi", term:"CO₂-prestatieladder",
    def:"Nederlands certificeringsinstrument dat organisaties beoordeelt op hun inspanning om CO₂-uitstoot te reduceren. Veel gebruikt als geschiktheidseis of gunningsvoordeel in (publieke) aanbestedingen."},
 
@@ -283,7 +285,7 @@ INKOOP.flashcards = [
   {cat:"basis",term:"Inkoopfunctie",def:"Het organisatiebrede proces van inkoop — omvat meer dan alleen de inkoopafdeling. Factuurafhandeling (Finance), inhuren tijdelijk personeel (HRM) en boeken van transport (Logistiek) vallen buiten de afdeling maar zijn onderdeel van de inkoopfunctie."},
   {cat:"basis",term:"Spin in het web",def:"Metafoor voor de inkoper: inkoop raakt alle bedrijfsfuncties en vormt de schakel tussen de interne organisatie en de externe leveranciersmarkt."},
   {cat:"basis",term:"Primaire (directe) inkoop",def:"Inkoop van goederen en diensten die rechtstreeks terechtkomen in het eindproduct of de kernactiviteit van de organisatie. Bijv. grondstoffen voor een fabriek, medicijnen in een ziekenhuis."},
-  {cat:"basis",term:"Indirecte inkoop / Facilitaire inkoop",def:"Alle inkoop voor het functioneren van de organisatie in het algemeen, los van het primaire proces. Bijv. schoonmaak, catering, beveiliging, ICT, bedrijfskleding. Dit is het werkterrein van de Facility Manager."},
+  {cat:"basis",term:"Indirecte inkoop / Facilitaire inkoop",def:"Alle inkoop voor het functioneren van de organisatie in het algemeen, los van het primaire proces. Bijv. schoonmaak, catering, beveiliging, ICT, bedrijfskleding. Een groot deel daarvan is het werkterrein van de facility manager, maar niet alle indirecte inkoop is facilitair."},
   {cat:"basis",term:"MRO (Maintenance, Repair & Operations)",def:"Productcategorie binnen indirecte inkoop: goederen en diensten voor dagelijks onderhoud, reparatie en bedrijfsvoering (smeermiddelen, reserveonderdelen, gereedschap, schoonmaakartikelen). MRO wordt vaak via indirecte/facilitaire inkoop ingekocht, maar is geen synoniem ervan: het is een productsoort, niet de inkoopfunctie zelf."},
   {cat:"basis",term:"Inkoopquote",def:"Percentage van de omzet dat besteed wordt aan inkoop.",formula:"Inkoopquote = (inkoopkosten / omzet) × 100%"},
   {cat:"basis",term:"Hefboomwerking van inkoop",def:"Bij een inkoopquote van 50% en nettomarge van 5% levert 1% inkoopbesparing evenveel resultaatverbetering op als ±10% omzetgroei. Inkoop heeft directe invloed op het bedrijfsresultaat."},
@@ -298,8 +300,8 @@ INKOOP.flashcards = [
   {cat:"basis",term:"Vier primaire taken van inkoop",def:"1. Operationele excellentie (continuïteit), 2. Realiseren van inkoopbesparingen, 3. Verminderen van risico's in de toeleveringsketen, 4. Bijdragen aan innovatie en waardecreatie."},
 
   /* ── VAN WEELE (6 STAPPEN) ── */
-  {cat:"vanweele",term:"Lineair inkoopproces van Van Weele",def:"Zes stappen: 1. Specificeren → 2. Selecteren → 3. Contracteren (tactisch, éénmalig) → 4. Bestellen → 5. Bewaken → 6. Nazorg & Evaluatie (operationeel, herhaald)."},
-  {cat:"vanweele",term:"Tactische inkoop (stappen 1-3)",def:"De éénmalige, strategische fase: specificeren, selecteren en contracteren. Bepaalt wat, bij wie en onder welke voorwaarden wordt ingekocht."},
+  {cat:"vanweele",term:"Lineair inkoopproces van Van Weele",def:"Zes stappen: 1. Specificeren → 2. Selecteren → 3. Contracteren (tactisch, eenmalig) → 4. Bestellen → 5. Bewaken → 6. Nazorg & Evaluatie (operationeel, herhaald)."},
+  {cat:"vanweele",term:"Tactische inkoop (stappen 1-3)",def:"De eenmalige, tactische fase: specificeren, selecteren en contracteren. Bepaalt wat, bij wie en onder welke voorwaarden wordt ingekocht."},
   {cat:"vanweele",term:"Operationele inkoop (stappen 4-6)",def:"De herhaalde, uitvoerende fase: bestellen, bewaken en nazorg & evaluatie. Wordt gedurende de looptijd van een contract steeds opnieuw doorlopen."},
   {cat:"vanweele",term:"Stap 1: Specificeren",def:"Bepalen wát er ingekocht moet worden. Primair de verantwoordelijkheid van de gebruiker/budgethouder. De inkoper zorgt dat de specificatie objectief en eenduidig is."},
   {cat:"vanweele",term:"Stap 2: Selecteren",def:"Markt in kaart brengen, shortlist opstellen, offertes aanvragen (RFQ) en de meest geschikte leverancier kiezen op basis van een gestructureerde beoordelingsmethode."},
@@ -317,7 +319,7 @@ INKOOP.flashcards = [
   {cat:"tactisch",term:"RFI (Request for Information)",def:"Informatieverzoek aan potentiële leveranciers in de oriëntatiefase. Niet bindend. Gebruikt voor marktconsultatie en prekwalificatie: longlist → shortlist."},
   {cat:"tactisch",term:"RFQ (Request for Quotation)",def:"Formele offerteaanvraag bij de shortlist van leveranciers. Bindend bij gunning. Bevat alle eisen en criteria waarop beoordeeld wordt."},
   {cat:"tactisch",term:"Prekwalificatie",def:"Toetsen of potentiële leveranciers voldoen aan basisvereisten vóórdat een formele offerteaanvraag wordt gedaan. Longlist → shortlist."},
-  {cat:"tactisch",term:"Gewogen factorscore / BPKV",def:"Offertebeoordelingsmethode waarbij meerdere criteria elk een wegingsfactor krijgen. Meest gebruikt bij complexe aankopen. BPKV = Best Price to Quality Value."},
+  {cat:"tactisch",term:"Gewogen factorscore / BPKV",def:"Offertebeoordelingsmethode waarbij meerdere criteria elk een wegingsfactor krijgen. Meest gebruikt bij complexe aankopen. Zo wordt in de praktijk het gunningscriterium BPKV (beste prijs-kwaliteitverhouding) uitgewerkt."},
   {cat:"tactisch",term:"Indexmethode",def:"Offertebeoordelingsmethode waarbij een vaste prijs/kwaliteitsverhouding is vastgesteld (bijv. 50/50). 1% hogere kwaliteit rechtvaardigt 1% hogere prijs."},
   {cat:"tactisch",term:"Waardering in euro's",def:"Offertebeoordelingsmethode waarbij kwaliteitsverschillen worden uitgedrukt in euro's en in mindering worden gebracht op de aangeboden prijs. De laagste gecorrigeerde prijs wint."},
   {cat:"tactisch",term:"Accountportfolio",def:"Spiegel van de Kraljic-matrix vanuit leveranciersperspectief: hoe segmenteert de leverancier zijn klanten? Core account (hoge omzet, strategisch), Development account, Nuisance account."},
@@ -379,3 +381,6 @@ INKOOP.flashcards = [
   {cat:"digitaal",term:"Data-analyse & visualisatie",def:"Tools (Power BI, Qlikview) die data uit meerdere bronnen combineren en visualiseren. Ondersteunen besluitvorming in inkoop: spend-analyse, leveranciersprestaties, contractverloop."},
   {cat:"digitaal",term:"Inkoper van de toekomst",def:"Operationele inkoop wordt volledig geautomatiseerd. De inkoper wordt een businessanalist die zich richt op strategie, leveranciersrelaties en innovatie in plaats van routinetransacties."},
 ];;
+
+/* MVI- en wanprestatiebegrippen ook als flashcard (ontbraken eerder) */
+INKOOP.flashcards = INKOOP.flashcards.concat(INKOOP.begrippen.filter(b => b.cat === 'mvi' || b.cat === 'wanprestatie'));

@@ -3,8 +3,9 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Oefentoets 1 · Eventmanagement 1 — FMAtlas</title>
+<title>Oefentoets 1 · Eventmanagement 1 — FM Atlas</title>
 <link rel="icon" type="image/svg+xml" href="logo.svg"/>
+<meta name="theme-color" content="#f7f3ec"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet"/>
@@ -147,7 +148,7 @@
 <div id="fa-header-slot"></div>
 
 <nav class="fa-breadcrumb">
-  <a href="index.html">Home</a>
+  <a href="app.html">Vakken</a>
   <span>›</span>
   <a href="eventmanagement1.html">Eventmanagement 1</a>
   <span>›</span>
@@ -158,11 +159,11 @@
   <div class="ot-intro">
     <div class="ot-intro-meta">OEFENTOETS 1 · 80 vragen</div>
     <h1>Juist / Onjuist — Projectmanagement & Eventrecht</h1>
-    <p>Test jezelf op de hoofdstukken 1 t/m 12 én de expert-colleges. Je krijgt direct feedback per vraag met een korte uitleg. Cesuur is <strong>55%</strong> — haal je die, dan krijg je +50 XP.</p>
+    <p>Test jezelf op de hoofdstukken 1 t/m 12 én de expert-colleges. Je krijgt direct feedback per vraag met een korte uitleg. Cesuur is <strong>75%</strong> (60 van de 80 goed, net als het echte tentamen). Haal je die, dan krijg je +50 XP.</p>
     <div class="ot-facts">
       <div class="ot-fact"><div class="ot-fact-lbl">Vragen</div><div class="ot-fact-val">80</div></div>
       <div class="ot-fact"><div class="ot-fact-lbl">Duur</div><div class="ot-fact-val">±45 min</div></div>
-      <div class="ot-fact"><div class="ot-fact-lbl">Cesuur</div><div class="ot-fact-val">55%</div></div>
+      <div class="ot-fact"><div class="ot-fact-lbl">Cesuur</div><div class="ot-fact-val">75%</div></div>
       <div class="ot-fact"><div class="ot-fact-lbl">Bij pass</div><div class="ot-fact-val" style="color:var(--xp)">+50 XP</div></div>
     </div>
     <div style="display:flex;gap:10px;flex-wrap:wrap">
@@ -216,9 +217,9 @@
 
 <div class="xp-toast" id="xpToast"><span data-fa-icon="bolt" data-fa-size="13"></span> <span id="xpToastText">+1 XP</span></div>
 
-<footer class="fa-footer">
-  <span>FMAtlas · 80 vragen · juist/onjuist format</span>
-  <span>HAN · Facilitair Management</span>
+<footer class="fa-site-footer">
+  <span>FM Atlas · gratis studiehulp voor HAN Facilitair Management, gemaakt door een student</span>
+  <span>Niet officieel verbonden aan de HAN · <a href="privacy.html">Privacy</a> · <a href="app.html#contact">Fout gezien?</a></span>
 </footer>
 
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
@@ -241,8 +242,8 @@ const _db = firebase.firestore();
 _auth.onAuthStateChanged(async user => {
   if (user) await faSyncFromCloud(user, _db);
   document.getElementById('fa-header-slot').innerHTML = '';
-  document.getElementById('fa-header-slot').appendChild(faRenderHeader({ user }));
   faMarkActiveToday();
+  document.getElementById('fa-header-slot').appendChild(faRenderHeader({ user }));
   faMarkLastSeen('eventmanagement1','Eventmanagement 1','eventmanagement1.html');
 });
 
@@ -326,9 +327,11 @@ function answer(num, val) {
 
   // XP for first correct answer
   if (first && isCorrect) {
-    faAddXP(2);
-    addFirestorePoints(2);
-    showXpToast('+2 XP');
+    if (faOnce(location.pathname + '#q' + num)) {
+      faAddXP(2);
+      addFirestorePoints(2);
+      showXpToast('+2 XP');
+    }
   }
 
   updateStrip();
@@ -351,7 +354,7 @@ function submitTest() {
     return q && v === q.answer;
   }).length;
   const pct = Math.round(correct / total * 100);
-  const passed = pct >= 55;
+  const passed = correct >= Math.ceil(total * 0.75);
 
   document.getElementById('ot-test').style.display = 'none';
   document.getElementById('ot-results').style.display = 'block';
@@ -364,14 +367,14 @@ function submitTest() {
     ? (pct >= 80 ? 'Uitstekend!' : 'Gehaald — je zit boven de cesuur')
     : 'Nog niet voldoende — herhaal je zwakke hoofdstukken';
   document.getElementById('resVerdictSub').textContent = passed
-    ? `Je scoorde ${pct}% (cesuur: 55%). Klik 'Bekijk fouten' om te zien wat je nog kunt oefenen.`
-    : `Je scoorde ${pct}%, de cesuur ligt op 55%. Ga je fouten langs en oefen nog even met de flashcards of begrippenlijst.`;
+    ? `Je scoorde ${pct}% (cesuur: 75%). Klik 'Bekijk fouten' om te zien wat je nog kunt oefenen.`
+    : `Je scoorde ${pct}%, de cesuur ligt op 75%. Ga je fouten langs en oefen nog even met de flashcards of begrippenlijst.`;
 
   // voortgang
   faSetProgress('eventmanagement1', Math.min(100, pct));
 
   // XP bonus eenmalig
-  if (passed && !bonusGiven) {
+  if (passed && !bonusGiven && faOnce(location.pathname + '#bonus')) {
     bonusGiven = true;
     faAddXP(50);
     addFirestorePoints(50);

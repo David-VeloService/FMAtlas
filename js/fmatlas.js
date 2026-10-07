@@ -1,4 +1,14 @@
-/* FMAtlas — gedeelde helpers: icons, streak, XP, zoek, header-render */
+/* FM Atlas — gedeelde helpers: icons, streak, XP, zoek, header-render */
+
+/* Tekst veilig in innerHTML zetten */
+function faEsc(v) {
+  return String(v ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+}
+/* Alleen Google-profielfoto's tonen; al het andere valt terug op initialen */
+function faSafePhoto(url) {
+  return /^https:\/\/lh[0-9]\.googleusercontent\.com\//.test(url || '') ? url : '';
+}
+function faFormatXP(n) { return Number(n || 0).toLocaleString('nl-NL'); }
 
 /* ─── Line icons (inline SVG injector) ─────────── */
 const FA_ICONS = {
@@ -49,7 +59,7 @@ function faRenderIcons(root = document) {
 
 /* ─── FMAtlas Logo SVG (inline string) ─────────── */
 const FA_LOGO = `
-<svg width="28" height="28" viewBox="0 0 32 32" fill="none" aria-label="FMAtlas logo">
+<svg width="28" height="28" viewBox="0 0 32 32" fill="none" role="img" aria-label="FM Atlas logo">
   <circle cx="16" cy="16" r="14" fill="#ffffff" stroke="#1a2024" stroke-width="2"/>
   <path d="M16 7 L20 16 L16 15 Z" fill="#ef5a3f" stroke="#1a2024" stroke-width="1" stroke-linejoin="round"/>
   <path d="M16 25 L12 16 L16 17 Z" fill="#f1ece2" stroke="#1a2024" stroke-width="1" stroke-linejoin="round"/>
@@ -57,7 +67,7 @@ const FA_LOGO = `
 </svg>`;
 
 /* ─── Header rendering ─────────── */
-function faRenderHeader({ homeUrl = 'index.html', user = null, breadcrumb = null } = {}) {
+function faRenderHeader({ homeUrl = 'app.html', user = null, breadcrumb = null } = {}) {
   const header = document.createElement('header');
   header.className = 'fa-header';
   const streak = faGetStreak();
@@ -65,21 +75,23 @@ function faRenderHeader({ homeUrl = 'index.html', user = null, breadcrumb = null
   const initials = user?.displayName
     ? user.displayName.split(' ').map(w => w[0]).slice(0, 2).join('').toUpperCase()
     : 'U';
-  const avatarContent = user?.photoURL
-    ? `<img src="${user.photoURL}" alt="" referrerpolicy="no-referrer"/>`
-    : initials;
+  const photo = faSafePhoto(user?.photoURL);
+  const avatarContent = photo
+    ? `<img src="${photo}" alt="" referrerpolicy="no-referrer"/>`
+    : faEsc(initials);
+  const isMac = /Mac|iPhone|iPad/.test(navigator.platform || navigator.userAgent);
 
   header.innerHTML = `
     <a class="fa-brand" href="${homeUrl}">
       ${FA_LOGO}
-      <span class="fa-brand-name">FMAtlas</span>
+      <span class="fa-brand-name">FM Atlas</span>
       <span class="fa-brand-tag">· studiehulp FM</span>
     </a>
-    <div class="fa-search" onclick="faOpenSearch()" role="button" tabindex="0">
-      ${faIcon('search', { size: 16, color: '#8a9299' })}
+    <button type="button" class="fa-search" onclick="faOpenSearch()" aria-label="Zoeken in FM Atlas">
+      <span aria-hidden="true">${faIcon('search', { size: 16, color: '#6b7378' })}</span>
       <span>Zoek samenvattingen, begrippen, flashcards…</span>
-      <span class="fa-kbd" style="margin-left:auto">⌘K</span>
-    </div>
+      <span class="fa-kbd" style="margin-left:auto">${isMac ? '⌘K' : 'Ctrl K'}</span>
+    </button>
     <div class="fa-header-right">
       <div class="fa-pill" title="Dagen op rij gestudeerd">
         ${faIcon('flame', { size: 15, color: '#ef5a3f' })}
@@ -87,9 +99,18 @@ function faRenderHeader({ homeUrl = 'index.html', user = null, breadcrumb = null
       </div>
       <div class="fa-pill" title="Totaal XP">
         ${faIcon('bolt', { size: 15, color: '#d4a017' })}
-        <span>${xp.toLocaleString('nl-NL').replace(',', ' ')}</span>
+        <span data-fa-xp>${faFormatXP(xp)}</span>
       </div>
-      <div class="fa-avatar" title="${user?.displayName || 'Jij'}" onclick="faLogout()">${avatarContent}</div>
+      <div class="fa-account">
+        <button type="button" class="fa-avatar" title="${faEsc(user?.displayName || 'Gast')}" aria-label="Accountmenu" aria-haspopup="true" aria-expanded="false" onclick="faToggleAccountMenu(this)">${avatarContent}</button>
+        <div class="fa-account-menu" role="menu" hidden>
+          <div class="fa-account-name">${faEsc(user?.displayName || 'Je bent niet ingelogd')}</div>
+          ${user
+            ? `<button type="button" role="menuitem" onclick="faLogout()">Uitloggen</button>`
+            : `<a role="menuitem" href="app.html">Inloggen</a>`}
+          <a role="menuitem" href="privacy.html">Privacy</a>
+        </div>
+      </div>
     </div>
   `;
   return header;
@@ -101,8 +122,8 @@ function faRenderBreadcrumb(items = []) {
   wrap.className = 'fa-breadcrumb';
   wrap.innerHTML = items.map((it, i) => {
     const last = i === items.length - 1;
-    if (last) return `<span class="current">${it.label}</span>`;
-    return `<a href="${it.href}">${it.label}</a><span>›</span>`;
+    if (last) return `<span class="current">${faEsc(it.label)}</span>`;
+    return `<a href="${it.href}">${faEsc(it.label)}</a><span aria-hidden="true">›</span>`;
   }).join(' ');
   return wrap;
 }
@@ -123,16 +144,26 @@ function faGetStreakData() {
 }
 function faGetStreak() { return faGetStreakData().count; }
 
-function faMarkActiveToday() {
+/* Een reeks loopt alleen door als je vandaag echt iets hebt geoefend (XP verdiend).
+   Een pagina openen telt niet; dan wordt alleen een verbroken reeks op 0 gezet. */
+function faMarkActiveToday({ studied = false } = {}) {
   const s = faGetStreakData();
   const today = faToday();
   if (s.last === today) return s.count;
-  if (s.last === faYesterday()) s.count++;
-  else s.count = 1;
+  if (!studied) {
+    if (s.last && s.last !== faYesterday() && s.count) {
+      s.count = 0;
+      localStorage.setItem('fa_streak', JSON.stringify(s));
+    }
+    return s.count;
+  }
+  s.count = s.last === faYesterday() ? s.count + 1 : 1;
   s.last = today;
   localStorage.setItem('fa_streak', JSON.stringify(s));
+  faQueueCloudPush();
   return s.count;
 }
+function faStudiedToday() { return faGetStreakData().last === faToday(); }
 
 function faGetXP() {
   const n = parseInt(localStorage.getItem('fa_xp') || '0', 10);
@@ -141,11 +172,20 @@ function faGetXP() {
 function faAddXP(amount) {
   const next = faGetXP() + amount;
   localStorage.setItem('fa_xp', String(next));
-  // update on-page pills if present
-  document.querySelectorAll('[data-fa-xp]').forEach(el => {
-    el.textContent = next.toLocaleString('nl-NL').replace(',', ' ');
-  });
+  faMarkActiveToday({ studied: true });
+  document.querySelectorAll('[data-fa-xp]').forEach(el => { el.textContent = faFormatXP(next); });
   return next;
+}
+
+/* XP maar één keer toekennen per sleutel (vraag, bonus, kaart per dag).
+   Voorkomt dat je punten verdient door een toets steeds opnieuw te starten. */
+function faOnce(key) {
+  try {
+    const k = 'fa_once_' + key;
+    if (localStorage.getItem(k)) return false;
+    localStorage.setItem(k, '1');
+    return true;
+  } catch (_) { return true; }
 }
 
 /* ─── Voortgang per vak ─────────── */
@@ -157,6 +197,7 @@ function faSetProgress(vakKey, pct) {
   const all = faGetProgress();
   all[vakKey] = Math.max(all[vakKey] || 0, Math.min(100, Math.round(pct)));
   localStorage.setItem('fa_progress', JSON.stringify(all));
+  faQueueCloudPush();
 }
 function faGetVakProgress(vakKey) {
   return faGetProgress()[vakKey] || 0;
@@ -165,13 +206,29 @@ function faGetVakProgress(vakKey) {
 /* ─── Laatst bekeken ─────────── */
 function faMarkLastSeen(vakKey, label, url) {
   localStorage.setItem('fa_last', JSON.stringify({ key: vakKey, label, url, at: Date.now() }));
+  faQueueCloudPush();
 }
 function faGetLastSeen() {
   try { return JSON.parse(localStorage.getItem('fa_last') || 'null'); }
   catch { return null; }
 }
 
-/* ─── Logout ─────────── */
+/* ─── Accountmenu + logout ─────────── */
+function faToggleAccountMenu(btn) {
+  const menu = btn.parentElement.querySelector('.fa-account-menu');
+  const open = menu.hidden;
+  menu.hidden = !open;
+  btn.setAttribute('aria-expanded', String(open));
+  if (open) {
+    const close = e => {
+      if (!btn.parentElement.contains(e.target)) {
+        menu.hidden = true; btn.setAttribute('aria-expanded', 'false');
+        document.removeEventListener('click', close);
+      }
+    };
+    setTimeout(() => document.addEventListener('click', close), 0);
+  }
+}
 function faLogout() {
   if (typeof firebase !== 'undefined' && firebase.auth) {
     if (firebase.auth().currentUser) {
@@ -189,18 +246,52 @@ function faLogout() {
 // Cloud is bij login de bron van waarheid: Firestore → localStorage.
 // Bij allereerste login (nog geen doc) wordt huidige localStorage gepushed,
 // zodat een gast die later inlogt zijn opgebouwde XP behoudt.
+// Voortgang, reeks en laatst geopend vak staan in een apart document in
+// `voortgang/{uid}`, zodat ze niet publiek naast het leaderboard staan.
+let _faCloud = null, _faPushTimer = null;
+function faQueueCloudPush() {
+  if (!_faCloud) return;
+  clearTimeout(_faPushTimer);
+  _faPushTimer = setTimeout(faPushStateToCloud, 1500);
+}
+async function faPushStateToCloud() {
+  if (!_faCloud) return;
+  try {
+    await _faCloud.db.collection('voortgang').doc(_faCloud.uid).set({
+      progress: faGetProgress(),
+      streak: faGetStreakData(),
+      last: faGetLastSeen(),
+      updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+    }, { merge: true });
+  } catch (e) { console.warn('faPushStateToCloud:', e); }
+}
+async function faPullStateFromCloud(user, db) {
+  try {
+    const snap = await db.collection('voortgang').doc(user.uid).get();
+    if (!snap.exists) return;
+    const d = snap.data() || {};
+    const local = faGetProgress();
+    for (const [k, v] of Object.entries(d.progress || {})) local[k] = Math.max(local[k] || 0, v || 0);
+    localStorage.setItem('fa_progress', JSON.stringify(local));
+    const ls = faGetStreakData();
+    if (d.streak && (!ls.last || (d.streak.last || '') > ls.last)) localStorage.setItem('fa_streak', JSON.stringify(d.streak));
+    const ll = faGetLastSeen();
+    if (d.last && (!ll || (d.last.at || 0) > (ll.at || 0))) localStorage.setItem('fa_last', JSON.stringify(d.last));
+  } catch (e) { console.warn('faPullStateFromCloud:', e); }
+}
+
 async function faSyncFromCloud(user, db) {
   if (!user || !db || typeof firebase === 'undefined') return;
+  _faCloud = { uid: user.uid, db };
+  await faPullStateFromCloud(user, db);
+  faQueueCloudPush();
   try {
     const ref = db.collection('scores').doc(user.uid);
     const snap = await ref.get();
     if (snap.exists) {
       const pts = snap.data().pts || 0;
       localStorage.setItem('fa_xp', String(pts));
-      // Header-pil(len) bijwerken
-      document.querySelectorAll('[data-fa-xp]').forEach(el => {
-        el.textContent = pts.toLocaleString('nl-NL').replace(',', ' ');
-      });
+      document.querySelectorAll('[data-fa-xp]').forEach(el => { el.textContent = faFormatXP(pts); });
     } else {
       await ref.set({
         name: user.displayName || 'Anoniem',
@@ -225,21 +316,48 @@ function faClearLocalUser() {
 
 /* ─── Zoekindex + overlay ─────────── */
 const FA_SEARCH_INDEX = [
-  { title: 'Evenementenlogistiek', sub: 'Periode 4 · samenvatting', url: 'evenementenlogistiek.html', icon: 'event' },
-  { title: 'Projectvaardigheden', sub: 'Periode 4 · samenvatting', url: 'projectvaardigheden.html', icon: 'mic' },
-  { title: 'Eventmanagement 1', sub: 'Periode 3 · samenvatting', url: 'eventmanagement1.html', icon: 'book' },
-  { title: 'Facilitaire Inkoop', sub: 'Periode 3 · samenvatting', url: 'facilitaire-inkoop.html', icon: 'cart' },
-  { title: 'EM1 — Begrippen', sub: 'Eventmanagement 1', url: 'em1-begrippen.html', icon: 'book' },
-  { title: 'EM1 — Flashcards', sub: 'Eventmanagement 1', url: 'em1-flashcards.html', icon: 'cards' },
-  { title: 'EM1 — Oefentoets', sub: 'Eventmanagement 1', url: 'em1-oefentoets.html', icon: 'check' },
-  { title: 'EM1 — Samenvatting', sub: 'Eventmanagement 1', url: 'em1-samenvatting.html', icon: 'book' },
-  { title: 'Inkoop — Begrippen', sub: 'Facilitaire Inkoop', url: 'inkoop-begrippen.html', icon: 'cart' },
-  { title: 'Inkoop — Flashcards', sub: 'Facilitaire Inkoop', url: 'inkoop-flashcards.html', icon: 'cards' },
-  { title: 'Inkoop — Samenvatting', sub: 'Facilitaire Inkoop', url: 'inkoop-samenvatting.html', icon: 'book' },
-  { title: 'Recht', sub: 'Verbintenissenrecht · vakhub', url: 'recht.html', icon: 'book' },
-  { title: 'Recht — Begrippen', sub: 'Verbintenissenrecht', url: 'recht-begrippen.html', icon: 'book' },
-  { title: 'Recht — Flashcards', sub: 'Verbintenissenrecht', url: 'recht-flashcards.html', icon: 'cards' },
-  { title: 'Recht — Samenvatting', sub: 'Verbintenissenrecht', url: 'recht-samenvatting.html', icon: 'book' },
+  { title: 'Basis van FM A', sub: 'P1 · vakpagina · FM-basisprincipes, dienstverlening, huisvesting, hospitality', url: 'basis-van-fm-a.html', icon: 'compass' },
+  { title: 'Basis van FM A — Samenvatting', sub: 'Basis van FM A', url: 'bvfma-samenvatting.html', icon: 'book' },
+  { title: 'Basis van FM A — Begrippenlijst', sub: 'Basis van FM A', url: 'bvfma-begrippen.html', icon: 'book' },
+  { title: 'Basis van FM A — Flashcards', sub: 'Basis van FM A', url: 'bvfma-flashcards.html', icon: 'cards' },
+  { title: 'Trendwatchers', sub: 'P1 · vakpagina · DESTEP, trends, risico, impact op FM', url: 'trendwatchers.html', icon: 'scope' },
+  { title: 'Trendwatchers — Samenvatting', sub: 'Trendwatchers', url: 'trendwatchers-samenvatting.html', icon: 'book' },
+  { title: 'Trendwatchers — Begrippenlijst', sub: 'Trendwatchers', url: 'trendwatchers-begrippen.html', icon: 'book' },
+  { title: 'Trendwatchers — Flashcards', sub: 'Trendwatchers', url: 'trendwatchers-flashcards.html', icon: 'cards' },
+  { title: 'Basis van FM B', sub: 'P2 · vakpagina · schoonmaak, catering, veiligheidszorg', url: 'basis-van-fm-b.html', icon: 'building' },
+  { title: 'Basis van FM B — Samenvatting', sub: 'Basis van FM B', url: 'bvfmb-samenvatting.html', icon: 'book' },
+  { title: 'Basis van FM B — Begrippenlijst', sub: 'Basis van FM B', url: 'bvfmb-begrippen.html', icon: 'book' },
+  { title: 'Basis van FM B — Flashcards', sub: 'Basis van FM B', url: 'bvfmb-flashcards.html', icon: 'cards' },
+  { title: 'Facilitaire Bedrijfseconomie', sub: 'P1–P2 · vakpagina · investeren, terugverdientijd, NCW, kostprijs', url: 'bedrijfseconomie.html', icon: 'coin' },
+  { title: 'Facilitaire Bedrijfseconomie — Samenvatting', sub: 'Facilitaire Bedrijfseconomie', url: 'bedrijfseconomie-samenvatting.html', icon: 'book' },
+  { title: 'Facilitaire Bedrijfseconomie — Begrippenlijst', sub: 'Facilitaire Bedrijfseconomie', url: 'bedrijfseconomie-begrippen.html', icon: 'book' },
+  { title: 'Facilitaire Bedrijfseconomie — Flashcards', sub: 'Facilitaire Bedrijfseconomie', url: 'bedrijfseconomie-flashcards.html', icon: 'cards' },
+  { title: 'Eventmanagement 1', sub: 'P3 · vakpagina · projectmanagement, Grit, fasering, EVM', url: 'eventmanagement1.html', icon: 'event' },
+  { title: 'Eventmanagement 1 — Samenvatting', sub: 'Eventmanagement 1', url: 'em1-samenvatting.html', icon: 'book' },
+  { title: 'Eventmanagement 1 — Begrippenlijst', sub: 'Eventmanagement 1', url: 'em1-begrippen.html', icon: 'book' },
+  { title: 'Eventmanagement 1 — Flashcards', sub: 'Eventmanagement 1', url: 'em1-flashcards.html', icon: 'cards' },
+  { title: 'Facilitaire Inkoop', sub: 'P3 · vakpagina · inkoopproces, Kraljic, contractmanagement', url: 'facilitaire-inkoop.html', icon: 'cart' },
+  { title: 'Facilitaire Inkoop — Samenvatting', sub: 'Facilitaire Inkoop', url: 'inkoop-samenvatting.html', icon: 'book' },
+  { title: 'Facilitaire Inkoop — Begrippenlijst', sub: 'Facilitaire Inkoop', url: 'inkoop-begrippen.html', icon: 'book' },
+  { title: 'Facilitaire Inkoop — Flashcards', sub: 'Facilitaire Inkoop', url: 'inkoop-flashcards.html', icon: 'cards' },
+  { title: 'Recht', sub: 'P3 · vakpagina · verbintenissenrecht, overeenkomst, wanprestatie', url: 'recht.html', icon: 'book' },
+  { title: 'Recht — Samenvatting', sub: 'Recht', url: 'recht-samenvatting.html', icon: 'book' },
+  { title: 'Recht — Begrippenlijst', sub: 'Recht', url: 'recht-begrippen.html', icon: 'book' },
+  { title: 'Recht — Flashcards', sub: 'Recht', url: 'recht-flashcards.html', icon: 'cards' },
+  { title: 'Evenementenlogistiek', sub: 'P4 · vakpagina · Eventmanagement 2, schillenmodel, site design', url: 'evenementenlogistiek.html', icon: 'event' },
+  { title: 'Evenementenlogistiek — Samenvatting', sub: 'Evenementenlogistiek', url: 'evenementenlogistiek-samenvatting.html', icon: 'book' },
+  { title: 'Evenementenlogistiek — Begrippenlijst', sub: 'Evenementenlogistiek', url: 'evenementenlogistiek-begrippen.html', icon: 'book' },
+  { title: 'Evenementenlogistiek — Flashcards', sub: 'Evenementenlogistiek', url: 'evenementenlogistiek-flashcards.html', icon: 'cards' },
+  { title: 'Projectvaardigheden', sub: 'P4 · vakpagina · Eventmanagement 2, observeren, interviewen', url: 'projectvaardigheden.html', icon: 'mic' },
+  { title: 'Projectvaardigheden — Samenvatting', sub: 'Projectvaardigheden', url: 'projectvaardigheden-samenvatting.html', icon: 'book' },
+  { title: 'Projectvaardigheden — Begrippenlijst', sub: 'Projectvaardigheden', url: 'projectvaardigheden-begrippen.html', icon: 'book' },
+  { title: 'Projectvaardigheden — Flashcards', sub: 'Projectvaardigheden', url: 'projectvaardigheden-flashcards.html', icon: 'cards' },
+  { title: 'Eventmanagement 1 — Oefentoets 1', sub: '80 juist/onjuist-vragen', url: 'em1-oefentoets.html', icon: 'check' },
+  { title: 'Eventmanagement 1 — Oefentoets 4', sub: 'extra moeilijk, 50 meerkeuze', url: 'eventmanagement-1-oefentoets-4.html', icon: 'check' },
+  { title: 'Eventmanagement 1 — Oefentoets 5', sub: 'tentamenformat, 80 meerkeuze', url: 'eventmanagement-1-oefentoets-5.html', icon: 'check' },
+  { title: 'Eventmanagement 2 — Oefentoets 1', sub: 'Evenementenlogistiek', url: 'evenementenlogistiek-oefenvragen.html', icon: 'check' },
+  { title: 'Eventmanagement 2 — Oefentoets 2', sub: 'logistiek + projectvaardigheden', url: 'eventmanagement-b-oefentoets-2.html', icon: 'check' },
+  { title: 'Eventmanagement 2 — Oefentoets 3', sub: 'extra moeilijk', url: 'eventmanagement-b-oefentoets-3.html', icon: 'check' },
 ];
 
 function faOpenSearch() {
@@ -249,10 +367,10 @@ function faOpenSearch() {
     overlay.id = 'fa-search-overlay';
     overlay.className = 'fa-search-overlay';
     overlay.innerHTML = `
-      <div class="fa-search-modal" onclick="event.stopPropagation()">
+      <div class="fa-search-modal" role="dialog" aria-modal="true" aria-label="Zoeken" onclick="event.stopPropagation()">
         <div class="fa-search-modal-input">
           ${faIcon('search', { size: 18, color: '#8a9299' })}
-          <input id="fa-search-input" placeholder="Zoek in de hele site…" autocomplete="off"/>
+          <input id="fa-search-input" placeholder="Zoek een vak, samenvatting, flashcards of oefentoets…" aria-label="Zoeken" autocomplete="off"/>
           <button class="fa-btn fa-btn-ghost fa-btn-sm" onclick="faCloseSearch()">Esc</button>
         </div>
         <div id="fa-search-results" class="fa-search-results"></div>
@@ -275,11 +393,11 @@ function faRunSearch() {
   const results = q
     ? FA_SEARCH_INDEX.filter(e =>
         e.title.toLowerCase().includes(q) || e.sub.toLowerCase().includes(q))
-    : FA_SEARCH_INDEX.slice(0, 8);
+    : FA_SEARCH_INDEX.filter(e => e.sub.includes('vakpagina'));
   const box = document.getElementById('fa-search-results');
   if (!box) return;
   if (!results.length) {
-    box.innerHTML = `<div class="fa-search-empty">Geen resultaten voor "${q}"</div>`;
+    box.innerHTML = `<div class="fa-search-empty">Geen resultaten voor "${faEsc(q)}"</div>`;
     return;
   }
   box.innerHTML = results.map(r => `
@@ -301,6 +419,11 @@ document.addEventListener('keydown', e => {
     faOpenSearch();
   }
   if (e.key === 'Escape') faCloseSearch();
+  // Enter in het zoekveld opent het eerste resultaat
+  if (e.key === 'Enter' && e.target && e.target.id === 'fa-search-input') {
+    const first = document.querySelector('#fa-search-results a');
+    if (first) window.location.href = first.getAttribute('href');
+  }
 });
 
 /* Auto-render icons on load */

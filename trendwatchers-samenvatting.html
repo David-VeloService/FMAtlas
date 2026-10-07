@@ -3,8 +3,9 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Samenvatting · Trendwatchers — FMAtlas</title>
+<title>Samenvatting · Trendwatchers — FM Atlas</title>
 <link rel="icon" type="image/svg+xml" href="logo.svg"/>
+<meta name="theme-color" content="#f7f3ec"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet"/>
@@ -48,7 +49,7 @@ table.compact td strong { color: var(--ink); font-weight: 800; }
 <body>
 <div id="fa-header-slot"></div>
 <nav class="fa-breadcrumb">
-  <a href="index.html">Home</a>
+  <a href="app.html">Vakken</a>
   <span>›</span>
   <a href="trendwatchers.html">Trendwatchers</a>
   <span>›</span>
@@ -380,7 +381,7 @@ table.compact td strong { color: var(--ink); font-weight: 800; }
               <tr><td><strong>E</strong></td><td>CO₂, energie, water, afval</td><td rowspan="3">Verplichting: rapporteer over E, S, G</td></tr>
               <tr><td><strong>S</strong></td><td>Diversiteit, veiligheid, arbeidsomstandig.</td></tr>
               <tr><td><strong>G</strong></td><td>Transparantie, compliance, ethiek</td></tr>
-              <tr><td><strong>Verplicht</strong></td><td>Vrijwillig (markt- en reputatiedruk)</td><td>Ja, gefaseerd: rapportage over boekjaar 2024 (eerste rapporten 2025) voor grootste beursgenoteerde bedrijven; boekjaar 2025 voor overige grote bedrijven; boekjaar 2026 voor beursgenoteerd mkb (opt-out tot 2028)</td></tr>
+              <tr><td><strong>Verplicht</strong></td><td>Vrijwillig (markt- en reputatiedruk)</td><td>Ja, gefaseerd: boekjaar 2024 voor de grootste beursgenoteerde bedrijven; door de stop-the-clock-richtlijn (EU) 2025/794 boekjaar 2027 voor overige grote bedrijven en 2028 voor beursgenoteerd mkb</td></tr>
             </table>
           </div>
           <div class="section">
@@ -397,9 +398,9 @@ table.compact td strong { color: var(--ink); font-weight: 800; }
   </div>
 
 </div>
-<footer class="fa-footer">
-  <span>FMAtlas · gemaakt door David Koolstra</span>
-  <span>HAN · Facilitair Management · 2026</span>
+<footer class="fa-site-footer">
+  <span>FM Atlas · gratis studiehulp voor HAN Facilitair Management, gemaakt door een student</span>
+  <span>Niet officieel verbonden aan de HAN · <a href="privacy.html">Privacy</a> · <a href="app.html#contact">Fout gezien?</a></span>
 </footer>
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
@@ -416,8 +417,8 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 firebase.auth().onAuthStateChanged(user => {
   document.getElementById('fa-header-slot').innerHTML = '';
-  document.getElementById('fa-header-slot').appendChild(faRenderHeader({ user }));
   faMarkActiveToday();
+  document.getElementById('fa-header-slot').appendChild(faRenderHeader({ user }));
   faMarkLastSeen('trendwatchers','Trendwatchers','trendwatchers.html');
 });
 </script>

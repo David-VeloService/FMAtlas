@@ -3,8 +3,9 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Begrippenlijst · Trendwatchers — FMAtlas</title>
+<title>Begrippenlijst · Trendwatchers — FM Atlas</title>
 <link rel="icon" type="image/svg+xml" href="logo.svg"/>
+<meta name="theme-color" content="#f7f3ec"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet"/>
@@ -44,7 +45,7 @@ mark { background: rgba(239, 90, 63, 0.25); color: var(--ink); border-radius: 3p
 <body>
 <div id="fa-header-slot"></div>
 <nav class="fa-breadcrumb">
-  <a href="index.html">Home</a>
+  <a href="app.html">Vakken</a>
   <span>›</span>
   <a href="trendwatchers.html">Trendwatchers</a>
   <span>›</span>
@@ -71,9 +72,9 @@ mark { background: rgba(239, 90, 63, 0.25); color: var(--ink); border-radius: 3p
     <div>Probeer een andere zoekterm of filter.</div>
   </div>
 </div>
-<footer class="fa-footer">
-  <span>Tip: gebruik de flashcards-modus om actief te oefenen</span>
-  <span>FMAtlas · HAN FM</span>
+<footer class="fa-site-footer">
+  <span>FM Atlas · gratis studiehulp voor HAN Facilitair Management, gemaakt door een student</span>
+  <span>Niet officieel verbonden aan de HAN · <a href="privacy.html">Privacy</a> · <a href="app.html#contact">Fout gezien?</a></span>
 </footer>
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
@@ -91,8 +92,8 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 firebase.auth().onAuthStateChanged(user => {
   document.getElementById('fa-header-slot').innerHTML = '';
-  document.getElementById('fa-header-slot').appendChild(faRenderHeader({ user }));
   faMarkActiveToday();
+  document.getElementById('fa-header-slot').appendChild(faRenderHeader({ user }));
   faMarkLastSeen('trendwatchers','Trendwatchers','trendwatchers.html');
 });
 const { cats, begrippen } = window.TRDW;

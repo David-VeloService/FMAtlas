@@ -474,7 +474,7 @@ window.OT4 = {
     {
       "section": null,
       "num": 40,
-      "text": "In de risicoanalyse van een festival-plan-van-aanpak schat het team twee risico's in op een schaal van 1 tot 5 (gegeven): risico X 'regen tijdens opbouw' heeft kans 4 en gevolg 2; risico Y 'hoofdartiest zegt af' heeft kans 2 en gevolg 5. Welk risico is volgens de lesstof het grootst?",
+      "text": "In de risicoanalyse van een festival-plan-van-aanpak schat het team twee risico's in op een schaal van 1 tot 5: risico X 'regen tijdens opbouw' heeft kans 4 en gevolg 2; risico Y 'hoofdartiest zegt af' heeft kans 2 en gevolg 5. Welk risico is volgens de lesstof het grootst?",
       "options": [
         "Risico Y, want de grootte van een risico = kans van optreden × gevolg, en 2 × 5 is groter dan 4 × 2.",
         "Risico X, want de kans van optreden bepaalt hoe groot een risico is.",

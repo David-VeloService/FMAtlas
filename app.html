@@ -5,15 +5,17 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>FM Atlas — gratis studiehulp voor Facilitair Management</title>
-  <meta name="description" content="Samenvattingen, flashcards en oefentoetsen voor élk vak van Facilitair Management aan de HAN. Gratis. Door studenten, voor studenten." />
+  <meta name="description" content="Samenvattingen, begrippenlijsten, flashcards en oefentoetsen voor de vakken van jaar 1 Facilitair Management aan de HAN. Gratis, gemaakt door een student." />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://fmatlas.nl/" />
+  <meta property="og:url" content="https://fmatlas.nl/app.html" />
+  <link rel="canonical" href="https://fmatlas.nl/app.html" />
   <meta property="og:title" content="FM Atlas — gratis studiehulp voor Facilitair Management" />
-  <meta property="og:description" content="Samenvattingen, flashcards en oefentoetsen voor élk vak van Facilitair Management aan de HAN. Gratis. Door studenten, voor studenten." />
-  <meta property="og:image" content="https://fmatlas.nl/logo.svg" />
+  <meta property="og:description" content="Samenvattingen, begrippenlijsten, flashcards en oefentoetsen voor de vakken van jaar 1 Facilitair Management aan de HAN. Gratis, gemaakt door een student." />
+  <meta property="og:image" content="https://fmatlas.nl/og-image.png" />
+  <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="FM Atlas — gratis studiehulp voor Facilitair Management" />
-  <meta name="twitter:description" content="Samenvattingen, flashcards en oefentoetsen voor élk vak van Facilitair Management aan de HAN. Gratis. Door studenten, voor studenten." />
+  <meta name="twitter:description" content="Samenvattingen, begrippenlijsten, flashcards en oefentoetsen voor de vakken van jaar 1 Facilitair Management aan de HAN. Gratis, gemaakt door een student." />
   <link rel="icon" type="image/svg+xml" href="logo.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -692,6 +694,8 @@
     .period-block {
       margin-bottom: 28px;
     }
+    .vak-parts { display: flex; flex-wrap: wrap; gap: 6px; padding-top: 12px; border-top: 1px dashed var(--line); }
+    .vak-part { font-size: 11.5px; font-weight: 700; color: var(--ink-soft); background: var(--surface-alt); border: 1px solid var(--line); border-radius: 999px; padding: 3px 10px; }
   </style>
 </head>
 
@@ -701,15 +705,16 @@
   <div id="fa-login">
     <div class="fa-login-card">
       <div class="fa-login-logo">
-        <svg width="34" height="34" viewBox="0 0 32 32" fill="none">
+        <svg width="34" height="34" viewBox="0 0 32 32" fill="none" aria-hidden="true">
           <circle cx="16" cy="16" r="14" fill="#ffffff" stroke="#1a2024" stroke-width="2" />
           <path d="M16 7 L20 16 L16 15 Z" fill="#ef5a3f" stroke="#1a2024" stroke-width="1" stroke-linejoin="round" />
           <path d="M16 25 L12 16 L16 17 Z" fill="#f1ece2" stroke="#1a2024" stroke-width="1" stroke-linejoin="round" />
           <circle cx="16" cy="16" r="1.4" fill="#1a2024" />
         </svg>
-        FMAtlas
+        FM Atlas
       </div>
       <p>Log in om je voortgang op te slaan, je reeks bij te houden en het leaderboard te zien.</p>
+      <p class="fa-login-privacy-note" style="font-size:12px;margin-top:-6px">Op het leaderboard staan je voornaam, de eerste letter van je achternaam en je Google-profielfoto. <a href="privacy.html">Privacy</a></p>
       <button class="fa-google-btn" id="google-login-btn" onclick="signInWithGoogle()">
         <svg width="18" height="18" viewBox="0 0 48 48">
           <path fill="#EA4335"
@@ -738,8 +743,8 @@
         <div>
           <div class="home-hero-badge" id="hero-badge">GA VERDER WAAR JE WAS</div>
           <h1 id="hero-title">
-            Goedemiddag <span id="hero-name">student</span>,<br />
-            <em id="hero-section">Evenementenlogistiek</em> wacht op je.
+            <span id="hero-greet">Hoi</span> <span id="hero-name">student</span>,<br />
+            <em id="hero-section">welk vak</em> pak je vandaag op?
           </h1>
           <p id="hero-sub">
             Kies een vak om verder te gaan met je samenvatting, oefen flashcards of test jezelf met een oefentoets.
@@ -765,7 +770,7 @@
         </div>
 
         <div class="home-mascot">
-          <svg width="180" height="180" viewBox="0 0 200 200" fill="none">
+          <svg width="180" height="180" viewBox="0 0 200 200" fill="none" aria-hidden="true">
             <circle cx="100" cy="105" r="88" fill="#fde4dd" opacity="0.15" />
             <circle cx="100" cy="105" r="72" fill="#fff" stroke="#1a2024" stroke-width="2.5" />
             <g stroke="#4a5258" stroke-linecap="round">
@@ -797,7 +802,7 @@
           <div id="vakken-list"></div>
 
           <!-- CONTACT -->
-          <div class="fa-card" style="margin-top:8px">
+          <div class="fa-card" style="margin-top:8px" id="contact">
             <div class="fa-card-title">
               <span data-fa-icon="chat" data-fa-size="16" style="color:var(--accent)"></span>
               Stel een vraag
@@ -808,17 +813,17 @@
             <form id="contact-form" action="https://formspree.io/f/mpqbarbd" method="POST"
               onsubmit="handleFormSubmit(event)">
               <div class="contact-grid">
-                <input class="form-input" name="naam" placeholder="Je naam" required />
-                <input class="form-input" name="email" type="email" placeholder="E-mailadres" required />
+                <input class="form-input" name="naam" placeholder="Je naam" aria-label="Je naam" autocomplete="name" required />
+                <input class="form-input" name="email" type="email" placeholder="E-mailadres" aria-label="E-mailadres" autocomplete="email" required />
               </div>
-              <textarea class="form-textarea" name="bericht" placeholder="Typ hier je vraag…" required
+              <textarea class="form-textarea" name="bericht" placeholder="Typ hier je vraag of de fout die je zag…" aria-label="Je vraag" required
                 style="margin-bottom:12px"></textarea>
               <div style="display:flex;align-items:center;flex-wrap:wrap">
                 <button class="fa-btn fa-btn-primary" type="submit">
                   <span data-fa-icon="send" data-fa-size="14"></span>
                   Verstuur bericht
                 </button>
-                <span class="form-success" id="form-success">Verstuurd! Je hoort snel van me.</span>
+                <span class="form-success" id="form-success" role="status" aria-live="polite">Verstuurd! Je hoort snel van me.</span>
               </div>
             </form>
           </div>
@@ -877,7 +882,7 @@
               </span>
             </div>
             <p style="font-size:12.5px;color:var(--ink-soft);font-weight:600;line-height:1.5;margin-bottom:14px">
-              FMAtlas is gratis voor alle FM-studenten. Helpt het je bij je studie? Dan is een kleine bijdrage
+              FM Atlas is gratis voor alle FM-studenten. Helpt het je bij je studie? Dan is een kleine bijdrage
               erg welkom.
             </p>
             <a class="fa-btn fa-btn-primary" href="https://ko-fi.com/davidkoolstra" target="_blank" rel="noopener">
@@ -905,25 +910,31 @@
       </div>
     </div>
 
-    <footer class="fa-footer">
-      <span>FMAtlas · gemaakt door David Koolstra</span>
-      <span>Facilitair Management · 2026</span>
+    <footer class="fa-site-footer">
+      <span>FM Atlas · gratis studiehulp voor HAN Facilitair Management, gemaakt door een student</span>
+      <span>Niet officieel verbonden aan de HAN · <a href="privacy.html">Privacy</a> · <a href="#contact">Fout gezien?</a></span>
     </footer>
   </div>
 
   <script src="js/fmatlas.js"></script>
   <script>
     // ── Data ──────────────────────────────────────────────
+    // Eén regel per vak. `keys` = de voortgangssleutels die meetellen (gemiddelde),
+    // `parts` = wat er voor dit vak op de site staat.
     const VAKKEN = [
-      { key: 'evenementenlogistiek', title: 'Evenementenlogistiek', sub: 'Schillenmodel · mobiliteit · toegang', period: 4, active: true, icon: 'event', url: 'evenementenlogistiek.html' },
-      { key: 'projectvaardigheden', title: 'Projectvaardigheden', sub: 'Observeren · interviewen · rapporteren', period: 4, active: true, icon: 'mic', url: 'projectvaardigheden.html' },
-      { key: 'eventmanagement1', title: 'Eventmanagement 1', sub: 'Inleiding op eventprocessen', period: 3, grade: '7,8', icon: 'book', url: 'eventmanagement1.html' },
-      { key: 'facilitaire-inkoop', title: 'Facilitaire Inkoop', sub: 'Inkoop + verbintenissenrecht', period: 3, grade: '6,4', icon: 'cart', url: 'facilitaire-inkoop.html' },
-      { key: 'basis-fm-b', title: 'Basis van FM — B', sub: 'Schoonmaak · Catering · Veiligheidszorg', period: 2, grade: '7,2', icon: 'building', url: 'basis-van-fm-b.html' },
-      { key: 'facilitaire-bedrijfseconomie', title: 'Facilitaire Bedrijfseconomie', sub: 'Begroting & kosten', period: 2, grade: '6,9', icon: 'coin', url: 'bedrijfseconomie.html' },
-      { key: 'basis-fm-a', title: 'Basis van FM — A', sub: 'Introductie beroepsprofiel', period: 1, grade: '7,5', icon: 'compass', url: 'basis-van-fm-a.html' },
-      { key: 'trendwatchers', title: 'Trendwatchers', sub: 'Trends & impact op FM', period: 1, grade: '8,0', icon: 'scope', url: 'trendwatchers.html' },
+      { key: 'basis-van-fm-a', title: 'Basis van FM — A', sub: 'FM-basisprincipes · dienstverlening · huisvesting', period: 1, icon: 'compass', url: 'basis-van-fm-a.html', parts: ['Samenvatting', 'Begrippen', 'Flashcards'] },
+      { key: 'trendwatchers', title: 'Trendwatchers', sub: 'DESTEP · trends · impact op FM', period: 1, icon: 'scope', url: 'trendwatchers.html', parts: ['Samenvatting', 'Begrippen', 'Flashcards'] },
+      { key: 'basis-fm-b', title: 'Basis van FM — B', sub: 'Schoonmaak · catering · veiligheidszorg', period: 2, icon: 'building', url: 'basis-van-fm-b.html', parts: ['Samenvattingen', 'Begrippen', 'Flashcards'] },
+      { key: 'facilitaire-bedrijfseconomie', title: 'Facilitaire Bedrijfseconomie', sub: 'Investeren · terugverdientijd · kostprijs (P1 + P2)', period: 2, icon: 'coin', url: 'bedrijfseconomie.html', parts: ['Samenvatting', 'Begrippen', 'Flashcards'] },
+      { key: 'eventmanagement1', title: 'Eventmanagement 1', sub: 'Projectmanagement (Grit) · projectvaardigheden', period: 3, icon: 'event', url: 'eventmanagement1.html', parts: ['Samenvatting', 'Begrippen', 'Flashcards', '3 oefentoetsen'] },
+      { key: 'facilitaire-inkoop', keys: ['facilitaire-inkoop', 'recht'], title: 'Facilitaire Inkoop', sub: 'Inkoopmanagement + verbintenissenrecht', period: 3, icon: 'cart', url: 'facilitaire-inkoop.html', parts: ['Samenvattingen', 'Begrippen', 'Flashcards'] },
+      { key: 'evenementenlogistiek', title: 'Evenementenlogistiek', sub: 'Eventmanagement 2 · schillenmodel · site design', period: 4, icon: 'event', url: 'evenementenlogistiek.html', parts: ['Samenvatting', 'Begrippen', 'Flashcards', '3 oefentoetsen'] },
+      { key: 'projectvaardigheden', title: 'Projectvaardigheden', sub: 'Eventmanagement 2 · observeren · interviewen', period: 4, icon: 'mic', url: 'projectvaardigheden.html', parts: ['Samenvatting', 'Begrippen', 'Flashcards', '2 oefentoetsen'] },
     ];
+    function vakPct(v, progress) {
+      const ks = v.keys || [v.key];
+      return Math.round(ks.reduce((a, k) => a + (progress[k] || 0), 0) / ks.length);
+    }
 
     // ── Firebase ──────────────────────────────────────────
     const firebaseConfig = {
@@ -980,12 +991,16 @@
 
     // ── App render ────────────────────────────────────────
     function initApp(user) {
-      // Header
+      // Header (reeks eerst bijwerken, zodat de pil klopt)
+      faMarkActiveToday();
       document.getElementById('fa-header-slot').innerHTML = '';
       document.getElementById('fa-header-slot').appendChild(faRenderHeader({ user }));
 
       // Hero
       const firstName = user?.displayName ? user.displayName.split(' ')[0] : 'student';
+      const h = new Date().getHours();
+      const greet = h < 6 ? 'Goedenacht' : h < 12 ? 'Goedemorgen' : h < 18 ? 'Goedemiddag' : 'Goedenavond';
+      document.getElementById('hero-greet').textContent = greet;
       document.getElementById('hero-name').textContent = firstName;
 
       const last = faGetLastSeen();
@@ -993,7 +1008,7 @@
       if (last) {
         document.getElementById('hero-badge').textContent = 'GA VERDER WAAR JE WAS';
         document.getElementById('hero-title').innerHTML =
-          `Hoi ${firstName},<br/><em>${last.label}</em> wacht op je.`;
+          `${greet} ${faEsc(firstName)},<br/><em>${faEsc(last.label)}</em> wacht op je.`;
         const pct = progress[last.key] || 0;
         document.getElementById('hero-progress-wrap').style.display = 'flex';
         document.getElementById('hero-progress-fill').style.width = pct + '%';
@@ -1001,25 +1016,23 @@
         document.getElementById('hero-progress-note').textContent = '';
         document.getElementById('hero-btn-continue').href = last.url;
         document.getElementById('hero-btn-label').textContent = 'Verder gaan';
-        document.getElementById('hero-sub').textContent =
-          'Je stopte in ' + last.label + '. Nog één sessie en je streak blijft staan.';
+        document.getElementById('hero-sub').textContent = faStudiedToday()
+          ? 'Je was bezig met ' + last.label + '. Je reeks staat voor vandaag al.'
+          : 'Je was bezig met ' + last.label + '. Oefen vandaag een paar flashcards en je reeks loopt door.';
       } else {
-        document.getElementById('hero-badge').textContent = 'WELKOM BIJ FMATLAS';
+        document.getElementById('hero-badge').textContent = 'WELKOM BIJ FM ATLAS';
         document.getElementById('hero-btn-continue').href = '#vakken';
       }
 
       // Vakken per periode
       renderVakken();
 
-      // Streak
+      // Streak (alleen bijwerken; verlengen gebeurt bij oefenen)
+      faMarkActiveToday();
       renderStreak();
 
       // Tip van de dag
       renderTip();
-
-      // Mark active (pings the streak)
-      faMarkActiveToday();
-      renderStreak();
     }
 
     // ── Tips ──────────────────────────────────────────────
@@ -1068,9 +1081,9 @@
       const container = document.getElementById('vakken-list');
       const progress = faGetProgress();
       const last = faGetLastSeen();
-      const byPeriod = [4, 3, 2, 1].map(p => ({
+      const byPeriod = [1, 2, 3, 4].map(p => ({
         num: p,
-        note: p === 4 ? 'Lopend · week 6' : '',
+        note: 'jaar 1',
         courses: VAKKEN.filter(v => v.period === p),
       }));
 
@@ -1083,8 +1096,8 @@
       </div>
       <div class="vak-list">
         ${p.courses.map(c => {
-        const pct = progress[c.key] || 0;
-        const isLast = last && last.key === c.key;
+        const pct = vakPct(c, progress);
+        const isLast = last && (c.keys || [c.key]).includes(last.key);
         return `
             <a class="vak-card ${isLast ? 'last' : ''}" href="${c.url}" onclick="faMarkLastSeen('${c.key}','${c.title.replace(/'/g, "\\'")}','${c.url}')">
               ${isLast ? '<span class="vak-card-badge">LAATST OPEN</span>' : ''}
@@ -1101,13 +1114,8 @@
                 </div>
                 <span class="vak-pct active">${pct}%</span>
               </div>
-              <div class="vak-actions">
-                <span class="fa-btn fa-btn-ghost">
-                  <span data-fa-icon="book" data-fa-size="13"></span> Samenvatting
-                </span>
-                <span class="fa-btn fa-btn-ghost">
-                  <span data-fa-icon="cards" data-fa-size="13"></span> Flashcards
-                </span>
+              <div class="vak-parts">
+                ${c.parts.map(t => `<span class="vak-part">${t}</span>`).join('')}
               </div>
             </a>
           `;
@@ -1147,9 +1155,9 @@
 
       document.getElementById('streak-hint').innerHTML = count === 0
         ? '<strong>Start je reeks</strong> door een flashcard of oefentoets te maken.'
-        : (count >= 7
-          ? `<strong>Top bezig!</strong> Je bent al ${count} dagen op rij aan het studeren.`
-          : `<strong>Nog één sessie</strong> vandaag en je reeks blijft staan.`);
+        : faStudiedToday()
+          ? (count >= 7 ? `<strong>Top bezig!</strong> Al ${count} dagen op rij geoefend.` : '<strong>Vandaag gedaan.</strong> Kom morgen terug voor de volgende dag.')
+          : `<strong>Nog één sessie</strong> vandaag en je reeks blijft staan.`;
     }
 
     // ── Leaderboard ──────────────────────────────────────
@@ -1162,10 +1170,13 @@
         if (!entries.length) { list.innerHTML = ''; empty.style.display = 'block'; return; }
         empty.style.display = 'none';
         list.innerHTML = entries.map((u, i) => {
-          const initials = (u.name || 'U').split(' ').map(w => w[0]).slice(0, 2).join('').toUpperCase();
-          const avatarHtml = u.photoURL
-            ? `<img src="${u.photoURL}" alt="" referrerpolicy="no-referrer"/>`
-            : initials;
+          const parts = String(u.name || 'Onbekend').trim().split(/\s+/);
+          const shortName = parts.length > 1 ? `${parts[0]} ${parts[parts.length - 1][0].toUpperCase()}.` : parts[0];
+          const initials = parts.map(w => w[0]).slice(0, 2).join('').toUpperCase();
+          const photo = faSafePhoto(u.photoURL);
+          const avatarHtml = photo
+            ? `<img src="${photo}" alt="" referrerpolicy="no-referrer"/>`
+            : faEsc(initials);
           const isMe = u.id === currentUid;
           const rankCls = i === 0 ? 'gold' : i === 1 ? 'silver' : i === 2 ? 'bronze' : '';
           return `
@@ -1173,11 +1184,11 @@
           <span class="lb-rank ${rankCls}">${i + 1}</span>
           <div class="lb-avatar">${avatarHtml}</div>
           <span class="lb-name ${isMe ? 'me' : ''}">
-            ${u.name || 'Onbekend'}${isMe ? ' <span style="color:var(--accent);font-weight:800">· jij</span>' : ''}
+            ${faEsc(shortName)}${isMe ? ' <span style="color:var(--accent-deep);font-weight:800">· jij</span>' : ''}
           </span>
           <span class="lb-pts">
             ${faIcon('bolt', { size: 11, color: '#d4a017' })}
-            ${(u.pts || 0).toLocaleString('nl-NL').replace(',', ' ')}
+            ${faFormatXP(u.pts)}
           </span>
         </div>`;
         }).join('');
@@ -1193,12 +1204,6 @@
       const form = document.getElementById('contact-form');
       const success = document.getElementById('form-success');
       const btn = form.querySelector('button[type="submit"]');
-      if (form.action.includes('YOUR_FORM_ID')) {
-        success.textContent = 'Stel eerst Formspree in.';
-        success.style.color = '#f59e0b';
-        success.style.display = 'inline';
-        return;
-      }
       btn.disabled = true; btn.textContent = 'Versturen…';
       fetch(form.action, { method: 'POST', body: new FormData(form), headers: { 'Accept': 'application/json' } })
         .then(r => {

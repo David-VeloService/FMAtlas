@@ -10,6 +10,7 @@ BECO.cats = [
   { key:"managen",      label:"Managen en calculatie",     short:"Managen",      color:"#8b5cf6" },
   { key:"kengetallen",  label:"Financiële kengetallen",    short:"Kengetallen",  color:"#ec4899" },
   { key:"beoordelen",   label:"Investeringsbeoordeling",   short:"Investering",  color:"#ef4444" },
+  { key:"fm-economie",  label:"FM-economie: TCO en NEN 2748", short:"FM-economie", color:"#0ea5e9" },
 ];
 
 /* ─── Begrippen ─────────────────────────── */
@@ -37,7 +38,7 @@ BECO.begrippen = [
   {cat:"overzichten", term:"EBIT", def:"Earnings Before Interest and Taxes. Winst vóórdat rente en belastingen eraf zijn gehaald. EBIT = EBITDA - Afschrijvingen."},
   {cat:"overzichten", term:"EBT", def:"Earnings Before Taxes. Winst vóórdat de belasting eraf is gehaald. EBT = EBIT - Rentekosten."},
   {cat:"overzichten", term:"EAT", def:"Earnings After Taxes. Nettowinst nadat de vennootschapsbelasting eraf is gehaald. EAT = EBT - Vennootschapsbelasting."},
-  {cat:"overzichten", term:"Kasstroomoverzicht (liquiditeitsbegroting)", def:"Overzicht van ontvangsten en uitgaven over een bepaalde periode. Let op: niet kosten en opbrengsten, maar daadwerkelijke geldstromen."},
+  {cat:"overzichten", term:"Kasstroomoverzicht en liquiditeitsbegroting", def:"Overzicht van ontvangsten en uitgaven over een periode. Het kasstroomoverzicht kijkt terug, de liquiditeitsbegroting kijkt vooruit. Let op: niet kosten en opbrengsten, maar daadwerkelijke geldstromen."},
   {cat:"overzichten", term:"Crediteur", def:"Een leverancier die jij nog moet betalen. Staat op de creditzijde van de balans als schuld, altijd inclusief BTW."},
   {cat:"overzichten", term:"Debiteur", def:"Een klant die jou nog moet betalen. Staat op de debetzijde van de balans als vordering, altijd inclusief BTW."},
 
@@ -45,7 +46,7 @@ BECO.begrippen = [
   {cat:"kosten", term:"BTW (omzetbelasting)", def:"Bij inkoop mag de ondernemer de betaalde BTW terugvragen (te vorderen BTW, debetzijde). Bij verkoop moet de ontvangen BTW worden afgedragen (te betalen BTW, creditzijde). Factuurstelsel: BTW boeken op moment van factuur."},
   {cat:"kosten", term:"BTW berekening", def:"Bedrag excl. BTW = Bedrag incl. BTW / 1,21. Bedrag incl. BTW = Bedrag excl. BTW × 1,21. BTW-bedrag = Bedrag excl. × 0,21."},
   {cat:"kosten", term:"Vennootschapsbelasting (VPB)", def:"Belasting die een onderneming betaalt over de winst. Berekening: EBT × VPB-percentage."},
-  {cat:"kosten", term:"Voorziening", def:"Een financiële reserve op de balans voor verwachte maar nog onzekere toekomstige kosten. Per jaar: totale voorziene kosten / aantal jaren. Is een kost, maar GEEN uitgave."},
+  {cat:"kosten", term:"Voorziening", def:"Post aan de creditzijde van de balans (geen eigen vermogen) voor verwachte maar nog onzekere toekomstige uitgaven. Per jaar: totale voorziene kosten / aantal jaren. Is een kost, maar GEEN uitgave."},
   {cat:"kosten", term:"Differentiële calculatie", def:"Rekenmethode waarbij je alleen kijkt naar kosten en opbrengsten die extra bij komen of wegvallen door een beslissing. Constante kosten en sunk costs worden niet meegenomen."},
   {cat:"kosten", term:"Sunk costs (verzonken kosten)", def:"Kosten die al gemaakt zijn vóór de beslissing en niet meer teruggehaald kunnen worden. Worden bij differentiële calculatie buiten beschouwing gelaten."},
   {cat:"kosten", term:"Dekkingsbijdrage", def:"Verkoopprijs per stuk minus variabele kosten per stuk. Geeft aan hoeveel elke verkochte eenheid bijdraagt aan het dekken van de vaste kosten. Formule: p - v."},

@@ -8,6 +8,7 @@ PVRD.cats = [
   { key:"communiceren",  label:"Zakelijk communiceren",   short:"Communiceren",  color:"#10b981" },
   { key:"interviewen",   label:"Interviewen",             short:"Interviewen",   color:"#8b5cf6" },
   { key:"enquêteren",    label:"Enquêteren",              short:"Enquêteren",    color:"#f97316" },
+  { key:"analyse",       label:"Steekproef en analyse",   short:"Analyse",       color:"#ef4444" },
 ];
 
 /* ─── Begrippen ─────────────────────────── */
@@ -20,7 +21,7 @@ PVRD.begrippen = [
   {cat:"observeren", term:"Observatieonderzoek", def:"Een onderzoeksmethode gericht op systematische waarneming van gedrag. De onderzoeker verandert de bestaande situatie niet, maar observeert en legt observaties vast."},
   {cat:"observeren", term:"Participerende observatie", def:"De onderzoeker neemt actief deel aan het onderzochte proces of de groep. Meer begrip voor context, maar groter risico op subjectiviteit."},
   {cat:"observeren", term:"Niet-participerende observatie", def:"De onderzoeker observeert van buitenaf, zonder deel te nemen. Meer objectief, maar minder diep begrip van de context."},
-  {cat:"observeren", term:"Verhulde observatie", def:"De onderzoeksgroep is niet op de hoogte van de observatie. Voordeel: sociaal wenselijkheid speelt geen rol."},
+  {cat:"observeren", term:"Verhulde observatie", def:"De onderzoeksgroep is niet op de hoogte van de observatie. Voordeel: sociale wenselijkheid speelt geen rol."},
   {cat:"observeren", term:"Onverhulde observatie", def:"De onderzoeksgroep weet dat ze geobserveerd worden. Nadeel: gedrag kan beïnvloed zijn door het observator-effect."},
   {cat:"observeren", term:"Gestructureerde observatie", def:"Er wordt gebruik gemaakt van een vooraf vastgesteld observatieschema of turflijst. Zorgt voor objectieve, standaard data."},
   {cat:"observeren", term:"Niet-gestructureerde observatie", def:"De onderzoeker noteert open wat hij waarneemt, zonder vast schema. Meer flexibel maar minder vergelijkbaar."},
@@ -29,7 +30,6 @@ PVRD.begrippen = [
   {cat:"observeren", term:"Time sampling", def:"Je observeert alleen tijdens afgebakende, van tevoren vastgestelde perioden."},
   {cat:"observeren", term:"Event sampling", def:"Je noteert alles wat er gebeurt gedurende een specifieke gebeurtenis of situatie."},
   {cat:"observeren", term:"Operationaliseren (observeren)", def:"Vooraf bepalen wat je precies gaat observeren: frequentie, duur, kwaliteit en richting van gedrag. Categorieën moeten concreet, classificeerbaar en objectief zijn."},
-  {cat:"observeren", term:"Triangulatie", def:"Combineren van meerdere onderzoeksmethoden zodat ze elkaar valideren. Maakt het onderzoek betrouwbaarder en valider."},
 
   /* 2. Zakelijk communiceren */
   {cat:"communiceren", term:"5 communicatiedoelen", def:"Informeren (weten), Overtuigen (geloven), Appelleren (doen), Instrueren (kunnen), Motiveren (willen)."},

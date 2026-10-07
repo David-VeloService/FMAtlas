@@ -25,7 +25,6 @@ EM1.begrippen = [
   {cat:"project", term:"Opdrachtgever", def:"De persoon of organisatie die het project opdraagt, het budget verstrekt en het eindresultaat accepteert. Staat buiten het projectteam."},
   {cat:"project", term:"Projectleider", def:"Verantwoordelijk voor de dagelijkse uitvoering, planning en coördinatie van het project. Rapporteert aan de opdrachtgever."},
   {cat:"project", term:"Stuurgroep", def:"Strategisch beslisorgaan bestaande uit de opdrachtgever en andere beslissingsbevoegde stakeholders. Neemt go/no-go beslissingen bij faseovergangen."},
-  {cat:"project", term:"Stakeholder", def:"Iedereen die belang heeft bij of invloed uitoefent op het project. Niet per se financieel — ook organisatorisch, maatschappelijk of persoonlijk."},
   {cat:"project", term:"Projectresultaat", def:"Het tastbare of ontastbare eindproduct van het project: kan een product, dienst, rapport, evenement of verandering zijn."},
   {cat:"project", term:"Kick-off meeting", def:"Officiële startbijeenkomst aan het begin van een project. Alle betrokkenen worden geïnformeerd over doel, aanpak en rolverdeling."},
   {cat:"project", term:"Go/no-go beslissing", def:"Formele beslissing aan het einde van een projectfase: gaan we door naar de volgende fase of stoppen we? Genomen door de stuurgroep."},
@@ -37,12 +36,12 @@ EM1.begrippen = [
   {cat:"project", term:"SMART", def:"Methode om doelstellingen concreet te formuleren: Specifiek, Meetbaar, Acceptabel, Realistisch, Tijdgebonden. Garandeert niet dat een doel haalbaar is."},
 
   /* 2. Traditionele fasering */
-  {cat:"fasering", term:"Traditionele fasering (volgorde)", def:"Definitie → Ontwerp → Voorbereiding → Realisatie → Nazorg. Let op: Ontwerp komt vóór Voorbereiding!"},
-  {cat:"fasering", term:"Definitiefase", def:"Eerste fase: doel, haalbaarheid en opdracht worden bepaald. Levert het Plan van Aanpak op."},
-  {cat:"fasering", term:"Ontwerpfase", def:"Tweede fase: uitwerken wat er gemaakt wordt. Levert een functioneel of technisch ontwerp (document), niet standaard een fysiek prototype."},
-  {cat:"fasering", term:"Voorbereidingsfase", def:"Derde fase: inkoop, aanbesteding, detailplanning en organisatie klaarstomen voor uitvoering."},
-  {cat:"fasering", term:"Realisatiefase", def:"Vierde fase: de daadwerkelijke uitvoering. Hier wordt het eindresultaat gebouwd of gerealiseerd."},
-  {cat:"fasering", term:"Nazorgfase", def:"Vijfde fase: overdracht, evaluatie en afbouw van de projectorganisatie. Het resultaat wordt overgedragen aan de opdrachtgever of beheerorganisatie."},
+  {cat:"fasering", term:"Traditionele fasering (volgorde)", def:"Initiatief → Definitie → Ontwerp → Voorbereiding → Realisatie → Nazorg (zes fasen, Grit). Let op: Ontwerp komt vóór Voorbereiding!"},
+  {cat:"fasering", term:"Definitiefase", def:"Tweede fase, na de initiatieffase: doel, haalbaarheid en opdracht worden bepaald. Levert het Plan van Aanpak op."},
+  {cat:"fasering", term:"Ontwerpfase", def:"Derde fase: uitwerken wat er gemaakt wordt. Levert een functioneel of technisch ontwerp (document), niet standaard een fysiek prototype."},
+  {cat:"fasering", term:"Voorbereidingsfase", def:"Vierde fase: inkoop, aanbesteding, detailplanning en organisatie klaarstomen voor uitvoering."},
+  {cat:"fasering", term:"Realisatiefase", def:"Vijfde fase: de daadwerkelijke uitvoering. Hier wordt het eindresultaat gebouwd of gerealiseerd."},
+  {cat:"fasering", term:"Nazorgfase", def:"Zesde fase: overdracht, evaluatie en afbouw van de projectorganisatie. Het resultaat wordt overgedragen aan de opdrachtgever of beheerorganisatie."},
   {cat:"fasering", term:"Watervalmodel", def:"Lineaire, sequentiële aanpak waarbij elke fase volledig wordt afgerond voor de volgende begint. Moeilijk om halverwege grote wijzigingen door te voeren."},
   {cat:"fasering", term:"Fase-gate", def:"Controlemoment aan het einde van elke fase. De stuurgroep beoordeelt of aan de criteria is voldaan en neemt een go/no-go beslissing."},
 
@@ -74,7 +73,7 @@ EM1.begrippen = [
   /* 4b. Stakeholdermanagement */
   {cat:"project", term:"Stakeholder", def:"Persoon of partij die invloed heeft op het project of erdoor beïnvloed wordt: opdrachtgever, gebruikers, leveranciers, omwonenden, vergunningverleners, eigen medewerkers."},
   {cat:"project", term:"Stakeholderanalyse", def:"Stelselmatig in kaart brengen van alle stakeholders en hun belangen. Werkwijze: lijst opstellen → scoren op macht en belang → in matrix plotten → strategie per kwadrant kiezen → herzien per fase."},
-  {cat:"project", term:"Power/interest-matrix", def:"Stakeholdermatrix met twee assen — macht (kunnen ze beslissingen forceren?) en belang (raakt het project hen direct?). Vier kwadranten: hoge macht/hoog belang = manage closely; hoge macht/laag belang = tevreden houden; lage macht/hoog belang = informeren; lage macht/laag belang = monitoren."},
+  {cat:"project", term:"Power/interest-matrix", def:"Stakeholdermatrix met twee assen — macht (kunnen ze beslissingen forceren?) en belang (raakt het project hen direct?). Vier kwadranten: hoge macht/hoog belang = nauw betrekken (manage closely); hoge macht/laag belang = tevreden houden; lage macht/hoog belang = informeren; lage macht/laag belang = monitoren."},
 
   /* 5. Risicobeheersing */
   {cat:"risico", term:"Risico", def:"Een onzekere gebeurtenis die een positief (kans) of negatief (bedreiging) effect kan hebben op projectdoelen."},
@@ -91,9 +90,9 @@ EM1.begrippen = [
   {cat:"organisatie", term:"Matrixorganisatie", def:"Organisatievorm waarbij een medewerker rapporteert aan zowel de lijnmanager (functioneel) als de projectleider (projectmatig). Dubbele rapportagelijn."},
   {cat:"organisatie", term:"Zuivere projectorganisatie", def:"Medewerkers worden volledig losgemaakt van de lijnorganisatie voor de duur van het project. Projectleider heeft volledige zeggenschap."},
   {cat:"organisatie", term:"Stafprojectorganisatie", def:"Projectleider heeft een adviserende rol zonder directe bevoegdheid over de medewerkers; die blijven in de lijn."},
-  {cat:"organisatie", term:"MVO (Maatschappelijk Verantwoord Ondernemen)", def:"Bedrijfsvoering waarbij rekening wordt gehouden met People (sociaal), Planet (milieu) en Profit (economisch). Standaardmodel heeft drie P's."},
+  {cat:"organisatie", term:"MVO (Maatschappelijk Verantwoord Ondernemen)", def:"Bedrijfsvoering waarbij rekening wordt gehouden met People (sociaal), Planet (milieu) en Profit (economisch). Het MVO-model heeft drie P's; bij maatschappelijk verantwoord projectmanagement (MVP) komt Project erbij als vierde P."},
   {cat:"organisatie", term:"People (MVO)", def:"De sociale dimensie van MVO: eerlijke arbeidsomstandigheden, mensenrechten, maatschappelijke bijdrage."},
-  {cat:"organisatie", term:"Planet (MVO)", def:"De ecologische dimensie van MVO: milieubescherming, CO₂-reductie, duurzame grondstofgebruik."},
+  {cat:"organisatie", term:"Planet (MVO)", def:"De ecologische dimensie van MVO: milieubescherming, CO₂-reductie, duurzaam grondstofgebruik."},
   {cat:"organisatie", term:"Profit (MVO)", def:"De economische dimensie van MVO: financieel gezonde bedrijfsvoering die waarde creëert voor alle stakeholders."},
 
   /* 7. Belbin */
@@ -115,8 +114,8 @@ EM1.begrippen = [
   {cat:"scrum", term:"Sprint", def:"Timeboxed iteratie van 1–4 weken. Het team levert aan het einde een werkend increment op. De duur is vast gedurende het project."},
   {cat:"scrum", term:"Product Owner", def:"Verantwoordelijk voor de product backlog: prioriteert, beheert en communiceert wat er gebouwd moet worden. Vertegenwoordigt de klant/business."},
   {cat:"scrum", term:"Scrum Master", def:"Dienende leider die het Scrum-proces begeleidt en obstakels wegneemt. Heeft geen inhoudelijke bevoegdheid en is niet verantwoordelijk voor de backlog."},
-  {cat:"scrum", term:"Development Team", def:"Zelforganiserend, cross-functioneel team dat het werk uitvoert. Bepaalt zelf hoeveel werk het in een sprint kan verwerken (velocity)."},
-  {cat:"scrum", term:"Product Backlog", def:"Geprioriteerde lijst van alle gewenste functionaliteiten, bugs en verbeteringen. Bevat zowel voltooide als nog te doen items. Eigendom van de Product Owner."},
+  {cat:"scrum", term:"Developers (vroeger Development Team)", def:"Zelforganiserend, cross-functioneel team dat het werk uitvoert. Bepaalt zelf hoeveel werk het in een sprint kan verwerken (velocity)."},
+  {cat:"scrum", term:"Product Backlog", def:"Geprioriteerde lijst van alle gewenste functionaliteiten, bugs en verbeteringen. Bevat het werk dat nog gedaan moet worden; afgerond werk vormt het Increment. Eigendom van de Product Owner."},
   {cat:"scrum", term:"Sprint Backlog", def:"De subset van de product backlog die het team in de huidige sprint gaat realiseren."},
   {cat:"scrum", term:"Increment", def:"Het opgeleverde, werkende product aan het einde van een sprint. Moet voldoen aan de Definition of Done."},
   {cat:"scrum", term:"Sprint Planning", def:"Ceremonie aan het begin van een sprint: team kiest werk uit de backlog en maakt een plan voor de sprint."},
@@ -153,7 +152,7 @@ EM1.oefentoets1 = [
   { section: null, num: 4, text: "In de definitiefase van een project wordt een ontwerprapport opgeleverd.", answer: false, explanation: "De definitiefase levert een Plan van Aanpak op. Het ontwerprapport is het product van de ontwerpfase." },
   { section: null, num: 5, text: "SMART staat voor Specifiek, Meetbaar, Aanwijsbaar, Realistisch en Tijdgebonden.", answer: true, explanation: "Correct. Dit zijn de vijf criteria waaraan een SMART-doel moet voldoen." },
   { section: null, num: 6, text: "De levenscyclus van een project eindigt op het moment dat het projectresultaat wordt opgeleverd.", answer: false, explanation: "De levenscyclus loopt door tot na de oplevering. Daarna volgen exploitatie (gebruik), nazorg/onderhoud en uiteindelijk stagnatie — waarna een nieuw project kan starten." },
-  { section: null, num: 7, text: "Bij maatschappelijk verantwoord projectmanagement (MVP) staan de vier P's voor Project, People, Plant en Profit.", answer: true, explanation: "Correct. Deze vier P's vormen samen het kader voor maatschappelijk verantwoord projectmanagement." },
+  { section: null, num: 7, text: "Bij maatschappelijk verantwoord projectmanagement (MVP) staan de vier P's voor Project, People, Planet en Profit.", answer: true, explanation: "Correct. Deze vier P's vormen samen het kader voor maatschappelijk verantwoord projectmanagement." },
   { section: null, num: 8, text: "Het doel van fasering is om de opdrachtgever aan het einde van elke fase de mogelijkheid te geven het project bij te sturen.", answer: true, explanation: "Correct. Door fasering worden beslismomenten ingebouwd. De opdrachtgever kan dan beslissen: doorgaan, doorgaan met aanpassingen of stoppen." },
 
   // H2 — Mensen en Projecten

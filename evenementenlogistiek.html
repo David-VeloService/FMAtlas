@@ -3,8 +3,13 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Evenementenlogistiek — FMAtlas</title>
+<title>Evenementenlogistiek — FM Atlas</title>
+<meta name="description" content="Evenementenlogistiek: Procesdenken bij evenementen: het schillenmodel, capaciteitsberekeningen, marketing en gedragsbeïnvloeding, site design met de PQRST-sleutel, risicoanalyse via FMEA en het draaiboek voor opbouw, uitvoering en afbouw. Samenvatting, begrippen en flashcards op FM Atlas."/>
+<link rel="canonical" href="https://fmatlas.nl/evenementenlogistiek.html"/>
+<meta property="og:title" content="Evenementenlogistiek · FM Atlas"/>
+<meta property="og:image" content="https://fmatlas.nl/og-image.png"/>
 <link rel="icon" type="image/svg+xml" href="logo.svg"/>
+<meta name="theme-color" content="#f7f3ec"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet"/>
@@ -36,7 +41,7 @@
 }
 
 .vak-hub-stats {
-  display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 20px;
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 10px; margin-top: 20px;
   padding-top: 20px; border-top: 1.5px solid var(--line);
 }
 @media (max-width: 700px) { .vak-hub-stats { grid-template-columns: repeat(2, 1fr); } }
@@ -80,6 +85,8 @@
   font-size: 11px; font-weight: 700; color: var(--muted); letter-spacing: 0.02em;
   display: flex; align-items: center; gap: 6px;
 }
+.exam-banner { display:flex; gap:12px; align-items:flex-start; background:#fef3c7; border:1.5px solid #fcd34d; border-radius:var(--radius-lg); padding:14px 18px; margin-bottom:20px; font-size:13.5px; color:#78350f; line-height:1.5; }
+.exam-banner strong { color:#92400e; font-weight:800; }
 </style>
 </head>
 <body>
@@ -87,7 +94,7 @@
 <div id="fa-header-slot"></div>
 
 <nav class="fa-breadcrumb">
-  <a href="index.html">Home</a>
+  <a href="app.html">Vakken</a>
   <span>›</span>
   <span class="current">Evenementenlogistiek</span>
 </nav>
@@ -96,7 +103,7 @@
   <div class="vak-hub-head">
     <div class="vak-hub-head-top">
       <div>
-        <div class="vak-hub-meta">PERIODE 4 · EVENEMENTENMANAGEMENT 2</div>
+        <div class="vak-hub-meta">PERIODE 4 · JAAR 1 · ONDERDEEL VAN EVENTMANAGEMENT 2</div>
         <h1>Evenementenlogistiek</h1>
         <p>Procesdenken bij evenementen: het schillenmodel, capaciteitsberekeningen, marketing en gedragsbeïnvloeding, site design met de PQRST-sleutel, risicoanalyse via FMEA en het draaiboek voor opbouw, uitvoering en afbouw.</p>
       </div>
@@ -118,8 +125,8 @@
         <div class="vak-stat-val">49</div>
       </div>
       <div>
-        <div class="vak-stat-label">Status</div>
-        <div class="vak-stat-val" style="color:var(--accent)">Actief</div>
+        <div class="vak-stat-label">Tentamen</div>
+        <div class="vak-stat-val">Casustoets</div>
       </div>
     </div>
     <div class="vak-hub-progress">
@@ -128,9 +135,13 @@
     </div>
   </div>
 
+    <div class="exam-banner">
+    <span data-fa-icon="clock" data-fa-size="18"></span>
+    <div><strong>Tentameninfo Eventmanagement 2 (2025-2026):</strong> casustoets met open vragen in ANS, geen verplichte literatuur. Stof: alle PowerPoints en lessen van Evenementenlogistiek én Projectvaardigheden. Check Brightspace voor jouw jaar.</div>
+  </div>
+
   <div class="sub-grid">
     <a class="sub-tile featured" href="evenementenlogistiek-samenvatting.html" onclick="faMarkLastSeen('evenementenlogistiek','Evenementenlogistiek','evenementenlogistiek.html')">
-      <span class="sub-tile-badge">NIEUW</span>
       <div class="sub-icon"><span data-fa-icon="book" data-fa-size="22"></span></div>
       <h3>Studiesamenvatting</h3>
       <p class="sub-tile-desc">Alle stof compact: schillenmodel, procesanalyse, capaciteit, marketing, site design, FMEA en draaiboek.</p>
@@ -162,8 +173,8 @@
 
     <a class="sub-tile" href="evenementenlogistiek-oefenvragen.html" onclick="faMarkLastSeen('evenementenlogistiek','Evenementenlogistiek','evenementenlogistiek.html')">
       <div class="sub-icon"><span data-fa-icon="check" data-fa-size="22"></span></div>
-      <h3>Oefentoets</h3>
-      <p class="sub-tile-desc">25 meerkeuze + 5 open vragen, zelfde opbouw als het tentamen. Meerkeuze wordt direct nagekeken, de open vragen kijk je na met het modelantwoord.</p>
+      <h3>Oefentoets 1 · Evenementenlogistiek</h3>
+      <p class="sub-tile-desc">25 meerkeuze + 5 open vragen over Evenementenlogistiek. Het echte tentamen is alleen open vragen bij een casus; gebruik deze toets om de basis te checken en ga daarna door naar 2 en 3.</p>
       <div class="sub-tile-meta">
         <span data-fa-icon="sparkle" data-fa-size="11"></span>
         Zelfde opbouw als het tentamen
@@ -171,9 +182,8 @@
     </a>
 
     <a class="sub-tile" href="eventmanagement-b-oefentoets-2.html" onclick="faMarkLastSeen('evenementenlogistiek','Evenementenlogistiek','evenementenlogistiek.html')">
-      <span class="sub-tile-badge">NIEUW</span>
       <div class="sub-icon"><span data-fa-icon="check" data-fa-size="22"></span></div>
-      <h3>Oefentoets 2 · Eventmanagement B</h3>
+      <h3>Oefentoets 2 · Eventmanagement 2</h3>
       <p class="sub-tile-desc">Tweede volledige oefentoets over de hele tentamenstof: logistiek én projectvaardigheden. 25 meerkeuze + 5 casussen met 15 open vragen.</p>
       <div class="sub-tile-meta">
         <span data-fa-icon="sparkle" data-fa-size="11"></span>
@@ -184,8 +194,8 @@
     <a class="sub-tile" href="eventmanagement-b-oefentoets-3.html" onclick="faMarkLastSeen('evenementenlogistiek','Evenementenlogistiek','evenementenlogistiek.html')">
       <span class="sub-tile-badge">EXTRA MOEILIJK</span>
       <div class="sub-icon"><span data-fa-icon="check" data-fa-size="22"></span></div>
-      <h3>Oefentoets 3 · Eventmanagement B</h3>
-      <p class="sub-tile-desc">Derde oefentoets, bewust zwaarder dan het tentamen: 30 meerkeuze + 8 casussen met 22 open vragen, waaronder vier rekenvragen. Rekenmachine erbij!</p>
+      <h3>Oefentoets 3 · Eventmanagement 2</h3>
+      <p class="sub-tile-desc">Derde oefentoets, bewust zwaarder dan het tentamen: 30 meerkeuze + 8 casussen met 22 open vragen, met een aantal rekenvragen. Neem een rekenmachine.</p>
       <div class="sub-tile-meta">
         <span data-fa-icon="sparkle" data-fa-size="11"></span>
         Zwaarder dan het echte tentamen
@@ -194,9 +204,9 @@
   </div>
 </div>
 
-<footer class="fa-footer">
-  <span>FMAtlas · gemaakt door David Koolstra</span>
-  <span>HAN · Facilitair Management · 2026</span>
+<footer class="fa-site-footer">
+  <span>FM Atlas · gratis studiehulp voor HAN Facilitair Management, gemaakt door een student</span>
+  <span>Niet officieel verbonden aan de HAN · <a href="privacy.html">Privacy</a> · <a href="app.html#contact">Fout gezien?</a></span>
 </footer>
 
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
@@ -214,8 +224,8 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 firebase.auth().onAuthStateChanged(user => {
   document.getElementById('fa-header-slot').innerHTML = '';
-  document.getElementById('fa-header-slot').appendChild(faRenderHeader({ user }));
   faMarkActiveToday();
+  document.getElementById('fa-header-slot').appendChild(faRenderHeader({ user }));
 });
 const pct = faGetVakProgress('evenementenlogistiek');
 document.getElementById('vak-progress-bar').style.width = pct + '%';

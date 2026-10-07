@@ -274,7 +274,7 @@ BVFMB.begrippen = [
    def:"Het gevoel van onveiligheid zonder dat er sprake is van een concreet incident of daadwerkelijk slachtofferschap. Psychologisch van aard, maar ook een aandachtspunt voor de FM'er."},
 
   {cat:"veiligheid", term:"Externe veiligheid",
-   def:"Het beheersen van risico's voor de omgeving bij productie, vervoer, opslag en gebruik van gevaarlijke stoffen. Publiek domein: coördinatie door ministerie van Infrastructuur en Milieu. Privaat domein: veiligheids- en/of milieucoördinator."},
+   def:"Het beheersen van risico's voor de omgeving bij productie, vervoer, opslag en gebruik van gevaarlijke stoffen. Publiek domein: coördinatie door ministerie van Infrastructuur en Waterstaat. Privaat domein: veiligheids- en/of milieucoördinator."},
 
   {cat:"veiligheid", term:"PvE security",
    def:"Set van criteria, passend binnen het wettelijk kader, waaraan een beveiligingsmaatregel moet voldoen. Maakt vaak deel uit van een omvangrijker PvE (bijv. bij bouw- of verbouwprojecten)."},
@@ -292,13 +292,13 @@ BVFMB.begrippen = [
    def:"De hele organisatie beveiligen tegen alle bedreigingen die als reëel worden beschouwd, door een pakket van maatregelen dat regelmatig wordt gecontroleerd en geëvalueerd. Vier K-A-M-V-domeinen worden geïntegreerd aangestuurd."},
 
   {cat:"veiligheid", term:"Calamiteitenplan (6 deelplannen)",
-   def:"Het bedrijfsnood- of calamiteitenplan bestaat uit zes deelplannen: (1) BHV-plan, (2) Beveiligings-/securityplan (OBE voor opzettelijke incidenten), (3) Veiligheids-/safetyplan (niet-opzettelijke incidenten), (4) Ontruimings-/evacuatieplan (Bouwverordening + Arbowet), (5) Aanvalsplan brandweer en (6) Informatie-securityplan."},
+   def:"Het bedrijfsnood- of calamiteitenplan bestaat uit zes deelplannen: (1) BHV-plan, (2) Beveiligings-/securityplan (OBE voor opzettelijke incidenten), (3) Veiligheids-/safetyplan (niet-opzettelijke incidenten), (4) Ontruimings-/evacuatieplan (Besluit bouwwerken leefomgeving + Arbowet), (5) Aanvalsplan brandweer en (6) Informatie-securityplan."},
 
   {cat:"veiligheid", term:"BHV-plan",
    def:"Deelplan 1 van het calamiteitenplan. Beschrijft de vier BHV-kerntaken: EHBO, brand beperken en bestrijden, ontruiming en communicatie bij incident. Verplicht voor elke werkgever."},
 
   {cat:"veiligheid", term:"Ontruimings-/evacuatieplan",
-   def:"Deelplan 4 van het calamiteitenplan. Wettelijk kader: Bouwverordening en Arbowet. Wordt getoetst door de brandweer en de arbeidsinspectie."},
+   def:"Deelplan 4 van het calamiteitenplan. Wettelijk kader: Besluit bouwwerken leefomgeving (Bbl, sinds 2024 onder de Omgevingswet) en Arbowet. Wordt getoetst door de brandweer en de arbeidsinspectie."},
 
   {cat:"veiligheid", term:"Aanvalsplan brandweer",
    def:"Deelplan 5 van het calamiteitenplan. Bevat informatie over bluswater, brandmeldcentrale, aanrijdroutes en opslag van gevaarlijke stoffen. Wordt in overleg met de brandweer opgesteld."},

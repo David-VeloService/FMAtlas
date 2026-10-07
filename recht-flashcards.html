@@ -3,8 +3,9 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Flashcards · Verbintenissenrecht — FMAtlas</title>
+<title>Flashcards · Verbintenissenrecht — FM Atlas</title>
 <link rel="icon" type="image/svg+xml" href="logo.svg"/>
+<meta name="theme-color" content="#f7f3ec"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet"/>
@@ -136,7 +137,7 @@
 <div id="fa-header-slot"></div>
 
 <nav class="fa-breadcrumb">
-  <a href="index.html">Home</a>
+  <a href="app.html">Vakken</a>
   <span>›</span>
   <a href="recht.html">Recht</a>
   <span>›</span>
@@ -227,9 +228,9 @@
 
 <div class="xp-toast" id="xpToast"><span data-fa-icon="bolt" data-fa-size="13"></span> <span id="xpToastText">+1 XP</span></div>
 
-<footer class="fa-footer">
-  <span>Tip: ← nog niet · → gekend · ↓ overslaan · spatie = flip</span>
-  <span>FMAtlas · HAN FM</span>
+<footer class="fa-site-footer">
+  <span>FM Atlas · gratis studiehulp voor HAN Facilitair Management, gemaakt door een student</span>
+  <span>Niet officieel verbonden aan de HAN · <a href="privacy.html">Privacy</a> · <a href="app.html#contact">Fout gezien?</a></span>
 </footer>
 
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
@@ -262,8 +263,8 @@ const _db = firebase.firestore();
 _auth.onAuthStateChanged(async user => {
   if (user) await faSyncFromCloud(user, _db);
   document.getElementById('fa-header-slot').innerHTML = '';
-  document.getElementById('fa-header-slot').appendChild(faRenderHeader({ user }));
   faMarkActiveToday();
+  document.getElementById('fa-header-slot').appendChild(faRenderHeader({ user }));
   faMarkLastSeen(DATA.key, DATA.title, DATA.url);
 });
 
@@ -323,7 +324,8 @@ function showCard(){
   document.getElementById('frontTerm').textContent = c.term;
   document.getElementById('backDef').textContent = c.def;
   const fEl = document.getElementById('backFormula');
-  if(c.formula){ fEl.textContent = c.formula; fEl.style.display='inline-block'; }
+  const extra = c.formula || c.art;
+  if(extra){ fEl.textContent = extra; fEl.style.display='inline-block'; }
   else { fEl.style.display='none'; }
   flipped = false;
   document.getElementById('flipWrap').classList.remove('flipped');
@@ -341,9 +343,9 @@ function markCard(isKnown){
 function _mark(isKnown){
   if(isKnown){
     known++;
-    faAddXP(5);
-    addFirestorePoints(5);
-    showXpToast('+5 XP');
+    if (faOnce(location.pathname + '#' + faToday() + '#' + document.getElementById('frontTerm').textContent)) {
+      faAddXP(5); addFirestorePoints(5); showXpToast('+5 XP');
+    }
   } else {
     missed.push(deck[current]);
   }

@@ -3,8 +3,13 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Trendwatchers — FMAtlas</title>
+<title>Trendwatchers — FM Atlas</title>
+<meta name="description" content="Trendwatchers: Trends en ontwikkelingen analyseren met het DESTEP-model, prioriteren van risico&#x27;s, ethische afwegingen en impact op het FM-vakgebied. Samenvatting, begrippen en flashcards op FM Atlas."/>
+<link rel="canonical" href="https://fmatlas.nl/trendwatchers.html"/>
+<meta property="og:title" content="Trendwatchers · FM Atlas"/>
+<meta property="og:image" content="https://fmatlas.nl/og-image.png"/>
 <link rel="icon" type="image/svg+xml" href="logo.svg"/>
+<meta name="theme-color" content="#f7f3ec"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet"/>
@@ -17,7 +22,7 @@
 .vak-hub-head h1 { font-size: 38px; font-weight: 900; letter-spacing: -0.028em; line-height: 1.05; margin-bottom: 10px; }
 .vak-hub-head p { color: var(--ink-soft); font-size: 15px; font-weight: 500; line-height: 1.55; max-width: 520px; }
 .vak-hub-icon { width: 64px; height: 64px; background: var(--accent-soft); color: var(--accent-deep); border-radius: 16px; display: grid; place-items: center; border: 1.5px solid rgba(239,90,63,0.3); flex-shrink: 0; }
-.vak-hub-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 20px; padding-top: 20px; border-top: 1.5px solid var(--line); }
+.vak-hub-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 10px; margin-top: 20px; padding-top: 20px; border-top: 1.5px solid var(--line); }
 @media (max-width: 700px) { .vak-hub-stats { grid-template-columns: repeat(2, 1fr); } }
 .vak-stat-label { font-size: 10px; color: var(--muted); font-weight: 800; letter-spacing: 0.06em; margin-bottom: 3px; text-transform: uppercase; }
 .vak-stat-val { font-size: 17px; font-weight: 800; letter-spacing: -0.01em; }
@@ -42,7 +47,7 @@
 <body>
 <div id="fa-header-slot"></div>
 <nav class="fa-breadcrumb">
-  <a href="index.html">Home</a>
+  <a href="app.html">Vakken</a>
   <span>›</span>
   <span class="current">Trendwatchers</span>
 </nav>
@@ -50,7 +55,7 @@
   <div class="vak-hub-head">
     <div class="vak-hub-head-top">
       <div>
-        <div class="vak-hub-meta">PERIODE 1 · AFGEROND · CIJFER 8,0</div>
+        <div class="vak-hub-meta">PERIODE 1 · JAAR 1 · FMTREN01</div>
         <h1>Trendwatchers</h1>
         <p>Trends en ontwikkelingen analyseren met het DESTEP-model, prioriteren van risico's, ethische afwegingen en impact op het FM-vakgebied.</p>
       </div>
@@ -60,9 +65,8 @@
     </div>
     <div class="vak-hub-stats">
       <div><div class="vak-stat-label">Thema's</div><div class="vak-stat-val">5</div></div>
-      <div><div class="vak-stat-label">Flashcards</div><div class="vak-stat-val">47</div></div>
-      <div><div class="vak-stat-label">Begrippen</div><div class="vak-stat-val">47</div></div>
-      <div><div class="vak-stat-label">Eindcijfer</div><div class="vak-stat-val">8,0</div></div>
+      <div><div class="vak-stat-label">Flashcards</div><div class="vak-stat-val">50</div></div>
+      <div><div class="vak-stat-label">Begrippen</div><div class="vak-stat-val">50</div></div>
     </div>
     <div class="vak-hub-progress">
       <div class="fa-progress"><div class="fa-progress-bar" id="vak-progress-bar" style="width:0%"></div></div>
@@ -83,7 +87,7 @@
     <a class="sub-tile" href="trendwatchers-flashcards.html" onclick="faMarkLastSeen('trendwatchers','Trendwatchers','trendwatchers.html')">
       <div class="sub-icon"><span data-fa-icon="cards" data-fa-size="22"></span></div>
       <h3>Flashcards</h3>
-      <p class="sub-tile-desc">47 kernbegrippen over trends, DESTEP en ethiek. Schud, filter per thema en herhaal.</p>
+      <p class="sub-tile-desc">50 kernbegrippen over trends, DESTEP en ethiek. Schud, filter per thema en herhaal.</p>
       <div class="sub-tile-meta">
         <span data-fa-icon="bolt" data-fa-size="11" style="color:var(--xp)"></span>
         +5 XP per correcte kaart
@@ -92,7 +96,7 @@
     <a class="sub-tile" href="trendwatchers-begrippen.html" onclick="faMarkLastSeen('trendwatchers','Trendwatchers','trendwatchers.html')">
       <div class="sub-icon"><span data-fa-icon="book" data-fa-size="22"></span></div>
       <h3>Begrippenlijst</h3>
-      <p class="sub-tile-desc">Zoekbare lijst van alle 47 vakbegrippen, gegroepeerd per thema.</p>
+      <p class="sub-tile-desc">Zoekbare lijst van alle 50 vakbegrippen, gegroepeerd per thema.</p>
       <div class="sub-tile-meta">
         <span data-fa-icon="search" data-fa-size="11"></span>
         Zoek op begrip of omschrijving
@@ -101,17 +105,17 @@
     <div class="sub-tile" style="opacity:0.5; pointer-events:none;">
       <div class="sub-icon"><span data-fa-icon="check" data-fa-size="22"></span></div>
       <h3>Toetsinfo</h3>
-      <p class="sub-tile-desc">Vak afgerond in periode 1. Eindcijfer: 8,0. Toets: 90 minuten. Inhoud: DESTEP herkennen, verbanden leggen en toepassen op FM-casussen.</p>
+      <p class="sub-tile-desc">Periode 1, jaar 1. Inhoud: DESTEP herkennen, verbanden leggen en toepassen op FM-casussen.</p>
       <div class="sub-tile-meta">
         <span data-fa-icon="clock" data-fa-size="11"></span>
-        Afgerond
+        Zie Brightspace voor de actuele toetsinformatie
       </div>
     </div>
   </div>
 </div>
-<footer class="fa-footer">
-  <span>FMAtlas · gemaakt door David Koolstra</span>
-  <span>HAN · Facilitair Management · 2026</span>
+<footer class="fa-site-footer">
+  <span>FM Atlas · gratis studiehulp voor HAN Facilitair Management, gemaakt door een student</span>
+  <span>Niet officieel verbonden aan de HAN · <a href="privacy.html">Privacy</a> · <a href="app.html#contact">Fout gezien?</a></span>
 </footer>
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
@@ -128,8 +132,8 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 firebase.auth().onAuthStateChanged(user => {
   document.getElementById('fa-header-slot').innerHTML = '';
-  document.getElementById('fa-header-slot').appendChild(faRenderHeader({ user }));
   faMarkActiveToday();
+  document.getElementById('fa-header-slot').appendChild(faRenderHeader({ user }));
 });
 const pct = faGetVakProgress('trendwatchers');
 document.getElementById('vak-progress-bar').style.width = pct + '%';

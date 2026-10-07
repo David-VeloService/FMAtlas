@@ -776,7 +776,7 @@ window.OT5 = {
     {
       "section": null,
       "num": 71,
-      "text": "Een renovatieproject heeft een totaal begroot budget van €40.000 (gegeven). Halverwege berekent de projectmanager een CPI van 0,8. Wat zijn de verwachte totale kosten aan het einde van het project (Estimate at Completion, EAC)?",
+      "text": "Een renovatieproject heeft een totaal begroot budget van €40.000. Halverwege berekent de projectmanager een CPI van 0,8. Wat zijn de verwachte totale kosten aan het einde van het project (Estimate at Completion, EAC)?",
       "options": [
         "€32.000, want bij een CPI van 0,8 vermenigvuldig je het budget met de index om de verwachte eindkosten te berekenen.",
         "€50.000, want EAC = totale begrote kosten gedeeld door de CPI, en een CPI kleiner dan 1 betekent dat het project duurder uitvalt dan begroot."
@@ -820,7 +820,7 @@ window.OT5 = {
     {
       "section": null,
       "num": 75,
-      "text": "Halverwege een verbouwingsproject is (gegeven) al 80.000 euro besteed. Om het project af te maken is nog 120.000 euro nodig en de verwachte baten aan het einde zijn 150.000 euro. Een teamlid zegt: 'We moeten stoppen: tel je alles bij elkaar op, dan kost het project 200.000 euro en dat is meer dan de baten van 150.000 euro.' Welke redenering is volgens de stof juist?",
+      "text": "Halverwege een verbouwingsproject is al 80.000 euro besteed. Om het project af te maken is nog 120.000 euro nodig en de verwachte baten aan het einde zijn 150.000 euro. Een teamlid zegt: 'We moeten stoppen: tel je alles bij elkaar op, dan kost het project 200.000 euro en dat is meer dan de baten van 150.000 euro.' Welke redenering is volgens de stof juist?",
       "options": [
         "Het teamlid heeft gelijk: alle kosten van het project, inclusief het al uitgegeven bedrag, moeten worden opgeteld en afgezet tegen de verwachte baten.",
         "Het teamlid telt het al uitgegeven bedrag ten onrechte mee: bij de beslissing nu tellen alleen de nog te besteden kosten (120.000 euro) tegenover de baten (150.000 euro), en die kosten zijn lager — dus doorgaan loont."

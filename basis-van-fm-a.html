@@ -3,8 +3,13 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Basis van FM — A — FMAtlas</title>
+<title>Basis van FM — A — FM Atlas</title>
+<meta name="description" content="Basis van FM — A: Introductie op het beroepsprofiel van de facilitair manager: rollen, klanten, dienstverlening, huisvesting, hospitality en inkoop. Samenvatting, begrippen en flashcards op FM Atlas."/>
+<link rel="canonical" href="https://fmatlas.nl/basis-van-fm-a.html"/>
+<meta property="og:title" content="Basis van FM — A · FM Atlas"/>
+<meta property="og:image" content="https://fmatlas.nl/og-image.png"/>
 <link rel="icon" type="image/svg+xml" href="logo.svg"/>
+<meta name="theme-color" content="#f7f3ec"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet"/>
@@ -36,7 +41,7 @@
 }
 
 .vak-hub-stats {
-  display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 20px;
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 10px; margin-top: 20px;
   padding-top: 20px; border-top: 1.5px solid var(--line);
 }
 @media (max-width: 700px) { .vak-hub-stats { grid-template-columns: repeat(2, 1fr); } }
@@ -87,7 +92,7 @@
 <div id="fa-header-slot"></div>
 
 <nav class="fa-breadcrumb">
-  <a href="index.html">Home</a>
+  <a href="app.html">Vakken</a>
   <span>›</span>
   <span class="current">Basis van FM — A</span>
 </nav>
@@ -96,7 +101,7 @@
   <div class="vak-hub-head">
     <div class="vak-hub-head-top">
       <div>
-        <div class="vak-hub-meta">PERIODE 1 · AFGEROND · CIJFER 7,5</div>
+        <div class="vak-hub-meta">PERIODE 1 · JAAR 1 · BASFMA01</div>
         <h1>Basis van FM — A</h1>
         <p>Introductie op het beroepsprofiel van de facilitair manager: rollen, klanten, dienstverlening, huisvesting, hospitality en inkoop.</p>
       </div>
@@ -111,15 +116,11 @@
       </div>
       <div>
         <div class="vak-stat-label">Flashcards</div>
-        <div class="vak-stat-val">50</div>
+        <div class="vak-stat-val">58</div>
       </div>
       <div>
         <div class="vak-stat-label">Begrippen</div>
-        <div class="vak-stat-val">50</div>
-      </div>
-      <div>
-        <div class="vak-stat-label">Eindcijfer</div>
-        <div class="vak-stat-val">7,5</div>
+        <div class="vak-stat-val">58</div>
       </div>
     </div>
     <div class="vak-hub-progress">
@@ -143,7 +144,7 @@
     <a class="sub-tile" href="bvfma-flashcards.html" onclick="faMarkLastSeen('basis-van-fm-a','Basis van FM — A','basis-van-fm-a.html')">
       <div class="sub-icon"><span data-fa-icon="cards" data-fa-size="22"></span></div>
       <h3>Flashcards</h3>
-      <p class="sub-tile-desc">50 kernbegrippen over FM. Schud, filter per thema en herhaal wat je nog niet kent.</p>
+      <p class="sub-tile-desc">58 kernbegrippen over FM. Schud, filter per thema en herhaal wat je nog niet kent.</p>
       <div class="sub-tile-meta">
         <span data-fa-icon="bolt" data-fa-size="11" style="color:var(--xp)"></span>
         +5 XP per correcte kaart
@@ -153,7 +154,7 @@
     <a class="sub-tile" href="bvfma-begrippen.html" onclick="faMarkLastSeen('basis-van-fm-a','Basis van FM — A','basis-van-fm-a.html')">
       <div class="sub-icon"><span data-fa-icon="book" data-fa-size="22"></span></div>
       <h3>Begrippenlijst</h3>
-      <p class="sub-tile-desc">Zoekbare lijst van alle 50 vakbegrippen, gegroepeerd per thema.</p>
+      <p class="sub-tile-desc">Zoekbare lijst van alle 58 vakbegrippen, gegroepeerd per thema.</p>
       <div class="sub-tile-meta">
         <span data-fa-icon="search" data-fa-size="11"></span>
         Zoek op begrip of omschrijving
@@ -163,18 +164,18 @@
     <div class="sub-tile" style="opacity:0.5; pointer-events:none;">
       <div class="sub-icon"><span data-fa-icon="check" data-fa-size="22"></span></div>
       <h3>Toetsinfo</h3>
-      <p class="sub-tile-desc">Vak afgerond in periode 1. Eindcijfer: 7,5. Inhoud: FM-basisprincipes, dienstverlening, huisvesting, hospitality en inkoop.</p>
+      <p class="sub-tile-desc">Periode 1, jaar 1. Inhoud: FM-basisprincipes, dienstverlening, huisvesting, hospitality en inkoop.</p>
       <div class="sub-tile-meta">
         <span data-fa-icon="clock" data-fa-size="11"></span>
-        Afgerond
+        Zie Brightspace voor de actuele toetsinformatie
       </div>
     </div>
   </div>
 </div>
 
-<footer class="fa-footer">
-  <span>FMAtlas · gemaakt door David Koolstra</span>
-  <span>HAN · Facilitair Management · 2026</span>
+<footer class="fa-site-footer">
+  <span>FM Atlas · gratis studiehulp voor HAN Facilitair Management, gemaakt door een student</span>
+  <span>Niet officieel verbonden aan de HAN · <a href="privacy.html">Privacy</a> · <a href="app.html#contact">Fout gezien?</a></span>
 </footer>
 
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
@@ -192,8 +193,8 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 firebase.auth().onAuthStateChanged(user => {
   document.getElementById('fa-header-slot').innerHTML = '';
-  document.getElementById('fa-header-slot').appendChild(faRenderHeader({ user }));
   faMarkActiveToday();
+  document.getElementById('fa-header-slot').appendChild(faRenderHeader({ user }));
 });
 const pct = faGetVakProgress('basis-van-fm-a');
 document.getElementById('vak-progress-bar').style.width = pct + '%';

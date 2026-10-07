@@ -3,8 +3,9 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Samenvatting · Projectvaardigheden — FMAtlas</title>
+<title>Samenvatting · Projectvaardigheden — FM Atlas</title>
 <link rel="icon" type="image/svg+xml" href="logo.svg"/>
+<meta name="theme-color" content="#f7f3ec"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet"/>
@@ -77,7 +78,7 @@ table.compact td strong { color: var(--ink); font-weight: 800; }
 <div id="fa-header-slot"></div>
 
 <nav class="fa-breadcrumb">
-  <a href="index.html">Home</a>
+  <a href="app.html">Vakken</a>
   <span>›</span>
   <a href="projectvaardigheden.html">Projectvaardigheden</a>
   <span>›</span>
@@ -86,7 +87,7 @@ table.compact td strong { color: var(--ink); font-weight: 800; }
 
 <div class="sam-wrap">
   <div class="sam-intro">
-    <div class="sam-intro-meta">SAMENVATTING · 4 thema's · 7 lesblokken</div>
+    <div class="sam-intro-meta">SAMENVATTING · 5 thema's · 7 lesblokken</div>
     <h1>Projectvaardigheden — volledige studiesamenvatting</h1>
     <p>Alle thema's uit Evenementenmanagement 2: Observeren (week 1–2), Zakelijk en visueel communiceren (week 3), Interviewen (week 4–5) en Enquêteren (week 6–7). Gebaseerd op de collegedias en het bronmateriaal van Baarda (2025).</p>
   </div>
@@ -173,7 +174,7 @@ table.compact td strong { color: var(--ink); font-weight: 800; }
               <tr><td>Gedrag vaststellen waarvan respondent zich niet bewust is</td><td>Alleen regelmatig terugkerend gedrag is geschikt</td></tr>
               <tr><td>Doet geen beroep op de respondent</td><td>Motieven zijn niet te observeren</td></tr>
               <tr><td>Taal speelt geen rol</td><td>Tijdrovend en relatief duur</td></tr>
-              <tr><td>Bij verhuld observeren speelt sociaal wenselijkheid geen rol</td><td>Toestemming nodig bij niet-anonieme observaties</td></tr>
+              <tr><td>Bij verhuld observeren speelt sociale wenselijkheid geen rol</td><td>Toestemming nodig bij niet-anonieme observaties</td></tr>
               <tr><td>Mogelijkheid om de echte setting te bestuderen</td><td>Observator kan onbewust gedrag beïnvloeden of interpreteren vanuit vooroordelen</td></tr>
             </tbody>
           </table>
@@ -344,7 +345,7 @@ table.compact td strong { color: var(--ink); font-weight: 800; }
           </div>
           <div class="box">
             <h4>2. Semiotiek — betekenis</h4>
-            <p style="font-size:13px;color:var(--ink-soft);margin:0;">De studie van tekens en symbolen en hun betekenis. Beelden communiceren op meerdere niveaus: het letterlijke (denotatie) en het bijbetekenislaag (connotatie).</p>
+            <p style="font-size:13px;color:var(--ink-soft);margin:0;">De studie van tekens en symbolen en hun betekenis. Beelden communiceren op meerdere niveaus: het letterlijke (denotatie) en de bijbetekenislaag (connotatie).</p>
             <div style="margin-top:8px;"><span class="tag purple">Wat betekent het?</span></div>
           </div>
           <div class="box">
@@ -733,9 +734,9 @@ n = (Z² × p × (1−p)) / e²
 
 </div><!-- .main -->
 
-<footer class="fa-footer">
-  <span>FMAtlas · gemaakt door David Koolstra</span>
-  <span>HAN · Facilitair Management · 2026</span>
+<footer class="fa-site-footer">
+  <span>FM Atlas · gratis studiehulp voor HAN Facilitair Management, gemaakt door een student</span>
+  <span>Niet officieel verbonden aan de HAN · <a href="privacy.html">Privacy</a> · <a href="app.html#contact">Fout gezien?</a></span>
 </footer>
 
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
@@ -753,8 +754,8 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 firebase.auth().onAuthStateChanged(user => {
   document.getElementById('fa-header-slot').innerHTML = '';
-  document.getElementById('fa-header-slot').appendChild(faRenderHeader({ user }));
   faMarkActiveToday();
+  document.getElementById('fa-header-slot').appendChild(faRenderHeader({ user }));
 });
 </script>
 </body>

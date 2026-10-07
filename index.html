@@ -3,15 +3,22 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>FM Atlas – gratis studiehulp voor Facilitair Management</title>
-<meta name="description" content="Samenvattingen, flashcards en oefentoetsen voor élk vak van Facilitair Management aan de HAN. Gratis. Door studenten, voor studenten."/>
+<title>FM Atlas · gratis studiehulp voor Facilitair Management</title>
+<meta name="description" content="Samenvattingen, begrippenlijsten, flashcards en oefentoetsen voor de vakken van jaar 1 Facilitair Management aan de HAN. Gratis, gemaakt door een student."/>
+<link rel="canonical" href="https://fmatlas.nl/"/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://fmatlas.nl/"/>
+<meta property="og:title" content="FM Atlas · gratis studiehulp voor Facilitair Management"/>
+<meta property="og:description" content="Samenvattingen, begrippenlijsten, flashcards en oefentoetsen voor de vakken van jaar 1 FM aan de HAN."/>
+<meta property="og:image" content="https://fmatlas.nl/og-image.png"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="theme-color" content="#fbf3e2"/>
 <link rel="icon" type="image/svg+xml" href="logo.svg"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
 <style>
   :root{
     --bg:#fbf3e2; --cream:#f7e9c8; --ink:#0e0d10; --ink-soft:#3d3a45;
@@ -220,7 +227,7 @@
         <circle cx="100" cy="114" r="5" fill="#fbf3e2"/>
       </svg>
     </span>
-    <span class="brand-name">FM<span>·</span>Atlas</span>
+    <span class="brand-name">FM Atlas</span>
   </a>
   <nav class="nav">
     <a href="#wat">Wat zit erop</a>
@@ -266,14 +273,14 @@
             Inloggen met Google
             <span class="arrow">→</span>
           </button>
-          <div class="login-privacy"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><rect x="5" y="11" width="14" height="10" rx="2" stroke="rgba(255,255,255,.55)" stroke-width="2"/><path d="M8 11 V8 a4 4 0 0 1 8 0 V11" stroke="rgba(255,255,255,.55)" stroke-width="2" fill="none"/></svg> Alleen je naam + email. Niks doorverkocht. Uitloggen kan altijd.</div>
+          <div class="login-privacy"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><rect x="5" y="11" width="14" height="10" rx="2" stroke="rgba(255,255,255,.55)" stroke-width="2"/><path d="M8 11 V8 a4 4 0 0 1 8 0 V11" stroke="rgba(255,255,255,.55)" stroke-width="2" fill="none"/></svg> Op het leaderboard: je voornaam, eerste letter van je achternaam en je Google-foto. Niks doorverkocht. <a href="privacy.html" style="color:inherit">Privacy</a></div>
           <div class="login-error" data-login-error>Inloggen mislukt. Probeer opnieuw.</div>
         </div>
 
         <button class="guest-link" data-continue-guest>of bekijk eerst rond zonder account →</button>
 
         <div class="stats">
-          <div><div class="n">8</div><div class="l">vakken</div><div class="sub">P1 – P4</div></div>
+          <div><div class="n">8</div><div class="l">vakken</div><div class="sub">jaar 1, P1 – P4</div></div>
           <div><div class="n">600+</div><div class="l">flashcards</div><div class="sub">tot in detail</div></div>
           <div><div class="n">0€</div><div class="l">altijd</div><div class="sub">zonder paywall</div></div>
         </div>
@@ -302,7 +309,7 @@
           <span class="compass-letter s">S</span>
           <span class="compass-letter w">W</span>
         </div>
-        <div class="sticker"><div class="sm">NIEUW</div><div class="lg">Basis FM B</div></div>
+        <div class="sticker"><div class="sm">JAAR 1</div><div class="lg">alle periodes</div></div>
         <div class="coord-tag">N 51.84° · E 5.86°</div>
       </div>
     </div>
@@ -343,7 +350,7 @@
           <text x="28" y="26" font-family="Nunito,sans-serif" font-weight="900" font-size="14" fill="#0e0d10" text-anchor="middle" transform="rotate(8 28 21)">A</text>
         </svg></div>
         <h3>Flashcards</h3>
-        <p>Train begrippen met spaced repetition. Verdien +5 punten per kaart die je goed hebt.</p>
+        <p>Train begrippen met flip-kaarten: wat je nog niet kent komt terug. Verdien +5 punten per kaart die je goed hebt.</p>
         <div class="more">Bekijken <span>→</span></div>
       </div>
       <div class="feat">
@@ -353,7 +360,7 @@
           <path d="M13 22 L20 28 L31 16" stroke="#ff5a2f" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
         </svg></div>
         <h3>Oefentoetsen</h3>
-        <p>Tientallen vragen per vak, op meerdere niveaus. Test of je het stof écht beheerst.</p>
+        <p>Oefentoetsen met uitleg bij elk antwoord, nu voor Eventmanagement 1 en 2. Test of je de stof écht beheerst.</p>
         <div class="more">Bekijken <span>→</span></div>
       </div>
       <div class="feat">
@@ -382,7 +389,7 @@
         <div>
           <div class="eyebrow">⚡ HAAL ER MEER UIT</div>
           <h2>Log in met Google.<br/><em>Krijg er meer voor terug.</em></h2>
-          <p class="lede">Inloggen duurt twee tellen. Je punten worden bewaard, je kunt je voortgang per vak volgen, en je helpt mee de site beter te maken — want zo zie ik welke vakken het meest gebruikt worden.</p>
+          <p class="lede">Inloggen duurt twee tellen. Je punten en je voortgang per vak worden bewaard, ook als je op een ander apparaat inlogt, en je komt op het leaderboard.</p>
           <button class="btn-google-big" data-google-login>
             <span class="gico"><svg width="20" height="20" viewBox="0 0 48 48">
               <path fill="#4285F4" d="M45.12 24.5c0-1.56-.14-3.06-.4-4.5H24v8.51h11.84c-.51 2.75-2.06 5.08-4.39 6.64v5.52h7.11c4.16-3.83 6.56-9.47 6.56-16.17z"/>
@@ -393,7 +400,7 @@
             Inloggen met Google
             <span class="arrow-circle">→</span>
           </button>
-          <div class="small-priv">🔒 Alleen naam + email. Niks doorverkocht. — David</div>
+          <div class="small-priv">🔒 Alleen wat nodig is voor je punten en voortgang. Niks doorverkocht. — David</div>
         </div>
         <div class="perks">
           <div class="perk">
@@ -414,7 +421,7 @@
               <line x1="8" y1="20" x2="16" y2="20" stroke="#0e0d10" stroke-width="2" stroke-linecap="round"/>
             </svg></div>
             <h4>Op het leaderboard</h4>
-            <p>Strijd mee met de top 10 van je jaargang.</p>
+            <p>Strijd mee in de top 10 van alle gebruikers.</p>
           </div>
           <div class="perk">
             <div class="perk-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none">
@@ -452,11 +459,11 @@
     <div class="faq-list" style="text-align:left">
       <details class="faq" open>
         <summary><span class="q">Moet ik inloggen?</span><span class="toggle"></span></summary>
-        <p class="a">Nee, je kan zonder account alle samenvattingen, begrippen en flashcards bekijken. Maar inloggen wordt sterk aangeraden — dan worden je punten opgeslagen, kom je op het leaderboard en kan David zien welke vakken het meest worden gebruikt zodat hij die als eerste kan uitbreiden.</p>
+        <p class="a">Nee, je kan zonder account alle samenvattingen, begrippen en flashcards bekijken. Maar inloggen wordt sterk aangeraden — dan worden je punten opgeslagen, kom je op het leaderboard en wordt je voortgang per vak op al je apparaten bewaard.</p>
       </details>
       <details class="faq">
         <summary><span class="q">Wat doet David met mijn gegevens?</span><span class="toggle"></span></summary>
-        <p class="a">Alleen je naam, profielfoto en email worden opgeslagen — gewoon wat Google deelt. Plus je punten per vak. Dat helpt om te zien welke onderdelen het meest gebruikt worden, zodat de site beter kan worden voor iedereen. Niks wordt doorverkocht of gedeeld.</p>
+        <p class="a">Opgeslagen worden je naam, je Google-profielfoto, je totaal aantal punten en je voortgang per vak. Op het leaderboard zie je alleen voornaam, eerste letter van de achternaam en foto. Je e-mailadres wordt niet in de database bewaard. Niks wordt doorverkocht of gedeeld. Alles staat in de <a href="privacy.html">privacyverklaring</a>, ook hoe je je gegevens laat verwijderen.</p>
       </details>
       <details class="faq">
         <summary><span class="q">Is het echt gratis?</span><span class="toggle"></span></summary>
@@ -488,8 +495,8 @@
         <p class="lede">David bouwt deze site zelf. Elke tip helpt direct voor de volgende toets.</p>
       </div>
       <form action="https://formspree.io/f/mpqbarbd" method="POST">
-        <input type="email" name="email" placeholder="Je email" required/>
-        <textarea name="message" placeholder="Wat is er aan de hand?" rows="3" required></textarea>
+        <input type="email" name="email" placeholder="Je e-mailadres" aria-label="Je e-mailadres" autocomplete="email" required/>
+        <textarea name="bericht" placeholder="Wat is er aan de hand?" aria-label="Je bericht" rows="3" required></textarea>
         <button type="submit">Versturen <span class="arrow-circle">→</span></button>
       </form>
     </div>
@@ -498,7 +505,7 @@
 
 <footer>
   <div class="footer-row">
-    <span>FM·Atlas · gemaakt door David Koolstra · 2026</span>
+    <span>FM Atlas · gemaakt door David Koolstra · <a href="privacy.html" style="color:inherit">Privacy</a></span>
     <span class="right">niet officieel verbonden met de HAN</span>
   </div>
 </footer>

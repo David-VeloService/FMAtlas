@@ -3,8 +3,13 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Recht — FMAtlas</title>
+<title>Recht — FM Atlas</title>
+<meta name="description" content="Recht: Verbintenissenrecht voor facilitair management: rechtsbronnen, contracten, wanprestatie, onrechtmatige daad en aansprakelijkheid. Samenvatting, begrippen en flashcards op FM Atlas."/>
+<link rel="canonical" href="https://fmatlas.nl/recht.html"/>
+<meta property="og:title" content="Recht · FM Atlas"/>
+<meta property="og:image" content="https://fmatlas.nl/og-image.png"/>
 <link rel="icon" type="image/svg+xml" href="logo.svg"/>
+<meta name="theme-color" content="#f7f3ec"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet"/>
@@ -36,7 +41,7 @@
 }
 
 .vak-hub-stats {
-  display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 20px;
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 10px; margin-top: 20px;
   padding-top: 20px; border-top: 1.5px solid var(--line);
 }
 @media (max-width: 700px) { .vak-hub-stats { grid-template-columns: repeat(2, 1fr); } }
@@ -87,7 +92,9 @@
 <div id="fa-header-slot"></div>
 
 <nav class="fa-breadcrumb">
-  <a href="index.html">Home</a>
+  <a href="app.html">Vakken</a>
+  <span>›</span>
+  <a href="facilitaire-inkoop.html">Facilitaire Inkoop</a>
   <span>›</span>
   <span class="current">Recht</span>
 </nav>
@@ -96,7 +103,7 @@
   <div class="vak-hub-head">
     <div class="vak-hub-head-top">
       <div>
-        <div class="vak-hub-meta">PERIODE 4 · HERKANSING</div>
+        <div class="vak-hub-meta">PERIODE 3 · JAAR 1 · ONDERDEEL VAN FACILITAIRE INKOOP</div>
         <h1>Recht</h1>
         <p>Verbintenissenrecht voor facilitair management: rechtsbronnen, contracten, wanprestatie, onrechtmatige daad en aansprakelijkheid.</p>
       </div>
@@ -162,9 +169,9 @@
   </div>
 </div>
 
-<footer class="fa-footer">
-  <span>FMAtlas · gemaakt door David Koolstra</span>
-  <span>HAN · Facilitair Management · 2026</span>
+<footer class="fa-site-footer">
+  <span>FM Atlas · gratis studiehulp voor HAN Facilitair Management, gemaakt door een student</span>
+  <span>Niet officieel verbonden aan de HAN · <a href="privacy.html">Privacy</a> · <a href="app.html#contact">Fout gezien?</a></span>
 </footer>
 
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
@@ -182,8 +189,8 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 firebase.auth().onAuthStateChanged(user => {
   document.getElementById('fa-header-slot').innerHTML = '';
-  document.getElementById('fa-header-slot').appendChild(faRenderHeader({ user }));
   faMarkActiveToday();
+  document.getElementById('fa-header-slot').appendChild(faRenderHeader({ user }));
 });
 const pct = faGetVakProgress('recht');
 document.getElementById('vak-progress-bar').style.width = pct + '%';

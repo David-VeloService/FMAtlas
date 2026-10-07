@@ -296,7 +296,7 @@ window.OT3 = {
     {
       "section": null,
       "num": 25,
-      "text": "De organisator van een vakbeurs wil van alle 2.000 bezoekers (gegeven) weten hoeveel procent tevreden is over de indeling van de beursvloer. Zij kiest daarom voor een enquête als onderzoeksmethode. Welk kenmerk hoort NIET bij deze onderzoeksmethode?",
+      "text": "De organisator van een vakbeurs wil van alle 2.000 bezoekers weten hoeveel procent tevreden is over de indeling van de beursvloer. Zij kiest daarom voor een enquête als onderzoeksmethode. Welk kenmerk hoort NIET bij deze onderzoeksmethode?",
       "options": [
         "De onderzoeker bepaalt vooraf welke antwoorden mogelijk zijn.",
         "De respondent bepaalt tijdens het onderzoek de antwoorden.",
@@ -501,7 +501,7 @@ window.OT3 = {
     },
     {
       "titel": "Evaluatie-enquête festival Oosterveld",
-      "tekst": "Festival Oosterveld is een tweedaags muziekfestival met 15.000 bezoekers per dag (gegeven). De organisatie wil na afloop onderbouwde keuzes maken voor het ontwerp van de volgende editie en vraagt jou een evaluatie-enquête op te zetten over de 'festivalbeleving' van de bezoekers. Een stagiair heeft alvast een concept gemaakt. Daarin staan onder andere deze vragen:\nVraag 3: 'Vindt u ook niet dat het hoofdpodium en de horeca goed geregeld waren?' (antwoord: ja/nee)\nVraag 7: 'Hoe oud bent u?' met de antwoordopties: jonger dan 18 / 18 tot 30 / 30 tot 45\nHet concept heeft geen inleiding en bestaat voor de helft uit open vragen. De stagiair stelt voor om de enquête alleen af te nemen bij de uitgang van het VIP-terrein, dat 500 bezoekers per dag telt (gegeven), omdat bezoekers daar rustig de ruimte hebben om te schrijven.",
+      "tekst": "Festival Oosterveld is een tweedaags muziekfestival met 15.000 bezoekers per dag. De organisatie wil na afloop onderbouwde keuzes maken voor het ontwerp van de volgende editie en vraagt jou een evaluatie-enquête op te zetten over de 'festivalbeleving' van de bezoekers. Een stagiair heeft alvast een concept gemaakt. Daarin staan onder andere deze vragen:\nVraag 3: 'Vindt u ook niet dat het hoofdpodium en de horeca goed geregeld waren?' (antwoord: ja/nee)\nVraag 7: 'Hoe oud bent u?' met de antwoordopties: jonger dan 18 / 18 tot 30 / 30 tot 45\nHet concept heeft geen inleiding en bestaat voor de helft uit open vragen. De stagiair stelt voor om de enquête alleen af te nemen bij de uitgang van het VIP-terrein, dat 500 bezoekers per dag telt, omdat bezoekers daar rustig de ruimte hebben om te schrijven.",
       "punten": 9,
       "vragen": [
         {
@@ -532,7 +532,7 @@ window.OT3 = {
     },
     {
       "titel": "Observatieonderzoek muntverkoop foodtruckfestival Smaakvol",
-      "tekst": "Het tweedaagse foodtruckfestival Smaakvol vindt plaats in een stadspark en trekt per dag 8.000 bezoekers (gegeven). Eten en drinken worden uitsluitend met munten betaald; er zijn vier muntverkooppunten. Na de vorige editie verschenen op social media klachten: bezoekers zouden lang moeten wachten bij de muntverkoop en de medewerkers daar zouden onvriendelijk zijn. De medewerkers zelf herkennen zich niet in dat beeld. De organisator wil de volgende editie verbeteren en vraagt jou tijdens het festival een observatieonderzoek uit te voeren naar de wachttijden en de gastvrijheid bij de muntverkooppunten.",
+      "tekst": "Het tweedaagse foodtruckfestival Smaakvol vindt plaats in een stadspark en trekt per dag 8.000 bezoekers. Eten en drinken worden uitsluitend met munten betaald; er zijn vier muntverkooppunten. Na de vorige editie verschenen op social media klachten: bezoekers zouden lang moeten wachten bij de muntverkoop en de medewerkers daar zouden onvriendelijk zijn. De medewerkers zelf herkennen zich niet in dat beeld. De organisator wil de volgende editie verbeteren en vraagt jou tijdens het festival een observatieonderzoek uit te voeren naar de wachttijden en de gastvrijheid bij de muntverkooppunten.",
       "punten": 8,
       "vragen": [
         {

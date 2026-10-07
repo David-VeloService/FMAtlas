@@ -1,4 +1,4 @@
-/* FMAtlas — gedeelde design tokens + basis componenten */
+/* FM Atlas — gedeelde design tokens + basis componenten */
 
 :root {
   --bg:       #f7f3ec;
@@ -6,7 +6,7 @@
   --surface-alt: #f1ece2;
   --ink:      #1a2024;
   --ink-soft: #4a5258;
-  --muted:    #8a9299;
+  --muted:    #646c72; /* AA-contrast op wit en op --bg */
   --line:     #e3ddd1;
   --line-soft:#ede7db;
 
@@ -474,4 +474,39 @@ button { font-family: inherit; }
   .fa-page-wrap { padding: 24px 16px 60px; }
   .fa-vak-hero h1 { font-size: 30px; }
   .fa-footer { padding: 16px; flex-direction: column; text-align: center; }
+}
+
+
+/* ─── Toegankelijkheid: zichtbare focus overal ─────────── */
+:focus-visible { outline: 2px solid var(--accent-deep); outline-offset: 2px; border-radius: 4px; }
+button.fa-search { font: inherit; text-align: left; cursor: pointer; }
+button.fa-avatar { border: 0; padding: 0; font: inherit; cursor: pointer; }
+
+/* ─── Accountmenu in de header ─────────── */
+.fa-account { position: relative; }
+.fa-account-menu {
+  position: absolute; right: 0; top: calc(100% + 8px); z-index: 60;
+  min-width: 200px; background: var(--surface); border: 1.5px solid var(--line);
+  border-radius: var(--radius); box-shadow: var(--shadow-lg); padding: 6px;
+  display: flex; flex-direction: column;
+}
+.fa-account-menu[hidden] { display: none; }
+.fa-account-name { font-size: 12px; color: var(--muted); padding: 8px 10px 6px; border-bottom: 1px solid var(--line-soft); margin-bottom: 4px; }
+.fa-account-menu a, .fa-account-menu button {
+  display: block; width: 100%; text-align: left; background: none; border: 0; font: inherit; font-size: 14px;
+  color: var(--ink); padding: 8px 10px; border-radius: 8px; cursor: pointer; text-decoration: none;
+}
+.fa-account-menu a:hover, .fa-account-menu button:hover { background: var(--surface-alt); }
+
+/* ─── Gedeelde footer ─────────── */
+.fa-site-footer { max-width: 1100px; margin: 48px auto 0; padding: 24px 20px 32px; border-top: 1px solid var(--line);
+  display: flex; flex-wrap: wrap; gap: 8px 20px; justify-content: space-between; font-size: 13px; color: var(--muted); }
+.fa-site-footer a { color: var(--ink-soft); }
+
+/* ─── Mobiel: lange vaknamen en hub-koppen mogen niet afgekapt worden ─────────── */
+h1, h2, h3 { overflow-wrap: anywhere; hyphens: auto; }
+@media (max-width: 600px) {
+  .vak-hub-head { padding: 22px 18px !important; }
+  .vak-hub-head h1 { font-size: clamp(26px, 8vw, 38px) !important; }
+  .fa-breadcrumb { flex-wrap: wrap; }
 }

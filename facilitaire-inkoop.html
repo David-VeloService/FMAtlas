@@ -3,8 +3,13 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Facilitaire Inkoop — FMAtlas</title>
+<title>Facilitaire Inkoop — FM Atlas</title>
+<meta name="description" content="Facilitaire Inkoop: Studie- en oefenmateriaal voor Facilitaire Inkoop: twee onderdelen — Inkoopmanagement (5 weken, boek Van Weele) en Verbintenissenrecht (6 weken). Samenvatting, begrippen en flashcards op FM Atlas."/>
+<link rel="canonical" href="https://fmatlas.nl/facilitaire-inkoop.html"/>
+<meta property="og:title" content="Facilitaire Inkoop · FM Atlas"/>
+<meta property="og:image" content="https://fmatlas.nl/og-image.png"/>
 <link rel="icon" type="image/svg+xml" href="logo.svg"/>
+<meta name="theme-color" content="#f7f3ec"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet"/>
@@ -22,7 +27,7 @@
 .vak-hub-head p { color: var(--ink-soft); font-size: 15px; font-weight: 500; line-height: 1.55; max-width: 520px; }
 .vak-hub-icon { width: 64px; height: 64px; background: var(--accent-soft); color: var(--accent-deep); border-radius: 16px; display: grid; place-items: center; border: 1.5px solid rgba(239,90,63,0.3); flex-shrink: 0; }
 
-.vak-hub-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 20px; padding-top: 20px; border-top: 1.5px solid var(--line); }
+.vak-hub-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 10px; margin-top: 20px; padding-top: 20px; border-top: 1.5px solid var(--line); }
 @media (max-width: 700px) { .vak-hub-stats { grid-template-columns: repeat(2, 1fr); } }
 .vak-stat-label { font-size: 10px; color: var(--muted); font-weight: 800; letter-spacing: 0.06em; margin-bottom: 3px; text-transform: uppercase; }
 .vak-stat-val { font-size: 17px; font-weight: 800; letter-spacing: -0.01em; }
@@ -77,7 +82,7 @@
 <div id="fa-header-slot"></div>
 
 <nav class="fa-breadcrumb">
-  <a href="index.html">Home</a>
+  <a href="app.html">Vakken</a>
   <span>›</span>
   <span class="current">Facilitaire Inkoop</span>
 </nav>
@@ -86,7 +91,7 @@
   <div class="vak-hub-head">
     <div class="vak-hub-head-top">
       <div>
-        <div class="vak-hub-meta">PERIODE 3 · AFGEROND</div>
+        <div class="vak-hub-meta">PERIODE 3 · JAAR 1 · FMINKR01</div>
         <h1>Facilitaire Inkoop</h1>
         <p>Studie- en oefenmateriaal voor Facilitaire Inkoop: twee onderdelen — <strong>Inkoopmanagement</strong> (5 weken, boek Van Weele) en <strong>Verbintenissenrecht</strong> (6 weken).</p>
       </div>
@@ -101,15 +106,11 @@
       </div>
       <div>
         <div class="vak-stat-label">Begrippen</div>
-        <div class="vak-stat-val">130+</div>
+        <div class="vak-stat-val">186</div>
       </div>
       <div>
         <div class="vak-stat-label">Totale weken</div>
         <div class="vak-stat-val">11</div>
-      </div>
-      <div>
-        <div class="vak-stat-label">Eindcijfer</div>
-        <div class="vak-stat-val" style="color:var(--ok)">6,4</div>
       </div>
     </div>
     <div class="vak-hub-progress">
@@ -140,7 +141,7 @@
     <a class="sub-tile" href="inkoop-begrippen.html" onclick="faMarkLastSeen('facilitaire-inkoop','Facilitaire Inkoop','facilitaire-inkoop.html')">
       <div class="sub-icon"><span data-fa-icon="book" data-fa-size="20"></span></div>
       <h3>Begrippenlijst Inkoop</h3>
-      <p class="sub-tile-desc">70+ begrippen zoekbaar per categorie: basisprincipes, Van Weele, tactisch, operationeel, strategie, markt en digitalisering.</p>
+      <p class="sub-tile-desc">98 begrippen zoekbaar per categorie: basisprincipes, Van Weele, tactisch, operationeel, strategie, markt en digitalisering.</p>
     </a>
 
     <a class="sub-tile" href="inkoop-flashcards.html" onclick="faMarkLastSeen('facilitaire-inkoop','Facilitaire Inkoop','facilitaire-inkoop.html')">
@@ -165,7 +166,7 @@
     <a class="sub-tile" href="recht-begrippen.html" onclick="faMarkLastSeen('facilitaire-inkoop','Facilitaire Inkoop','facilitaire-inkoop.html')">
       <div class="sub-icon"><span data-fa-icon="book" data-fa-size="20"></span></div>
       <h3>Begrippenlijst Recht</h3>
-      <p class="sub-tile-desc">60+ begrippen met wetsartikelen zoekbaar per categorie: inleiding, ongeldigheid, overeenkomst, volmacht en tekortkoming.</p>
+      <p class="sub-tile-desc">88 begrippen met wetsartikelen zoekbaar per categorie: inleiding, ongeldigheid, overeenkomst, volmacht en tekortkoming.</p>
     </a>
 
     <a class="sub-tile" href="recht-flashcards.html" onclick="faMarkLastSeen('facilitaire-inkoop','Facilitaire Inkoop','facilitaire-inkoop.html')">
@@ -176,9 +177,9 @@
   </div>
 </div>
 
-<footer class="fa-footer">
-  <span>FMAtlas · gemaakt door David Koolstra</span>
-  <span>HAN · Facilitair Management · 2026</span>
+<footer class="fa-site-footer">
+  <span>FM Atlas · gratis studiehulp voor HAN Facilitair Management, gemaakt door een student</span>
+  <span>Niet officieel verbonden aan de HAN · <a href="privacy.html">Privacy</a> · <a href="app.html#contact">Fout gezien?</a></span>
 </footer>
 
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
@@ -196,8 +197,8 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 firebase.auth().onAuthStateChanged(user => {
   document.getElementById('fa-header-slot').innerHTML = '';
-  document.getElementById('fa-header-slot').appendChild(faRenderHeader({ user }));
   faMarkActiveToday();
+  document.getElementById('fa-header-slot').appendChild(faRenderHeader({ user }));
 });
 const pct = faGetVakProgress('facilitaire-inkoop');
 document.getElementById('vak-progress-bar').style.width = pct + '%';
