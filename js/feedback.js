@@ -152,7 +152,7 @@
         try { await verstuur(data); } catch (_) { await verstuurPerMail(data); }
         onthoud();
         form.innerHTML = `<div class="fa-fb-kop"><h2 id="fa-fb-titel">Dank je!</h2><button type="button" class="fa-fb-sluit" aria-label="Sluiten">×</button></div>
-          <p class="fa-fb-uitleg">${fout ? 'Je melding is binnen. Hij wordt nagekeken tegen het lesmateriaal en, als hij klopt, op de site verbeterd.' : 'Je feedback is binnen.'}</p>
+          <p class="fa-fb-uitleg">${fout ? 'Je melding is binnen. Hij wordt nagekeken en, als hij klopt, op de site verbeterd.' : 'Je feedback is binnen.'}</p>
           <div class="fa-fb-acties"><button type="button" class="fa-btn fa-btn-primary fa-fb-annuleer">Sluiten</button></div>`;
         form.querySelectorAll('.fa-fb-sluit, .fa-fb-annuleer').forEach(b => b.onclick = sluit);
         form.querySelector('.fa-fb-annuleer').focus();
