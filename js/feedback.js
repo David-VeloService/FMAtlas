@@ -61,7 +61,8 @@
       body: JSON.stringify({
         _subject: `FM Atlas ${data.type === 'onjuistheid' ? 'onjuistheid' : 'feedback'}: ${data.titel}`,
         soort: data.type, pagina: 'https://fmatlas.nl/' + data.pagina, titel: data.titel,
-        geselecteerde_tekst: data.selectie || '-', bericht: data.bericht, email: data.email || '-',
+        geselecteerde_tekst: data.selectie || '-', bericht: data.bericht,
+        ...(data.email ? { email: data.email } : {}),
       }),
     });
     if (!r.ok) throw new Error('HTTP ' + r.status);
