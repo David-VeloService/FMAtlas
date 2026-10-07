@@ -656,6 +656,13 @@
       margin-left: 10px;
     }
 
+    .intro-film { margin-bottom: 28px; }
+    .intro-film-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; margin-bottom: 14px; }
+    .intro-film-meta { font-size: 11px; font-weight: 800; color: var(--accent); letter-spacing: 0.08em; margin-bottom: 4px; }
+    .intro-film-title { font-size: 20px; font-weight: 900; letter-spacing: -0.015em; }
+    .intro-film-video { display: block; width: 100%; height: auto; border-radius: var(--radius-lg); background: var(--ink); aspect-ratio: 16 / 9; }
+    .intro-film-note { margin-top: 10px; font-size: 13px; color: var(--ink-soft); }
+
     .section-title {
       font-size: 22px;
       font-weight: 900;
@@ -797,6 +804,21 @@
       <div class="home-grid">
         <!-- LEFT: vakken + contact -->
         <div>
+          <!-- INTROFILM -->
+          <div class="fa-card intro-film" id="intro-film" hidden>
+            <div class="intro-film-head">
+              <div>
+                <div class="intro-film-meta">NIEUW · 23 SECONDEN</div>
+                <h2 class="intro-film-title">FM Atlas is terug, nu met jaar 2</h2>
+              </div>
+              <button type="button" class="fa-btn fa-btn-ghost fa-btn-sm" id="intro-film-hide">Verbergen</button>
+            </div>
+            <video class="intro-film-video" controls playsinline preload="none" poster="media/fmatlas-jaar-2.jpg" width="1280" height="720">
+              <source src="media/fmatlas-jaar-2.mp4" type="video/mp4">
+            </video>
+            <p class="intro-film-note">Zie je iets dat niet klopt? Gebruik <strong>Meld een onjuistheid</strong> rechtsonder op elke pagina.</p>
+          </div>
+
           <h2 class="section-title" id="vakken">Jouw vakken</h2>
 
           <div id="vakken-list"></div>
@@ -943,6 +965,19 @@
       const ks = v.keys || [v.key];
       return Math.round(ks.reduce((a, k) => a + (progress[k] || 0), 0) / ks.length);
     }
+
+    // ── Introfilm: tonen tot de bezoeker hem verbergt ──
+    (function () {
+      const card = document.getElementById('intro-film');
+      let hidden = false;
+      try { hidden = localStorage.getItem('fa_introfilm_jaar2') === 'verborgen'; } catch (_) {}
+      if (!hidden) card.hidden = false;
+      document.getElementById('intro-film-hide').addEventListener('click', () => {
+        card.hidden = true;
+        const v = card.querySelector('video'); if (v) v.pause();
+        try { localStorage.setItem('fa_introfilm_jaar2', 'verborgen'); } catch (_) {}
+      });
+    })();
 
     // ── Firebase ──────────────────────────────────────────
     const firebaseConfig = {
