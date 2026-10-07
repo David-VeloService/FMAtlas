@@ -60,27 +60,27 @@ window.HUIV = {
   {
    "cat": "bouwkunde",
    "term": "Opbouw van een gebouw",
-   "def": "Een gebouw bestaat grofweg uit de fundering onder de grond, de opbouw of het casco, de afbouw of afwerking, en het dak."
+   "def": "Een pand bestaat grofweg uit vier lagen: de fundering onder de grond, het casco (de draagstructuur erboven), de afbouw of afwerking, en het dak."
   },
   {
    "cat": "bouwkunde",
-   "term": "Fundering op staal",
-   "def": "Fundering die de belasting direct op de draagkrachtige bodem overbrengt, zonder heipalen, meestal als strokenfundering. Kan als de bodem binnen 80 tot 300 cm onder peil draagkrachtig is. Ook wel staalfundering of strokenfundering. 'Staal' slaat hier niet op het metaal."
+   "term": "Fundering op staal (strokenfundering)",
+   "def": "Ondergrondse draagconstructie die de belasting direct op de draagkrachtige bodem overbrengt, zonder heipalen, meestal als doorgaande banden onder de muren. Kan als de bodem binnen 80 tot 300 cm onder peil draagkrachtig is. Ook wel strokenfundering genoemd. De naam verwijst niet naar het metaal."
   },
   {
    "cat": "bouwkunde",
    "term": "Fundering op palen",
-   "def": "Fundering waarbij palen de belasting naar een diepere draagkrachtige laag brengen. Nodig als de draagkrachtige ondergrond dieper ligt dan ongeveer 2 meter."
+   "def": "Ondergrondse draagconstructie die de belasting via lange, in de grond geheide elementen naar een diepere draagkrachtige laag brengt. Nodig als de draagkrachtige ondergrond dieper ligt dan ongeveer 2 meter."
   },
   {
    "cat": "bouwkunde",
    "term": "Aanlegbreedte",
-   "def": "De breedte van de voet van de fundering, bepaald via grondonderzoek. Vuistregel: twee tot tweeënhalf keer de dikte van het opgaande werk (muur van 300 mm geeft ongeveer 750 mm)."
+   "def": "Hoe breed de voet van de fundering is, bepaald via grondonderzoek. Vuistregel: twee tot tweeënhalf keer de dikte van het opgaande werk (muur van 300 mm geeft ongeveer 750 mm)."
   },
   {
    "cat": "bouwkunde",
    "term": "Sonderen",
-   "def": "Grondonderzoek waarbij een sondeerapparaat meet hoeveel weerstand de grond biedt tegen indringing. De uitslag bepaalt of een fundering op staal kan of dat palen nodig zijn."
+   "def": "Grondonderzoek waarbij een meetapparaat bepaalt hoeveel weerstand de grond biedt tegen indringing. De uitslag bepaalt of een fundering op staal kan of dat palen nodig zijn."
   },
   {
    "cat": "bouwkunde",
@@ -95,7 +95,7 @@ window.HUIV = {
   {
    "cat": "bouwkunde",
    "term": "Gewapend beton",
-   "def": "Beton met stalen staven (wapening of betonstaal). Beton kan geen trekkrachten opnemen en breekt dan, staal wel. Wapening wordt in het werk gelegd of zit al in fabrieksvloeren zoals breedplaat- en kanaalplaatvloeren."
+   "def": "Steenachtig bouwmateriaal waarin stalen staven zijn verwerkt. Het materiaal zelf kan geen trekkrachten opnemen en breekt dan, staal wel. De staven worden in het werk gelegd of zitten al in fabrieksvloeren zoals breedplaat- en kanaalplaatvloeren."
   },
   {
    "cat": "bouwkunde",
@@ -110,7 +110,7 @@ window.HUIV = {
   {
    "cat": "bouwkunde",
    "term": "Betonrot",
-   "def": "Schade aan beton doordat de wapening roest, uitzet en het beton kapotdrukt. Oorzaak is meestal slechte uitvoering, milieu-invloed en onvoldoende onderhoud samen."
+   "def": "Schade doordat de wapening roest, uitzet en het omringende steenachtige materiaal kapotdrukt. Oorzaak is meestal slechte uitvoering, milieu-invloed en onvoldoende onderhoud samen."
   },
   {
    "cat": "bouwkunde",
@@ -125,12 +125,12 @@ window.HUIV = {
   {
    "cat": "bouwkunde",
    "term": "Permanente belasting",
-   "def": "Belasting die altijd op een gebouw werkt: het eigen gewicht, waterdruk en gronddruk."
+   "def": "Krachten die altijd op een gebouw werken: het eigen gewicht, waterdruk en gronddruk."
   },
   {
    "cat": "bouwkunde",
    "term": "Variabele belasting",
-   "def": "Belasting die wisselt: wind, sneeuw, mensen en apparaten."
+   "def": "Krachten op een gebouw die wisselen: wind, sneeuw, mensen en apparaten."
   },
   {
    "cat": "bouwkunde",
@@ -145,42 +145,42 @@ window.HUIV = {
   {
    "cat": "bouwkunde",
    "term": "Constructievloer",
-   "def": "De (betonnen) vloer die deel is van de draagconstructie, gestort of van prefab platen. Daarop komen eventueel vloerverwarming, een afwerkvloer en de vloerafwerking. Ook draagvloer genoemd."
+   "def": "Het (betonnen) dragende horizontale bouwdeel dat bij het casco hoort, gestort of van prefab platen. Daarop komen eventueel vloerverwarming, een afwerkvloer en de vloerafwerking. Ook draagvloer genoemd."
   },
   {
    "cat": "bouwkunde",
    "term": "Afwerkvloer",
-   "def": "Vaste afwerklaag die tijdens de bouw op de constructievloer wordt gemaakt, meestal van zand-cementspecie, om de vloer glad te maken. Ook dekvloer. Niet hetzelfde als vloerafwerking (parket, linoleum, tapijt)."
+   "def": "Vaste laag die tijdens de bouw op de constructievloer wordt aangebracht, meestal van zand-cementspecie, om de ondergrond glad te maken. Ook dekvloer genoemd. Niet hetzelfde als de zichtbare vloerbedekking (parket, linoleum, tapijt)."
   },
   {
    "cat": "bouwkunde",
    "term": "Balklaag",
-   "def": "Stelsel van horizontale balken dat vloerplanken of -platen, een zoldervloer of een plat dak draagt. Traditionele bouwwijze die nog vaak voorkomt; de houten balklaagvloer is een van de drie hoofdgroepen vloeren."
+   "def": "Stelsel van horizontale liggers dat vloerplanken of -platen, een zoldervloer of een plat dak draagt. Traditionele bouwwijze die nog vaak voorkomt; de houten variant is een van de drie hoofdgroepen vloeren."
   },
   {
    "cat": "bouwkunde",
    "term": "Systeemvloer",
-   "def": "Steenachtige vloer van geprefabriceerde elementen. Een van de drie hoofdgroepen vloeren, naast de houten balklaag en de gestorte betonvloer. Voorbeeld: de kanaalplaatvloer."
+   "def": "Steenachtige draagconstructie voor verdiepingen, opgebouwd uit geprefabriceerde elementen. Een van de drie hoofdgroepen vloeren, naast de houten balklaag en de gestorte betonvloer. Voorbeeld: de kanaalplaatvloer."
   },
   {
    "cat": "bouwkunde",
    "term": "Kanaalplaatvloer",
-   "def": "Prefab betonnen vloerplaat met holle kanalen in de lengterichting, met wapening uit de fabriek. Toegepast in utiliteits- en woningbouw."
+   "def": "Prefab betonnen element voor de draagvloer, met holle ruimtes die in de lengterichting doorlopen en wapening uit de fabriek. Toegepast in utiliteits- en woningbouw."
   },
   {
    "cat": "bouwkunde",
    "term": "Breedplaatvloer",
-   "def": "Prefab vloerplaat waarin de wapening al in de fabriek is aangebracht en waarop op de bouwplaats nog beton wordt gestort."
+   "def": "Prefab element voor de draagvloer waarin de wapening al in de fabriek is aangebracht en waarop op de bouwplaats nog beton wordt gestort."
   },
   {
    "cat": "bouwkunde",
    "term": "Zwevende vloer",
-   "def": "Vloer (of plafond) die niet hard in contact staat met de constructie eronder of erboven, om de overdracht van geluid en trillingen te voorkomen."
+   "def": "Loopvlak (of plafond) dat niet hard in contact staat met de constructie eronder of erboven, om de overdracht van geluid en trillingen te voorkomen."
   },
   {
    "cat": "bouwkunde",
    "term": "Kruipruimte",
-   "def": "De ruimte onder de begane-grondvloer. Daar lopen water-, elektriciteits-, gas- en afvoerleidingen. In de maquette-oefening wordt hij geventileerd met een ventilatierooster."
+   "def": "Holte onder de begane-grondvloer. Daar lopen water-, elektriciteits-, gas- en afvoerleidingen. In de maquette-oefening wordt die geventileerd met een ventilatierooster."
   },
   {
    "cat": "bouwkunde",
@@ -190,7 +190,7 @@ window.HUIV = {
   {
    "cat": "bouwkunde",
    "term": "Montagebouw",
-   "def": "Bouwvorm waarbij onderdelen in de fabriek worden gemaakt en op de bouwplaats als bouwpakket worden gemonteerd, bijvoorbeeld prefab betonnen gevelpanelen."
+   "def": "Bouwvorm waarbij onderdelen in de fabriek worden gemaakt en op de bouwplaats als bouwpakket in elkaar worden gezet, bijvoorbeeld prefab betonnen gevelpanelen."
   },
   {
    "cat": "bouwkunde",
@@ -205,92 +205,92 @@ window.HUIV = {
   {
    "cat": "bouwkunde",
    "term": "Skeletbouw",
-   "def": "Bouwvorm met een dragend skelet van beton, staal of hout, ingevuld met niet-dragende gevelvullingen en tussenwanden."
+   "def": "Bouwvorm met een dragend geraamte van beton, staal of hout, ingevuld met niet-dragende gevelvullingen en tussenwanden."
   },
   {
    "cat": "bouwkunde",
    "term": "Betonskeletbouw",
-   "def": "Skeletbouw waarbij vloeren, kolommen en dragende delen van gewapend beton zijn. Gevel en tussenwanden zijn niet-dragende vullingen, bijvoorbeeld prefab gevelelementen."
+   "def": "Bouwvorm met een dragend geraamte waarbij vloeren, kolommen en dragende delen gemaakt zijn van met staal gewapend, steenachtig gietmateriaal. Gevel en tussenwanden zijn niet-dragende vullingen, bijvoorbeeld prefab gevelelementen."
   },
   {
    "cat": "bouwkunde",
    "term": "Staalskelet",
-   "def": "Draagconstructie van stalen kolommen, balken en spanten van profielstaal, ingevuld met niet-dragende gevels en tussenwanden."
+   "def": "Draagconstructie (geraamte) van metalen kolommen, balken en spanten uit metalen profielen, ingevuld met niet-dragende gevels en tussenwanden."
   },
   {
    "cat": "bouwkunde",
    "term": "Houtskeletbouw (HSB)",
-   "def": "Bouwwijze waarbij het dragende deel uit verticale houten stijlen bestaat en de vloeren ook van hout zijn. Binnen meestal afgewerkt met gipsplaat, buiten met metselwerk of houten delen."
+   "def": "Bouwwijze waarbij het dragende deel uit verticale getimmerde stijlen bestaat en ook de vloeren getimmerd zijn. Binnen meestal afgewerkt met gipsplaat, buiten met metselwerk of planken (delen)."
   },
   {
    "cat": "bouwkunde",
    "term": "Dragende muur",
-   "def": "Muur die berekend is op zijn eigen gewicht en op de belasting van wat erop rust. Weghalen kan niet zonder gevolgen voor de constructie. Buitenmuren zijn meestal dragend, binnenmuren kunnen beide zijn."
+   "def": "Wand die berekend is op zijn eigen gewicht en op de belasting van wat erop rust. Weghalen kan niet zonder gevolgen voor de constructie. Buitenwanden zijn dat meestal, binnenwanden kunnen beide zijn."
   },
   {
    "cat": "bouwkunde",
    "term": "Bouwmuur",
-   "def": "Dragende muur tussen twee huizen waarin de vloeren zijn opgelegd."
+   "def": "Dragende scheidingswand tussen twee huizen waarin de vloeren zijn opgelegd."
   },
   {
    "cat": "bouwkunde",
    "term": "Spouwmuur",
-   "def": "Muur van twee halfsteens muren met daartussen een spouw van 3 tot 10 cm. Bijna altijd een buitenmuur of woningscheidende muur. In buitenmuren zijn de bladen verbonden met spouwankers; bij woningscheidende muren liever niet, omdat ankers geluid doorgeven (ankerloze spouwmuur)."
+   "def": "Wand die bestaat uit twee halfsteens bladen met daartussen een luchtlaag van 3 tot 10 cm. Bijna altijd een buitenwand of woningscheidende wand. In buitenwanden zijn de bladen verbonden met ankers; bij woningscheidende wanden liever niet, omdat ankers geluid doorgeven (dan heet hij ankerloos)."
   },
   {
    "cat": "bouwkunde",
    "term": "Binnenspouwblad",
-   "def": "Het binnenste blad van een spouwmuur, tegenwoordig meestal van kalkzandsteen. De isolatie zit altijd tegen het binnenspouwblad, om vochtdoorslag te voorkomen."
+   "def": "De halfsteens schil aan de warme kant (de kant van de vertrekken) van een dubbele gevelwand met luchtlaag, tegenwoordig meestal van kalkzandsteen. De isolatie zit altijd tegen deze schil, om vochtdoorslag te voorkomen."
   },
   {
    "cat": "bouwkunde",
    "term": "Buitenspouwblad",
-   "def": "Het buitenste blad van een spouwmuur, meestal van baksteen of betonsteen."
+   "def": "De halfsteens schil aan de weerkant (de kant die je van de straat ziet) van een dubbele gevelwand met luchtlaag, meestal van baksteen of betonsteen."
   },
   {
    "cat": "bouwkunde",
    "term": "Spouwanker",
-   "def": "Verbinding tussen binnen- en buitenspouwblad die ook de isolatie verankert. Bij woningscheidende muren liever niet, omdat ankers geluid doorgeven: dan spreek je van een ankerloze spouwmuur."
+   "def": "Verbindingsstuk tussen de twee bladen van een dubbele gevelwand met luchtlaag, dat ook de isolatie op zijn plek houdt. Bij woningscheidende wanden laat je ze liever weg, omdat ze geluid doorgeven."
   },
   {
    "cat": "bouwkunde",
    "term": "Open stootvoeg",
-   "def": "Verticale voeg in metselwerk die bewust niet met mortel is gevuld. Dient om de spouw te ventileren of water af te voeren, soms ook voor de uitstraling. Zit vaak onder en boven gevelopeningen, net boven maaiveld en onder het dak."
+   "def": "Verticale naad tussen stenen in metselwerk die bewust niet met mortel is gevuld. Dient om de spouw te ventileren of water af te voeren, soms ook voor de uitstraling. Zit vaak onder en boven gevelopeningen, net boven maaiveld en onder het dak."
   },
   {
    "cat": "bouwkunde",
    "term": "Stootvoeg en lintvoeg",
-   "def": "De stootvoeg (staande voeg) is de verticale voeg in metselwerk; de liggende voeg heet lintvoeg."
+   "def": "De twee soorten naden in metselwerk: de verticale (staande) naad tussen twee stenen naast elkaar, en de horizontale (liggende) naad tussen twee lagen stenen."
   },
   {
    "cat": "bouwkunde",
    "term": "Steensmuur",
-   "def": "Muur die zo dik is als een steen lang is, bij waalformaat ongeveer 20 cm. Gebruikt voor onder meer tuinmuren en omheiningen."
+   "def": "Wand waarvan de dikte gelijk is aan de lengte van een baksteen, bij waalformaat ongeveer 20 cm. Gebruikt voor onder meer tuinmuren en omheiningen."
   },
   {
    "cat": "bouwkunde",
    "term": "Halfsteensmuur",
-   "def": "Muur ter dikte van de breedte van een steen, ongeveer 10 cm. Geschikt voor spouwbladen en binnenmuren. Gaat over de dikte, niet over hoe de stenen zijn gestapeld."
+   "def": "Wand waarvan de dikte gelijk is aan de breedte van een baksteen, ongeveer 10 cm. Geschikt voor spouwbladen en binnenwanden. Gaat over de dikte, niet over hoe de stenen zijn gestapeld."
   },
   {
    "cat": "bouwkunde",
    "term": "Klampmuur",
-   "def": "Muur van minder dan een halve steen dik, bijvoorbeeld om een deuropening dicht te metselen of een gat op te vullen."
+   "def": "Wand die dunner is dan een halve steen, bijvoorbeeld om een deuropening dicht te metselen of een gat op te vullen."
   },
   {
    "cat": "bouwkunde",
    "term": "Metselverband",
-   "def": "De manier waarop stenen zijn gestapeld en overlappen. Geen overlapping is stapelverband, een halve steen overlapping is halfsteensverband, een kwart overlapping is klezoorverband."
+   "def": "De manier waarop stenen in een muur zijn gestapeld en elkaar overlappen. Drie vormen: geen overlapping (stapel-), een halve steen overlapping (halfsteens-) en een kwart overlapping (klezoor-)."
   },
   {
    "cat": "bouwkunde",
    "term": "Halfsteensverband",
-   "def": "Metselverband waarbij elke laag een halve steen verspringt, zodat de stootvoegen halverwege de stenen van de vorige laag vallen. Niet verwarren met de halfsteensmuur, die over dikte gaat."
+   "def": "Stapelwijze in metselwerk waarbij elke laag zo verspringt dat de stootvoegen precies midden boven de stenen van de laag eronder vallen. Niet verwarren met de muursoort met bijna dezelfde naam, die over dikte gaat."
   },
   {
    "cat": "bouwkunde",
    "term": "Schoon metselwerk",
-   "def": "Metselwerk dat in het zicht blijft: gave stenen, zorgvuldig gevoegd. Vuil metselwerk zit uit het zicht, bijvoorbeeld onder maaiveld."
+   "def": "Stenen muurwerk dat in het zicht blijft: gave stenen, zorgvuldig gevoegd. De variant uit het zicht, bijvoorbeeld onder maaiveld, heet vuil."
   },
   {
    "cat": "bouwkunde",
@@ -310,57 +310,57 @@ window.HUIV = {
   {
    "cat": "bouwkunde",
    "term": "Kitvoeg",
-   "def": "Elastische vulling van een voeg tussen materialen die ten opzichte van elkaar bewegen, bijvoorbeeld bij tegelwerk in natte ruimtes of rond kozijnen."
+   "def": "Elastische vulling van een naad tussen materialen die ten opzichte van elkaar bewegen, bijvoorbeeld bij tegelwerk in natte ruimtes of rond kozijnen."
   },
   {
    "cat": "bouwkunde",
    "term": "Metal-stud wand",
-   "def": "Niet-dragende wand die ter plekke wordt gemaakt: een stalen frame met (gips)platen en isolatie."
+   "def": "Niet-dragende scheiding die ter plekke wordt gemaakt: een stalen frame met (gips)platen en isolatie."
   },
   {
    "cat": "bouwkunde",
    "term": "Systeemwand",
-   "def": "Niet-dragende wand die uit de fabriek komt en door de leverancier wordt geplaatst. Bestaat gesloten, transparant en semi-transparant."
+   "def": "Niet-dragende scheiding die uit de fabriek komt en door de leverancier wordt geplaatst. Bestaat gesloten, transparant en semi-transparant."
   },
   {
    "cat": "bouwkunde",
    "term": "Vochtdoorslag",
-   "def": "Vocht dat door poreuze bouwmaterialen naar binnen komt, vooral bij gemetselde wanden, kelders en ruimtes onder maaiveld. Neemt toe door bodemverzakking, veranderend grondwater en meer neerslag."
+   "def": "Water dat door poreuze bouwmaterialen naar binnen komt, vooral bij gemetselde wanden, kelders en ruimtes onder maaiveld. Neemt toe door bodemverzakking, veranderend grondwater en meer neerslag."
   },
   {
    "cat": "bouwkunde",
    "term": "Baksteen",
-   "def": "Steen van gebakken klei, in Nederland vooral rivierklei. IJzerhoudende klei geeft een rode steen, kalkhoudende klei een gele."
+   "def": "Metselblok van klei die in een oven is gestookt, in Nederland vooral rivierklei. IJzerhoudende klei geeft een rode kleur, kalkhoudende klei een gele."
   },
   {
    "cat": "bouwkunde",
    "term": "Waalformaat",
-   "def": "Het meest gebruikte baksteenformaat, ongeveer 21,4 x 10,2 x 5,5 cm. Andere formaten zijn onder meer Vecht-, Rijn- en blokformaat."
+   "def": "De meest gebruikte maat voor bakstenen, ongeveer 21,4 x 10,2 x 5,5 cm. Andere standaardmaten heten onder meer Vecht, Rijn en blok."
   },
   {
    "cat": "bouwkunde",
    "term": "Handvormsteen",
-   "def": "Met de hand gevormde baksteen: grilliger van uiterlijk en duurder dan machinaal gemaakte steen, met een ander gevelbeeld als resultaat."
+   "def": "Ambachtelijk, niet machinaal gemaakt blok van gebakken klei: grilliger van uiterlijk en duurder dan fabrieksmatig gemaakte varianten, met een ander gevelbeeld als resultaat."
   },
   {
    "cat": "bouwkunde",
    "term": "Kalkzandsteen",
-   "def": "Steen van vooral kalk en zand, onder hoge temperatuur geperst tot blokken of elementen. Veel gebruikt voor dragende binnenmuren en binnenspouwbladen."
+   "def": "Metselmateriaal van vooral calciumoxide en kwartskorrels, onder hoge temperatuur geperst tot blokken of elementen. Veel gebruikt voor dragende binnenmuren en binnenspouwbladen."
   },
   {
    "cat": "bouwkunde",
    "term": "Betonsteen",
-   "def": "Metsel- of straatsteen van betonmortel, onder druk gemaakt, in veel formaten en soms gekleurd."
+   "def": "Metsel- of straatblok van een mengsel van cement, zand en grind, onder druk gemaakt, in veel formaten en soms gekleurd."
   },
   {
    "cat": "bouwkunde",
-   "term": "Gasbeton",
-   "def": "Lichtgewicht blokken of elementen voor scheidingswanden, ook cellenbeton genoemd. Heeft ondanks de naam niets met beton te maken."
+   "term": "Gasbeton (cellenbeton)",
+   "def": "Lichtgewicht blokken of elementen voor scheidingswanden, ook cellenbeton genoemd. Ondanks de naam is het iets anders dan het gietmateriaal van cement, zand en grind."
   },
   {
    "cat": "bouwkunde",
    "term": "Natuursteen",
-   "def": "Gesteente uit de natuur dat na bewerking als bouwmateriaal dient, zoals marmer, graniet en leisteen."
+   "def": "Materiaal uit rotsformaties dat na bewerking als bouwmateriaal dient, zoals marmer, graniet en lei. Niet kunstmatig gemaakt."
   },
   {
    "cat": "bouwkunde",
@@ -370,12 +370,12 @@ window.HUIV = {
   {
    "cat": "bouwkunde",
    "term": "Glaswol",
-   "def": "Isolatiemateriaal van zand en gerecycled glas. Niet brandbaar en niet oplosbaar in water. Kan jeuk geven, dus werken met handschoenen en stofmasker."
+   "def": "Isolatiemateriaal van zand en gerecyclede scherven van flessen en ruiten. Niet brandbaar en niet oplosbaar in water. Kan jeuk geven, dus werken met handschoenen en stofmasker."
   },
   {
    "cat": "bouwkunde",
    "term": "Steenwol",
-   "def": "Isolatiemateriaal van gesteente dat bij 1400 °C wordt gesmolten, tot draden geslingerd en met een bindmiddel tot een mat wordt gemaakt."
+   "def": "Isolatiemateriaal van rotsmateriaal dat bij 1400 °C wordt gesmolten, tot draden geslingerd en met een bindmiddel tot een mat wordt gemaakt."
   },
   {
    "cat": "bouwkunde",
@@ -385,7 +385,7 @@ window.HUIV = {
   {
    "cat": "bouwkunde",
    "term": "Fijn schuurwerk",
-   "def": "Afwerklaag voor wanden en plafonds van kalk, gips en zilverzand, met een levendig effect door de slag van de schuurspaan."
+   "def": "Afwerklaag voor wanden en plafonds van kalk, gips en zilverzand, met een levendig effect door de slag van de spaan waarmee het wordt afgewerkt."
   },
   {
    "cat": "bouwkunde",
@@ -405,22 +405,22 @@ window.HUIV = {
   {
    "cat": "bouwkunde",
    "term": "Zadeldak",
-   "def": "Schuin dak van twee dakschilden die in de nok op elkaar aansluiten."
+   "def": "Kap met twee hellende vlakken die in de nok op elkaar aansluiten."
   },
   {
    "cat": "bouwkunde",
    "term": "Lessenaarsdak",
-   "def": "Schuin dak dat in één vlak helt."
+   "def": "Kap die in één vlak helt."
   },
   {
    "cat": "bouwkunde",
    "term": "Dakschild",
-   "def": "Eén dakvlak van een hellend dak."
+   "def": "Eén hellend vlak van een schuine kap."
   },
   {
    "cat": "bouwkunde",
    "term": "Spant",
-   "def": "Houten of metalen frame dat de dakschilden draagt, bijvoorbeeld een driehoekspant of boogspant."
+   "def": "Houten of metalen draagframe onder de dakschilden, bijvoorbeeld in de vorm van een driehoek of een boog."
   },
   {
    "cat": "bouwkunde",
@@ -435,27 +435,27 @@ window.HUIV = {
   {
    "cat": "bouwkunde",
    "term": "Muurplaat",
-   "def": "Horizontale (meestal houten) balk bovenop een muur waarop het schuine dakbeschot wordt bevestigd."
+   "def": "Horizontale (meestal houten) balk bovenop een (gevel)wand waarop het schuine dakbeschot wordt bevestigd."
   },
   {
    "cat": "bouwkunde",
    "term": "Dakbeschot",
-   "def": "Plaat van spaanplaat, multiplex of iets vergelijkbaars, eventueel met isolatie, waarop de dakbedekking (bijvoorbeeld pannen) rust."
+   "def": "Plaat van spaanplaat, multiplex of iets vergelijkbaars, eventueel met isolatie, waarop de pannen of een andere bedekking rusten."
   },
   {
    "cat": "bouwkunde",
    "term": "Nokvorst",
-   "def": "Ronde dakpan in de nok die de bovenste pannenrijen van beide dakvlakken op elkaar aansluit."
+   "def": "Ronde pan op de hoogste lijn van het dak, die de bovenste pannenrijen van beide dakvlakken op elkaar aansluit."
   },
   {
    "cat": "bouwkunde",
    "term": "Dakoverstek",
-   "def": "Het deel van het dak, de overkapping of de dakkapel dat buiten de gevel uitsteekt. Vaak zit de goot erin."
+   "def": "Het deel van de kap, de overkapping of de dakkapel dat buiten de gevel doorloopt. Vaak zit de goot erin."
   },
   {
    "cat": "bouwkunde",
    "term": "Bitumineuze dakbedekking",
-   "def": "Asfaltachtige bedekking van platte daken in banen. Bitumen komt uit aardolie. In de maquette ligt het bovenop: bitumen, multiplex, isolatie, multiplex, balklaag."
+   "def": "Asfaltachtige afdichting van platte kappen, aangebracht in banen. Het materiaal komt uit aardolie. In de maquette ligt het bovenop de opbouw: deze laag, multiplex, isolatie, multiplex, balklaag."
   },
   {
    "cat": "bouwkunde",
@@ -470,17 +470,17 @@ window.HUIV = {
   {
    "cat": "bouwkunde",
    "term": "Bakgoot",
-   "def": "Dakgoot met een hoekige doorsnede. Zie ook mastgoot."
+   "def": "Opvangvoorziening voor regenwater langs de dakrand met een hoekige doorsnede. Daarnaast bestaat onder meer de mast-variant."
   },
   {
    "cat": "bouwkunde",
    "term": "Dakdoorvoer",
-   "def": "Waterdicht passende plaat met een pijp door de dakbedekking, bijvoorbeeld voor de afvoer van de cv-ketel of mechanische ventilatie."
+   "def": "Waterdicht passende plaat met een pijp die de bedekking van de kap doorkruist, bijvoorbeeld voor de afvoer van de cv-ketel of mechanische ventilatie."
   },
   {
    "cat": "bouwkunde",
    "term": "Loodslabben",
-   "def": "Loden elementen die een aansluiting waterdicht maken, bijvoorbeeld van een schoorsteen, muur of dakkapel op het dakschild. Lood is zwaar, waterdicht en buigzaam."
+   "def": "Elementen van een zwaar, waterdicht en buigzaam metaal die een aansluiting waterdicht maken, bijvoorbeeld van een schoorsteen, muur of dakkapel op het dakschild."
   },
   {
    "cat": "bouwkunde",
@@ -495,7 +495,7 @@ window.HUIV = {
   {
    "cat": "bouwkunde",
    "term": "Pui",
-   "def": "Raam of venster dat een groot deel van de gevel beslaat, zoals een winkelpui of kantoorpui."
+   "def": "Raam of venster dat een groot deel van de gevel beslaat, zoals bij een winkel of kantoor."
   },
   {
    "cat": "bouwkunde",
@@ -515,47 +515,47 @@ window.HUIV = {
   {
    "cat": "bouwkunde",
    "term": "Bovenlicht",
-   "def": "Ruit boven een deur, of het bovenste (al dan niet te openen) ruitvlak van een kozijn."
+   "def": "Ruit direct over een deur, of het hoogste (al dan niet te openen) ruitvlak van een kozijn."
   },
   {
    "cat": "bouwkunde",
    "term": "Draaikiepraam",
-   "def": "Raam dat zowel kan draaien als kiepen. Een doorgetrokken lijn op de tekening betekent dat het naar buiten opent, een stippellijn naar binnen."
+   "def": "Venster dat op twee manieren open kan: zijwaarts openzwaaien om een verticale as en kantelen om een horizontale onderas. Een doorgetrokken lijn op de tekening betekent dat het naar buiten opent, een stippellijn naar binnen."
   },
   {
    "cat": "bouwkunde",
    "term": "Taatsraam",
-   "def": "Raam dat draait om een verticale as op een derde tot de helft van de raambreedte."
+   "def": "Venster dat draait om een verticale as op een derde tot de helft van de vensterbreedte."
   },
   {
    "cat": "bouwkunde",
    "term": "Aantrede",
-   "def": "De diepte van een traptrede, gemeten op de looplijn. Samen met de optrede bepaalt die de hellingshoek van de trap; de richtlijnen staan in het Bouwbesluit."
+   "def": "De diepte van één stap van een trap, gemeten op de looplijn. Samen met de stijghoogte per stap bepaalt die de hellingshoek van de trap; de richtlijnen staan in het Bouwbesluit."
   },
   {
    "cat": "bouwkunde",
    "term": "Optrede",
-   "def": "De hoogte tussen twee opeenvolgende traptreden."
+   "def": "Het hoogteverschil tussen twee opeenvolgende stappen van een trap."
   },
   {
    "cat": "bouwkunde",
    "term": "Looplijn",
-   "def": "De denkbeeldige lijn waarlangs je loopt: bij een rechte trap in het midden, bij een spiltrap op een derde van de buitenkant. Looplijnen in een ruimte bepalen ook de inrichtingsmogelijkheden."
+   "def": "Het denkbeeldige pad dat je volgt, bijvoorbeeld op een trap: bij een rechte trap in het midden, bij een spiltrap op een derde van de buitenkant. Zulke routes in een ruimte bepalen ook de inrichtingsmogelijkheden."
   },
   {
    "cat": "bouwkunde",
    "term": "Steektrap",
-   "def": "Rechte trap zonder bochten of tussenbordessen."
+   "def": "Recht oplopende verbinding tussen verdiepingen, zonder bochten of tussenbordessen."
   },
   {
    "cat": "bouwkunde",
    "term": "Spiltrap",
-   "def": "Wenteltrap waarbij alle treden aan één kant aan de spil (de as) vastzitten."
+   "def": "Wentelvormige verbinding tussen verdiepingen waarbij alle treden aan één kant aan een centrale as vastzitten."
   },
   {
    "cat": "bouwkunde",
    "term": "Vlizotrap",
-   "def": "Inschuifbare trap naar vliering of zolder. Op de plattegrond zie je vaak alleen het luik, als rechthoek."
+   "def": "Inschuifbare ladder naar vliering of zolder. Op de plattegrond zie je vaak alleen het luik, als rechthoek."
   },
   {
    "cat": "bouwkunde",
@@ -575,7 +575,7 @@ window.HUIV = {
   {
    "cat": "bouwkunde",
    "term": "Kopgevel",
-   "def": "Zijgevel van een bouwblok. Meestal niet de voorgevel, al kan dat wel."
+   "def": "Zijkant aan het uiteinde van een bouwblok. Meestal niet de voorkant, al kan dat wel."
   },
   {
    "cat": "bouwkunde",
@@ -585,22 +585,22 @@ window.HUIV = {
   {
    "cat": "bouwkunde",
    "term": "Standleiding",
-   "def": "Verticale afvoerleiding in een gebouw. Om bouwkosten te sparen liggen natte ruimtes (toiletten, badkamers) daarom vaak boven elkaar."
+   "def": "Verticale afvoerbuis in een gebouw. Om bouwkosten te sparen liggen natte ruimtes (toiletten, badkamers) daarom vaak boven elkaar."
   },
   {
    "cat": "bouwkunde",
    "term": "Buitenriolering",
-   "def": "Afvoerleiding in het terrein, de verbinding tussen het gemeentelijk riool en de binnenriolering van het gebouw."
+   "def": "Afvoerleidingen in het terrein: de verbinding tussen het openbare afvoerstelsel van de gemeente en de afvoerleidingen in het gebouw."
   },
   {
    "cat": "bouwkunde",
    "term": "Bestemmingsplan",
-   "def": "Gemeentelijk plan dat vastlegt hoe grond en gebouwen gebruikt mogen worden (bijvoorbeeld wonen, kantoor, onderwijs) en wat de maximale afmetingen van gebouwen zijn. Weergegeven op een bestemmingsplankaart."
+   "def": "Gemeentelijk document dat vastlegt hoe grond en gebouwen gebruikt mogen worden (bijvoorbeeld wonen, kantoor, onderwijs) en wat de maximale afmetingen van gebouwen zijn. Weergegeven op een kaart."
   },
   {
    "cat": "bouwkunde",
    "term": "Rooilijn",
-   "def": "Denkbeeldige lijn uit het bestemmingsplan waarbinnen gebouwd mag worden. De voorgevelrooilijn is de lijn waarop doorgaans de voorgevel staat. Bepaalt sterk het straatbeeld."
+   "def": "Denkbeeldige grens uit het bestemmingsplan waarbinnen gebouwd mag worden. De variant aan de straatkant geeft aan waar doorgaans de voorgevel staat. Bepaalt sterk het straatbeeld."
   },
   {
    "cat": "bouwkunde",
@@ -610,57 +610,57 @@ window.HUIV = {
   {
    "cat": "hvm",
    "term": "Huisvestingscyclus",
-   "def": "De fasen van een huisvestingsproces: startpunt en initiatieffase, programma van eisen, ruimtelijke uitwerking, en beheer en exploitatie. Een cyclus: verandert de situatie, dan begint het opnieuw."
+   "def": "De fasen die een organisatie doorloopt bij het regelen van haar onderkomen: startpunt en initiatieffase, programma van eisen, ruimtelijke uitwerking, en beheer en exploitatie. Een kringloop: verandert de situatie, dan begint het opnieuw."
   },
   {
    "cat": "hvm",
    "term": "Initiatieffase",
-   "def": "De eerste fase: er is een aanleiding om te (ver)bouwen of te verhuizen, zoals ruimtegebrek of -overschot, een aflopend huurcontract, reorganisatie of fusie, een slechte locatie, een verouderd gebouw of hoge kosten."
+   "def": "De eerste stap: er is een aanleiding om te (ver)bouwen of te verhuizen, zoals ruimtegebrek of -overschot, een aflopend huurcontract, reorganisatie of fusie, een slechte locatie, een verouderd gebouw of hoge kosten."
   },
   {
    "cat": "hvm",
    "term": "Huisvestingscomponenten",
-   "def": "De zes onderdelen waaruit huisvesting bestaat: locaties, gebouwen, interieur, financieringsvormen, gebruiksprincipes (zoals openingstijden, clean desk, werkplekconcept) en gebouwgebonden facilitaire diensten (zoals schoonmaak, beveiliging, onderhoud)."
+   "def": "De zes bouwstenen waaruit het onderkomen van een organisatie bestaat: locaties, gebouwen, interieur, financieringsvormen, gebruiksprincipes (zoals openingstijden, clean desk, werkplekconcept) en gebouwgebonden facilitaire diensten (zoals schoonmaak, beveiliging, onderhoud)."
   },
   {
    "cat": "hvm",
    "term": "Impact van huisvesting",
-   "def": "Huisvesting heeft directe impact op mensen, op proces en product, op de maatschappij en op de economie. Daarnaast werken die gebieden op elkaar door (indirecte impact), bijvoorbeeld van mensen naar proces en product."
+   "def": "Het onderkomen van een organisatie heeft direct effect op mensen, op proces en product, op de maatschappij en op de economie. Daarnaast werken die gebieden op elkaar door (indirect effect), bijvoorbeeld van mensen naar proces en product."
   },
   {
    "cat": "hvm",
    "term": "Toegevoegde waarde van huisvesting",
-   "def": "Wat huisvesting bijdraagt aan de organisatie. Twaalf waarden in vier groepen: mensen (tevredenheid, imago, cultuur, gezondheid en veiligheid), proces en product (productiviteit, aanpasbaarheid, innovatie en creativiteit, risico), economie (kosten, waarde van vastgoed) en maatschappij (duurzaamheid, maatschappelijk verantwoord ondernemen)."
+   "def": "Wat gebouw en werkomgeving bijdragen aan de organisatie. Twaalf soorten bijdrage in vier groepen: mensen (tevredenheid, imago, cultuur, gezondheid en veiligheid), proces en product (productiviteit, aanpasbaarheid, innovatie en creativiteit, risico), economie (kosten, waarde van vastgoed) en maatschappij (duurzaamheid, maatschappelijk verantwoord ondernemen)."
   },
   {
    "cat": "hvm",
    "term": "Huisvestingsvisie",
-   "def": "Beschrijving van hoe wat de organisatie is en wil zijn (missie, visie, kernwaarden, strategie) zichtbaar wordt in de huisvesting en welke toegevoegde waarde het gebouw moet leveren. Het vertrekpunt van het PvE."
+   "def": "Beschrijving van hoe wat de organisatie is en wil zijn (missie, toekomstbeeld, kernwaarden, strategie) zichtbaar wordt in gebouw en werkomgeving, en welke toegevoegde waarde het gebouw moet leveren. Het vertrekpunt van het PvE."
   },
   {
    "cat": "hvm",
    "term": "Huisvestingskosten",
-   "def": "Huur- en servicekosten van vastgoed. Gemiddeld 5 tot 15% van de bedrijfskosten; personeelskosten zijn in de meeste branches veel groter."
+   "def": "Huur en servicelasten van vastgoed. Gemiddeld 5 tot 15% van de totale bedrijfslasten; personeelslasten zijn in de meeste branches veel groter."
   },
   {
    "cat": "hvm",
    "term": "Vier prestatievelden",
-   "def": "De kwaliteit van huisvesting in vier velden: technisch (bouwtechnisch en bouwfysisch), functioneel (praktische bruikbaarheid), esthetisch (uitstraling, identiteit, herkenbaarheid) en financieel-economisch."
+   "def": "Indeling van de kwaliteit van huisvesting in vier gebieden: technisch (bouwtechnisch en bouwfysisch), functioneel (praktische bruikbaarheid), esthetisch (uitstraling, identiteit, herkenbaarheid) en financieel-economisch."
   },
   {
    "cat": "hvm",
    "term": "Functionele prestaties",
-   "def": "Prestatieveld over de praktische bruikbaarheid. Indicatoren: bereikbaarheid en parkeren, toegankelijkheid, doelmatigheid, flexibiliteit, veiligheid, ruimtelijke oriëntatie, privacy en sociaal contact, fysiek comfort."
+   "def": "Kwaliteitsgebied over de praktische bruikbaarheid. Indicatoren: bereikbaarheid en parkeren, toegankelijkheid, doelmatigheid, flexibiliteit, veiligheid, ruimtelijke oriëntatie, privacy en sociaal contact, fysiek comfort."
   },
   {
    "cat": "hvm",
    "term": "Esthetische prestaties",
-   "def": "Prestatieveld over architectonische kwaliteit en uitstraling. Indicatoren: beeldkwaliteit, orde en complexiteit, representativiteit, betekenis, cultuurhistorische waarde."
+   "def": "Kwaliteitsgebied over architectonische kwaliteit en uitstraling. Indicatoren: beeldkwaliteit, orde en complexiteit, representativiteit, betekenis, cultuurhistorische waarde."
   },
   {
    "cat": "hvm",
    "term": "Prestatie-indicator",
-   "def": "Meetbaar kenmerk waarmee je een prestatie beoordeelt, bijvoorbeeld bezettingsgraad, m2 bvo per werkplek, energieverbruik per m2 of investeringskosten per m2."
+   "def": "Meetbaar kenmerk waarmee je beoordeelt hoe goed een gebouw of dienst het doet, bijvoorbeeld bezettingsgraad, m2 bvo per werkplek, energieverbruik per m2 of investeringskosten per m2."
   },
   {
    "cat": "hvm",
@@ -670,17 +670,17 @@ window.HUIV = {
   {
    "cat": "hvm",
    "term": "Vier hoofdprocessen van huisvestingsmanagement",
-   "def": "Huisvestingsstrategie ontwikkelen, muteren (de huisvesting veranderen), exploiteren en beheren, en huisvestingsmanagement organiseren. Verandert de situatie, dan wordt bijgesteld."
+   "def": "Een strategie voor het onderkomen ontwikkelen, muteren (het onderkomen veranderen), exploiteren en beheren, en de besturing van dit vakgebied zelf organiseren. Verandert de situatie, dan wordt bijgesteld."
   },
   {
    "cat": "hvm",
    "term": "Stakeholders van huisvestingsmanagement",
-   "def": "Rond HVM (onderdeel van de ondersteunende staf) liggen de interne stakeholders (interne gebruikers, topmanagement, middenkader) en de externe stakeholders (externe gebruikers, maatschappelijke spelers, externe partners, externe financiers)."
+   "def": "Rond het beheer van gebouwen en werkomgeving (onderdeel van de ondersteunende staf) liggen interne belanghebbenden (interne gebruikers, topmanagement, middenkader) en externe belanghebbenden (externe gebruikers, maatschappelijke spelers, externe partners, externe financiers)."
   },
   {
    "cat": "hvm",
    "term": "Maatschappelijk verantwoord huisvesten",
-   "def": "Huisvesten met oog voor mens en milieu: energiereductie, van het gas af, een veilige en gezonde werkomgeving, lokale leveranciers, zero waste (ver)bouwen, minder gebouwen en CO2-reductie bij bouw en beheer."
+   "def": "Een organisatie onderbrengen met oog voor mens en milieu: energiereductie, van het gas af, een veilige en gezonde werkomgeving, lokale leveranciers, zero waste (ver)bouwen, minder gebouwen en CO2-reductie bij bouw en beheer."
   },
   {
    "cat": "tekeningen",
@@ -695,37 +695,37 @@ window.HUIV = {
   {
    "cat": "tekeningen",
    "term": "Verticale doorsnede",
-   "def": "Tekening van een verticale snede door het gebouw. Geeft inkijk en niveauverschillen; de plek staat als doorsnedelijn op de plattegrond. Geeft andere informatie dan een plattegrond."
+   "def": "Tekening van een staand snijvlak door het gebouw, van boven naar beneden. Geeft inkijk en niveauverschillen; de plek staat als snijlijn op de plattegrond. Geeft andere informatie dan een plattegrond."
   },
   {
    "cat": "tekeningen",
    "term": "Gevelaanzicht",
-   "def": "Tekening van een gevel van buitenaf, met hoogtematen (ten opzichte van peil) en draairichtingen van ramen en deuren."
+   "def": "Tekening van een buitenwand van het gebouw zoals je die van buitenaf ziet, met hoogtematen (ten opzichte van peil) en draairichtingen van ramen en deuren."
   },
   {
    "cat": "tekeningen",
    "term": "Situatietekening",
-   "def": "Tekening van één bouwproject: kavel, plek van het gebouw, erfgrenzen, ligging ten opzichte van andere gebouwen en de zon (noordpijl)."
+   "def": "Weergave van één bouwproject in zijn omgeving: kavel, plek van het gebouw, erfgrenzen, ligging ten opzichte van andere gebouwen en de zon (noordpijl)."
   },
   {
    "cat": "tekeningen",
    "term": "Kadastrale tekening",
-   "def": "Tekening met de grootte van kavels, de plek van de bebouwing en de erfgrenzen: basis voor eigendom van grond. Het Kadaster registreert eigendom en begrenzing van percelen en panden."
+   "def": "Weergave van de grootte van kavels, de plek van de bebouwing en de erfgrenzen: basis voor eigendom van grond. Komt van de landelijke dienst die eigendom en begrenzing van percelen en panden registreert."
   },
   {
    "cat": "tekeningen",
    "term": "Artist impression",
-   "def": "Indruk van een nog te bouwen gebouw, bedoeld als presentatie- of verkoopplaatje."
+   "def": "Beeld van een nog te bouwen gebouw, bedoeld als presentatie- of verkoopplaatje."
   },
   {
    "cat": "tekeningen",
    "term": "Schetsontwerp",
-   "def": "De eerste ideeën en experimenten van een ontwerper, onderdeel van het creatieve proces. Nog niets ligt vast."
+   "def": "De eerste ideeën en experimenten van een architect of vormgever, onderdeel van het creatieve proces. Nog niets ligt vast."
   },
   {
    "cat": "tekeningen",
    "term": "Detailtekening",
-   "def": "Tekening op grote schaal (bijvoorbeeld 1:5 of 1:1) die laat zien hoe onderdelen precies zijn opgebouwd en aansluiten, bijvoorbeeld een gevelvoet of dakgoot."
+   "def": "Weergave op grote schaal (bijvoorbeeld 1:5 of 1:1) die laat zien hoe onderdelen precies zijn opgebouwd en aansluiten, bijvoorbeeld een gevelvoet of dakgoot."
   },
   {
    "cat": "tekeningen",
@@ -754,7 +754,7 @@ window.HUIV = {
   },
   {
    "cat": "tekeningen",
-   "term": "BVO, GO en VO",
+   "term": "BVO, GO en VO (bruto vloeroppervlak, gebruiksoppervlak, verblijfsoppervlak)",
    "def": "Bruto vloeroppervlak (alle m2), gebruiksoppervlak (wat gebruikt kan worden) en verblijfsoppervlak (waar je verblijft, zoals woon- en slaapkamer; niet badkamer, toilet of meterkast)."
   },
   {
@@ -765,7 +765,7 @@ window.HUIV = {
   {
    "cat": "mens",
    "term": "Mensgericht huisvesten",
-   "def": "Huisvesten vanuit de behoeften en beleving van de gebruikers, in plaats van alleen vanuit de doelen van de organisatie (organisatiegericht)."
+   "def": "Een organisatie onderbrengen vanuit de behoeften en beleving van de gebruikers, in plaats van alleen vanuit de doelen van de organisatie (organisatiegericht)."
   },
   {
    "cat": "mens",
@@ -790,7 +790,7 @@ window.HUIV = {
   {
    "cat": "mens",
    "term": "Omgevingspsychologie",
-   "def": "Discipline over hoe de fysieke omgeving mensen beïnvloedt: hoe ze ruimte ervaren, ermee omgaan en hoe hun gedrag en beleving erdoor veranderen."
+   "def": "Vakgebied dat bestudeert hoe de fysieke leefruimte mensen beïnvloedt: hoe ze ruimte ervaren, ermee omgaan en hoe hun gedrag en beleving erdoor veranderen."
   },
   {
    "cat": "mens",
@@ -800,7 +800,7 @@ window.HUIV = {
   {
    "cat": "mens",
    "term": "Persoonlijke ruimte",
-   "def": "De afstand die iemand tot anderen wil houden: intiem tot 45 cm, persoonlijk 45 cm tot 1,25 m, sociaal 1,25 tot 3,5 m, publiek meer dan 3,5 m. Hangt af van onder meer leeftijd, cultuur en geslacht."
+   "def": "De afstand die iemand tot anderen wil houden, in vier zones: intiem tot 45 cm, daarna de zone van 45 cm tot 1,25 m, sociaal 1,25 tot 3,5 m, publiek meer dan 3,5 m. Hangt af van onder meer leeftijd, cultuur en geslacht."
   },
   {
    "cat": "mens",
@@ -845,12 +845,12 @@ window.HUIV = {
   {
    "cat": "mens",
    "term": "Cognitive map",
-   "def": "Persoonlijke, mentale kaart van de omgeving waarmee je je oriënteert. Getekende versies wijken af: gebieden te klein, oriëntatiepunten te groot, details ontbreken."
+   "def": "Persoonlijk, innerlijk beeld van de omgeving waarmee je je oriënteert. Getekende versies wijken af: gebieden te klein, oriëntatiepunten te groot, details ontbreken."
   },
   {
    "cat": "mens",
    "term": "Vijf elementen van Lynch",
-   "def": "Waarmee mensen hun omgeving beschrijven (Lynch, 1960): paths (routes), nodes (knooppunten), edges (randen), districts (gebieden) en landmarks (oriëntatiepunten)."
+   "def": "De bouwstenen waarmee mensen hun omgeving beschrijven (1960): paths (routes), nodes (knooppunten), edges (randen), districts (gebieden) en landmarks (oriëntatiepunten)."
   },
   {
    "cat": "mens",
@@ -865,17 +865,17 @@ window.HUIV = {
   {
    "cat": "werkplek",
    "term": "Hybride werken",
-   "def": "Werken waarbij plaats en tijd flexibel en zelf te kiezen zijn. Verwante termen: activiteitgerelateerd werken, flexwerken, het nieuwe werken."
+   "def": "Arbeidsvorm waarbij plaats en tijd flexibel en zelf te kiezen zijn. Verwante termen: activiteitgerelateerd werken, flexwerken, het nieuwe werken."
   },
   {
    "cat": "werkplek",
-   "term": "Activiteitgerelateerd werken",
-   "def": "Werkconcept waarin je per activiteit de plek kiest die die activiteit het best ondersteunt, in plaats van een vaste eigen werkplek. Ook activity based working."
+   "term": "Activiteitgerelateerd werken (activity based working)",
+   "def": "Kantoorconcept waarin je per taak de plek kiest die die taak het best ondersteunt, in plaats van een vaste eigen werkplek. Ook activity based working."
   },
   {
    "cat": "werkplek",
    "term": "Werkplekconcept",
-   "def": "De samenstelling van verschillende soorten werkplekken en ruimtes (open, gesloten, overleg) op een kantoorvloer, afgestemd op de activiteiten van de organisatie."
+   "def": "De mix van soorten zit- en bureauplekken en ruimtes (open, gesloten, overleg) op een kantoorvloer, afgestemd op de activiteiten van de organisatie."
   },
   {
    "cat": "werkplek",
@@ -885,7 +885,7 @@ window.HUIV = {
   {
    "cat": "werkplek",
    "term": "Ruis",
-   "def": "Zone voor samenwerken en overleg, informeel maar met een andere setting dan bruis. Bouwstenen: open samenwerkingsruimte, ankerpunt, reguliere werkplekken, belplek."
+   "def": "Zone voor samenwerken en overleg, informeel maar met een andere setting dan de zone voor ontmoeting. Bouwstenen: open samenwerkingsruimte, ankerpunt, reguliere werkplekken, belplek."
   },
   {
    "cat": "werkplek",
@@ -900,42 +900,42 @@ window.HUIV = {
   {
    "cat": "werkplek",
    "term": "Kamerkantoor",
-   "def": "Kantoorconcept (jaren '80) met gangen en afzonderlijke kamers. Voordelen: rust, concentratie, privacy. Nadelen: weinig ontmoeting, weinig sfeer, lage bezetting, duur."
+   "def": "Werkplekconcept (jaren '80) met gangen en afzonderlijke vertrekken. Voordelen: rust, concentratie, privacy. Nadelen: weinig ontmoeting, weinig sfeer, lage bezetting, duur."
   },
   {
    "cat": "werkplek",
    "term": "Kantoortuin",
-   "def": "Open kantoorconcept uit de jaren '60 en '70 (human relations): veel werkplekken samen in één open ruimte."
+   "def": "Open werkplekconcept uit de jaren '60 en '70 (human relations): veel werkplekken samen in één grote ruimte."
   },
   {
    "cat": "werkplek",
    "term": "Clean desk",
-   "def": "Afspraak dat je je bureau leeg achterlaat als je weggaat, zodat werkplekken gedeeld kunnen worden."
+   "def": "Afspraak dat je je werkplek helemaal opgeruimd achterlaat als je weggaat, zodat werkplekken gedeeld kunnen worden."
   },
   {
    "cat": "werkplek",
    "term": "Kantoorkameel",
-   "def": "Beeld voor de ongelijke bezetting van een kantoor over de week, met pieken (in het voorbeeld 70% op dinsdag en donderdag) en dalen op de andere dagen."
+   "def": "Beeld voor de ongelijke bezetting van een werkgebouw over de week, met pieken (in het voorbeeld 70% op dinsdag en donderdag) en dalen op de andere dagen."
   },
   {
    "cat": "werkplek",
    "term": "Hive, cell, den en club",
-   "def": "Vier soorten werk op basis van interactie en autonomie: individueel procesmatig werk (hive), geconcentreerd werk (cell), groepswerk (den) en transactioneel kenniswerk (club)."
+   "def": "Vier soorten werk op basis van interactie en autonomie, in deze volgorde: individueel procesmatig werk, geconcentreerd werk, groepswerk en transactioneel kenniswerk."
   },
   {
    "cat": "pve",
    "term": "Programma van eisen (PvE)",
-   "def": "Geordende verzameling gegevens over de huisvestingsbehoefte van een organisatie en de vereiste prestaties van locatie, gebouw, ruimten, gebouwdelen en voorzieningen. Functies: nadenken, communiceren, toetsen (vooraf en achteraf) en contracteren."
+   "def": "Geordende verzameling gegevens over de huisvestingsbehoefte van een organisatie en de gevraagde prestaties van locatie, gebouw, ruimten, gebouwdelen en voorzieningen. Functies: nadenken, communiceren, toetsen (vooraf en achteraf) en contracteren."
   },
   {
    "cat": "pve",
    "term": "Eis en wens",
-   "def": "Een eis is 'need to have', een wens 'nice to have'. In een PvE formuleer je eisen en verwachtingen, geen oplossingen."
+   "def": "Het onderscheid tussen 'need to have' en 'nice to have'. In een PvE formuleer je harde voorwaarden en verwachtingen, geen oplossingen."
   },
   {
    "cat": "pve",
    "term": "Gebruikswaarde",
-   "def": "Hoe efficiënt en effectief een organisatie in het gebouw kan doen wat ze moet doen, en hoe tevreden gebruikers zijn over de beleving. Een goed PvE borgt de gebruikswaarde."
+   "def": "Hoe efficiënt en effectief een organisatie in het gebouw kan doen wat ze moet doen, en hoe tevreden de mensen in het gebouw zijn over de beleving. Een goed PvE borgt dit."
   },
   {
    "cat": "pve",
@@ -945,17 +945,17 @@ window.HUIV = {
   {
    "cat": "pve",
    "term": "Functionele eisen",
-   "def": "Eisen die ervoor zorgen dat de activiteiten in een gebouw of ruimte goed kunnen worden uitgevoerd, zoals daglicht, akoestiek, routing en flexibiliteit. Ze beschrijven wat het ontwerp moet doen, niet hoe het eruitziet."
+   "def": "Voorwaarden die ervoor zorgen dat de activiteiten in een gebouw of ruimte goed kunnen worden uitgevoerd, zoals daglicht, akoestiek, routing en flexibiliteit. Ze beschrijven wat het ontwerp moet doen, niet hoe het eruitziet."
   },
   {
    "cat": "pve",
    "term": "Ruimtelijke eisen",
-   "def": "Welke ruimtes nodig zijn, hoeveel van elke soort en hoe groot. Uitgewerkt in een ruimtestaat en relatiediagram."
+   "def": "Welke vertrekken nodig zijn, hoeveel van elke soort en hoe groot. Uitgewerkt in een tabel van alle benodigde vertrekken en een relatiediagram."
   },
   {
    "cat": "pve",
    "term": "Technische eisen",
-   "def": "Eisen voor het ontwerp van installaties en bouwtechniek: elektra, water en afvoer, ICT, luchtverversing, temperatuur, akoestiek, verlichting, aanpasbaarheid, duurzaamheid."
+   "def": "Voorwaarden voor het ontwerp van installaties en de bouwkundige uitvoering: elektra, water en afvoer, ICT, luchtverversing, temperatuur, akoestiek, verlichting, aanpasbaarheid, duurzaamheid."
   },
   {
    "cat": "pve",
@@ -965,22 +965,22 @@ window.HUIV = {
   {
    "cat": "pve",
    "term": "Gedeelde ambitie",
-   "def": "Ambitie die opdrachtgever, eindgebruiker en beheerder samen vaststellen en die professionals vertalen in toetsbare eisen. Volgens het PvE-artikel het enige wat werkelijk blijvende waarde heeft."
+   "def": "Streven dat opdrachtgever, eindgebruiker en beheerder samen vaststellen en dat professionals vertalen in toetsbare eisen. Volgens het PvE-artikel het enige wat werkelijk blijvende waarde heeft."
   },
   {
    "cat": "pve",
    "term": "Briefbuilder",
-   "def": "Digitale tool om eisen in een PvE ('brief') te structureren in drie niveaus: objecten, eigenschappen en relaties."
+   "def": "Digitale tool om eisen in een PvE te structureren in drie niveaus: objecten, eigenschappen en relaties."
   },
   {
    "cat": "pve",
    "term": "Globaal PvE",
-   "def": "Eerste, nog algemene versie van het PvE, basis voor verkenning en haalbaarheidsstudie. Daarna volgen basis-PvE, PvE voor VO, voor DO en voor het bestek."
+   "def": "Eerste, nog algemene versie van het eisendocument voor een bouwproject, basis voor verkenning en haalbaarheidsstudie. Daarna volgen steeds preciezere versies: basis, voor VO, voor DO en voor het bestek."
   },
   {
    "cat": "pve",
    "term": "Ruimtestaat",
-   "def": "Tabel met alle benodigde ruimtes, aantallen en m2, uitgedrukt in FNO. Werkplekken = fte x flexfactor, maal m2 per werkplek, plus circulatieruimte."
+   "def": "Tabel met alle benodigde vertrekken, aantallen en m2, uitgedrukt in FNO. Werkplekken = fte x flexfactor, maal m2 per werkplek, plus circulatieruimte."
   },
   {
    "cat": "pve",
@@ -990,12 +990,12 @@ window.HUIV = {
   {
    "cat": "pve",
    "term": "Circulatieruimte",
-   "def": "Loopruimte rond en tussen werkplekken. In de ruimtestaat meegerekend in een ruimte of apart als opslagpercentage, in de voorbeelden 10%."
+   "def": "Loopzone rond en tussen werkplekken. In de ruimtestaat meegerekend per vertrek of apart als opslagpercentage, in de voorbeelden 10%."
   },
   {
    "cat": "pve",
    "term": "Bruto vloeroppervlak (BVO)",
-   "def": "Totaal vloeroppervlak inclusief constructie (wanden, kolommen). Gebouwen worden in BVO gekocht of gehuurd."
+   "def": "Totale oppervlakte van alle verdiepingen inclusief constructie (wanden, kolommen). Gebouwen worden op deze maat gekocht of gehuurd."
   },
   {
    "cat": "pve",
@@ -1005,12 +1005,12 @@ window.HUIV = {
   {
    "cat": "pve",
    "term": "Functioneel nuttig vloeroppervlak (FNO)",
-   "def": "Het oppervlak dat de organisatie echt gebruikt voor haar functies: werkplekken, overleg, nevenruimten. Het oppervlak in de ruimtestaat. Vuistregel: FNO is 70% van BVO, BVO is ongeveer 1,45 x FNO."
+   "def": "De m2 die de organisatie echt gebruikt voor haar werkzaamheden: werkplekken, overleg, nevenruimten. Dit oppervlak staat in de ruimtestaat. Vuistregel: het is 70% van het BVO; het BVO is ongeveer 1,45 keer zo groot."
   },
   {
    "cat": "pve",
    "term": "Relatieschema",
-   "def": "Weergave van welke ruimtelijke functies dicht bij elkaar moeten liggen, juist niet, of ver uit elkaar, bijvoorbeeld met primaire, secundaire en anti-relaties. Niet hetzelfde als een vlekkenplan of plattegrond."
+   "def": "Weergave van welke ruimtelijke functies dicht bij elkaar moeten liggen, juist niet, of ver uit elkaar, bijvoorbeeld met primaire, secundaire en negatieve koppelingen. Niet hetzelfde als een vlekkenplan of plattegrond."
   },
   {
    "cat": "pve",
@@ -1025,7 +1025,7 @@ window.HUIV = {
   {
    "cat": "pve",
    "term": "Wanden- en inrichtingsplan",
-   "def": "De uitwerking van het vlekkenplan met wanden, meubilair en werkplekken, waarin het werkplekconcept (bruis, ruis, rust) en de looproutes (flow) zijn ingepast."
+   "def": "De uitwerking van het vlekkenplan met scheidingen, meubilair en werkplekken, waarin het werkplekconcept (bruis, ruis, rust) en de looproutes (flow) zijn ingepast."
   },
   {
    "cat": "pve",
@@ -1040,27 +1040,27 @@ window.HUIV = {
   {
    "cat": "bouwproces",
    "term": "Plantoetsing",
-   "def": "Een bouwplan beoordelen aan de geldende regels. Vijf stappen: gebruiksfuncties, gebruiksoppervlak, gedefinieerde ruimtes, verblijfsgebied en verblijfsruimtes, en restruimte benoemen."
+   "def": "Een bouwontwerp beoordelen aan de geldende regels. Vijf stappen: gebruiksfuncties, gebruiksoppervlak, gedefinieerde ruimtes, verblijfsgebied en verblijfsruimtes, en restruimte benoemen."
   },
   {
    "cat": "bouwproces",
    "term": "Gebruiksfunctie",
-   "def": "Deel van een of meer bouwwerken op een perceel met dezelfde gebruiksbestemming, bijvoorbeeld woon-, kantoor-, onderwijs- of bijeenkomstfunctie. Hoort bij een ruimte, niet bij een heel gebouw."
+   "def": "Deel van een of meer bouwwerken op een perceel met dezelfde bestemming, bijvoorbeeld wonen, kantoor, onderwijs of bijeenkomst. Hoort bij een ruimte, niet bij een heel gebouw."
   },
   {
    "cat": "bouwproces",
    "term": "Gebruiksoppervlak (GO)",
-   "def": "Bruikbaar vloeroppervlak volgens vaste regels. Telt niet mee: dragende binnenwanden, gaten in de vloer groter dan 4 m2, schachten groter dan 0,5 m2 en vloer met een vrije hoogte onder 1,5 m."
+   "def": "De m2 die je kunt benutten, berekend volgens vaste regels. Telt niet mee: dragende binnenwanden, gaten in de vloer groter dan 4 m2, schachten groter dan 0,5 m2 en vloer met een vrije hoogte onder 1,5 m."
   },
   {
    "cat": "bouwproces",
    "term": "Verblijfsruimte",
-   "def": "Ruimte waarin de kenmerkende activiteiten van een gebruiksfunctie plaatsvinden, zoals woonkamer, slaapkamer of keuken. Toilet, douche, technische ruimte en stalling zijn het niet."
+   "def": "Vertrek waarin de kenmerkende activiteiten van een gebruiksfunctie plaatsvinden, zoals woonkamer, slaapkamer of keuken. Toilet, douche, technische ruimte en stalling zijn het niet."
   },
   {
    "cat": "bouwproces",
    "term": "Gedefinieerde ruimte",
-   "def": "Ruimte die afhankelijk van gebruiksfunctie en grootte aanwezig moet zijn, zoals toiletruimte, badruimte, technische ruimte, verkeersruimte, fietsenstalling en afvalopslag."
+   "def": "Vertrek dat afhankelijk van gebruiksfunctie en grootte aanwezig moet zijn, zoals toiletruimte, badruimte, technische ruimte, verkeersruimte, fietsenstalling en afvalopslag."
   },
   {
    "cat": "bouwproces",
@@ -1069,8 +1069,8 @@ window.HUIV = {
   },
   {
    "cat": "bouwproces",
-   "term": "VO en DO",
-   "def": "Voorlopig ontwerp en definitief ontwerp: de ontwerpstappen na structuurschets en schetsontwerp, van grof naar fijn. Het DO is de basis voor de bestektekening en, met het bestek, voor de aanbesteding."
+   "term": "VO en DO (voorlopig en definitief ontwerp)",
+   "def": "Voorlopig en definitief ontwerp: de ontwerpstappen na structuurschets en schetsontwerp, van grof naar fijn. Het tweede is de basis voor de bestektekening en, met het bestek, voor de aanbesteding."
   },
   {
    "cat": "bouwproces",
@@ -1095,17 +1095,17 @@ window.HUIV = {
   {
    "cat": "bouwproces",
    "term": "Aannemer en onderaannemer",
-   "def": "De (hoofd)aannemer voert het werk uit en stuurt onderaannemers aan: specialisten zoals stukadoor, loodgieter of elektricien. De uitvoerder vertegenwoordigt de aannemer op de bouw."
+   "def": "Het bouwbedrijf dat het werk uitvoert, en de specialisten die het inschakelt en aanstuurt, zoals stukadoor, loodgieter of elektricien. De uitvoerder vertegenwoordigt het hoofdbedrijf op de bouw."
   },
   {
    "cat": "bouwproces",
    "term": "Mendelows matrix",
-   "def": "Matrix om stakeholders te prioriteren op invloed en belang: sleutelfiguur (vertroetelen), beïnvloeder (tevreden houden), geïnteresseerde (informeren), toeschouwer (monitoren)."
+   "def": "Raster om stakeholders te prioriteren op invloed en belang: sleutelfiguur (vertroetelen), beïnvloeder (tevreden houden), geïnteresseerde (informeren), toeschouwer (monitoren)."
   },
   {
    "cat": "bouwproces",
    "term": "Traditioneel contractmodel",
-   "def": "Opdrachtgever houdt de regie en contracteert architect en aannemer apart; aanbesteding op basis van bestek en DO; de aannemer komt pas na het ontwerp in beeld."
+   "def": "Samenwerkingsvorm waarin de opdrachtgever de regie houdt en architect en aannemer apart inhuurt; aanbesteding op basis van bestek en DO; de aannemer komt pas na het ontwerp in beeld."
   },
   {
    "cat": "bouwproces",
@@ -1129,83 +1129,83 @@ window.HUIV = {
   },
   {
    "cat": "bouwproces",
-   "term": "BIM",
-   "def": "Building Information Modelling: een digitaal model met alle informatie over een bouwwerk, plus afspraken over het proces en het beheer van die informatie over de hele levenscyclus. FM-BIM is de toepassing in de exploitatiefase."
+   "term": "BIM (Building Information Modelling)",
+   "def": "Building Information Modelling: een digitale weergave met alle informatie over een bouwwerk, plus afspraken over het proces en het beheer van die informatie over de hele levenscyclus. De toepassing in de exploitatiefase krijgt het voorvoegsel FM."
   },
   {
    "cat": "bouwproces",
-   "term": "IWMS",
+   "term": "IWMS (Integrated Workplace Management System)",
    "def": "Integrated Workplace Management System: platform voor strategisch vastgoed- en werkplekbeheer met één centrale database. Verschilt van een FMIS, dat zich richt op operationeel en tactisch facilitair beheer."
   },
   {
    "cat": "duurzaam",
    "term": "Trias energetica",
-   "def": "Drie stappen voor energie: 1. beperk de energievraag (isoleren), 2. gebruik duurzame energie, 3. gebruik fossiele brandstoffen indien nodig zo efficiënt en schoon mogelijk."
+   "def": "Aanpak in drie stappen om het verbruik terug te dringen: 1. beperk de vraag (isoleren), 2. gebruik duurzame bronnen, 3. gebruik fossiele brandstoffen indien nodig zo efficiënt en schoon mogelijk."
   },
   {
    "cat": "duurzaam",
    "term": "Trias materia",
-   "def": "Drie stappen voor materialen: 1. beperk de hoeveelheid materiaal, 2. gebruik secundair en biobased materiaal, 3. gebruik materiaal zo efficiënt mogelijk."
+   "def": "Aanpak in drie stappen voor bouwstoffen: 1. beperk de hoeveelheid grondstof, 2. gebruik secundaire en biobased grondstoffen, 3. gebruik ze zo efficiënt mogelijk."
   },
   {
    "cat": "duurzaam",
    "term": "Circulaire economie",
-   "def": "Economie waarin producten en materialen zo lang en hoogwaardig mogelijk in gebruik blijven, in plaats van de lineaire economie van take, make, dispose."
+   "def": "Systeem waarin producten en materialen zo lang en hoogwaardig mogelijk in gebruik blijven, in plaats van het lineaire model van take, make, dispose."
   },
   {
    "cat": "duurzaam",
    "term": "Vlindermodel",
-   "def": "Model van de Ellen MacArthur Foundation met twee kringlopen: biologische grondstoffen (terug naar de natuur) en technologische grondstoffen (onderhoud, hergebruik, herstel, recycling; hoe kleiner de kringloop, hoe beter)."
+   "def": "Schema van de Ellen MacArthur Foundation met twee kringlopen: biologische grondstoffen (terug naar de natuur) en technologische grondstoffen (onderhoud, hergebruik, herstel, recycling; hoe kleiner de kringloop, hoe beter)."
   },
   {
    "cat": "duurzaam",
    "term": "R-ladder",
-   "def": "Circulariteitsladder van R0 refuse via rethink, reduce, re-use, repair, refurbish, remanufacture en repurpose naar R8 recycle en R9 recover. Hoe lager het nummer, hoe circulairder."
+   "def": "Rangorde van circulaire strategieën, van 0 refuse via rethink, reduce, re-use, repair, refurbish, remanufacture en repurpose naar 8 recycle en 9 recover. Hoe lager het nummer, hoe circulairder."
   },
   {
    "cat": "duurzaam",
    "term": "Biobased materiaal",
-   "def": "Bouwmateriaal van biologische oorsprong, zoals hout, vlas, hennep, stro of wol."
+   "def": "Bouwstof uit planten of dieren, zoals hout, vlas, hennep, stro of wol."
   },
   {
    "cat": "duurzaam",
    "term": "LCA (levenscyclusanalyse)",
-   "def": "Systematiek om de milieueffecten van een materiaal, product of gebouw te berekenen over de hele cyclus: winning, productie, transport, gebruik en sloop."
+   "def": "Systematiek om de milieueffecten van een materiaal, product of gebouw te berekenen over het hele bestaan: winning, productie, transport, gebruik en sloop."
   },
   {
    "cat": "duurzaam",
    "term": "Warmteweerstand (R)",
-   "def": "Mate waarin een constructie de warmtestroom van warm naar koud tegenhoudt. Isolatie en geïsoleerd glas vergroten de R."
+   "def": "Mate waarin een constructie de energiestroom van warm naar koud tegenhoudt. Isolatie en geïsoleerd glas vergroten deze waarde."
   },
   {
    "cat": "duurzaam",
    "term": "Binnenklimaat",
-   "def": "Het comfort binnen, bepaald door temperatuur, licht, vocht, lucht en geluid. Een goed binnenklimaat verhoogt productiviteit en verlaagt verzuim."
+   "def": "Het comfort in een gebouw, bepaald door temperatuur, licht, vocht, lucht en geluid. Een goede kwaliteit hiervan verhoogt productiviteit en verlaagt verzuim."
   },
   {
    "cat": "onderhoud",
-   "term": "MJOP",
+   "term": "MJOP (meerjarenonderhoudsplan)",
    "def": "Meerjarenonderhoudsplan: planning van het onderhoud voor 10 à 20 jaar per element, met maatregel, moment en kosten, gebaseerd op inventarisatie en inspectie."
   },
   {
    "cat": "onderhoud",
    "term": "Post-Occupancy Evaluation",
-   "def": "Evaluatie na ingebruikname: ervaringen en gedrag van gebruikers, financiële aspecten en onverwachte effecten."
+   "def": "Beoordeling na ingebruikname: ervaringen en gedrag van gebruikers, financiële aspecten en onverwachte effecten."
   },
   {
    "cat": "onderhoud",
    "term": "Onderhoudsbeheercyclus",
-   "def": "Onderhoudsstrategie, prijzen en normen, inventarisatie en inspectie leiden tot een MJOP met raming, dan een jaarplan met begroting, een plan met budget en de opdracht. Via bijsturing gaat informatie terug."
+   "def": "Kringloop waarin strategie, prijzen en normen, inventarisatie en inspectie leiden tot een MJOP met raming, dan een jaarplan met begroting, een plan met budget en de opdracht. Via bijsturing gaat informatie terug."
   },
   {
    "cat": "onderhoud",
    "term": "Factoren onderhoudsbehoefte",
-   "def": "Vijf factoren: gebruiksintensiteit, doel van het gebouw (bijvoorbeeld tijdelijk), materiaalgebruik, klimaat en ontwerp."
+   "def": "Vijf invloeden op hoeveel er aan een gebouw moet worden hersteld en vervangen: gebruiksintensiteit, doel van het gebouw (bijvoorbeeld tijdelijk), materiaalgebruik, klimaat en ontwerp."
   },
   {
    "cat": "onderhoud",
    "term": "Technische levensduur",
-   "def": "De periode waarin het gebouw de technische en bouwfysische prestaties levert die nodig zijn voor gebruik, veiligheid en gezondheid. Oorzaken van einde: invloeden van buitenaf, veroudering, slijtage, nieuwe regelgeving."
+   "def": "De periode waarin het gebouw de bouwkundige en bouwfysische prestaties levert die nodig zijn voor gebruik, veiligheid en gezondheid. Oorzaken van einde: invloeden van buitenaf, veroudering, slijtage, nieuwe regelgeving."
   },
   {
    "cat": "onderhoud",
@@ -1220,17 +1220,17 @@ window.HUIV = {
   {
    "cat": "onderhoud",
    "term": "Six elements model",
-   "def": "Model van Brand dat een gebouw opdeelt in zes lagen met elk een eigen levensduur: site, structure, skin, services, space plan en stuff."
+   "def": "Indeling van Brand die een gebouw opdeelt in zes lagen met elk een eigen levensduur: site, structure, skin, services, space plan en stuff."
   },
   {
    "cat": "onderhoud",
    "term": "Planmatig onderhoud",
-   "def": "Vooraf gepland technisch onderhoud, zoals in een MJOP. Vormen: preventief en inspectief onderhoud. Naast technisch onderhoud bestaat schoonmaakonderhoud."
+   "def": "Technische instandhouding die vooraf is ingeroosterd, zoals in een MJOP. Vormen: preventief en inspectief. Naast technische instandhouding bestaat ook de schoonmaakvariant."
   },
   {
    "cat": "onderhoud",
    "term": "Niet-gepland onderhoud",
-   "def": "Technisch onderhoud dat niet vooraf is gepland: storingsonderhoud, correctief onderhoud en mutatieonderhoud."
+   "def": "Technische instandhouding die niet vooraf is ingeroosterd. Drie vormen: bij een storing, correctief en bij een mutatie."
   },
   {
    "cat": "onderhoud",
@@ -1245,32 +1245,32 @@ window.HUIV = {
   {
    "cat": "onderhoud",
    "term": "Ernst van een gebrek",
-   "def": "Mate van invloed op het functioneren. Ernstig: directe inbreuk (lekkage, houtrot, constructieve scheur). Serieus: indirecte invloed, degradatie (verwering, verzanding). Gering: alleen esthetisch (mos, vuil, graffiti)."
+   "def": "Mate van invloed op het functioneren, in drie niveaus. Hoogste: directe inbreuk (lekkage, houtrot, constructieve scheur). Serieus: indirecte invloed, degradatie (verwering, verzanding). Gering: alleen esthetisch (mos, vuil, graffiti)."
   },
   {
    "cat": "onderhoud",
    "term": "Intensiteit van een gebrek",
-   "def": "Het stadium van het gebrek: 1 beginstadium (nauwelijks waarneembaar), 2 gevorderd (duidelijk waarneembaar), 3 eindstadium (zeer duidelijk, onomkeerbaar)."
+   "def": "Het stadium waarin een defect zich bevindt: 1 beginstadium (nauwelijks waarneembaar), 2 gevorderd (duidelijk waarneembaar), 3 eindstadium (zeer duidelijk, onomkeerbaar)."
   },
   {
    "cat": "onderhoud",
    "term": "Omvang van een gebrek",
-   "def": "Het deel van het element dat het gebrek heeft: 1 minder dan 2%, 2 2 tot 10%, 3 10 tot 30%, 4 30 tot 70%, 5 70% of meer."
+   "def": "Welk deel van het element een defect vertoont: 1 minder dan 2%, 2 2 tot 10%, 3 10 tot 30%, 4 30 tot 70%, 5 70% of meer."
   },
   {
    "cat": "onderhoud",
    "term": "Onderhoudsstrategie",
-   "def": "Keuze voor het onderhoudsniveau: in goede staat houden, in stand houden, bruikbaar houden voor beperkte termijn, of verbeteren. Hangt af van termijn, budget, functie, beleving en risico's."
+   "def": "Keuze voor het niveau van instandhouding: in goede staat houden, in stand houden, bruikbaar houden voor beperkte termijn, of verbeteren. Hangt af van termijn, budget, functie, beleving en risico's."
   },
   {
    "cat": "onderhoud",
    "term": "Duurzaam MJOP (DMJOP)",
-   "def": "MJOP dat onderhoud combineert met verduurzaming: gebreken die energie kosten aanpakken en natuurlijke onderhoudsmomenten benutten om te verduurzamen, onderbouwd met de Trias energetica en materia."
+   "def": "Langetermijnplanning van onderhoud die instandhouding combineert met maatregelen voor energie en milieu: gebreken die energie kosten aanpakken en natuurlijke onderhoudsmomenten benutten om het gebouw te vergroenen, onderbouwd met de Trias energetica en materia."
   },
   {
    "cat": "onderhoud",
    "term": "Natuurlijk onderhoudsmoment",
-   "def": "Moment waarop een element toch al onderhoud of vervanging nodig heeft, zoals nieuwe dakbedekking. Het meest logische moment om ook te verduurzamen, bijvoorbeeld extra isoleren."
+   "def": "Tijdstip waarop een element toch al een opknapbeurt of vervanging nodig heeft, zoals nieuwe dakbedekking. Het meest logische tijdstip om ook te verduurzamen, bijvoorbeeld extra isoleren."
   }
  ],
  "oefentoetsen": [

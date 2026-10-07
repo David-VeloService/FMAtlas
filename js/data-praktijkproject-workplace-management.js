@@ -60,7 +60,7 @@ window.PRJWPM = {
   {
    "cat": "designthinking",
    "term": "Design thinking",
-   "def": "Mensgerichte innovatiemethode om problemen op te lossen. Je vertrekt niet vanuit technologie of harde cijfers, maar vanuit de werkelijke behoeften en ervaringen van de eindgebruiker. Het is zowel een methode (vijf vaste fasen) als een mindset: denkers die kunnen doen, dus concrete oplossingen in plaats van vrijblijvende adviezen."
+   "def": "Mensgerichte innovatiemethode om problemen op te lossen. Je vertrekt niet vanuit technologie of harde cijfers, maar vanuit de werkelijke behoeften en ervaringen van de eindgebruiker. Het is zowel een methode (vijf vaste fasen) als een mindset: niet alleen bedenken maar ook doen, dus concrete oplossingen in plaats van vrijblijvende adviezen."
   },
   {
    "cat": "designthinking",
@@ -75,7 +75,7 @@ window.PRJWPM = {
   {
    "cat": "designthinking",
    "term": "Ideate",
-   "def": "Fase 3 van design thinking: je bedenkt eerst zo veel mogelijk ideeën (divergeren) en kiest daarna met een methode de beste (convergeren). Het resultaat is een oplossingsrichting voor het probleem."
+   "def": "Fase 3 van design thinking: je bedenkt eerst zo veel mogelijk oplossingsrichtingen (divergeren) en kiest daarna met een methode de beste (convergeren). Het resultaat is een gekozen richting voor het probleem."
   },
   {
    "cat": "designthinking",
@@ -110,7 +110,7 @@ window.PRJWPM = {
   {
    "cat": "designthinking",
    "term": "Reframing (probleem herformuleren)",
-   "def": "Het probleem opnieuw formuleren vanuit de gebruiker. Voorbeeld uit de les: niet ‘de lift is traag’ maar ‘hoe kunnen we de ervaring van het wachten op de lift verbeteren?’. De les noemt dit de echte uitdaging in design thinking."
+   "def": "Een vraagstuk anders verwoorden vanuit de gebruiker. Voorbeeld uit de les: niet ‘de lift is traag’ maar ‘hoe kunnen we de ervaring van het wachten op de lift verbeteren?’. De les noemt dit de echte uitdaging in design thinking."
   },
   {
    "cat": "designthinking",
@@ -125,17 +125,17 @@ window.PRJWPM = {
   {
    "cat": "empathize",
    "term": "Stakeholder map",
-   "def": "Visueel overzicht van de betrokkenen in cirkels rond het doel van het project. In het midden de gebruikers (users), daaromheen de interne stakeholders, buitenaan de externe stakeholders. Het template op Brightspace heeft drie ringen (A, B, C), een lijst met stakeholders, hun onderlinge relaties en een legenda."
+   "def": "Visueel overzicht van de betrokkenen in cirkels rond het doel van het project. In het midden de gebruikers (users), daaromheen de interne belanghebbenden, buitenaan de externe. Het template op Brightspace heeft drie ringen (A, B, C), een lijst met belanghebbenden, hun onderlinge relaties en een legenda."
   },
   {
    "cat": "empathize",
    "term": "Persona",
-   "def": "Fictieve persoon die de eigenschappen van een bestaande groep (potentiële) gebruikers in zich verenigt: van sociale en demografische achtergrond tot behoeften, gewoonten en werkstijl. Je maakt er 2 tot 4 op basis van je eigen onderzoek, niet kant-en-klaar van internet, en je valideert ze met korte gesprekjes met mensen die bij een persona passen."
+   "def": "Fictief profiel van een typische gebruiker dat de eigenschappen van een bestaande groep (potentiële) gebruikers in zich verenigt: van sociale en demografische achtergrond tot behoeften, gewoonten en werkstijl. Je maakt er 2 tot 4 op basis van je eigen onderzoek, niet kant-en-klaar van internet, en je valideert ze met korte gesprekjes met mensen die bij zo'n profiel passen."
   },
   {
    "cat": "empathize",
    "term": "Customer journey map",
-   "def": "Visualisatie van de reis die een persona maakt, met de touchpoints en de ervaringen (positief of negatief) per stap. Je maakt er per persona één om ideeën op te doen voor betere beleving en ondersteuning. Visualiseer je een werkdag van begin tot eind, dan heet het een medewerkerreis."
+   "def": "Visualisatie van de route die een persona aflegt, met de touchpoints en de ervaringen (positief of negatief) per stap. Je maakt er per persona één om ideeën op te doen voor betere beleving en ondersteuning. Visualiseer je een werkdag van begin tot eind, dan heet het een medewerkerreis."
   },
   {
    "cat": "empathize",
@@ -145,17 +145,17 @@ window.PRJWPM = {
   {
    "cat": "empathize",
    "term": "Fasen van de user journey",
-   "def": "De vier fasen uit les 1.2: onderweg (nog niet fysiek op de locatie), aankomst (eerste contact met gebouw, omgeving of services), verblijf (aanwezig op de locatie) en vertrek (weggaan en laatste contact met het gebouw)."
+   "def": "De vier stappen uit les 1.2: onderweg (nog niet fysiek op de locatie), aankomst (eerste contact met gebouw, omgeving of services), verblijf (aanwezig op de locatie) en vertrek (weggaan en laatste contact met het gebouw)."
   },
   {
    "cat": "empathize",
    "term": "Interne en externe analyse",
-   "def": "Twee onderdelen van de context in de design brief. Interne analyse: de belangrijkste sterktes, zwaktes en kenmerken van de organisatie zelf die invloed hebben op het vraagstuk. Externe analyse: de ontwikkelingen in de omgeving van de organisatie die invloed hebben op het vraagstuk. Onderbouw beide met bronnen."
+   "def": "Twee onderdelen van de context in de design brief. De eerste: de belangrijkste sterktes, zwaktes en kenmerken van de organisatie zelf die invloed hebben op het vraagstuk. De tweede: de ontwikkelingen in de omgeving van de organisatie die invloed hebben op het vraagstuk. Onderbouw beide met bronnen."
   },
   {
    "cat": "empathize",
    "term": "Deskresearch",
-   "def": "Onderzoek achter je bureau naar wat er al bekend is, bijvoorbeeld in vakliteratuur. Bij een complex probleem kun je er niet omheen, maar het is niet genoeg: je moet ook met betrokkenen praten en ter plekke kijken."
+   "def": "Onderzoek zonder het veld in te gaan, naar wat er al bekend is, bijvoorbeeld in vakliteratuur. Bij een complex probleem kun je er niet omheen, maar het is niet genoeg: je moet ook met betrokkenen praten en ter plekke kijken."
   },
   {
    "cat": "empathize",
@@ -165,17 +165,17 @@ window.PRJWPM = {
   {
    "cat": "empathize",
    "term": "Gestructureerde observatie",
-   "def": "Observatie met een vooraf vastgesteld schema: je bepaalt wat je observeert, hoe lang en hoe je het vastlegt. Tegenhanger van ongestructureerde observatie, waarbij je zonder vast schema kijkt."
+   "def": "Waarnemen met een vooraf vastgesteld schema: je bepaalt wat je bekijkt, hoe lang en hoe je het vastlegt. Tegenhanger: kijken zonder vast schema."
   },
   {
    "cat": "empathize",
    "term": "Participerende observatie",
-   "def": "Je doet als onderzoeker mee in de situatie die je observeert, zonder dat het opvalt dat je observeert. Bij niet-participerende observatie kijk je ‘onzichtbaar’ vanaf de zijlijn zonder met mensen te praten of instructies te geven."
+   "def": "Je doet als onderzoeker mee in de situatie die je bestudeert, zonder dat het opvalt dat je kijkt. Bij de tegenhanger kijk je ‘onzichtbaar’ vanaf de zijlijn zonder met mensen te praten of instructies te geven."
   },
   {
    "cat": "empathize",
    "term": "Coderingsschema",
-   "def": "Indeling in categorieën (codes) waarmee je observaties classificeert. Je maakt het in de voorbereiding en past het tijdens de uitvoering zo nodig aan. Het observatieschema is het formulier waarop je die categorieën invult, met datum, tijd, locatie en naam van de observator."
+   "def": "Indeling in categorieën (labels) waarmee je waarnemingen classificeert. Je maakt het in de voorbereiding en past het tijdens de uitvoering zo nodig aan. Daarnaast gebruik je een formulier waarop je die categorieën invult, met datum, tijd, locatie en naam van de observator."
   },
   {
    "cat": "empathize",
@@ -190,12 +190,12 @@ window.PRJWPM = {
   {
    "cat": "empathize",
    "term": "Observer effect",
-   "def": "Nadeel van observeren: mensen gedragen zich anders omdat ze weten of merken dat ze bekeken worden."
+   "def": "Nadeel van waarnemingsonderzoek: mensen gedragen zich anders omdat ze weten of merken dat ze bekeken worden."
   },
   {
    "cat": "empathize",
    "term": "Observatorbias",
-   "def": "Nadeel van observeren: de waarneming wordt gekleurd door de onderzoeker zelf, bijvoorbeeld door op zoek te gaan naar het eigen gelijk."
+   "def": "Nadeel van waarnemingsonderzoek: wat je ziet wordt gekleurd door jezelf als onderzoeker, bijvoorbeeld door op zoek te gaan naar het eigen gelijk."
   },
   {
    "cat": "empathize",
@@ -209,8 +209,8 @@ window.PRJWPM = {
   },
   {
    "cat": "empathize",
-   "term": "Fotosafari",
-   "def": "Kwalitatieve methode waarbij je data verzamelt met foto's van een omgeving, situatie, gedrag of gewoonte. Ook bekend als photovoice of snapshotmethode. De voorkeur gaat uit naar respondenten die zelf foto's maken, want de gebruiker is de expert. Je analyseert de foto's met een beoordelingskader en bundelt de resultaten in een overzicht."
+   "term": "Fotosafari (photovoice, snapshotmethode)",
+   "def": "Kwalitatieve methode waarbij je data verzamelt met beelden van een omgeving, situatie, gedrag of gewoonte. Ook bekend als photovoice of snapshotmethode. De voorkeur gaat uit naar respondenten die zelf de beelden maken, want de gebruiker is de expert. Je analyseert ze met een beoordelingskader en bundelt de resultaten in een overzicht."
   },
   {
    "cat": "empathize",
@@ -235,17 +235,17 @@ window.PRJWPM = {
   {
    "cat": "empathize",
    "term": "Herhaalbaarheid",
-   "def": "Wees transparant over wat je doet en beschrijf het zo dat een ander het onderzoek op dezelfde manier kan herhalen om te zien of er hetzelfde uitkomt."
+   "def": "Wees transparant over wat je doet en beschrijf het zo dat een ander het onderzoek op dezelfde manier kan overdoen om te zien of er hetzelfde uitkomt."
   },
   {
    "cat": "empathize",
    "term": "Opzoeken en uitzoeken",
-   "def": "Twee manieren om aan kennis te komen. Opzoeken: via Google en (vak)literatuur. Uitzoeken: zelf data verzamelen door te kijken (observeren), te vragen (interviewen) en te bevragen (enquêteren)."
+   "def": "Twee manieren om aan kennis te komen. De eerste: via Google en (vak)literatuur. De tweede: zelf data verzamelen door te kijken (observeren), te vragen (interviewen) en te bevragen (enquêteren)."
   },
   {
    "cat": "define",
    "term": "Design brief",
-   "def": "Kort document met alle relevante details die het designteam nodig heeft om het project te realiseren. Het is een communicatiemiddel dat duidelijk maakt waarom (uitgangspunten en doelen), wat (deliverables) en hoe (aanpak). Het is work in progress en vormt na verwerking van de feedback de basis voor onderdeel A van het huisvestingsveranderplan."
+   "def": "Kort document met alle relevante details die het ontwerpteam nodig heeft om het project te realiseren. Het is een communicatiemiddel dat duidelijk maakt waarom (uitgangspunten en doelen), wat (deliverables) en hoe (aanpak). Het is work in progress en vormt na verwerking van de feedback de basis voor onderdeel A van het huisvestingsveranderplan."
   },
   {
    "cat": "define",
@@ -260,12 +260,12 @@ window.PRJWPM = {
   {
    "cat": "define",
    "term": "Kennisvragen",
-   "def": "Deelvragen die beantwoord moeten worden om de kennis te krijgen die nodig is om de praktijkvraag te beantwoorden en de deliverables op te leveren. Per kennisvraag kies je een onderzoeksmethode."
+   "def": "Deelvragen die beantwoord moeten worden om de informatie te krijgen die nodig is om de praktijkvraag te beantwoorden en de deliverables op te leveren. Per deelvraag kies je een onderzoeksmethode."
   },
   {
    "cat": "define",
    "term": "Projectdoelstelling",
-   "def": "Wat de opdrachtgever en de projectgroep aan het einde van het project bereikt willen hebben, zo SMART mogelijk geformuleerd. Onderdeel 3.2 van de design brief."
+   "def": "Wat de opdrachtgever en de groep aan het einde bereikt willen hebben, zo SMART mogelijk geformuleerd. Onderdeel 3.2 van de design brief."
   },
   {
    "cat": "define",
@@ -274,18 +274,18 @@ window.PRJWPM = {
   },
   {
    "cat": "define",
-   "term": "MoSCoW",
+   "term": "MoSCoW (must, should, could, would)",
    "def": "Indeling van de design criteria (randvoorwaarden waaraan de oplossing moet voldoen) in vier prioriteiten. Must: eisen waaraan móét worden voldaan voor een effectieve en werkbare innovatie. Should: hoge prioriteit maar niet per se vereist. Could: optie als er tijd over is. Would: geen prioriteit, kan in de toekomst nog eens worden bekeken."
   },
   {
    "cat": "define",
    "term": "Ontwerpuitdaging",
-   "def": "Heldere beschrijving van wat je gaat ontwerpen, voor wie en waarom (de 5W's), samen met de design criteria. Het beoordelingsformulier vraagt een heldere ontwerpdefinitie of ontwerpuitdaging met passende modellen zoals 5W1H en MoSCoW."
+   "def": "Heldere beschrijving van wat je gaat maken, voor wie en waarom (de 5W's), samen met de design criteria. Het beoordelingsformulier vraagt een heldere definitie hiervan met passende modellen zoals 5W1H en MoSCoW."
   },
   {
    "cat": "define",
    "term": "Feedback Design Brief Canvas",
-   "def": "Canvas uit les 1.5 om docentfeedback op de design brief te verwerken in vijf blokken: gekregen feedback, betekenis ervan, concrete aanpassingen, open punten en de belangrijkste verbetering (before/after)."
+   "def": "Werkblad uit les 1.5 om de reacties van de docent op je startdocument (probleemanalyse en aanpak) te verwerken in vijf blokken: gekregen reacties, betekenis ervan, concrete aanpassingen, open punten en de belangrijkste verbetering (before/after)."
   },
   {
    "cat": "define",
@@ -335,7 +335,7 @@ window.PRJWPM = {
   {
    "cat": "ideate",
    "term": "Brainstorm voor alle zintuigen",
-   "def": "Brainstormtechniek die niet alleen naar het visuele kijkt: per zintuig (zicht, geur, tast, smaak, gehoor) 20 minuten, minimaal 5 ideeën per deelnemer per zintuig, en daarna ideeën van verschillende zintuigen combineren."
+   "def": "Ideeëntechniek die niet alleen naar het visuele kijkt: per waarneming (zicht, geur, tast, smaak, gehoor) 20 minuten, minimaal 5 ideeën per deelnemer per waarneming, en daarna ideeën van verschillende waarnemingen combineren."
   },
   {
    "cat": "ideate",
@@ -350,12 +350,12 @@ window.PRJWPM = {
   {
    "cat": "ideate",
    "term": "How-Now-Wow-Ciao-matrix",
-   "def": "Matrix om brainstormideeën te ordenen in vier categorieën: How, Now, Wow en Ciao. Op de dia staat moeilijkheid op de verticale as (boven moeilijk, onder makkelijk); How en Wow, de innovatieve ideeën, staan rechts. Gebruik je in les 1.6 om de drie beste ideeën te bepalen."
+   "def": "Raster om brainstormideeën in vier categorieën te ordenen. Op de dia staat moeilijkheid op de verticale as (boven moeilijk, onder makkelijk); de innovatieve ideeën staan rechts. Gebruik je in les 1.6 om de drie beste ideeën te bepalen."
   },
   {
    "cat": "ideate",
    "term": "How-idee",
-   "def": "Futuristisch idee, echte gamechanger, maar moeilijk: hoe dan? Rechtsboven in de matrix."
+   "def": "Futuristisch idee, echte gamechanger, maar moeilijk te realiseren. Rechtsboven in de matrix."
   },
   {
    "cat": "ideate",
@@ -370,7 +370,7 @@ window.PRJWPM = {
   {
    "cat": "ideate",
    "term": "Ciao-idee",
-   "def": "Idee dat niet origineel is én niet gaat werken: ciao. Linksboven in de matrix."
+   "def": "Idee dat niet origineel is én niet gaat werken: weg ermee. Linksboven in de matrix."
   },
   {
    "cat": "ideate",
@@ -400,7 +400,7 @@ window.PRJWPM = {
   {
    "cat": "interview",
    "term": "Gedeeltelijk gestructureerd interview",
-   "def": "Interview guide met onderwerpen én een lijst concrete vragen, meestal open maar soms deels gesloten met antwoordcategorieën. Meer vastgelegd dan half-gestructureerd."
+   "def": "Leidraad met onderwerpen én een lijst concrete vragen, meestal open maar soms deels gesloten met antwoordcategorieën. Meer vastgelegd dan de halve variant."
   },
   {
    "cat": "interview",
@@ -409,18 +409,18 @@ window.PRJWPM = {
   },
   {
    "cat": "interview",
-   "term": "LSD",
+   "term": "LSD (luisteren, samenvatten, doorvragen)",
    "def": "Luisteren, samenvatten, doorvragen: de basistechniek van de interviewer bij ongestructureerde en half-gestructureerde interviews."
   },
   {
    "cat": "interview",
    "term": "Topiclijst",
-   "def": "Overzicht van de onderwerpen (topics) die in het interview aan bod moeten komen, met de hoofdvragen, thema's en voorbeelden. Je stelt hem op uit je onderzoeksvragen en wat er in de literatuur al bekend is."
+   "def": "Overzicht van de onderwerpen die in het interview aan bod moeten komen, met de hoofdvragen, thema's en voorbeelden. Je stelt het op uit je onderzoeksvragen en wat er in de literatuur al bekend is."
   },
   {
    "cat": "interview",
    "term": "Interviewprotocol",
-   "def": "Gedetailleerde uitwerking van hoe je het interview doet en welke vragen je stelt. Voorbeeldopbouw uit de les: toelichting op het onderzoek, algemene vragen, vragen per topic, afsluitende open vraag of er iets vergeten is, bedanken."
+   "def": "Gedetailleerde uitwerking van hoe je het gesprek voert en welke vragen je stelt. Voorbeeldopbouw uit de les: toelichting op het onderzoek, algemene vragen, vragen per topic, afsluitende open vraag of er iets vergeten is, bedanken."
   },
   {
    "cat": "interview",
@@ -435,12 +435,12 @@ window.PRJWPM = {
   {
    "cat": "interview",
    "term": "Coderen",
-   "def": "Tekstfragmenten in een transcript een label (code) geven dat aangeeft bij welk topic ze horen, bijvoorbeeld met kleuren of opmerkingen in de marge."
+   "def": "Tekstfragmenten in een transcript een label geven dat aangeeft bij welk topic ze horen, bijvoorbeeld met kleuren of opmerkingen in de marge."
   },
   {
    "cat": "interview",
    "term": "Analysetabel",
-   "def": "Tabel met de topics als rijen en de respondenten als kolommen, plus een kolom samenvatting met de overeenkomsten en verschillen per topic. Die laatste kolom verwerk je als ‘resultaten van de interviews’ in het verslag."
+   "def": "Overzicht met de topics als rijen en de respondenten als kolommen, plus een kolom samenvatting met de overeenkomsten en verschillen per topic. Die laatste kolom verwerk je als ‘resultaten van de interviews’ in het verslag."
   },
   {
    "cat": "interview",
@@ -450,22 +450,22 @@ window.PRJWPM = {
   {
    "cat": "interview",
    "term": "Groepsinterview",
-   "def": "Interview met meerdere mensen tegelijk waarbij de communicatie vooral loopt tussen onderzoeker en deelnemer. De onderzoeker is interviewer die vragen stelt en controleert; doel is snel en efficiënt individuele meningen verzamelen; de groep kan divers zijn."
+   "def": "Gesprek met meerdere mensen tegelijk waarbij de communicatie vooral loopt tussen onderzoeker en deelnemer. De onderzoeker is interviewer die vragen stelt en controleert; doel is snel en efficiënt individuele meningen verzamelen; de deelnemers kunnen divers zijn."
   },
   {
    "cat": "interview",
    "term": "Focusgroep",
-   "def": "Groep van 6 tot 12 mensen met een zekere homogeniteit, geselecteerd omdat ze veel over het onderwerp kunnen zeggen. De communicatie loopt vooral tussen de deelnemers onderling; de onderzoeker is moderator die de discussie begeleidt, bij voorkeur met een notulist erbij. Doel is dieperliggende motivaties en groepsdynamiek achterhalen. Je bevraagt de groep, niet het individu."
+   "def": "Gezelschap van 6 tot 12 mensen met een zekere homogeniteit, geselecteerd omdat ze veel over het onderwerp kunnen zeggen. De communicatie loopt vooral tussen de deelnemers onderling; de onderzoeker is moderator die de discussie begeleidt, bij voorkeur met een notulist erbij. Doel is dieperliggende motivaties en groepsdynamiek achterhalen. Je bevraagt het gezelschap, niet het individu."
   },
   {
    "cat": "team",
    "term": "Team canvas",
-   "def": "Canvas waarmee een team duidelijkheid krijgt over doelen, verwachtingen en ieders inbreng. In het midden de purpose (welke impact willen we maken, waarom doen we wat we doen), daaromheen mensen en rollen, gezamenlijke doelstellingen, persoonlijke doelen, waarden, behoeften en verwachtingen, regels en afspraken, sterktes en middelen, zwaktes en ontwikkelgebieden. Hoort als bijlage bij de design brief."
+   "def": "Werkblad waarmee een projectgroep duidelijkheid krijgt over doelen, verwachtingen en ieders inbreng. In het midden de purpose (welke impact willen we maken, waarom doen we wat we doen), daaromheen mensen en rollen, gezamenlijke doelstellingen, persoonlijke doelen, waarden, behoeften en verwachtingen, regels en afspraken, sterktes en middelen, zwaktes en ontwikkelgebieden. Hoort als bijlage bij de design brief."
   },
   {
    "cat": "team",
    "term": "Planner",
-   "def": "Een van de zeven teamrollen uit les 1.1: maakt en beheert de planning en zorgt dat het team alles op tijd afrondt. Waardeert efficiëntie en kan inschatten hoe lang iemand ergens mee bezig is. Een rol hebben betekent niet dat anderen niet mogen helpen; het gaat om wie de leiding heeft over een taak."
+   "def": "Een van de zeven teamrollen uit les 1.1: maakt en bewaakt het tijdschema en zorgt dat het team alles op tijd afrondt. Waardeert efficiëntie en kan inschatten hoe lang iemand ergens mee bezig is. Een rol hebben betekent niet dat anderen niet mogen helpen; het gaat om wie de leiding heeft over een taak."
   },
   {
    "cat": "team",
@@ -475,7 +475,7 @@ window.PRJWPM = {
   {
    "cat": "team",
    "term": "Verbinder",
-   "def": "Teamrol: verbindt het team met gebruikers, experts en ervaringen. Legt snel associaties tussen ideeën en mensen en lijkt iedereen te kennen."
+   "def": "Teamrol: brengt het team in contact met gebruikers, experts en ervaringen. Legt snel associaties tussen ideeën en mensen en lijkt iedereen te kennen."
   },
   {
    "cat": "team",
@@ -495,37 +495,37 @@ window.PRJWPM = {
   {
    "cat": "team",
    "term": "Verhalenverteller",
-   "def": "Teamrol: maakt inspirerende verhalen rond de ontwerpuitdaging en communiceert het project naar buiten via woord, beeld of video. Vat ideeën samen in een verhaal waar anderen voor gaan zitten."
+   "def": "Teamrol: maakt inspirerende storylines rond de ontwerpuitdaging en communiceert het project naar buiten via woord, beeld of video. Vat ideeën samen in een narratief waar anderen voor gaan zitten."
   },
   {
    "cat": "communicatie",
-   "term": "SABKES-criteria",
-   "def": "Vijf criteria voor zakelijk schrijven uit les 1.4: Structuur en Samenhang, Alinea's, Bronnen, Korte en Efficiënte zinnen (maximaal 15 tot 20 woorden, actief, geen omslachtige formuleringen), Spelling en leestekens."
+   "term": "SABKES-criteria (structuur en samenhang, alinea's, bronnen, korte en efficiënte zinnen, spelling)",
+   "def": "Vijf eisen voor zakelijk schrijven uit les 1.4: Structuur en Samenhang, Alinea's, Bronnen, Korte en Efficiënte zinnen (maximaal 15 tot 20 woorden, actief, geen omslachtige formuleringen), Spelling en leestekens."
   },
   {
    "cat": "communicatie",
    "term": "Kernzin",
-   "def": "De belangrijkste zin van een alinea, die bovenaan staat. Volgens de handout heeft een alinea één onderwerp, maximaal 5 tot 7 zinnen en een inhoudelijk kopje."
+   "def": "De openingsregel van een alinea die de hoofdboodschap bevat. Volgens de handout heeft een alinea één onderwerp, maximaal 5 tot 7 zinnen en een inhoudelijk kopje."
   },
   {
    "cat": "communicatie",
    "term": "APA-verwijzing naar AI",
-   "def": "Verantwoording van AI-gebruik volgens APA. In de tekst bijvoorbeeld ‘(OpenAI, 2025)’, eventueel met de prompt of een bijlage met de volledige chat. In de bronnenlijst: Ontwikkelaar. (jaar). Naam AI-tool (Versie) [Generatieve AI]. URL."
+   "def": "Bronvermelding van het gebruik van een generatieve tool volgens de gangbare bronvermeldingsstijl. In de tekst bijvoorbeeld ‘(OpenAI, 2025)’, eventueel met de prompt of een bijlage met de volledige chat. In de bronnenlijst: Ontwikkelaar. (jaar). Naam AI-tool (Versie) [Generatieve AI]. URL."
   },
   {
    "cat": "communicatie",
    "term": "AI-clichés",
-   "def": "Kenmerken van AI-tekst: vage woorden (factoren, aspecten, elementen), geen concrete context, overmatig formeel taalgebruik, geen voorbeelden, alles klinkt netjes maar niet echt, steeds dezelfde zinsbouw met opsommingen, weinig inhoud."
+   "def": "Kenmerken van tekst die door een taalmodel is geschreven: vage woorden (factoren, aspecten, elementen), geen concrete context, overmatig formeel taalgebruik, geen voorbeelden, alles klinkt netjes maar niet echt, steeds dezelfde zinsbouw met opsommingen, weinig inhoud."
   },
   {
    "cat": "communicatie",
    "term": "Peerfeedback",
-   "def": "Feedback van een andere projectgroep, in les 1.4 op de probleemanalyse van de design brief met het feedbackformulier uit de handout. Uitdrukkelijk zonder AI, zodat je zelf leert signaleren."
+   "def": "Reacties van een andere projectgroep, in les 1.4 op de probleemanalyse van de design brief met het formulier uit de handout. Uitdrukkelijk zonder AI, zodat je zelf leert signaleren."
   },
   {
    "cat": "communicatie",
    "term": "Communicatief doel",
-   "def": "Wat je met een boodschap wilt bereiken: informeren en adviseren, overtuigen, instrueren of motiveren. Hoort bij de communicatieanalyse van je ideeën, samen met de doelgroep en hoe je daar rekening mee houdt."
+   "def": "Wat je met een boodschap wilt bereiken: informeren en adviseren, overtuigen, instrueren of motiveren. Hoort bij de analyse van hoe je je ideeën overbrengt, samen met de doelgroep en hoe je daar rekening mee houdt."
   },
   {
    "cat": "communicatie",
@@ -600,12 +600,12 @@ window.PRJWPM = {
   {
    "cat": "toetsing",
    "term": "Eindgesprek",
-   "def": "Toets-02: groepsgesprek met de docent over de onderbouwing van de eindrapportage (2a) en het groepsproces (2b). Gemiddelde van beide criteria, beide voldoende. In eerste instantie een groepscijfer; de docent kan individueel afwijken."
+   "def": "Toets-02: mondeling van de groep met de docent over de onderbouwing van de eindrapportage (2a) en het groepsproces (2b). Gemiddelde van beide criteria, beide voldoende. In eerste instantie een groepscijfer; de docent kan individueel afwijken."
   },
   {
    "cat": "toetsing",
    "term": "Niveaus van de rubric",
-   "def": "Elk criterium wordt beoordeeld op drie niveaus: in ontwikkeling (onder 5,5), op niveau (5,5 tot 8,0) en boven niveau (boven 8)."
+   "def": "Elk criterium wordt beoordeeld op drie treden: in ontwikkeling (onder 5,5), op niveau (5,5 tot 8,0) en boven niveau (boven 8)."
   }
  ],
  "oefentoetsen": [

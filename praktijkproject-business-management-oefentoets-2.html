@@ -470,7 +470,7 @@ function submitTest() {
   const openCorrect = Object.values(openMarks).filter(Boolean).length;
   const correct = mcCorrect + openCorrect;
   const pct = Math.round(correct / total * 100);
-  const passed = pct >= CESUUR;
+  const passed = correct >= Math.ceil(total * CESUUR / 100);
 
   document.getElementById('ot-test').style.display = 'none';
   document.getElementById('ot-results').style.display = 'block';
@@ -538,5 +538,6 @@ async function addFirestorePoints(n) {
   } catch (e) { console.warn(e); }
 }
 </script>
+<script src="js/oefentoets-extra.js"></script>
 </body>
 </html>

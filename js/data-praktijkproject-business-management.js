@@ -70,8 +70,8 @@ window.PRJBUS = {
   },
   {
    "cat": "project",
-   "term": "DMAGIC",
-   "def": "Verbetercyclus van zes fases die het project structureert: Define, Measure en Analyze in periode 1, Generate, Improve en Control in periode 2. Ten opzichte van het klassieke DMAIC is Generate bewust toegevoegd, zodat je eerst breed verbeterideeën bedenkt voordat je kiest."
+   "term": "DMAGIC (Define, Measure, Analyze, Generate, Improve, Control)",
+   "def": "Verbetercyclus van zes fases die het project structureert: Define, Measure en Analyze in periode 1, Generate, Improve en Control in periode 2. Ten opzichte van de klassieke cyclus met vijf fases is Generate bewust toegevoegd, zodat je eerst breed verbeterideeën bedenkt voordat je kiest."
   },
   {
    "cat": "project",
@@ -106,22 +106,22 @@ window.PRJBUS = {
   {
    "cat": "project",
    "term": "Eerst begrijpen, dan verbeteren",
-   "def": "Uitgangspunt van het vak: in periode 1 bedenk je nog geen oplossingen, maar onderzoek je wat er gebeurt, wie betrokken zijn en welke data laten zien dat er iets moet verbeteren. Pas in periode 2 ontwerp je. Direct naar een oplossing springen zonder onderbouwde oorzaak heet solution jumping."
+   "def": "Uitgangspunt van het vak: in periode 1 bedenk je nog geen oplossingen, maar onderzoek je wat er gebeurt, wie betrokken zijn en welke data laten zien dat er iets beter moet. Pas in periode 2 ontwerp je. Direct naar een oplossing springen zonder onderbouwde oorzaak heet solution jumping."
   },
   {
    "cat": "project",
-   "term": "GOTIK",
+   "term": "GOTIK (geld, organisatie, tijd, informatie, kwaliteit)",
    "def": "De vijf klassieke beheersaspecten van een project: Geld (zitten we op budget?), Organisatie (wie doet wat?), Tijd (halen we de deadlines?), Informatie (wie wil wat weten en hoe rapporteren we?) en Kwaliteit (leveren we wat de opdrachtgever wil?)."
   },
   {
    "cat": "project",
    "term": "Tussenrapportage",
-   "def": "Rapport aan het eind van periode 1 waarin het team alles tot dan toe bundelt: het geanalyseerde proces met data, geprioriteerde kernproblemen en een onderbouwde verbeterfocus. Wordt in week 7 overgedragen aan de opdrachtgever, samen met de tussenpresentatie."
+   "def": "Verslag aan het eind van periode 1 waarin het team alles tot dan toe bundelt: het geanalyseerde proces met data, geprioriteerde kernproblemen en een onderbouwde verbeterfocus. Wordt in week 7 overgedragen aan de opdrachtgever, samen met de presentatie halverwege."
   },
   {
    "cat": "project",
    "term": "Einddossier",
-   "def": "De bundeling van alle tussen- en eindproducten tot één definitief adviespakket (onder meer adviesnota, implementatieplan, borgingsplan en overdrachtsdocument). Moet volledig, consistent en toegankelijk zijn voor de proceseigenaar."
+   "def": "De bundeling van alle tussenproducten en definitieve producten tot één afsluitend adviespakket (onder meer adviesnota, implementatieplan, borgingsplan en overdrachtsdocument). Moet volledig, consistent en toegankelijk zijn voor de proceseigenaar."
   },
   {
    "cat": "scrum",
@@ -141,12 +141,12 @@ window.PRJBUS = {
   {
    "cat": "scrum",
    "term": "Product backlog",
-   "def": "Lijst met alle items (producten en taken) die het project moet opleveren, geordend op prioriteit door de Product Owner. Een levend document dat nooit 'af' is: bovenaan klein en helder, lager op de lijst globaler."
+   "def": "Lijst met alle items (op te leveren stukken en taken) die het project moet opleveren, geordend op prioriteit door de Product Owner. Een levend document dat nooit 'af' is: bovenaan klein en helder, lager op de lijst globaler."
   },
   {
    "cat": "scrum",
    "term": "Sprint backlog",
-   "def": "De takenlijst voor één sprint: items uit de product backlog die het team in de sprintplanning opdeelt in concrete taken, met deadlines die niet alleen de opleverdatum zijn."
+   "def": "De takenlijst voor één werkperiode van drie weken: items uit de totale werkvoorraad van het project die het team aan het begin van die periode opdeelt in concrete taken, met deadlines die niet alleen de opleverdatum zijn."
   },
   {
    "cat": "scrum",
@@ -156,22 +156,22 @@ window.PRJBUS = {
   {
    "cat": "scrum",
    "term": "Scrumboard",
-   "def": "Bord met de kolommen product backlog, sprint backlog, to do, doing (met verantwoordelijk groepslid) en done. Opgebouwd van grof naar fijn en de basis voor de daily stand-up. Tip: koppel ook de opdrachtgever eraan en maak een kaart voor belemmeringen."
+   "def": "Visueel overzicht met de kolommen product backlog, sprint backlog, to do, doing (met verantwoordelijk groepslid) en done. Opgebouwd van grof naar fijn en de basis voor de daily stand-up. Tip: koppel ook de opdrachtgever eraan en maak een kaart voor belemmeringen."
   },
   {
    "cat": "scrum",
    "term": "Product Owner",
-   "def": "Teamlid dat de waarde van het product en het team maximaliseert, de communicatie met de opdrachtgever onderhoudt en als enige de prioriteit van backlog-items bepaalt. Altijd één persoon, maar doet het werk niet alleen."
+   "def": "Teamlid dat de waarde van het op te leveren resultaat en het team maximaliseert, de communicatie met de opdrachtgever onderhoudt en als enige de prioriteit van backlog-items bepaalt. Altijd één persoon, maar doet het werk niet alleen."
   },
   {
    "cat": "scrum",
    "term": "Scrum Master",
-   "def": "Teamlid dat het scrumproces bewaakt: zorgt dat stappen als de daily scrum doorlopen worden, dat belemmeringen worden opgelost en dat iedereen weet wat en waarom. Geen projectleider: het team verdeelt zelf de taken. Begeleidt ook review en retrospective."
+   "def": "Teamlid dat het werkproces met sprints bewaakt: zorgt dat stappen als de daily stand-up doorlopen worden, dat belemmeringen worden opgelost en dat iedereen weet wat en waarom. Geen projectleider: het team verdeelt zelf de taken. Begeleidt ook review en retrospective."
   },
   {
    "cat": "scrum",
    "term": "Sprintplanning",
-   "def": "Bijeenkomst aan het begin van een sprint waarin het team bepaalt wat er deze sprint gedaan wordt (sprintdoel, op basis van de prioriteiten van de Product Owner) en hoe het geselecteerde werk wordt uitgevoerd."
+   "def": "Bijeenkomst aan het begin van een werkperiode waarin het team bepaalt wat er in die periode gedaan wordt (het doel van de periode, op basis van de prioriteiten van de Product Owner) en hoe het geselecteerde werk wordt uitgevoerd."
   },
   {
    "cat": "scrum",
@@ -181,7 +181,7 @@ window.PRJBUS = {
   {
    "cat": "scrum",
    "term": "Sprintreview",
-   "def": "Formele bijeenkomst aan het eind van een sprint waarin het team het product oplevert aan de opdrachtgever en alle belanghebbenden feedback geven; go/no go voor de volgende sprint. Resultaat: een herziene product backlog. Gaat over het product, mét opdrachtgever."
+   "def": "Formele bijeenkomst aan het eind van een werkperiode waarin het team het product oplevert aan de opdrachtgever en alle belanghebbenden feedback geven; go/no go voor de volgende periode. Resultaat: een herziene product backlog. Gaat over het product, mét opdrachtgever."
   },
   {
    "cat": "scrum",
@@ -196,17 +196,17 @@ window.PRJBUS = {
   {
    "cat": "scrum",
    "term": "Bruikbare feedback",
-   "def": "Feedback die concreet, op gedrag gericht en bruikbaar voor de volgende sprint is. Hulpzin: 'ik zag/merkte dat jij... het effect op mij was... voor de volgende sprint helpt het als...'. Niet: 'jij communiceert slecht.'"
+   "def": "Terugkoppeling die concreet, op gedrag gericht en direct toe te passen is in de volgende sprint. Hulpzin: 'ik zag/merkte dat jij... het effect op mij was... voor de volgende sprint helpt het als...'. Niet: 'jij communiceert slecht.'"
   },
   {
    "cat": "organisatie",
    "term": "Organisatiecontext",
-   "def": "Het geheel van doelen, waarden en keuzes van een organisatie waarin een facilitair proces staat. Kernvraag: wat wil deze organisatie bereiken en hoe helpt dit proces daarbij? Hetzelfde proces vraagt per context andere eisen, bijvoorbeeld een receptie in een ziekenhuis (veiligheid, rust) of kantoor (snelheid, bereikbaarheid)."
+   "def": "Het geheel van doelen, waarden en keuzes van een bedrijf of instelling waarin een facilitair proces staat. Kernvraag: wat wil deze organisatie bereiken en hoe helpt dit proces daarbij? Hetzelfde proces vraagt per omgeving andere eisen, bijvoorbeeld een receptie in een ziekenhuis (veiligheid, rust) of kantoor (snelheid, bereikbaarheid)."
   },
   {
    "cat": "organisatie",
    "term": "Primair proces",
-   "def": "De kernactiviteit van een organisatie (zorg, onderwijs, productie). Facility management ondersteunt dit primaire proces; daarom moet de inrichting van facilitaire processen aansluiten op wat de organisatie belangrijk vindt."
+   "def": "De kernactiviteit van een organisatie (zorg, onderwijs, productie). Facility management ondersteunt deze kernactiviteit; daarom moet de inrichting van facilitaire processen aansluiten op wat de organisatie belangrijk vindt."
   },
   {
    "cat": "organisatie",
@@ -226,7 +226,7 @@ window.PRJBUS = {
   {
    "cat": "organisatie",
    "term": "Facilitaire accenten",
-   "def": "Vertaling van de organisatierichting naar wat FM moet uitstralen, bijvoorbeeld servicegericht, veilig, duurzaam, comfort of beleving. Stap 3 van het vierstappenmodel: begrijp de organisatie, bepaal de betekenis voor FM, formuleer FM-accenten, koppel aan processen."
+   "def": "Vertaling van de organisatierichting naar wat FM moet uitstralen, bijvoorbeeld servicegericht, veilig, duurzaam, comfort of beleving. Stap 3 van het vierstappenmodel: begrijp de organisatie, bepaal de betekenis voor FM, formuleer wat FM moet uitstralen, koppel aan processen."
   },
   {
    "cat": "organisatie",
@@ -236,22 +236,22 @@ window.PRJBUS = {
   {
    "cat": "organisatie",
    "term": "Meervoudige toegevoegde waarde",
-   "def": "Een verbetering levert idealiter waarde op meerdere fronten tegelijk, financieel én niet-financieel. Voorkomt blindstaren op één soort winst, zoals kostenreductie, die elders schade kan doen. Is een apart rubriccriterium (20%) van de adviespresentatie."
+   "def": "Een verbetering levert idealiter waarde op verschillende fronten tegelijk, financieel én niet-financieel. Voorkomt blindstaren op één soort winst, zoals kostenreductie, die elders schade kan doen. Is een apart rubriccriterium (20%) van de adviespresentatie."
   },
   {
    "cat": "organisatie",
    "term": "KSF (kritische succesfactor)",
-   "def": "Onderdeel van een organisatie of proces waarin je móét uitblinken om succesvol te zijn, rechtstreeks afgeleid uit missie en visie. Kwalitatief en richtinggevend, bijvoorbeeld 'storingen snel oplossen'. Wees selectief: niet alles is kritisch."
+   "def": "Onderdeel van een organisatie of proces waarin je móét uitblinken om je doel te halen, rechtstreeks afgeleid uit missie en visie. Kwalitatief en richtinggevend, bijvoorbeeld 'storingen snel oplossen'. Wees selectief: niet alles is doorslaggevend."
   },
   {
    "cat": "organisatie",
    "term": "Klantwaarde",
-   "def": "Wat de klant of gebruiker werkelijk belangrijk vindt en waarvoor hij iets over heeft. Kernbegrip uit Lean: specificeer waarde vanuit de klant; stappen zonder waarde voor de klant zijn verspilling. In FM gaat het vaak over comfort, veiligheid, gemak, beleving en betrouwbaarheid."
+   "def": "Wat de gebruiker werkelijk belangrijk vindt en waarvoor hij iets over heeft. Kernbegrip uit Lean: bepaal vanuit de afnemer wat telt; stappen die daar niets aan bijdragen zijn verspilling. In FM gaat het vaak over comfort, veiligheid, gemak, beleving en betrouwbaarheid."
   },
   {
    "cat": "organisatie",
    "term": "Voice of the Customer (VOC)",
-   "def": "De stem van de klant ophalen via interviews, enquêtes of observaties, zodat klantwaarde niet op aannames berust. In FM is 'de klant' vaak een interne klant of eindgebruiker: medewerker, student, bezoeker of patiënt."
+   "def": "De wensen en ervaringen van de klant ophalen via interviews, enquêtes of observaties, zodat klantwaarde niet op aannames berust. In FM is 'de klant' vaak een interne klant of eindgebruiker: medewerker, student, bezoeker of patiënt."
   },
   {
    "cat": "organisatie",
@@ -261,7 +261,7 @@ window.PRJBUS = {
   {
    "cat": "organisatie",
    "term": "Macht-belangmatrix",
-   "def": "Matrix om stakeholders te prioriteren: hoge macht en hoog belang = nauw betrekken; hoge macht en laag belang = tevreden houden; lage macht en hoog belang = informeren; lage macht en laag belang = monitoren. In periode 2 ook belang-invloed-grid genoemd."
+   "def": "Raster om stakeholders te prioriteren op invloed en belang: veel invloed en hoog belang = nauw betrekken; veel invloed en laag belang = tevreden houden; weinig invloed en hoog belang = informeren; weinig invloed en laag belang = monitoren. In periode 2 ook belang-invloed-grid genoemd."
   },
   {
    "cat": "organisatie",
@@ -271,17 +271,17 @@ window.PRJBUS = {
   {
    "cat": "organisatie",
    "term": "SERVQUAL (RATER)",
-   "def": "Model van Parasuraman, Zeithaml en Berry (1988) met vijf dimensies van servicekwaliteit: Reliability (doet consistent wat beloofd is), Assurance (kennis en vertrouwen van medewerkers), Tangibles (gebouw, uitstraling, uitrusting), Empathy (aandacht voor de klant) en Responsiveness (bereidheid en snelheid om te helpen). Checklist voor klantwaarde."
+   "def": "Model van Parasuraman, Zeithaml en Berry (1988) met vijf dimensies van hoe klanten dienstverlening beoordelen: Tangibles (gebouw, uitstraling, uitrusting), Reliability (doet consistent wat beloofd is), Responsiveness (bereidheid en snelheid om te helpen), Assurance (kennis en vertrouwen van medewerkers) en Empathy (aandacht voor de klant). Checklist voor klantwaarde."
   },
   {
    "cat": "organisatie",
    "term": "GAP-model",
-   "def": "Model van Parasuraman, Zeithaml en Berry met vijf kwaliteitskloven. Gap 1: management weet niet wat de klant verwacht. Gap 2: klantwens niet vertaald naar normen. Gap 3: standaard wordt niet uitgevoerd. Gap 4: belofte wordt niet waargemaakt. Gap 5: ervaring lager dan verwachting, het gevolg van gap 1 t/m 4."
+   "def": "Raamwerk van Parasuraman, Zeithaml en Berry met vijf kwaliteitskloven. Kloof 1: management weet niet wat de klant verwacht. Kloof 2: klantwens niet vertaald naar normen. Kloof 3: standaard wordt niet uitgevoerd. Kloof 4: belofte wordt niet waargemaakt. Kloof 5: ervaring lager dan verwachting, het gevolg van kloof 1 t/m 4."
   },
   {
    "cat": "organisatie",
    "term": "5x W + 2x H",
-   "def": "Vragen om een probleem helder te krijgen: wat, waarom, waar, wanneer en wie (vijf W's) plus hoe wordt het uitgevoerd en hoeveel kost het of hoe groot is het (twee H's)."
+   "def": "Vragen om een probleem helder te krijgen: wat, waarom, waar, wanneer en wie, plus hoe wordt het uitgevoerd en hoeveel kost het of hoe groot is het."
   },
   {
    "cat": "proces",
@@ -291,32 +291,32 @@ window.PRJBUS = {
   {
    "cat": "proces",
    "term": "Begin- en eindpunt",
-   "def": "Beginpunt: de eerste activiteit of trigger die het proces start (wat heeft de klant nodig om te starten?). Eindpunt: de laatste activiteit waarbij de klant waarde heeft ontvangen (wanneer is de klant klaar gediend?). Bij een storing: melden is het begin, opgelost én melder geïnformeerd is het eind."
+   "def": "Waar een proces start en stopt. Start: de eerste activiteit of trigger die het proces in gang zet (wat heeft de klant nodig om te starten?). Stop: de laatste activiteit waarbij de klant waarde heeft ontvangen (wanneer is de klant klaar gediend?). Bij een storing: melden is de start, opgelost én melder geïnformeerd is het slot."
   },
   {
    "cat": "proces",
    "term": "Procesafbakening",
-   "def": "Bepalen van doel, beginpunt, eindpunt en klantwaarde van het proces. Te smal mist context, te breed is onbeheersbaar. Stelregel: kies een scope die je in 10 tot 15 stappen kunt beschrijven. Wie welke afdeling verantwoordelijk is, beïnvloedt mede waar je de grens legt."
+   "def": "Bepalen van doel, beginpunt, eindpunt en klantwaarde van wat je onderzoekt. Te smal mist context, te breed is onbeheersbaar. Stelregel: kies een scope die je in 10 tot 15 stappen kunt beschrijven. Wie welke afdeling verantwoordelijk is, beïnvloedt mede waar je de grens legt."
   },
   {
    "cat": "proces",
    "term": "Niveau 1: hoofdproces",
-   "def": "Het hoogover proces van klantvraag tot geleverd resultaat, in maximaal zeven hoofdstappen. Gaat over samenhang, doorlooptijd en klantwaarde en is nodig voor end-to-end denken. Voorbeeld: facilitaire dienstverlening."
+   "def": "Het hoogover overzicht van klantvraag tot geleverd resultaat, in maximaal zeven grote stappen. Gaat over samenhang, doorlooptijd en klantwaarde en is nodig voor end-to-end denken. Voorbeeld: facilitaire dienstverlening."
   },
   {
    "cat": "proces",
    "term": "Niveau 2: deelproces",
-   "def": "Het flowchartniveau: stappen en beslissingen, hoe activiteiten van stap naar stap gaan en waar keuzes vallen. Beschrijft de logica, niet de uitvoering. Geschikt voor procesanalyse in een verbeterproject, bijvoorbeeld storingsafhandeling."
+   "def": "Uitwerking als flowchart: stappen en beslissingen, hoe activiteiten van stap naar stap gaan en waar keuzes vallen. Beschrijft de logica, niet de uitvoering. Geschikt voor procesanalyse in een verbeterproject, bijvoorbeeld storingsafhandeling."
   },
   {
    "cat": "proces",
    "term": "Niveau 3: werkproces",
-   "def": "Het activiteitenniveau: welke handelingen binnen een processtap echt worden uitgevoerd, opgepakt, onderbroken en overgedragen. Een activiteit is altijd een werkwoord. Hier ontstaan wachttijd en variatie."
+   "def": "Uitwerking per activiteit: welke handelingen binnen een processtap echt worden uitgevoerd, opgepakt, onderbroken en overgedragen. Een activiteit is altijd een werkwoord. Hier ontstaan wachttijd en variatie."
   },
   {
    "cat": "proces",
    "term": "Niveau 4: SOP en werkinstructie",
-   "def": "Hoe één handeling precies moet worden uitgevoerd. Nuttig voor consistentie en inwerken, maar extra instructies maken een instabiel proces niet stabieler: niveau 4 ondersteunt het proces, het ontwerpt of verbetert het niet."
+   "def": "Hoe één handeling precies moet worden uitgevoerd. Nuttig voor consistentie en inwerken, maar extra voorschriften maken een instabiel proces niet stabieler: deze laag ondersteunt het proces, ze ontwerpt of verbetert het niet."
   },
   {
    "cat": "proces",
@@ -331,22 +331,22 @@ window.PRJBUS = {
   {
    "cat": "proces",
    "term": "Brownpaper-sessie",
-   "def": "Sessie waarin alle betrokkenen op een groot vel papier aan de muur samen processtappen en knelpunten plakken. Levert een eerlijk beeld van de current state en creëert draagvlak. Focus op hoe het nu gaat; verbeterideeën noteer je voor later."
+   "def": "Bijeenkomst waarin alle betrokkenen op een groot vel aan de muur samen processtappen en knelpunten plakken. Levert een eerlijk beeld van de current state en creëert draagvlak. Focus op hoe het nu gaat; verbeterideeën noteer je voor later."
   },
   {
    "cat": "proces",
-   "term": "BPMN",
+   "term": "BPMN (Business Process Model and Notation)",
    "def": "Business Process Model and Notation: standaardset symbolen om processen eenduidig te tekenen. Basisset: startevent (begin), eindevent (eind), activiteit (rechthoek), beslissing (ruit), flow (pijl) en swimlane (verantwoordelijke rol)."
   },
   {
    "cat": "proces",
    "term": "Flowchart",
-   "def": "Visualisatie van de stappenvolgorde, beslismomenten (ruit, meestal ja/nee) en mogelijke routes. Stappen: begin- en eindpunt bepalen, stappen verzamelen en ordenen, beslismomenten benoemen, tekenen met BPMN-symbolen. Begin altijd met de happy flow (het standaardverloop) en voeg pas daarna uitzonderingen toe."
+   "def": "Visualisatie van de stappenvolgorde, beslismomenten (ruit, meestal ja/nee) en mogelijke routes. Stappen: begin- en eindpunt bepalen, stappen verzamelen en ordenen, beslismomenten benoemen, tekenen met BPMN-symbolen. Begin altijd met het standaardverloop en voeg pas daarna uitzonderingen toe."
   },
   {
    "cat": "proces",
    "term": "Swimlane-diagram",
-   "def": "Visualisatie van procesverloop én wie welke stap uitvoert, met per rol of afdeling een eigen baan. Ideaal als meerdere rollen betrokken zijn. Waar veel laneswitches (overdrachten tussen banen) zitten, kan informatie zoekraken of vertraging ontstaan."
+   "def": "Visualisatie van procesverloop én wie welke stap uitvoert, met per rol of afdeling een eigen baan. Ideaal als meerdere rollen betrokken zijn. Waar veel wisselingen tussen banen zitten (overdrachten), kan informatie zoekraken of vertraging ontstaan."
   },
   {
    "cat": "proces",
@@ -366,7 +366,7 @@ window.PRJBUS = {
   {
    "cat": "meten",
    "term": "KPI (Key Performance Indicator)",
-   "def": "Meetbare indicator die laat zien hoe goed een proces presteert op de voor de klant meest essentiële onderdelen. Een getal, percentage of score dat pas betekenis krijgt met een norm (target): 'wachttijd 4 minuten' zegt pas iets bij een norm van maximaal 5. Verschil met KSF: de KSF geeft richting, de KPI maakt het meetbaar."
+   "def": "Meetbaar getal dat laat zien hoe goed een proces het doet op de voor de klant meest essentiële onderdelen. Een getal, percentage of score dat pas betekenis krijgt met een norm (target): 'wachttijd 4 minuten' zegt pas iets bij een norm van maximaal 5. Verschil met KSF: de KSF geeft richting, dit getal maakt het meetbaar."
   },
   {
    "cat": "meten",
@@ -376,12 +376,12 @@ window.PRJBUS = {
   {
    "cat": "meten",
    "term": "Keten klantwaarde, KSF, KPI, meetgrootheid",
-   "def": "De lijn waarlangs elke meting herleidbaar moet zijn: klantwaarde (snelle lunch), KSF (korte wachttijd), KPI (gemiddelde wachttijd maximaal 4 minuten), meetgrootheid (stopwatch, 75 metingen). Een KPI die niet terug te voeren is op klantwaarde, is geen zinvolle KPI. In Lean heet de meetbare kwaliteitseis ook CTQ."
+   "def": "De lijn waarlangs elke meting herleidbaar moet zijn, van wat de klant belangrijk vindt (snelle lunch) via de succesfactor (korte wachttijd) en de prestatie-indicator (gemiddelde wachttijd maximaal 4 minuten) naar wat en hoe je meet (stopwatch, 75 metingen). Een indicator die niet terug te voeren is op wat de klant belangrijk vindt, is zinloos. In Lean heet de meetbare kwaliteitseis ook CTQ."
   },
   {
    "cat": "meten",
-   "term": "SMART-KPI",
-   "def": "KPI die Specifiek, Meetbaar, Acceptabel, Realistisch en Tijdgebonden is. Format: '[Wat] is [hoeveelheid] [wanneer], gemeten door [methode], verantwoordelijk: [wie].'"
+   "term": "SMART-KPI (specifiek, meetbaar, acceptabel, realistisch, tijdgebonden)",
+   "def": "Prestatie-indicator die specifiek, meetbaar, acceptabel, realistisch en tijdgebonden is. Format: '[Wat] is [hoeveelheid] [wanneer], gemeten door [methode], verantwoordelijk: [wie].'"
   },
   {
    "cat": "meten",
@@ -396,37 +396,37 @@ window.PRJBUS = {
   {
    "cat": "meten",
    "term": "Meetplan",
-   "def": "Plan waarin je per KPI vastlegt wat, hoe, hoeveel, door wie en wanneer je meet en waarom. Zeven stappen: meetwaarden (Y en X), operationele definitie (U-D-M), meetprocedure, eenheid, steekproef, verantwoordelijkheden en planning, analysedoel. Test het eerst met een pilotmeting van 1 tot 2 dagen."
+   "def": "Document waarin je per KPI vastlegt wat, hoe, hoeveel, door wie en wanneer je gegevens verzamelt en waarom. Zeven stappen: meetwaarden (Y en X), operationele definitie (U-D-M), meetprocedure, eenheid, steekproef, verantwoordelijkheden en planning, analysedoel. Test het eerst met een pilotmeting van 1 tot 2 dagen."
   },
   {
    "cat": "meten",
-   "term": "Operationele meetdefinitie (U-D-M)",
+   "term": "Operationele meetdefinitie (U-D-M, unit, defect, metric)",
    "def": "Eenduidige afspraak over wat je meet: Unit (het object, bijvoorbeeld één werkorder), Defect (wanneer is het fout, bijvoorbeeld langer dan 5 werkdagen open) en Metric/Measure (welke waarde of hoe je meet). Zonder U-D-M meet ieder teamlid iets anders en is de data niet vergelijkbaar."
   },
   {
    "cat": "meten",
    "term": "Y en X",
-   "def": "Y is de uitkomstmaat voor de klant die je wilt verbeteren (bijvoorbeeld doorlooptijd); X zijn de invloedsvariabelen die je meeneemt (wie, welke dag, welk materiaal). Beperk je tot 1 tot 3 Y-waarden; X-waarden zijn hypotheses die je in Analyze toetst."
+   "def": "Twee soorten meetwaarden. De eerste is de uitkomstmaat voor de klant die je wilt verbeteren (bijvoorbeeld doorlooptijd); de tweede zijn de invloedsvariabelen die je meeneemt (wie, welke dag, welk materiaal). Beperk je tot 1 tot 3 uitkomstmaten; de invloedsvariabelen zijn hypotheses die je in Analyze toetst."
   },
   {
    "cat": "meten",
    "term": "Kwantitatieve en kwalitatieve data",
-   "def": "Kwantitatief: getallen zoals doorlooptijden, aantallen, percentages en scores, geschikt voor statistiek. Kwalitatief: woorden zoals observaties, interviews en klachten, die context en duiding geven. Meestal heb je beide nodig."
+   "def": "Twee soorten gegevens. De eerste: getallen zoals doorlooptijden, aantallen, percentages en scores, geschikt voor statistiek. De tweede: woorden zoals observaties, interviews en klachten, die context en duiding geven. Meestal heb je beide nodig."
   },
   {
    "cat": "meten",
    "term": "Meetniveaus",
-   "def": "Nominaal, ordinaal, interval en ratio. Het meetniveau bepaalt welke analyse mogelijk is: voor gemiddelden moet je op interval- of rationiveau meten. Meet tijd daarom altijd op rationiveau."
+   "def": "Vier schalen: nominaal, ordinaal, interval en ratio. De schaal bepaalt welke analyse mogelijk is: voor gemiddelden heb je interval of ratio nodig. Registreer tijd daarom altijd op ratioschaal."
   },
   {
    "cat": "meten",
    "term": "Doorlooptijd, bewerkingstijd en wachttijd",
-   "def": "Totale tijd van begin tot eind, inclusief wacht- en ligmomenten (melding tot afmelding). Bewerkingstijd of cyclustijd is de netto werktijd (monteur 25 minuten bezig). Wachttijd is de tijd dat een case stilligt tussen stappen en is verspilling. Het verschil tussen doorlooptijd en bewerkingstijd maakt verspilling zichtbaar."
+   "def": "Drie tijdsmaten. De eerste: totale tijd van begin tot eind, inclusief momenten waarop iets stilligt (melding tot afmelding). De tweede, ook cyclustijd: de netto werktijd (monteur 25 minuten bezig). De derde: de tijd dat een case stilligt tussen stappen; die is verspilling. Het verschil tussen de eerste en de tweede maakt verspilling zichtbaar."
   },
   {
    "cat": "meten",
    "term": "PCE (Process Cycle Efficiency)",
-   "def": "Waarde-toevoegende tijd gedeeld door totale doorlooptijd, maal 100%. Voorbeeld: 2 uur bewerking op 40 uur doorlooptijd geeft 5% PCE, dus 95% verspilling. Vaak ontluisterend laag."
+   "def": "Waarde-toevoegende tijd gedeeld door totale doorlooptijd, maal 100%. Voorbeeld: 2 uur bewerking op 40 uur doorlooptijd geeft 5%, dus 95% verspilling. Vaak ontluisterend laag."
   },
   {
    "cat": "meten",
@@ -451,17 +451,17 @@ window.PRJBUS = {
   {
    "cat": "meten",
    "term": "Klachtenregistratie",
-   "def": "Systematisch bijhouden van aantallen klachten, oorzaken en afhandeltijd. Levert een defect rate op (bijvoorbeeld klachten per 100 diensten) en laat trends in oorzaakcategorieën zien."
+   "def": "Systematisch bijhouden hoe vaak mensen zich beklagen, over welke oorzaken en hoe snel dat wordt afgehandeld. Levert een defect rate op (bijvoorbeeld het aantal per 100 diensten) en laat trends in oorzaakcategorieën zien."
   },
   {
    "cat": "meten",
    "term": "Steekproefgrootte",
-   "def": "Vuistregels: continue data minimaal 30 metingen (liefst 50 tot 100), discrete data (goed/fout) minimaal 100, en een meetperiode die alle variatiebronnen afdekt. Methoden: aselect, systematisch (elke n-de), gestratificeerd (per shift of team); vermijd een convenience-steekproef, want die is niet representatief."
+   "def": "Vuistregels: continue data minimaal 30 metingen (liefst 50 tot 100), discrete data (goed/fout) minimaal 100, en een meetperiode die alle variatiebronnen afdekt. Methoden: aselect, systematisch (elke n-de), gestratificeerd (per shift of team); vermijd een gemakssample (convenience), want die is niet representatief."
   },
   {
    "cat": "meten",
    "term": "Dataset opschonen",
-   "def": "Van losse metingen naar één dataset: bijeenbrengen, structureren (1 rij = 1 meting, met kolommen voor nummer, datum/tijd, waarde en X), eenheden uniformeren (nooit werkdagen en kalenderdagen mengen) en opschonen (fouten verwijderen, uitschieters valideren, ontbrekende waarden markeren)."
+   "def": "Van losse metingen naar één bestand: bijeenbrengen, structureren (1 rij = 1 meting, met kolommen voor nummer, datum/tijd, waarde en X), eenheden uniformeren (nooit werkdagen en kalenderdagen mengen) en zuiveren (fouten verwijderen, uitschieters valideren, ontbrekende waarden markeren)."
   },
   {
    "cat": "meten",
@@ -471,12 +471,12 @@ window.PRJBUS = {
   {
    "cat": "meten",
    "term": "Centrum- en spreidingsmaten",
-   "def": "Centrummaten: gemiddelde, mediaan (robuust bij uitschieters) en modus. Spreidingsmaten: range (hoogste min laagste waarde) en standaarddeviatie; een lage standaarddeviatie betekent een consistent proces."
+   "def": "Twee soorten kengetallen. Voor het midden: gemiddelde, mediaan (robuust bij uitschieters) en modus. Voor hoe ver waarden uiteenlopen: range (hoogste min laagste waarde) en standaarddeviatie; een lage standaarddeviatie betekent een consistent proces."
   },
   {
    "cat": "analyse",
    "term": "VA (Value Added)",
-   "def": "Waarde-toevoegende stap: voldoet aan alle drie criteria (de klant wil ervoor betalen, het transformeert product of dienst naar de klantwens, het gaat in één keer goed). Voorbeeld: een technicus vervangt een kapotte lamp. Behouden en versterken."
+   "def": "Stap die voldoet aan alle drie criteria (de klant wil ervoor betalen, het transformeert product of dienst naar de klantwens, het gaat in één keer goed). Voorbeeld: een technicus vervangt een kapotte lamp. Behouden en versterken."
   },
   {
    "cat": "analyse",
@@ -491,7 +491,7 @@ window.PRJBUS = {
   {
    "cat": "analyse",
    "term": "Tien verspillingen",
-   "def": "Checklist voor procesverspilling in FM: overproductie, wachten, transport, overbewerking, voorraad, beweging, fouten en herstelwerk, onbenut talent, onnodige administratie en niet-ergonomisch werken. De eerste acht komen uit Lean (Toyota); nummer 9 en 10 zijn FM-specifieke aanvullingen."
+   "def": "Checklist voor wat in FM-processen niets toevoegt: overproductie, wachten, transport, overbewerking, voorraad, beweging, fouten en herstelwerk, onbenut talent, onnodige administratie en niet-ergonomisch werken. De eerste acht komen uit Lean (Toyota); de laatste twee zijn FM-specifieke aanvullingen."
   },
   {
    "cat": "analyse",
@@ -526,7 +526,7 @@ window.PRJBUS = {
   {
    "cat": "analyse",
    "term": "Fouten en herstelwerk",
-   "def": "Werk moet opnieuw of gecorrigeerd worden door fouten, bijvoorbeeld een werkbon met een verkeerd lokaalnummer die teruggestuurd moet worden, of een overgeslagen terugkoppeling waardoor de melder terugbelt."
+   "def": "Werk moet opnieuw of gecorrigeerd worden door vergissingen, bijvoorbeeld een werkbon met een verkeerd lokaalnummer die teruggestuurd moet worden, of een overgeslagen terugkoppeling waardoor de melder terugbelt."
   },
   {
    "cat": "analyse",
@@ -536,17 +536,17 @@ window.PRJBUS = {
   {
    "cat": "analyse",
    "term": "Onnodige administratie",
-   "def": "Dubbel werk, onduidelijke informatie, informatieverlies of onnodige registraties, bijvoorbeeld een digitale melding die ook nog handmatig in Excel wordt overgetypt. FM-specifieke aanvulling op de Lean-verspillingen."
+   "def": "Dubbel werk, onduidelijke informatie, informatieverlies of overbodige registraties, bijvoorbeeld een digitale melding die ook nog handmatig in Excel wordt overgetypt. FM-specifieke aanvulling op de Lean-verspillingen."
   },
   {
    "cat": "analyse",
    "term": "Niet-ergonomisch werken",
-   "def": "Werk dat op een lichamelijk belastende manier wordt uitgevoerd, bijvoorbeeld met gedraaide rug werken en zwaar tillen zonder hulpmiddel. FM-specifieke aanvulling; leidt op termijn tot uitval."
+   "def": "Taken die op een lichamelijk belastende manier worden uitgevoerd, bijvoorbeeld met gedraaide rug bezig zijn en zwaar tillen zonder hulpmiddel. FM-specifieke aanvulling; leidt op termijn tot uitval."
   },
   {
    "cat": "analyse",
    "term": "Mura en muri",
-   "def": "Mura is onnodige variatie (iedereen doet het net anders), muri is overbelasting. Naast verspilling (NVA) aandachtspunten bij procesontwerp en borging; zonder vastgelegde standaard sluipt mura terug."
+   "def": "Twee Lean-begrippen: het eerste is onnodige variatie (iedereen doet het net anders), het tweede is overbelasting. Naast verspilling (NVA) aandachtspunten bij procesontwerp en borging; zonder vastgelegde standaard sluipt de variatie terug."
   },
   {
    "cat": "analyse",
@@ -556,7 +556,7 @@ window.PRJBUS = {
   {
    "cat": "analyse",
    "term": "Ishikawa-diagram",
-   "def": "Visgraatdiagram om mogelijke oorzaken breed en gestructureerd in kaart te brengen: het probleem is de kop, de graten zijn de 6 M's. Verkent de breedte; geeft nog geen kernoorzaak."
+   "def": "Visgraatschema om mogelijke oorzaken breed en gestructureerd in kaart te brengen: het probleem is de kop, de graten zijn de 6 M's. Verkent de breedte; geeft nog geen kernoorzaak."
   },
   {
    "cat": "analyse",
@@ -566,32 +566,32 @@ window.PRJBUS = {
   {
    "cat": "analyse",
    "term": "5x waarom",
-   "def": "Methode om door te vragen van symptoom naar kernoorzaak tot je bij een beïnvloedbare oorzaak uitkomt. Vijf is geen vaste regel: soms volstaan drie, soms zijn er zeven nodig. Combineer met Ishikawa: eerst breedte, dan diepte."
+   "def": "Methode om door te vragen van symptoom naar kernoorzaak tot je bij een beïnvloedbare oorzaak uitkomt. Het getal in de naam is geen vaste regel: soms volstaan drie, soms zijn er zeven nodig. Combineer met Ishikawa: eerst breedte, dan diepte."
   },
   {
    "cat": "analyse",
    "term": "Kernoorzaak",
-   "def": "De achterliggende, beïnvloedbare oorzaak van een knelpunt, in tegenstelling tot een symptoom. Voorbeeld: niet 'de drukke manager' maar 'geen digitale workflow en geen standaardprocedure bij systeeminrichting'."
+   "def": "De achterliggende, beïnvloedbare reden van een knelpunt, in tegenstelling tot een symptoom. Voorbeeld: niet 'de drukke manager' maar 'geen digitale workflow en geen standaardprocedure bij systeeminrichting'."
   },
   {
    "cat": "analyse",
    "term": "Root-cause-analyse",
-   "def": "Analyse van het eigen proces van verspilling via Ishikawa en 5x waarom naar de kernoorzaak, plus prioritering. Basis voor de tussenrapportage."
+   "def": "Onderzoek van het eigen proces van verspilling via Ishikawa en 5x waarom, tot je bij de diepste beïnvloedbare reden uitkomt, plus prioritering. Basis voor de tussenrapportage."
   },
   {
    "cat": "analyse",
    "term": "Pareto-principe (80/20)",
-   "def": "Vaak veroorzaakt 20% van de oorzaken 80% van de problemen. Met een Pareto-analyse bepaal je welk knelpunt de meeste impact heeft en richt je je inspanning op het hoofdprobleem."
+   "def": "Vaak veroorzaakt 20% van de oorzaken 80% van de problemen. Met de bijbehorende analyse bepaal je welk knelpunt de meeste impact heeft en richt je je inspanning op het hoofdprobleem."
   },
   {
    "cat": "analyse",
    "term": "Kernprobleem",
-   "def": "Scherp geformuleerd probleem dat specifiek en feitelijk is (waar mogelijk met cijfers), gerelateerd aan klantwaarde en herleidbaar tot oorzaken. Voorbeeld: 'Tickets blijven openstaan door dubbele registratie in twee systemen.'"
+   "def": "Scherp geformuleerd knelpunt dat specifiek en feitelijk is (waar mogelijk met cijfers), gerelateerd aan klantwaarde en herleidbaar tot oorzaken. Voorbeeld: 'Tickets blijven openstaan door dubbele registratie in twee systemen.'"
   },
   {
    "cat": "analyse",
    "term": "Prioriteringscriteria knelpunten",
-   "def": "Vijf criteria om te bepalen welke knelpunten kernprobleem worden: impact op klantwaarde, omvang en frequentie, oorzakelijkheid (oorzaak of symptoom), haalbaarheid binnen de scope en urgentie voor de opdrachtgever."
+   "def": "Vijf maatstaven om te bepalen welke problemen tot kernprobleem worden gekozen: impact op klantwaarde, omvang en frequentie, oorzakelijkheid (oorzaak of symptoom), haalbaarheid binnen de scope en urgentie voor de opdrachtgever."
   },
   {
    "cat": "analyse",
@@ -601,17 +601,17 @@ window.PRJBUS = {
   {
    "cat": "verbeteren",
    "term": "Divergeren en convergeren",
-   "def": "Het ritme van de Generate-fase: eerst divergeren (zoveel mogelijk ideeën, nog niet oordelen, een longlist) en daarna convergeren (kiezen en onderbouwen van één voorkeursoplossing). Wie te vroeg oordeelt, snoeit de beste ideeën weg."
+   "def": "Het ritme van de Generate-fase: eerst verbreden (zoveel mogelijk ideeën, nog niet oordelen, een longlist) en daarna versmallen (kiezen en onderbouwen van één voorkeursoplossing). Wie te vroeg oordeelt, snoeit de beste ideeën weg."
   },
   {
    "cat": "verbeteren",
    "term": "Longlist",
-   "def": "Brede lijst met verbeterrichtingen uit de divergeerfase, getoetst aan klantwaarde, de FM-toegevoegde waarden en missie, visie en strategie. Tussenproduct van P2 week 1, samen met de impact/effort-matrix en ontwerpeisen."
+   "def": "Brede verzameling verbeterrichtingen uit de divergeerfase, getoetst aan klantwaarde, de FM-toegevoegde waarden en missie, visie en strategie. Tussenproduct van P2 week 1, samen met de impact/effort-matrix en ontwerpeisen."
   },
   {
    "cat": "verbeteren",
    "term": "Ontwerpeis",
-   "def": "Eis waaraan de toekomstige oplossing moet voldoen, afgeleid uit de beste verbeterrichtingen. In P2 week 1 formuleer je er 3 tot 5."
+   "def": "Voorwaarde waaraan de toekomstige oplossing moet voldoen, afgeleid uit de beste verbeterrichtingen. In P2 week 1 formuleer je er 3 tot 5."
   },
   {
    "cat": "verbeteren",
@@ -621,7 +621,7 @@ window.PRJBUS = {
   {
    "cat": "verbeteren",
    "term": "Omdenken vanuit klantwaarde",
-   "def": "Een knelpunt niet bekijken vanuit 'zo doen wij het nu' maar vanuit de gebruiker. Niet 'hoe verwerken wij meldingen sneller?' maar 'wat heeft de melder eigenlijk nodig?'. Ook betrouwbaarder, veiliger, gastvrijer of duurzamer is verbeteren."
+   "def": "Een knelpunt niet bekijken met de bril van 'zo doen wij het nu' maar met die van de gebruiker. Niet 'hoe verwerken wij meldingen sneller?' maar 'wat heeft de melder eigenlijk nodig?'. Ook betrouwbaarder, veiliger, gastvrijer of duurzamer is verbeteren."
   },
   {
    "cat": "verbeteren",
@@ -631,7 +631,7 @@ window.PRJBUS = {
   {
    "cat": "verbeteren",
    "term": "Impact/effort-matrix",
-   "def": "Matrix om ideeën te ordenen: quick wins (veel impact, weinig moeite), structurele verbeteringen (veel impact, meer moeite), fill-ins (weinig impact, weinig moeite) en niet doen (weinig impact, veel moeite)."
+   "def": "Raster om ideeën te ordenen: quick wins (veel impact, weinig moeite), structurele verbeteringen (veel impact, meer moeite), fill-ins (weinig impact, weinig moeite) en niet doen (weinig impact, veel moeite)."
   },
   {
    "cat": "verbeteren",
@@ -641,7 +641,7 @@ window.PRJBUS = {
   {
    "cat": "verbeteren",
    "term": "Structurele verbetering",
-   "def": "Verbetering met veel impact die meer tijd en geld kost, maar de oorzaak bij de wortel aanpakt. Vermijd een advies dat alleen symptomen bestrijdt."
+   "def": "Ingreep met veel impact die meer tijd en geld kost, maar de oorzaak bij de wortel aanpakt. Vermijd een advies dat alleen symptomen bestrijdt."
   },
   {
    "cat": "verbeteren",
@@ -651,7 +651,7 @@ window.PRJBUS = {
   {
    "cat": "verbeteren",
    "term": "Flow, pull en Kanban",
-   "def": "Lean-principes uit de pijler snelheid: flow (werk stroomt zonder ophopingen) en pull (start werk pas op een signaal in plaats van duwen). Een Kanban-bord (nieuw, opgepakt, opgelost) maakt de stroom zichtbaar."
+   "def": "Lean-principes uit de pijler snelheid: werk stroomt zonder ophopingen, en werk start pas op een signaal in plaats van te worden geduwd. Een bord met kolommen (nieuw, opgepakt, opgelost) maakt de stroom zichtbaar."
   },
   {
    "cat": "verbeteren",
@@ -666,7 +666,7 @@ window.PRJBUS = {
   {
    "cat": "verbeteren",
    "term": "5S",
-   "def": "Methode voor een opgeruimde, geordende werkplek die sneller en met minder fouten en variatie werkt. De vijfde S, standhouden (sustain), gaat over de discipline om de afspraak te blijven naleven."
+   "def": "Methode voor een opgeruimde, geordende werkplek die sneller en met minder fouten en variatie werkt. De laatste stap, standhouden (sustain), gaat over de discipline om de afspraak te blijven naleven."
   },
   {
    "cat": "verbeteren",
@@ -681,22 +681,22 @@ window.PRJBUS = {
   {
    "cat": "verbeteren",
    "term": "FM Tech",
-   "def": "Technologie als mogelijke verbeterrichting, zoals een FMIS of servicedesk, sensoren en IoT, slim reserveren en dashboards. Technologie is een middel, geen doel: toets steeds of het klantwaarde toevoegt en bij de strategie past."
+   "def": "Digitale hulpmiddelen als mogelijke verbeterrichting, zoals een FMIS of servicedesk, sensoren en IoT, slim reserveren en dashboards. Een middel, geen doel: toets steeds of het klantwaarde toevoegt en bij de strategie past."
   },
   {
    "cat": "verbeteren",
    "term": "Future state",
-   "def": "Het beeld van het ideale proces met alleen waarde-toevoegende stappen en zonder verspilling. Eerst de 'droom' ontwerpen, dan terugredeneren naar wat haalbaar is. Vast te leggen als future-state map (volledige waardestroom met tijden), service blueprint (sterk voor beleving) of verbeterde flow (pragmatisch)."
+   "def": "Het beeld van het ideale proces met alleen waarde-toevoegende stappen en zonder verspilling. Eerst de 'droom' ontwerpen, dan terugredeneren naar wat haalbaar is. Vast te leggen als kaart van de gewenste volledige waardestroom met tijden, service blueprint (sterk voor beleving) of verbeterde flow (pragmatisch)."
   },
   {
    "cat": "verbeteren",
    "term": "Vier vergelijkdimensies",
-   "def": "Voordat je kiest, vergelijk je richtingen op haalbaarheid (tijd en middelen, 80/20), impact (KKT-driehoek: kwaliteit, kosten, tijd, zelden alles tegelijk), risico (eenvoud is een deugd) en aansluiting op de context (cultuur, systemen, bedoeling). Context wordt het vaakst vergeten."
+   "def": "Voordat je kiest, leg je richtingen naast elkaar op haalbaarheid (tijd en middelen, 80/20), impact (KKT-driehoek: kwaliteit, kosten, tijd, zelden alles tegelijk), risico (eenvoud is een deugd) en aansluiting op de context (cultuur, systemen, bedoeling). Context wordt het vaakst vergeten."
   },
   {
    "cat": "verbeteren",
    "term": "PUGH-matrix",
-   "def": "Keuzematrix (naar Stuart Pugh) die alternatieven vergelijkt met de huidige situatie als baseline (overal 0). Maximaal 6 criteria met weging, scores van min 2 tot plus 2, score maal gewicht optellen; de hoogste wint. Spreek gewichten af vóór het scoren."
+   "def": "Keuzetabel die alternatieven vergelijkt met de huidige situatie als baseline (overal 0). Maximaal 6 criteria met weging, scores van min 2 tot plus 2, score maal gewicht optellen; de hoogste wint. Spreek gewichten af vóór het scoren."
   },
   {
    "cat": "verbeteren",
@@ -706,7 +706,7 @@ window.PRJBUS = {
   {
    "cat": "veranderen",
    "term": "Ratio en gevoel",
-   "def": "De twee sporen van verandering volgens Kotter: ratio (feiten, cijfers, analyse) brengt de noodzaak in beeld maar motiveert zelden; gevoel (vertrouwen, betrokkenheid, motivatie) brengt mensen in beweging. Een advies moet kloppen én mensen raken."
+   "def": "De twee sporen van verandering volgens Kotter: het verstandelijke spoor (feiten, cijfers, analyse) brengt de noodzaak in beeld maar motiveert zelden; het emotionele spoor (vertrouwen, betrokkenheid, motivatie) brengt mensen in beweging. Een advies moet kloppen én mensen raken."
   },
   {
    "cat": "veranderen",
@@ -716,7 +716,7 @@ window.PRJBUS = {
   {
    "cat": "veranderen",
    "term": "Proceseigenaar",
-   "def": "Persoon met mandaat die verantwoordelijk is voor het proces en het na vertrek van het team voortzet en verder verbetert, bijvoorbeeld een teamleider of facilitair coördinator. Zonder eigenaar geen borging."
+   "def": "Persoon met mandaat die verantwoordelijk is voor het proces en het na vertrek van het team voortzet en verder verbetert, bijvoorbeeld een teamleider of facilitair coördinator. Zonder zo iemand geen borging."
   },
   {
    "cat": "veranderen",
@@ -740,8 +740,8 @@ window.PRJBUS = {
   },
   {
    "cat": "veranderen",
-   "term": "RACI",
-   "def": "Rollen per activiteit: Responsible (voert uit), Accountable (keurt goed, eindverantwoordelijk, altijd precies één), Consulted (vooraf om advies gevraagd, tweerichtingsverkeer) en Informed (achteraf op de hoogte gebracht, eenrichtingsverkeer). Check per rij: precies één A en minstens één R. Uitbreiding: RASCI met S (Support)."
+   "term": "RACI (responsible, accountable, consulted, informed)",
+   "def": "Rollen per activiteit: Responsible (voert uit), Accountable (keurt goed, eindverantwoordelijk, altijd precies één), Consulted (vooraf om advies gevraagd, tweerichtingsverkeer) en Informed (achteraf op de hoogte gebracht, eenrichtingsverkeer). Check per rij: precies één A en minstens één R. Uitbreiding: een variant met S (Support)."
   },
   {
    "cat": "veranderen",
@@ -751,12 +751,12 @@ window.PRJBUS = {
   {
    "cat": "veranderen",
    "term": "Implementeren",
-   "def": "Het invoeren van de gekozen oplossing in het bestaande proces. In een implementatieplan beschrijf je alle activiteiten en wie, wat en wanneer in actie komt. Een advies dat niet wordt ingevoerd, levert de opdrachtgever niets op."
+   "def": "Het invoeren van de gekozen oplossing in het bestaande proces. In het bijbehorende plan beschrijf je alle activiteiten en wie, wat en wanneer in actie komt. Een advies dat niet wordt ingevoerd, levert de opdrachtgever niets op."
   },
   {
    "cat": "veranderen",
    "term": "Implementatieplan",
-   "def": "Plan met zes bouwstenen: activiteiten (inclusief training en instructies), mijlpalen (controleerbare ijkmomenten zoals 'pilot gestart' of 'go/no-go'), verantwoordelijkheden (RACI), middelen, randvoorwaarden (wat moet kloppen vóór de start) en succescriteria. Klassieke fout: ondersteunende activiteiten vergeten."
+   "def": "Document met zes bouwstenen: activiteiten (inclusief training en instructies), mijlpalen (controleerbare ijkmomenten zoals 'pilot gestart' of 'go/no-go'), verantwoordelijkheden (RACI), middelen, randvoorwaarden (wat moet kloppen vóór de start) en succescriteria. Klassieke fout: ondersteunende activiteiten vergeten."
   },
   {
    "cat": "veranderen",
@@ -765,18 +765,18 @@ window.PRJBUS = {
   },
   {
    "cat": "veranderen",
-   "term": "FMEA",
+   "term": "FMEA (Failure Mode and Effect Analysis)",
    "def": "Failure Mode and Effect Analysis: gestructureerde manier om potentiële fouten in een proces op te sporen en aan te pakken vóórdat ze optreden. Kernvraag per stap: wat zou hier fout kunnen gaan? Ontwikkeld bij NASA."
   },
   {
    "cat": "veranderen",
    "term": "FMEA-light",
-   "def": "Versimpelde FMEA met schaal 1 tot 5 en alleen de belangrijkste stappen: stappen kiezen, faalwijze benoemen, effect beschrijven, Ernst, Kans en Detectie scoren, RPN berekenen en sorteren, per toprisico een maatregel met verantwoordelijke."
+   "def": "Versimpelde risicoanalyse van mogelijke fouten, met schaal 1 tot 5 en alleen de belangrijkste stappen: stappen kiezen, faalwijze benoemen, effect beschrijven, Ernst, Kans en Detectie scoren, RPN berekenen en sorteren, per toprisico een maatregel met verantwoordelijke."
   },
   {
    "cat": "veranderen",
    "term": "RPN (Risk Priority Number)",
-   "def": "Ernst maal Kans maal Detectie (elk 1 tot 5). Het hoogste RPN krijgt de hoogste prioriteit. Een hoge detectiescore betekent dat de fout moeilijk te ontdekken is, en dat verhoogt het risico. Maatregelen verlagen vooral kans en detectie; de ernst blijft meestal gelijk."
+   "def": "Ernst maal Kans maal Detectie (elk 1 tot 5). De hoogste uitkomst wordt als eerste aangepakt. Een hoge detectiescore betekent dat de fout moeilijk te ontdekken is, en dat verhoogt het risico. Maatregelen verlagen vooral kans en detectie; de ernst blijft meestal gelijk."
   },
   {
    "cat": "veranderen",
@@ -790,18 +790,18 @@ window.PRJBUS = {
   },
   {
    "cat": "veranderen",
-   "term": "OCAP",
+   "term": "OCAP (Out of Control Action Plan)",
    "def": "Out of Control Action Plan: vooraf klaarliggend noodplan met triggers en acties voor als het toch misgaat."
   },
   {
    "cat": "borgen",
    "term": "Borgen",
-   "def": "De verbetering loskoppelen van de aanwezigheid van het studententeam, zodat ze blijft werken. Zonder borging zakt een organisatie vrijwel altijd terug in oude gewoonten. Toetsvraag: wat moet blijven bestaan als het studentteam weg is?"
+   "def": "De verbetering loskoppelen van de aanwezigheid van het studententeam, zodat ze blijft werken. Zonder deze stap zakt een organisatie vrijwel altijd terug in oude gewoonten. Toetsvraag: wat moet blijven bestaan als het studentteam weg is?"
   },
   {
    "cat": "borgen",
    "term": "Borgingsplan",
-   "def": "Plan (borgingsparagraaf) met zes bouwstenen: standaardisatie, KPI-opvolging, eigenaarschap, evaluatiemomenten (PDCA), overdracht en lessons learned. Standaardisatie is het fundament, eigenaarschap de motor."
+   "def": "Document (ook als aparte paragraaf) met zes bouwstenen: standaardisatie, KPI-opvolging, eigenaarschap, evaluatiemomenten (PDCA), overdracht en lessons learned. Standaardisatie is het fundament, eigenaarschap de motor."
   },
   {
    "cat": "borgen",
@@ -810,7 +810,7 @@ window.PRJBUS = {
   },
   {
    "cat": "borgen",
-   "term": "SOP",
+   "term": "SOP (Standard Operating Procedure)",
    "def": "Standard Operating Procedure: werkinstructie die stap voor stap beschrijft hoe het werk gaat (afbakening, KPI's en voorschriften, volgorde van stappen, vastleggen), zodat ook een nieuwkomer het foutloos kan uitvoeren. Een EPL is een visuele werkinstructie van één A4."
   },
   {
@@ -821,22 +821,22 @@ window.PRJBUS = {
   {
    "cat": "borgen",
    "term": "KPI-opvolging",
-   "def": "Dezelfde KPI's als in Measure, nu om vroeg te signaleren dat het proces afdrijft. Drie stappen: norm en ingrijpgrens bepalen (de waarde waarbij iemand actie onderneemt), vast ritme (wekelijks of maandelijks) en ingrijpen bij afwijking. Een KPI die niemand bekijkt, borgt niets."
+   "def": "Dezelfde prestatie-indicatoren als in Measure, nu om vroeg te signaleren dat het proces afdrijft. Drie stappen: norm en ingrijpgrens bepalen (de waarde waarbij iemand actie onderneemt), vast ritme (wekelijks of maandelijks) en ingrijpen bij afwijking. Een indicator die niemand bekijkt, borgt niets."
   },
   {
    "cat": "borgen",
    "term": "Eigenaarschap",
-   "def": "Elke verbetering krijgt een naam (proceseigenaar, teamleider of coördinator) die haar bewaakt. Zonder eigenaar is een verbetering een wees. Pas als het 'zo doen wij dat hier' wordt (Kotter: borg in de cultuur), blijft het."
+   "def": "Elke verbetering krijgt een naam (een verantwoordelijke teamleider, coördinator of procesverantwoordelijke) die haar bewaakt. Zonder zo'n persoon is een verbetering een wees. Pas als het 'zo doen wij dat hier' wordt (Kotter: borg in de cultuur), blijft het."
   },
   {
    "cat": "borgen",
-   "term": "PDCA-cyclus",
-   "def": "Plan, Do, Check, Act: de motor van continu verbeteren (Deming). Bij borging draait het om Check (meten of het nog klopt) en Act (standaard bijwerken en zorgen dat iedereen hem volgt, of een nieuwe verbeterronde starten)."
+   "term": "PDCA-cyclus (plan-do-check-act)",
+   "def": "De vier stappen van continu verbeteren (Deming): plannen, uitvoeren, controleren en bijsturen. Bij borging draait het om de laatste twee: meten of het nog klopt, en de standaard bijwerken en zorgen dat iedereen hem volgt, of een nieuwe verbeterronde starten."
   },
   {
    "cat": "borgen",
    "term": "Evaluatiemoment",
-   "def": "Vast ingepland moment, gekoppeld aan de KPI's en de eigenaar, waarop de cijfers worden besproken en de standaard zo nodig wordt bijgesteld, bijvoorbeeld maandelijks in het teamoverleg."
+   "def": "Vast ingepland tijdstip, gekoppeld aan de KPI's en de eigenaar, waarop de cijfers worden besproken en de standaard zo nodig wordt bijgesteld, bijvoorbeeld maandelijks in het teamoverleg."
   },
   {
    "cat": "borgen",
@@ -856,12 +856,12 @@ window.PRJBUS = {
   {
    "cat": "borgen",
    "term": "Lessons learned",
-   "def": "Vastgelegde lessen over de aanpak: wat werkte, wat liep stroef, welke aannames klopten niet en wat zou een volgend team anders doen. Borgt de kennis, niet het proces. Sterke, herbruikbare lessen til je op tot best practice. Rendement voor opdrachtgever, volgend team en je eigen stage."
+   "def": "Vastgelegde inzichten over de aanpak: wat werkte, wat liep stroef, welke aannames klopten niet en wat zou een volgend team anders doen. Borgt de kennis, niet het proces. Sterke, herbruikbare inzichten til je op tot best practice. Rendement voor opdrachtgever, volgend team en je eigen stage."
   },
   {
    "cat": "borgen",
    "term": "Borgingskaart",
-   "def": "Formaat van één pagina per gekozen verbetering (mini-SOP): proces en afbakening, proceseigenaar, twee KPI's met norm, hoe geborgd en losse eindjes. Direct bruikbaar in het einddossier."
+   "def": "Formaat van één pagina per gekozen verbetering (mini-SOP): proces en afbakening, proceseigenaar, twee KPI's met norm, hoe het vastgehouden wordt en losse eindjes. Direct bruikbaar in het einddossier."
   },
   {
    "cat": "borgen",
@@ -871,22 +871,22 @@ window.PRJBUS = {
   {
    "cat": "presenteren",
    "term": "Adviespresentatie",
-   "def": "Toets-01: een presentatie van 30 minuten met aansluitend 15 minuten vragen, waarin je een helder, gestructureerd en overtuigend advies geeft aan de opdrachtgever, afgestemd op stakeholders en organisatiecultuur. Vooraf inleveren via Handin; bepaalt 100% van het cijfer."
+   "def": "Toets-01: een mondelinge pitch van 30 minuten met aansluitend 15 minuten vragen, waarin je een helder, gestructureerd en overtuigend voorstel doet aan de opdrachtgever, afgestemd op stakeholders en organisatiecultuur. Vooraf inleveren via Handin; bepaalt 100% van het cijfer."
   },
   {
    "cat": "presenteren",
    "term": "Adviesstructuur",
-   "def": "Verplichte opbouw van de adviespresentatie: probleem (wat is het en wat zijn de gevolgen), oorzaak (onderliggende oorzaken) en advies (wat, hoe tot stand gekomen, implementatie, monitoring van voortgang en resultaat, en meervoudige toegevoegde waarde)."
+   "def": "Verplichte opbouw van toets-01: probleem (wat is het en wat zijn de gevolgen), oorzaak (onderliggende oorzaken) en aanbeveling (wat, hoe tot stand gekomen, implementatie, monitoring van voortgang en resultaat, en meervoudige toegevoegde waarde)."
   },
   {
    "cat": "presenteren",
-   "term": "PROA",
+   "term": "PROA (probleem, risico, oorzaak, advies)",
    "def": "Kern van de adviespresentatie (binnen inleiding, kern, slot): Probleem (Define en Measure), Risico of omvang van het probleem (Measure), Oorzaak (Analyze) en Advies (Generate, Improve en Control: mogelijkheden, implementatie en grip op resultaten)."
   },
   {
    "cat": "presenteren",
    "term": "Denk vanuit de beslisser",
-   "def": "Tip voor een overtuigend advies: wat heeft de ontvanger (vaak de opdrachtgever) nodig om ja te zeggen? Vooraf beantwoord je wat de ontvanger wil, al weet, welke belangen hij heeft en wie beslist over de uitvoering."
+   "def": "Tip voor een overtuigend advies: wat heeft de ontvanger (vaak de opdrachtgever) nodig om ja te zeggen? Vooraf beantwoord je wat de ontvanger wil, al weet, welke belangen hij heeft en wie het laatste woord heeft over de uitvoering."
   },
   {
    "cat": "presenteren",
@@ -901,7 +901,7 @@ window.PRJBUS = {
   {
    "cat": "presenteren",
    "term": "Concreet leerdoel",
-   "def": "Leerdoel dat zichtbaar is in gedrag, zodat anderen er feedback op kunnen geven. Niet 'ik wil beter plannen', maar 'ik verdeel aan het begin van elke sprint mijn taken over de week en check halverwege of ik op schema lig'. Je formuleert er twee in les 1."
+   "def": "Ontwikkeldoel dat zichtbaar is in gedrag, zodat anderen er feedback op kunnen geven. Niet 'ik wil beter plannen', maar 'ik verdeel aan het begin van elke sprint mijn taken over de week en check halverwege of ik op schema lig'. Je formuleert er twee in les 1."
   }
  ],
  "oefentoetsen": [

@@ -60,7 +60,7 @@ window.FMTECH = {
   {
    "cat": "model",
    "term": "FM waarde-gedreven technologieadoptiemodel",
-   "def": "Model met zes lagen waarmee je beoordeelt of een facilitaire technologie past bij een organisatie: van context en strategie, via waarde-intentie en adoptievermogen, naar de ingezette technologie en de waarde die het oplevert. Uitgangspunt: technologie is een middel, waarde is het doel. Het model is ook de basis van de enquête en de trendmonitor."
+   "def": "Raamwerk met zes lagen waarmee je beoordeelt of een facilitaire technologie past bij een organisatie: van context en strategie, via ambitie (laag 3) en invoeringsvermogen (laag 4), naar de ingezette technologie en wat die oplevert. Uitgangspunt: technologie is een middel, het resultaat is het doel. Het raamwerk is ook de basis van de enquête en de trendmonitor."
   },
   {
    "cat": "model",
@@ -70,22 +70,22 @@ window.FMTECH = {
   {
    "cat": "model",
    "term": "Laag 2: Strategische positionering van FM",
-   "def": "De plek van FM in de strategie van de organisatie: praat FM mee over strategie, past de FM-strategie bij de organisatiedoelen, heeft FM mandaat, budget en middelen om te vernieuwen, en ziet het management FM als strategische partner in plaats van alleen ondersteuning."
+   "def": "Waar FM staat in het beleid van de organisatie op lange termijn: praat FM mee over de koers, past het eigen FM-beleid bij de organisatiedoelen, heeft FM mandaat, budget en middelen om te vernieuwen, en ziet het management FM als volwaardige partner in plaats van alleen ondersteuning."
   },
   {
    "cat": "model",
    "term": "Laag 3: Waarde-intentie",
-   "def": "De waarde die de organisatie de komende 12 maanden met technologie wíl bereiken, verdeeld over People, Process en Place. Het is een ambitie die vooruitkijkt, geen behaalde waarde. Uit de top drie van waardedoelen leid je af op welke P de organisatie vooral focust."
+   "def": "Wat de organisatie de komende 12 maanden met technologie wíl bereiken, verdeeld over People, Process en Place. Een ambitie die vooruitkijkt, geen behaald resultaat. Uit de top drie van waardedoelen leid je af op welke P de organisatie vooral focust."
   },
   {
    "cat": "model",
    "term": "Laag 4: Adoptievermogen & capabilities",
-   "def": "Hoe goed de organisatie is voorbereid om technologie echt te laten werken: data en IT, organisatie en governance, en mensen en vaardigheden. De schakel tussen ambitie en uitvoering: zonder adoptievermogen blijft ambitie een plan op papier."
+   "def": "Hoe goed de organisatie is voorbereid om technologie echt te laten werken: data en IT, organisatie en governance, en mensen en vaardigheden. De schakel tussen ambitie en uitvoering: zonder dit vermogen blijft ambitie een plan op papier."
   },
   {
    "cat": "model",
    "term": "Laag 5: Ingezette technologie & oplossingen",
-   "def": "Welke technologieën de organisatie gebruikt of onderzoekt en in welke adoptiefase die zitten: niet van toepassing, verkennen, pilot, operationeel of geïntegreerd en opgeschaald."
+   "def": "Welke digitale hulpmiddelen de organisatie gebruikt of onderzoekt en in welke adoptiefase die zitten: niet van toepassing, verkennen, pilot, operationeel of geïntegreerd en opgeschaald."
   },
   {
    "cat": "model",
@@ -95,7 +95,7 @@ window.FMTECH = {
   {
    "cat": "model",
    "term": "Gepercipieerde waarde",
-   "def": "De waarde die een respondent zelf toekent aan de ingezette technologie in het afgelopen jaar. Het is een persoonlijke beoordeling, geen objectief gemeten of aantoonbare waarde. Zo noemt de trendmonitor laag 6."
+   "def": "Wat een respondent zelf vindt dat de ingezette technologie in het afgelopen jaar heeft opgeleverd. Het is een persoonlijke beoordeling, geen objectief gemeten of aantoonbaar resultaat. Zo noemt de trendmonitor laag 6."
   },
   {
    "cat": "model",
@@ -110,7 +110,7 @@ window.FMTECH = {
   {
    "cat": "model",
    "term": "Belemmeringen",
-   "def": "Factoren die het lastig maken om met facilitaire technologie aan de slag te gaan (laag 1). In de enquête: split incentives, te weinig invloed van FM op strategie, FM gezien als kostenpost, weerstand tegen verandering en de AVG. In de trendmonitor betekent een hoge score dat de belemmering juist weinig wordt ervaren."
+   "def": "Factoren die het lastig maken om met facilitaire technologie aan de slag te gaan (laag 1). In de enquête: split incentives, te weinig invloed van FM op strategie, FM gezien als kostenpost, weerstand tegen verandering en de AVG. In de trendmonitor betekent een hoge score dat het obstakel juist weinig wordt ervaren."
   },
   {
    "cat": "model",
@@ -125,12 +125,12 @@ window.FMTECH = {
   {
    "cat": "model",
    "term": "FM als waardecreator",
-   "def": "Positie waarin het management FM ziet als strategische partner die waarde toevoegt, en niet vooral als kostenpost of ondersteunende afdeling. Hoe sterker die positie, hoe meer richting technologie krijgt."
+   "def": "Positie waarin het management FM ziet als strategische partner die iets oplevert voor de organisatie, en niet vooral als kostenpost of ondersteunende afdeling. Hoe sterker die positie, hoe meer richting technologie krijgt."
   },
   {
    "cat": "model",
    "term": "FM als regisseur",
-   "def": "Rol waarin FM niet alleen operationeel uitvoert maar regie voert over leveranciers, data-gedreven stuurt op kwaliteit en bijdraagt aan de medewerkerservaring. In het KPN-voorbeeld uit les 1 verschuift FM van operationele uitvoerder naar regisseur en wordt het zo een enabler van de organisatiestrategie."
+   "def": "Rol waarin FM niet alleen operationeel uitvoert maar leveranciers aanstuurt en coördineert, data-gedreven stuurt op kwaliteit en bijdraagt aan de medewerkerservaring. In het KPN-voorbeeld uit les 1 verschuift FM van operationele uitvoerder naar de partij die het geheel aanstuurt en wordt het zo een enabler van de organisatiestrategie."
   },
   {
    "cat": "model",
@@ -145,7 +145,7 @@ window.FMTECH = {
   {
    "cat": "model",
    "term": "Productinnovatie",
-   "def": "FM-strategietype waarin de werkplek een 'product' is dat continu wordt doorontwikkeld. In de casus Google samen met klantgericht: 'workplace as a product'."
+   "def": "FM-strategietype waarin de werkplek iets is wat continu wordt doorontwikkeld en vernieuwd. In de casus Google samen met klantgericht."
   },
   {
    "cat": "model",
@@ -160,7 +160,7 @@ window.FMTECH = {
   {
    "cat": "model",
    "term": "Data- en IT-capaciteiten",
-   "def": "Onderdeel van adoptievermogen: betrouwbare en actuele data over gebouwen en diensten, geïntegreerde systemen, IT-ondersteuning bij implementatie en data-analysecapaciteit. Landelijk het zwakste onderdeel van laag 4 (2,87)."
+   "def": "Onderdeel van adoptievermogen: betrouwbare en actuele gegevens over gebouwen en diensten, geïntegreerde systemen, ondersteuning door de automatiseringsafdeling bij implementatie en het vermogen om gegevens te analyseren. Landelijk het zwakste onderdeel van laag 4 (2,87)."
   },
   {
    "cat": "model",
@@ -175,17 +175,17 @@ window.FMTECH = {
   {
    "cat": "waarde",
    "term": "People-waarde",
-   "def": "Waarde voor mensen: medewerkers, gebruikers en bezoekers. In de enquête: medewerkerstevredenheid en -ervaring, productiviteit van gebruikers, gezondheid, welzijn en veiligheid, en klantervaring."
+   "def": "Wat technologie oplevert voor medewerkers, gebruikers en bezoekers. In de enquête: medewerkerstevredenheid en -ervaring, productiviteit van gebruikers, gezondheid, welzijn en veiligheid, en klantervaring."
   },
   {
    "cat": "waarde",
    "term": "Process-waarde",
-   "def": "Waarde voor de facilitaire processen: efficiëntie, kwaliteit en sturing. In de enquête: efficiency en kostenbesparing, betrouwbaarheid en kwaliteit van de dienstverlening, snelheid en reactietijd, en compliance en naleving."
+   "def": "Wat technologie oplevert voor de facilitaire werkstromen: efficiëntie, kwaliteit en sturing. In de enquête: efficiency en kostenbesparing, betrouwbaarheid en kwaliteit van de dienstverlening, snelheid en reactietijd, en compliance en naleving."
   },
   {
    "cat": "waarde",
    "term": "Place-waarde",
-   "def": "Waarde voor gebouw, ruimte en beleving van de plek. In de enquête: gebouwprestaties, duurzaamheid en energiebesparing, flexibiliteit in ruimtegebruik, en veiligheid en beveiliging van het vastgoed."
+   "def": "Wat technologie oplevert voor gebouw, ruimte en beleving van de locatie. In de enquête: gebouwprestaties, duurzaamheid en energiebesparing, flexibiliteit in ruimtegebruik, en veiligheid en beveiliging van het vastgoed."
   },
   {
    "cat": "waarde",
@@ -195,12 +195,12 @@ window.FMTECH = {
   {
    "cat": "waarde",
    "term": "Waardedoel",
-   "def": "Concrete waarde die een organisatie met technologie wil bereiken, zoals 'versnellen van processen en reactietijd'. In de enquête kiest de respondent de drie belangrijkste waardedoelen en per technologie het primaire waardedoel; elk waardedoel valt onder People, Process of Place."
+   "def": "Concreet resultaat dat een organisatie met technologie wil bereiken, zoals 'versnellen van processen en reactietijd'. In de enquête kiest de respondent de drie belangrijkste en per technologie het primaire; elk valt onder People, Process of Place."
   },
   {
    "cat": "waarde",
    "term": "Waardegericht denken",
-   "def": "Een technologie beoordelen op de waarde die ze oplevert voor People, Process en Place, niet op hoe modern ze is. Je start bij de vraag welke waarde nodig is en kiest pas daarna de technologie. Tegenhanger: technologiegericht denken."
+   "def": "Een technologie beoordelen op wat ze oplevert voor People, Process en Place, niet op hoe modern ze is. Je start bij de vraag welke opbrengst nodig is en kiest pas daarna de technologie. De tegenhanger vertrekt vanuit de technologie zelf."
   },
   {
    "cat": "waarde",
@@ -210,7 +210,7 @@ window.FMTECH = {
   {
    "cat": "adoptie",
    "term": "Adoptiefase",
-   "def": "Hoe ver een technologie in de praktijk is ingevoerd. De enquête kent vijf fasen: niet van toepassing, verkennen, pilot, operationeel en geïntegreerd en opgeschaald. De gemiddelde fase loopt van 1 tot 5."
+   "def": "Hoe ver een technologie in de praktijk is ingevoerd. De enquête kent vijf stadia: niet van toepassing, verkennen, pilot, operationeel en geïntegreerd en opgeschaald. Het gemiddelde loopt van 1 tot 5."
   },
   {
    "cat": "adoptie",
@@ -245,7 +245,7 @@ window.FMTECH = {
   {
    "cat": "tech",
    "term": "Data-gedreven FM",
-   "def": "Beslissingen nemen op basis van data in plaats van alleen ervaring of gevoel, met analytics, dashboards, rapportages en big data. Toepassingen: bezetting van ruimtes analyseren, onderhoud voorspellen, energieverbruik monitoren en KPI's van leveranciers volgen."
+   "def": "Beslissingen nemen op basis van meetgegevens in plaats van alleen ervaring of gevoel, met analytics, dashboards, rapportages en grote gegevensverzamelingen. Toepassingen: bezetting van ruimtes analyseren, onderhoud voorspellen, energieverbruik monitoren en KPI's van leveranciers volgen."
   },
   {
    "cat": "tech",
@@ -260,37 +260,37 @@ window.FMTECH = {
   {
    "cat": "tech",
    "term": "Robotica & drones",
-   "def": "Machines die fysieke taken uitvoeren of inspecties doen met weinig menselijke tussenkomst, zoals schoonmaakrobots, beveiligingsrobots, inspectiedrones en geautomatiseerde werktuigen. Waarde: repetitief werk automatiseren en veilig werken op moeilijk bereikbare plekken."
+   "def": "Machines die fysieke taken uitvoeren of inspecties doen met weinig menselijke tussenkomst, zoals zelfrijdende schoonmaak- en beveiligingsapparaten, onbemande vliegende camera's voor inspectie en geautomatiseerde werktuigen. Waarde: repetitief werk automatiseren en veilig werken op moeilijk bereikbare plekken."
   },
   {
    "cat": "tech",
    "term": "BIM (Building Information Modeling)",
-   "def": "Digitaal gebouwmodel waarin gebouwinformatie centraal beschikbaar is. Ondersteunt onderhoud, assetmanagement, ruimtebeheer en levenscyclusbeheer."
+   "def": "Digitale weergave van een gebouw waarin alle gegevens erover centraal beschikbaar zijn. Ondersteunt onderhoud, assetmanagement, ruimtebeheer en levenscyclusbeheer."
   },
   {
    "cat": "tech",
    "term": "Digital twin",
-   "def": "Digitaal model van een gebouw of installatie dat gekoppeld is aan actuele informatie en soms real-time data. FM ziet erin waar een installatie staat, welke onderdelen erbij horen en wanneer onderhoud gepland is, en kan scenario's testen vóór een fysieke aanpassing."
+   "def": "Virtuele kopie van een gebouw of installatie die gekoppeld is aan actuele informatie en soms real-time data. FM ziet erin waar een installatie staat, welke onderdelen erbij horen en wanneer onderhoud gepland is, en kan scenario's testen vóór een fysieke aanpassing."
   },
   {
    "cat": "tech",
-   "term": "IWMS",
+   "term": "IWMS (Integrated Workplace Management System)",
    "def": "Integrated Workplace Management System: geïntegreerd softwareplatform waarin FM-processen, vastgoed, ruimtes, assets, onderhoud en meldingen samenkomen. Toepassingen: werkorders en meldingen beheren, ruimte- en werkplekbeheer, contracten en leveranciers volgen."
   },
   {
    "cat": "tech",
-   "term": "FMIS",
-   "def": "Facility Management Information System: software voor het beheren van facilitaire processen en informatie, zoals meldingen, onderhoud, reserveringen en contracten. In de lessen steeds samen genoemd met IWMS ('IWMS/FMIS')."
+   "term": "FMIS (Facility Management Information System)",
+   "def": "Facility Management Information System: software voor het beheren van facilitaire processen en gegevens, zoals meldingen, onderhoud, reserveringen en contracten. In de lessen steeds samen genoemd met IWMS ('IWMS/FMIS')."
   },
   {
    "cat": "tech",
-   "term": "XR (AR/VR)",
-   "def": "Verzamelnaam voor Virtual Reality en Augmented Reality, in de enquête voor training, onderhoud en visualisaties. Staat in de cursusbeschrijving, maar niet tussen de zes workshoptechnologieën op de dia; volgens de docentnotities vervalt een AR/VR-workshop als er geen VR-brillen zijn."
+   "term": "XR (AR/VR, augmented en virtual reality)",
+   "def": "Verzamelnaam voor augmented en virtual reality, in de enquête voor training, onderhoud en visualisaties. Staat in de cursusbeschrijving, maar niet tussen de zes workshoptechnologieën op de dia; volgens de docentnotities vervalt een workshop hierover als er geen speciale brillen zijn."
   },
   {
    "cat": "tech",
    "term": "3D printing/scanning",
-   "def": "Onderdelen 3D-printen en ruimtes of assets 3D-scannen om ze vast te leggen. Een van de tien technologieën in de enquête; landelijk bij 82 procent niet van toepassing."
+   "def": "Onderdelen laag voor laag laten opbouwen door een machine, en ruimtes of assets driedimensionaal digitaal vastleggen. Een van de tien technologieën in de enquête; landelijk bij 82 procent niet van toepassing."
   },
   {
    "cat": "tech",
@@ -305,7 +305,7 @@ window.FMTECH = {
   {
    "cat": "tech",
    "term": "Voorspellend onderhoud",
-   "def": "Onderhoud plannen vóórdat een storing ontstaat, op basis van data of een AI-model dat voorspelt dat een installatie binnenkort uitvalt. Genoemd bij data-gedreven FM en AI."
+   "def": "Reparatie en vervanging inplannen vóórdat een storing ontstaat, op basis van data of een AI-model dat inschat dat een installatie binnenkort uitvalt. Genoemd bij data-gedreven FM en AI."
   },
   {
    "cat": "benchmark",
@@ -325,17 +325,17 @@ window.FMTECH = {
   {
    "cat": "benchmark",
    "term": "Vergelijkingsgroep",
-   "def": "De groep waarmee je je opdrachtgever vergelijkt: heel Nederland, dezelfde branche, organisaties van vergelijkbare grootte of een andere relevante groep. Vuistregel: kies de groep die je opdrachtgever het eerlijkst en het meest herkenbaar weerspiegelt. Een kleinere groep is vaak zuiverder, maar heeft een kleinere N."
+   "def": "De selectie organisaties waar je je opdrachtgever naast legt: heel Nederland, dezelfde branche, organisaties van ongeveer dezelfde grootte of een andere relevante selectie. Vuistregel: kies de selectie die je opdrachtgever het eerlijkst en het meest herkenbaar weerspiegelt. Een kleinere selectie is vaak zuiverder, maar heeft een kleinere N."
   },
   {
    "cat": "benchmark",
    "term": "Spinnenweb (radardiagram)",
-   "def": "Diagram waarin elke punt één laag van het model is. Hoe verder naar buiten, hoe hoger de score (max 5); dichter bij het midden betekent meer ontwikkelruimte. Je maakt het in Excel met twee lijnen: je eigen organisatie en de benchmark."
+   "def": "Grafiek waarin elke punt één laag van het model is. Hoe verder naar buiten, hoe hoger de score (max 5); dichter bij het midden betekent meer ontwikkelruimte. Je maakt het in Excel met twee lijnen: je eigen organisatie en de benchmark."
   },
   {
    "cat": "benchmark",
    "term": "Gap (ambitie versus waarde)",
-   "def": "Het verschil tussen laag 3 (waarde-intentie) en laag 6 (gerealiseerde waarde). Landelijk 4,16 tegenover 2,98, een gap van 1,18. Geen bewijs van falen, want de lagen hebben een andere tijdshorizon, maar een richtingwijzer voor waar organisaties nog willen groeien."
+   "def": "Het verschil tussen laag 3 (waarde-intentie) en laag 6 (gerealiseerde waarde). Landelijk 4,16 tegenover 2,98, een verschil van 1,18. Geen bewijs van falen, want de lagen hebben een andere tijdshorizon, maar een richtingwijzer voor waar organisaties nog willen groeien."
   },
   {
    "cat": "benchmark",
@@ -345,21 +345,21 @@ window.FMTECH = {
   {
    "cat": "benchmark",
    "term": "Scoreschaal 1-5",
-   "def": "Alle laag- en itemscores in de trendmonitor lopen van 1 (laag) tot 5 (hoog); een hogere score is gunstiger. 'Weet ik niet' telt niet mee in de gemiddelden."
+   "def": "Alle laag- en itemuitkomsten in de trendmonitor lopen van 1 (laag) tot 5 (hoog); een hoger getal is gunstiger. 'Weet ik niet' telt niet mee in de gemiddelden."
   },
   {
    "cat": "benchmark",
    "term": "N (aantal respondenten)",
-   "def": "Het aantal respondenten in een selectie. Als je filtert op branche of grootte wordt N kleiner; bij een kleine N lees je de uitkomsten als indicatief, niet als exacte score."
+   "def": "Hoeveel mensen de vragenlijst hebben ingevuld in een selectie. Als je filtert op branche of grootte wordt dit getal kleiner; bij een klein aantal lees je de uitkomsten als indicatief, niet als exacte score."
   },
   {
    "cat": "benchmark",
    "term": "Samenhang is geen oorzaak",
-   "def": "Leesregel van de trendmonitor: de gegevens laten verbanden zien, maar bewijzen niet dat het ene het andere veroorzaakt. Zo is adoptievermogen de sterkste voorspeller van gerealiseerde waarde (r = 0,38), maar dat is een samenhang."
+   "def": "Leesregel van de trendmonitor: de gegevens laten verbanden zien, maar bewijzen niet dat het ene tot het andere leidt. Zo is adoptievermogen de sterkste voorspeller van gerealiseerde waarde (r = 0,38), maar dat is alleen een verband."
   },
   {
    "cat": "privacy",
-   "term": "OSINT",
+   "term": "OSINT (Open Source Intelligence)",
    "def": "Open Source Intelligence: informatie verzamelen uit open of laagdrempelig beschikbare bronnen, zoals websites, openbare agenda's, nieuwsberichten, posts, foto's, plattegronden en leveranciersinformatie. Op zich niet illegaal; context, doel en toestemming bepalen of een vervolgactie dat wel is."
   },
   {
@@ -375,7 +375,7 @@ window.FMTECH = {
   {
    "cat": "privacy",
    "term": "Ruisbron",
-   "def": "Bron in de OSINT-oefening met weinig of geen bruikbare gevoelige informatie. Hoort bij de oefening: niet elke bron is even belangrijk en je moet eerst goed kijken voordat je combineert."
+   "def": "Vindplaats in de OSINT-oefening met weinig of geen bruikbare gevoelige informatie. Hoort bij de oefening: niet elke vindplaats is even belangrijk en je moet eerst goed kijken voordat je combineert."
   },
   {
    "cat": "privacy",
@@ -410,27 +410,27 @@ window.FMTECH = {
   {
    "cat": "privacy",
    "term": "Fotobeleid",
-   "def": "Afspraken over wat er op gedeelde foto's mag staan: geen badges, schermen of routes. Maatregel tegen informatie die via social media en nieuwsberichten zichtbaar wordt."
+   "def": "Afspraken over wat er op gedeelde beelden mag staan: geen badges, schermen of routes. Maatregel tegen informatie die via social media en nieuwsberichten zichtbaar wordt."
   },
   {
    "cat": "privacy",
    "term": "Daglijst verwachte leveranciers",
-   "def": "Lijst van leveranciers die op een dag worden verwacht, zodat de receptie kan controleren of iemand op de lijst staat. Wie er niet op staat of via een andere ingang komt, krijgt pas toegang na contact met de interne contactpersoon."
+   "def": "Overzicht van externe dienstverleners die op een bepaalde dag langskomen, zodat de receptie kan controleren of iemand erop staat. Wie er niet op staat of via een andere ingang komt, krijgt pas toegang na contact met de interne contactpersoon."
   },
   {
    "cat": "privacy",
    "term": "Maatregelniveaus",
-   "def": "De drie niveaus waarop je in de verdedigingsronde maatregelen bedenkt: mens en gedrag (training, aanspreken), proces en procedure (verificatie, begeleiding) en informatie en fysieke omgeving (wat openbaar is, plattegronden, netwerkpoorten). Daarnaast splits je in snel uitvoerbaar versus beleid of managementbesluit."
+   "def": "De drie lagen waarop je in de verdedigingsronde tegenacties bedenkt: mens en gedrag (training, aanspreken), proces en procedure (verificatie, begeleiding) en informatie en fysieke omgeving (wat openbaar is, plattegronden, netwerkpoorten). Daarnaast splits je in snel uitvoerbaar versus beleid of managementbesluit."
   },
   {
    "cat": "privacy",
    "term": "Risicoscenario op hoofdlijnen",
-   "def": "Beschrijving van een mogelijk misbruik op procesniveau: welke informatie en welk proces maken het mogelijk en wat kan de organisatie ervaren. Het is een risicobeschrijving, geen stap-voor-stap handleiding."
+   "def": "Beschrijving van een mogelijk misbruik op procesniveau: welke informatie en welk proces maken het mogelijk en wat kan de organisatie ervaren. Het is een beschrijving van wat er mis kan gaan, geen stap-voor-stap handleiding."
   },
   {
    "cat": "privacy",
    "term": "Rode lijn (OSINT-oefening)",
-   "def": "Ethische grens van de oefening: alleen fictieve personen, bedrijven en bronnen, niets opzoeken over echte mensen of organisaties, nergens toegang proberen te krijgen. Je beschrijft wel een geloofwaardig scenario, maar voert geen kwaadwillende acties uit."
+   "def": "Ethische grens van de opdracht: alleen fictieve personen, bedrijven en bronnen, niets opzoeken over echte mensen of organisaties, nergens toegang proberen te krijgen. Je beschrijft wel een geloofwaardig scenario, maar voert geen kwaadwillende acties uit."
   },
   {
    "cat": "privacy",
@@ -444,8 +444,8 @@ window.FMTECH = {
   },
   {
    "cat": "privacy",
-   "term": "AVG",
-   "def": "Algemene verordening gegevensbescherming, de privacywetgeving voor het verwerken van persoonsgegevens. In de enquête staat 'vanwege de AVG-wetgeving' als mogelijke belemmering om met facilitaire technologie aan de slag te gaan. De lessen gaan niet inhoudelijk op de wet zelf in."
+   "term": "AVG (Algemene verordening gegevensbescherming)",
+   "def": "Algemene verordening gegevensbescherming, de privacywetgeving voor het verwerken van persoonsgegevens. In de enquête staat deze wetgeving als mogelijke belemmering om met facilitaire technologie aan de slag te gaan. De lessen gaan niet inhoudelijk op de wet zelf in."
   },
   {
    "cat": "workshop",
@@ -490,7 +490,7 @@ window.FMTECH = {
   {
    "cat": "advies",
    "term": "Technologieanalyse",
-   "def": "Uitwerking per technologie in de brochure met zeven vaste onderdelen: technologie in context, waarde voor organisatiedoelen, stakeholders en context, onderbouwing en toegevoegde waarde, concretisering van inzet, risico's/ethiek/duurzaamheid en adviesstatus."
+   "def": "Uitwerking per toepassing in de brochure met zeven vaste onderdelen: technologie in context, waarde voor organisatiedoelen, stakeholders en context, onderbouwing en toegevoegde waarde, concretisering van inzet, risico's/ethiek/duurzaamheid en adviesstatus."
   },
   {
    "cat": "advies",
@@ -500,27 +500,27 @@ window.FMTECH = {
   {
    "cat": "advies",
    "term": "Adviseren",
-   "def": "Adviesstatus voor een technologie die nu goed past bij de organisatie."
+   "def": "Eindoordeel voor een technologie die nu goed past bij de organisatie."
   },
   {
    "cat": "advies",
    "term": "Voorwaardelijk adviseren",
-   "def": "Adviesstatus voor een technologie die kansrijk is, mits aan bepaalde voorwaarden wordt voldaan. Noem die voorwaarden dan expliciet, bijvoorbeeld op het gebied van data, governance of vaardigheden."
+   "def": "Eindoordeel voor een technologie die kansrijk is, mits aan bepaalde eisen wordt voldaan. Noem die eisen dan expliciet, bijvoorbeeld op het gebied van data, governance of vaardigheden."
   },
   {
    "cat": "advies",
    "term": "Niet adviseren",
-   "def": "Adviesstatus voor een technologie die nu niet past. Je onderbouwt waarom en benoemt een realistische facilitaire situatie waarin ze wél waarde zou hebben."
+   "def": "Eindoordeel voor een technologie die nu niet past. Je onderbouwt waarom en benoemt een realistische facilitaire situatie waarin ze wél waarde zou hebben."
   },
   {
    "cat": "advies",
    "term": "Alternatieve toepassingssituatie",
-   "def": "De facilitaire situatie waarin een niet-geadviseerde technologie wél waardevol zou zijn. Voor 'goed' op het derde rubriccriterium benoem je die per technologie scherp en realistisch."
+   "def": "De facilitaire omstandigheden waarin een niet-geadviseerde technologie wél waardevol zou zijn. Voor 'goed' op het derde rubriccriterium benoem je die per technologie scherp en realistisch."
   },
   {
    "cat": "advies",
    "term": "Concretisering van de inzet",
-   "def": "Uitwerking van hoe een geadviseerde technologie in de praktijk wordt ingezet: proces, locatie, gebruikers, benodigde data, systemen, mensen en planning, en hoe medewerkers de toepassing benutten. Het vierde rubriccriterium."
+   "def": "Uitwerking van hoe een geadviseerde technologie in de praktijk wordt gebruikt: proces, locatie, gebruikers, benodigde data, systemen, mensen en planning, en hoe medewerkers de toepassing benutten. Het vierde rubriccriterium."
   },
   {
    "cat": "advies",
@@ -530,7 +530,7 @@ window.FMTECH = {
   {
    "cat": "advies",
    "term": "Strategische aansluiting",
-   "def": "Criterium in de adviesmatrix: in hoeverre ondersteunt de technologie de organisatiedoelen en de rol van FM? Sluit aan op laag 2."
+   "def": "Criterium in de adviesmatrix: in hoeverre ondersteunt de technologie de organisatiedoelen en de rol van FM? Hoort bij laag 2."
   },
   {
    "cat": "advies",
@@ -545,12 +545,12 @@ window.FMTECH = {
   {
    "cat": "advies",
    "term": "Eindpresentatie",
-   "def": "Toets in week 8: in 15 minuten presenteert de groep organisatie en doelen, de technologieën met toegevoegde waarde, hoe die waarde creëren en worden ingezet, en de risico's, ethiek en duurzaamheid. Bouwt voort op de brochure."
+   "def": "Toets in week 8: in 15 minuten licht de groep organisatie en doelen toe, de technologieën met toegevoegde waarde, hoe die waarde creëren en worden ingezet, en de risico's, ethiek en duurzaamheid. Bouwt voort op de brochure."
   },
   {
    "cat": "advies",
    "term": "Adviesgesprek",
-   "def": "Gesprek van 30 minuten na de eindpresentatie. De docenten bepalen wie welke vraag beantwoordt, dus iedereen moet het hele verhaal kunnen uitleggen. Ook de niet-geadviseerde technologieën komen aan bod."
+   "def": "Mondeling onderdeel van 30 minuten na de eindpresentatie. De docenten bepalen wie welke vraag beantwoordt, dus iedereen moet het hele verhaal kunnen uitleggen. Ook de niet-geadviseerde technologieën komen aan bod."
   },
   {
    "cat": "advies",
@@ -575,12 +575,12 @@ window.FMTECH = {
   {
    "cat": "ethiek",
    "term": "Menselijke controle",
-   "def": "Het principe dat mensen de uitkomsten van een geautomatiseerd systeem kunnen controleren en zo nodig bijsturen. In de brochure genoemd bij AI, zowel bij de concretisering als bij de risico's."
+   "def": "Het principe dat een persoon de uitkomsten van een geautomatiseerd systeem kan nakijken en zo nodig bijsturen. In de brochure genoemd bij AI, zowel bij de concretisering als bij de risico's."
   },
   {
    "cat": "ethiek",
    "term": "Datakwaliteit",
-   "def": "Hoe betrouwbaar, volledig en actueel data is. Terugkerend risico bij data-gedreven FM, IoT, BIM en IWMS: een systeem is zo goed als de data die erin zit. Sluit aan op de zwakke landelijke score voor data en IT."
+   "def": "Hoe betrouwbaar, volledig en actueel de gegevens in een systeem zijn. Terugkerend risico bij onder meer IoT, BIM en IWMS en bij sturen op cijfers: een systeem is zo goed als wat erin zit. Sluit aan op het zwakste onderdeel van laag 4."
   },
   {
    "cat": "ethiek",
@@ -590,12 +590,12 @@ window.FMTECH = {
   {
    "cat": "ethiek",
    "term": "Weerstand tegen verandering",
-   "def": "Tegenzin bij FM-medewerkers of eindgebruikers om nieuwe werkwijzen of technologie te gebruiken. Een belemmering in laag 1; in de brochure bij IWMS/FMIS ook benoemd als veranderbereidheid."
+   "def": "Tegenzin bij FM-medewerkers of eindgebruikers om nieuwe werkwijzen of technologie te gebruiken. Een belemmering in laag 1; in de brochure bij IWMS/FMIS ook benoemd onder de noemer bereidheid tot vernieuwing."
   },
   {
    "cat": "ethiek",
    "term": "Leveranciersafhankelijkheid",
-   "def": "Het risico dat de organisatie voor een technologie afhankelijk wordt van één leverancier. Genoemd bij de risico's van data-gedreven FM in het brochureformat."
+   "def": "Het risico dat de organisatie voor een technologie vast komt te zitten aan één aanbieder. Genoemd bij de risico's van data-gedreven FM in het brochureformat."
   },
   {
    "cat": "ethiek",

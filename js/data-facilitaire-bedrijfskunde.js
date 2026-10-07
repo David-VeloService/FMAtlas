@@ -85,7 +85,7 @@ window.FBK = {
   {
    "cat": "inleiding",
    "term": "Human Relations-benadering (1935-1955)",
-   "def": "Reactie op de te technische aanpak van Scientific Management. Aandacht voor motivatie en samenwerking; sociale relaties blijken belangrijk voor prestaties. Hier hoort de X- en Y-theorie van McGregor bij. Probleem: te veel aandacht voor het individu en te weinig voor structuur, de organisatie als geheel en de omgeving."
+   "def": "Reactie op de te technische aanpak van Scientific Management. Aandacht voor motivatie en samenwerking; sociale verhoudingen blijken belangrijk voor prestaties. Hier hoort de X- en Y-theorie van McGregor bij. Probleem: te veel aandacht voor het individu en te weinig voor structuur, de organisatie als geheel en de omgeving."
   },
   {
    "cat": "inleiding",
@@ -95,22 +95,22 @@ window.FBK = {
   {
    "cat": "inleiding",
    "term": "Economisch kringloopmodel",
-   "def": "Model dat laat zien hoe geld en goederen rondgaan tussen consumenten (arbeid, inkomen, bestedingen), producenten (goederen en diensten, loon), banken (sparen, lenen, investeren) en de overheid (belastingen, collectieve bestedingen, uitkeringen en subsidies). Organisaties opereren binnen deze kringloop."
+   "def": "Schema dat laat zien hoe geld en goederen rondgaan tussen consumenten (arbeid, inkomen, bestedingen), producenten (goederen en diensten, loon), banken (sparen, lenen, investeren) en de overheid (belastingen, collectieve bestedingen, uitkeringen en subsidies). Organisaties opereren binnen deze rondgang."
   },
   {
    "cat": "inleiding",
    "term": "7S-model (McKinsey)",
-   "def": "Model met zeven samenhangende aspecten van een organisatie: Strategy, Structure, Systems, Staff, Style, Skills en Shared values (in het midden, verbonden met alle andere). Verandert één S, dan heeft dat meestal gevolgen voor de andere S'en."
+   "def": "Raamwerk met zeven samenhangende aspecten van een organisatie: Strategy, Structure, Systems, Staff, Style, Skills en Shared values (in het midden, verbonden met alle andere). Verandert één aspect, dan heeft dat meestal gevolgen voor de andere."
   },
   {
    "cat": "strategy",
    "term": "Strategie",
-   "def": "Van strategos (veldheer). Strategie is stuurmanskunst: om te kunnen sturen heb je doelen nodig. Strategisch management gaat over hoe de organisatiedoelen worden bereikt en op welke uitgedachte manier. Een strategie bestaat uit meerdere tactische plannen."
+   "def": "Komt van het Griekse woord voor veldheer. Het is stuurmanskunst: om te kunnen sturen heb je doelen nodig. Het bijbehorende management gaat over hoe de organisatiedoelen worden bereikt en op welke uitgedachte manier. Bestaat uit meerdere tactische plannen."
   },
   {
    "cat": "strategy",
    "term": "Strategisch, tactisch en operationeel niveau",
-   "def": "Indeling van planning naar mate van detail en termijn. Strategisch: lange termijn, directie (bijv. verduurzaming van de vastgoedportefeuille). Tactisch: middellang, MT en teamleiders (bijv. een schoonmaakcontract voor 5 jaar). Operationeel: korte termijn, teams (bijv. menu's in een ziekenhuis bepalen)."
+   "def": "Indeling van planning naar mate van detail en termijn, in drie lagen. Hoogste: lange termijn, directie (bijv. verduurzaming van de vastgoedportefeuille). Middelste: middellang, MT en teamleiders (bijv. een schoonmaakcontract voor 5 jaar). Laagste: korte termijn, teams (bijv. menu's in een ziekenhuis bepalen)."
   },
   {
    "cat": "strategy",
@@ -125,7 +125,7 @@ window.FBK = {
   {
    "cat": "strategy",
    "term": "Effectiviteit en efficiency",
-   "def": "Twee naast elkaar staande begrippen. Effectiviteit gaat over doelgerichtheid: bereik je het doel? Efficiency gaat over de manier waarop: bereik je het met zo weinig mogelijk middelen? Efficiency is dus geen synoniem voor doelgerichtheid."
+   "def": "Twee naast elkaar staande begrippen. Het eerste gaat over doelgerichtheid: bereik je het doel? Het tweede gaat over de manier waarop: bereik je het met zo weinig mogelijk middelen? Het tweede is dus geen synoniem voor doelgerichtheid."
   },
   {
    "cat": "strategy",
@@ -134,13 +134,13 @@ window.FBK = {
   },
   {
    "cat": "strategy",
-   "term": "DESTEP",
-   "def": "Hulpmiddel voor de macro-omgeving: demografische, economische, sociaal-culturele, technologische, ecologische en politiek-juridische factoren. Op deze ontwikkelingen heeft een organisatie weinig invloed; de uitkomst zijn kansen en bedreigingen."
+   "term": "DESTEP (demografisch, economisch, sociaal-cultureel, technologisch, ecologisch, politiek-juridisch)",
+   "def": "Hulpmiddel voor de macro-omgeving met zes soorten factoren: demografisch, economisch, sociaal-cultureel, technologisch, ecologisch en politiek-juridisch. Op deze ontwikkelingen heeft een organisatie weinig invloed; de uitkomst zijn kansen en bedreigingen."
   },
   {
    "cat": "strategy",
-   "term": "BCG-model",
-   "def": "Model van de Boston Consulting Group voor de interne analyse van de productportfolio. Elk product wordt geplaatst op twee assen: relatief marktaandeel en marktgroei. Zo ontstaan vier categorieën: stars, cash cows, question marks en dogs."
+   "term": "BCG-model (Boston Consulting Group)",
+   "def": "Instrument van de Boston Consulting Group voor de interne analyse van de productportfolio. Elk product wordt geplaatst op twee assen: relatief marktaandeel en marktgroei. Zo ontstaan vier categorieën: stars, cash cows, question marks en dogs."
   },
   {
    "cat": "strategy",
@@ -165,32 +165,32 @@ window.FBK = {
   {
    "cat": "strategy",
    "term": "Vijfkrachtenmodel van Porter",
-   "def": "Model voor de meso-omgeving dat de concurrentie in een bedrijfstak aangeeft via vijf krachten: rivaliteit tussen bestaande concurrenten, dreiging van nieuwe toetreders, onderhandelingsmacht van afnemers, onderhandelingsmacht van leveranciers en dreiging van substituten (vervangende producten)."
+   "def": "Instrument voor de meso-omgeving dat de concurrentie in een bedrijfstak aangeeft via vijf invloeden: rivaliteit tussen bestaande concurrenten, dreiging van nieuwe toetreders, onderhandelingsmacht van afnemers, onderhandelingsmacht van leveranciers en dreiging van substituten (vervangende producten)."
   },
   {
    "cat": "strategy",
    "term": "SWOT-analyse",
-   "def": "Overzicht van sterktes en zwaktes (intern, uit de micro-analyse) en kansen en bedreigingen (extern, uit de macro- en deels meso-analyse). In de confrontatiematrix worden kansen en bedreigingen afgezet tegen sterktes en zwaktes om strategische opties te vinden."
+   "def": "Overzicht van sterktes en zwaktes (intern, uit het micro-onderzoek) en kansen en bedreigingen (extern, uit het macro- en deels meso-onderzoek). In de confrontatiematrix worden kansen en bedreigingen afgezet tegen sterktes en zwaktes om strategische opties te vinden."
   },
   {
    "cat": "strategy",
    "term": "Strategische kloof",
-   "def": "Het verschil tussen wat bereikt wordt (omzet, winst, enzovoort) bij ongewijzigd beleid (prognose) en wat bereikt kan worden bij gewijzigd beleid (gewenste ontwikkeling). Is de kloof te groot, dan ontwikkelt de organisatie een strategie om hem te dichten."
+   "def": "Het verschil tussen wat bereikt wordt (omzet, winst, enzovoort) bij ongewijzigd beleid (prognose) en wat bereikt kan worden bij gewijzigd beleid (gewenste ontwikkeling). Is dat gat te groot, dan kiest de organisatie een nieuwe koers om het te dichten."
   },
   {
    "cat": "strategy",
    "term": "Kostenleiderschap (Porter)",
-   "def": "Concurrentiestrategie van Porter: concurrentievoordeel door de laagste kosten, gericht op de brede markt. Voorbeelden uit de les: Aldi en easyJet. Op een smal segment heet dezelfde keuze kostenfocus."
+   "def": "Een van de drie concurrentiekeuzes van Porter: concurrentievoordeel door goedkoper te produceren dan wie ook, gericht op de brede markt. Voorbeelden uit de les: Aldi en easyJet. Op een smal segment heet dezelfde keuze kostenfocus."
   },
   {
    "cat": "strategy",
    "term": "Differentiatiestrategie (Porter)",
-   "def": "Concurrentiestrategie van Porter: concurrentievoordeel door je te onderscheiden van concurrenten, gericht op de brede markt. Voorbeeld uit de les: AH Excellent. Op een smal segment heet het differentiatiefocus."
+   "def": "Een van de drie concurrentiekeuzes van Porter: concurrentievoordeel door je te onderscheiden van concurrenten, gericht op de brede markt. Voorbeeld uit de les: AH Excellent. Op een smal segment wordt het een onderscheidende vorm van focus."
   },
   {
    "cat": "strategy",
    "term": "Focusstrategie (Porter)",
-   "def": "Concurrentiestrategie van Porter gericht op een smal segment van de markt, als kostenfocus (lage kosten, bijv. een lokale hengelsportwinkel) of differentiatiefocus (onderscheidend, bijv. Ferrari)."
+   "def": "Een van de drie concurrentiekeuzes van Porter: gericht op een smal segment van de markt, met lage kosten (bijv. een lokale hengelsportwinkel) of met onderscheidend vermogen (bijv. Ferrari)."
   },
   {
    "cat": "strategy",
@@ -215,12 +215,12 @@ window.FBK = {
   {
    "cat": "strategy",
    "term": "Integratie en differentiatie (bedrijfskolom)",
-   "def": "Bewegingen in de bedrijfskolom, de keten van oerproducent tot consument. Integratie: groei door overname van schakels. Differentiatie: focussen op de kernactiviteiten door voorwaarts of achterwaarts activiteiten af te stoten. Niet verwarren met de differentiatiestrategie van Porter."
+   "def": "Twee tegengestelde bewegingen in de bedrijfskolom, de keten van oerproducent tot consument. De ene: groei door overname van schakels. De andere: focussen op de kernactiviteiten door voorwaarts of achterwaarts activiteiten af te stoten. Niet verwarren met Porters concurrentiekeuze om je te onderscheiden."
   },
   {
    "cat": "strategy",
    "term": "Marktposities van Kotler",
-   "def": "Indeling naar marktpositie. Marktleider: grootste marktaandeel, bepaalt trends en standaarden. Marktuitdager: wil marktaandeel van de leider afsnoepen (frontale aanval, flankaanval, omsingeling). Marktvolger: volgt leiders en uitdagers met minder risico. Nichespeler: richt zich op een specifieke doelgroep of behoefte."
+   "def": "Indeling van concurrenten naar hun rol ten opzichte van elkaar. Marktleider: grootste marktaandeel, bepaalt trends en standaarden. Marktuitdager: wil marktaandeel van de leider afsnoepen (frontale aanval, flankaanval, omsingeling). Marktvolger: volgt leiders en uitdagers met minder risico. Nichespeler: richt zich op een specifieke doelgroep of behoefte."
   },
   {
    "cat": "strategy",
@@ -230,7 +230,7 @@ window.FBK = {
   {
    "cat": "strategy",
    "term": "Product leadership",
-   "def": "Waardestrategie van Treacy en Wiersema (best product): de organisatie verbetert voortdurend haar product (R&D). Kenmerken: technologische innovatie, superieur merkimago, snelle ontwikkeling (time-to-market)."
+   "def": "Waardestrategie van Treacy en Wiersema: de organisatie verbetert voortdurend wat ze maakt en verkoopt (R&D). Kenmerken: technologische innovatie, superieur merkimago, snelle ontwikkeling (time-to-market)."
   },
   {
    "cat": "strategy",
@@ -240,82 +240,82 @@ window.FBK = {
   {
    "cat": "strategy",
    "term": "Blauwe en rode oceaan",
-   "def": "Model van Chan Kim en Mauborgne. Rode oceaan: bestaande markt waarin concurrenten binnen dezelfde grenzen strijden om hetzelfde segment. Blauwe oceaan: een nieuwe markt of segment zonder concurrentie creëren en nieuwe vraag aantrekken. Alleen concurreren in de rode oceaan is volgens de les onvoldoende voor langdurig succes."
+   "def": "Model van Chan Kim en Mauborgne dat twee soorten markten onderscheidt. De eerste in de naam: een nieuwe markt of segment zonder concurrentie creëren en nieuwe vraag aantrekken. De tweede: een bestaande markt waarin concurrenten binnen dezelfde grenzen strijden om hetzelfde segment. Alleen concurreren op die bestaande markt is volgens de les onvoldoende voor langdurig succes."
   },
   {
    "cat": "structure",
    "term": "Organisatiestructuur",
-   "def": "Laat zien hoe de functies binnen de organisatie zijn verdeeld, wie welke bevoegdheden en verantwoordelijkheden heeft en hoe de coördinatie plaatsvindt. Drie elementen: arbeidsverdeling, verdeling van bevoegdheden en verantwoordelijkheden, en de wijze van coördinatie en communicatie."
+   "def": "Laat zien hoe de functies binnen het bedrijf zijn verdeeld, wie welke bevoegdheden en verantwoordelijkheden heeft en hoe de coördinatie plaatsvindt. Drie elementen: arbeidsverdeling, verdeling van bevoegdheden en verantwoordelijkheden, en de wijze van coördinatie en communicatie."
   },
   {
    "cat": "structure",
    "term": "Structure follows strategy",
-   "def": "Bij de inrichting van de organisatie houd je altijd rekening met waarom iets moet gebeuren (de strategie). Structuur is een middel om de doelen te bereiken en wordt bepaald door externe invloeden (de omgeving) en interne invloeden (medewerkers, machines, hulpmiddelen)."
+   "def": "Bij de inrichting van de organisatie houd je altijd rekening met waarom iets moet gebeuren (de koers). De inrichting is een middel om de doelen te bereiken en wordt bepaald door externe invloeden (de omgeving) en interne invloeden (medewerkers, machines, hulpmiddelen)."
   },
   {
    "cat": "structure",
    "term": "Bestuursmotief",
-   "def": "Motief bij arbeidsverdeling: de organisatie moet bestuurbaar blijven. Bijvoorbeeld teamleiders en coördinatoren aanstellen zodat het aantal mensen per leidinggevende behapbaar is. Alle vier de motieven spelen altijd een rol."
+   "def": "Een van de vier redenen achter arbeidsverdeling: de organisatie moet te sturen en te leiden blijven. Bijvoorbeeld teamleiders en coördinatoren aanstellen zodat het aantal mensen per leidinggevende behapbaar is. Alle vier de redenen spelen altijd een rol."
   },
   {
    "cat": "structure",
    "term": "Kostenmotief",
-   "def": "Motief bij arbeidsverdeling: de gekozen organisatiewijze moet betaalbaar zijn en blijven. Bijvoorbeeld afdelingen samenvoegen, zoals gastvrouw en receptie."
+   "def": "Een van de vier redenen achter arbeidsverdeling: de gekozen organisatiewijze moet betaalbaar zijn en blijven. Bijvoorbeeld afdelingen samenvoegen, zoals gastvrouw en receptie."
   },
   {
    "cat": "structure",
    "term": "Sociaal motief",
-   "def": "Motief bij arbeidsverdeling, ook gedragskundig motief: medewerkers moeten mogelijkheden tot ontplooiing hebben en het werk moet aantrekkelijk blijven, bijvoorbeeld door meerdere taken en doorgroeimogelijkheden. De behoefte aan variatie in het werk hoort hierbij."
+   "def": "Een van de vier redenen achter arbeidsverdeling, ook wel gedragskundig genoemd: medewerkers moeten mogelijkheden tot ontplooiing hebben en het werk moet aantrekkelijk blijven, bijvoorbeeld door meerdere taken en doorgroeimogelijkheden. De behoefte aan variatie in het werk hoort hierbij."
   },
   {
    "cat": "structure",
    "term": "Maatschappelijk motief",
-   "def": "Motief bij arbeidsverdeling: rekening houden met de maatschappij, dus met normen, waarden en wetten, bijvoorbeeld de Arbowet."
+   "def": "Een van de vier redenen achter arbeidsverdeling: rekening houden met de samenleving, dus met normen, waarden en wetten, bijvoorbeeld de Arbowet."
   },
   {
    "cat": "structure",
    "term": "Verticale arbeidsverdeling",
-   "def": "Verdeling van werk van boven naar beneden over hiërarchische niveaus. Hier horen begrippen als hiërarchie, delegeren, centralisatie en decentralisatie bij. Weinig verticale arbeidsverdeling betekent een platte organisatie, veel lagen een steile organisatie."
+   "def": "Spreiding van taken van boven naar beneden over hiërarchische niveaus. Hier horen begrippen als hiërarchie, delegeren, centralisatie en decentralisatie bij. Weinig lagen betekent een platte organisatie, veel lagen een steile organisatie."
   },
   {
    "cat": "structure",
    "term": "Horizontale arbeidsverdeling",
-   "def": "Verdeling van werk van links naar rechts, op hetzelfde hiërarchische niveau. Je onderscheidt interne differentiatie (indeling naar functie) en interne specialisatie (indeling naar product, gebied of markt)."
+   "def": "Spreiding van taken van links naar rechts, op hetzelfde hiërarchische niveau. Je onderscheidt interne differentiatie (indeling naar functie) en interne specialisatie (indeling naar product, gebied of markt)."
   },
   {
    "cat": "structure",
    "term": "F-indeling",
-   "def": "Horizontale indeling naar functie: werkzaamheden die naar hun aard bij elkaar of bij een deelproces horen worden samengevoegd, zoals inkoop, productie, marketing, personeel en financiën. Dit heet interne differentiatie."
+   "def": "Horizontale opdeling naar functie: werkzaamheden die naar hun aard bij elkaar of bij een deelproces horen worden samengevoegd, zoals inkoop, productie, marketing, personeel en financiën. Dit heet interne differentiatie."
   },
   {
    "cat": "structure",
    "term": "P-indeling",
-   "def": "Horizontale indeling naar product of productgroep: verschillende disciplines verzorgen samen de marktbewerking van één product of productgroep (interne specialisatie). Voorbeeld: Unilever met Foods en Home and Personal Care."
+   "def": "Horizontale opdeling naar product of productgroep: verschillende disciplines verzorgen samen de marktbewerking van één product of productgroep (interne specialisatie). Voorbeeld: Unilever met Foods en Home and Personal Care."
   },
   {
    "cat": "structure",
    "term": "G-indeling",
-   "def": "Horizontale indeling naar geografisch gebied, zoals Azië, Europa en Amerika. Een vorm van interne specialisatie."
+   "def": "Horizontale opdeling naar geografisch gebied, zoals Azië, Europa en Amerika. Een vorm van interne specialisatie."
   },
   {
    "cat": "structure",
    "term": "M-indeling",
-   "def": "Horizontale indeling naar markt of afnemersgroep. Voorbeeld uit de les: BEEHAPPY met een afdeling voor profitbedrijven en een afdeling voor non-profitbedrijven. Een vorm van interne specialisatie."
+   "def": "Horizontale opdeling naar markt of afnemersgroep. Voorbeeld uit de les: BEEHAPPY met een afdeling voor profitbedrijven en een afdeling voor non-profitbedrijven. Een vorm van interne specialisatie."
   },
   {
    "cat": "structure",
    "term": "Taakverruiming",
-   "def": "Vorm van werkstructurering: een medewerker krijgt er een taak van hetzelfde niveau bij (taak A wordt taak A plus B). Doel: motivatie behouden."
+   "def": "Vorm van werkstructurering: een medewerker krijgt er werk van hetzelfde niveau bij (A wordt A plus B). Doel: motivatie behouden."
   },
   {
    "cat": "structure",
    "term": "Taakroulatie",
-   "def": "Vorm van werkstructurering: medewerkers nemen op gezette tijden elkaars taken over en rouleren zo langs verschillende taken. Doel: afwisseling en motivatie."
+   "def": "Vorm van werkstructurering: medewerkers nemen op gezette tijden elkaars werk over en wisselen zo steeds van werkzaamheden. Doel: afwisseling en motivatie."
   },
   {
    "cat": "structure",
    "term": "Taakverrijking",
-   "def": "Vorm van werkstructurering: een medewerker krijgt er een taak van een hoger niveau bij (taak A wordt A+), bijvoorbeeld een afdelingshoofd dat deels directietaken gaat uitvoeren."
+   "def": "Vorm van werkstructurering: een medewerker krijgt er werk van een hoger niveau bij (A wordt A+), bijvoorbeeld een afdelingshoofd dat deels directiewerk gaat doen."
   },
   {
    "cat": "structure",
@@ -324,7 +324,7 @@ window.FBK = {
   },
   {
    "cat": "structure",
-   "term": "Spanwijdte",
+   "term": "Spanwijdte (span of control)",
    "def": "Het aantal medewerkers dat direct onder één leidinggevende valt, ook span of control. Een filiaalleider die leiding geeft aan twintig medewerkers heeft een spanwijdte van twintig."
   },
   {
@@ -335,17 +335,17 @@ window.FBK = {
   {
    "cat": "structure",
    "term": "Lijn en staf",
-   "def": "Lijn: verticale en horizontale verdeling van leidende en uitvoerende taken over hiërarchische niveaus; hier worden het primaire proces en de besturing uitgevoerd. Staf: staat ten dienste van de lijn en heeft alleen adviesbevoegdheid (ondersteunende processen), bijvoorbeeld juridische zaken of een business controller."
+   "def": "Twee soorten functies. De ene: verticale en horizontale verdeling van leidende en uitvoerende taken over hiërarchische niveaus; hier worden het primaire proces en de besturing uitgevoerd. De andere staat ten dienste van de eerste en heeft alleen adviesbevoegdheid (ondersteunende processen), bijvoorbeeld juridische zaken of een business controller."
   },
   {
    "cat": "structure",
    "term": "Functionele staf",
-   "def": "Uitzondering op de gewone staf: een stafafdeling die dwingende aanwijzingen mag geven op haar vakgebied zonder dat er een gezagsverhouding is. Dat heet een functionele relatie."
+   "def": "Uitzondering op de gewone adviserende afdeling: een ondersteunende afdeling die dwingende aanwijzingen mag geven op haar vakgebied zonder dat er een gezagsverhouding is."
   },
   {
    "cat": "structure",
    "term": "Lijn-staforganisatie",
-   "def": "Lijnorganisatie (directeur met afdelingen en uitvoerenden in de lijn) aangevuld met stafafdelingen die adviseren, zoals HRM of juridische zaken. Bij een zuivere lijnorganisatie zijn er geen stafafdelingen."
+   "def": "Hiërarchische structuur (directeur met afdelingen en uitvoerenden onder elkaar) aangevuld met afdelingen die alleen adviseren, zoals HRM of juridische zaken. Zonder die adviserende afdelingen is het een zuiver hiërarchische structuur."
   },
   {
    "cat": "structure",
@@ -355,7 +355,7 @@ window.FBK = {
   {
    "cat": "structure",
    "term": "Centralisatie en decentralisatie",
-   "def": "Centralisatie: beslissingen worden hoog in de organisatie genomen; past bij een stabiele omgeving, belangrijke beslissingen, crisis, een groot bedrijf en minder ervaren lagere managers. Decentralisatie: beslissingen lager in de organisatie; past bij een complex of geografisch gespreid bedrijf, ervaren lagere managers die inspraak willen en een open cultuur."
+   "def": "Twee manieren om beslissingsbevoegdheid te verdelen. De eerste: beslissingen worden hoog in de organisatie genomen; past bij een stabiele omgeving, belangrijke beslissingen, crisis, een groot bedrijf en minder ervaren lagere managers. De tweede: beslissingen lager in de organisatie; past bij een complex of geografisch gespreid bedrijf, ervaren lagere managers die inspraak willen en een open cultuur."
   },
   {
    "cat": "structure",
@@ -375,12 +375,12 @@ window.FBK = {
   {
    "cat": "structure",
    "term": "Professionele bureaucratie",
-   "def": "Configuratie van Mintzberg met een zelfstandige operationele kern als dominant onderdeel en standaardisatie van vaardigheden als coördinatie. Gedecentraliseerd, hoogopgeleide professionals, uitgebreide ondersteunende staf, netwerkgedrag; valkuil is hokjesdenken. Voorbeelden: advocaten, notarissen, medici, onderwijs."
+   "def": "Configuratie van Mintzberg met een zelfstandige operationele kern als dominant onderdeel en standaardisatie van vaardigheden als coördinatie. Gedecentraliseerd, hoogopgeleide vakspecialisten, uitgebreide ondersteunende staf, netwerkgedrag; valkuil is hokjesdenken. Voorbeelden: advocaten, notarissen, medici, onderwijs."
   },
   {
    "cat": "structure",
    "term": "Divisiestructuur",
-   "def": "Configuratie van Mintzberg: een holding met business units of divisies, die elk eigen budgetten en directies hebben. Dominant: het middenkader (de units). Sturing op resultaat en een haat-liefdeverhouding tussen holding en divisies. Voorbeelden: AKZO, Unilever, Philips."
+   "def": "Configuratie van Mintzberg: een holding met business units die elk eigen budgetten en directies hebben. Dominant: het middenkader (de units). Sturing op resultaat en een haat-liefdeverhouding tussen holding en units. Voorbeelden: AKZO, Unilever, Philips."
   },
   {
    "cat": "structure",
@@ -395,17 +395,17 @@ window.FBK = {
   {
    "cat": "systems",
    "term": "Systeemdenken",
-   "def": "De organisatie zien als één samenhangend systeem in plaats van losse afdelingen: je kijkt hoe onderdelen samen waarde creëren en hoe een verandering in één deel doorwerkt in de rest."
+   "def": "De organisatie zien als één samenhangend geheel in plaats van losse afdelingen: je kijkt hoe onderdelen samen waarde creëren en hoe een verandering in één deel doorwerkt in de rest."
   },
   {
    "cat": "systems",
    "term": "Open systeem",
-   "def": "Een systeem dat voortdurend in wisselwerking staat met zijn omgeving: het ontvangt input (klanten, medewerkers, informatie, materialen, geld), verwerkt die (throughput), levert output en krijgt feedback (klanttevredenheid, klachten, audits, KPI's, financiële resultaten)."
+   "def": "Een geheel dat voortdurend in wisselwerking staat met zijn omgeving: het ontvangt input (klanten, medewerkers, informatie, materialen, geld), verwerkt die (throughput), levert output en krijgt feedback (klanttevredenheid, klachten, audits, KPI's, financiële resultaten)."
   },
   {
    "cat": "systems",
    "term": "Aspectsysteem",
-   "def": "Een deel van een systeem dat je bekijkt vanuit één bepaald aspect van de elementen. Voorbeeld uit de quiz: alle medewerkers van een bank boven de 55 in kaart brengen voor leeftijdsbewust personeelsbeleid."
+   "def": "Een deel van een geheel dat je bekijkt vanuit één bepaalde eigenschap van de elementen. Voorbeeld uit de quiz: alle medewerkers van een bank boven de 55 in kaart brengen voor leeftijdsbewust personeelsbeleid."
   },
   {
    "cat": "systems",
@@ -419,23 +419,23 @@ window.FBK = {
   },
   {
    "cat": "systems",
-   "term": "ITO-model",
-   "def": "Input, throughput, output. Input: de middelen en voorwaarden die nodig zijn (mensen, middelen, informatie, voorwaarden zoals beleid en cultuur). Throughput: de activiteiten waarin input wordt omgezet. Output: producten of diensten, resultaten en waarde voor klanten en belanghebbenden."
+   "term": "ITO-model (input, throughput, output)",
+   "def": "Drie stappen. Input: de middelen en voorwaarden die nodig zijn (mensen, middelen, informatie, voorwaarden zoals beleid en cultuur). Throughput: de activiteiten waarin de input wordt omgezet. Output: producten of diensten, resultaten en waarde voor klanten en belanghebbenden."
   },
   {
    "cat": "systems",
    "term": "Primaire processen",
-   "def": "Processen die direct bijdragen aan de totstandkoming van het product of de dienst. In de waardeketen: de primaire activiteiten. Het beveiligen van gebouwen is voor een beveiligingsbedrijf een primair proces."
+   "def": "Activiteitenstromen die direct bijdragen aan de totstandkoming van het product of de dienst. In de waardeketen: de hoofdactiviteiten. Het beveiligen van gebouwen hoort hier voor een beveiligingsbedrijf bij."
   },
   {
    "cat": "systems",
-   "term": "Secundaire processen",
-   "def": "Processen die het primaire proces ondersteunen, ook ondersteunende processen. In de waardeketen: de ondersteunende activiteiten, zoals facility management. Beveiliging is voor de HAN een secundair proces, voor een beveiligingsbedrijf primair."
+   "term": "Secundaire processen (ondersteunende processen)",
+   "def": "Activiteitenstromen die het hoofdproces ondersteunen, ook ondersteunende processen genoemd. In de waardeketen: de ondersteunende activiteiten, zoals facility management. Beveiliging hoort voor de HAN in deze groep, voor een beveiligingsbedrijf bij het hoofdproces."
   },
   {
    "cat": "systems",
    "term": "Bestuurlijke processen",
-   "def": "Processen voor sturing (doel bepalen) en beheersing: richting geven, controleren en verbeteren. In de waardeketen vallen ze vooral onder infrastructuur, zoals strategisch management en planning en control."
+   "def": "Activiteitenstromen voor sturing (doel bepalen) en beheersing: richting geven, controleren en verbeteren. In de waardeketen vallen ze vooral onder infrastructuur, zoals strategisch management en planning en control."
   },
   {
    "cat": "staff",
@@ -450,7 +450,7 @@ window.FBK = {
   {
    "cat": "staff",
    "term": "Personeelsbeleid en personeelsbeheer",
-   "def": "Personeelsbeleid is strategisch en extern gericht: vooruitkijken naar markt- en technologische ontwikkelingen. Personeelsbeheer is operationeel en intern gericht: het beleid vertalen naar dagelijkse activiteiten zoals training, beoordelingsgesprekken en personeelsplanning. Samen vormen ze HRM."
+   "def": "Twee lagen van HR-werk. De eerste is strategisch en extern gericht: vooruitkijken naar markt- en technologische ontwikkelingen. De tweede is operationeel en intern gericht: de gekozen koers vertalen naar dagelijkse activiteiten zoals training, beoordelingsgesprekken en personeelsplanning. Samen vormen ze HRM."
   },
   {
    "cat": "staff",
@@ -459,7 +459,7 @@ window.FBK = {
   },
   {
    "cat": "staff",
-   "term": "IDU-model",
+   "term": "IDU-model (instroom, doorstroom, uitstroom)",
    "def": "Instroom (werving, selectie, aanstelling), doorstroom (beloning, beoordeling, loopbaanontwikkeling, competentiemanagement) en uitstroom (vrijwillig en gedwongen vertrek). Doel: de juiste persoon op de juiste plaats."
   },
   {
@@ -470,17 +470,17 @@ window.FBK = {
   {
    "cat": "staff",
    "term": "Primaire, secundaire en tertiaire arbeidsvoorwaarden",
-   "def": "Primair: het basisloon. Secundair: voorzieningen die per onderneming of in de cao zijn vastgelegd. Tertiair: voorzieningen voor speciale categorieën personeel, zoals een auto van de zaak."
+   "def": "Drie lagen van wat een werknemer voor zijn werk krijgt. Eerste laag: het basisloon. Tweede laag: voorzieningen die per onderneming of in de cao zijn vastgelegd. Derde laag: voorzieningen voor speciale categorieën personeel, zoals een auto van de zaak."
   },
   {
    "cat": "staff",
    "term": "Beoordelingsgesprek",
-   "def": "Periodiek gesprek waarin de prestaties tegen het licht worden gehouden en mogelijkheden voor verdere ontwikkeling worden besproken. Er is onderscheid met het functioneringsgesprek. Feedback kan eendimensionaal (van één leidinggevende), 180 graden (de medewerker geeft zelf ook zijn mening) of 360 graden zijn."
+   "def": "Periodiek overleg waarin de prestaties tegen het licht worden gehouden en mogelijkheden voor verdere ontwikkeling worden besproken. Er is onderscheid met het functioneringsgesprek. Feedback kan eendimensionaal (van één leidinggevende), 180 graden (de medewerker geeft zelf ook zijn mening) of 360 graden zijn."
   },
   {
    "cat": "staff",
    "term": "360-gradenfeedback",
-   "def": "Beoordeling waarbij twee of meer personen hun mening geven over het functioneren van een medewerker. Bij 180-gradenfeedback geeft de medewerker zelf ook een mening, bij eendimensionale feedback komt alles van één leidinggevende."
+   "def": "Beoordeling waarbij twee of meer personen hun mening geven over het functioneren van een medewerker. Bij de halve variant geeft de medewerker zelf ook een mening, bij de eendimensionale vorm komt alles van één leidinggevende."
   },
   {
    "cat": "staff",
@@ -490,22 +490,22 @@ window.FBK = {
   {
    "cat": "staff",
    "term": "Lerende organisatie",
-   "def": "Organisatie die investeert in opleiding en ontwikkeling en waarin kennis wordt gedeeld in plaats van vastgehouden, bijvoorbeeld via trainingen, intervisie en kennissessies, en waarin kennis wordt geborgd als medewerkers vertrekken."
+   "def": "Bedrijf of instelling die investeert in opleiding en ontwikkeling en waarin kennis wordt gedeeld in plaats van vastgehouden, bijvoorbeeld via trainingen, intervisie en kennissessies, en waarin kennis wordt geborgd als medewerkers vertrekken."
   },
   {
    "cat": "staff",
    "term": "Exitgesprek",
-   "def": "Gesprek met een vertrekkende medewerker om inzicht te krijgen in de redenen van vertrek en daarvan te leren voor het personeelsbeleid. Hoort bij uitstroom."
+   "def": "Interview met een vertrekkende medewerker om inzicht te krijgen in de redenen van vertrek en daarvan te leren voor het personeelsbeleid. Hoort bij uitstroom."
   },
   {
    "cat": "style",
    "term": "Style",
-   "def": "De S die gaat over de stijl die een organisatie in brede zin hanteert, maar vooral over de stijl van leidinggeven. Ook conflicthantering en besluitvorming horen erbij."
+   "def": "De S die gaat over hoe een organisatie in brede zin opereert, maar vooral over de manier van leidinggeven. Ook conflicthantering en besluitvorming horen erbij."
   },
   {
    "cat": "style",
    "term": "Autocratisch leiderschap",
-   "def": "Besluitvorming is strikt top-down; de leider stuurt met opdrachten en aanwijzingen. Gehoorzaamheid wordt beloond, afwijking bestraft. Sluit aan op de X-theorie van McGregor."
+   "def": "Besluitvorming is strikt top-down; de leidinggevende stuurt met opdrachten en aanwijzingen. Gehoorzaamheid wordt beloond, afwijking bestraft. Sluit aan op de X-theorie van McGregor."
   },
   {
    "cat": "style",
@@ -515,7 +515,7 @@ window.FBK = {
   {
    "cat": "style",
    "term": "Participatief leiderschap",
-   "def": "Moderne stijl gericht op commitment: de leider inspireert medewerkers, stimuleert ze actief om mee te denken en probeert spanningen te voorkomen. Past bij de Y-theorie."
+   "def": "Moderne stijl gericht op commitment: de leidinggevende inspireert medewerkers, stimuleert ze actief om mee te denken en probeert spanningen te voorkomen. Past bij de Y-theorie."
   },
   {
    "cat": "style",
@@ -535,7 +535,7 @@ window.FBK = {
   {
    "cat": "style",
    "term": "Situationeel leiderschap (Hersey en Blanchard)",
-   "def": "De leider past zijn stijl aan op de taakvolwassenheid (competentie en motivatie) van de medewerker voor een taak. S1 instrueren: veel sturing, weinig ondersteuning. S2 overtuigen of begeleiden: veel sturing en ondersteuning. S3 overleggen of ondersteunen: weinig sturing, veel ondersteuning. S4 delegeren: weinig van beide."
+   "def": "De leidinggevende past zijn stijl aan op de taakvolwassenheid (competentie en motivatie) van de medewerker voor een taak. S1 instrueren: veel sturing, weinig ondersteuning. S2 overtuigen of begeleiden: veel sturing en ondersteuning. S3 overleggen of ondersteunen: weinig sturing, veel ondersteuning. S4 delegeren: weinig van beide."
   },
   {
    "cat": "style",
@@ -550,22 +550,22 @@ window.FBK = {
   {
    "cat": "style",
    "term": "Directe en indirecte interventie",
-   "def": "Directe interventie lost een bestaand conflict op: machtsgreep (iemand hiërarchisch boven de partijen beslist), arbitrage (een persoon of commissie doet een uitspraak) of mediation (een onafhankelijke buitenstaander helpt de partijen zelf tot een oplossing komen). Indirecte interventie voorkomt conflicten, bijvoorbeeld door taken en bevoegdheden duidelijker te omschrijven."
+   "def": "Twee soorten ingrijpen bij conflicten. De eerste lost een bestaand conflict op: machtsgreep (iemand hiërarchisch boven de partijen beslist), arbitrage (een persoon of commissie doet een uitspraak) of mediation (een onafhankelijke buitenstaander helpt de partijen zelf tot een oplossing komen). De tweede voorkomt conflicten, bijvoorbeeld door taken en bevoegdheden duidelijker te omschrijven."
   },
   {
    "cat": "style",
    "term": "Conflictstijlen",
-   "def": "Vier stijlen op basis van nadruk op eigen belang en op andermans belang. Vermijden: weinig op beide, het conflict blijft latent. Domineren: veel eigen belang. Toegeven: veel andermans belang. Samenwerken: veel op beide, win-win, in het algemeen het meest effectief."
+   "def": "Vier manieren om met tegenstellingen om te gaan, op basis van nadruk op eigen belang en op andermans belang. Vermijden: weinig op beide, de onenigheid blijft latent. Domineren: veel eigen belang. Toegeven: veel andermans belang. Samenwerken: veel op beide, win-win, in het algemeen het meest effectief."
   },
   {
    "cat": "style",
    "term": "Rationele besluitvorming",
-   "def": "Besluitvorming in drie fasen op basis van onderzoek: probleemdefinitie (objectief beschrijven en afbakenen), mogelijke oplossingen (meerdere alternatieven bedenken) en keuze (afwegen en besluiten). Bij niet-rationele besluitvorming wordt op gevoel en intuïtie beslist."
+   "def": "Beslissen in drie fasen op basis van onderzoek: probleemdefinitie (objectief beschrijven en afbakenen), mogelijke oplossingen (meerdere alternatieven bedenken) en keuze (afwegen en besluiten). Bij de tegenhanger wordt op gevoel en intuïtie beslist."
   },
   {
    "cat": "style",
    "term": "Piramide van Maslow",
-   "def": "Motivatietheorie: mensen vervullen eerst lagere behoeften voordat ze zich op hogere richten. Van onder naar boven: fysiologische behoeften, veiligheid, sociale behoeften, waardering en zelfontplooiing. Maslow bracht de drijfveren van onder anderen Adler (macht), White (nieuwsgierigheid), Schachter (genegenheid) en McClelland (geldingsdrang) samen."
+   "def": "Motivatietheorie: mensen vervullen eerst lagere behoeften voordat ze zich op hogere richten. Van onder naar boven: fysiologische behoeften, veiligheid, sociale behoeften, waardering en zelfontplooiing. De bedenker bracht de drijfveren van onder anderen Adler (macht), White (nieuwsgierigheid), Schachter (genegenheid) en McClelland (geldingsdrang) samen."
   },
   {
    "cat": "style",
@@ -575,12 +575,12 @@ window.FBK = {
   {
    "cat": "skills",
    "term": "Skills",
-   "def": "De kennis, vaardigheden en houding (samen competenties) waarover de organisatie moet beschikken en blijven beschikken om nu en straks succesvol te zijn. Het gaat om de vaardigheid van de organisatie als geheel om toegevoegde waarde te leveren, niet van één medewerker."
+   "def": "De kennis, vaardigheden en houding (samen competenties) waarover de organisatie moet beschikken en blijven beschikken om nu en straks succesvol te zijn. Het gaat om het vermogen van de organisatie als geheel om toegevoegde waarde te leveren, niet van één medewerker."
   },
   {
    "cat": "skills",
    "term": "Sleutelvaardigheden",
-   "def": "De kerncompetenties die de toegevoegde waarde van de organisatie bepalen: waarin onderscheidt zij zich, wat is haar unieke sleutelpositie? Het kernproces kan bij twee organisaties gelijk zijn terwijl de toegevoegde waarde (strategie) en dus de benodigde skills verschillen, zoals bij Albert Heijn en Lidl."
+   "def": "De kerncompetenties die de toegevoegde waarde van de organisatie bepalen: waarin onderscheidt zij zich, wat is haar unieke positie? Het kernproces kan bij twee organisaties gelijk zijn terwijl de toegevoegde waarde (strategie) en dus de benodigde skills verschillen, zoals bij Albert Heijn en Lidl."
   },
   {
    "cat": "skills",
@@ -590,7 +590,7 @@ window.FBK = {
   {
    "cat": "skills",
    "term": "Unique Selling Point (USP)",
-   "def": "Onderscheidend punt ten opzichte van de concurrentie. In de USP-check is een krachtige USP iets wat de doelgroep wil en waar jouw organisatie sterk in is; wat ook de concurrent goed doet moet je toetsen; waar alleen de concurrent sterk in is, moet je je tegen beschermen; wat de doelgroep niet wil, kun je vermijden."
+   "def": "Onderscheidend punt ten opzichte van de concurrentie. In de bijbehorende check is een krachtig punt iets wat de doelgroep wil en waar jouw organisatie sterk in is; wat ook de concurrent goed doet moet je toetsen; waar alleen de concurrent sterk in is, moet je je tegen beschermen; wat de doelgroep niet wil, kun je vermijden."
   },
   {
    "cat": "skills",
@@ -600,7 +600,7 @@ window.FBK = {
   {
    "cat": "skills",
    "term": "Kwaliteit (technisch en relatief)",
-   "def": "Technische kwaliteit is de traditionele, bedrijfseconomische betekenis: degelijk, duurzaam en betrouwbaar. Relatieve kwaliteit is verwachtingenmanagement: aansluiten bij de wensen van de klant en rekening houden met het aanbod van concurrenten."
+   "def": "Twee betekenissen. De eerste is de traditionele, bedrijfseconomische: degelijk, duurzaam en betrouwbaar. De tweede is verwachtingenmanagement: aansluiten bij de wensen van de klant en rekening houden met het aanbod van concurrenten."
   },
   {
    "cat": "skills",
@@ -609,13 +609,13 @@ window.FBK = {
   },
   {
    "cat": "skills",
-   "term": "PDCA-cyclus (Deming)",
-   "def": "Cirkel voor continu verbeteren. Plan: doel, probleem en oorzaken, plan van aanpak. Do: de acties uitvoeren, vaak eerst als pilot. Check: leveren de acties het gewenste resultaat op? Act: bijsturen of de nieuwe werkwijze tot standaard maken, en opnieuw beginnen."
+   "term": "PDCA-cyclus (plan-do-check-act, Deming)",
+   "def": "Cirkel voor continu verbeteren in vier stappen. Eerst: doel, probleem en oorzaken, plan van aanpak. Dan: de acties uitvoeren, vaak eerst als pilot. Dan controleren: leveren de acties het gewenste resultaat op? Tot slot: bijsturen of de nieuwe werkwijze tot standaard maken, en opnieuw beginnen."
   },
   {
    "cat": "skills",
-   "term": "INK-managementmodel",
-   "def": "Model van het Instituut Nederlandse Kwaliteit voor evaluatie, ontwikkeling en sturing van organisaties. Vijf organisatiegebieden (leiderschap, medewerkers, strategie en beleid, middelen, processen), vier resultaatgebieden (waardering door medewerkers, door klanten en leveranciers, door de maatschappij, en eindresultaten) en het gebied verbeteren en vernieuwen."
+   "term": "INK-managementmodel (Instituut Nederlandse Kwaliteit)",
+   "def": "Raamwerk van het Instituut Nederlandse Kwaliteit voor evaluatie, ontwikkeling en sturing van organisaties. Vijf organisatiegebieden (leiderschap, medewerkers, strategie en beleid, middelen, processen), vier resultaatgebieden (waardering door medewerkers, door klanten en leveranciers, door de maatschappij, en eindresultaten) en het gebied verbeteren en vernieuwen."
   },
   {
    "cat": "skills",
@@ -624,12 +624,12 @@ window.FBK = {
   },
   {
    "cat": "skills",
-   "term": "KSF",
+   "term": "KSF (kritische succesfactor)",
    "def": "Kritische succesfactor: een doelstelling of doorslaggevend succesgebied. Beantwoordt WAT: welke factoren of activiteiten zijn essentieel om je doel te bereiken? Voorbeeld: snelheid van levering."
   },
   {
    "cat": "skills",
-   "term": "KPI",
+   "term": "KPI (key performance indicator, prestatie-indicator)",
    "def": "Key performance indicator (prestatie-indicator): de meetbare waarde, vaak een getal of percentage, waarmee je controleert of je op koers ligt om een KSF te halen. Beantwoordt HOEVEEL. Voorbeeld bij de KSF snelheid: de tijd tussen bestelling en aflevering, met een streefwaarde."
   },
   {
@@ -640,7 +640,7 @@ window.FBK = {
   {
    "cat": "values",
    "term": "Shared values",
-   "def": "Gedeelde waarden: overtuigingen, normen en drijfveren die door een groep worden gedeeld. In een organisatie de kernwaarden, de visie en het DNA, vaak ongeschreven. In het 7S-model het centrale fundament (de cultuur) dat alle andere S'en verbindt en stuurt."
+   "def": "Overtuigingen, normen en drijfveren die een groep gemeenschappelijk heeft. In een organisatie de kernwaarden, de visie en het DNA, vaak ongeschreven. In het 7S-model het centrale fundament (de cultuur) dat alle andere S'en verbindt en stuurt."
   },
   {
    "cat": "values",
@@ -660,7 +660,7 @@ window.FBK = {
   {
    "cat": "values",
    "term": "Rolcultuur (Handy)",
-   "def": "Cultuurtype van Harrison en Handy met lage machtsspreiding en lage samenwerkingsgraad. Iedereen houdt zich aan de rol in de formele organisatie, veel regels en procedures; de functie bepaalt wat iemand kan. Past bij de machinebureaucratie."
+   "def": "Cultuurtype van Harrison en Handy met lage machtsspreiding en lage samenwerkingsgraad. Iedereen houdt zich aan zijn positie in de formele organisatie, veel regels en procedures; de functie bepaalt wat iemand kan. Past bij de machinebureaucratie."
   },
   {
    "cat": "values",
@@ -675,22 +675,22 @@ window.FBK = {
   {
    "cat": "values",
    "term": "Taakcultuur (Handy)",
-   "def": "Cultuurtype van Harrison en Handy met hoge machtsspreiding en hoge samenwerkingsgraad. Zelfstandige professionals werken samen aan complexe taken in vaak platte, innovatieve organisaties zoals reclame- en ingenieursbureaus. Past bij de innovatieve organisatie (adhocratie)."
+   "def": "Cultuurtype van Harrison en Handy met hoge machtsspreiding en hoge samenwerkingsgraad. Zelfstandige professionals werken samen aan complexe opdrachten in vaak platte, innovatieve organisaties zoals reclame- en ingenieursbureaus. Past bij de innovatieve organisatie (adhocratie)."
   },
   {
    "cat": "values",
    "term": "Cultuurdimensies van Hofstede",
-   "def": "Hofstede ziet cultuur als de collectieve mentale programmering die de ene groep van de andere onderscheidt, in lagen als een ui (symbolen, helden, rituelen, waarden). Dimensies: machtsafstand, onzekerheidsvermijding, individualisme tegenover collectivisme, masculiniteit tegenover feminiteit en korte- tegenover langetermijngerichtheid."
+   "def": "De bedenker ziet cultuur als de collectieve mentale programmering die de ene groep van de andere onderscheidt, in lagen als een ui (symbolen, helden, rituelen, waarden). Kenmerken waarop culturen verschillen: machtsafstand, onzekerheidsvermijding, individualisme tegenover collectivisme, masculiniteit tegenover feminiteit en korte- tegenover langetermijngerichtheid."
   },
   {
    "cat": "values",
    "term": "Landentypering van Hofstede",
-   "def": "Typering op machtsafstand en onzekerheidsvermijding. Dorpsmarkt: beide klein (onder meer Nederland). Familie: grote machtsafstand, kleine onzekerheidsvermijding. Goed geoliede machine: kleine machtsafstand, grote onzekerheidsvermijding. Piramide: beide groot."
+   "def": "Indeling op machtsafstand en onzekerheidsvermijding in vier types. Dorpsmarkt: beide klein (onder meer Nederland). Familie: grote machtsafstand, kleine onzekerheidsvermijding. Goed geoliede machine: kleine machtsafstand, grote onzekerheidsvermijding. Piramide: beide groot."
   },
   {
    "cat": "values",
    "term": "Cultuurtypering van Deal en Kennedy",
-   "def": "Typering op het risico van de bedrijfsvoering en de snelheid van feedback. Machocultuur: veel risico, snelle feedback. Hard-werken-en-spelencultuur: weinig risico, snelle feedback. Alles-op-een-kaartcultuur: veel risico, langzame feedback. Procedurecultuur: weinig risico, langzame feedback."
+   "def": "Indeling op het risico van de bedrijfsvoering en de snelheid van feedback. Machocultuur: veel risico, snelle feedback. Hard-werken-en-spelencultuur: weinig risico, snelle feedback. Alles-op-een-kaartcultuur: veel risico, langzame feedback. Procedurecultuur: weinig risico, langzame feedback."
   },
   {
    "cat": "values",
@@ -700,7 +700,7 @@ window.FBK = {
   {
    "cat": "values",
    "term": "Cultuurverandering",
-   "def": "Verandering van waarden en normen, niet alleen van rituelen en symbolen. De noodzaak moet gevoeld worden; je start met een situatieanalyse van de huidige en gewenste cultuur. Het is een langdurig proces met weerstand, waarbij je de fasen van Kotter en de methode van Cameron en Quinn kunt gebruiken."
+   "def": "Het bijsturen van waarden en normen in een organisatie, niet alleen van rituelen en symbolen. De noodzaak moet gevoeld worden; je start met een situatieanalyse van de huidige en gewenste situatie. Het is een langdurig proces met weerstand, waarbij je de fasen van Kotter en de methode van Cameron en Quinn kunt gebruiken."
   },
   {
    "cat": "recht",
@@ -715,12 +715,12 @@ window.FBK = {
   {
    "cat": "recht",
    "term": "Handelsnaam",
-   "def": "De juridisch beschermde naam waaronder een onderneming handelt, bijvoorbeeld Nike. Je kunt een handelsnaam alleen verkopen samen met de onderneming die hem gebruikt (art. 2 Handelsnaamwet). Uitzondering: franchising."
+   "def": "De juridisch beschermde benaming waaronder een onderneming zaken doet, bijvoorbeeld Nike. Je kunt hem alleen verkopen samen met de onderneming die hem gebruikt (art. 2 Handelsnaamwet). Uitzondering: franchising."
   },
   {
    "cat": "recht",
    "term": "Franchising",
-   "def": "Uitzondering op de regel dat een handelsnaam niet los van de onderneming kan worden overgedragen: een franchisenemer mag de naam van de franchisegever gebruiken. Voorbeelden uit de les: Bakker Bart, McDonald's, Subway, Albert Heijn."
+   "def": "Uitzondering op de regel dat een handelsnaam niet los van de onderneming kan worden overgedragen: een zelfstandige ondernemer (de nemer) mag de naam van een andere onderneming (de gever) gebruiken. Voorbeelden uit de les: Bakker Bart, McDonald's, Subway, Albert Heijn."
   },
   {
    "cat": "recht",
@@ -730,12 +730,12 @@ window.FBK = {
   {
    "cat": "recht",
    "term": "Handelsregister",
-   "def": "Openbaar register bij de KvK voor informatievoorziening en rechtszekerheid: wie de gegevens gebruikt mag ervan uitgaan dat ze juist zijn. Bevat onder meer rechtsvorm, activiteiten en vertegenwoordigingsbevoegdheid. Iedere organisatie is inschrijfplichtig; niet inschrijven is een economisch delict (WED). Inschrijving is geen oprichtingseis."
+   "def": "Openbare databank bij de KvK voor informatievoorziening en rechtszekerheid: wie de gegevens gebruikt mag ervan uitgaan dat ze juist zijn. Bevat onder meer rechtsvorm, activiteiten en vertegenwoordigingsbevoegdheid. Iedere organisatie is inschrijfplichtig; niet inschrijven is een economisch delict (WED). Inschrijving is geen oprichtingseis."
   },
   {
    "cat": "recht",
    "term": "Administratieplicht",
-   "def": "Elke onderneming moet een administratie bijhouden en bewaren. Rechtspersonen hebben een speciale administratieplicht (Wet op de jaarrekening, art. 2:360 BW) met jaarrekening, jaarverslag, eventueel accountantsonderzoek en publicatie van de jaarstukken."
+   "def": "Elke onderneming moet een boekhouding bijhouden en bewaren. Rechtspersonen hebben een zwaardere variant van deze verplichting (Wet op de jaarrekening, art. 2:360 BW) met jaarrekening, jaarverslag, eventueel accountantsonderzoek en publicatie van de jaarstukken."
   },
   {
    "cat": "recht",
@@ -744,13 +744,13 @@ window.FBK = {
   },
   {
    "cat": "recht",
-   "term": "WED en Wcor",
-   "def": "De Wet op de economische delicten (WED) moet zorgen voor gelijke concurrentie; de overheid kan bij een economisch delict ingrijpen met onder meer een boete, stillegging of strafvervolging. De Wet controle op rechtspersonen (Wcor) gaat fraude en financieel misbruik door rechtspersonen tegen, met mogelijk strafvervolging of ontbinding."
+   "term": "WED en Wcor (Wet op de economische delicten, Wet controle op rechtspersonen)",
+   "def": "De Wet op de economische delicten moet zorgen voor gelijke concurrentie; de overheid kan bij een overtreding ingrijpen met onder meer een boete, stillegging of strafvervolging. De Wet controle op rechtspersonen gaat fraude en financieel misbruik door bv's, nv's en andere rechtsvormen tegen, met mogelijk strafvervolging of ontbinding."
   },
   {
    "cat": "recht",
    "term": "Dwingend en aanvullend recht",
-   "def": "Dwingend recht moet je volgen, je mag er niet van afwijken. Aanvullend of regelend recht geldt tenzij er iets anders is afgesproken of in de statuten staat. Bij de nv geldt meer dwingend recht dan bij de bv."
+   "def": "Twee soorten regels. De eerste moet je volgen, je mag er niet van afwijken. De tweede (ook regelend genoemd) geldt tenzij er iets anders is afgesproken of in de statuten staat. Bij de nv gelden meer regels van de eerste soort dan bij de bv."
   },
   {
    "cat": "recht",
@@ -760,12 +760,12 @@ window.FBK = {
   {
    "cat": "recht",
    "term": "Formele vereniging",
-   "def": "Vereniging opgericht bij notariële akte met statuten: vereniging met volledige rechtsbevoegdheid. Kan eigenaar worden van registergoederen zoals grond en gebouwen en kan erfgenaam zijn."
+   "def": "Rechtspersoon met leden, opgericht bij notariële akte met statuten, met volledige rechtsbevoegdheid. Kan eigenaar worden van registergoederen zoals grond en gebouwen en kan erfgenaam zijn."
   },
   {
    "cat": "recht",
    "term": "Informele vereniging",
-   "def": "Vereniging opgericht zonder notariële akte, mondeling of schriftelijk: vereniging zonder volledige rechtsbevoegdheid. Kan geen registergoederen bezitten en geen erfgenaam zijn. Niet ingeschreven in het handelsregister: het hele bestuur is hoofdelijk aansprakelijk naast de vereniging. Wel ingeschreven: bestuurders alleen aansprakelijk als de vereniging niet kan betalen."
+   "def": "Rechtspersoon met leden, opgericht zonder notariële akte (mondeling of schriftelijk), zonder volledige rechtsbevoegdheid. Kan geen registergoederen bezitten en geen erfgenaam zijn. Niet ingeschreven in het handelsregister: het hele bestuur is hoofdelijk aansprakelijk naast de rechtspersoon zelf. Wel ingeschreven: bestuurders alleen aansprakelijk als die zelf niet kan betalen."
   },
   {
    "cat": "recht",
@@ -775,12 +775,12 @@ window.FBK = {
   {
    "cat": "recht",
    "term": "Algemene ledenvergadering (ALV)",
-   "def": "Orgaan van de vereniging waarin de leden stemmen, vaak eens per jaar, over onder meer benoeming en ontslag van bestuurders en commissarissen en statutenwijziging. Ieder lid één stem; meerderheid van de aanwezige leden, tenzij de statuten iets anders bepalen."
+   "def": "Orgaan van de vereniging waarin alle aangeslotenen stemmen, vaak eens per jaar, over onder meer benoeming en ontslag van bestuurders en commissarissen en statutenwijziging. Ieder lid één stem; meerderheid van de aanwezigen, tenzij de statuten iets anders bepalen."
   },
   {
    "cat": "recht",
    "term": "Raad van commissarissen (RvC)",
-   "def": "Orgaan dat meestal vrijwillig is en vooral toezicht houdt op het bestuur, vaak ook adviseert. Bij een nv of bv kan de RvC het bestuur schorsen. Ook raad van toezicht (RvT) genoemd."
+   "def": "Orgaan dat meestal vrijwillig is en vooral toezicht houdt op het bestuur, vaak ook adviseert. Bij een nv of bv kan dit orgaan het bestuur schorsen. Ook raad van toezicht (RvT) genoemd."
   },
   {
    "cat": "recht",
@@ -790,12 +790,12 @@ window.FBK = {
   {
    "cat": "recht",
    "term": "Besloten vennootschap (BV)",
-   "def": "Rechtspersoon met een commercieel doel en een besloten karakter, bijvoorbeeld een familiebedrijf. Aandelen minder vrij verhandelbaar (blokkeringsregeling), minder dwingend recht, makkelijker op te richten omdat er geen startkapitaal nodig is. Oprichting bij notariële akte met statuten."
+   "def": "Rechtspersoon met een commercieel doel en een gesloten karakter, bijvoorbeeld een familiebedrijf. Aandelen minder vrij verhandelbaar (blokkeringsregeling), minder dwingend recht, makkelijker op te richten omdat er geen startkapitaal nodig is. Oprichting bij notariële akte met statuten."
   },
   {
    "cat": "recht",
    "term": "Algemene vergadering van aandeelhouders (AVA)",
-   "def": "Orgaan van de nv en bv. Stemt over statutenwijziging, uitgifte van aandelen, benoeming, schorsing en ontslag van bestuurders en commissarissen, dividend en fusies. Eén stem per aandeel. Individuele aandeelhouders zijn geen orgaan maar hebben wel stemrecht, recht op dividend en (bij de bv op grond van de wet) claimrecht."
+   "def": "Orgaan van de nv en bv. Stemt over statutenwijziging, uitgifte van aandelen, benoeming, schorsing en ontslag van bestuurders en commissarissen, dividend en fusies. Eén stem per aandeel. Individuele bezitters van aandelen zijn geen orgaan maar hebben wel stemrecht, recht op dividend en (bij de bv op grond van de wet) claimrecht."
   },
   {
    "cat": "recht",
@@ -805,7 +805,7 @@ window.FBK = {
   {
    "cat": "recht",
    "term": "Vennootschap in oprichting (i.o.)",
-   "def": "Vóór de oprichting kan al zaken worden gedaan in naam van de nv of bv i.o. De handelende bestuurder is dan aansprakelijk. Na de oprichting kan de vennootschap de rechtshandeling bekrachtigen."
+   "def": "Vóór de akte bij de notaris kunnen al zaken worden gedaan in naam van de nv of bv die er nog niet is. De handelende bestuurder is dan aansprakelijk. Na de akte kan de nv of bv de rechtshandeling bekrachtigen."
   },
   {
    "cat": "recht",
@@ -815,22 +815,22 @@ window.FBK = {
   {
    "cat": "recht",
    "term": "Uitkeringsverbod (stichting)",
-   "def": "Een stichting mag geen uitkeringen doen aan oprichters of bestuurders en geen winst uitkeren. Wel toegestaan: betalingen als tegenprestatie, zoals niet-bovenmatig loon, en uitkeringen met een sociale of ideële strekking, zoals pensioenen bij een pensioenfonds."
+   "def": "Een stichting mag geen betalingen doen aan oprichters of bestuurders en geen winst uitdelen. Wel toegestaan: betalingen als tegenprestatie, zoals niet-bovenmatig loon, en betalingen met een sociale of ideële strekking, zoals pensioenen bij een pensioenfonds."
   },
   {
    "cat": "recht",
    "term": "Hoofdelijke aansprakelijkheid",
-   "def": "Iedere aansprakelijke persoon kan voor het hele bedrag worden aangesproken. De dia's noemen het voor bestuurders als de rechtspersoon niet in het handelsregister is ingeschreven (alle bestuurders hoofdelijk), bij een informele vereniging die niet is ingeschreven (het hele bestuur naast de vereniging) en als aparte uitzondering bij faillissement."
+   "def": "Iedere persoon die verantwoordelijk is voor een schuld kan voor het hele bedrag worden aangesproken. De dia's noemen het voor bestuurders als de rechtspersoon niet in het handelsregister is ingeschreven (dan geldt het voor alle bestuurders), bij een informele vereniging die niet is ingeschreven (het hele bestuur naast de vereniging) en als aparte uitzondering bij faillissement."
   },
   {
    "cat": "recht",
    "term": "Onbehoorlijk bestuur",
-   "def": "Uitzondering op de hoofdregel dat de rechtspersoon zelf aansprakelijk is: bij wanbeleid (art. 2:9 BW, geldt voor alle rechtspersonen) kan een bestuurder persoonlijk aansprakelijk zijn. In de les genoemd voorbeeld: het Rode Kruis."
+   "def": "Uitzondering op de hoofdregel dat de rechtspersoon zelf aansprakelijk is: bij wanbeleid (art. 2:9 BW, geldt voor alle rechtspersonen) kan wie de rechtspersoon leidt persoonlijk aansprakelijk zijn. In de les genoemd voorbeeld: het Rode Kruis."
   },
   {
    "cat": "recht",
    "term": "Vertegenwoordigingsbevoegdheid",
-   "def": "Wie de rechtspersoon naar buiten mag binden, in de regel het bestuur. Bij nv en bv is iedere bestuurder individueel bevoegd, tenzij de statuten iets anders bepalen (zoals een meerhandtekeningenclausule); een grensbedrag beperkt die bevoegdheid volgens de dia's niet. Bij vereniging en stichting is het bestuur gezamenlijk bevoegd, tenzij de statuten anders bepalen. Het bestuur kan personeel een volmacht geven."
+   "def": "Wie de rechtspersoon naar buiten mag binden, in de regel het bestuur. Bij nv en bv mag iedere bestuurder dat individueel, tenzij de statuten iets anders bepalen (zoals een meerhandtekeningenclausule); een grensbedrag beperkt dat volgens de dia's niet. Bij vereniging en stichting mag het bestuur dat alleen gezamenlijk, tenzij de statuten anders bepalen. Het bestuur kan personeel een volmacht geven."
   }
  ],
  "oefentoetsen": [
