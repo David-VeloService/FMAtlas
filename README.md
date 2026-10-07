@@ -20,7 +20,10 @@ Een nieuwe pagina komt ook in `sitemap.xml` en in `FA_SEARCH_INDEX`.
 Project `fmkompas-ff8bc` (Google-login en Firestore).
 
 - `scores/{uid}`: naam, foto, punten. Publiek leesbaar voor het leaderboard.
-- `voortgang/{uid}`: voortgang per vak, reeks, laatst geopend. Alleen voor de eigenaar.
+- `voortgang/{uid}`: voortgang per vak, reeks, laatst geopend. Alleen voor de eigenaar (en leesbaar voor de beheerder, voor het dashboard).
+- `statistiek/{dag}` met `paginas/{pagina}` en `toetsen/{toets}`: anonieme tellers (bezoekers per
+  dag, weergaven per pagina, ingeleverde toetsen en de som van hun scores). Geschreven door
+  `js/statistiek.js`, gelezen door het dashboard in `beheer.html`. Geen namen, accounts of IP-adressen.
 
 Regels die horen bij de huidige code (Firebase-console → Firestore → Regels):
 
@@ -41,6 +44,28 @@ service cloud.firestore {
     }
     match /voortgang/{uid} {
       allow read, write: if request.auth != null && request.auth.uid == uid;
+      allow read: if isBeheerder();  // dashboard in beheer.html
+    }
+    // Anonieme tellers (js/statistiek.js): alleen +1 per schrijfactie, alleen de beheerder leest.
+    match /statistiek/{dag} {
+      allow read: if isBeheerder();
+      allow create: if dag.matches('^[0-9]{4}-[0-9]{2}-[0-9]{2}$')
+        && request.resource.data.keys().hasOnly(['bezoekers']) && request.resource.data.bezoekers == 1;
+      allow update: if request.resource.data.keys().hasOnly(['bezoekers'])
+        && request.resource.data.bezoekers == resource.data.bezoekers + 1;
+      match /paginas/{pagina} {
+        allow read: if isBeheerder();
+        allow create: if pagina.size() <= 80 && request.resource.data.keys().hasOnly(['n']) && request.resource.data.n == 1;
+        allow update: if request.resource.data.keys().hasOnly(['n']) && request.resource.data.n == resource.data.n + 1;
+      }
+      match /toetsen/{toets} {
+        allow read: if isBeheerder();
+        allow create: if toets.size() <= 80 && request.resource.data.keys().hasOnly(['n', 'som'])
+          && request.resource.data.n == 1 && request.resource.data.som >= 0 && request.resource.data.som <= 100;
+        allow update: if request.resource.data.keys().hasOnly(['n', 'som'])
+          && request.resource.data.n == resource.data.n + 1
+          && request.resource.data.som >= resource.data.som && request.resource.data.som - resource.data.som <= 100;
+      }
     }
     match /feedback/{id} {
       // Iedereen mag een melding toevoegen (ook zonder login), maar niets lezen.

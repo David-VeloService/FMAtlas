@@ -526,3 +526,12 @@ document.addEventListener('DOMContentLoaded', () => {
   sc.defer = true;
   document.body.appendChild(sc);
 });
+
+/* Anonieme gebruiksstatistiek voor het beheerdersdashboard (niet op beheerpagina's) */
+document.addEventListener('DOMContentLoaded', () => {
+  if (document.body.dataset.noStats !== undefined || document.body.dataset.noFeedback !== undefined) return;
+  const sc = document.createElement('script');
+  sc.src = 'js/statistiek.js';
+  sc.defer = true;
+  document.body.appendChild(sc);
+});

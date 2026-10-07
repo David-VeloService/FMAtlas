@@ -43,6 +43,33 @@
 .bh-reactie { font-size: 13.5px; line-height: 1.5; border-left: 3px solid var(--line); padding-left: 10px; color: var(--ink-soft); margin: 8px 0; white-space: pre-wrap; }
 .bh-acties { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
 .bh-leeg, .bh-melding { text-align: center; color: var(--ink-soft); padding: 40px 0; }
+.bh-tabs { display: flex; gap: 6px; margin: 10px 0 14px; border-bottom: 1.5px solid var(--line); }
+.bh-tab { font: inherit; font-size: 14px; font-weight: 800; background: none; border: 0; border-bottom: 3px solid transparent; padding: 8px 12px; margin-bottom: -1.5px; cursor: pointer; color: var(--ink-soft); }
+.bh-tab.actief { color: var(--ink); border-bottom-color: var(--accent); }
+.bh-tab span { color: var(--accent); }
+.db-tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; margin-bottom: 18px; }
+.db-tile { background: var(--surface); border: 1.5px solid var(--line); border-radius: var(--radius-lg); padding: 14px 16px; }
+.db-tile-lbl { font-size: 11px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+.db-tile-val { font-size: 28px; font-weight: 900; letter-spacing: -0.02em; margin-top: 2px; font-variant-numeric: tabular-nums; }
+.db-tile-sub { font-size: 12px; color: var(--ink-soft); }
+.db-card { background: var(--surface); border: 1.5px solid var(--line); border-radius: var(--radius-lg); padding: 16px 18px; margin-bottom: 16px; }
+.db-card h2 { font-size: 16px; font-weight: 900; margin-bottom: 4px; }
+.db-card .db-uitleg { font-size: 12.5px; color: var(--ink-soft); margin-bottom: 12px; }
+.db-grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+@media (max-width: 760px) { .db-grid2 { grid-template-columns: 1fr; } }
+.db-chart { width: 100%; height: auto; display: block; }
+.db-chart .bar { fill: var(--accent); }
+.db-chart text { font: 10px Nunito, sans-serif; fill: var(--muted); }
+.db-table-wrap { overflow-x: auto; }
+.db-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.db-table th { text-align: left; font-size: 10.5px; font-weight: 800; letter-spacing: .05em; text-transform: uppercase; color: var(--muted); padding: 6px 8px; border-bottom: 1.5px solid var(--line); white-space: nowrap; }
+.db-table td { padding: 7px 8px; border-bottom: 1px solid var(--line-soft); vertical-align: middle; }
+.db-table td.num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.db-table td.db-mix { min-width: 200px; font-size: 12px; color: var(--ink-soft); }
+.db-meter { display: inline-block; vertical-align: middle; width: 70px; height: 7px; border-radius: 999px; background: var(--surface-alt); overflow: hidden; margin-left: 6px; }
+.db-meter i { display: block; height: 100%; background: var(--accent); }
+.db-leeg { font-size: 13px; color: var(--muted); padding: 8px 0; }
+.db-let-op { background: #fff7ed; border: 1.5px solid #fdba74; color: #9a3412; border-radius: var(--radius-lg); padding: 10px 14px; font-size: 13px; margin-bottom: 14px; }
 </style>
 </head>
 <body data-no-feedback>
@@ -51,9 +78,19 @@
 <nav class="fa-breadcrumb"><a href="app.html">Vakken</a><span aria-hidden="true">›</span><span class="current">Beheer</span></nav>
 
 <main class="bh-wrap">
-  <h1>Feedback en meldingen</h1>
-  <p class="bh-sub">Alles wat via de knoppen binnenkomt. De Mac mini bekijkt nieuwe meldingen elk kwartier en zet een voorgestelde correctie klaar; met "Live zetten" gaat die de site op.</p>
-  <div id="bh-inhoud"><p class="bh-melding">Laden…</p></div>
+  <h1>Beheer</h1>
+  <div class="bh-tabs" role="tablist">
+    <button class="bh-tab actief" role="tab" data-tab="dashboard" aria-selected="true">Dashboard</button>
+    <button class="bh-tab" role="tab" data-tab="meldingen" aria-selected="false">Meldingen <span id="bh-tab-open"></span></button>
+  </div>
+  <section id="tab-dashboard">
+    <p class="bh-sub">Gebruik van FM Atlas. Bezoek en toetsen worden anoniem geteld (geen namen, geen IP-adressen); accounts en voortgang komen uit de login.</p>
+    <div id="db-inhoud"><p class="bh-melding">Laden…</p></div>
+  </section>
+  <section id="tab-meldingen" hidden>
+    <p class="bh-sub">Alles wat via de knoppen binnenkomt. De Mac mini bekijkt nieuwe meldingen elk kwartier en zet een voorgestelde correctie klaar; met "Live zetten" gaat die de site op.</p>
+    <div id="bh-inhoud"><p class="bh-melding">Laden…</p></div>
+  </section>
 </main>
 
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
@@ -82,17 +119,219 @@ auth.onAuthStateChanged(user => {
   if (stopLuisteren) { stopLuisteren(); stopLuisteren = null; }
   if (!user) {
     box.innerHTML = '<p class="bh-melding">Log in met het beheerdersaccount. <button class="fa-btn fa-btn-primary" id="bh-login">Inloggen met Google</button></p>';
-    document.getElementById('bh-login').onclick = () => auth.signInWithPopup(new firebase.auth.GoogleAuthProvider()).catch(e => {
+    document.getElementById('db-inhoud').innerHTML = box.innerHTML.replace('id="bh-login"', 'id="db-login"');
+    const login = () => auth.signInWithPopup(new firebase.auth.GoogleAuthProvider()).catch(e => {
       if (/popup-blocked|operation-not-supported/.test(e.code || '')) auth.signInWithRedirect(new firebase.auth.GoogleAuthProvider());
     });
+    document.getElementById('bh-login').onclick = login;
+    document.getElementById('db-login').onclick = login;
     return;
   }
-  if (user.uid !== BEHEERDER) { box.innerHTML = '<p class="bh-melding">Deze pagina is alleen voor de beheerder.</p>'; return; }
+  if (user.uid !== BEHEERDER) {
+    box.innerHTML = '<p class="bh-melding">Deze pagina is alleen voor de beheerder.</p>';
+    document.getElementById('db-inhoud').innerHTML = box.innerHTML;
+    return;
+  }
+  try { localStorage.setItem('fa_stats_uit', '1'); } catch (_) {}  // eigen bezoek niet meetellen
+  laadDashboard();
   stopLuisteren = db.collection('feedback').orderBy('aangemaakt', 'desc').limit(300).onSnapshot(snap => {
     alle = snap.docs.map(d => ({ id: d.id, ...d.data() }));
     teken();
+    tekenMeldingTeller();
   }, err => { box.innerHTML = `<p class="bh-melding">Kon de meldingen niet laden (${faEsc(err.code || err.message)}). Staan de Firestore-regels voor <code>feedback</code> erin?</p>`; });
 });
+
+/* ─── Tabs ─── */
+document.querySelectorAll('.bh-tab').forEach(t => t.onclick = () => {
+  document.querySelectorAll('.bh-tab').forEach(x => { x.classList.toggle('actief', x === t); x.setAttribute('aria-selected', x === t); });
+  document.getElementById('tab-dashboard').hidden = t.dataset.tab !== 'dashboard';
+  document.getElementById('tab-meldingen').hidden = t.dataset.tab !== 'meldingen';
+});
+function tekenMeldingTeller() {
+  const open = alle.filter(x => ['wacht_op_akkoord', 'voor_david', 'mislukt', 'nieuw', 'bezig', 'goedgekeurd'].includes(x.status)).length;
+  document.getElementById('bh-tab-open').textContent = open ? `· ${open}` : '';
+  const el = document.getElementById('db-meldingen');
+  if (el) el.textContent = String(open);
+  const sub = document.getElementById('db-meldingen-sub');
+  if (sub) sub.textContent = `${alle.length} in totaal`;
+}
+
+/* ─── Dashboard ─── */
+const fmt = n => Number(n || 0).toLocaleString('nl-NL');
+function dagStr(d) { return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`; }
+function laatsteDagen(n) { const a = []; for (let i = n - 1; i >= 0; i--) { const d = new Date(); d.setDate(d.getDate() - i); a.push(dagStr(d)); } return a; }
+
+/* Pagina -> vak, via de zoekindex: "Vak — Onderdeel" of een vakpagina-regel */
+function vakIndex() {
+  const perPagina = {}, hubVan = {};
+  for (const e of (typeof FA_SEARCH_INDEX !== 'undefined' ? FA_SEARCH_INDEX : [])) {
+    const vak = e.title.split(' — ')[0].trim();
+    const [pad, qs] = e.url.split('?');
+    const id = pad.replace(/\.html$/, '') + (qs ? '~' + new URLSearchParams(qs).get('vak') : '');
+    perPagina[id] = vak;
+    if (/vakpagina/.test(e.sub)) hubVan[vak] = pad;
+  }
+  return { perPagina, hubVan };
+}
+function soort(id) {
+  if (id.startsWith('begrippentoets')) return 'Begrippentoets';
+  if (/oefentoets|oefenvragen/.test(id)) return 'Oefentoets';
+  if (/flashcards/.test(id)) return 'Flashcards';
+  if (/begrippen/.test(id)) return 'Begrippen';
+  if (/samenvatting/.test(id)) return 'Samenvatting';
+  if (/toetsing/.test(id)) return 'Toetsing';
+  return 'Vakpagina';
+}
+
+async function vakkenUitApp() {
+  /* key, titel en hub-url van elk vak, uit de VAKKEN-lijst in app.html */
+  try {
+    const t = await (await fetch('app.html', { cache: 'no-store' })).text();
+    const rx = /\{ key: '([^']+)'(?:, keys: \[[^\]]*\])?, title: '((?:[^'\\]|\\.)*)'.*?url: '([^']+)'/g;
+    const out = []; let m;
+    while ((m = rx.exec(t))) out.push({ key: m[1], titel: m[2].replace(/\\'/g, "'"), url: m[3] });
+    if (out.length) return out;
+  } catch (_) {}
+  /* Terugval: de vakpagina's uit de zoekindex (key = bestandsnaam van de vakpagina) */
+  return (typeof FA_SEARCH_INDEX !== 'undefined' ? FA_SEARCH_INDEX : []).filter(e => /vakpagina/.test(e.sub))
+    .map(e => ({ key: e.url.replace(/\.html$/, ''), titel: e.title, url: e.url }));
+}
+
+async function laadDashboard() {
+  const doel = document.getElementById('db-inhoud');
+  const dagen = laatsteDagen(30);
+  const veilig = p => p.then(v => ({ ok: true, v }), e => ({ ok: false, e }));
+  const [scoresR, voortgangR, vakken, ...dagR] = await Promise.all([
+    veilig(db.collection('scores').get()),
+    veilig(db.collection('voortgang').get()),
+    vakkenUitApp(),
+    ...dagen.map(d => veilig(Promise.all([
+      db.collection('statistiek').doc(d).get(),
+      db.collection('statistiek').doc(d).collection('paginas').get(),
+      db.collection('statistiek').doc(d).collection('toetsen').get(),
+    ]))),
+  ]);
+  const waarschuwingen = [];
+  if (!voortgangR.ok) waarschuwingen.push('Voortgang per vak is nog niet leesbaar voor de beheerder.');
+  if (dagR.some(r => !r.ok)) waarschuwingen.push('Bezoekstatistiek is nog niet leesbaar of wordt nog niet bijgehouden.');
+
+  /* Statistiek per dag */
+  const perDag = dagen.map((d, i) => {
+    const r = dagR[i];
+    if (!r.ok) return { d, bezoekers: 0, weergaven: 0, paginas: [], toetsen: [] };
+    const [doc, pag, toe] = r.v;
+    const paginas = pag.docs.map(x => ({ id: x.id, n: x.data().n || 0 }));
+    const toetsen = toe.docs.map(x => ({ id: x.id, n: x.data().n || 0, som: x.data().som || 0 }));
+    return { d, bezoekers: (doc.exists && doc.data().bezoekers) || 0, weergaven: paginas.reduce((a, b) => a + b.n, 0), paginas, toetsen };
+  });
+  const som = (arr, f) => arr.reduce((a, b) => a + f(b), 0);
+  const laatste = n => perDag.slice(-n);
+  const eersteMetData = perDag.find(x => x.bezoekers || x.weergaven);
+
+  /* Accounts */
+  const scores = scoresR.ok ? scoresR.v.docs.map(x => x.data()) : [];
+  const nu = Date.now(), dagMs = 864e5;
+  const actief = (dgn) => scores.filter(x => x.updatedAt && x.updatedAt.toMillis && nu - x.updatedAt.toMillis() < dgn * dagMs).length;
+  const totaalXP = som(scores, x => x.pts || 0);
+
+  /* Voortgang per vak */
+  const voortgang = voortgangR.ok ? voortgangR.v.docs.map(x => x.data()) : [];
+  const perKey = {};
+  for (const v of voortgang) for (const [k, pct] of Object.entries(v.progress || {})) {
+    if (!pct) continue;
+    (perKey[k] = perKey[k] || []).push(pct);
+  }
+
+  /* Weergaven en toetsen per vak (30 dagen) */
+  const { perPagina, hubVan } = vakIndex();
+  const vakPerHub = {}; for (const v of vakken) vakPerHub[v.url] = v;
+  const perVak = {}, perPag = {}, perToets = {};
+  for (const dag of perDag) {
+    for (const p of dag.paginas) {
+      perPag[p.id] = (perPag[p.id] || 0) + p.n;
+      const vak = perPagina[p.id]; if (!vak) continue;
+      const r = perVak[vak] = perVak[vak] || { totaal: 0, soorten: {} };
+      r.totaal += p.n; const s = soort(p.id); r.soorten[s] = (r.soorten[s] || 0) + p.n;
+    }
+    for (const t of dag.toetsen) { const r = perToets[t.id] = perToets[t.id] || { n: 0, som: 0 }; r.n += t.n; r.som += t.som; }
+  }
+  const toetsN = som(Object.values(perToets), x => x.n), toetsSom = som(Object.values(perToets), x => x.som);
+
+  /* Tegels */
+  const tegel = (lbl, val, sub, id) => `<div class="db-tile"><div class="db-tile-lbl">${lbl}</div><div class="db-tile-val"${id ? ` id="${id}"` : ''}>${val}</div><div class="db-tile-sub"${id ? ` id="${id}-sub"` : ''}>${sub}</div></div>`;
+  const vandaag = perDag[perDag.length - 1];
+  let html = waarschuwingen.length ? `<div class="db-let-op">${waarschuwingen.map(faEsc).join(' ')} Zet de Firestore-regels uit README.md (sectie Firebase) in de Firebase-console.</div>` : '';
+  html += `<div class="db-tiles">
+    ${tegel('Bezoekers vandaag', fmt(vandaag.bezoekers), `${fmt(vandaag.weergaven)} paginaweergaven`)}
+    ${tegel('Bezoekers 7 dagen', fmt(som(laatste(7), x => x.bezoekers)), `${fmt(som(laatste(30), x => x.bezoekers))} in 30 dagen`)}
+    ${tegel('Weergaven 30 dagen', fmt(som(perDag, x => x.weergaven)), eersteMetData ? `geteld sinds ${eersteMetData.d}` : 'nog geen metingen')}
+    ${tegel('Toetsen 30 dagen', fmt(toetsN), toetsN ? `gemiddeld ${Math.round(toetsSom / toetsN)}% goed` : 'nog geen')}
+    ${tegel('Accounts', fmt(scores.length), `${fmt(actief(7))} actief in 7 dagen`)}
+    ${tegel('Punten totaal', fmt(totaalXP), `${fmt(actief(30))} actief in 30 dagen`)}
+    ${tegel('Open meldingen', '…', '', 'db-meldingen')}
+  </div>`;
+
+  /* Grafiek bezoekers per dag */
+  const max = Math.max(1, ...perDag.map(x => x.bezoekers));
+  const W = 600, H = 160, pad = 18, bw = (W - pad) / perDag.length;
+  const bars = perDag.map((x, i) => {
+    const h = Math.round((x.bezoekers / max) * (H - 30));
+    const xpos = pad + i * bw + 1, y = H - 18 - h, w = Math.max(2, bw - 2);
+    const r = Math.min(4, h, w / 2);
+    const pathD = h ? `M${xpos},${H - 18} L${xpos},${y + r} Q${xpos},${y} ${xpos + r},${y} L${xpos + w - r},${y} Q${xpos + w},${y} ${xpos + w},${y + r} L${xpos + w},${H - 18} Z` : '';
+    const lbl = new Date(x.d).toLocaleDateString('nl-NL', { weekday: 'short', day: 'numeric', month: 'short' });
+    return `<g><title>${lbl}: ${x.bezoekers} bezoekers, ${x.weergaven} weergaven</title><rect x="${pad + i * bw}" y="0" width="${bw}" height="${H - 18}" fill="transparent"/>${pathD ? `<path class="bar" d="${pathD}"/>` : ''}</g>`;
+  }).join('');
+  const as = [0, 7, 14, 21, 29].map(i => `<text x="${pad + i * bw + bw / 2}" y="${H - 4}" text-anchor="${i === 0 ? 'start' : i === 29 ? 'end' : 'middle'}">${perDag[i].d.slice(8)}-${perDag[i].d.slice(5, 7)}</text>`).join('');
+  html += `<div class="db-card"><h2>Bezoekers per dag</h2><div class="db-uitleg">Laatste 30 dagen. Eén bezoeker = één browser per dag. Hoogste dag: ${fmt(max === 1 && !perDag.some(x => x.bezoekers) ? 0 : max)}.</div>
+    <svg class="db-chart" viewBox="0 0 ${W} ${H}" role="img" aria-label="Bezoekers per dag, laatste 30 dagen">
+      <line x1="${pad}" y1="${H - 18}" x2="${W}" y2="${H - 18}" stroke="var(--line)"/>${bars}${as}</svg></div>`;
+
+  /* Vakken: weergaven + voortgang */
+  const vakRijen = vakken.map(v => {
+    const vakNaam = Object.keys(hubVan).find(n => hubVan[n] === v.url) || v.titel;
+    const w = perVak[vakNaam] || { totaal: 0, soorten: {} };
+    const pr = perKey[v.key] || [];
+    const gem = pr.length ? Math.round(pr.reduce((a, b) => a + b, 0) / pr.length) : 0;
+    const mix = Object.entries(w.soorten).sort((a, b) => b[1] - a[1]).map(([k, n]) => `${k} ${n}`).join(' · ');
+    return { titel: v.titel, totaal: w.totaal, mix, studenten: pr.length, gem };
+  }).sort((a, b) => b.totaal - a.totaal || b.studenten - a.studenten);
+  const maxV = Math.max(1, ...vakRijen.map(r => r.totaal));
+  html += `<div class="db-card"><h2>Vakken</h2><div class="db-uitleg">Weergaven in 30 dagen en de voortgang van ingelogde studenten (wie het vak heeft geopend, gemiddelde voortgang).</div>
+    <div class="db-table-wrap"><table class="db-table"><thead><tr><th>Vak</th><th>Weergaven</th><th>Waarop</th><th>Studenten</th><th>Gem. voortgang</th></tr></thead><tbody>
+    ${vakRijen.map(r => `<tr><td>${faEsc(r.titel)}</td><td class="num">${fmt(r.totaal)}<span class="db-meter"><i style="width:${Math.round(r.totaal / maxV * 100)}%"></i></span></td><td class="db-mix">${faEsc(r.mix) || '–'}</td><td class="num">${fmt(r.studenten)}</td><td class="num">${r.studenten ? r.gem + '%' : '–'}</td></tr>`).join('')}
+    </tbody></table></div></div>`;
+
+  /* Toetsen + populaire pagina's */
+  const titelVan = id => { const e = (typeof FA_SEARCH_INDEX !== 'undefined' ? FA_SEARCH_INDEX : []).find(x => { const [pd, qs] = x.url.split('?'); return pd.replace(/\.html$/, '') + (qs ? '~' + new URLSearchParams(qs).get('vak') : '') === id; }); return e ? e.title : ({ app: 'Vakkenoverzicht', index: 'Startpagina', privacy: 'Privacy' }[id] || id); };
+  const toetsRijen = Object.entries(perToets).map(([id, r]) => ({ id, n: r.n, gem: Math.round(r.som / r.n) })).sort((a, b) => a.gem - b.gem);
+  const pagRijen = Object.entries(perPag).sort((a, b) => b[1] - a[1]).slice(0, 15);
+  html += `<div class="db-grid2">
+    <div class="db-card"><h2>Oefentoetsen</h2><div class="db-uitleg">Ingeleverd in 30 dagen, laagste gemiddelde score bovenaan: daar zit de lastigste stof.</div>
+      ${toetsRijen.length ? `<div class="db-table-wrap"><table class="db-table"><thead><tr><th>Toets</th><th>Keer</th><th>Gem. score</th></tr></thead><tbody>${toetsRijen.map(r => `<tr><td>${faEsc(titelVan(r.id))}</td><td class="num">${fmt(r.n)}</td><td class="num">${r.gem}%</td></tr>`).join('')}</tbody></table></div>` : '<p class="db-leeg">Nog geen ingeleverde toetsen geteld.</p>'}</div>
+    <div class="db-card"><h2>Meest bekeken pagina's</h2><div class="db-uitleg">Top 15, laatste 30 dagen.</div>
+      ${pagRijen.length ? `<div class="db-table-wrap"><table class="db-table"><thead><tr><th>Pagina</th><th>Weergaven</th></tr></thead><tbody>${pagRijen.map(([id, n]) => `<tr><td>${faEsc(titelVan(id))}</td><td class="num">${fmt(n)}</td></tr>`).join('')}</tbody></table></div>` : '<p class="db-leeg">Nog geen weergaven geteld.</p>'}</div>
+  </div>`;
+
+  /* Leaderboard + reeksen */
+  const top = scores.slice().sort((a, b) => (b.pts || 0) - (a.pts || 0)).slice(0, 10);
+  const reeksen = voortgang.map(v => (v.streak && v.streak.count) || 0).filter(Boolean);
+  html += `<div class="db-grid2">
+    <div class="db-card"><h2>Top 10 punten</h2><div class="db-uitleg">Zelfde gegevens als het openbare leaderboard.</div>
+      ${top.length ? `<div class="db-table-wrap"><table class="db-table"><tbody>${top.map((x, i) => `<tr><td class="num" style="width:28px">${i + 1}</td><td>${faEsc(x.name || 'Anoniem')}</td><td class="num">${fmt(x.pts)}</td><td class="num" style="color:var(--muted)">${x.updatedAt && x.updatedAt.toDate ? x.updatedAt.toDate().toLocaleDateString('nl-NL', { day: 'numeric', month: 'short' }) : ''}</td></tr>`).join('')}</tbody></table></div>` : '<p class="db-leeg">Nog geen accounts.</p>'}</div>
+    <div class="db-card"><h2>Studiegedrag</h2><div class="db-uitleg">Uit de voortgang van ingelogde studenten.</div>
+      <table class="db-table"><tbody>
+        <tr><td>Studenten met voortgang</td><td class="num">${fmt(voortgang.length)}</td></tr>
+        <tr><td>Met een lopende reeks</td><td class="num">${fmt(reeksen.length)}</td></tr>
+        <tr><td>Langste reeks</td><td class="num">${reeksen.length ? Math.max(...reeksen) + ' dagen' : '–'}</td></tr>
+        <tr><td>Gemiddeld aantal vakken per student</td><td class="num">${voortgang.length ? (voortgang.reduce((a, v) => a + Object.values(v.progress || {}).filter(Boolean).length, 0) / voortgang.length).toFixed(1) : '–'}</td></tr>
+      </tbody></table></div>
+  </div>`;
+  html += `<p class="bh-sub" style="text-align:right">Bijgewerkt ${new Date().toLocaleTimeString('nl-NL', { hour: '2-digit', minute: '2-digit' })} · <a href="#" id="db-ververs">Verversen</a></p>`;
+  doel.innerHTML = html;
+  document.getElementById('db-ververs').onclick = e => { e.preventDefault(); doel.innerHTML = '<p class="bh-melding">Laden…</p>'; laadDashboard(); };
+  tekenMeldingTeller();
+}
 
 function datum(ts) {
   const d = ts && ts.toDate ? ts.toDate() : null;
