@@ -321,7 +321,7 @@ BVFMB.begrippen = [
   {cat:"veiligheid", term:"NCSC",
    def:"Nationaal Cyber Security Centrum. Volgens de les gericht op de rijksoverheid en de vitale infrastructuur. Sinds 1 januari 2026 is het DTC opgegaan in het NCSC, dat nu het aanspreekpunt is voor alle Nederlandse organisaties."},
 
-  {cat:"veiligheid", term:"DTC (Digital Trust Centre)",
+  {cat:"veiligheid", term:"DTC (Digital Trust Center)",
    def:"Digital Trust Center. Volgens de les gericht op ondernemers. Taken: response (monitoren, waarschuwen, adviseren), weerbaarder maken (bewust worden, kennis overdragen) en samenwerken per regio, branche of sector. Sinds 1 januari 2026 opgegaan in het NCSC."},
 
   {cat:"veiligheid", term:"Veiligheidscultuur",
