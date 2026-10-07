@@ -630,7 +630,7 @@ window.FBK = {
   {
    "cat": "skills",
    "term": "KPI",
-   "def": "Kritische prestatie-indicator: de meetbare waarde, vaak een getal of percentage, waarmee je controleert of je op koers ligt om een KSF te halen. Beantwoordt HOEVEEL. Voorbeeld bij de KSF snelheid: de tijd tussen bestelling en aflevering, met een streefwaarde."
+   "def": "Key performance indicator (prestatie-indicator): de meetbare waarde, vaak een getal of percentage, waarmee je controleert of je op koers ligt om een KSF te halen. Beantwoordt HOEVEEL. Voorbeeld bij de KSF snelheid: de tijd tussen bestelling en aflevering, met een streefwaarde."
   },
   {
    "cat": "skills",
@@ -820,7 +820,7 @@ window.FBK = {
   {
    "cat": "recht",
    "term": "Hoofdelijke aansprakelijkheid",
-   "def": "Iedere aansprakelijke persoon kan voor het hele bedrag worden aangesproken. Bij rechtspersonen geldt dit voor bestuurders bijvoorbeeld als de organisatie niet in het handelsregister is ingeschreven, en bij faillissement in geval van onbehoorlijk bestuur."
+   "def": "Iedere aansprakelijke persoon kan voor het hele bedrag worden aangesproken. De dia's noemen het voor bestuurders als de rechtspersoon niet in het handelsregister is ingeschreven (alle bestuurders hoofdelijk), bij een informele vereniging die niet is ingeschreven (het hele bestuur naast de vereniging) en als aparte uitzondering bij faillissement."
   },
   {
    "cat": "recht",
@@ -1216,7 +1216,7 @@ window.FBK = {
     {
      "casus": "Casus B · Lunchservice BV (zie vraag 5).",
      "text": "Na de oprichting koopt Omar zonder overleg met Sanne een koelcel van 30.000 euro voor de bv. Sanne vindt dat hij daarvoor niet bevoegd was. Kan de leverancier de bv aanspreken voor betaling? (toepassen)",
-     "model": "Ja. Het bestuur vertegenwoordigt de bv en iedere bestuurder is individueel bevoegd, tenzij de statuten iets anders bepalen, zoals een twee- of meerhandtekeningenclausule. Volgens de dia's kan de vertegenwoordigingsbevoegdheid niet worden ingeperkt door een grensbedrag. Het grensbedrag van 20.000 euro beschermt de bv dus niet tegenover de leverancier: de bv moet het volledige bedrag betalen. Intern kan Sanne Omar er wel op aanspreken dat hij zich niet aan de afspraak heeft gehouden. Vergelijk de oefenvraag over BV Kooistra uit les 2."
+     "model": "Ja. Het bestuur vertegenwoordigt de bv en iedere bestuurder is individueel bevoegd, tenzij de statuten iets anders bepalen, zoals een twee- of meerhandtekeningenclausule. Volgens de dia's kan de vertegenwoordigingsbevoegdheid niet worden ingeperkt door een grensbedrag. Het grensbedrag van 20.000 euro beschermt de bv dus niet tegenover de leverancier: de bv moet het volledige bedrag betalen. Vergelijk de oefenvraag over BV Kooistra uit les 2."
     },
     {
      "casus": "Casus B · Lunchservice BV (zie vraag 5).",

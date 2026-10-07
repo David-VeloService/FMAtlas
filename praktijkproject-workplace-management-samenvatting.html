@@ -82,7 +82,7 @@ ol.clean li { counter-increment: n; font-size: 13.5px; line-height: 1.55; paddin
 ol.clean li::before { content: counter(n) '.'; position: absolute; left: 0; top: 3px; color: var(--accent); font-weight: 900; font-size: 12.5px; }
 ol.clean li strong { color: var(--ink); font-weight: 800; }
 .sam-note { background: var(--surface); border: 1.5px dashed var(--line); border-radius: var(--radius-lg); padding: 14px 18px; font-size: 13px; color: var(--ink-soft); line-height: 1.55; margin-bottom: 18px; }
-@media (max-width: 760px) { table.compact.wide { min-width: 560px; } .two-col { grid-template-columns: 1fr; } .card-body { padding: 18px 16px; } .sam-intro { padding: 22px 18px; } .sam-intro h1 { font-size: 26px; } nav.chapnav { position: static; margin: 0 16px 16px; } .main { padding: 0 16px 48px; } .sam-wrap { padding: 16px; } }
+@media (max-width: 760px) { table.compact.wide { min-width: 560px; } .two-col { grid-template-columns: 1fr; } .card-body { padding: 18px 16px; } .sam-intro { padding: 22px 18px; } .sam-intro h1 { font-size: 26px; } nav.chapnav { position: static; margin: 0 16px 16px; flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; } nav.chapnav a { white-space: nowrap; flex-shrink: 0; } .main { padding: 0 16px 48px; } .sam-wrap { padding: 16px; } }
 </style>
 </head>
 <body>

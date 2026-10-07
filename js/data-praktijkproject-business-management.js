@@ -465,13 +465,13 @@ window.PRJBUS = {
   },
   {
    "cat": "meten",
-   "term": "Vijf grafieken (Seven Basic Quality Tools)",
-   "def": "Een van de vijf grafieken uit de Seven Basic Quality Tools: categorieën van hoog naar laag (80/20), waar zit de meeste pijn? De andere vier: run chart (verandering over tijd), histogram (verdeling), boxplot (groepen vergelijken op mediaan en spreiding) en scatterplot (samenhang tussen X en Y)."
+   "term": "Pareto-diagram",
+   "def": "Grafiek uit de Seven Basic Quality Tools die categorieën van hoog naar laag zet: waar zit de meeste pijn (80/20)? De andere vier grafieken uit de les: run chart (verandering over tijd), histogram (verdeling), boxplot (groepen vergelijken op mediaan en spreiding) en scatterplot (samenhang tussen X en Y)."
   },
   {
    "cat": "meten",
    "term": "Centrum- en spreidingsmaten",
-   "def": "Centrummaten: gemiddelde, mediaan (robuust bij uitschieters) en modus. Spreidingsmaten: range (max min min) en standaarddeviatie; een lage standaarddeviatie betekent een consistent proces."
+   "def": "Centrummaten: gemiddelde, mediaan (robuust bij uitschieters) en modus. Spreidingsmaten: range (hoogste min laagste waarde) en standaarddeviatie; een lage standaarddeviatie betekent een consistent proces."
   },
   {
    "cat": "analyse",
@@ -946,8 +946,8 @@ window.PRJBUS = {
     {
      "text": "Welke uitspraak over de Scrum Master klopt?",
      "options": [
-      "Hij faciliteert het proces en zorgt dat belemmeringen worden opgelost, maar wijst geen taken toe",
-      "Hij is als enige verantwoordelijk voor het inhoudelijke contact met de opdrachtgever",
+      "Hij faciliteert het proces en lost belemmeringen op, maar wijst geen taken toe",
+      "Hij onderhoudt als enige het inhoudelijke contact met de opdrachtgever",
       "Hij is de projectleider en verdeelt de taken uit de sprint backlog",
       "Hij bepaalt welke items uit de product backlog de hoogste prioriteit krijgen"
      ],
@@ -994,7 +994,7 @@ window.PRJBUS = {
       "Een meetbare indicator met een norm die continu wordt gemeten",
       "Een concreet doel dat de organisatie dit jaar wil bereiken",
       "Wat de klant waardeert, opgehaald via interviews en enquêtes",
-      "Een onderdeel waarin de organisatie móét uitblinken, rechtstreeks afgeleid uit missie en visie"
+      "Iets waarin de organisatie moet uitblinken, afgeleid uit missie en visie"
      ],
      "answer": 3,
      "explanation": "Een KSF is kwalitatief en richtinggevend. De meetbare indicator met norm is een KPI, het concrete doel is een doelstelling (de laag tussen KSF en KPI in de piramide) en wat de klant waardeert is klantwaarde (VOC)."
@@ -1041,16 +1041,16 @@ window.PRJBUS = {
       "Als de mate waarin het werk volgens de werkinstructie wordt uitgevoerd"
      ],
      "answer": 0,
-     "explanation": "Kwaliteit = ervaring min verwachting; de klant bepaalt het niveau. Klachten per honderd diensten is een defect rate, werken volgens instructie gaat over standaardisatie en de laatste optie beschrijft de PCE."
+     "explanation": "Kwaliteit = ervaring min verwachting; de klant bepaalt het niveau. De verhouding tussen waarde-toevoegende tijd en doorlooptijd is de PCE, klachten per honderd diensten is een defect rate (klachtenregistratie) en werken volgens de werkinstructie gaat over standaardisatie."
     },
     {
      "section": "Les 3 · afbakenen, KPI's en procesbeschrijving",
      "text": "Je bakent een storingsproces af. Welk eindpunt sluit het best aan bij de les?",
      "options": [
-      "De monteur heeft de reparatie uitgevoerd",
-      "De storing is opgelost en de melder is geïnformeerd",
+      "De monteur heeft de reparatie ter plekke uitgevoerd",
+      "De storing is opgelost en de melder geïnformeerd",
       "De melding is toegewezen aan de technische dienst",
-      "De melding is geregistreerd in het FMIS"
+      "De melding is geregistreerd en ingepland in het FMIS"
      ],
      "answer": 1,
      "explanation": "Het eindpunt is de laatste activiteit waarbij de klant waarde heeft ontvangen. De les wijst erop dat 'informeren' bij het eindpunt hoort; anders valt de terugkoppeling naar de klant buiten je analyse."
@@ -1070,9 +1070,9 @@ window.PRJBUS = {
      "text": "Op welk procesniveau ontstaan volgens de les vooral wachttijd en variatie?",
      "options": [
       "Niveau 3, het activiteitenniveau",
-      "Niveau 1, het hoogover proces",
+      "Niveau 1, het hoogover procesniveau",
       "Niveau 2, het flowchartniveau",
-      "Niveau 4, de werkinstructie"
+      "Niveau 4, de SOP en werkinstructie"
      ],
      "answer": 0,
      "explanation": "Op niveau 3 zie je hoe activiteiten worden opgepakt, onderbroken en overgedragen; daar ontstaan wachttijd en variatie. Niveau 2 toont de logica maar niet wat er in de uitvoering gebeurt."
@@ -1080,24 +1080,24 @@ window.PRJBUS = {
     {
      "text": "Een team stelt voor om een structureel vastlopend proces op te lossen met extra werkinstructies. Wat is volgens de les het probleem?",
      "options": [
-      "Werkinstructies zijn niveau 1 en daarmee te abstract voor een analyse",
+      "Werkinstructies zijn niveau 1 en daardoor te abstract voor een analyse",
       "Er is geen probleem: extra instructies verminderen altijd de variatie",
-      "Het team mengt niveaus: werkinstructies voegen detail toe, maar maken een instabiel proces niet stabieler",
-      "Werkinstructies horen pas in de Control-fase en mogen nog niet in Define"
+      "Werkinstructies voegen detail toe, maar maken een instabiel proces niet stabieler",
+      "Werkinstructies horen pas in de Control-fase en nog niet in Define"
      ],
      "answer": 2,
      "explanation": "Niveau 4 ondersteunt het proces maar kan het niet ontwerpen of verbeteren. Ligt de oorzaak hoger in het proces, dan lossen instructies die niet op. Werkinstructies zijn niveau 4, niet niveau 1."
     },
     {
-     "text": "Een team stuurt alleen op de KPI '% storingen opgelost binnen 8 uur'. Welk risico benoemt de les?",
+     "text": "Een team stuurt alleen op de KPI '% storingen opgelost binnen 8 uur, target 90%'. Welk risico benoemt de les hierbij?",
      "options": [
-      "De KPI is niet tijdgebonden en dus niet SMART",
-      "Te veel KPI's tegelijk, waardoor er geen focus is",
-      "De KPI heeft geen norm en zegt daarom niets",
-      "Een perverse prikkel: snelheid kan ten koste gaan van kwaliteit, dus combineer met een kwaliteitsindicator zoals first time fix rate"
+      "De KPI is niet tijdgebonden en daarom niet SMART geformuleerd",
+      "Er zijn te veel KPI's tegelijk, waardoor de focus verdwijnt",
+      "De KPI mist een norm en zegt daardoor niets over de prestatie",
+      "Een perverse prikkel: snelheid gaat ten koste van kwaliteit"
      ],
      "answer": 3,
-     "explanation": "Puur op snelheid sturen kan kwaliteit ruïneren; daarom combineer je een snelheids- en een kwaliteitsindicator. In het praktijkvoorbeeld staat naast '% opgelost binnen 8 uur' de first time fix rate. De KPI heeft hier wel een tijdsgrens."
+     "explanation": "Puur op snelheid sturen kan de kwaliteit ondermijnen; daarom combineer je een snelheids- met een kwaliteitsindicator. In het praktijkvoorbeeld staat naast '% opgelost binnen 8 uur' de first time fix rate. De KPI heeft hier wel een tijdsgrens en een norm (90%), en het gaat om één KPI, niet om te veel."
     },
     {
      "text": "Bij een storingsproces zijn melder, servicedesk, facilitair coördinator, technische dienst en een externe leverancier betrokken. Je wilt zien wie welke stap doet en waar overdrachten misgaan. Welke tool kies je?",
@@ -1116,7 +1116,7 @@ window.PRJBUS = {
       "Het reinigingsmiddel in de toiletpot moet eerst inweken",
       "Zo kun je zo vroeg mogelijk beginnen met dweilen",
       "De wastafel ligt het dichtst bij de uitgang",
-      "Je werkt van schoon naar vuil, om kruisbesmetting te voorkomen"
+      "Je werkt van schoon naar vuil, tegen kruisbesmetting"
      ],
      "answer": 3,
      "explanation": "De feedback in het spel noemt dit de gouden FM-regel: van schoon naar vuil, want de wastafel is schoner dan het toilet. Dweilen is juist de laatste fysieke stap, richting de uitgang."
@@ -1127,10 +1127,10 @@ window.PRJBUS = {
       "Je beschrijft per fase wat de gebruiker doet, denkt en voelt",
       "Je tekent de werkelijke looproute op een plattegrond",
       "Elke stap staat in een eigen swimlane per afdeling",
-      "Elke klantstap moet ondersteund worden door een interne actie; ontbreekt die, dan heb je een gat gevonden"
+      "Elke klantstap moet door een interne actie worden ondersteund"
      ],
      "answer": 3,
-     "explanation": "De blueprint koppelt frontstage (klantacties, zichtbare contactmomenten) aan backstage via de lijn van zichtbaarheid. Doen, denken en voelen hoort bij de journey map, de looproute bij het spaghettidiagram."
+     "explanation": "Ontbreekt bij een klantstap de ondersteunende interne actie, dan heb je een gat gevonden. De blueprint koppelt frontstage (klantacties, zichtbare contactmomenten) aan backstage via de lijn van zichtbaarheid. Doen, denken en voelen hoort bij de journey map, de looproute bij het spaghettidiagram."
     },
     {
      "section": "Les 4 en 5 · meetplan en metingen uitwerken",
@@ -1169,7 +1169,7 @@ window.PRJBUS = {
     {
      "text": "Wat raadt de les aan voordat de definitieve meetperiode start?",
      "options": [
-      "Een pilotmeting van 1 à 2 dagen om procedure, formulieren en meters te testen",
+      "Een pilotmeting van 1 à 2 dagen om procedure en formulieren te testen",
       "Eerst de verbeteroplossing kiezen, zodat je gericht kunt meten",
       "Alle X-variabelen meten voordat de uitkomstmaat Y vaststaat",
       "Een convenience-steekproef nemen om snel data te hebben"
@@ -1180,13 +1180,13 @@ window.PRJBUS = {
     {
      "text": "Je wilt laten zien welk klachttype het vaakst voorkomt. Welke grafiek past?",
      "options": [
-      "Een boxplot",
+      "Een boxplot per klachttype",
       "Een Pareto-diagram",
       "Een run chart",
       "Een scatterplot"
      ],
      "answer": 1,
-     "explanation": "Een Pareto zet categorieën van hoog naar laag en laat zien waar de meeste pijn zit (80/20). Een run chart toont verloop over tijd, een scatterplot samenhang tussen X en Y, een boxplot verschillen tussen groepen."
+     "explanation": "Een Pareto zet categorieën van hoog naar laag en laat zien waar de meeste pijn zit (80/20). Een run chart toont verloop over tijd, een scatterplot samenhang tussen X en Y, en een boxplot vergelijkt groepen op mediaan en spreiding, niet op hoe vaak iets voorkomt."
     },
     {
      "text": "In een proces is de waarde-toevoegende tijd 2 uur en de totale doorlooptijd 40 uur. Wat is de PCE?",
@@ -1204,20 +1204,20 @@ window.PRJBUS = {
      "text": "De servicedesk typt een digitaal binnengekomen melding 'voor de zekerheid' nog handmatig over in een apart Excel-lijstje. Welke verspilling is dit?",
      "options": [
       "Onnodige administratie",
-      "Overbewerking",
+      "Wachten",
       "Fouten en herstelwerk",
-      "Voorraad"
+      "Onbenut talent van medewerkers"
      ],
      "answer": 0,
-     "explanation": "Dubbel registreren is onnodige administratie, een van de twee FM-specifieke verspillingen. Overbewerking gaat over meer werk aan een ruimte of dienst dan de gebruiker verwacht; hier wordt niets hersteld en er ligt geen materiaal op voorraad."
+     "explanation": "Dubbel registreren is onnodige administratie, een van de twee FM-specifieke verspillingen; in het oefenspel is dit precies de situatie bij 'Ontvangst & Triage'. Er wordt niets hersteld (dus geen fouten en herstelwerk), niemand staat stil (geen wachten) en er wordt geen idee van een medewerker genegeerd."
     },
     {
      "text": "Een storing registreren in het FMIS levert de melder geen waarde op, maar is wel nodig voor de planning. Hoe label je deze stap en wat doe je ermee?",
      "options": [
-      "BNVA: niet waarde-toevoegend, dus direct schrappen",
-      "BNVA: noodzakelijk zonder klantwaarde, dus vereenvoudigen of minimaliseren",
-      "NVA: verspilling, dus elimineren",
-      "VA: waarde-toevoegend, dus behouden"
+      "BNVA: geen klantwaarde, dus direct schrappen",
+      "BNVA: nodig maar zonder klantwaarde, dus vereenvoudigen",
+      "NVA: verspilling, dus volledig elimineren",
+      "VA: nodig voor planning, dus behouden"
      ],
      "answer": 1,
      "explanation": "Business Non-Value Added is nodig voor planning, verantwoording of facturatie. De les waarschuwt: niet zomaar schrappen, maar vereenvoudigen. Elimineren is voor NVA."
@@ -1228,7 +1228,7 @@ window.PRJBUS = {
       "5x waarom verkent de breedte; Ishikawa zoekt daarna de diepte",
       "Ishikawa prioriteert oorzaken op impact; 5x waarom telt hoe vaak ze voorkomen",
       "Beide leveren de kernoorzaak op, dus je kiest één van de twee",
-      "Ishikawa verkent de breedte van mogelijke oorzaken; 5x waarom zoekt de diepte tot een beïnvloedbare kernoorzaak"
+      "Ishikawa verkent de breedte, 5x waarom zoekt daarna de diepte tot de kernoorzaak"
      ],
      "answer": 3,
      "explanation": "De les adviseert te combineren: eerst breedte met de 6 M's, dan diepte met doorvragen. Prioriteren op impact doe je met een Pareto-analyse."
@@ -1236,13 +1236,13 @@ window.PRJBUS = {
     {
      "text": "Welke formulering is volgens de les het sterkste kernprobleem?",
      "options": [
-      "De klanten zijn ontevreden over de dienstverlening",
-      "Er is te weinig personeel bij de receptie",
+      "De klanten zijn over het algemeen ontevreden over de dienstverlening",
+      "Er is te weinig personeel bij de receptie tijdens de ochtendpiek",
       "Tickets blijven openstaan door dubbele registratie in twee systemen",
-      "Het archief is niet op orde"
+      "Het archief is niet op orde en moet beter worden bijgehouden"
      ],
      "answer": 2,
-     "explanation": "Een goed kernprobleem is specifiek en feitelijk, gerelateerd aan klantwaarde en herleidbaar tot oorzaken. 'Archief niet op orde' noemt de les zwak; 'te weinig personeel' is in het receptievoorbeeld juist het symptoom en niet de kernoorzaak."
+     "explanation": "Een goed kernprobleem is specifiek en feitelijk, gerelateerd aan klantwaarde en herleidbaar tot oorzaken: het noemt wat er misgaat én waardoor. 'Archief niet op orde' noemt de les zwak, algemene ontevredenheid is niet specifiek, en 'te weinig personeel' is in het wachtrijvoorbeeld van les 7 juist het symptoom en niet de kernoorzaak."
     }
    ],
    "open": [
@@ -1277,7 +1277,7 @@ window.PRJBUS = {
      "text": "Wat hoort er in de divergeerfase van Generate?",
      "options": [
       "Een implementatieplan maken voor de beste ideeën",
-      "Zoveel mogelijk verbeterideeën verzamelen zonder al te oordelen",
+      "Zoveel mogelijk ideeën verzamelen, nog zonder te oordelen",
       "Met de PUGH-matrix één voorkeursoplossing kiezen",
       "Elk idee direct toetsen op kosten en haalbaarheid"
      ],
@@ -1331,7 +1331,7 @@ window.PRJBUS = {
     {
      "text": "Een team wil sensoren voor bezettingsmeting voorstellen als verbeterrichting. Welke toets hoort daar volgens de les altijd bij?",
      "options": [
-      "Voegt het klantwaarde toe en past het bij de strategie van de opdrachtgever?",
+      "Voegt het klantwaarde toe en past het bij de strategie?",
       "Is het de nieuwste technologie die op de markt is?",
       "Kan de technologie medewerkers volledig vervangen?",
       "Wordt het al door concurrenten van de opdrachtgever gebruikt?"
@@ -1344,7 +1344,7 @@ window.PRJBUS = {
      "text": "Hoe ontwerp je volgens de les de future state?",
      "options": [
       "Kleine aanpassingen doen aan de current state, zodat de verandering beperkt blijft",
-      "Eerst het ideale proces zonder verspilling ontwerpen en daarna terugredeneren naar wat haalbaar is",
+      "Eerst het ideaal zonder verspilling ontwerpen, dan terugredeneren naar wat haalbaar is",
       "Een best practice van een andere organisatie overnemen",
       "Beginnen bij wat binnen het huidige budget past"
      ],
@@ -1387,13 +1387,13 @@ window.PRJBUS = {
     {
      "text": "Voordat je kiest, vergelijk je richtingen op vier dimensies. Welke dimensie vergeten studenten volgens de les het vaakst?",
      "options": [
-      "Risico",
-      "Haalbaarheid",
-      "Aansluiting op de organisatiecontext",
-      "Impact"
+      "Risico: wat kan er misgaan",
+      "Haalbaarheid binnen tijd en middelen",
+      "Aansluiting op de context",
+      "Impact op kwaliteit, kosten en tijd"
      ],
      "answer": 2,
-     "explanation": "Een technisch briljant ontwerp dat botst met cultuur, systemen of de bedoeling van de organisatie strandt in de praktijk; die toets wordt het vaakst vergeten."
+     "explanation": "De vierde dimensie is aansluiting op de organisatiecontext: past het bij cultuur, systemen en de bedoeling van de organisatie? Een technisch briljant ontwerp dat daarmee botst, strandt in de praktijk; volgens de les vergeten studenten die toets het vaakst."
     },
     {
      "text": "Vanuit welke drie perspectieven onderbouw je de waarde van de gekozen oplossing?",
@@ -1413,7 +1413,7 @@ window.PRJBUS = {
       "Steek de meeste energie in het overtuigen van de tegenstanders",
       "Laat de middengroep buiten beschouwing, die past zich later wel aan",
       "Wacht met invoeren tot iedereen voorstander is",
-      "Laat voorstanders zichtbaar succes boeken met een quick win, zodat de middengroep volgt"
+      "Laat voorstanders een quick win boeken, zodat de middengroep volgt"
      ],
      "answer": 3,
      "explanation": "De onbesliste middengroep kiest de kant van de sterkste groep. Een zichtbare quick win bij de voorstanders trekt die groep mee."
@@ -1466,13 +1466,13 @@ window.PRJBUS = {
      "section": "P2 les 4 · implementatie en risico's",
      "text": "Wat noemt de les de klassieke beginnersfout bij een implementatieplan?",
      "options": [
-      "Alleen de zichtbare verandering plannen en ondersteunende activiteiten zoals training en werkinstructies vergeten",
+      "Alleen de zichtbare verandering inplannen, niet de training",
       "Per activiteit een RACI maken in plaats van één voor het hele project",
       "Te veel mijlpalen opnemen, waardoor de planning onoverzichtelijk wordt",
-      "Succescriteria al vóór de invoering vastleggen"
+      "Succescriteria al vóór de invoering SMART vastleggen"
      ],
      "answer": 0,
-     "explanation": "'We zetten het nieuwe meldsysteem aan' is geen plan; het echte werk zit in training, instructies en communicatie. Succescriteria vooraf vastleggen is juist wat de les vraagt."
+     "explanation": "'We zetten het nieuwe meldsysteem aan' is geen plan: het echte werk zit in ondersteunende activiteiten zoals training, werkinstructies en communicatie. Succescriteria vooraf SMART vastleggen is juist wat de les vraagt."
     },
     {
      "text": "Welk succescriterium is het sterkst geformuleerd?",
@@ -1499,10 +1499,10 @@ window.PRJBUS = {
     {
      "text": "In de FMEA-light van het meldproces staat 'FMIS-koppeling valt uit' (E5, K2, D5) bovenaan, terwijl de kans laag is. Waarom?",
      "options": [
-      "De fout is ernstig én blijft lang onopgemerkt; een slechte detecteerbaarheid verhoogt het risicogetal",
-      "Omdat de kans bij deze fout het hoogst is",
-      "Omdat de meest voorkomende fout altijd eerst wordt aangepakt",
-      "Omdat ernst in de RPN dubbel meetelt"
+      "De fout is ernstig én blijft lang onopgemerkt (slechte detectie)",
+      "Omdat ICT bij deze processtap Accountable is",
+      "Omdat de vaakst voorkomende fout eerst wordt aangepakt",
+      "Omdat de ernst in de RPN-berekening dubbel meetelt"
      ],
      "answer": 0,
      "explanation": "Niet de meest voorkomende fout krijgt prioriteit, maar de combinatie van ernst, kans en detectie (RPN 50). 'Gebruiker blijft bellen' komt vaak voor, maar is minder ernstig en goed zichtbaar (RPN 30)."
@@ -1568,7 +1568,7 @@ window.PRJBUS = {
      "options": [
       "Nieuwe KPI's kiezen die losstaan van de Measure-fase",
       "Zoveel mogelijk nieuwe KPI's toevoegen voor een compleet beeld",
-      "Een norm en ingrijpgrens, een vast ritme en iemand die bij afwijking ingrijpt",
+      "Een norm met ingrijpgrens, een vast ritme en iemand die ingrijpt",
       "Eenmalig een eindmeting doen na de pilot"
      ],
      "answer": 2,
@@ -1578,12 +1578,12 @@ window.PRJBUS = {
      "text": "Wanneer draag je volgens de gouden regel van les 6 het project over?",
      "options": [
       "Automatisch na de eindpresentatie",
-      "Pas als de proceseigenaar het echt kan dragen; daarna ontbind je het team",
+      "Pas als de proceseigenaar het echt kan dragen",
       "Als de docent het einddossier heeft goedgekeurd",
       "Zodra het adviesrapport af is"
      ],
      "answer": 1,
-     "explanation": "Het project is pas af als de proceseigenaar het kan overnemen, niet als het rapport klaar is (Lean Back: de organisatie blijft eigenaar van haar eigen proces)."
+     "explanation": "Gouden regel: draag pas over als de proceseigenaar het echt kan dragen; daarna pas ontbind je het team. Het project is af als de proceseigenaar het kan overnemen, niet als het rapport klaar is (Lean Back: de organisatie blijft eigenaar van haar eigen proces)."
     },
     {
      "text": "Aan welke drie eisen moet het einddossier volgens les 7 voldoen?",
@@ -1600,7 +1600,7 @@ window.PRJBUS = {
      "text": "Wat is in les 7 het verschil tussen lessons learned en de retrospective?",
      "options": [
       "Lessons learned zijn alleen voor de opdrachtgever, de retrospective alleen voor de docent",
-      "Lessons learned gaan over de aanpak van het project, de retrospective over de samenwerking in het team",
+      "Lessons learned gaan over de aanpak, de retrospective over de samenwerking",
       "Er is geen verschil; beide termen betekenen hetzelfde",
       "Lessons learned gaan over de samenwerking, de retrospective over de aanpak"
      ],
@@ -1712,9 +1712,9 @@ window.PRJBUS = {
      "model": "Boven niveau maakt de impact breed en concreet, financieel én niet-financieel, gekoppeld aan de facilitaire toegevoegde waarden: minder werk en minder verspilde catering (kosten), minder fouten en betere voorspelbaarheid voor het zaalteam (productiviteit), tevredener gebruikers (tevredenheid, imago) en minder weggegooid eten (duurzaamheid). Waar mogelijk onderbouwd met eigen meetdata of de KPI's die in de borging worden gevolgd, en met de erkenning welke opbrengst nog een verwachting is."
     },
     {
-     "casus": "Rubriccriterium: meervoudige toegevoegde waarde en afweging (20%). Het team adviseert de nachtelijke schoonmaak van vergaderruimtes naar de middag te verplaatsen, zodat er niet om 06:00 uur wordt klaargezet voor meetings die pas 's middags beginnen.",
+     "casus": "Rubriccriterium: meervoudige toegevoegde waarde en afweging (20%). Het team adviseert vergaderruimtes niet meer om 06:00 uur klaar te zetten voor meetings die pas 's middags beginnen, maar het klaarzetten te plannen op basis van het reserveringsrooster, kort voor gebruik.",
      "text": "Wat zijn de nadelen van jullie advies, en waarom wegen de voordelen zwaarder?",
-     "model": "Boven niveau benoemt eerlijk de nadelen (bijvoorbeeld meer zichtbaarheid van schoonmaak tijdens kantoortijd, aanpassing van roosters, weerstand bij medewerkers) en maakt een kritische afweging: welke nadelen zijn te beperken (afspraken over tijdvensters, gebruikers informeren) en waarom de voordelen zwaarder wegen (minder onnodig werk, minder energieverbruik door apparatuur en licht die niet uren te vroeg aanstaan, kwaliteit en klantwaarde). Het advies is onderbouwd met een afweging van voor- en nadelen, niet alleen met voordelen."
+     "model": "Boven niveau benoemt eerlijk de nadelen (bijvoorbeeld schoonmaak en klaarzetten die zichtbaar worden tijdens kantoortijd, aangepaste roosters en planning, weerstand bij medewerkers die aan het vaste ritme gewend zijn) en maakt een kritische afweging: welke nadelen zijn te beperken (afspraken over tijdvensters, gebruikers informeren) en waarom de voordelen zwaarder wegen (minder onnodig werk, minder energieverbruik doordat apparatuur, licht en klimaat niet uren te vroeg aanstaan, en een dienst die aansluit op wat de gebruiker nodig heeft). Waar mogelijk onderbouwd met de observatie en de planning- en energiedata uit de analyse. Het advies rust op een afweging van voor- en nadelen, niet alleen op voordelen."
     },
     {
      "casus": "Rubriccriterium: meervoudige toegevoegde waarde en afweging (20%). Een team heeft gekozen voor optie A uit de PUGH-matrix (hoogste gewogen score). Een stakeholder vraagt waarom niet de goedkoopste optie C.",

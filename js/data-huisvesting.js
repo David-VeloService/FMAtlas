@@ -235,7 +235,7 @@ window.HUIV = {
   {
    "cat": "bouwkunde",
    "term": "Spouwmuur",
-   "def": "Muur van twee halfsteens muren met daartussen een spouw van 3 tot 10 cm. De bladen zijn verbonden met spouwankers. Bijna altijd een buitenmuur of woningscheidende muur."
+   "def": "Muur van twee halfsteens muren met daartussen een spouw van 3 tot 10 cm. Bijna altijd een buitenmuur of woningscheidende muur. In buitenmuren zijn de bladen verbonden met spouwankers; bij woningscheidende muren liever niet, omdat ankers geluid doorgeven (ankerloze spouwmuur)."
   },
   {
    "cat": "bouwkunde",
@@ -785,7 +785,7 @@ window.HUIV = {
   {
    "cat": "mens",
    "term": "Greene en Meyerson",
-   "def": "Typologie (persona's) van vier soorten kenniswerkers, van lage naar hoge mobiliteit: anchor, connector, gatherer en navigator."
+   "def": "Typologie (persona's) van vier soorten kenniswerkers, van lage naar hoge mobiliteit: anchor, connector, gatherer en navigator. De dia toont ze alleen als tekeningen op een as van mobiliteit."
   },
   {
    "cat": "mens",
@@ -830,7 +830,7 @@ window.HUIV = {
   {
    "cat": "mens",
    "term": "NEN 8021",
-   "def": "Norm voor het waarderen van gebruiksprestaties van utiliteitsgebouwen. Legt per prestatie-indicator een gebruikersprofiel (welke eisen) naast een gebouwprofiel (wat het gebouw biedt), met een belang van 0 tot 3."
+   "def": "Norm voor het waarderen van gebruiksprestaties van gebouwen (op de dia het voorbeeld bij functionaliteit). Legt per prestatie-indicator een gebruikersprofiel (welke eisen) naast een gebouwprofiel (wat het gebouw biedt), met een belang van 0 tot 3."
   },
   {
    "cat": "mens",
@@ -860,7 +860,7 @@ window.HUIV = {
   {
    "cat": "mens",
    "term": "Gestalttheorie",
-   "def": "Mensen nemen een totaalbeeld waar: het geheel is meer dan de som van de delen. Principes: nabijheid, gelijkheid, figuur-achtergrond, continuïteit en sluiting."
+   "def": "Mensen nemen een totaalbeeld waar: het geheel is meer dan de som van de delen. Principes: nabijheid, gelijkheid, figuur-achtergrond, continuïteit, sluiting en verbondenheid."
   },
   {
    "cat": "werkplek",
@@ -1120,7 +1120,7 @@ window.HUIV = {
   {
    "cat": "bouwproces",
    "term": "PPS (publiek-private samenwerking)",
-   "def": "Contractvorm waarbij de overheid beschrijft wat ze voor bijvoorbeeld 30 jaar nodig heeft en een consortium dat realiseert inclusief financiering; de overheid betaalt jaarlijks voor de geleverde prestatie (D-B-F-M-O)."
+   "def": "Contractvorm waarbij de overheid beschrijft wat ze voor bijvoorbeeld 30 jaar nodig heeft en een consortium dat realiseert inclusief financiering; de overheid betaalt jaarlijks voor de geleverde prestatie (op de dia: partijen voor D-B-F-M-O)."
   },
   {
    "cat": "bouwproces",
@@ -1307,7 +1307,7 @@ window.HUIV = {
       "Hoe lossen we de storing aan de lift vandaag nog op?",
       "Welke huisvestingsstrategie past bij de groei van onze organisatie?",
       "Hoe snel worden meldingen bij de servicedesk afgehandeld?",
-      "Hoe vangen we morgen de extra schoonmaak na de verbouwing op?"
+      "Hoe vangen we morgen de extra schoonmaak na de verbouwing in het pand op?"
      ],
      "answer": 1,
      "explanation": "Op strategisch niveau gaat het om beleid, visie en de aansluiting van de facilitaire organisatie op de bedrijfsdoelen; het artikel noemt precies dit soort vraag over huisvestingsstrategie en groei. De andere drie gaan over de dagelijkse uitvoering: storingen oplossen, meldingen afhandelen en leveranciers aansturen horen bij het operationele niveau, gericht op continuïteit."
@@ -1358,37 +1358,37 @@ window.HUIV = {
      "explanation": "Muteren is het veranderen van de huisvesting via huisvestingsprojecten, zoals (ver)bouwen; in de literatuurtabel vallen ook fasering, investeringskosten en contractmodellen van zulke projecten onder muteren. Exploiteren is verleidelijk omdat het om een bestaand gebouw gaat, maar exploiteren is het beheren en in stand houden van wat er is, niet het veranderen ervan."
     },
     {
-     "text": "Bij elk hoofdproces van huisvestingsmanagement hoort een valkuil. Welke valkuil hoort bij exploiteren?",
+     "text": "Volgens het totaalbeeld uit les 1.2 leveren huisvestingscomponenten huisvestingsprestaties. Waartoe leiden die prestaties als je ze afzet tegen de behoeften van de gebruikers?",
      "options": [
-      "In een ivoren toren zitten",
-      "Geen oog hebben voor de toekomst",
-      "Steeds opnieuw het wiel uitvinden",
-      "De primaire taken verwaarlozen"
+      "Tot toegevoegde waarde voor de organisatie",
+      "Tot een positieve gebruikerservaring",
+      "Tot lagere huisvestingskosten per m2",
+      "Tot een programma van eisen voor de architect"
      ],
      "answer": 1,
-     "explanation": "Wie alleen exploiteert, beheert het gebouw van dag tot dag en verliest de toekomst uit het oog. De ivoren toren is de valkuil van strategie ontwikkelen, steeds opnieuw het wiel uitvinden die van muteren, en het verwaarlozen van primaire taken die van huisvestingsmanagement organiseren."
+     "explanation": "In het schema uit les 1.2 (Duffy en Powel) leiden huisvestingsprestaties langs twee lijnen tot resultaat: gestuurd door de organisatiedoelen tot <strong>toegevoegde waarde</strong>, en gestuurd door de gebruikersbehoeften tot een <strong>positieve gebruikerservaring</strong>. Toegevoegde waarde is de verleidelijke fout: die hoort bij de organisatiedoelen, niet bij de behoeften van de gebruikers."
     },
     {
-     "text": "In welke drie groepen worden de stakeholders bij huisvesting verdeeld?",
+     "text": "Het schema ‘spelers en speelveld’ uit les 1.2 deelt de stakeholders rond huisvestingsmanagement (HVM) in. Waar hoort het middenkader bij?",
      "options": [
-      "Gebruikers, management en financiers, externe stakeholders",
-      "Opdrachtgever, architect, aannemer en onderaannemers",
-      "Mens, proces en product, economie en maatschappij",
-      "Primaire, secundaire en publieke stakeholders"
+      "De interne stakeholders",
+      "De ondersteunende staf",
+      "De externe stakeholders",
+      "De maatschappelijke spelers"
      ],
      "answer": 0,
-     "explanation": "De stakeholders bij huisvesting zijn gebruikers, management en financiers, en externe stakeholders zoals de gemeente of omwonenden. Opdrachtgever, architect en aannemer zijn bouwpartijen uit les 5.3. Primair, secundair en publiek zijn de drie soorten territorium uit les 2.3."
+     "explanation": "Het schema heeft drie ringen. Binnenin zit HVM als deel van de ondersteunende staf. Daaromheen liggen de interne stakeholders: interne gebruikers, topmanagement en middenkader. In de buitenste ring staan de externe stakeholders: externe gebruikers, maatschappelijke spelers, externe partners en externe financiers. De maatschappelijke spelers zijn dus een externe groep."
     },
     {
-     "text": "Huisvesting kan op vier domeinen toegevoegde waarde leveren. Bij welk domein hoort de toegevoegde waarde productiviteit?",
+     "text": "Huisvesting kan volgens de tabel uit les 1.2 toegevoegde waarde leveren in vier groepen. Bij welke groep hoort productiviteit?",
      "options": [
-      "Mens",
+      "Mensen",
       "Economie",
       "Maatschappij",
       "Proces en product"
      ],
      "answer": 3,
-     "explanation": "Onder proces en product vallen productiviteit, aanpasbaarheid, innovatie en creativiteit, en risico. Mens is verleidelijk omdat mensen productief zijn, maar dat domein omvat tevredenheid, imago, cultuur en gezondheid en veiligheid. Economie gaat over kosten en de waarde van het vastgoed, maatschappij over duurzaamheid en maatschappelijk verantwoord ondernemen."
+     "explanation": "Onder proces en product vallen productiviteit, aanpasbaarheid, innovatie en creativiteit, en risico. Mensen is verleidelijk omdat mensen productief zijn, maar die groep omvat tevredenheid, imago, cultuur en gezondheid en veiligheid. Economie gaat over kosten en de waarde van het vastgoed, maatschappij over duurzaamheid en maatschappelijk verantwoord ondernemen."
     },
     {
      "section": "Les 1.3 · tekeningen lezen",
@@ -1455,7 +1455,7 @@ window.HUIV = {
       "Muurkolom"
      ],
      "answer": 1,
-     "explanation": "Mk staat voor meterkast. Maaiveld is verleidelijk omdat het ook met m begint, maar dat wordt afgekort als m.v. en geeft de hoogte van het terrein rond het gebouw aan, niet een ruimte in de hal. Mechanische ventilatie wordt op dezelfde tekening als MV aangeduid."
+     "explanation": "Mk staat voor meterkast. Maaiveld is verleidelijk omdat het ook met m begint, maar dat wordt afgekort als m.v. en geeft de hoogte van het terrein rond het gebouw aan, niet een ruimte in de hal. Mechanische ventilatie wordt in dezelfde set tekeningen als MV aangeduid."
     },
     {
      "section": "Les 2.1 · inleiding bouwkunde",
@@ -1581,15 +1581,15 @@ window.HUIV = {
      "explanation": "De inspectie in week 2 hoort bij de gebouwanalyse en haalbaarheidsstudie: is het gebouw bouwkundig en functioneel geschikt voor de combinatie kantoor en woonunits, en onder welke voorwaarden? Een conditiescore volgens NEN 2767 en een onderhoudsstrategie horen bij de inspectie voor het MJOP later in de cursus."
     },
     {
-     "text": "Op de tekeningen van de Molkenboerstraat staat bij de gevel de afkorting hwa. Wat is dat?",
+     "text": "Op de tekeningen van de Molkenboerstraat staat de afkorting hwa. Wat betekent die?",
      "options": [
       "Hoofdwaterafsluiter in de meterkast",
       "Hemelwaterafvoer, oftewel de regenpijp",
       "Hoogte van de afgewerkte werkvloer",
-      "Horizontale wandafwerking van de gevel"
+      "Horizontale wandafwerking van de buitengevel"
      ],
      "answer": 1,
-     "explanation": "Hwa is de gangbare afkorting voor hemelwaterafvoer: de regenpijp die het water van het dak afvoert. Daarom zie je hem langs de gevel. De andere opties klinken technisch, maar zijn geen afkortingen uit de syllabus."
+     "explanation": "Hwa is volgens de syllabus de afkorting voor hemelwaterafvoer, in de bouw de gangbare uitdrukking voor de regenpijp. De andere opties klinken technisch, maar zijn geen afkortingen uit de syllabus."
     },
     {
      "section": "Les 2.3 · mensgericht huisvesten",
@@ -1618,7 +1618,7 @@ window.HUIV = {
      "text": "Wat is het verschil tussen density en crowding?",
      "options": [
       "Density is het aantal mensen per eenheid ruimte en dus objectief; crowding is het gevoel van drukte en dus subjectief",
-      "Density is het gevoel van drukte en dus subjectief; crowding is het aantal mensen per eenheid ruimte en dus objectief",
+      "Density is het gevoel van drukte en dus subjectief; crowding is het vastgestelde aantal mensen per eenheid ruimte en dus objectief",
       "Density gaat over drukte binnen, crowding over drukte buiten",
       "Er is geen verschil: beide zijn het aantal mensen per vierkante meter"
      ],
@@ -1626,7 +1626,7 @@ window.HUIV = {
      "explanation": "Beide gaan over drukte, maar density kun je meten (bijvoorbeeld mensen per m2) en crowding is hoe druk iemand het ervaart. Twee ruimtes met dezelfde density kunnen dus heel verschillend als druk worden beleefd. Let op de omgedraaide versie: die is de klassieke instinker."
     },
     {
-     "text": "Een kantoor of school waarmee je je verbonden voelt, maar die niet alleen van jou is: wat voor territorium is dat volgens de les?",
+     "text": "Een kantoor of school waarmee je je verbonden voelt, maar die NIET alleen van jou is: wat voor territorium is dat volgens de les?",
      "options": [
       "Een primair territorium",
       "Een publiek territorium",
@@ -1639,10 +1639,10 @@ window.HUIV = {
     {
      "text": "Een organisatie wil dat medewerkers vaker de trap nemen. Welke maatregel is een nudge?",
      "options": [
-      "De lift alleen nog openstellen voor bezoekers en mensen die slecht ter been zijn",
+      "De lift alleen nog openstellen voor bezoekers en voor mensen die slecht ter been zijn",
       "Medewerkers die de trap nemen een kleine vergoeding geven",
       "Een huisregel invoeren dat iedereen verplicht de trap neemt",
-      "Opvallende voetstappen op de vloer die naar de trap leiden, terwijl de lift gewoon beschikbaar blijft"
+      "Voetstappen op de vloer die naar de trap leiden, terwijl de lift beschikbaar blijft"
      ],
      "answer": 3,
      "explanation": "Een nudge verandert gedrag via de omgeving zonder iets te verbieden en zonder financiële prikkel, en is makkelijk te negeren. De voetstappen verleiden tot de trap, maar de lift blijft gewoon een optie. De lift afsluiten of de trap verplicht stellen verbiedt iets, en een vergoeding is een financiële prikkel."
@@ -1679,19 +1679,19 @@ window.HUIV = {
       "Mensen voelen zich eigenaar van een ruimte en markeren die"
      ],
      "answer": 2,
-     "explanation": "Volgens de Gestalttheorie ervaart de mens een totaalbeeld dat meer is dan de afzonderlijke prikkels bij elkaar. De eerste afleider zegt precies het omgekeerde. Gedrag sturen zonder te verbieden is nudging en eigenaarschap van een ruimte is territorialiteit."
+     "explanation": "Volgens de Gestalttheorie ervaart de mens een totaalbeeld dat meer is dan de afzonderlijke prikkels bij elkaar. De optie over elke prikkel afzonderlijk waarnemen zegt precies het omgekeerde. Gedrag sturen zonder te verbieden is nudging en eigenaarschap van een ruimte is territorialiteit."
     },
     {
      "section": "Les 3.2 · hybride werken en werkplekconcepten",
      "text": "Hybride werken kent volgens de les twee flexibele variabelen. Welke?",
      "options": [
       "Communicatie en concentratie",
-      "Bezetting en benutting",
-      "De locatie waar en het tijdstip waarop je werkt",
+      "Het aantal fte en de flexfactor",
+      "De plaats waar en de tijd waarop je werkt",
       "Het aantal medewerkers en het aantal fte"
      ],
      "answer": 2,
-     "explanation": "Bij hybride werken kies je zelf waar en wanneer je werkt. Communicatie en concentratie zijn verleidelijk omdat ze ook bij hybride werken horen, maar dat zijn de twee assen waarlangs bruis, ruis en rust worden ingedeeld, niet de variabelen die hybride werken definiëren."
+     "explanation": "Bij hybride werken zijn twee variabelen flexibel en zelf te kiezen: waar en wanneer je werkt. Communicatie en concentratie zijn verleidelijk omdat ze ook bij hybride werken horen, maar dat zijn de twee assen waarlangs bruis, ruis en rust worden ingedeeld. Fte en flexfactor gebruik je om het aantal werkplekken te bepalen."
     },
     {
      "text": "Buro Wierda verdeelt de hybride werkomgeving in bruis, ruis en rust. Welke zone is een plek voor samenwerken of overleg, informeel, maar met een andere zintuiglijke beleving dan de ontmoetingszone?",
@@ -1705,7 +1705,7 @@ window.HUIV = {
      "explanation": "De zones lopen van communicatie naar concentratie. Bruis is de informele ontmoetingszone, ruis de samenwerkzone en rust de stiltezone voor geconcentreerd werken of leren. Het werkcafé is geen zone maar een bouwsteen, bedoeld voor informele ontmoeting en aanlanden."
     },
     {
-     "text": "Waarom ga je bij het bepalen van het aantal werkplekken uit van het aantal fte en niet van het aantal medewerkers?",
+     "text": "Waarom ga je bij het bepalen van het aantal werkplekken uit van het aantal fte en NIET van het aantal medewerkers?",
      "options": [
       "Omdat het aantal fte altijd hoger is dan het aantal medewerkers, zodat je reserve hebt",
       "Omdat NEN 1824 voorschrijft dat het aantal werkplekken gelijk is aan het aantal fte",
@@ -1779,7 +1779,7 @@ window.HUIV = {
      "explanation": "Objecten zijn fysieke dingen (het gebouw, een ruimte) of processen. Eigenschappen zijn kenmerken van objecten, zoals ruimtetemperatuur of vloeroppervlak; de les noemt die voorbeelden letterlijk. Relaties verbinden objecten met elkaar, bijvoorbeeld een ruimte en een bureaustoel."
     },
     {
-     "text": "Volgens het artikel uit Smart WorkPlace is een goed programma van eisen géén ‘gestolde organisatie’. Waarom niet?",
+     "text": "Volgens het artikel uit Smart WorkPlace is een goed programma van eisen GEEN ‘gestolde organisatie’. Waarom NIET?",
      "options": [
       "Omdat het pve na de ontwerpfase niet meer wordt gebruikt en dus niet hoeft te kloppen",
       "Omdat een pve alleen technische eisen bevat en geen kenmerken van de organisatie",
@@ -1806,11 +1806,11 @@ window.HUIV = {
      "options": [
       "33 m2",
       "30 m2",
-      "22 m2",
+      "49,5 m2",
       "45 m2"
      ],
      "answer": 0,
-     "explanation": "20 x 1,5 m2 = 30 m2, plus 10 procent voor loopruimte is 3 m2, samen 33 m2. Wie 30 m2 kiest is de loopruimte vergeten; 45 m2 is wat je zonder die 10 procent voor 30 cursisten nodig hebt, zoals in het voorbeeld op de dia."
+     "explanation": "20 x 1,5 m2 = 30 m2, plus 10 procent voor loopruimte is 3 m2, samen 33 m2. Wie 30 m2 kiest is de loopruimte vergeten. 45 m2 en 49,5 m2 horen bij 30 cursisten, zoals in het voorbeeld op de dia (zonder en met de 10 procent); de les rondt dat laatste af op circa 50 m2."
     },
     {
      "text": "Welk soort vloeroppervlak staat in een ruimtestaat?",
@@ -1826,13 +1826,13 @@ window.HUIV = {
     {
      "text": "Een gebouw heeft 4.000 m2 bruto vloeroppervlak. Hoeveel FNO kun je ongeveer verwachten met de vuistregel uit de les?",
      "options": [
-      "4.000 m2",
+      "4.000 m2, net zoveel als het BVO",
       "5.800 m2",
       "1.200 m2",
       "2.800 m2"
      ],
      "answer": 3,
-     "explanation": "De vuistregel is FNO = 70 procent van BVO, dus 0,7 x 4.000 = 2.800 m2. Wie 5.800 m2 kiest gebruikt de omgekeerde regel BVO = 1,45 x FNO de verkeerde kant op. 1.200 m2 is de 30 procent die je juist kwijtraakt."
+     "explanation": "De vuistregel is FNO = 70 procent van BVO, dus 0,7 x 4.000 = 2.800 m2. Met de omgekeerde regel BVO = 1,45 x FNO kom je op hetzelfde uit: 4.000 / 1,45 is ongeveer 2.760 m2, ook ongeveer 2.800. Wie 5.800 m2 kiest vermenigvuldigt het BVO met 1,45 en rekent dus de verkeerde kant op. 1.200 m2 is de 30 procent die je juist kwijtraakt, en het FNO is altijd kleiner dan het BVO."
     },
     {
      "text": "Een studio heeft een eigen voordeur aan de galerij, een eigen keukenblok en een eigen badkamer. Welk type woonunit is dit?",
@@ -1846,16 +1846,16 @@ window.HUIV = {
      "explanation": "De les onderscheidt drie typen woonunits, naar toegang en voorzieningen. Met een eigen voordeur, eigen keuken en eigen sanitair is alles eigen: dat is het derde type. Bij de andere twee deel je de toegang en een deel of alle voorzieningen met andere bewoners."
     },
     {
-     "section": "Les 4.3 · vlekkenplan, inrichting en kleur",
+     "section": "Les 4.2 en 4.3 · vlekkenplan, inrichting en kleur",
      "text": "Wat laat een vlekkenplan zien?",
      "options": [
       "Welke functies dicht bij elkaar of juist ver uit elkaar moeten liggen, los van een plattegrond",
-      "In hoofdlijnen de plek én de grootte van de gebruiksfuncties in het gebouw, meestal zonder wanden en meubels",
+      "In hoofdlijnen de plek én de grootte van de gebruiksfuncties in het gebouw",
       "De plaats van alle scheidingswanden, werkplekken en meubels",
       "Een tabel met per ruimte het aantal personen en het aantal m2"
      ],
      "answer": 1,
-     "explanation": "Een vlekkenplan zet de vlekken (gebundelde functies, zoals een afdeling) op de goede plek en in de goede grootte in de plattegrond. Het eerste alternatief beschrijft het <strong>relatieschema</strong>, dat de les uitdrukkelijk niet hetzelfde noemt als een vlekkenplan. Wanden en meubels horen in het inrichtingsplan, en de tabel is de ruimtestaat."
+     "explanation": "Een vlekkenplan zet de vlekken (gebundelde functies, zoals een afdeling) op de goede plek en in de goede grootte in de plattegrond; wanden en meubels staan er meestal nog niet in. De optie over functies die dicht bij elkaar of ver uit elkaar moeten liggen beschrijft het <strong>relatieschema</strong>, dat de les uitdrukkelijk niet hetzelfde noemt als een vlekkenplan. Wanden en meubels horen in het inrichtingsplan, en de tabel is de ruimtestaat."
     },
     {
      "text": "Afdeling X heeft volgens de ruimtestaat 60 m2 nodig. In het stramien van het gebouw krijgt ze een vlek van 8 bij 8 meter. Hoeveel indelingsverlies is er?",
@@ -1866,7 +1866,7 @@ window.HUIV = {
       "Geen, want de vlek wordt altijd precies op de ruimtestaat aangepast"
      ],
      "answer": 0,
-     "explanation": "De vlek is 8 x 8 = 64 m2, en de afdeling had 60 m2 nodig. De extra 4 m2 heet het indelingsverlies. Vlekken worden meestal juist op de stramienmaten afgestemd, waardoor ze kunnen afwijken van de ruimtestaat; daarom is het laatste antwoord fout."
+     "explanation": "De vlek is 8 x 8 = 64 m2, en de afdeling had 60 m2 nodig. De extra 4 m2 heet het indelingsverlies. Vlekken worden meestal juist op de stramienmaten afgestemd, waardoor ze kunnen afwijken van de ruimtestaat; daarom klopt ‘geen indelingsverlies’ niet. 16 m2 krijg je als je 8 en 8 optelt in plaats van vermenigvuldigt, en 64 m2 is de hele vlek, niet het verlies."
     },
     {
      "text": "Welke kleurtint koppelt de les aan evenwicht, harmonie en rust, met een associatie met de natuur?",
@@ -1874,10 +1874,10 @@ window.HUIV = {
       "Groen",
       "Blauw",
       "Geel",
-      "Wit"
+      "Oranje"
      ],
      "answer": 0,
-     "explanation": "Groentinten staan in de les voor evenwicht, harmonie, rust en natuur, en lichtgroen werkt verfrissend. Blauw is de verleidelijke fout: ook blauw geeft rust en kalmeert, maar is in de les koel en zakelijk en heeft geen associatie met natuur. Geel is warm en stimulerend, wit geeft een ruimtelijk gevoel."
+     "explanation": "Groentinten staan in de les voor evenwicht, harmonie, rust en natuur, en lichtgroen werkt verfrissend. Blauw is de verleidelijke fout: ook blauw geeft rust en kalmeert, maar is in de les koel en zakelijk en heeft geen associatie met natuur. Geel is warm en stimulerend, oranje staat voor vreugde, beweging en creativiteit."
     },
     {
      "text": "In welke volgorde werk je van het pve naar de inrichting van een kantoorverdieping?",
@@ -1984,7 +1984,7 @@ window.HUIV = {
      "text": "Waarom moet een bestek zo precies mogelijk zijn?",
      "options": [
       "Zodat de architect geen bestektekeningen meer hoeft te maken",
-      "Hoe preciezer, hoe minder risico en hoe scherper de prijs van de aannemer",
+      "Hoe preciezer het bestek, hoe minder risico en hoe scherper de prijs",
       "Omdat het bestek in die fase het programma van eisen vervangt",
       "Zodat de aannemer zelf de materialen en de werkwijze mag kiezen"
      ],
@@ -2034,7 +2034,7 @@ window.HUIV = {
       "Een contractvorm waarbij de facility manager de bouw aanstuurt"
      ],
      "answer": 0,
-     "explanation": "BIM is het digitale model met alle informatie over het bouwproject, plus de afspraken en het beheer van die informatie over de hele levenscyclus. FM-BIM is het gebruik daarvan in de exploitatiefase, zoals ruimtebeheer, schoonmaak, het MJOP en een koppeling met een FMIS. Het softwareplatform in het tweede alternatief is de omschrijving van een IWMS."
+     "explanation": "BIM is het digitale model met alle informatie over het bouwproject, plus de afspraken en het beheer van die informatie over de hele levenscyclus. FM-BIM is het gebruik daarvan in de exploitatiefase, zoals ruimtebeheer, schoonmaak, het MJOP en een koppeling met een FMIS. Een softwareplatform voor werkplekresources en de vastgoedportefeuille is de omschrijving van een IWMS."
     },
     {
      "section": "Les 6.1 · duurzaamheid en circulariteit",
@@ -2051,7 +2051,7 @@ window.HUIV = {
     {
      "text": "Een organisatie wil de vloeren in haar kantoor vervangen. Wat moet ze volgens het R-model als eerste onderzoeken?",
      "options": [
-      "Welk nieuw vloermateriaal na gebruik het best te recyclen is",
+      "Welk nieuw vloermateriaal na afloop van het gebruik het best te recyclen is",
       "Of de oude vloer na het verwijderen gerecycled kan worden",
       "Of vervangen voorkomen kan worden of de vloer behouden kan blijven",
       "Welke leverancier de oude tapijttegels wil terugnemen"
@@ -2083,7 +2083,7 @@ window.HUIV = {
     },
     {
      "section": "Les 6.2 · MJOP en levensduur",
-     "text": "Een kantoorgebouw is technisch nog in goede staat, maar door de overstap naar hybride werken past de indeling niet meer bij hoe de organisatie werkt. Welke levensduur is hier ten einde?",
+     "text": "Een kantoorgebouw is technisch nog in goede staat, maar door de overstap naar hybride werken past de indeling NIET meer bij hoe de organisatie werkt. Welke levensduur is hier ten einde?",
      "options": [
       "De technische levensduur",
       "De economische levensduur",
@@ -2122,7 +2122,7 @@ window.HUIV = {
       "De norm voor de minimale afmetingen van werkplekken in kantoorgebouwen",
       "De norm voor het waarderen van gebruiksprestaties van utiliteitsgebouwen",
       "De regels uit het Bouwbesluit die gelden voor bestaande gebouwen",
-      "Een objectieve methode om de conditie van bouwdelen te bepalen via een gebrekenopname"
+      "Een objectieve methode om via een gebrekenopname de conditie te bepalen"
      ],
      "answer": 3,
      "explanation": "NEN 2767 is de conditiemeting: je neemt gebreken op en bepaalt daarmee de technische toestand van een bouw- of installatiedeel. NEN 1824 gaat over de afmetingen van werkplekken en NEN 8021 over de waardering van gebruiksprestaties. Houd die drie normen goed uit elkaar."
@@ -2150,7 +2150,7 @@ window.HUIV = {
      "explanation": "Ernst is de mate waarin het gebrek het functioneren aantast, intensiteit het stadium waarin het gebrek zit en omvang de hoeveelheid gebrek ten opzichte van het hele element. Kosten, risico en budget komen pas daarna aan bod, bij het prioriteren met een onderhoudsstrategie en het opstellen van het MJOP."
     },
     {
-     "text": "Een kringloopwinkel op een industrieterrein heeft lage marges en weet niet of hij over drie jaar nog bestaat. Welke onderhoudsstrategie past het best?",
+     "text": "Een kringloopwinkel op een industrieterrein heeft lage marges en weet NIET of hij over drie jaar nog bestaat. Welke onderhoudsstrategie past het best?",
      "options": [
       "Het gebouw in goede staat houden",
       "Het gebouw bruikbaar houden voor een beperkte termijn",
@@ -2158,7 +2158,7 @@ window.HUIV = {
       "Het gebouw verbeteren"
      ],
      "answer": 1,
-     "explanation": "De les noemt vier strategieën: in goede staat houden, in stand houden, bruikbaar houden voor beperkte termijn en verbeteren. Bij weinig geld en een onzekere toekomst is het verstandig alleen te doen wat nodig is om het gebouw de komende tijd veilig en bruikbaar te houden. In goede staat houden of verbeteren vraagt investeringen die deze organisatie waarschijnlijk niet terugverdient."
+     "explanation": "De les noemt vier strategieën: in goede staat houden, in stand houden, bruikbaar houden voor beperkte termijn en verbeteren, en geeft deze kringloopwinkel als oefencasus. Lage marges en een onzekere toekomst van hooguit enkele jaren wijzen naar bruikbaar houden voor een beperkte termijn: alleen doen wat nodig is om het gebouw die tijd veilig en bruikbaar te houden. In goede staat houden of verbeteren vraagt investeringen die deze winkel waarschijnlijk niet terugverdient, en alleen de derde strategie sluit aan bij de korte, onzekere termijn die hier de doorslag geeft."
     },
     {
      "section": "Les 7.2 · van inspectie naar DMJOP",
@@ -2175,13 +2175,13 @@ window.HUIV = {
     {
      "text": "Welke aanpak is een voorbeeld van onderhoud combineren met verduurzaming in een duurzaam MJOP?",
      "options": [
-      "Bij nieuwe dakbedekking meteen de dakisolatie verbeteren of zonnepanelen voorbereiden",
-      "Beschadigde houten deuren meteen vervangen door nieuwe, beter isolerende deuren",
+      "Bij nieuwe dakbedekking meteen de dakisolatie verbeteren",
+      "Beschadigde houten deuren eerst repareren en opnieuw afwerken in plaats van vervangen",
       "Al het onderhoud uitstellen tot het hele gebouw tegelijk gerenoveerd wordt",
       "Elke maatregel los inplannen, zodat de kosten over de jaren gespreid worden"
      ],
      "answer": 0,
-     "explanation": "Een natuurlijk onderhoudsmoment, zoals het vervangen van dakbedekking, is het moment om er een duurzame maatregel aan te koppelen. Dat voorkomt dubbel werk, overlast en extra kosten. Deuren direct vervangen gaat in tegen het principe herstel vóór vervangen, en maatregelen bewust los plannen is het tegenovergestelde van combineren."
+     "explanation": "Een natuurlijk onderhoudsmoment, zoals het vervangen van dakbedekking, is het moment om er een duurzame maatregel aan te koppelen; de les noemt precies dit voorbeeld (ook zonnepanelen voorbereiden kan). Deuren repareren in plaats van vervangen is ook een goed DMJOP-principe, maar dat is <strong>herstel vóór vervangen</strong>, niet het combineren van onderhoud met verduurzaming. Uitstellen en bewust los plannen zijn het tegenovergestelde van combineren."
     }
    ],
    "open": []
@@ -2204,43 +2204,43 @@ window.HUIV = {
     },
     {
      "section": "Les 1.2 · organisatiegericht huisvesten",
-     "text": "Een organisatie verkoopt haar eigen kantoorpand aan een belegger en huurt het daarna terug. Via welke van de drie routes uit het DuPont-schema kan dat de rentabiliteit verbeteren?",
+     "text": "Een ingenieursbureau richt zijn kantoor zo in dat medewerkers elkaar vaker tegenkomen. Daardoor werken ze beter samen en lopen projecten soepeler. Welke route uit het schema over de impact van huisvesting zie je hier?",
      "options": [
-      "Door de omzet te verhogen",
-      "Door de huisvestingskosten te verlagen",
-      "Door het geïnvesteerd vermogen te verlagen",
-      "Door de vastgoedratio te verhogen"
+      "Directe impact op proces en product, die doorwerkt op mensen",
+      "Maatschappelijke impact, die doorwerkt op de economische impact",
+      "Directe impact op mensen, die doorwerkt op proces en product",
+      "Directe economische impact, die doorwerkt op mensen"
      ],
      "answer": 2,
-     "explanation": "Volgens het DuPont-schema draagt huisvesting op drie manieren bij aan de rentabiliteit: omzet verhogen, huisvestingskosten verlagen en geïnvesteerd vermogen verlagen. Na de verkoop staat het pand niet meer op de balans, dus het geïnvesteerd vermogen daalt. De huisvestingskosten dalen hierdoor niet vanzelf, want er komt huur bij. De vastgoedratio daalt juist, omdat er minder vastgoed op de balans staat."
+     "explanation": "Huisvesting heeft in het schema directe impact op mensen, op proces en product, op de maatschappij en op de economie. Daarnaast werken die gebieden op elkaar door: impact op mensen werkt door op proces en product, proces en product werken door op de economische impact, en maatschappelijke impact werkt door op mensen en op de economie. Elkaar vaker ontmoeten is impact op mensen; dat dit de samenwerking verbetert is de doorwerking naar proces en product. Een pijl van proces en product terug naar mensen staat niet in het schema."
     },
     {
-     "text": "Een huisvestingsmanager moet de directie adviseren over de beste huisvesting voor de organisatie, maar wordt zelf afgerekend op de directe huisvestingskosten. Hoe heet deze spanning?",
+     "text": "Een directeur wil bij de nieuwe huisvesting vooral op het gebouw besparen, ‘want huisvesting is onze grootste kostenpost’. Welk gegeven uit les 1.2 spreekt dat tegen?",
      "options": [
-      "Het rolconflict van de huisvestingsmanager",
-      "De ivoren-torenvalkuil van strategie ontwikkelen",
-      "De visie op huisvesting als noodzakelijk kwaad",
-      "Verborgen leegstand"
+      "Huisvestingskosten zijn gemiddeld 5 tot 15 procent van de bedrijfskosten, personeelskosten veel meer",
+      "Huisvestingskosten zijn gemiddeld 40 tot 50 procent van de bedrijfskosten, maar dalen vanzelf bij nieuwbouw",
+      "Huisvestingskosten tellen niet mee in de bedrijfskosten, omdat een gebouw als bezit op de balans staat",
+      "Huisvestingskosten zijn in alle branches ongeveer even hoog, dus de keuze van het gebouw maakt weinig uit"
      ],
      "answer": 0,
-     "explanation": "De huisvestingsmanager is tegelijk adviseur, die de beste oplossing voor de organisatie zoekt, en resultaatverantwoordelijk manager, die wordt afgerekend op prestaties en directe kosten. Een duurdere maar betere oplossing adviseren gaat dan ten koste van zijn eigen resultaat. Huisvesting als noodzakelijk kwaad is een visie van de organisatie (sturen op besparen), niet een spanning in de rol van één persoon."
+     "explanation": "Op de dia staat dat huisvestingskosten gemiddeld 5 tot 15 procent zijn, met een figuur van de opbouw van de bedrijfskosten per branche. Daarin zijn de personele kosten in elke branche veel groter dan de huisvestingskosten, en het aandeel huisvestingskosten verschilt per branche. Wie alleen op het gebouw bespaart, kan daardoor meer verliezen aan wat het gebouw bijdraagt aan mensen en productiviteit dan hij wint aan huisvestingskosten."
     },
     {
-     "text": "Wat geeft de vastgoedratio van een organisatie weer?",
+     "text": "Je beoordeelt de functionele prestaties van het casusgebouw. Welke indicator hoort volgens de tabel met prestatie-indicatoren uit les 1.2 bij het functionele prestatieveld?",
      "options": [
-      "De huisvestingskosten gedeeld door de totale kosten",
-      "Het aantal m2 bruto vloeroppervlak per fte",
-      "De boekwaarde van het vastgoed gedeeld door de totale activa",
-      "Het functioneel nuttig vloeroppervlak gedeeld door het bruto vloeroppervlak"
+      "Representativiteit van het gebouw",
+      "Cultuurhistorische waarde en betekenis van het gebouw",
+      "Ruimtelijke oriëntatie (de weg kunnen vinden)",
+      "Energiekosten per m2 bvo"
      ],
      "answer": 2,
-     "explanation": "De vastgoedratio zegt hoe groot het aandeel vastgoed op de balans is. Die verschilt per branche, door hoeveel andere activa het primaire proces nodig heeft en door de keuze tussen huren en eigendom. Huisvestingskosten als deel van de kosten is een ander kengetal, en FNO gedeeld door BVO is de verhouding uit de vuistregel van les 4.2."
+     "explanation": "In de tabel van les 1.2 horen bij functionele prestaties onder meer bereikbaarheid en parkeergelegenheid, toegankelijkheid, doelmatigheid, flexibiliteit, veiligheid, ruimtelijke oriëntatie (gemakkelijk de weg kunnen vinden), territorialiteit, privacy en sociaal contact, en fysiek welbevinden en comfort. Representativiteit, betekenis en cultuurhistorische waarde zijn esthetische prestaties, en energiekosten per m2 is een kostenindicator voor het presteren van de huisvesting."
     },
     {
      "section": "Les 1.3 · tekeningen lezen",
      "text": "Op het gevelaanzicht van een woning staat bij de nok van het dak de maat 7644 boven peil. Wat betekent dat?",
      "options": [
-      "7,644 m boven het maaiveld rond de woning",
+      "7,644 m boven het maaiveld, de hoogte van het terrein rond de woning",
       "7,644 m boven de afgewerkte begane-grondvloer",
       "76,44 m boven de afgewerkte begane-grondvloer",
       "7,644 m boven de onderkant van de fundering"
@@ -2253,11 +2253,11 @@ window.HUIV = {
      "options": [
       "6 cm",
       "3 cm",
-      "30 cm",
+      "1,2 cm",
       "12 cm"
      ],
      "answer": 3,
-     "explanation": "Bij schaal 1:50 is 1 cm op papier 50 cm in werkelijkheid. 6 m is 600 cm, en 600 gedeeld door 50 is 12 cm. Wie 6 cm kiest rekent met schaal 1:100, waar 1 cm 1 m is; 3 cm hoort bij schaal 1:200."
+     "explanation": "Bij schaal 1:50 is 1 cm op papier 50 cm in werkelijkheid. 6 m is 600 cm, en 600 gedeeld door 50 is 12 cm. Wie 6 cm kiest rekent met schaal 1:100, waar 1 cm 1 m is; 3 cm hoort bij schaal 1:200. Wie 1,2 cm kiest heeft zich een factor 10 vergist, bijvoorbeeld door millimeters en centimeters door elkaar te halen."
     },
     {
      "text": "In de oefening met de tekeningen van de vakantiewoning in Renesse staan op de plattegrond vierkantjes met een kruis erin. Wat stellen ze voor?",
@@ -2268,7 +2268,7 @@ window.HUIV = {
       "Doorvoeren voor de mechanische ventilatie (MV)"
      ],
      "answer": 0,
-     "explanation": "Volgens de antwoorden bij de oefening zijn de vierkantjes met een kruis de funderingspalen; in de tabel op een latere pagina staat dat de palen 9,65 m lang zijn, dus het is een fundering op palen. De meterkast staat op die tekening als mk en de mechanische ventilatie als MV1 en MV2."
+     "explanation": "Volgens de antwoorden bij de oefening zijn de vierkantjes met een kruis de funderingspalen; in de tabel op een latere pagina staat dat de palen 9,65 m lang zijn, dus het is een fundering op palen. De meterkast staat in de tekeningen als mk en de mechanische ventilatie als MV1 en MV2."
     },
     {
      "section": "Les 2.1 · inleiding bouwkunde",
@@ -2285,7 +2285,7 @@ window.HUIV = {
     {
      "text": "De opgaande muur van een woning is 200 mm dik. Hoe breed wordt de voet van de fundering ongeveer volgens de ontwerpregel uit de syllabus?",
      "options": [
-      "200 mm",
+      "200 mm, even breed als de muur",
       "750 mm",
       "400 tot 500 mm",
       "80 tot 100 mm"
@@ -2307,7 +2307,7 @@ window.HUIV = {
     {
      "text": "Welke combinatie bestaat volledig uit permanente belasting?",
      "options": [
-      "Eigen gewicht, sneeuw en gronddruk",
+      "Eigen gewicht, sneeuwbelasting en gronddruk",
       "Eigen gewicht, waterdruk en gronddruk",
       "Wind, mensen en apparaten",
       "Waterdruk, mensen en eigen gewicht"
@@ -2341,7 +2341,7 @@ window.HUIV = {
     {
      "text": "Voor de herbestemming wil je op een verdieping grote open werkruimtes maken. Welke wanden kun je in principe weghalen zonder gevolgen voor de constructie?",
      "options": [
-      "Binnenmuren van kalkzandsteen waarop de vloeren rusten",
+      "Binnenmuren van kalkzandsteen waarop de vloeren van de verdieping rusten",
       "Niet-dragende wanden, zoals systeemwanden en metal-studwanden",
       "Bouwmuren tussen twee delen van het gebouw",
       "Het binnenspouwblad van de buitenmuur"
@@ -2351,7 +2351,7 @@ window.HUIV = {
     },
     {
      "section": "Les 2.3 · mensgericht huisvesten",
-     "text": "Greene en Meyerson onderscheiden vier typen kenniswerkers, van weinig naar veel mobiliteit. Een medewerker zit vrijwel altijd op kantoor aan zijn eigen bureau. Welk type is hij?",
+     "text": "Greene en Meyerson onderscheiden vier typen medewerkers, van weinig naar veel mobiliteit. Een medewerker zit vrijwel altijd op kantoor aan zijn eigen bureau. Welk type is hij?",
      "options": [
       "Anchor",
       "Connector",
@@ -2362,15 +2362,15 @@ window.HUIV = {
      "explanation": "De volgorde van lage naar hoge mobiliteit is Anchor, Connector, Gatherer en Navigator. Iemand die vast op één plek werkt is dus een Anchor. Een Navigator is het andere uiterste: die is het meest onderweg. Met zulke typen of persona's laat je zien dat behoeften per gebruiker verschillen."
     },
     {
-     "text": "Een vergaderruimte voor 12 personen staat de hele dag als geboekt in het systeem, maar er zitten meestal maar 2 mensen in. Welk begrip past hierbij?",
+     "text": "In een kantoor met flexplekken leggen sommige medewerkers ’s ochtends hun jas en tas op een bureau en zetten er een fotolijstje neer, zodat niemand anders er die dag gaat zitten. Welk begrip uit de omgevingspsychologie zie je hier?",
      "options": [
-      "Een lage bezettingsgraad",
       "Crowding",
-      "Verborgen leegstand",
-      "Density"
+      "Persoonlijke ruimte",
+      "Territorialiteit",
+      "Nudging"
      ],
      "answer": 2,
-     "explanation": "De ruimte is wel bezet (in gebruik), maar wordt slecht benut: 2 van de 12 plaatsen. Ruimte die in gebruik is maar waarbinnen plekken leeg blijven heet verborgen leegstand. Een lage bezettingsgraad klopt hier niet, want de ruimte is juist de hele dag bezet; het probleem zit in de benutting."
+     "explanation": "Territorialiteit is de ervaring dat je je eigenaar voelt van een ruimte, en dat uit je door de omgeving te personaliseren, te markeren of te bezetten. Een jas op de stoel en een fotolijstje op het bureau doen precies dat. Persoonlijke ruimte is verleidelijk, maar gaat over de afstand die je tot anderen houdt (intiem, persoonlijk, sociaal, publiek), niet over het claimen van een plek. Crowding is het gevoel van drukte en nudging is gedrag sturen via de omgeving."
     },
     {
      "text": "In een open kantoor kunnen collega's elk telefoongesprek meeluisteren. Welke soort privacy schiet hier tekort?",
@@ -2445,7 +2445,7 @@ window.HUIV = {
      "options": [
       "Omdat de ambitie langer houdbaar is dan de technische uitwerking van de eisen",
       "Omdat de architect zonder die ambities geen bestek kan schrijven",
-      "Omdat ambities in het Bouwbesluit verplicht zijn gesteld voor elk pve",
+      "Omdat ambities in het Bouwbesluit verplicht zijn gesteld voor elk programma van eisen",
       "Omdat technische eisen niet in een programma van eisen thuishoren"
      ],
      "answer": 0,
@@ -2494,7 +2494,7 @@ window.HUIV = {
       "Ongeveer 3.600 m2 BVO"
      ],
      "answer": 2,
-     "explanation": "De vuistregel is BVO = 1,45 x FNO, dus 1,45 x 1.800 = 2.610 m2. Wie 1.260 m2 kiest neemt 70 procent van het FNO, maar die regel werkt de andere kant op: FNO is 70 procent van BVO. Het BVO is altijd groter dan het FNO, omdat ook muren, schachten en verkeersruimte meetellen."
+     "explanation": "De vuistregel is BVO = 1,45 x FNO, dus 1,45 x 1.800 = 2.610 m2. Met de andere regel uit de les (FNO = 70 procent van BVO) kom je op hetzelfde uit: 1.800 / 0,7 is ongeveer 2.570 m2, ook ongeveer 2.600. Wie 1.260 m2 kiest neemt 70 procent van het FNO en rekent dus de verkeerde kant op. Het BVO is altijd groter dan het FNO, omdat ook muren, schachten en verkeersruimte meetellen."
     },
     {
      "text": "Je maakt een ruimtestaat voor een meerpersoonsunit voor 6 studenten: 6 kamers inclusief sanitair van 18 m2, een gemeenschappelijke keuken van 16 m2 en een opslagruimte van 4 m2. Daarover reken je 10 procent circulatieruimte, zoals in het voorbeeld uit de les. Hoeveel m2 FNO kom je ongeveer uit?",
@@ -2517,7 +2517,7 @@ window.HUIV = {
       "30"
      ],
      "answer": 0,
-     "explanation": "In het voorbeeld uit de les met 100 werkplekken leverde dit profiel 50 open bureauplekken (routinematig), 20 plekken in kleine afgesloten ruimtes (geconcentreerd) en 30 spreekplekken (communicatief) op. Bij 60 werkplekken is 20 procent geconcentreerd werk 0,2 x 60 = 12 afgesloten plekken. 20 is het aantal uit het voorbeeld zelf, 18 hoort bij het communicatieve deel en 30 bij het routinematige deel."
+     "explanation": "In het voorbeeld uit de les met 100 werkplekken leverde dit profiel 50 bureauplekken in een open ruimte (routinematig werk), 20 bureauplekken in kleine afgesloten ruimtes (geconcentreerd werk) en 30 spreekruimtes (communicatief werk) op. Bij 60 werkplekken is 20 procent geconcentreerd werk 0,2 x 60 = 12 afgesloten plekken. 20 is het aantal uit het voorbeeld zelf, 18 hoort bij het communicatieve deel en 30 bij het routinematige deel."
     },
     {
      "text": "Je tekent een vlekkenplan voor het hele gebouw. Welke ruimtes horen volgens de les NIET binnen een vlek?",
@@ -2539,11 +2539,11 @@ window.HUIV = {
       "600.000 tot 1.400.000 euro"
      ],
      "answer": 0,
-     "explanation": "De les noemt per m2: simpel 150 tot 300 euro, standaard 300 tot 500 euro en luxe 500 tot 1.500 euro of meer. Standaard is dus 400 x 300 = 120.000 tot 400 x 500 = 200.000 euro. Het eerste alternatief hoort bij een simpele inrichting en het derde bij luxe. Het laatste krijg je als je de bedragen voor een middenklasse werkplek (1.500 tot 3.500 euro) als bedragen per m2 gebruikt."
+     "explanation": "De les noemt per m2: simpel 150 tot 300 euro, standaard 300 tot 500 euro en luxe 500 tot 1.500 euro of meer. Standaard is dus 400 x 300 = 120.000 tot 400 x 500 = 200.000 euro. 60.000 tot 120.000 euro hoort bij een simpele inrichting en 200.000 tot 600.000 euro bij luxe. 600.000 tot 1.400.000 euro krijg je als je de bedragen voor een middenklasse werkplek (1.500 tot 3.500 euro) als bedragen per m2 gebruikt."
     },
     {
      "section": "Les 5.1 · regelgeving en plantoetsing",
-     "text": "Een facility manager zegt: ‘Voor de herbestemming hoeven we het Bouwbesluit niet te checken, dat geldt alleen voor nieuwbouw.’ Klopt dat?",
+     "text": "Een facility manager zegt: ‘Voor de herbestemming hoeven we het Bouwbesluit NIET te checken, dat geldt alleen voor nieuwbouw.’ Klopt dat?",
      "options": [
       "Nee, het Bouwbesluit geldt ook voor bestaande gebouwen die worden aangepast",
       "Ja, voor bestaande gebouwen geldt alleen het bestemmingsplan",
@@ -2567,7 +2567,7 @@ window.HUIV = {
     {
      "text": "Welke ruimte is wel een gedefinieerde ruimte uit het Bouwbesluit, maar GEEN verblijfsruimte?",
      "options": [
-      "Een slaapkamer in een woonunit",
+      "Een slaapkamer in een zelfstandige woonunit",
       "Een stallingsruimte voor fietsen",
       "Een woonkamer in een woonunit",
       "Een keuken in een woonunit"
@@ -2579,7 +2579,7 @@ window.HUIV = {
      "section": "Les 5.2 · bouwfasen, bestek en aanbesteden",
      "text": "Een opdrachtgever publiceert een opdracht, aannemers melden zich per brief, de opdrachtgever kiest er bijvoorbeeld zes uit en stuurt hun het bestek. Welke vorm van aanbesteden is dit?",
      "options": [
-      "Openbaar",
+      "Openbaar, voor iedere aannemer",
       "Onderhands of op uitnodiging",
       "Openbaar met vooraf selectie",
       "Onderhands na selectie"
@@ -2588,7 +2588,7 @@ window.HUIV = {
      "explanation": "Bij openbaar met vooraf selectie is er een publicatie, melden aannemers zich bij de opdrachtgever en kiest die een beperkt aantal uit. Bij gewoon openbaar mag iedere aannemer inschrijven. De twee onderhandse vormen beginnen niet met een publicatie: daar kiest de opdrachtgever zelf welke aannemers hij benadert."
     },
     {
-     "text": "Een detailtekening uit het definitief ontwerp vermeldt niet welke baksteen, voegkleur en isolatiesoort worden toegepast. Waar wordt dat vastgelegd voordat de aannemer kan prijzen?",
+     "text": "Een detailtekening uit het definitief ontwerp vermeldt NIET welke baksteen, voegkleur en isolatiesoort worden toegepast. Waar wordt dat vastgelegd voordat de aannemer kan prijzen?",
      "options": [
       "In het bestek met de bestektekeningen",
       "In het programma van eisen van de opdrachtgever",
