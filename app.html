@@ -662,6 +662,16 @@
     .intro-film-title { font-size: 20px; font-weight: 900; letter-spacing: -0.015em; }
     .intro-film-video { display: block; width: 100%; height: auto; border-radius: var(--radius-lg); background: var(--ink); aspect-ratio: 16 / 9; }
     .intro-film-note { margin-top: 10px; font-size: 13px; color: var(--ink-soft); }
+    .intro-modal { position: fixed; inset: 0; z-index: 200; background: rgba(26, 32, 36, 0.78); backdrop-filter: blur(4px);
+      display: grid; place-items: center; padding: 16px; }
+    .intro-modal[hidden] { display: none; }
+    .intro-modal-box { width: min(960px, 100%); background: var(--surface); border-radius: var(--radius-xl); padding: 20px;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.35); }
+    .intro-modal-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin-bottom: 12px; }
+    .intro-modal-title { font-size: 22px; font-weight: 900; letter-spacing: -0.015em; }
+    .intro-modal video { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; border-radius: var(--radius-lg); background: var(--ink); }
+    .intro-modal-actions { display: flex; flex-wrap: wrap; gap: 10px; justify-content: flex-end; margin-top: 14px; }
+    @media (max-width: 600px) { .intro-modal-box { padding: 14px; } .intro-modal-title { font-size: 18px; } }
 
     .section-title {
       font-size: 22px;
@@ -804,6 +814,23 @@
       <div class="home-grid">
         <!-- LEFT: vakken + contact -->
         <div>
+          <!-- INTROFILM: eerste keer als venster, daarna als kaart -->
+          <div class="intro-modal" id="intro-modal" role="dialog" aria-modal="true" aria-labelledby="intro-modal-title" hidden>
+            <div class="intro-modal-box">
+              <div class="intro-modal-head">
+                <h2 class="intro-modal-title" id="intro-modal-title">FM Atlas is terug, nu met jaar 2</h2>
+                <span class="intro-film-meta">23 SECONDEN</span>
+              </div>
+              <video id="intro-modal-video" controls playsinline preload="auto" poster="media/fmatlas-jaar-2.jpg" width="1280" height="720">
+                <source src="media/fmatlas-jaar-2.mp4" type="video/mp4">
+              </video>
+              <div class="intro-modal-actions">
+                <button type="button" class="fa-btn fa-btn-ghost" id="intro-modal-sound" hidden>Geluid aan</button>
+                <button type="button" class="fa-btn fa-btn-accent" id="intro-modal-close">Naar mijn vakken</button>
+              </div>
+            </div>
+          </div>
+
           <!-- INTROFILM -->
           <div class="fa-card intro-film" id="intro-film" hidden>
             <div class="intro-film-head">
@@ -966,6 +993,30 @@
       return Math.round(ks.reduce((a, k) => a + (progress[k] || 0), 0) / ks.length);
     }
 
+    // ── Introfilm als venster: alleen de eerste keer dat iemand de app opent ──
+    function faShowIntroOnce() {
+      let seen = false;
+      try { seen = localStorage.getItem('fa_introfilm_jaar2_gezien') === '1'; } catch (_) {}
+      const modal = document.getElementById('intro-modal');
+      if (seen || !modal || !modal.hidden) return;
+      const v = document.getElementById('intro-modal-video');
+      const sound = document.getElementById('intro-modal-sound');
+      const close = () => {
+        modal.hidden = true; v.pause();
+        try { localStorage.setItem('fa_introfilm_jaar2_gezien', '1'); } catch (_) {}
+        document.removeEventListener('keydown', onKey);
+      };
+      const onKey = e => { if (e.key === 'Escape') close(); };
+      modal.hidden = false;
+      document.getElementById('intro-modal-close').onclick = close;
+      modal.onclick = e => { if (e.target === modal) close(); };
+      document.addEventListener('keydown', onKey);
+      sound.onclick = () => { v.muted = false; v.play(); sound.hidden = true; };
+      v.muted = false;
+      v.play().catch(() => { v.muted = true; sound.hidden = false; v.play().catch(() => {}); });
+      document.getElementById('intro-modal-close').focus();
+    }
+
     // ── Introfilm: tonen tot de bezoeker hem verbergt ──
     (function () {
       const card = document.getElementById('intro-film');
@@ -1087,6 +1138,9 @@
 
       // Tip van de dag
       renderTip();
+
+      // Introfilm de eerste keer als venster
+      faShowIntroOnce();
     }
 
     // ── Tips ──────────────────────────────────────────────
