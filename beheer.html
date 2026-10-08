@@ -325,7 +325,7 @@ async function laadDashboard() {
       <table class="db-table"><tbody>
         <tr><td>Studenten met voortgang</td><td class="num">${fmt(voortgang.length)}</td></tr>
         <tr><td>Met een lopende reeks</td><td class="num">${fmt(reeksen.length)}</td></tr>
-        <tr><td>Langste reeks</td><td class="num">${reeksen.length ? Math.max(...reeksen) + ' dagen' : '–'}</td></tr>
+        <tr><td>Langste reeks</td><td class="num">${reeksen.length ? (m => m + (m === 1 ? ' dag' : ' dagen'))(Math.max(...reeksen)) : '–'}</td></tr>
         <tr><td>Gemiddeld aantal vakken per student</td><td class="num">${voortgang.length ? (voortgang.reduce((a, v) => a + Object.values(v.progress || {}).filter(Boolean).length, 0) / voortgang.length).toFixed(1) : '–'}</td></tr>
       </tbody></table></div>
   </div>`;
