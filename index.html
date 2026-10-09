@@ -92,6 +92,15 @@
   .stats .l{font-size:13px;font-weight:800;margin-top:6px}
   .stats .sub{font-size:11px;font-weight:700;color:var(--muted);letter-spacing:.05em;margin-top:2px}
 
+  /* Game tijdens de les */
+  .game-card{display:flex;align-items:center;gap:14px;margin-top:24px;max-width:540px;background:var(--yellow);color:var(--ink);border:2px solid var(--ink);border-radius:16px;padding:14px 16px;box-shadow:4px 4px 0 var(--ink);transition:transform .08s}
+  .game-card:active{transform:translate(2px,2px);box-shadow:2px 2px 0 var(--ink)}
+  .game-card-icon{background:var(--ink);color:var(--yellow);width:44px;height:44px;border-radius:12px;display:grid;place-items:center;flex-shrink:0}
+  .game-card-text{flex:1;min-width:0}
+  .game-card-title{display:block;font-size:16px;font-weight:900;letter-spacing:-.01em;line-height:1.2}
+  .game-card-sub{display:block;font-size:13px;font-weight:700;color:var(--ink-soft);line-height:1.4}
+  .game-card .arrow-circle{background:var(--ink);color:var(--yellow);width:30px;height:30px;border-radius:50%;display:grid;place-items:center;font-size:14px;flex-shrink:0}
+
   /* Big compass */
   .compass-wrap{position:relative;align-self:center;margin-top:20px}
   .compass{position:relative;aspect-ratio:1;max-width:460px;background:var(--ink);border-radius:50%;padding:24px;box-shadow:12px 12px 0 var(--accent);display:grid;place-items:center}
@@ -282,6 +291,17 @@
         </div>
 
         <button class="guest-link" data-continue-guest>of bekijk eerst rond zonder account →</button>
+
+        <a class="game-card" href="game/">
+          <span class="game-card-icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 21V3.5"/><rect x="5" y="4" width="14" height="9" rx="0.5"/><g fill="currentColor" stroke="none"><rect x="5" y="4" width="3.5" height="3"/><rect x="12" y="4" width="3.5" height="3"/><rect x="8.5" y="7" width="3.5" height="3"/><rect x="15.5" y="7" width="3.5" height="3"/><rect x="5" y="10" width="3.5" height="3"/><rect x="12" y="10" width="3.5" height="3"/></g>
+          </svg></span>
+          <span class="game-card-text">
+            <span class="game-card-title">Game tijdens de les</span>
+            <span class="game-card-sub">Race met je klas, tot 6 spelers</span>
+          </span>
+          <span class="arrow-circle" aria-hidden="true">→</span>
+        </a>
 
         <div class="stats">
           <div><div class="n">13</div><div class="l">vakken</div><div class="sub">jaar 1 en 2</div></div>

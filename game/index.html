@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex" />
+  <title>Game tijdens de les · FM Atlas</title>
+  <!-- Placeholder: deploy/naar-fmatlas.sh in de Slipstroom-repo vervangt deze map door de echte build. -->
+  <link rel="icon" type="image/svg+xml" href="../logo.svg" />
+  <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png" />
+  <link rel="apple-touch-icon" href="../apple-touch-icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/fmatlas.css" />
+  <style>
+    body { display: grid; place-items: center; padding: 24px; }
+    .game-wait { width: 100%; max-width: 440px; text-align: center; padding: 36px 32px; box-shadow: var(--shadow); }
+    .game-wait-icon { width: 64px; height: 64px; margin: 0 auto 18px; border-radius: 16px; display: grid; place-items: center;
+      background: var(--accent-soft); color: var(--accent-deep); border: 1.5px solid rgba(239, 90, 63, 0.3); }
+    .game-wait h1 { font-size: 24px; font-weight: 900; letter-spacing: -0.02em; margin-bottom: 8px; }
+    .game-wait p { font-size: 14px; color: var(--muted); font-weight: 600; line-height: 1.5; margin-bottom: 22px; }
+    .game-wait-actions { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
+  </style>
+</head>
+
+<body>
+  <main class="fa-card game-wait">
+    <div class="game-wait-icon" aria-hidden="true">
+      <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round">
+        <path d="M5 21V3.5"/><rect x="5" y="4" width="14" height="9" rx="0.5"/><g fill="currentColor" stroke="none"><rect x="5" y="4" width="3.5" height="3"/><rect x="12" y="4" width="3.5" height="3"/><rect x="8.5" y="7" width="3.5" height="3"/><rect x="15.5" y="7" width="3.5" height="3"/><rect x="5" y="10" width="3.5" height="3"/><rect x="12" y="10" width="3.5" height="3"/></g>
+      </svg>
+    </div>
+    <h1>Game tijdens de les</h1>
+    <p>De game wordt klaargezet. Probeer het over een paar minuten opnieuw.</p>
+    <div class="game-wait-actions">
+      <a class="fa-btn fa-btn-accent" href="./">Opnieuw laden</a>
+      <a class="fa-btn fa-btn-ghost" href="../app.html">Terug naar FM Atlas</a>
+    </div>
+  </main>
+</body>
+
+</html>
