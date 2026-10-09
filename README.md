@@ -24,6 +24,11 @@ Project `fmkompas-ff8bc` (Google-login en Firestore).
 - `statistiek/{dag}` met `paginas/{pagina}` en `toetsen/{toets}`: anonieme tellers (bezoekers per
   dag, weergaven per pagina, ingeleverde toetsen en de som van hun scores). Geschreven door
   `js/statistiek.js`, gelezen door het dashboard in `beheer.html`. Geen namen, accounts of IP-adressen.
+- `statistiek/{dag}/spel/{teller}`: anonieme tellers van de game Slipstroom in `game/` (keer geopend,
+  races, kamers, baan, apparaat, kwaliteit). De game stuurt alleen window-events `slipstroom:stat`;
+  `js/spel-statistiek.js` (alleen geladen door de FM Atlas-build van de game) telt ze als `n` (+1) en
+  bij online races `som` (+aantal spelers, hooguit 6). Getoond in het blok "Game: Slipstroom" op
+  `beheer.html`.
 
 Regels die horen bij de huidige code (Firebase-console → Firestore → Regels):
 
@@ -65,6 +70,18 @@ service cloud.firestore {
         allow update: if request.resource.data.keys().hasOnly(['n', 'som'])
           && request.resource.data.n == resource.data.n + 1
           && request.resource.data.som >= resource.data.som && request.resource.data.som - resource.data.som <= 100;
+      }
+      // Spelstatistiek van Slipstroom (js/spel-statistiek.js): n +1, som (spelers) +0..6.
+      match /spel/{teller} {
+        allow read: if isBeheerder();
+        allow create: if teller.size() <= 40 && teller.matches('^[a-z0-9-]+$')
+          && request.resource.data.keys().hasOnly(['n', 'som']) && request.resource.data.n == 1
+          && (!('som' in request.resource.data) || (request.resource.data.som >= 0 && request.resource.data.som <= 6));
+        allow update: if request.resource.data.keys().hasOnly(['n', 'som'])
+          && request.resource.data.n == resource.data.n + 1
+          && (!('som' in request.resource.data)
+            || (request.resource.data.som >= resource.data.get('som', 0)
+              && request.resource.data.som - resource.data.get('som', 0) <= 6));
       }
     }
     match /feedback/{id} {
