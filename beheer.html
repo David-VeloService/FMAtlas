@@ -71,6 +71,7 @@
 .db-meter { display: inline-block; vertical-align: middle; width: 70px; height: 7px; border-radius: 999px; background: var(--surface-alt); overflow: hidden; margin-left: 6px; }
 .db-meter i { display: block; height: 100%; background: var(--accent); }
 .db-leeg { font-size: 13px; color: var(--muted); padding: 8px 0; }
+.db-sectie td { font-size: 10.5px; font-weight: 800; letter-spacing: .05em; text-transform: uppercase; color: var(--muted); padding-top: 12px; }
 .db-let-op { background: #fff7ed; border: 1.5px solid #fdba74; color: #9a3412; border-radius: var(--radius-lg); padding: 10px 14px; font-size: 13px; margin-bottom: 14px; }
 </style>
 </head>
@@ -203,6 +204,8 @@ async function laadDashboard() {
   const doel = document.getElementById('db-inhoud');
   const dagen = laatsteDagen(30);
   const veilig = p => p.then(v => ({ ok: true, v }), e => ({ ok: false, e }));
+  /* Spelstatistiek los opgehaald: zonder regel voor spel/ blijft de rest gewoon werken */
+  const spelP = Promise.all(dagen.map(d => veilig(db.collection('statistiek').doc(d).collection('spel').get())));
   const [scoresR, voortgangR, vakken, ...dagR] = await Promise.all([
     veilig(db.collection('scores').get()),
     veilig(db.collection('voortgang').get()),
@@ -216,6 +219,8 @@ async function laadDashboard() {
   const waarschuwingen = [];
   if (!voortgangR.ok) waarschuwingen.push('Voortgang per vak is nog niet leesbaar voor de beheerder.');
   if (dagR.some(r => !r.ok)) waarschuwingen.push('Bezoekstatistiek is nog niet leesbaar of wordt nog niet bijgehouden.');
+  const spelR = await spelP;
+  if (spelR.some(r => !r.ok)) waarschuwingen.push('Spelstatistiek (Slipstroom) is nog niet leesbaar.');
 
   /* Statistiek per dag */
   const perDag = dagen.map((d, i) => {
@@ -329,10 +334,73 @@ async function laadDashboard() {
         <tr><td>Gemiddeld aantal vakken per student</td><td class="num">${voortgang.length ? (voortgang.reduce((a, v) => a + Object.values(v.progress || {}).filter(Boolean).length, 0) / voortgang.length).toFixed(1) : '–'}</td></tr>
       </tbody></table></div>
   </div>`;
+  html += spelBlok(dagen, spelR);
   html += `<p class="bh-sub" style="text-align:right">Bijgewerkt ${new Date().toLocaleTimeString('nl-NL', { hour: '2-digit', minute: '2-digit' })} · <a href="#" id="db-ververs">Verversen</a></p>`;
   doel.innerHTML = html;
   document.getElementById('db-ververs').onclick = e => { e.preventDefault(); doel.innerHTML = '<p class="bh-melding">Laden…</p>'; laadDashboard(); };
   tekenMeldingTeller();
+}
+
+/* ─── Game: Slipstroom (js/spel-statistiek.js, statistiek/{dag}/spel/{teller}) ─── */
+const BANEN = { kust: 'Kustcircuit', neon: 'Neonstad' };
+const KWALITEIT = { high: 'Hoog', medium: 'Midden', low: 'Laag', minimal: 'Minimaal' };
+function staafjes(dagen, waarden, titel, wat) {
+  const max = Math.max(1, ...waarden), W = 600, H = 110, pad = 18, bw = (W - pad) / dagen.length;
+  const bars = waarden.map((v, i) => {
+    const h = Math.round((v / max) * (H - 30));
+    const xpos = pad + i * bw + 1, y = H - 18 - h, w = Math.max(2, bw - 2), r = Math.min(4, h, w / 2);
+    const pathD = h ? `M${xpos},${H - 18} L${xpos},${y + r} Q${xpos},${y} ${xpos + r},${y} L${xpos + w - r},${y} Q${xpos + w},${y} ${xpos + w},${y + r} L${xpos + w},${H - 18} Z` : '';
+    const lbl = new Date(dagen[i]).toLocaleDateString('nl-NL', { weekday: 'short', day: 'numeric', month: 'short' });
+    return `<g><title>${lbl}: ${v} ${wat}</title><rect x="${pad + i * bw}" y="0" width="${bw}" height="${H - 18}" fill="transparent"/>${pathD ? `<path class="bar" d="${pathD}"/>` : ''}</g>`;
+  }).join('');
+  const as = [0, 14, 29].map(i => `<text x="${pad + i * bw + bw / 2}" y="${H - 4}" text-anchor="${i === 0 ? 'start' : i === 29 ? 'end' : 'middle'}">${dagen[i].slice(8)}-${dagen[i].slice(5, 7)}</text>`).join('');
+  return `<div><div class="db-tile-lbl">${titel}</div><svg class="db-chart" viewBox="0 0 ${W} ${H}" role="img" aria-label="${titel}, laatste 30 dagen">
+    <line x1="${pad}" y1="${H - 18}" x2="${W}" y2="${H - 18}" stroke="var(--line)"/>${bars}${as}</svg></div>`;
+}
+function spelBlok(dagen, spelR) {
+  const perDag = dagen.map((d, i) => {
+    const t = {}, r = spelR[i];
+    if (r && r.ok) for (const x of r.v.docs) t[x.id] = { n: x.data().n || 0, som: x.data().som || 0 };
+    return t;
+  });
+  const tot = {};
+  for (const t of perDag) for (const [k, v] of Object.entries(t)) { const r = tot[k] = tot[k] || { n: 0, som: 0 }; r.n += v.n; r.som += v.som; }
+  const n = k => (tot[k] ? tot[k].n : 0);
+  const kop = `<h2>Game: Slipstroom</h2><div class="db-uitleg">Anoniem geteld op <a href="game/" target="_blank" rel="noopener">fmatlas.nl/game</a>, laatste 30 dagen. Online telt alleen de host, dus elke race één keer. Uitgereden = de uitslag is gehaald.</div>`;
+  if (!Object.keys(tot).length) return `<div class="db-card">${kop}<p class="db-leeg">Nog geen spelstatistiek geteld.</p></div>`;
+
+  const tegel = (lbl, val, sub) => `<div class="db-tile"><div class="db-tile-lbl">${lbl}</div><div class="db-tile-val">${val}</div><div class="db-tile-sub">${sub}</div></div>`;
+  const online = n('online-start'), spelers = tot['online-start'] ? tot['online-start'].som : 0;
+  const tegels = `<div class="db-tiles">
+    ${tegel('Keer geopend', fmt(n('geopend')), `${fmt(n('trailer'))}× trailer bekeken`)}
+    ${tegel('Solo-races', fmt(n('solo-start')), `${fmt(n('solo-finish'))} uitgereden`)}
+    ${tegel('Online-races', fmt(online), `${fmt(n('online-finish'))} uitgereden${online ? ` · gem. ${(spelers / online).toLocaleString('nl-NL', { maximumFractionDigits: 1 })} spelers` : ''}`)}
+    ${tegel('Kamers gemaakt', fmt(n('kamer-gemaakt')), `${fmt(n('kamer-meegedaan'))} meegedaan · ${fmt(n('kamer-geweigerd'))} geweigerd`)}
+    ${tegel('Terugval', fmt(n('terugval')), 'keer directe verbinding i.p.v. server')}
+  </div>`;
+
+  const grafieken = `<div class="db-grid2">
+    ${staafjes(dagen, perDag.map(t => (t.geopend || { n: 0 }).n), 'Geopend per dag', 'keer geopend')}
+    ${staafjes(dagen, perDag.map(t => (t['solo-start'] || { n: 0 }).n + (t['online-start'] || { n: 0 }).n), 'Races per dag (solo en online)', 'races')}
+  </div>`;
+
+  /* Verdeling: baan, apparaat, kwaliteit */
+  const groep = (titel, rijen) => {
+    const som = rijen.reduce((a, r) => a + r[1], 0);
+    if (!som) return `<tr class="db-sectie"><td colspan="2">${titel}</td></tr><tr><td colspan="2" class="db-leeg">Nog niets geteld.</td></tr>`;
+    return `<tr class="db-sectie"><td colspan="2">${titel}</td></tr>` + rijen.filter(r => r[1]).map(([l, v]) =>
+      `<tr><td>${faEsc(l)}</td><td class="num">${fmt(v)} <span style="color:var(--muted)">(${Math.round(v / som * 100)}%)</span><span class="db-meter"><i style="width:${Math.round(v / som * 100)}%"></i></span></td></tr>`).join('');
+  };
+  const metVoorvoegsel = (pre, namen, volgorde = []) => Object.keys(tot).filter(k => k.startsWith(pre)).map(k => k.slice(pre.length))
+    .sort((a, b) => (volgorde.indexOf(a) + 1 || 99) - (volgorde.indexOf(b) + 1 || 99) || n(pre + b) - n(pre + a))
+    .map(k => [namen[k] || k, n(pre + k)]);
+  const verdeling = `<div class="db-table-wrap" style="margin-top:14px"><table class="db-table"><tbody>
+    ${groep('Baankeuze (per race)', metVoorvoegsel('baan-', BANEN, Object.keys(BANEN)))}
+    ${groep('Apparaat (per keer geopend)', [['Telefoon of tablet', n('apparaat-telefoon')], ['Laptop of desktop', n('apparaat-laptop')]])}
+    ${groep('Kwaliteit bij de start', metVoorvoegsel('kwaliteit-', KWALITEIT, Object.keys(KWALITEIT)))}
+  </tbody></table></div>`;
+
+  return `<div class="db-card">${kop}${tegels}${grafieken}${verdeling}</div>`;
 }
 
 function datum(ts) {
