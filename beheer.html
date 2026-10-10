@@ -366,7 +366,7 @@ function spelBlok(dagen, spelR) {
   const tot = {};
   for (const t of perDag) for (const [k, v] of Object.entries(t)) { const r = tot[k] = tot[k] || { n: 0, som: 0 }; r.n += v.n; r.som += v.som; }
   const n = k => (tot[k] ? tot[k].n : 0);
-  const kop = `<h2>Game: Slipstroom</h2><div class="db-uitleg">Anoniem geteld op <a href="game/" target="_blank" rel="noopener">fmatlas.nl/game</a>, laatste 30 dagen. Online telt alleen de host, dus elke race één keer. Uitgereden = de uitslag is gehaald.</div>`;
+  const kop = `<h2>Game: Slipstroom</h2><div class="db-uitleg">Anoniem geteld op <a href="game/slipstroom/" target="_blank" rel="noopener">fmatlas.nl/game/slipstroom</a>, laatste 30 dagen. Online telt alleen de host, dus elke race één keer. Uitgereden = de uitslag is gehaald.</div>`;
   if (!Object.keys(tot).length) return `<div class="db-card">${kop}<p class="db-leeg">Nog geen spelstatistiek geteld.</p></div>`;
 
   const tegel = (lbl, val, sub) => `<div class="db-tile"><div class="db-tile-lbl">${lbl}</div><div class="db-tile-val">${val}</div><div class="db-tile-sub">${sub}</div></div>`;

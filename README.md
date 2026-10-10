@@ -24,7 +24,7 @@ Project `fmkompas-ff8bc` (Google-login en Firestore).
 - `statistiek/{dag}` met `paginas/{pagina}` en `toetsen/{toets}`: anonieme tellers (bezoekers per
   dag, weergaven per pagina, ingeleverde toetsen en de som van hun scores). Geschreven door
   `js/statistiek.js`, gelezen door het dashboard in `beheer.html`. Geen namen, accounts of IP-adressen.
-- `statistiek/{dag}/spel/{teller}`: anonieme tellers van de game Slipstroom in `game/` (keer geopend,
+- `statistiek/{dag}/spel/{teller}`: anonieme tellers van de game Slipstroom in `game/slipstroom/` (keer geopend,
   races, kamers, baan, apparaat, kwaliteit). De game stuurt alleen window-events `slipstroom:stat`;
   `js/spel-statistiek.js` (alleen geladen door de FM Atlas-build van de game) telt ze als `n` (+1) en
   bij online races `som` (+aantal spelers, hooguit 6). Getoond in het blok "Game: Slipstroom" op

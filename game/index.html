@@ -1,35 +1,241 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="nl">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
-    <meta name="theme-color" content="#0b0f17" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <title>Slipstroom</title>
-    <script>
-      // Served under a sub path (/kart via tailscale serve). Without the trailing slash the
-      // relative asset URLs would resolve outside it, so add the slash first.
-      (function () {
-        var p = location.pathname;
-        if (p.slice(-1) !== '/' && !/\.[a-z0-9]+$/i.test(p)) location.replace(p + '/' + location.search + location.hash);
-      })();
-    </script>
-    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230e1622'/%3E%3Cpath d='M14 40 L34 16 L30 30 L50 24 L30 48 L34 34 Z' fill='%23ff6a2b'/%3E%3C/svg%3E" />
-    <script src="../js/spel-statistiek.js" defer></script>
-    <script type="module" crossorigin src="./assets/index-D8SsJUvK.js"></script>
-    <link rel="modulepreload" crossorigin href="./assets/three-zbV3Xypw.js">
-    <link rel="modulepreload" crossorigin href="./assets/vendor-Di5Tny4D.js">
-    <link rel="stylesheet" crossorigin href="./assets/vendor-mO99cYdp.css">
-    <link rel="stylesheet" crossorigin href="./assets/index-NIZ04v9t.css">
-  </head>
-  <body>
-    <canvas id="game"></canvas>
-    <div id="ui"></div>
-    <div id="loading" class="loading">
-      <div style="text-align:center">
-        <div class="logo">Slip<span>stroom</span></div>
-        <div class="bar"></div>
-      </div>
+<head>
+<meta charset="UTF-8"/>
+<script>
+  // Old Slipstroom share links were game/?kamer=CODE; send them on to the game itself.
+  if (/[?&]kamer=/.test(location.search)) location.replace('slipstroom/' + location.search + location.hash);
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Spelletjes · FM Atlas</title>
+<meta name="description" content="Speel een spelletje tijdens de pauze of met je klas: racen in Slipstroom of overleven in Stadsstorm. Alleen tegen de computer of online met maximaal 6 spelers."/>
+<link rel="canonical" href="https://fmatlas.nl/game/"/>
+<link rel="icon" type="image/svg+xml" href="../logo.svg"/>
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png"/>
+<link rel="apple-touch-icon" href="../apple-touch-icon.png"/>
+<meta name="theme-color" content="#f7f3ec"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../css/fmatlas.css"/>
+<style>
+.spel-wrap { max-width: 1040px; margin: 0 auto; padding: 32px 20px 24px; }
+
+/* Hero */
+.spel-hero { display: flex; align-items: flex-end; justify-content: space-between; gap: 20px; flex-wrap: wrap; margin-bottom: 24px; }
+.spel-hero h1 { font-size: clamp(30px, 6vw, 42px); font-weight: 900; letter-spacing: -0.025em; line-height: 1.05; margin-bottom: 8px; }
+.spel-hero .lead { color: var(--ink-soft); font-size: 15px; max-width: 560px; }
+.spel-tellers { display: flex; gap: 10px; }
+.spel-teller { background: var(--surface); border: 1.5px solid var(--line); border-radius: var(--radius); padding: 10px 14px; min-width: 92px; }
+.spel-teller .n { font-size: 22px; font-weight: 900; letter-spacing: -0.02em; line-height: 1; }
+.spel-teller .l { font-size: 12px; font-weight: 700; color: var(--muted); margin-top: 4px; }
+
+/* Verder spelen */
+.spel-verder { display: none; align-items: center; gap: 14px; margin-bottom: 24px; padding: 12px 14px;
+  background: var(--ink); color: var(--surface); border-radius: var(--radius-lg); }
+.spel-verder.is-zichtbaar { display: flex; }
+.spel-verder img { width: 72px; height: 44px; object-fit: cover; border-radius: 8px; flex-shrink: 0; background: #333; }
+.spel-verder-tekst { flex: 1; min-width: 0; }
+.spel-verder-tekst .k { display: block; font-size: 12px; font-weight: 700; opacity: 0.7; }
+.spel-verder-tekst .t { display: block; font-size: 16px; font-weight: 900; letter-spacing: -0.01em; }
+
+/* Filters */
+.spel-filters { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 18px; }
+.spel-filters:empty { display: none; }
+.spel-chip { font: inherit; font-size: 13px; font-weight: 800; padding: 7px 14px; border-radius: 999px; cursor: pointer;
+  background: var(--surface); color: var(--ink-soft); border: 1.5px solid var(--line); transition: border-color 0.15s, background 0.15s; }
+.spel-chip:hover { border-color: var(--accent); color: var(--ink); }
+.spel-chip[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: var(--surface); }
+
+/* Grid met kaarten */
+.spel-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
+.spel-kaart { position: relative; display: flex; flex-direction: column; background: var(--surface); border: 1.5px solid var(--line);
+  border-radius: var(--radius-lg); overflow: hidden; color: inherit; text-decoration: none; transition: border-color 0.15s, transform 0.15s, box-shadow 0.15s; }
+.spel-kaart:hover { border-color: var(--accent); transform: translateY(-3px); box-shadow: var(--shadow); }
+.spel-kaart[hidden] { display: none; }
+.spel-beeld { position: relative; aspect-ratio: 16 / 9; background: var(--surface-alt); overflow: hidden; }
+.spel-beeld img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s; }
+.spel-kaart:hover .spel-beeld img { transform: scale(1.04); }
+.spel-label { position: absolute; top: 12px; left: 12px; font-size: 11.5px; font-weight: 900; text-transform: uppercase; letter-spacing: 0.05em;
+  background: var(--surface); color: var(--accent-deep); padding: 4px 9px; border-radius: 999px; }
+.spel-label.nieuw { left: auto; right: 12px; background: var(--accent); color: var(--surface); }
+.spel-body { display: flex; flex-direction: column; flex: 1; gap: 8px; padding: 16px 18px 18px; }
+.spel-body h2 { font-size: 22px; font-weight: 900; letter-spacing: -0.015em; line-height: 1.2; }
+.spel-body p { font-size: 14.5px; line-height: 1.55; color: var(--ink-soft); }
+.spel-feiten { display: flex; flex-wrap: wrap; gap: 6px; list-style: none; padding: 0; margin: 2px 0 0; }
+.spel-feiten li { font-size: 12px; font-weight: 700; color: var(--ink-soft); background: var(--surface-alt); padding: 4px 9px; border-radius: 8px; }
+.spel-body .fa-btn { align-self: flex-start; margin-top: auto; }
+.spel-body .spel-feiten + .fa-btn { margin-top: 14px; }
+
+/* Plek voor de volgende game */
+.spel-binnenkort { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; text-align: center;
+  min-height: 260px; padding: 24px; border: 2px dashed var(--line); border-radius: var(--radius-lg); color: var(--muted); }
+.spel-binnenkort .icoon { width: 48px; height: 48px; border-radius: 14px; display: grid; place-items: center; background: var(--surface-alt); color: var(--ink-soft); }
+.spel-binnenkort strong { color: var(--ink); font-size: 16px; font-weight: 900; }
+.spel-binnenkort span { font-size: 13.5px; max-width: 240px; }
+.spel-binnenkort[hidden] { display: none; }
+
+.spel-terug { display: inline-flex; margin-top: 28px; }
+
+@media (max-width: 700px) {
+  .spel-wrap { padding: 24px 16px 16px; }
+  .spel-tellers { width: 100%; }
+  .spel-teller { flex: 1; min-width: 0; }
+  .spel-grid { grid-template-columns: minmax(0, 1fr); gap: 16px; }
+  .spel-body { padding: 14px 16px 16px; }
+  .spel-body .fa-btn { align-self: stretch; }
+  .spel-binnenkort { min-height: 160px; }
+}
+</style>
+</head>
+<body>
+
+<header class="fa-header">
+  <a class="fa-brand" href="../app.html">
+    <img src="../logo.svg" alt="" width="32" height="32"/>
+    <span class="fa-brand-name">FM Atlas</span>
+    <span class="fa-brand-tag">· studiehulp FM</span>
+  </a>
+</header>
+
+<nav class="fa-breadcrumb">
+  <a href="../app.html">Vakken</a>
+  <span aria-hidden="true">›</span>
+  <span class="current">Spelletjes</span>
+</nav>
+
+<main class="spel-wrap">
+  <section class="spel-hero">
+    <div>
+      <h1>Speel een spelletje</h1>
+      <p class="lead">Voor de pauze of een uurtje met je klas. Kies een game, speel alleen tegen de computer, of maak een kamer en deel de code.</p>
     </div>
-  </body>
+    <div class="spel-tellers" aria-label="Overzicht">
+      <div class="spel-teller"><div class="n" data-aantal-games>2</div><div class="l">games</div></div>
+      <div class="spel-teller"><div class="n">6</div><div class="l">spelers max</div></div>
+      <div class="spel-teller"><div class="n">0€</div><div class="l">altijd</div></div>
+    </div>
+  </section>
+
+  <a class="spel-verder" href="#" data-verder>
+    <img src="data:," alt="" data-verder-beeld/>
+    <span class="spel-verder-tekst">
+      <span class="k">Verder spelen</span>
+      <span class="t" data-verder-titel></span>
+    </span>
+    <span class="fa-btn fa-btn-accent fa-btn-sm">Spelen →</span>
+  </a>
+
+  <div class="spel-filters" role="group" aria-label="Filter op soort" data-filters></div>
+
+  <!--
+    Een game toevoegen: kopieer een <a class="spel-kaart"> hieronder en pas aan:
+    href (de map van de game in game/), data-id (uniek), data-soort, het beeld (16:9, ~960x540),
+    de titel, de tekst en de feiten. Zet data-nieuw plus het label "Nieuw" op een nieuwe game.
+    De filters en de teller bovenaan rekenen zichzelf uit.
+  -->
+  <div class="spel-grid" data-grid>
+    <a class="spel-kaart" href="stadsstorm/" data-id="stadsstorm" data-soort="Overleven">
+      <span class="spel-beeld">
+        <img src="stadsstorm-kaart.jpg" width="960" height="540" alt="Stadsstorm: een kruispunt in de stad" loading="lazy"/>
+        <span class="spel-label">Overleven</span>
+        <span class="spel-label nieuw">Nieuw</span>
+      </span>
+      <span class="spel-body">
+        <h2>Stadsstorm</h2>
+        <p>Een battle royale in een stad. Spring uit de helikopter, raap wapens op, bouw muren, kaap een auto en blijf als laatste over terwijl de storm krimpt.</p>
+        <ul class="spel-feiten">
+          <li>1 tot 6 spelers</li>
+          <li>Bots vullen aan</li>
+          <li>Laptop en telefoon</li>
+        </ul>
+        <span class="fa-btn fa-btn-accent">Spelen</span>
+      </span>
+    </a>
+
+    <a class="spel-kaart" href="slipstroom/" data-id="slipstroom" data-soort="Racen">
+      <span class="spel-beeld">
+        <img src="slipstroom/trailer/poster.jpg" width="960" height="540" alt="Slipstroom: karts in een neonstad" loading="lazy"/>
+        <span class="spel-label">Racen</span>
+      </span>
+      <span class="spel-body">
+        <h2>Slipstroom</h2>
+        <p>Een kartracer door een neonstad. Race tegen je klasgenoten of tegen CPU-karts, met items, drift en boosts.</p>
+        <ul class="spel-feiten">
+          <li>1 tot 6 spelers</li>
+          <li>CPU-karts vullen aan</li>
+          <li>Laptop en telefoon</li>
+        </ul>
+        <span class="fa-btn fa-btn-accent">Spelen</span>
+      </span>
+    </a>
+
+    <div class="spel-binnenkort" data-binnenkort>
+      <span class="icoon" aria-hidden="true">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+      </span>
+      <strong>Er komen meer games</strong>
+      <span>Idee voor een spelletje? Laat het weten via <a href="../app.html#contact">Fout gezien?</a></span>
+    </div>
+  </div>
+
+  <a class="fa-btn fa-btn-ghost spel-terug" href="../app.html">← Terug naar FM Atlas</a>
+</main>
+
+<footer class="fa-site-footer">
+  <span>FM Atlas · gratis studiehulp voor HAN Facilitair Management, gemaakt door een student</span>
+  <span>Niet officieel verbonden aan de HAN · <a href="../privacy.html">Privacy</a> · <a href="../app.html#contact">Fout gezien?</a></span>
+</footer>
+
+<script>
+(function () {
+  const kaarten = Array.from(document.querySelectorAll('.spel-kaart'));
+  const binnenkort = document.querySelector('[data-binnenkort]');
+  const SLEUTEL = 'fa_laatste_game';
+
+  // Teller bovenaan
+  const teller = document.querySelector('[data-aantal-games]');
+  if (teller) teller.textContent = String(kaarten.length);
+
+  // Filters per soort, alleen als er meer dan één soort is
+  const soorten = Array.from(new Set(kaarten.map(k => k.dataset.soort).filter(Boolean)));
+  const filters = document.querySelector('[data-filters]');
+  if (filters && soorten.length > 1) {
+    ['Alles'].concat(soorten).forEach((soort, i) => {
+      const knop = document.createElement('button');
+      knop.type = 'button';
+      knop.className = 'spel-chip';
+      knop.textContent = soort;
+      knop.setAttribute('aria-pressed', i === 0 ? 'true' : 'false');
+      knop.addEventListener('click', () => {
+        filters.querySelectorAll('.spel-chip').forEach(c => c.setAttribute('aria-pressed', c === knop ? 'true' : 'false'));
+        kaarten.forEach(k => { k.hidden = soort !== 'Alles' && k.dataset.soort !== soort; });
+        if (binnenkort) binnenkort.hidden = soort !== 'Alles';
+      });
+      filters.appendChild(knop);
+    });
+  }
+
+  // Laatst gespeelde game onthouden, alleen in deze browser
+  kaarten.forEach(k => k.addEventListener('click', () => {
+    try { localStorage.setItem(SLEUTEL, k.dataset.id); } catch (_) {}
+  }));
+  let laatste = null;
+  try { laatste = localStorage.getItem(SLEUTEL); } catch (_) {}
+  const kaart = laatste && kaarten.find(k => k.dataset.id === laatste);
+  const verder = document.querySelector('[data-verder]');
+  if (kaart && verder) {
+    const img = kaart.querySelector('img');
+    verder.href = kaart.getAttribute('href');
+    verder.querySelector('[data-verder-titel]').textContent = kaart.querySelector('h2').textContent;
+    if (img) verder.querySelector('[data-verder-beeld]').src = img.getAttribute('src');
+    verder.addEventListener('click', () => {
+      try { localStorage.setItem(SLEUTEL, kaart.dataset.id); } catch (_) {}
+    });
+    verder.classList.add('is-zichtbaar');
+  }
+})();
+</script>
+
+</body>
 </html>
