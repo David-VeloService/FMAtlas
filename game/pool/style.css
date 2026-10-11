@@ -1,0 +1,594 @@
+/*
+ * Pool: crème pagina in FM Atlas-stijl, met de tafel als enige donkere plek, onder een lamp.
+ * Nunito als die er is (FM Atlas laadt hem), anders het systeemfont.
+ *
+ * Indeling: kop, spelers, tafel en bediening passen samen op één scherm. De tafelmaat rekent app.js
+ * uit de echte gemeten hoogte van kop, spelers en bediening (zie resize() daar); deze stylesheet
+ * houdt die onderdelen compact en stabiel van hoogte. Drie standen:
+ *   - breed: alles onder elkaar, bediening in één rij;
+ *   - smal (telefoon staand): compacte kop, spelers naast elkaar, bediening in twee rijen;
+ *   - laag (telefoon liggend, weinig hoogte): tafel links, spelers en bediening in een kolom rechts.
+ */
+
+:root {
+  --pl-bg: #f7f3ec;
+  --pl-surface: #ffffff;
+  --pl-surface-alt: #f1ece2;
+  --pl-ink: #1a2024;
+  --pl-ink-soft: #4a5258;
+  --pl-muted: #646c72;
+  --pl-line: #e3ddd1;
+  --pl-koraal: #ef5a3f;
+  --pl-koraal-diep: #c83f24;
+  --pl-koraal-zacht: #fde4dd;
+  --pl-zaal: #16191a;
+  --pl-zaal-2: #22282a;
+  --pl-laken: #17675d;
+  --pl-goed: #3a8a5c;
+
+  --pl-font: 'Nunito', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --pl-radius: 12px;
+  --pl-radius-lg: 16px;
+  --pl-focus: 0 0 0 3px var(--pl-bg), 0 0 0 5px var(--pl-koraal);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: var(--pl-font);
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--pl-ink);
+  background: var(--pl-bg);
+  overflow-x: hidden;
+}
+
+button, select, input { font: inherit; color: inherit; }
+a { color: var(--pl-koraal-diep); }
+:focus { outline: none; }
+:focus-visible { box-shadow: var(--pl-focus); outline: none; }
+[hidden] { display: none !important; }
+
+.pl-sr, .pl-call-legend {
+  position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; border: 0;
+  overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap;
+}
+
+/* Korte en lange knopteksten: de toegankelijke naam staat altijd volledig in aria-label. */
+.pl-kort { display: none; }
+
+/* ─── Bovenbalk ───────────────────────────────────────── */
+
+.pl-bar {
+  position: sticky; top: 0; z-index: 20;
+  display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+  padding: 6px max(16px, calc((100vw - 1180px) / 2));
+  background: rgba(247, 243, 236, 0.94);
+  border-bottom: 1.5px solid var(--pl-line);
+  -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+}
+
+.pl-terug {
+  display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 14px 0 6px;
+  border-radius: 999px; color: var(--pl-ink); text-decoration: none; font-weight: 800; font-size: 14px;
+  background: var(--pl-surface); border: 1.5px solid var(--pl-line);
+  transition: border-color 0.15s;
+}
+.pl-terug img { display: block; border-radius: 8px; }
+.pl-terug:hover { border-color: var(--pl-koraal); }
+
+.pl-titel { display: flex; align-items: baseline; gap: 8px; min-width: 0; }
+.pl-naam { margin: 0; font-size: 24px; font-weight: 900; letter-spacing: -0.02em; line-height: 1; }
+.pl-sub {
+  font-size: 12px; font-weight: 900; letter-spacing: 0.06em; text-transform: uppercase; white-space: nowrap;
+  color: var(--pl-surface); background: var(--pl-ink); padding: 3px 8px; border-radius: 999px;
+}
+
+.pl-modus {
+  display: inline-flex; padding: 3px; gap: 2px; margin-left: auto;
+  background: var(--pl-surface-alt); border: 1.5px solid var(--pl-line); border-radius: 999px;
+}
+.pl-modus button {
+  min-height: 36px; padding: 0 14px; border: 0; border-radius: 999px; cursor: pointer; white-space: nowrap;
+  background: transparent; font-weight: 800; font-size: 13.5px; color: var(--pl-ink-soft);
+}
+.pl-modus button[aria-checked="true"] { background: var(--pl-ink); color: var(--pl-surface); }
+.pl-modus button:hover[aria-checked="false"] { color: var(--pl-ink); }
+
+.pl-bar-knoppen { display: flex; align-items: center; gap: 8px; }
+
+.pl-icoonknop {
+  width: 44px; height: 44px; flex: none; display: grid; place-items: center; border-radius: 50%; cursor: pointer;
+  background: var(--pl-surface); border: 1.5px solid var(--pl-line); color: var(--pl-muted);
+}
+.pl-icoonknop:hover { color: var(--pl-ink); border-color: var(--pl-koraal); }
+.pl-icoonknop .pl-icoon-aan { display: none; }
+.pl-icoonknop.is-aan { color: var(--pl-koraal-diep); border-color: var(--pl-koraal); }
+.pl-icoonknop.is-aan .pl-icoon-aan { display: block; }
+.pl-icoonknop.is-aan .pl-icoon-uit { display: none; }
+
+/* ─── Knoppen ─────────────────────────────────────────── */
+
+.pl-knop {
+  min-height: 44px; padding: 0 18px; border-radius: 999px; cursor: pointer; font-weight: 800; font-size: 15px;
+  border: 1.5px solid transparent; transition: background 0.15s, border-color 0.15s, transform 0.1s, opacity 0.15s;
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px; white-space: nowrap;
+}
+.pl-knop:active:not(:disabled) { transform: translateY(1px); }
+.pl-knop:disabled { opacity: 0.45; cursor: not-allowed; }
+.pl-knop-koraal { background: var(--pl-koraal); color: #fff; }
+.pl-knop-koraal:hover:not(:disabled) { background: var(--pl-koraal-diep); }
+.pl-knop-rand { background: var(--pl-surface); border-color: var(--pl-line); color: var(--pl-ink); }
+.pl-knop-rand:hover:not(:disabled) { border-color: var(--pl-koraal); }
+.pl-knop-groot { min-height: 52px; padding: 0 30px; font-size: 17px; font-weight: 900; }
+.pl-knop svg { flex: none; }
+
+/* ─── Bevestiging (zweeft boven de pagina, schuift de tafel niet weg) ─── */
+
+.pl-bevestig {
+  position: fixed; top: 8px; left: 50%; transform: translateX(-50%); z-index: 60;
+  width: min(1148px, calc(100% - 16px));
+  display: flex; align-items: center; justify-content: space-between; gap: 10px 14px; flex-wrap: wrap;
+  padding: 10px 14px;
+  background: var(--pl-ink); color: var(--pl-surface); border-radius: var(--pl-radius-lg);
+  box-shadow: 0 12px 30px rgba(26, 32, 36, 0.3);
+}
+.pl-bevestig-tekst { display: flex; flex-direction: column; min-width: 0; }
+.pl-bevestig-tekst span { opacity: 0.8; font-size: 14px; }
+.pl-bevestig-knoppen { display: flex; gap: 8px; flex-wrap: wrap; }
+.pl-bevestig .pl-knop-rand { background: transparent; color: var(--pl-surface); border-color: rgba(255, 255, 255, 0.3); }
+
+/* ─── Meldingsbalk (online verzoeken, korte meldingen); schuift niets weg ─── */
+
+.pl-balk {
+  position: fixed; top: 8px; left: 50%; transform: translateX(-50%); z-index: 50;
+  width: min(760px, calc(100% - 16px));
+  display: flex; align-items: center; justify-content: space-between; gap: 8px 12px; flex-wrap: wrap;
+  padding: 8px 10px 8px 14px;
+  background: var(--pl-surface); color: var(--pl-ink); border: 1.5px solid var(--pl-koraal);
+  border-radius: var(--pl-radius-lg); box-shadow: 0 12px 30px rgba(26, 32, 36, 0.22);
+}
+.pl-balk-tekst { margin: 0; flex: 1 1 220px; min-width: 0; font-weight: 800; font-size: 14.5px; line-height: 1.3; }
+.pl-balk-knoppen { display: flex; gap: 6px; flex-wrap: wrap; }
+.pl-balk .pl-knop { min-height: 40px; padding: 0 14px; font-size: 14px; }
+
+/* ─── Laag met panelen: menu, hulp, instellingen, speelwijze, online ─── */
+
+.pl-laag {
+  position: fixed; inset: 0; z-index: 40;
+  display: flex; align-items: center; justify-content: center;
+  padding: max(10px, env(safe-area-inset-top, 0px)) max(10px, env(safe-area-inset-right, 0px)) max(10px, env(safe-area-inset-bottom, 0px)) max(10px, env(safe-area-inset-left, 0px));
+  background: rgba(22, 25, 26, 0.55);
+  overscroll-behavior: contain;
+}
+.pl-paneel {
+  position: relative; width: min(460px, 100%); max-height: 100%;
+  display: flex; flex-direction: column;
+  background: var(--pl-bg); color: var(--pl-ink);
+  border-radius: 20px; box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+  overflow-y: auto; -webkit-overflow-scrolling: touch; overscroll-behavior: contain;
+}
+/* Kop en knoppen blijven in beeld als het paneel op een kleine telefoon moet scrollen. */
+.pl-paneel-kop {
+  position: sticky; top: 0; z-index: 1;
+  display: flex; align-items: center; justify-content: space-between; gap: 10px;
+  padding: 12px 12px 8px 18px; background: var(--pl-bg);
+}
+.pl-paneel-kop h2 { margin: 0; font-size: 20px; font-weight: 900; letter-spacing: -0.01em; }
+.pl-sluit {
+  width: 44px; height: 44px; flex: none; border-radius: 50%; cursor: pointer;
+  border: 1.5px solid var(--pl-line); background: var(--pl-surface); color: var(--pl-ink);
+  font-size: 24px; font-weight: 700; line-height: 1;
+}
+.pl-sluit:hover { border-color: var(--pl-koraal); }
+.pl-paneel-inhoud { padding: 0 18px 8px; font-size: 14.5px; color: var(--pl-ink-soft); }
+.pl-paneel-inhoud > p { margin: 0 0 10px; }
+.pl-paneel-inhoud h3 { margin: 12px 0 4px; font-size: 14.5px; font-weight: 900; color: var(--pl-ink); }
+.pl-paneel-inhoud ul { margin: 0 0 6px; padding-left: 18px; }
+.pl-paneel-inhoud li { margin: 3px 0; }
+.pl-paneel-knoppen {
+  position: sticky; bottom: 0;
+  display: flex; flex-wrap: wrap; gap: 8px; padding: 10px 18px 16px; background: var(--pl-bg);
+}
+.pl-paneel-inhoud .pl-paneel-knoppen { padding: 10px 0 8px; }
+.pl-paneel-knoppen .pl-knop { flex: 1 1 auto; }
+.pl-paneel-noot { margin: 0 18px 10px; font-size: 13px; color: var(--pl-muted); }
+.pl-paneel-inhoud .pl-paneel-noot { margin: 8px 0 0; }
+.pl-paneel-fout { margin: 6px 0 0; min-height: 1.3em; font-size: 14px; font-weight: 800; color: var(--pl-koraal-diep); }
+.pl-paneel-fout:empty { min-height: 0; }
+.pl-paneel-melding { padding: 8px 12px; border-radius: var(--pl-radius); background: var(--pl-koraal-zacht); color: var(--pl-ink); font-weight: 700; }
+
+.pl-menu-lijst { display: grid; gap: 8px; padding: 0 18px 18px; }
+.pl-menu-lijst .pl-knop { width: 100%; text-decoration: none; }
+.pl-keuzeknop[aria-pressed="true"] { border-color: var(--pl-ink); box-shadow: inset 0 0 0 1.5px var(--pl-ink); }
+.pl-keuzeknop[aria-pressed="true"]::after { content: '· nu'; font-weight: 700; color: var(--pl-muted); }
+
+.pl-veld-blok { display: flex; flex-direction: column; gap: 3px; margin: 0 0 10px; font-size: 13px; font-weight: 800; color: var(--pl-ink-soft); }
+.pl-veld-blok input[type="text"] {
+  min-height: 44px; padding: 0 12px; border-radius: 10px; border: 1.5px solid var(--pl-line);
+  background: var(--pl-surface); font-size: 16px; font-weight: 700; color: var(--pl-ink); width: 100%; min-width: 0;
+}
+.pl-veld-blok input[type="text"]:focus-visible { border-color: var(--pl-koraal); }
+.pl-veld-blok input[type="range"] { width: 100%; height: 36px; margin: 0; accent-color: var(--pl-koraal); }
+.pl-veld-blok output { font-variant-numeric: tabular-nums; color: var(--pl-ink); }
+[data-online-code] { text-transform: uppercase; letter-spacing: 0.12em; }
+.pl-schakel { display: flex; align-items: center; gap: 10px; min-height: 44px; margin: 0 0 6px; font-weight: 800; color: var(--pl-ink); cursor: pointer; }
+.pl-schakel input { width: 22px; height: 22px; margin: 0; flex: none; accent-color: var(--pl-koraal); }
+
+.pl-online-keuze { display: grid; gap: 8px; }
+.pl-online-keuze > .pl-knop { width: 100%; }
+.pl-of { text-align: center; font-size: 12px; font-weight: 900; text-transform: uppercase; letter-spacing: 0.08em; color: var(--pl-muted); }
+.pl-mee-rij { display: flex; align-items: flex-end; gap: 8px; }
+.pl-mee-rij .pl-veld-blok { flex: 1 1 auto; margin: 0; min-width: 0; }
+.pl-mee-rij .pl-knop { flex: none; }
+.pl-verbind { font-weight: 800; color: var(--pl-ink); }
+
+.pl-code-blok { display: flex; align-items: baseline; gap: 10px; margin: 0 0 8px; }
+.pl-code-label { font-size: 12px; font-weight: 900; text-transform: uppercase; letter-spacing: 0.08em; color: var(--pl-muted); }
+.pl-code { font-size: 34px; font-weight: 900; letter-spacing: 0.16em; color: var(--pl-ink); user-select: all; -webkit-user-select: all; font-variant-numeric: tabular-nums; }
+.pl-deel { margin-bottom: 4px; }
+.pl-deel input[readonly] { font-size: 13.5px; font-weight: 600; }
+.pl-deel-knoppen { display: flex; gap: 8px; flex-wrap: wrap; }
+.pl-deel-knoppen .pl-knop { flex: 1 1 auto; min-height: 40px; font-size: 14px; }
+.pl-lobby-kop { margin: 12px 0 4px; }
+.pl-lobby-spelers { list-style: none; margin: 0 0 8px; padding: 0; display: grid; gap: 6px; }
+.pl-lobby-speler {
+  padding: 8px 12px; border-radius: var(--pl-radius); background: var(--pl-surface); border: 1.5px solid var(--pl-line);
+  font-weight: 800; color: var(--pl-ink);
+}
+.pl-lobby-speler.is-leeg { color: var(--pl-muted); border-style: dashed; font-weight: 700; }
+.pl-lobby-tekst { margin: 0 0 4px; font-weight: 700; color: var(--pl-ink); }
+
+/* ─── Indeling ────────────────────────────────────────── */
+
+.pl-main { max-width: 1180px; margin: 0 auto; padding: 10px 16px 8px; }
+
+/* Spelers */
+.pl-spelers {
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr) minmax(0, 1fr);
+  gap: 8px; align-items: stretch; margin-bottom: 8px;
+}
+.pl-speler {
+  position: relative; display: flex; flex-direction: column; justify-content: center; gap: 2px; min-width: 0;
+  padding: 6px 12px; background: var(--pl-surface); border: 1.5px solid var(--pl-line);
+  border-radius: var(--pl-radius-lg); transition: border-color 0.2s, box-shadow 0.2s;
+}
+.pl-speler[data-speler="1"] { text-align: right; align-items: flex-end; }
+.pl-speler.is-aan { border-color: var(--pl-koraal); box-shadow: 0 0 0 3px var(--pl-koraal-zacht); }
+.pl-speler-kop { display: flex; align-items: center; gap: 8px; min-width: 0; }
+.pl-speler[data-speler="1"] .pl-speler-kop { flex-direction: row-reverse; }
+.pl-speler-naam { font-size: 16px; font-weight: 900; letter-spacing: -0.01em; line-height: 22px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.pl-beurt {
+  visibility: hidden; flex: none; font-size: 10.5px; font-weight: 900; text-transform: uppercase; letter-spacing: 0.06em;
+  color: #fff; background: var(--pl-koraal); padding: 2px 8px; border-radius: 999px; line-height: 1.4; white-space: nowrap;
+}
+.pl-speler.is-aan .pl-beurt { visibility: visible; }
+
+/* Groep en ballen staan op één regel met een vaste hoogte, zodat de tafel niet verspringt als de
+   groepen verdeeld worden. */
+.pl-groep-rij { display: flex; align-items: center; gap: 6px; height: 20px; min-width: 0; max-width: 100%; }
+.pl-speler[data-speler="1"] .pl-groep-rij { flex-direction: row-reverse; }
+.pl-groep { font-size: 13px; font-weight: 700; color: var(--pl-muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0; }
+.pl-ballen { display: flex; flex-wrap: nowrap; gap: 3px; list-style: none; margin: 0; padding: 0; flex: none; }
+.pl-ballen:empty { display: none; }
+.pl-speler[data-speler="1"] .pl-ballen { flex-direction: row-reverse; }
+.pl-bal {
+  --kleur: #888;
+  width: 18px; height: 18px; flex: none; border-radius: 50%; display: grid; place-items: center;
+  font-size: 9px; font-weight: 900; color: #1a1a1a; position: relative; overflow: hidden;
+  background: var(--kleur); box-shadow: inset -2px -3px 4px rgba(0, 0, 0, 0.28), inset 2px 2px 3px rgba(255, 255, 255, 0.35);
+}
+.pl-bal span { position: relative; z-index: 1; width: 11px; height: 11px; border-radius: 50%; background: #fbf8f0; display: grid; place-items: center; line-height: 1; }
+.pl-bal.is-half { background: linear-gradient(180deg, #f8f5ec 0 24%, var(--kleur) 24% 76%, #f8f5ec 76%); }
+.pl-bal.is-weg { opacity: 0.22; filter: grayscale(0.6); }
+
+.pl-status-blok {
+  display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; min-width: 0;
+  padding: 6px 12px; border-radius: var(--pl-radius-lg); background: var(--pl-surface-alt);
+}
+/* Twee regels status vast gereserveerd: een langere foutmelding laat de tafel niet verspringen. */
+.pl-status { margin: 0; font-size: 15px; font-weight: 800; line-height: 1.3; min-height: 2.6em; display: flex; align-items: center; justify-content: center; }
+.pl-call-regel { margin: 1px 0 0; font-size: 13px; font-weight: 700; line-height: 1.3; color: var(--pl-koraal-diep); min-height: 1.3em; }
+.pl-status.is-fout { color: var(--pl-koraal-diep); }
+
+/* Tafel */
+.pl-podium {
+  position: relative; min-width: 0; border-radius: 22px; padding: clamp(8px, 1.2vw, 16px);
+  background:
+    radial-gradient(70% 90% at 50% 40%, rgba(255, 236, 196, 0.16), transparent 70%),
+    linear-gradient(180deg, var(--pl-zaal-2), var(--pl-zaal));
+  box-shadow: 0 18px 40px rgba(26, 32, 36, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+.pl-tafel-wrap { position: relative; margin: 0 auto; }
+.pl-tafel {
+  display: block; width: 100%; height: auto; border-radius: 14px; cursor: crosshair;
+  touch-action: none; -webkit-tap-highlight-color: transparent; user-select: none; -webkit-user-select: none;
+}
+.pl-tafel:focus-visible { box-shadow: 0 0 0 3px var(--pl-zaal), 0 0 0 6px var(--pl-koraal); }
+.pl-tafel.is-wacht { cursor: progress; }
+.pl-tafel.is-plaats { cursor: grab; }
+
+/* Winst */
+.pl-winst {
+  position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); z-index: 5;
+  width: min(380px, calc(100% - 24px));
+  display: flex; flex-direction: column; align-items: center; gap: 8px; text-align: center;
+  padding: 20px 20px 22px; background: var(--pl-bg); color: var(--pl-ink);
+  border-radius: 20px; box-shadow: 0 30px 60px rgba(0, 0, 0, 0.45);
+  animation: pl-op 0.35s ease-out;
+}
+.pl-winst-oog {
+  margin: -2px 0 2px; width: 54px; height: 54px; border-radius: 50%; display: grid; place-items: center;
+  font-size: 20px; font-weight: 900; color: #1a1a1a;
+  background: radial-gradient(circle at 50% 50%, #fbf8f0 0 36%, #151515 37%);
+  box-shadow: inset -5px -7px 10px rgba(0, 0, 0, 0.45), 0 6px 14px rgba(0, 0, 0, 0.25);
+}
+.pl-winst h2 { margin: 0; font-size: 28px; font-weight: 900; letter-spacing: -0.02em; line-height: 1.15; }
+.pl-winst p { margin: 0 0 6px; color: var(--pl-ink-soft); }
+.pl-winst .pl-knop:disabled { opacity: 0.7; }
+@keyframes pl-op { from { opacity: 0; transform: translate(-50%, -46%); } to { opacity: 1; transform: translate(-50%, -50%); } }
+
+/* ─── Bediening ───────────────────────────────────────── */
+
+.pl-bediening {
+  position: relative; margin-top: 8px; padding: 8px 12px; background: var(--pl-surface);
+  border: 1.5px solid var(--pl-line); border-radius: var(--pl-radius-lg);
+}
+
+/* Stootrij: aankondigen, kracht, knoppen. Tijdens bal in hand blijft hij onzichtbaar staan, zodat de
+   bediening even hoog blijft en de tafel niet verspringt. */
+.pl-stoot { display: flex; align-items: flex-end; gap: 8px 16px; flex-wrap: wrap; }
+.pl-stoot.is-verborgen { visibility: hidden; }
+
+.pl-call { display: flex; align-items: flex-end; gap: 8px; border: 0; margin: 0; padding: 0; min-width: 0; }
+.pl-call[disabled] .pl-veld { opacity: 0.5; }
+.pl-veld { display: flex; flex-direction: column; gap: 1px; min-width: 0; font-size: 11.5px; font-weight: 800; line-height: 1.3; color: var(--pl-ink-soft); }
+.pl-veld select {
+  min-height: 40px; width: 140px; max-width: 100%; padding: 0 30px 0 10px; border-radius: 10px; cursor: pointer;
+  background: var(--pl-surface) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%234a5258' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat right 10px center;
+  border: 1.5px solid var(--pl-line); font-size: 14.5px; font-weight: 700; color: var(--pl-ink);
+  -webkit-appearance: none; appearance: none; text-overflow: ellipsis;
+}
+.pl-veld select:hover:not(:disabled) { border-color: var(--pl-koraal); }
+.pl-veld select:disabled { cursor: not-allowed; }
+.pl-safety { min-height: 40px; padding: 0 14px; }
+.pl-safety[aria-pressed="true"] { background: var(--pl-ink); color: var(--pl-surface); border-color: var(--pl-ink); }
+
+.pl-kracht {
+  display: grid; grid-template-columns: auto minmax(90px, 1fr) auto; align-items: center; gap: 0 10px;
+  flex: 1 1 220px; min-width: 200px; min-height: 44px;
+}
+.pl-kracht-label { font-size: 12px; font-weight: 900; text-transform: uppercase; letter-spacing: 0.06em; color: var(--pl-muted); }
+.pl-kracht input { width: 100%; min-width: 0; height: 40px; margin: 0; accent-color: var(--pl-koraal); cursor: pointer; }
+.pl-kracht-waarde { font-size: 17px; font-weight: 900; min-width: 48px; text-align: right; font-variant-numeric: tabular-nums; }
+
+.pl-stoot-knoppen { display: flex; gap: 8px; margin-left: auto; }
+.pl-stoot-knop.pl-knop-groot { min-height: 44px; padding: 0 28px; }
+.pl-verplaats { padding: 0 14px; }
+
+/* Bal in hand: ligt over de (onzichtbare) stootrij heen. */
+.pl-plaats {
+  position: absolute; inset: 0; z-index: 2;
+  display: flex; align-items: center; gap: 8px 14px; padding: 8px 12px;
+  background: var(--pl-surface); border-radius: inherit;
+}
+.pl-plaats-tekst { margin: 0; flex: 1 1 auto; min-width: 0; font-weight: 700; font-size: 14.5px; line-height: 1.3; }
+.pl-plaats-tekst.is-fout { color: var(--pl-koraal-diep); }
+.pl-plaats .pl-knop { flex: none; }
+
+/* Keuze na de break: staat in de doorloop; de tafel past zich aan de hoogte aan. */
+.pl-keuze { display: flex; flex-direction: column; align-items: stretch; gap: 6px; }
+.pl-keuze-titel { margin: 0; font-size: 17px; font-weight: 900; line-height: 1.25; }
+.pl-keuze-tekst { margin: 0; color: var(--pl-ink-soft); font-size: 14px; line-height: 1.35; }
+.pl-keuze-knoppen { display: flex; gap: 8px; flex-wrap: wrap; }
+
+.pl-uitleg { margin: 10px 4px 0; font-size: 13px; color: var(--pl-muted); }
+.pl-uitleg-touch { display: none; }
+@media (hover: none) and (pointer: coarse) {
+  .pl-uitleg-muis { display: none; }
+  .pl-uitleg-touch { display: inline; }
+}
+
+/* ─── Regels ──────────────────────────────────────────── */
+
+.pl-regels {
+  margin-top: 12px; background: var(--pl-surface); border: 1.5px solid var(--pl-line); border-radius: var(--pl-radius-lg);
+}
+.pl-regels summary {
+  min-height: 48px; display: flex; align-items: center; padding: 0 16px; cursor: pointer;
+  font-weight: 900; font-size: 15px; list-style: none; border-radius: var(--pl-radius-lg);
+}
+.pl-regels summary::-webkit-details-marker { display: none; }
+.pl-regels summary::before { content: '+'; display: inline-block; width: 22px; font-weight: 900; color: var(--pl-koraal); }
+.pl-regels[open] summary::before { content: '–'; }
+.pl-regels-tekst { padding: 0 18px 16px 38px; font-size: 14.5px; color: var(--pl-ink-soft); }
+.pl-regels-tekst h3 { margin: 14px 0 4px; font-size: 14px; font-weight: 900; color: var(--pl-ink); }
+.pl-regels-tekst ul { margin: 0; padding-left: 18px; }
+.pl-regels-tekst li { margin: 3px 0; }
+.pl-regels-noot { font-size: 13px; color: var(--pl-muted); }
+
+.pl-voet { max-width: 1180px; margin: 0 auto; padding: 14px 16px 28px; font-size: 13px; color: var(--pl-muted); }
+.pl-voet p { margin: 4px 0; }
+.pl-melding { margin: 16px; padding: 12px 16px; background: var(--pl-koraal-zacht); border-radius: var(--pl-radius); }
+
+/* ─── Smal scherm (telefoon staand, kleine tablet) ────── */
+
+@media (max-width: 760px) {
+  .pl-kort { display: inline; }
+  .pl-lang { display: none; }
+
+  .pl-bar { gap: 6px 8px; padding: 6px 10px; flex-wrap: nowrap; }
+  .pl-terug-tekst { display: none; }
+  .pl-terug { min-height: 40px; padding: 0 5px; }
+  .pl-terug img { width: 26px; height: 26px; }
+  .pl-naam { font-size: 20px; }
+  .pl-sub { font-size: 10.5px; padding: 2px 6px; }
+  .pl-modus button { min-height: 32px; padding: 0 11px; font-size: 13px; }
+  .pl-icoonknop { width: 40px; height: 40px; }
+  .pl-nieuw { min-height: 40px; padding: 0 14px; font-size: 14px; }
+  .pl-paneel-kop { padding: 10px 10px 6px 14px; }
+  .pl-paneel-inhoud { padding: 0 14px 6px; }
+  .pl-menu-lijst { padding: 0 14px 14px; }
+  .pl-paneel-knoppen { padding: 8px 14px 12px; }
+  .pl-paneel-noot { margin: 0 14px 8px; }
+  .pl-code { font-size: 28px; }
+
+  .pl-main { padding: 6px 8px 8px; }
+  .pl-spelers { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 6px; margin-bottom: 6px; }
+  .pl-status-blok { grid-column: 1 / -1; order: 3; padding: 4px 10px; }
+  /* Twee regels status en één regel aankondiging vast gereserveerd: geen verspringende tafel. */
+  .pl-status { font-size: 13.5px; min-height: 2.6em; display: flex; align-items: center; justify-content: center; }
+  .pl-call-regel { font-size: 12.5px; }
+  .pl-speler { padding: 4px 9px; gap: 1px; border-radius: 14px; }
+  .pl-speler-naam { font-size: 15px; line-height: 20px; }
+  .pl-beurt { font-size: 9.5px; padding: 1px 6px; }
+  .pl-groep-rij { height: 16px; gap: 4px; }
+  .pl-groep { font-size: 12px; }
+  .pl-groep-extra { display: none; }
+  .pl-ballen { gap: 2px; }
+  .pl-bal { width: 13px; height: 13px; font-size: 7px; box-shadow: inset -1px -2px 2px rgba(0, 0, 0, 0.28); }
+  .pl-bal span { width: 8px; height: 8px; }
+  .pl-podium { border-radius: 16px; padding: 5px; }
+  .pl-tafel { border-radius: 10px; }
+
+  .pl-bediening { margin-top: 6px; padding: 7px 8px; border-radius: 14px; }
+  .pl-stoot { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 6px 8px; align-items: center; }
+  .pl-call { grid-column: 1 / -1; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) auto; gap: 6px; width: 100%; }
+  .pl-veld > span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; }
+  .pl-veld select { width: 100%; min-height: 40px; padding: 0 26px 0 8px; font-size: 14px; background-position: right 8px center; }
+  .pl-safety { min-height: 40px; padding: 0 12px; font-size: 14px; }
+  /* Kracht: label en waarde boven elkaar, de schuif krijgt de rest van de rij en nooit minder dan 80px. */
+  .pl-kracht { grid-column: 1; min-width: 0; grid-template-columns: auto minmax(80px, 1fr); grid-template-rows: auto auto; gap: 0 8px; min-height: 44px; }
+  .pl-kracht-label { grid-column: 1; grid-row: 1; font-size: 10px; line-height: 1.2; }
+  .pl-kracht-waarde { grid-column: 1; grid-row: 2; font-size: 15px; line-height: 1.2; min-width: 0; text-align: left; }
+  .pl-kracht input { grid-column: 2; grid-row: 1 / 3; height: 44px; }
+  .pl-stoot-knoppen { grid-column: 2; margin: 0; gap: 6px; }
+  .pl-stoot-knop.pl-knop-groot { min-height: 44px; padding: 0 20px; font-size: 16px; }
+  .pl-verplaats { width: 44px; padding: 0; }
+  .pl-verplaats-tekst { display: none; }
+  .pl-plaats { padding: 7px 8px; gap: 6px 10px; }
+  .pl-plaats-tekst { font-size: 13px; }
+  .pl-plaats .pl-knop { min-height: 44px; padding: 0 14px; font-size: 14px; }
+  .pl-keuze-titel { font-size: 15px; }
+  .pl-keuze-tekst { font-size: 13px; }
+  .pl-keuze-knoppen { gap: 6px; }
+  .pl-keuze-knoppen .pl-knop { flex: 1 1 auto; white-space: normal; text-align: center; min-height: 40px; padding: 4px 12px; font-size: 13.5px; line-height: 1.2; }
+  .pl-winst { padding: 14px 14px 16px; gap: 6px; }
+  .pl-winst-oog { width: 40px; height: 40px; font-size: 16px; }
+  .pl-winst h2 { font-size: 22px; }
+}
+
+/* Heel smal: de modusschakelaar krijgt een eigen rij onder de kop. */
+@media (max-width: 520px) {
+  .pl-bar { flex-wrap: wrap; }
+  .pl-modus { order: 5; margin-left: 0; width: 100%; }
+  .pl-modus button { flex: 1; min-height: 32px; }
+  .pl-bar-knoppen { margin-left: auto; gap: 6px; }
+  .pl-plaats { flex-direction: column; align-items: stretch; justify-content: center; }
+  .pl-plaats .pl-knop { width: 100%; }
+}
+
+/* Met de hulp- en menuknop erbij past het label naast de titel niet meer op een smalle telefoon. */
+@media (max-width: 400px) {
+  .pl-sub { display: none; }
+}
+
+@media (max-width: 360px) {
+  .pl-ballen { gap: 1px; }
+  .pl-bal { width: 12px; height: 12px; }
+  .pl-bal span { width: 7px; height: 7px; }
+  .pl-sub { display: none; }
+  .pl-bar { gap: 6px 5px; padding: 6px 8px; }
+  .pl-bar-knoppen { gap: 5px; }
+  .pl-icoonknop { width: 38px; height: 38px; }
+  .pl-nieuw { padding: 0 11px; }
+  .pl-mee-rij { flex-wrap: wrap; }
+  .pl-mee-rij .pl-knop { width: 100%; }
+}
+
+/* ─── Laag scherm (telefoon liggend): tafel links, spelers en bediening rechts ─── */
+
+@media (orientation: landscape) and (max-height: 560px) {
+  .pl-kort { display: inline; }
+  .pl-lang { display: none; }
+
+  .pl-bar { flex-wrap: nowrap; gap: 8px; padding: 4px max(10px, env(safe-area-inset-left, 0px)); }
+  .pl-terug-tekst { display: none; }
+  .pl-terug { min-height: 38px; padding: 0 5px; }
+  .pl-terug img { width: 24px; height: 24px; }
+  .pl-naam { font-size: 19px; }
+  .pl-sub { font-size: 10px; padding: 2px 6px; }
+  .pl-modus { order: 0; width: auto; margin-left: auto; }
+  .pl-modus button { flex: none; min-height: 30px; padding: 0 10px; font-size: 12.5px; }
+  .pl-bar-knoppen { margin-left: 0; gap: 6px; }
+  .pl-icoonknop { width: 38px; height: 38px; }
+  .pl-nieuw { min-height: 38px; padding: 0 12px; font-size: 13.5px; }
+
+  .pl-main {
+    max-width: none; padding: 6px max(8px, env(safe-area-inset-right, 0px)) 8px max(8px, env(safe-area-inset-left, 0px));
+    display: grid; grid-template-columns: minmax(0, 1fr) clamp(236px, 32vw, 300px);
+    grid-template-rows: auto auto 1fr; column-gap: 8px; row-gap: 6px; align-items: start;
+  }
+  .pl-podium { grid-column: 1; grid-row: 1 / 4; padding: 6px; border-radius: 16px; }
+  .pl-tafel { border-radius: 10px; }
+  .pl-spelers {
+    grid-column: 2; grid-row: 1; margin: 0;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 5px;
+  }
+  .pl-status-blok { grid-column: 1 / -1; order: 3; padding: 3px 8px; }
+  .pl-status { font-size: 12.5px; min-height: 2.6em; display: flex; align-items: center; justify-content: center; }
+  .pl-call-regel { font-size: 11.5px; }
+  .pl-speler { padding: 3px 7px; gap: 0; border-radius: 12px; }
+  .pl-speler-naam { font-size: 13.5px; line-height: 18px; }
+  /* De beurtmarkering wordt een stip; de tekst blijft voor schermlezers. */
+  .pl-beurt { font-size: 0; width: 9px; height: 9px; padding: 0; line-height: 0; }
+  .pl-groep-rij { height: 14px; gap: 3px; }
+  .pl-groep { font-size: 11px; }
+  .pl-groep-extra { display: none; }
+  .pl-ballen { gap: 1px; }
+  .pl-bal { width: 11px; height: 11px; font-size: 6px; box-shadow: none; }
+  .pl-bal span { width: 7px; height: 7px; }
+
+  .pl-bediening { grid-column: 2; grid-row: 2; margin: 0; padding: 6px 8px; border-radius: 14px; }
+  .pl-stoot { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 6px; align-items: center; }
+  .pl-call { grid-column: 1 / -1; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) auto; gap: 5px; width: 100%; }
+  .pl-veld > span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; }
+  .pl-veld select { width: 100%; min-height: 38px; padding: 0 22px 0 7px; font-size: 13px; background-position: right 7px center; }
+  .pl-safety { min-height: 38px; padding: 0 9px; font-size: 13px; }
+  .pl-kracht { grid-column: 1 / -1; min-width: 0; grid-template-columns: auto minmax(80px, 1fr) auto; grid-template-rows: auto; gap: 0 8px; min-height: 36px; }
+  .pl-kracht-label { grid-column: 1; grid-row: 1; font-size: 10.5px; }
+  .pl-kracht-waarde { grid-column: 3; grid-row: 1; font-size: 14px; min-width: 38px; text-align: right; }
+  .pl-kracht input { grid-column: 2; grid-row: 1; height: 36px; }
+  .pl-stoot-knoppen { grid-column: 1 / -1; margin: 0; gap: 6px; }
+  .pl-stoot-knop.pl-knop-groot { flex: 1; min-height: 42px; padding: 0 16px; font-size: 16px; }
+  .pl-verplaats { width: 42px; min-height: 42px; padding: 0; }
+  .pl-verplaats-tekst { display: none; }
+  .pl-plaats { flex-direction: column; align-items: stretch; justify-content: center; padding: 6px 8px; gap: 8px; }
+  .pl-plaats-tekst { font-size: 13px; }
+  .pl-plaats .pl-knop { width: 100%; min-height: 42px; font-size: 14px; }
+  .pl-keuze-titel { font-size: 14.5px; }
+  .pl-keuze-tekst { font-size: 12.5px; }
+  .pl-keuze-knoppen { gap: 5px; }
+  .pl-keuze-knoppen .pl-knop { flex: 1 1 100%; white-space: normal; min-height: 36px; padding: 3px 10px; font-size: 13px; line-height: 1.2; }
+
+  .pl-uitleg, .pl-regels { grid-column: 1 / -1; }
+  .pl-winst { padding: 12px 14px 14px; gap: 4px; }
+  .pl-winst-oog { display: none; }
+  .pl-winst h2 { font-size: 21px; }
+
+  /* Panelen: breder en lager, het menu in twee kolommen zodat alles zonder veel scrollen past. */
+  .pl-paneel { width: min(620px, 100%); }
+  .pl-paneel-kop { padding: 8px 10px 4px 16px; }
+  .pl-paneel-kop h2 { font-size: 18px; }
+  .pl-menu-lijst { grid-template-columns: 1fr 1fr; gap: 6px; padding: 0 14px 12px; }
+  .pl-menu-lijst .pl-knop { min-height: 40px; }
+  .pl-paneel-noot { margin: 0 16px 6px; }
+  .pl-code { font-size: 26px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}

@@ -40,7 +40,7 @@
 
 <main class="priv-wrap">
   <h1>Privacy</h1>
-  <p class="lead">FM Atlas is een gratis studiesite die door één student wordt bijgehouden. Hieronder staat welke gegevens er bewaard worden, waarom, en hoe je ze laat verwijderen. Bijgewerkt op 7 oktober 2026.</p>
+  <p class="lead">FM Atlas is een gratis studiesite die door één student wordt bijgehouden. Hieronder staat welke gegevens er bewaard worden, waarom, en hoe je ze laat verwijderen. Bijgewerkt op 11 oktober 2026.</p>
 
   <h2>Zonder inloggen</h2>
   <p>Je kunt alle samenvattingen, begrippenlijsten, flashcards en oefentoetsen gebruiken zonder account. Je punten, je reeks en je voortgang worden dan alleen in je eigen browser bewaard (localStorage). Die gegevens komen niet bij FM Atlas terecht.</p>
@@ -67,6 +67,10 @@
   <h2>Feedback en meldingen</h2>
   <p>Via de knoppen "Feedback" en "Meld een onjuistheid" gaan je bericht, de pagina waarop je zat, eventueel geselecteerde tekst en (als je dat invult) je e-mailadres naar de database van FM Atlas. De melding wordt nagekeken tegen het lesmateriaal en de site wordt aangepast als de melding klopt. Zolang de database voor meldingen nog niet aanstaat, gaan ze via Formspree per e-mail naar de beheerder. Alleen de beheerder kan de meldingen inzien. Ze worden verwijderd zodra ze zijn afgehandeld of als je daarom vraagt.</p>
 
+  <h2>Pool online spelen</h2>
+  <p>Pool tegen de computer of met z'n tweeën op één scherm speel je alleen in je eigen browser: daarbij gaat er geen speldata over het internet. Je browser bewaart (in localStorage) alleen je voorkeuren voor Pool: speelwijze, kracht, geluid, volume, richtlijn en de naam die je zelf invult.</p>
+  <p>Speel je Pool online tegen iemand op een ander apparaat, dan gaan de naam die je invult, de kamercode en de zetten en stand van de partij via een relayserver (een Cloudflare Worker) naar je tegenstander. FM Atlas zet online partijen en namen niet in zijn eigen database. Zoals bij elke internetverbinding ziet de server het IP-adres van je verbinding. Iedereen met de code kan meedoen zolang er plek is (twee spelers), dus deel de code alleen met wie je wilt.</p>
+
   <h2>Wat er niet gebeurt</h2>
   <ul>
     <li>Er staan geen advertenties of trackers op de site.</li>
@@ -80,6 +84,7 @@
     <li><strong>Formspree</strong>: het contactformulier.</li>
     <li><strong>Google Fonts</strong>: het lettertype van de site.</li>
     <li><strong>GitHub Pages</strong>: de hosting van de site.</li>
+    <li><strong>Cloudflare</strong>: de relayserver waarlangs online Pool loopt.</li>
     <li><strong>Ko-fi</strong>: alleen als je zelf op de koffieknop klikt.</li>
   </ul>
 

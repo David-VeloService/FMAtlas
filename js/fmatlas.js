@@ -433,6 +433,7 @@ const FA_SEARCH_INDEX = [
   { title: 'Eventmanagement 2 — Oefentoets 2', sub: 'logistiek + projectvaardigheden', url: 'eventmanagement-b-oefentoets-2.html', icon: 'check' },
   { title: 'Eventmanagement 2 — Oefentoets 3', sub: 'extra moeilijk', url: 'eventmanagement-b-oefentoets-3.html', icon: 'check' },
   { title: 'Hoge Inzet — roulette en blackjack', sub: 'spelletje · casino met speelfiches', url: 'game/hoge-inzet/index.html', icon: 'coin' },
+  { title: 'Pool — 8-ball tegen de computer, met z\'n tweeën of online', sub: 'spelletje · biljart met volle en halve ballen, ook op twee apparaten', url: 'game/pool/index.html', icon: 'scope' },
 ];
 
 function faOpenSearch() {

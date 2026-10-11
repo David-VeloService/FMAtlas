@@ -33,6 +33,25 @@ Lokaal openen kan door `game/hoge-inzet/index.html` in de browser te openen (ook
 - `engine.js` bevat alle spelregels als pure functies en is ook in Node te laden:
   `const E = require('./game/hoge-inzet/engine.js')`.
 
+## Game: Pool
+
+`game/pool/`: 8-ball pool, tegen de computer, met z'n tweeën op één scherm, of online met z'n tweeën
+op eigen apparaten (laptop en telefoon). Geen dependencies, build of eigen server: `index.html`,
+`style.css`, `engine.js`, `bot.js`, `net.js`, `app.js` en `kaart.svg`. Lokaal openen kan door
+`game/pool/index.html` in de browser te openen (ook via `file://`); online spelen werkt alleen vanaf
+de site zelf, omdat de relay alleen bekende origins toelaat.
+
+- Hoofdregels: pot al je volle of halve ballen en daarna de 8 als laatste. Elke stoot na de break
+  kondig je aan (bal en pocket, of safety). Bij een fout krijgt de tegenstander bal in hand.
+- Online: kamer met een code van vijf tekens via de bestaande WebSocket-relay van Slipstroom en
+  Stadsstorm (`wss://slipstroom.jochem-35e.workers.dev/relay`), in eigen kamers met voorvoegsel `PL`.
+  Hooguit twee spelers; de host is de autoriteit over de partij. Geen Firebase.
+- Opslag: alleen `localStorage` met voorkeuren (`fa_pool_v1`: speelvorm, geluid, volume, richtlijn,
+  kracht, naam) en de laatste game (`fa_laatste_game`). Een lopende partij wordt niet bewaard. Geen
+  Firebase, XP of tellers.
+- API van de engine, de computer, het online protocol, de testinterface en de uitzonderingen op de
+  regels staan in `game/pool/README.md`.
+
 ## Firebase
 
 Project `fmkompas-ff8bc` (Google-login en Firestore).

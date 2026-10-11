@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+<title>Pool · Spelletjes · FM Atlas</title>
+<meta name="description" content="8-ball pool met de echte regels. Speel tegen de computer, met z'n tweeën op één scherm of online tegen iemand op een ander apparaat: kondig je bal en pocket aan en pot de 8 als laatste."/>
+<link rel="canonical" href="https://fmatlas.nl/game/pool/"/>
+<link rel="icon" type="image/svg+xml" href="../../logo.svg"/>
+<link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32.png"/>
+<link rel="apple-touch-icon" href="../../apple-touch-icon.png"/>
+<meta name="theme-color" content="#f7f3ec"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="style.css"/>
+<script defer src="engine.js"></script>
+<script defer src="bot.js"></script>
+<script defer src="net.js"></script>
+<script defer src="app.js"></script>
+</head>
+<body>
+
+<header class="pl-bar">
+  <a class="pl-terug" href="../index.html" aria-label="Terug naar Spelletjes op FM Atlas">
+    <img src="../../logo.svg" alt="" width="28" height="28"/>
+    <span class="pl-terug-tekst"><span aria-hidden="true">←</span> Spelletjes</span>
+  </a>
+  <div class="pl-titel">
+    <h1 class="pl-naam">Pool</h1>
+    <span class="pl-sub" data-sub>8-ball</span>
+  </div>
+  <div class="pl-modus" role="radiogroup" aria-label="Speelwijze" data-modus>
+    <button type="button" role="radio" aria-checked="true" aria-label="Tegen de computer" data-modus-knop="cpu"><span class="pl-lang">Tegen de computer</span><span class="pl-kort" aria-hidden="true">Computer</span></button>
+    <button type="button" role="radio" aria-checked="false" aria-label="Twee spelers op één scherm" tabindex="-1" data-modus-knop="duo"><span class="pl-lang">Twee spelers</span><span class="pl-kort" aria-hidden="true">2 spelers</span></button>
+    <button type="button" role="radio" aria-checked="false" aria-label="Online, op twee apparaten" tabindex="-1" data-modus-knop="online"><span class="pl-lang">Online</span><span class="pl-kort" aria-hidden="true">Online</span></button>
+  </div>
+  <div class="pl-bar-knoppen">
+    <button type="button" class="pl-icoonknop" data-geluid aria-pressed="false" aria-label="Geluid" title="Geluid aan of uit">
+      <svg class="pl-icoon-uit" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4V5Z"/><path d="m22 9-6 6M16 9l6 6"/></svg>
+      <svg class="pl-icoon-aan" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4V5Z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg>
+    </button>
+    <button type="button" class="pl-icoonknop" data-hulp-open aria-label="Besturing en regels" title="Besturing en regels" aria-haspopup="dialog">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.2a2.6 2.6 0 0 1 5 .9c0 1.8-2.5 2.3-2.5 3.9"/><path d="M12 17.2h.01"/></svg>
+    </button>
+    <button type="button" class="pl-icoonknop" data-menu-open aria-label="Menu" title="Menu (Esc)" aria-haspopup="dialog">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+    <button type="button" class="pl-knop pl-knop-rand pl-nieuw" data-nieuw aria-label="Nieuwe partij"><span class="pl-lang">Nieuwe partij</span><span class="pl-kort" aria-hidden="true">Nieuw</span></button>
+  </div>
+</header>
+
+<div class="pl-balk" data-balk role="status" aria-live="polite" hidden>
+  <p class="pl-balk-tekst" data-balk-tekst></p>
+  <div class="pl-balk-knoppen">
+    <button type="button" class="pl-knop pl-knop-koraal" data-balk-ja hidden>Akkoord</button>
+    <button type="button" class="pl-knop pl-knop-rand" data-balk-nee>Sluiten</button>
+  </div>
+</div>
+
+<div class="pl-bevestig" data-bevestig role="alertdialog" aria-modal="false" aria-labelledby="pl-bevestig-titel" aria-describedby="pl-bevestig-tekst" hidden>
+  <div class="pl-bevestig-tekst">
+    <strong id="pl-bevestig-titel">Nieuwe partij beginnen?</strong>
+    <span id="pl-bevestig-tekst" data-bevestig-tekst>De partij die nu loopt stopt.</span>
+  </div>
+  <div class="pl-bevestig-knoppen">
+    <button type="button" class="pl-knop pl-knop-koraal" data-bevestig-ja>Ja, nieuwe partij</button>
+    <button type="button" class="pl-knop pl-knop-rand" data-bevestig-nee>Annuleer</button>
+  </div>
+</div>
+
+<main class="pl-main">
+  <section class="pl-spelers" aria-label="Spelers">
+    <div class="pl-speler" data-speler="0">
+      <div class="pl-speler-kop">
+        <span class="pl-speler-naam" data-naam>Jij</span>
+        <span class="pl-beurt" data-beurt-label>aan de beurt</span>
+      </div>
+      <div class="pl-groep-rij">
+        <span class="pl-groep" data-groep>Open tafel</span>
+        <ol class="pl-ballen" data-ballen aria-label="Ballen van deze speler"></ol>
+      </div>
+    </div>
+    <div class="pl-status-blok">
+      <p class="pl-status" data-status>Even laden…</p>
+      <p class="pl-call-regel" data-call-regel></p>
+    </div>
+    <div class="pl-speler" data-speler="1">
+      <div class="pl-speler-kop">
+        <span class="pl-speler-naam" data-naam>Computer</span>
+        <span class="pl-beurt" data-beurt-label>aan de beurt</span>
+      </div>
+      <div class="pl-groep-rij">
+        <span class="pl-groep" data-groep>Open tafel</span>
+        <ol class="pl-ballen" data-ballen aria-label="Ballen van deze speler"></ol>
+      </div>
+    </div>
+  </section>
+
+  <div class="pl-podium">
+    <div class="pl-tafel-wrap" data-tafel-wrap>
+      <canvas class="pl-tafel" data-tafel tabindex="0" role="application" aria-roledescription="pooltafel"
+        aria-label="Pooltafel" aria-describedby="pl-bediening-uitleg"></canvas>
+      <div class="pl-winst" data-winst role="dialog" aria-labelledby="pl-winst-titel" aria-describedby="pl-winst-tekst" hidden>
+        <p class="pl-winst-oog" aria-hidden="true">8</p>
+        <h2 id="pl-winst-titel" data-winst-titel>Jij wint</h2>
+        <p id="pl-winst-tekst" data-winst-tekst></p>
+        <button type="button" class="pl-knop pl-knop-koraal pl-knop-groot" data-opnieuw>Opnieuw spelen</button>
+        <button type="button" class="pl-knop pl-knop-rand" data-winst-verlaat hidden>Kamer verlaten</button>
+      </div>
+    </div>
+  </div>
+
+  <section class="pl-bediening" aria-label="Stootbediening">
+    <div class="pl-keuze" data-keuze role="group" aria-labelledby="pl-keuze-titel" hidden>
+      <h2 class="pl-keuze-titel" id="pl-keuze-titel" data-keuze-titel>Keuze na de break</h2>
+      <p class="pl-keuze-tekst" data-keuze-tekst></p>
+      <div class="pl-keuze-knoppen" data-keuze-knoppen></div>
+    </div>
+
+    <div class="pl-plaats" data-plaats hidden>
+      <p class="pl-plaats-tekst" data-plaats-tekst>Bal in hand: tik of klik op de tafel waar de witte bal moet liggen.</p>
+      <button type="button" class="pl-knop pl-knop-koraal" data-plaats-ok>Plaats bevestigen</button>
+    </div>
+
+    <div class="pl-stoot" data-stoot>
+      <fieldset class="pl-call" data-call>
+        <legend class="pl-call-legend">Aankondigen</legend>
+        <label class="pl-veld">
+          <span>Doelbal</span>
+          <select data-doelbal></select>
+        </label>
+        <label class="pl-veld">
+          <span>Pocket</span>
+          <select data-pocket></select>
+        </label>
+        <button type="button" class="pl-knop pl-knop-rand pl-safety" data-safety aria-pressed="false">Safety</button>
+      </fieldset>
+      <div class="pl-kracht">
+        <label for="pl-kracht" class="pl-kracht-label">Kracht</label>
+        <input type="range" id="pl-kracht" min="5" max="100" step="1" value="55" data-kracht/>
+        <output for="pl-kracht" class="pl-kracht-waarde" data-kracht-waarde>55%</output>
+      </div>
+      <div class="pl-stoot-knoppen">
+        <button type="button" class="pl-knop pl-knop-rand pl-verplaats" data-verplaats aria-label="Witte bal verplaatsen" title="Witte bal verplaatsen" hidden>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/></svg>
+          <span class="pl-verplaats-tekst">Witte bal verplaatsen</span>
+        </button>
+        <button type="button" class="pl-knop pl-knop-koraal pl-knop-groot pl-stoot-knop" data-stoot-knop>Stoot</button>
+      </div>
+    </div>
+  </section>
+
+  <p class="pl-uitleg" id="pl-bediening-uitleg">
+    <span class="pl-uitleg-muis">Richten: beweeg de muis over de tafel en klik om de richting vast te zetten. Klik op een bal of pocket om die aan te kondigen.</span>
+    <span class="pl-uitleg-touch">Richten: tik of sleep op de tafel. Tik op een bal of pocket om die aan te kondigen.</span>
+    Toetsenbord: pijltjes links en rechts draaien de keu (met Shift heel fijn), omhoog en omlaag zetten de kracht, spatie stoot. Esc opent het menu.
+  </p>
+
+  <details class="pl-regels">
+    <summary>Spelregels 8-ball</summary>
+    <div class="pl-regels-tekst">
+      <p>Je speelt met de volle ballen (1–7) of de halve ballen (9–15). Pot eerst al je eigen ballen en daarna de 8. Wie de 8 netjes pot, wint.</p>
+      <h3>Break</h3>
+      <ul>
+        <li>De break doe je met de witte bal achter de koplijn (het eerste kwart van de tafel), niet op de lijn zelf. Aankondigen hoeft niet.</li>
+        <li>Een break is geldig als er een bal valt of als minstens vier verschillende ballen een band raken. Is hij ongeldig, dan kiest de ander: de tafel accepteren, zelf opnieuw breken of de breker nog eens laten breken.</li>
+        <li>Valt de 8 op een geldige break, dan kiest de breker: de 8 terugzetten en doorspelen, of opnieuw breken. Valt de 8 en is er ook een fout, dan kiest de ander: de 8 terug met bal in hand achter de koplijn, of opnieuw breken.</li>
+        <li>Een andere fout op de break geeft de ander bal in hand achter de koplijn (of de tafel zoals hij ligt, als de witte bal nog op tafel ligt). Vanuit de keuken mag je dan niet direct een bal raken die zelf achter de koplijn ligt; een bal precies op de lijn mag wel.</li>
+        <li>Na de break is de tafel open. Wie op de break een bal pot, mag door.</li>
+      </ul>
+      <h3>Aankondigen en groepen</h3>
+      <ul>
+        <li>Bij elke stoot kondig je een bal en een pocket aan. Kies <em>Safety</em> als je bewust niet wilt potten: je beurt eindigt dan ook als er iets valt.</li>
+        <li>Bij een open tafel mag je elke bal eerst raken behalve de 8. Pot je de aangekondigde bal in de aangekondigde pocket, dan is die groep van jou.</li>
+        <li>Is een hele groep al weg terwijl de tafel nog open is, dan mag je die lege groep nemen en direct op de 8 spelen.</li>
+        <li>Valt je aangekondigde bal in de goede pocket, dan mag je door. Andere ballen die meevallen blijven weg, ook die van de tegenstander, maar die leveren geen extra beurt op.</li>
+      </ul>
+      <h3>Fouten</h3>
+      <ul>
+        <li>De witte bal valt in een pocket.</li>
+        <li>De witte bal raakt niets, of raakt eerst een bal die niet van jou is (of de 8 terwijl je groep nog niet leeg is).</li>
+        <li>Na het eerste contact gaat er geen enkele bal naar een band en valt er niets.</li>
+        <li>Na een fout krijgt de tegenstander bal in hand: de witte bal mag overal op tafel.</li>
+      </ul>
+      <h3>De 8</h3>
+      <ul>
+        <li>Pas als je groep leeg is, speel je op de 8. Pot je hem in de aangekondigde pocket, dan win je.</li>
+        <li>Je verliest als je de 8 te vroeg pot (ook samen met je laatste eigen bal), in een andere pocket dan aangekondigd, of met een fout tegelijk.</li>
+      </ul>
+      <p class="pl-regels-noot">Gebaseerd op de 8-ballregels van de WPA, in eigen woorden. Dit is een 2D-simulatie: springen, massé, effect en het lichaam van de speler bestaan hier niet.</p>
+    </div>
+  </details>
+</main>
+
+<footer class="pl-voet">
+  <p>Tegen de computer en op één scherm speel je alleen in je eigen browser en wordt er niets gedeeld. Online gaan je naam en de stand van de partij via een relayserver naar je tegenstander. In deze browser blijven alleen je voorkeuren bewaard (speelwijze, kracht, geluid, volume, richtlijn en naam).</p>
+  <p><a href="../index.html">Spelletjes</a> · <a href="../../app.html">FM Atlas</a> · <a href="../../privacy.html">Privacy</a></p>
+</footer>
+
+<div class="pl-laag" data-laag hidden>
+
+  <section class="pl-paneel" data-paneel="menu" role="dialog" aria-modal="true" aria-labelledby="pl-menu-titel" hidden>
+    <div class="pl-paneel-kop">
+      <h2 id="pl-menu-titel">Menu</h2>
+      <button type="button" class="pl-sluit" data-laag-sluit aria-label="Sluiten" title="Sluiten (Esc)">×</button>
+    </div>
+    <p class="pl-paneel-noot" data-menu-noot>Het spel staat stil zolang dit menu open is.</p>
+    <div class="pl-menu-lijst">
+      <button type="button" class="pl-knop pl-knop-koraal" data-menu="hervat" data-autofocus>Hervatten</button>
+      <button type="button" class="pl-knop pl-knop-rand" data-menu="hulp">Besturing en regels</button>
+      <button type="button" class="pl-knop pl-knop-rand" data-menu="instellingen">Instellingen</button>
+      <button type="button" class="pl-knop pl-knop-rand" data-menu="nieuw">Nieuwe partij</button>
+      <button type="button" class="pl-knop pl-knop-rand" data-menu="speelwijze">Andere speelwijze</button>
+      <button type="button" class="pl-knop pl-knop-rand" data-menu="volledig" aria-pressed="false" hidden>Volledig scherm</button>
+      <button type="button" class="pl-knop pl-knop-rand" data-menu="verlaat" hidden>Kamer verlaten</button>
+      <a class="pl-knop pl-knop-rand" href="../index.html">Terug naar Spelletjes</a>
+    </div>
+  </section>
+
+  <section class="pl-paneel" data-paneel="speelwijze" role="dialog" aria-modal="true" aria-labelledby="pl-speelwijze-titel" hidden>
+    <div class="pl-paneel-kop">
+      <h2 id="pl-speelwijze-titel">Speelwijze</h2>
+      <button type="button" class="pl-sluit" data-laag-sluit aria-label="Sluiten" title="Sluiten (Esc)">×</button>
+    </div>
+    <div class="pl-menu-lijst">
+      <button type="button" class="pl-knop pl-knop-rand pl-keuzeknop" data-speelwijze="cpu" aria-pressed="false" data-autofocus>Tegen de computer</button>
+      <button type="button" class="pl-knop pl-knop-rand pl-keuzeknop" data-speelwijze="duo" aria-pressed="false">Twee spelers op één scherm</button>
+      <button type="button" class="pl-knop pl-knop-rand pl-keuzeknop" data-speelwijze="online" aria-pressed="false">Online, op twee apparaten</button>
+      <button type="button" class="pl-knop pl-knop-rand" data-laag-terug>Terug</button>
+    </div>
+  </section>
+
+  <section class="pl-paneel" data-paneel="hulp" role="dialog" aria-modal="true" aria-labelledby="pl-hulp-titel" hidden>
+    <div class="pl-paneel-kop">
+      <h2 id="pl-hulp-titel">Besturing en regels</h2>
+      <button type="button" class="pl-sluit" data-laag-sluit aria-label="Sluiten" title="Sluiten (Esc)" data-autofocus>×</button>
+    </div>
+    <div class="pl-paneel-inhoud">
+      <h3>Besturing</h3>
+      <ul>
+        <li><strong>Muis:</strong> beweeg over de tafel om te richten, klik om de richting vast te zetten. Klik op een bal of pocket om die aan te kondigen.</li>
+        <li><strong>Touch:</strong> tik of sleep op de tafel om te richten. Tik op een bal of pocket om die aan te kondigen.</li>
+        <li><strong>Toetsenbord</strong> (tafel geselecteerd): pijltjes links en rechts draaien de keu (met Shift heel fijn), omhoog en omlaag zetten de kracht, spatie of Enter stoot.</li>
+        <li><strong>Bal in hand:</strong> sleep of tik de witte bal op zijn plek (of pijltjes) en bevestig.</li>
+        <li><strong>Esc</strong> opent en sluit het menu.</li>
+      </ul>
+      <h3>Kort de regels</h3>
+      <ul>
+        <li>Pot al je volle (1–7) of halve (9–15) ballen en daarna de 8.</li>
+        <li>Kondig na de break elke stoot aan: een bal en een pocket, of Safety.</li>
+        <li>Raak eerst een eigen bal; daarna moet er een bal een band raken of vallen. Anders is het een fout en krijgt de ander bal in hand.</li>
+        <li>De 8 te vroeg, in de verkeerde pocket of met een fout potten is verlies.</li>
+      </ul>
+      <h3>Online</h3>
+      <p>Eén speler maakt een kamer, de ander doet mee met de code of de link. De host start de partij. Je kunt alleen iets doen als je aan de beurt bent; het menu zet een online partij niet stil.</p>
+    </div>
+    <div class="pl-paneel-knoppen">
+      <button type="button" class="pl-knop pl-knop-rand" data-hulp-regels>Alle spelregels</button>
+      <button type="button" class="pl-knop pl-knop-koraal" data-laag-terug>Terug</button>
+    </div>
+  </section>
+
+  <section class="pl-paneel" data-paneel="instellingen" role="dialog" aria-modal="true" aria-labelledby="pl-instellingen-titel" hidden>
+    <div class="pl-paneel-kop">
+      <h2 id="pl-instellingen-titel">Instellingen</h2>
+      <button type="button" class="pl-sluit" data-laag-sluit aria-label="Sluiten" title="Sluiten (Esc)">×</button>
+    </div>
+    <div class="pl-paneel-inhoud pl-instellingen">
+      <label class="pl-veld-blok">
+        <span>Je naam (voor online spelen)</span>
+        <input type="text" data-instelling="naam" maxlength="20" autocomplete="nickname" spellcheck="false"/>
+      </label>
+      <label class="pl-schakel">
+        <input type="checkbox" data-instelling="geluid" data-autofocus/>
+        <span>Geluid</span>
+      </label>
+      <label class="pl-veld-blok">
+        <span>Volume <output data-instelling-volume-waarde>70%</output></span>
+        <input type="range" min="0" max="100" step="5" value="70" data-instelling="volume"/>
+      </label>
+      <label class="pl-schakel">
+        <input type="checkbox" data-instelling="richtlijn"/>
+        <span>Richtlijn tonen (stippellijn en baan van de geraakte bal)</span>
+      </label>
+      <p class="pl-paneel-noot" data-instelling-noot>Je instellingen worden in deze browser bewaard.</p>
+    </div>
+    <div class="pl-paneel-knoppen">
+      <button type="button" class="pl-knop pl-knop-koraal" data-laag-terug>Terug</button>
+    </div>
+  </section>
+
+  <section class="pl-paneel" data-paneel="online" role="dialog" aria-modal="true" aria-labelledby="pl-online-titel" hidden>
+    <div class="pl-paneel-kop">
+      <h2 id="pl-online-titel">Online spelen</h2>
+      <button type="button" class="pl-sluit" data-online-sluit aria-label="Sluiten" title="Sluiten">×</button>
+    </div>
+
+    <div class="pl-paneel-inhoud" data-online-scherm="start">
+      <p>Speel tegen iemand op een ander apparaat. Eén van jullie maakt een kamer, de ander doet mee met de code.</p>
+      <p class="pl-paneel-melding" data-online-uitnodiging hidden></p>
+      <label class="pl-veld-blok">
+        <span>Je naam</span>
+        <input type="text" data-online-naam maxlength="20" autocomplete="nickname" spellcheck="false"/>
+      </label>
+      <div class="pl-online-keuze">
+        <button type="button" class="pl-knop pl-knop-koraal" data-online-maak>Kamer maken</button>
+        <span class="pl-of" aria-hidden="true">of</span>
+        <div class="pl-mee-rij">
+          <label class="pl-veld-blok">
+            <span>Code van een kamer</span>
+            <input type="text" data-online-code maxlength="200" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="K7M2Q"/>
+          </label>
+          <button type="button" class="pl-knop pl-knop-rand" data-online-mee>Meedoen</button>
+        </div>
+      </div>
+      <p class="pl-paneel-fout" data-online-fout role="alert"></p>
+      <p class="pl-paneel-noot" data-online-file hidden>Je opent Pool als los bestand. Online spelen werkt alleen op de pagina van FM Atlas.</p>
+      <p class="pl-paneel-noot">Online gaan je naam en de stand van de partij via een relayserver naar je tegenstander. <a href="../../privacy.html">Privacy</a></p>
+    </div>
+
+    <div class="pl-paneel-inhoud" data-online-scherm="verbinden" hidden>
+      <p class="pl-verbind" data-online-verbind-tekst role="status">Verbinden…</p>
+      <div class="pl-paneel-knoppen">
+        <button type="button" class="pl-knop pl-knop-rand" data-online-annuleer>Annuleren</button>
+      </div>
+    </div>
+
+    <div class="pl-paneel-inhoud" data-online-scherm="lobby" hidden>
+      <div class="pl-code-blok">
+        <span class="pl-code-label">Code</span>
+        <span class="pl-code" data-online-code-groot></span>
+      </div>
+      <div class="pl-deel" data-online-deel>
+        <label class="pl-veld-blok">
+          <span>Uitnodigingslink</span>
+          <input type="text" readonly data-online-link/>
+        </label>
+        <div class="pl-deel-knoppen">
+          <button type="button" class="pl-knop pl-knop-rand" data-online-kopieer>Kopieer link</button>
+          <button type="button" class="pl-knop pl-knop-rand" data-online-kopieer-code>Kopieer code</button>
+        </div>
+        <p class="pl-paneel-noot" data-online-kopieer-status role="status"></p>
+      </div>
+      <h3 class="pl-lobby-kop">Spelers (maximaal 2)</h3>
+      <ul class="pl-lobby-spelers" data-online-spelers></ul>
+      <p class="pl-lobby-tekst" data-online-lobby-tekst role="status"></p>
+      <div class="pl-paneel-knoppen">
+        <button type="button" class="pl-knop pl-knop-koraal" data-online-hervat hidden>Partij hervatten</button>
+        <button type="button" class="pl-knop pl-knop-koraal" data-online-start disabled>Start partij</button>
+        <button type="button" class="pl-knop pl-knop-rand" data-online-verlaat>Kamer sluiten</button>
+      </div>
+    </div>
+
+    <div class="pl-paneel-inhoud" data-online-scherm="fout" hidden>
+      <p class="pl-paneel-fout" data-online-fout-tekst role="alert"></p>
+      <div class="pl-paneel-knoppen">
+        <button type="button" class="pl-knop pl-knop-koraal" data-online-opnieuw>Opnieuw proberen</button>
+        <button type="button" class="pl-knop pl-knop-rand" data-online-lokaal>Op dit apparaat spelen</button>
+        <a class="pl-knop pl-knop-rand" href="../index.html">Terug naar Spelletjes</a>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div class="pl-sr" aria-live="polite" aria-atomic="true" data-aankondiging></div>
+
+<noscript><p class="pl-melding">Pool heeft JavaScript nodig.</p></noscript>
+</body>
+</html>
