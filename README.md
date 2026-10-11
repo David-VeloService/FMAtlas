@@ -15,6 +15,24 @@ oefentoetsen per vak. Live op https://fmatlas.nl via GitHub Pages vanaf `main`.
 
 Een nieuwe pagina komt ook in `sitemap.xml` en in `FA_SEARCH_INDEX`.
 
+## Game: Hoge Inzet
+
+`game/hoge-inzet/`: roulette (Europees wiel, 0 t/m 36) en blackjack (zes decks) met één gedeelde
+bank van 1000 speelfiches. Alleen speelfiches: geen echt geld, geen Firebase, geen XP, niets wordt
+gedeeld. Geen dependencies of build: `index.html`, `style.css`, `engine.js`, `app.js` en `kaart.svg`.
+Lokaal openen kan door `game/hoge-inzet/index.html` in de browser te openen (ook via `file://`).
+
+- Roulette: een nummer betaalt 36x de inzet terug, rood/zwart/even/oneven/1–18/19–36 betalen 2x. Op
+  de 0 verliezen alle buitenkansen.
+- Blackjack: blackjack betaalt 3:2, winst 2x terug, gelijk geeft de inzet terug. De dealer kijkt bij
+  het delen of hij blackjack heeft, trekt onder 17 en past op elke 17 (ook soft). Verdubbelen alleen
+  met de eerste twee kaarten; geen splitsen, verzekeren of opgeven.
+- Opslag: `localStorage` onder `fa_hoge_inzet_v1` (saldo, topsaldo, rondes, uitslagen, lopende
+  inzet of hand). Een uitslag wordt eerst afgerekend en bewaard, daarna pas geanimeerd: herladen
+  tijdens een draai of dealerbeurt geeft dus nooit een dubbele of gemiste uitbetaling.
+- `engine.js` bevat alle spelregels als pure functies en is ook in Node te laden:
+  `const E = require('./game/hoge-inzet/engine.js')`.
+
 ## Firebase
 
 Project `fmkompas-ff8bc` (Google-login en Firestore).

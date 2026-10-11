@@ -1,0 +1,129 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="960" height="540" role="img" aria-labelledby="t">
+  <title id="t">Hoge Inzet: een roulettewiel, speelkaarten en fiches op een groen speellaken</title>
+  <defs>
+    <radialGradient id="laken" cx="58%" cy="42%" r="75%">
+      <stop offset="0" stop-color="#2a6a47"/>
+      <stop offset="0.55" stop-color="#1c4a34"/>
+      <stop offset="1" stop-color="#0f2b1f"/>
+    </radialGradient>
+    <radialGradient id="hout" cx="45%" cy="40%" r="65%">
+      <stop offset="0" stop-color="#6b4227"/>
+      <stop offset="0.7" stop-color="#3d2416"/>
+      <stop offset="1" stop-color="#24140b"/>
+    </radialGradient>
+    <radialGradient id="kegel" cx="42%" cy="38%" r="65%">
+      <stop offset="0" stop-color="#7d4f2e"/>
+      <stop offset="1" stop-color="#2c190f"/>
+    </radialGradient>
+    <linearGradient id="goud" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ecd08f"/>
+      <stop offset="0.5" stop-color="#b48c45"/>
+      <stop offset="1" stop-color="#e2c27a"/>
+    </linearGradient>
+    <linearGradient id="papier" x1="0" y1="0" x2="0.4" y2="1">
+      <stop offset="0" stop-color="#fffdf6"/>
+      <stop offset="1" stop-color="#efe5cf"/>
+    </linearGradient>
+    <radialGradient id="bal" cx="35%" cy="30%" r="70%">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="0.5" stop-color="#e8e1d3"/>
+      <stop offset="1" stop-color="#9d968a"/>
+    </radialGradient>
+    <filter id="schaduw" x="-20%" y="-20%" width="140%" height="150%">
+      <feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#000" flood-opacity="0.55"/>
+    </filter>
+    <filter id="schaduwklein" x="-20%" y="-20%" width="140%" height="150%">
+      <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#000" flood-opacity="0.5"/>
+    </filter>
+  </defs>
+
+  <!-- Zaal en laken -->
+  <rect width="960" height="540" fill="#15100c"/>
+  <rect x="18" y="18" width="924" height="504" rx="40" fill="#3b2416"/>
+  <rect x="30" y="30" width="900" height="480" rx="32" fill="url(#laken)"/>
+  <rect x="30" y="30" width="900" height="480" rx="32" fill="none" stroke="#c9a45c" stroke-opacity="0.55" stroke-width="1.5"/>
+  <rect x="44" y="44" width="872" height="452" rx="24" fill="none" stroke="#e2c27a" stroke-opacity="0.18" stroke-width="1" stroke-dasharray="4 6"/>
+
+  <!-- Roulettewiel. Vakjes als gestreepte ringen: rood en zwart wisselen elkaar af, de nul is groen. -->
+  <g filter="url(#schaduw)">
+    <circle cx="300" cy="282" r="232" fill="url(#hout)"/>
+  </g>
+  <circle cx="300" cy="282" r="214" fill="none" stroke="url(#goud)" stroke-width="3"/>
+  <g transform="rotate(-96 300 282)">
+    <!-- nummerring r 180..210; streeplengte = omtrek / 37 = 33,1144 -->
+    <circle cx="300" cy="282" r="195" fill="none" stroke="#b1302a" stroke-width="30"/>
+    <circle cx="300" cy="282" r="195" fill="none" stroke="#1c1714" stroke-width="30" stroke-dasharray="33.1144 33.1144" stroke-dashoffset="33.1144"/>
+    <circle cx="300" cy="282" r="195" fill="none" stroke="#1f7a4a" stroke-width="30" stroke-dasharray="33.1144 1192.1"/>
+    <circle cx="300" cy="282" r="195" fill="none" stroke="#e2c27a" stroke-opacity="0.75" stroke-width="30" stroke-dasharray="1.1 32.0144"/>
+    <!-- binnenste vakjesring waar de bal in valt -->
+    <circle cx="300" cy="282" r="166" fill="none" stroke="#b1302a" stroke-width="28" stroke-opacity="0.6"/>
+    <circle cx="300" cy="282" r="166" fill="none" stroke="#1c1714" stroke-width="28" stroke-opacity="0.75" stroke-dasharray="28.1894 28.1894" stroke-dashoffset="28.1894"/>
+    <circle cx="300" cy="282" r="166" fill="none" stroke="#1f7a4a" stroke-width="28" stroke-dasharray="28.1894 1014.8"/>
+    <circle cx="300" cy="282" r="166" fill="none" stroke="#e2c27a" stroke-opacity="0.5" stroke-width="28" stroke-dasharray="1 27.1894"/>
+  </g>
+  <circle cx="300" cy="282" r="180" fill="none" stroke="#c9a45c" stroke-opacity="0.7" stroke-width="1.5"/>
+  <circle cx="300" cy="282" r="152" fill="url(#kegel)" stroke="url(#goud)" stroke-width="2.5"/>
+  <circle cx="300" cy="282" r="92" fill="none" stroke="#c9a45c" stroke-opacity="0.25"/>
+  <g stroke="url(#goud)" stroke-width="10" stroke-linecap="round" transform="rotate(18 300 282)">
+    <line x1="300" y1="214" x2="300" y2="350"/>
+    <line x1="232" y1="282" x2="368" y2="282"/>
+  </g>
+  <g fill="#e2c27a" transform="rotate(18 300 282)">
+    <circle cx="300" cy="209" r="8"/><circle cx="300" cy="355" r="8"/>
+    <circle cx="227" cy="282" r="8"/><circle cx="373" cy="282" r="8"/>
+  </g>
+  <circle cx="300" cy="282" r="22" fill="#e2c27a" stroke="#8f7238" stroke-width="3"/>
+  <circle cx="300" cy="282" r="9" fill="#8f7238"/>
+  <!-- Bal in de binnenring -->
+  <circle cx="417" cy="165" r="10" fill="url(#bal)" filter="url(#schaduwklein)"/>
+
+  <!-- Titel -->
+  <text x="606" y="112" font-family="Georgia, 'Times New Roman', serif" font-size="58" font-weight="700" fill="#f3e9d2">Hoge Inzet</text>
+  <text x="609" y="146" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="17" font-weight="800" letter-spacing="4" fill="#c9a45c">ROULETTE · BLACKJACK</text>
+  <line x1="609" y1="164" x2="880" y2="164" stroke="#c9a45c" stroke-opacity="0.45"/>
+
+  <!-- Speelkaarten: aas en tien, samen 21 -->
+  <g filter="url(#schaduw)">
+    <g transform="rotate(-12 700 330)">
+      <rect x="628" y="222" width="144" height="202" rx="14" fill="url(#papier)"/>
+      <rect x="628" y="222" width="144" height="202" rx="14" fill="none" stroke="#000" stroke-opacity="0.08"/>
+      <text x="646" y="262" font-family="Georgia, serif" font-size="34" font-weight="700" fill="#1c1714">A</text>
+      <text x="648" y="290" font-family="Georgia, serif" font-size="26" fill="#1c1714">♠</text>
+      <text x="700" y="352" text-anchor="middle" font-family="Georgia, serif" font-size="88" fill="#1c1714">♠</text>
+    </g>
+    <g transform="rotate(9 800 340)">
+      <rect x="730" y="236" width="144" height="202" rx="14" fill="url(#papier)"/>
+      <rect x="730" y="236" width="144" height="202" rx="14" fill="none" stroke="#000" stroke-opacity="0.08"/>
+      <text x="746" y="276" font-family="Georgia, serif" font-size="32" font-weight="700" fill="#b1302a">10</text>
+      <text x="752" y="304" font-family="Georgia, serif" font-size="26" fill="#b1302a">♥</text>
+      <text x="802" y="366" text-anchor="middle" font-family="Georgia, serif" font-size="88" fill="#b1302a">♥</text>
+    </g>
+  </g>
+
+  <!-- Fichestapels -->
+  <g filter="url(#schaduwklein)">
+    <g>
+      <ellipse cx="600" cy="468" rx="38" ry="13" fill="#1b1613"/>
+      <rect x="562" y="448" width="76" height="20" fill="#1b1613"/>
+      <ellipse cx="600" cy="458" rx="38" ry="13" fill="#2a221d"/>
+      <rect x="562" y="436" width="76" height="22" fill="#1b1613"/>
+      <rect x="562" y="436" width="76" height="22" fill="none" stroke="#c9a45c" stroke-width="2" stroke-dasharray="8 10"/>
+      <ellipse cx="600" cy="436" rx="38" ry="13" fill="#1b1613" stroke="#c9a45c" stroke-width="2"/>
+      <ellipse cx="600" cy="436" rx="24" ry="8" fill="none" stroke="#e2c27a" stroke-width="1.5" stroke-dasharray="3 3"/>
+    </g>
+    <g>
+      <rect x="652" y="440" width="76" height="34" fill="#c8432c"/>
+      <rect x="652" y="440" width="76" height="34" fill="none" stroke="#f3e9d2" stroke-width="2" stroke-dasharray="8 10"/>
+      <ellipse cx="690" cy="474" rx="38" ry="13" fill="#a8341f"/>
+      <ellipse cx="690" cy="440" rx="38" ry="13" fill="#d24a32" stroke="#f3e9d2" stroke-width="2"/>
+      <ellipse cx="690" cy="440" rx="24" ry="8" fill="none" stroke="#f3e9d2" stroke-width="1.5" stroke-dasharray="3 3"/>
+    </g>
+    <g>
+      <rect x="742" y="458" width="76" height="18" fill="#d9ccae"/>
+      <rect x="742" y="458" width="76" height="18" fill="none" stroke="#b1302a" stroke-width="2" stroke-dasharray="8 10"/>
+      <ellipse cx="780" cy="476" rx="38" ry="13" fill="#cbbd9c"/>
+      <ellipse cx="780" cy="458" rx="38" ry="13" fill="#efe4c9" stroke="#b1302a" stroke-width="2"/>
+      <ellipse cx="780" cy="458" rx="24" ry="8" fill="none" stroke="#3a1d12" stroke-opacity="0.5" stroke-width="1.5" stroke-dasharray="3 3"/>
+    </g>
+  </g>
+</svg>
