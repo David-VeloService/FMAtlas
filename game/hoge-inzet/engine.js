@@ -8,8 +8,9 @@
  *   browser (klassiek script):  window.HogeInzetEngine
  *   Node:                       const E = require('./engine.js');
  *
- * Geld: alle bedragen zijn speelfiches. Inzetten zijn hele getallen (10/25/50/100) en alle
- * uitbetalingen ook: een blackjack betaalt 6:5 (25 -> 55 terug). Een stand van vóór 13-10-2026,
+ * Geld: alle bedragen zijn speelfiches. Inzetten zijn hele getallen: een fiche (10 tot 1000) of bij
+ * 'alles in' het hele saldo naar beneden afgerond. Uitbetalingen zijn ook hele getallen: een
+ * blackjack betaalt 6:5, naar beneden afgerond (25 -> 55 terug, 7 -> 15). Een stand van vóór 13-10-2026,
  * toen blackjack nog 3:2 betaalde, kan een halve fiche bevatten. Bedragen zijn daarom altijd een
  * veelvoud van 0,5. Veelvouden van 0,5 zijn in een JavaScript-double exact
  * (het zijn binaire breuken) zolang ze onder 2^52 blijven; MAX_SALDO houdt ze daar ruim onder.
@@ -30,7 +31,8 @@
 
   var STORAGE_KEY = 'fa_hoge_inzet_v1';
   var START_SALDO = 1000;
-  var CHIP_VALUES = [10, 25, 50, 100];
+  var CHIP_VALUES = [10, 25, 50, 100, 500, 1000];
+  var BONUS = 500;                             // fiches voor een uitgekeken advertentie
   var HISTORY_MAX = 12;
   var MAX_SALDO = 1e12;
   var UINT32 = 4294967296;
@@ -82,6 +84,12 @@
 
   function isAmount(x) {
     return typeof x === 'number' && Number.isFinite(x) && x >= 0 && x <= MAX_SALDO && Number.isInteger(x * 2);
+  }
+
+  // Een inzet: een heel getal van minstens 1. De fiches zijn de gewone stappen; 'alles in' zet
+  // het hele saldo (afgerond) in en is dus meestal geen fichewaarde.
+  function isInzet(x) {
+    return typeof x === 'number' && Number.isSafeInteger(x) && x >= 1 && x <= MAX_SALDO;
   }
 
   function isCount(x) {
@@ -243,7 +251,7 @@
   // Een fiche op de tafel leggen. De fiche gaat direct van het saldo af.
   function placeBet(state, key, amount) {
     if (!isBetKey(key)) return fail('Onbekende inzet.');
-    if (CHIP_VALUES.indexOf(amount) < 0) return fail('Kies een fiche van 10, 25, 50 of 100.');
+    if (!isInzet(amount)) return fail('Kies eerst een fiche.');
     if (state.saldo < amount) return fail('Je hebt niet genoeg fiches voor deze inzet.');
     var s = clone(state);
     s.saldo -= amount;
@@ -378,11 +386,12 @@
     return 'push';
   }
 
-  // Wat er terugkomt, inclusief de inzet: blackjack inzet plus 6/5 (6:5 winst, 25 -> 55), winst 2x,
-  // push 1x, verlies 0. Eerst vermenigvuldigen, dan delen: 10 * 1.2 is in een double net niet 12.
+  // Wat er terugkomt, inclusief de inzet: blackjack inzet plus 6/5 van de inzet, naar beneden
+  // afgerond (25 -> 55), winst 2x, push 1x, verlies 0. Eerst vermenigvuldigen, dan delen: 10 * 1.2
+  // is in een double net niet 12.
   function bjPayout(stake, outcome) {
     switch (outcome) {
-      case 'blackjack': return stake + stake * 6 / 5;
+      case 'blackjack': return stake + Math.floor(stake * 6 / 5);
       case 'winst': return stake * 2;
       case 'push': return stake;
       case 'verlies': return 0;
@@ -472,12 +481,12 @@
   // de ronde direct afgelopen.
   function bjDeal(state, bet, source) {
     if (handActive(state)) return fail('Speel eerst de hand af die nog loopt.');
-    if (CHIP_VALUES.indexOf(bet) < 0) return fail('Kies een inzet van 10, 25, 50 of 100.');
+    if (!isInzet(bet)) return fail('Kies eerst een inzet.');
     if (state.saldo < bet) return fail('Je hebt niet genoeg fiches voor deze inzet.');
     var s = clone(state);
     if (s.blackjack.shoe.length < RESHUFFLE_BELOW) s.blackjack.shoe = newShoe(source);
     s.saldo -= bet;
-    s.blackjack.laatsteInzet = bet;
+    if (CHIP_VALUES.indexOf(bet) >= 0) s.blackjack.laatsteInzet = bet;
     var p1 = draw(s), d1 = draw(s), p2 = draw(s), d2 = draw(s);
     s.blackjack.hand = { fase: 'speler', dealer: [d1, d2], actief: 0, inzet: bet, handen: [nieuweHand([p1, p2], bet)] };
     if (isNatural([p1, p2]) || isNatural([d1, d2])) finishHand(s, false);
@@ -549,6 +558,20 @@
     volgende(s);
     return { ok: true, state: s };
   }
+  // Fiches erbij voor een uitgekeken advertentie. Telt niet als ronde.
+  function bonus(state, bedrag) {
+    var b = bedrag === undefined ? BONUS : bedrag;
+    if (!isInzet(b)) return fail('Ongeldig bedrag.');
+    if (state.saldo + b > MAX_SALDO) return fail('Je saldo zit aan het maximum.');
+    var s = clone(state);
+    s.saldo += b;
+    if (s.saldo > s.top) s.top = s.saldo;
+    return { ok: true, state: s, bedrag: b };
+  }
+
+  // Wat 'alles in' nu zou inzetten: het saldo, naar beneden afgerond op hele fiches.
+  function allesIn(state) { return Math.floor(state.saldo); }
+
   // De animatie van een afgerekende ronde is afgespeeld.
   function acknowledge(state) {
     if (!state.open) return state;
@@ -566,7 +589,7 @@
     // Elke kaart telt minstens 1 en er wordt niet doorgetrokken vanaf 21, dus een hand heeft hooguit 21 kaarten.
     if (!Array.isArray(x.kaarten) || x.kaarten.length < 2 || x.kaarten.length > 21 || !x.kaarten.every(isCard)) return null;
     var basis = x.verdubbeld ? x.inzet / 2 : x.inzet;
-    if (CHIP_VALUES.indexOf(basis) < 0) return null;
+    if (!isInzet(basis)) return null;
     var t = handValue(x.kaarten).total;
     if ((x.status === 'dood') !== (t > 21)) return null;
     if (x.status === 'speelt' && (fase !== 'speler' || t >= 21 || x.verdubbeld || x.azen)) return null;
@@ -673,6 +696,10 @@
     STORAGE_KEY: STORAGE_KEY,
     START_SALDO: START_SALDO,
     CHIP_VALUES: CHIP_VALUES.slice(),
+    BONUS: BONUS,
+    isInzet: isInzet,
+    bonus: bonus,
+    allesIn: allesIn,
     HISTORY_MAX: HISTORY_MAX,
     MAX_SALDO: MAX_SALDO,
     // toeval

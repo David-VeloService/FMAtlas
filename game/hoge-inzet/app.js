@@ -21,6 +21,7 @@
 
   var E = window.HogeInzetEngine;
   if (!E) return;
+  var R = window.HogeInzetReclame || null;
 
   var $ = function (sel, root) { return (root || document).querySelector(sel); };
   var $$ = function (sel, root) { return Array.prototype.slice.call((root || document).querySelectorAll(sel)); };
@@ -57,11 +58,15 @@
   var bezig = false;          // er loopt een animatie: alles wat geld of tabs raakt staat dicht
   var weergaveSaldo = null;   // saldo dat tijdens een animatie getoond wordt (nog zonder uitbetaling)
   var actieveTab = 'roulette';
+  var ALLES = 'alles';
+  var FICHES = E.CHIP_VALUES.concat([ALLES]);   // de keuzes in de fichebalk; 'alles' zet het hele saldo in
   var rKeuze = E.CHIP_VALUES[0];
   var bKeuze = state.blackjack.laatsteInzet;
   var rWeergaveInzet = null;  // inzet die tijdens het draaien op tafel blijft liggen
   var bjView = null;          // { s: [per hand], d, open }: hoeveel kaarten van speler en dealer zichtbaar zijn
   var timers = [];
+  var reclameBezig = false;   // er speelt een advertentie: alles staat dicht
+  var reclameKlaar = false;   // Google heeft een advertentie klaarstaan
   var syncNodig = false;      // een ander tabblad heeft de stand veranderd terwijl hier een animatie liep
 
   /* ─── Hulpjes ────────────────────────────────────────── */
@@ -69,6 +74,11 @@
   var nf = (window.Intl && Intl.NumberFormat) ? new Intl.NumberFormat('nl-NL', { maximumFractionDigits: 1 }) : null;
   function fmt(x) { return nf ? nf.format(x) : String(x).replace('.', ','); }
   function fmtNetto(x) { return x > 0 ? '+' + fmt(x) : x < 0 ? '−' + fmt(-x) : '±0'; }
+
+  // Wat een fichekeuze nu inzet: de fichewaarde, of bij 'alles' het hele saldo.
+  function inzetVoor(keuze) { return keuze === ALLES ? E.allesIn(state) : keuze; }
+
+  function ficheLabel(w) { return w === ALLES ? 'Alles' : w >= 1000 ? (w / 1000) + 'K' : String(w); }
 
   function aankondig(tekst) {
     var el = $('[data-aankondiging]');
@@ -169,6 +179,7 @@
         try { if (audio && audio.suspend) audio.suspend(); } catch (_) { /* niets */ }
       }
       knop.setAttribute('aria-pressed', geluidAan ? 'true' : 'false');
+      if (R) R.geluid(geluidAan);
       knop.classList.toggle('is-aan', geluidAan);
       if (geluidAan) geluid('fiche');
     });
@@ -184,6 +195,61 @@
     $('[data-stat-gewonnen]').textContent = fmt(state.gewonnen);
     $('[data-nieuw]').disabled = bezig;
     $$('[data-tekort-nieuw]').forEach(function (b) { b.disabled = bezig; });
+    renderReclame();
+  }
+
+  /* ─── Advertentie kijken voor fiches (reclame.js) ────── */
+
+  function renderReclame() {
+    var aan = !!(R && R.actief());
+    var knop = $('[data-reclame]');
+    $('[data-reclame-blok]').hidden = !aan;
+    knop.disabled = bezig || !reclameKlaar;
+    $('[data-reclame-tekst]').textContent = reclameKlaar ? 'Kijk een advertentie' : 'Even geen advertentie';
+    $$('[data-tekort-reclame]').forEach(function (el) {
+      el.hidden = !aan || !reclameKlaar;
+      $('button', el).disabled = bezig;
+    });
+  }
+
+  function kijkReclame() {
+    if (bezig || !R) return;
+    if (!R.kijk()) toonMelding('Er staat nu geen advertentie klaar. Probeer het zo nog eens.');
+  }
+
+  function startReclame() {
+    if (!R || !R.actief()) return;
+    R.start({
+      beschikbaar: function (ja) { reclameKlaar = ja; renderReclame(); },
+      voor: function () {
+        bezig = true;
+        reclameBezig = true;
+        try { if (audio && audio.suspend) audio.suspend(); } catch (_) { /* niets */ }
+        renderAlles();
+      },
+      beloning: function () {
+        // Speelde er intussen iemand in een ander tabblad, dan eerst die stand, dan de fiches erbij.
+        if (syncNodig) state = E.acknowledge(laad());
+        var r = E.bonus(state);
+        if (!r.ok) { toonMelding(r.reden); return; }
+        state = r.state;
+        bewaar();
+        flitsSaldo(r.bedrag);
+        geluid('winst');
+        toonMelding('Je kreeg ' + fmt(r.bedrag) + ' fiches voor het kijken van de advertentie.');
+        aankondig(fmt(r.bedrag) + ' fiches erbij. Saldo ' + fmt(state.saldo) + '.');
+      },
+      afgebroken: function () {
+        toonMelding('De advertentie is gestopt voordat hij af was. Daarvoor krijg je geen fiches.');
+      },
+      na: function () {
+        bezig = false;
+        reclameBezig = false;
+        try { if (geluidAan && audio && audio.resume) audio.resume(); } catch (_) { /* niets */ }
+        renderAlles();
+        if (syncNodig) synchroniseer();
+      }
+    }, geluidAan);
   }
 
   function flitsSaldo(netto) {
@@ -267,14 +333,14 @@
   /* ─── Fiches kiezen ──────────────────────────────────── */
 
   function maakFiches(houder, getKeuze, setKeuze, groep) {
-    E.CHIP_VALUES.forEach(function (w) {
+    FICHES.forEach(function (w) {
       var b = document.createElement('button');
       b.type = 'button';
       b.className = 'hi-fiche hi-fiche-' + w;
       b.setAttribute('role', 'radio');
       b.setAttribute('data-waarde', String(w));
-      b.setAttribute('aria-label', w + ' fiches');
-      b.innerHTML = '<span aria-hidden="true">' + w + '</span>';
+      b.setAttribute('aria-label', w === ALLES ? 'Alles in: je hele saldo' : w + ' fiches');
+      b.innerHTML = '<span aria-hidden="true">' + ficheLabel(w) + '</span>';
       b.addEventListener('click', function () {
         if (b.getAttribute('aria-disabled') === 'true') return;
         setKeuze(w);
@@ -283,7 +349,7 @@
       });
       b.addEventListener('keydown', function (e) {
         if (b.getAttribute('aria-disabled') === 'true') return;
-        var vals = E.CHIP_VALUES, i = vals.indexOf(getKeuze()), j = null;
+        var vals = FICHES, i = vals.indexOf(getKeuze()), j = null;
         if (e.key === 'ArrowRight' || e.key === 'ArrowDown') j = Math.min(vals.length - 1, i + 1);
         else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') j = Math.max(0, i - 1);
         if (j === null) return;
@@ -299,24 +365,27 @@
 
   function renderFiches(houder, keuze, uit) {
     $$('.hi-fiche', houder).forEach(function (b) {
-      var w = Number(b.getAttribute('data-waarde'));
+      var raw = b.getAttribute('data-waarde');
+      var w = raw === ALLES ? ALLES : Number(raw);
       var gekozen = w === keuze;
       b.setAttribute('aria-checked', gekozen ? 'true' : 'false');
       b.tabIndex = gekozen ? 0 : -1;
       b.setAttribute('aria-disabled', uit ? 'true' : 'false');
       b.classList.toggle('is-gekozen', gekozen);
-      b.classList.toggle('is-te-hoog', w > state.saldo);
+      var bedrag = inzetVoor(w);
+      b.classList.toggle('is-te-hoog', bedrag < 1 || bedrag > state.saldo);
     });
   }
 
-  // Past de gekozen fiche niet meer in het saldo, kies dan de grootste die wel past.
+  // Past de gekozen fiche niet meer in het saldo, kies dan de grootste die wel past. 'Alles' past
+  // altijd zolang er minstens één fiche is.
   function pasKeuzesAan() {
     if (bezig) return;
     var past = E.CHIP_VALUES.filter(function (w) { return w <= state.saldo; });
     if (!past.length) return;
     var grootste = past[past.length - 1];
-    if (rKeuze > state.saldo) rKeuze = grootste;
-    if (bKeuze > state.saldo && !(state.blackjack.hand && state.blackjack.hand.fase === 'speler')) bKeuze = grootste;
+    if (rKeuze !== ALLES && rKeuze > state.saldo) rKeuze = grootste;
+    if (bKeuze !== ALLES && bKeuze > state.saldo && !(state.blackjack.hand && state.blackjack.hand.fase === 'speler')) bKeuze = grootste;
   }
 
   /* ─── Roulette: wiel ─────────────────────────────────── */
@@ -447,6 +516,8 @@
   }
 
   function chipKlasse(bedrag) {
+    if (bedrag >= 1000) return 'hi-fiche-1000';
+    if (bedrag >= 500) return 'hi-fiche-500';
     if (bedrag >= 100) return 'hi-fiche-100';
     if (bedrag >= 50) return 'hi-fiche-50';
     if (bedrag >= 25) return 'hi-fiche-25';
@@ -456,7 +527,8 @@
   function renderBord() {
     var inzet = rWeergaveInzet || state.roulette.inzet;
     var laatste = !bezig && state.roulette.laatste && !rWeergaveInzet ? state.roulette.laatste.nummer : null;
-    var beschikbaar = state.saldo >= rKeuze;
+    var rBedrag = inzetVoor(rKeuze);
+    var beschikbaar = rBedrag >= 1 && state.saldo >= rBedrag;
     $$('[data-bet]').forEach(function (b) {
       var key = b.getAttribute('data-bet');
       var bedrag = inzet[key] || 0;
@@ -480,7 +552,7 @@
     var vorige = state.roulette.vorige;
     $('[data-herhaal]').disabled = bezig || !leeg || !vorige || E.betTotal(vorige) > state.saldo;
     $('[data-draai]').disabled = bezig || leeg;
-    $('[data-draai]').textContent = bezig && actieveTab === 'roulette' ? 'Draait…' : 'Draai';
+    $('[data-draai]').textContent = bezig && !reclameBezig && actieveTab === 'roulette' ? 'Draait…' : 'Draai';
     var tekort = $('#hi-paneel-roulette [data-tekort]');
     tekort.hidden = bezig || !leeg || state.saldo >= E.CHIP_VALUES[0];
 
@@ -530,7 +602,8 @@
 
   function zetIn(key, knop) {
     if (bezig) return;
-    var gebruikt = rKeuze;
+    var gebruikt = inzetVoor(rKeuze);
+    if (gebruikt < 1) { aankondig('Je hebt geen fiches meer.'); toonMelding('Je hebt geen fiches meer.'); return; }
     var r = E.placeBet(state, key, gebruikt);
     if (!r.ok) { aankondig(r.reden); toonMelding(r.reden); return; }
     toonMelding('');
@@ -540,7 +613,7 @@
     renderAlles();
     var zet = $('.hi-zet', knop);
     zet.classList.remove('is-geplaatst'); void zet.offsetWidth; zet.classList.add('is-geplaatst');
-    aankondig(gebruikt + ' op ' + betNaam(key) + '. Op tafel: ' + fmt(E.betTotal(state.roulette.inzet)) + '.');
+    aankondig(fmt(gebruikt) + ' op ' + betNaam(key) + '. Op tafel: ' + fmt(E.betTotal(state.roulette.inzet)) + '.');
   }
 
   function wis() {
@@ -809,7 +882,8 @@
 
     var actief = !!(h && h.fase === 'speler');
     renderFiches($('[data-b-fiches]'), bKeuze, bezig || actief);
-    $('[data-deel]').disabled = bezig || actief || state.saldo < bKeuze;
+    var bBedrag = inzetVoor(bKeuze);
+    $('[data-deel]').disabled = bezig || actief || bBedrag < 1 || state.saldo < bBedrag;
     $('[data-kaart]').disabled = bezig || !actief;
     $('[data-pas]').disabled = bezig || !actief;
     $('[data-verdubbel]').disabled = bezig || !E.canDouble(state);
@@ -892,7 +966,7 @@
 
   function deel() {
     if (bezig) return;
-    var r = E.bjDeal(state, bKeuze);
+    var r = E.bjDeal(state, inzetVoor(bKeuze));
     if (!r.ok) { aankondig(r.reden); toonMelding(r.reden); return; }
     toonMelding('');
     sluitBevestig(false);
@@ -976,6 +1050,8 @@
     $('[data-verdubbel]').addEventListener('click', function () { bjActie(E.bjDouble); });
     $('[data-splits]').addEventListener('click', splits);
     $('[data-nieuw]').addEventListener('click', openBevestig);
+    $('[data-reclame]').addEventListener('click', kijkReclame);
+    $$('[data-tekort-reclame] button').forEach(function (b) { b.addEventListener('click', kijkReclame); });
     $$('[data-tekort-nieuw]').forEach(function (b) { b.addEventListener('click', openBevestig); });
     $('[data-bevestig-ja]').addEventListener('click', nieuwSpel);
     $('[data-bevestig-nee]').addEventListener('click', function () { sluitBevestig(true); });
@@ -1012,6 +1088,8 @@
       kiesTab('blackjack', false);
     }
     renderAlles();
+
+    startReclame();
 
     window.addEventListener('storage', function (e) {
       if (e.key === E.STORAGE_KEY) synchroniseer();

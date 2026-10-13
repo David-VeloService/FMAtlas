@@ -12,6 +12,7 @@
 <meta name="theme-color" content="#15100c"/>
 <link rel="stylesheet" href="style.css"/>
 <script defer src="engine.js"></script>
+<script defer src="reclame.js"></script>
 <script defer src="app.js"></script>
 </head>
 <body>
@@ -52,9 +53,18 @@
 <p class="hi-melding" data-melding hidden></p>
 
 <main class="hi-zaal">
-  <div class="hi-tabs" role="tablist" aria-label="Kies een spel">
-    <button type="button" class="hi-tab" role="tab" id="hi-tab-roulette" aria-controls="hi-paneel-roulette" aria-selected="true" data-tab="roulette">Roulette</button>
-    <button type="button" class="hi-tab" role="tab" id="hi-tab-blackjack" aria-controls="hi-paneel-blackjack" aria-selected="false" tabindex="-1" data-tab="blackjack">Blackjack</button>
+  <div class="hi-zaal-kop">
+    <div class="hi-tabs" role="tablist" aria-label="Kies een spel">
+      <button type="button" class="hi-tab" role="tab" id="hi-tab-roulette" aria-controls="hi-paneel-roulette" aria-selected="true" data-tab="roulette">Roulette</button>
+      <button type="button" class="hi-tab" role="tab" id="hi-tab-blackjack" aria-controls="hi-paneel-blackjack" aria-selected="false" tabindex="-1" data-tab="blackjack">Blackjack</button>
+    </div>
+    <div class="hi-reclame" data-reclame-blok hidden>
+      <button type="button" class="hi-knop hi-knop-creme hi-reclame-knop" data-reclame disabled>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg>
+        <span data-reclame-tekst>Even geen advertentie</span>
+      </button>
+      <span class="hi-reclame-beloning">+500 fiches</span>
+    </div>
   </div>
 
   <!-- Roulette -->
@@ -91,12 +101,12 @@
         <button type="button" class="hi-knop hi-knop-rand" data-herhaal>Herhaal inzet</button>
         <button type="button" class="hi-knop hi-knop-koraal hi-knop-groot" data-draai>Draai</button>
       </div>
-      <p class="hi-tekort" data-tekort hidden>Te weinig fiches voor een nieuwe inzet. <button type="button" class="hi-linkknop" data-tekort-nieuw>Begin een nieuw spel</button></p>
+      <p class="hi-tekort" data-tekort hidden>Te weinig fiches voor een nieuwe inzet. <span data-tekort-reclame hidden><button type="button" class="hi-linkknop">Kijk een advertentie voor 500 fiches</button> of </span><button type="button" class="hi-linkknop" data-tekort-nieuw>Begin een nieuw spel</button></p>
       <details class="hi-regels">
         <summary>Spelregels roulette</summary>
         <ul>
           <li>Een Amerikaans wiel met 0, 00 en 1 tot en met 36: 38 vakjes, die allemaal even waarschijnlijk zijn.</li>
-          <li>Leg zoveel fiches als je wilt op nummers en kansen. Ze gaan direct van je saldo af; met <em>Wis inzet</em> krijg je alles terug zolang er niet gedraaid is.</li>
+          <li>Kies een fiche van 10 tot 1.000, of <em>Alles</em> om je hele saldo in één keer in te zetten. Leg zoveel fiches als je wilt op nummers en kansen. Ze gaan direct van je saldo af; met <em>Wis inzet</em> krijg je alles terug zolang er niet gedraaid is.</li>
           <li>Een nummer betaalt 36 keer je inzet terug: 35 winst plus je eigen fiches.</li>
           <li>Rood, zwart, even, oneven, 1–18 en 19–36 betalen 2 keer je inzet terug.</li>
           <li>Valt de bal op de groene 0 of 00, dan verliezen alle kansen, ook even en 1–18. Alleen een fiche op dat vakje zelf wint.</li>
@@ -129,16 +139,17 @@
         <button type="button" class="hi-knop hi-knop-rand" data-verdubbel>Verdubbel</button>
         <button type="button" class="hi-knop hi-knop-rand" data-splits>Splits</button>
       </div>
-      <p class="hi-tekort" data-tekort hidden>Te weinig fiches voor een nieuwe hand. <button type="button" class="hi-linkknop" data-tekort-nieuw>Begin een nieuw spel</button></p>
+      <p class="hi-tekort" data-tekort hidden>Te weinig fiches voor een nieuwe hand. <span data-tekort-reclame hidden><button type="button" class="hi-linkknop">Kijk een advertentie voor 500 fiches</button> of </span><button type="button" class="hi-linkknop" data-tekort-nieuw>Begin een nieuw spel</button></p>
       <details class="hi-regels">
         <summary>Spelregels blackjack</summary>
         <ul>
+          <li>Kies je inzet: een fiche van 10 tot 1.000, of <em>Alles</em> voor je hele saldo.</li>
           <li>Kom dichter bij 21 dan de dealer, zonder eroverheen te gaan. Boven 21 ben je dood en verlies je meteen.</li>
           <li>Kaarten 2 tot en met 10 tellen hun waarde, boer, vrouw en heer tellen 10, een aas telt 1 of 11.</li>
           <li><em>Kaart</em> geeft je een extra kaart, met <em>Pas</em> blijf je staan. <em>Verdubbel</em> kan alleen met je eerste twee kaarten: je inzet gaat keer twee, je krijgt precies één kaart en daarna is de volgende hand of de dealer.</li>
           <li><em>Splits</em> kan met twee kaarten van dezelfde waarde, ook boer en heer. Je legt dezelfde inzet nog een keer en speelt twee handen, die elk een nieuwe tweede kaart krijgen. Opnieuw splitsen kan tot vier handen, en na splitsen mag je verdubbelen. Gesplitste azen krijgen elk één kaart. Een 21 na splitsen telt als 21, niet als blackjack.</li>
           <li>De dealer trekt tot hij 17 of meer heeft. Met een zachte 17 (een aas die als 11 telt) trekt hij nog een kaart; op een harde 17 past hij.</li>
-          <li>Blackjack (een aas en een 10-kaart als eerste twee kaarten) betaalt 6 tegen 5: bij 25 fiches krijg je er 55 terug. Heeft de dealer ook blackjack, dan krijg je je inzet terug.</li>
+          <li>Blackjack (een aas en een 10-kaart als eerste twee kaarten) betaalt 6 tegen 5, naar beneden afgerond: bij 25 fiches krijg je er 55 terug. Heeft de dealer ook blackjack, dan krijg je je inzet terug.</li>
           <li>De dealer kijkt bij het delen of hij blackjack heeft. Dan is de hand meteen voorbij en wint hij van alles behalve jouw blackjack.</li>
           <li>Winst betaalt 2 keer je inzet terug, gelijkspel geeft je inzet terug. Er wordt gespeeld met zes kaartspellen, die opnieuw geschud worden als de helft op is. Verzekeren en opgeven kan hier niet.</li>
         </ul>

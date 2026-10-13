@@ -164,8 +164,14 @@ a { color: var(--hi-goud-licht); }
 
 .hi-zaal { max-width: 1180px; margin: 0 auto; padding: 18px 16px 8px; }
 
+.hi-zaal-kop { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 14px; margin-bottom: 16px; }
+.hi-reclame { display: flex; align-items: center; gap: 10px; }
+.hi-reclame-knop { display: inline-flex; align-items: center; gap: 8px; }
+.hi-reclame-knop:disabled { opacity: 0.55; cursor: not-allowed; }
+.hi-reclame-beloning { font-family: var(--hi-display); font-weight: 700; color: var(--hi-goud-licht); white-space: nowrap; }
+
 .hi-tabs {
-  display: inline-flex; gap: 4px; padding: 4px; margin-bottom: 16px; border-radius: 999px;
+  display: inline-flex; gap: 4px; padding: 4px; border-radius: 999px;
   background: rgba(243, 233, 210, 0.05); border: 1px solid rgba(243, 233, 210, 0.12);
 }
 .hi-tab {
@@ -262,9 +268,10 @@ a { color: var(--hi-goud-licht); }
 .hi-uitleg strong { color: var(--hi-creme); }
 
 /* Fiches */
-.hi-fiches { display: flex; gap: 10px; flex-wrap: wrap; }
+/* Zeven fiches op één rij: de kolommen zijn hooguit 52px en krimpen mee als de ruimte op is. */
+.hi-fiches { display: grid; grid-template-columns: repeat(7, minmax(0, 52px)); gap: 8px; padding-top: 4px; }
 .hi-fiche {
-  position: relative; width: 52px; height: 52px; border-radius: 50%; cursor: pointer; padding: 0;
+  position: relative; width: 100%; height: auto; aspect-ratio: 1; border-radius: 50%; cursor: pointer; padding: 0;
   display: grid; place-items: center; font-family: var(--hi-display); font-weight: 700; font-size: 15px;
   border: 0; color: var(--hi-chip-ink, #fff);
   background:
@@ -288,6 +295,18 @@ a { color: var(--hi-goud-licht); }
 .hi-fiche-25 { --hi-chip: #d24a32; --hi-chip-rand: #f3e9d2; }
 .hi-fiche-50 { --hi-chip: #275b72; --hi-chip-rand: #f3e9d2; }
 .hi-fiche-100 { --hi-chip: #1b1613; --hi-chip-rand: #c9a45c; --hi-chip-ink: #e2c27a; }
+.hi-fiche-500 { --hi-chip: #5b2a6e; --hi-chip-rand: #f3e9d2; }
+.hi-fiche-1000 { --hi-chip: #c9a45c; --hi-chip-rand: #1b1613; --hi-chip-ink: #1b1613; }
+.hi-fiche-1000 span { border-color: rgba(27, 22, 19, 0.5); }
+.hi-fiche-alles { --hi-chip: #1f7a4a; --hi-chip-rand: #e2c27a; font-size: 12px; letter-spacing: 0.02em; }
+.hi-bj-bediening .hi-fiche, .hi-fiche-alles { font-size: 12px; }
+.hi-bj-bediening .hi-fiche-alles { font-size: 10.5px; }
+
+@media (max-width: 480px) {
+  .hi-fiches { gap: 5px; }
+  .hi-fiche { font-size: 12.5px; }
+  .hi-fiche-alles { font-size: 10px; }
+}
 
 /* Bord: standaard staand (smal), liggend zodra er ruimte is. Elk vakje krijgt zijn plek uit app.js
    via --vc/--vr (staand) en --hc/--hr (liggend); 0 en 00 delen samen de ruimte van één nummerrij. */
@@ -499,13 +518,14 @@ a { color: var(--hi-goud-licht); }
   .hi-bar .hi-knop-klein { padding: 0 10px; font-size: 13px; }
   .hi-zaal { padding: 12px 8px 4px; }
   .hi-tabs { display: flex; width: 100%; }
+  .hi-reclame { width: 100%; justify-content: center; }
   .hi-tab { flex: 1; padding: 0 10px; }
   .hi-paneel { padding: 14px 10px; border-width: 6px; border-radius: 22px; }
   .hi-wiel { width: min(300px, 84vw); }
   .hi-wijzer { width: 18px; height: 22px; top: -8px; }
   .hi-uitslag, .hi-historie-blok { width: 100%; }
-  .hi-fiches { justify-content: space-between; }
-  .hi-fiche { width: 50px; height: 50px; }
+  .hi-fiches { grid-template-columns: repeat(7, minmax(0, 1fr)); justify-items: center; }
+  .hi-fiche { max-width: 50px; }
   .hi-r-acties .hi-knop-rand { flex: 1 1 120px; padding: 0 10px; }
   .hi-r-acties [data-draai] { flex: 1 1 100%; }
   .hi-stats { gap: 6px; }

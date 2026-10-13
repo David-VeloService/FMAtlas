@@ -19,14 +19,16 @@ Een nieuwe pagina komt ook in `sitemap.xml` en in `FA_SEARCH_INDEX`.
 
 `game/hoge-inzet/`: roulette (Amerikaans wiel, 0, 00 en 1 t/m 36) en blackjack (zes decks) met één
 gedeelde bank van 1000 speelfiches. Alleen speelfiches: geen echt geld, geen Firebase, geen XP, niets
-wordt gedeeld. Geen dependencies of build: `index.html`, `style.css`, `engine.js`, `app.js` en
-`kaart.svg`. Lokaal openen kan door `game/hoge-inzet/index.html` in de browser te openen (ook via
+wordt gedeeld. Geen dependencies of build: `index.html`, `style.css`, `engine.js`, `reclame.js`,
+`app.js` en `kaart.svg`. Lokaal openen kan door `game/hoge-inzet/index.html` in de browser te openen (ook via
 `file://`).
 
+- Inzetten: fiches van 10, 25, 50, 100, 500 en 1000, plus `Alles` (het hele saldo, naar beneden
+  afgerond op hele fiches). De engine neemt elke hele inzet van minstens 1 aan (`E.isInzet`).
 - Roulette: een nummer betaalt 36x de inzet terug, rood/zwart/even/oneven/1–18/19–36 betalen 2x. Op
   0 en 00 verliezen alle buitenkansen. Huisvoordeel 5,3%. Intern heet de 00 nummer 37 (`E.DOUBLE_ZERO`);
   `E.numberLabel` maakt er voor de weergave '00' van.
-- Blackjack: blackjack betaalt 6:5, winst 2x terug, gelijk geeft de inzet terug. De dealer kijkt bij
+- Blackjack: blackjack betaalt 6:5 (naar beneden afgerond), winst 2x terug, gelijk geeft de inzet terug. De dealer kijkt bij
   het delen of hij blackjack heeft, trekt onder 17 en ook op soft 17. Verdubbelen met de eerste twee
   kaarten, ook na splitsen. Splitsen met twee kaarten van gelijke waarde, tot vier handen; gesplitste
   azen krijgen één kaart. Geen verzekeren of opgeven. Nieuw schudden als de helft van de shoe op is.
@@ -38,6 +40,17 @@ wordt gedeeld. Geen dependencies of build: `index.html`, `style.css`, `engine.js
   nieuw geschud, zodat niemand via localStorage de volgende kaarten kan lezen of kiezen. Een tweede
   tabblad of een pagina uit de terugknop-cache neemt eerst de bewaarde stand over (`storage`- en
   `pageshow`-event), zodat je een verloren ronde niet ongedaan maakt door elders verder te spelen.
+- Advertentie kijken voor 500 fiches (`reclame.js`, `E.bonus`): Google H5 Games Ads, type
+  `reward`. Staat uit zolang `CONFIG.client` leeg is; dan laadt er niets van Google en is de knop
+  verborgen. Aanzetten vraagt, in deze volgorde:
+  1. een goedgekeurd AdSense-account voor fmatlas.nl en een goedgekeurde aanmelding voor H5 Games
+     Ads (https://developers.google.com/ad-placement/docs/beta). Of Google een nagespeeld casino
+     toelaat is niet uitgezocht: vraag het bij de aanmelding na;
+  2. in AdSense onder Privacy en berichten een gecertificeerde cookiemelding (TCF) voor de EER, het
+     VK en Zwitserland, anders geen gepersonaliseerde advertenties;
+  3. `ads.txt` in de root met de regel die AdSense geeft (`google.com, pub-…, DIRECT, f08c47fec0942fa0`);
+  4. `privacy.html` aanpassen: daar staat nu dat er geen advertenties of trackers op de site staan;
+  5. `CONFIG.client` invullen met `test: true`, proberen, en dan `test: false`.
 - `engine.js` bevat alle spelregels als pure functies en is ook in Node te laden:
   `const E = require('./game/hoge-inzet/engine.js')`.
 
