@@ -19,8 +19,8 @@ Een nieuwe pagina komt ook in `sitemap.xml` en in `FA_SEARCH_INDEX`.
 
 `game/hoge-inzet/`: roulette (Amerikaans wiel, 0, 00 en 1 t/m 36) en blackjack (zes decks) met één
 gedeelde bank van 1000 speelfiches. Alleen speelfiches: geen echt geld, geen Firebase, geen XP, niets
-wordt gedeeld. Geen dependencies of build: `index.html`, `style.css`, `engine.js`, `reclame.js`,
-`app.js` en `kaart.svg`. Lokaal openen kan door `game/hoge-inzet/index.html` in de browser te openen (ook via
+wordt gedeeld. Geen dependencies of build: `index.html`, `style.css`, `engine.js`,
+`app.js` en `kaart.svg`, plus het gedeelde `js/spel-reclame.js`. Lokaal openen kan door `game/hoge-inzet/index.html` in de browser te openen (ook via
 `file://`).
 
 - Inzetten: fiches van 10, 25, 50, 100, 500 en 1000, plus `Alles` (het hele saldo, naar beneden
@@ -40,17 +40,9 @@ wordt gedeeld. Geen dependencies of build: `index.html`, `style.css`, `engine.js
   nieuw geschud, zodat niemand via localStorage de volgende kaarten kan lezen of kiezen. Een tweede
   tabblad of een pagina uit de terugknop-cache neemt eerst de bewaarde stand over (`storage`- en
   `pageshow`-event), zodat je een verloren ronde niet ongedaan maakt door elders verder te spelen.
-- Advertentie kijken voor 500 fiches (`reclame.js`, `E.bonus`): Google H5 Games Ads, type
-  `reward`. Staat uit zolang `CONFIG.client` leeg is; dan laadt er niets van Google en is de knop
-  verborgen. Aanzetten vraagt, in deze volgorde:
-  1. een goedgekeurd AdSense-account voor fmatlas.nl en een goedgekeurde aanmelding voor H5 Games
-     Ads (https://developers.google.com/ad-placement/docs/beta). Of Google een nagespeeld casino
-     toelaat is niet uitgezocht: vraag het bij de aanmelding na;
-  2. in AdSense onder Privacy en berichten een gecertificeerde cookiemelding (TCF) voor de EER, het
-     VK en Zwitserland, anders geen gepersonaliseerde advertenties;
-  3. `ads.txt` in de root met de regel die AdSense geeft (`google.com, pub-…, DIRECT, f08c47fec0942fa0`);
-  4. `privacy.html` aanpassen: daar staat nu dat er geen advertenties of trackers op de site staan;
-  5. `CONFIG.client` invullen met `test: true`, proberen, en dan `test: false`.
+- Reclame: een video van JonasMS (`js/spel-reclame.js`, zie hieronder). Een video uitkijken
+  levert 500 fiches op (`E.bonus`); na een ronde komt er soms vanzelf een video (kans 0,2, hooguit
+  één per 3 minuten), behalve als de speler reclamevrij heeft.
 - `engine.js` bevat alle spelregels als pure functies en is ook in Node te laden:
   `const E = require('./game/hoge-inzet/engine.js')`.
 
@@ -179,3 +171,21 @@ lesmateriaal (`_beheer/feedback/bronnen-tekst.py` maakt die tekst), een correcti
 `feedback/<id>` klaarzet en die pas na "Live zetten" op `beheer.html` naar main brengt. Vincent
 meldt via `vincent.py --meld david "..."` wat er openstaat. Jaar 2 wordt gegenereerd uit
 `fmatlas-vakken` en gaat daarom naar status `voor_david`.
+
+## Reclame in de spelletjes
+
+`js/spel-reclame.js` toont in Hoge Inzet, Slipstroom en Stadsstorm een willekeurige video van
+JonasMS (youtube.com/@JonasMeloSousa), via youtube-nocookie.com, met een timer van 30 seconden.
+Er draait geen advertentienetwerk: FM Atlas promoot het kanaal van Jonas, met zijn akkoord.
+
+- `FMReclame.toon({ beloning })` toont meteen een video en geeft een Promise die `true` oplevert als
+  de timer is afgelopen. `FMReclame.misschien({ kans, minTussen })` doet dat soms (standaard kans
+  0,5 en niet binnen 120 seconden na de vorige).
+- Slipstroom en Stadsstorm weten niets van FM Atlas: hun FM Atlas-build laadt het script en de game
+  stuurt bij de uitslag het window-event `fmatlas:tussen-potjes`.
+- De timer loopt alleen als de pagina in beeld is. Zolang de video openstaat gaan toetsen niet naar
+  het spel.
+- De video-ids staan in `VIDEOS` (alle 30 video's op 13-10-2026). Een nieuwe video van Jonas: id
+  toevoegen.
+- Reclamevrij (€2, via Mollie) staat in `localStorage` als `fa_reclamevrij`. Zolang `BETAAL_URL` leeg
+  is, is er geen knop om het te kopen.

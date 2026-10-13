@@ -21,7 +21,7 @@
 
   var E = window.HogeInzetEngine;
   if (!E) return;
-  var R = window.HogeInzetReclame || null;
+  var R = window.FMReclame || null;
 
   var $ = function (sel, root) { return (root || document).querySelector(sel); };
   var $$ = function (sel, root) { return Array.prototype.slice.call((root || document).querySelectorAll(sel)); };
@@ -65,8 +65,7 @@
   var rWeergaveInzet = null;  // inzet die tijdens het draaien op tafel blijft liggen
   var bjView = null;          // { s: [per hand], d, open }: hoeveel kaarten van speler en dealer zichtbaar zijn
   var timers = [];
-  var reclameBezig = false;   // er speelt een advertentie: alles staat dicht
-  var reclameKlaar = false;   // Google heeft een advertentie klaarstaan
+  var reclameBezig = false;   // er speelt een reclamevideo: alles staat dicht
   var syncNodig = false;      // een ander tabblad heeft de stand veranderd terwijl hier een animatie liep
 
   /* ─── Hulpjes ────────────────────────────────────────── */
@@ -179,7 +178,6 @@
         try { if (audio && audio.suspend) audio.suspend(); } catch (_) { /* niets */ }
       }
       knop.setAttribute('aria-pressed', geluidAan ? 'true' : 'false');
-      if (R) R.geluid(geluidAan);
       knop.classList.toggle('is-aan', geluidAan);
       if (geluidAan) geluid('fiche');
     });
@@ -198,58 +196,65 @@
     renderReclame();
   }
 
-  /* ─── Advertentie kijken voor fiches (reclame.js) ────── */
+  /* ─── Reclame: video van JonasMS (../../js/spel-reclame.js) ─── */
+  // Een video uitkijken levert 500 fiches op. Tussen rondes komt er soms vanzelf een video,
+  // behalve als de speler reclamevrij heeft.
+
+  var TUSSEN_RONDES = { kans: 0.2, minTussen: 180 };
 
   function renderReclame() {
-    var aan = !!(R && R.actief());
+    var aan = !!R;
     var knop = $('[data-reclame]');
     $('[data-reclame-blok]').hidden = !aan;
-    knop.disabled = bezig || !reclameKlaar;
-    $('[data-reclame-tekst]').textContent = reclameKlaar ? 'Kijk een advertentie' : 'Even geen advertentie';
+    knop.disabled = bezig;
+    $('[data-reclame-tekst]').textContent = 'Kijk een video';
     $$('[data-tekort-reclame]').forEach(function (el) {
-      el.hidden = !aan || !reclameKlaar;
+      el.hidden = !aan;
       $('button', el).disabled = bezig;
+    });
+  }
+
+  // Alles dicht en het geluid uit zolang de video speelt.
+  function metReclame(fn) {
+    bezig = true;
+    reclameBezig = true;
+    try { if (audio && audio.suspend) audio.suspend(); } catch (_) { /* niets */ }
+    renderAlles();
+    return fn().then(function (gekeken) {
+      bezig = false;
+      reclameBezig = false;
+      try { if (geluidAan && audio && audio.resume) audio.resume(); } catch (_) { /* niets */ }
+      renderAlles();
+      if (syncNodig) synchroniseer();
+      return gekeken;
     });
   }
 
   function kijkReclame() {
     if (bezig || !R) return;
-    if (!R.kijk()) toonMelding('Er staat nu geen advertentie klaar. Probeer het zo nog eens.');
+    metReclame(function () { return R.toon({ beloning: '500 fiches' }); }).then(function (gekeken) {
+      if (!gekeken) return;
+      // Speelde er intussen iemand in een ander tabblad, dan eerst die stand, dan de fiches erbij.
+      if (syncNodig) state = E.acknowledge(laad());
+      var r = E.bonus(state);
+      if (!r.ok) { toonMelding(r.reden); return; }
+      state = r.state;
+      bewaar();
+      flitsSaldo(r.bedrag);
+      geluid('winst');
+      toonMelding('Je kreeg ' + fmt(r.bedrag) + ' fiches voor het kijken van de video.');
+      aankondig(fmt(r.bedrag) + ' fiches erbij. Saldo ' + fmt(state.saldo) + '.');
+      renderAlles();
+    });
   }
 
-  function startReclame() {
-    if (!R || !R.actief()) return;
-    R.start({
-      beschikbaar: function (ja) { reclameKlaar = ja; renderReclame(); },
-      voor: function () {
-        bezig = true;
-        reclameBezig = true;
-        try { if (audio && audio.suspend) audio.suspend(); } catch (_) { /* niets */ }
-        renderAlles();
-      },
-      beloning: function () {
-        // Speelde er intussen iemand in een ander tabblad, dan eerst die stand, dan de fiches erbij.
-        if (syncNodig) state = E.acknowledge(laad());
-        var r = E.bonus(state);
-        if (!r.ok) { toonMelding(r.reden); return; }
-        state = r.state;
-        bewaar();
-        flitsSaldo(r.bedrag);
-        geluid('winst');
-        toonMelding('Je kreeg ' + fmt(r.bedrag) + ' fiches voor het kijken van de advertentie.');
-        aankondig(fmt(r.bedrag) + ' fiches erbij. Saldo ' + fmt(state.saldo) + '.');
-      },
-      afgebroken: function () {
-        toonMelding('De advertentie is gestopt voordat hij af was. Daarvoor krijg je geen fiches.');
-      },
-      na: function () {
-        bezig = false;
-        reclameBezig = false;
-        try { if (geluidAan && audio && audio.resume) audio.resume(); } catch (_) { /* niets */ }
-        renderAlles();
-        if (syncNodig) synchroniseer();
-      }
-    }, geluidAan);
+  // Na een ronde, als de uitslag even in beeld heeft gestaan.
+  function tussenRonde() {
+    if (!R || R.reclamevrij()) return;
+    later(function () {
+      if (bezig) return;
+      metReclame(function () { return R.misschien(TUSSEN_RONDES); });
+    }, 2500);
   }
 
   function flitsSaldo(netto) {
@@ -693,6 +698,7 @@
       aankondig('Uitslag ' + betNaam('n' + r.uitslag.nummer) + '. Uitbetaling ' + fmt(r.uitslag.uitbetaling) +
         ', netto ' + fmtNetto(r.uitslag.netto) + '. Saldo ' + fmt(state.saldo) + '.');
       if (syncNodig) synchroniseer();
+      tussenRonde();
     }, duur + 60);
   }
 
@@ -947,6 +953,7 @@
         renderAlles();
         aankondig(t.kop + (t.per ? ' ' + t.per.charAt(0).toUpperCase() + t.per.slice(1) + '.' : '') + ' ' + t.regel + '. Saldo ' + fmt(state.saldo) + '.');
         focusNaAnimatie($('[data-deel]'));
+        tussenRonde();
       } else {
         renderAlles();
         var x = h.handen[h.actief];
@@ -1089,7 +1096,6 @@
     }
     renderAlles();
 
-    startReclame();
 
     window.addEventListener('storage', function (e) {
       if (e.key === E.STORAGE_KEY) synchroniseer();
