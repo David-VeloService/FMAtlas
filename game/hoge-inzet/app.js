@@ -10,6 +10,11 @@
  *     met een melding; er wordt niets twee keer of niet uitbetaald;
  *   - een blackjackhand waarin jij nog aan de beurt bent, gaat verder waar hij was.
  * Lukt opslaan niet (privémodus, vol, geblokkeerd), dan speel je gewoon door zonder bewaren.
+ *
+ * De shoe gaat niet mee naar localStorage (zie E.forStorage): na herladen wordt er nieuw geschud.
+ * Speelt iemand in twee tabbladen, of komt hij met de terugknop op een oude pagina, dan neemt dit
+ * tabblad de bewaarde stand over voordat er weer gespeeld wordt. Zo kun je een verloren ronde niet
+ * ongedaan maken door in een ander tabblad verder te spelen.
  */
 (function () {
   'use strict';
@@ -39,7 +44,7 @@
 
   function bewaar() {
     try {
-      localStorage.setItem(E.STORAGE_KEY, JSON.stringify(state));
+      localStorage.setItem(E.STORAGE_KEY, JSON.stringify(E.forStorage(state)));
     } catch (_) {
       if (!opslagMeldingGedaan) {
         opslagMeldingGedaan = true;
@@ -55,8 +60,9 @@
   var rKeuze = E.CHIP_VALUES[0];
   var bKeuze = state.blackjack.laatsteInzet;
   var rWeergaveInzet = null;  // inzet die tijdens het draaien op tafel blijft liggen
-  var bjView = null;          // { s, d, open }: hoeveel kaarten van speler en dealer zichtbaar zijn
+  var bjView = null;          // { s: [per hand], d, open }: hoeveel kaarten van speler en dealer zichtbaar zijn
   var timers = [];
+  var syncNodig = false;      // een ander tabblad heeft de stand veranderd terwijl hier een animatie liep
 
   /* ─── Hulpjes ────────────────────────────────────────── */
 
@@ -95,7 +101,7 @@
   function betNaam(key) {
     if (key.charAt(0) === 'n') {
       var n = Number(key.slice(1));
-      return n === 0 ? 'nul' : n + ' ' + KLEURNAAM[E.colorOf(n)];
+      return n === 0 ? 'nul' : n === E.DOUBLE_ZERO ? 'dubbele nul' : n + ' ' + KLEURNAAM[E.colorOf(n)];
     }
     for (var i = 0; i < BUITEN.length; i++) if (BUITEN[i].key === key) return BUITEN[i].naam;
     return key;
@@ -212,7 +218,7 @@
     markeerVak(null);
     toonRUitslag(null);
     $('[data-bj-dealer-kaarten]').innerHTML = '';
-    $('[data-bj-speler-kaarten]').innerHTML = '';
+    handVakken(0);
     sluitBevestig(true);
     toonMelding('');
     renderAlles();
@@ -358,7 +364,7 @@
       g.appendChild(svgEl('path', { d: sector(118, 148, mid - half, mid + half), fill: kleur, opacity: 0.55 }));
       var p = pt(167, mid);
       var t = svgEl('text', { x: p[0].toFixed(2), y: p[1].toFixed(2), transform: 'rotate(' + mid.toFixed(3) + ' ' + p[0].toFixed(2) + ' ' + p[1].toFixed(2) + ')', class: 'hi-vak-tekst' });
-      t.textContent = String(n);
+      t.textContent = E.numberLabel(n);
       g.appendChild(t);
       var a = pt(118, mid - half), b = pt(185, mid - half);
       g.appendChild(svgEl('line', { x1: a[0].toFixed(2), y1: a[1].toFixed(2), x2: b[0].toFixed(2), y2: b[1].toFixed(2), stroke: '#c9a45c', 'stroke-opacity': 0.55, 'stroke-width': 1 }));
@@ -409,18 +415,26 @@
 
   function bouwBord() {
     var bord = $('[data-bord]');
+    // Plek op het bord. Liggend (breed): 13 kolommen, de nummers in 3 rijen (3-6-9... bovenaan) die
+    // elk twee halve rijen beslaan, zodat 00 (boven) en 0 (onder) links ieder anderhalve rij krijgen.
+    // Staand (smal): 6 halve kolommen, de nummers 1-2-3 bovenaan, 0 en 00 naast elkaar erboven.
+    function plek(b, hc, hr, vc, vr) {
+      b.style.setProperty('--hc', hc);
+      b.style.setProperty('--hr', hr);
+      b.style.setProperty('--vc', vc);
+      b.style.setProperty('--vr', vr);
+    }
+    var dubbel = maakBordKnop('n' + E.DOUBLE_ZERO, '<span class="hi-num">00</span>', 'is-groen hi-nul');
     var nul = maakBordKnop('n0', '<span class="hi-num">0</span>', 'is-groen hi-nul');
+    plek(nul, '1', '4 / span 3', '1 / span 3', '1');
+    plek(dubbel, '1', '1 / span 3', '4 / span 3', '1');
     bord.appendChild(nul);
+    bord.appendChild(dubbel);
     for (var n = 1; n <= 36; n++) {
       var kleur = E.colorOf(n);
       var b = maakBordKnop('n' + n, '<span class="hi-num">' + n + '</span>', 'is-' + kleur);
-      // Plek op het bord. Liggend (breed): 12 kolommen x 3 rijen, 3-6-9... bovenaan, de nul links.
-      // Staand (smal): 3 kolommen x 12 rijen, 1-2-3 bovenaan, de nul erboven.
       var kol = Math.ceil(n / 3), rij = (n - 1) % 3;
-      b.style.setProperty('--hc', String(kol + 1));
-      b.style.setProperty('--hr', String(3 - rij));
-      b.style.setProperty('--vc', String(rij + 1));
-      b.style.setProperty('--vr', String(kol + 1));
+      plek(b, String(kol + 1), (2 * (2 - rij) + 1) + ' / span 2', (2 * rij + 1) + ' / span 2', String(kol + 1));
       bord.appendChild(b);
     }
     var buiten = $('[data-buiten]');
@@ -484,8 +498,8 @@
     lijst.forEach(function (n, i) {
       var li = document.createElement('li');
       li.className = 'hi-historie-n is-' + E.colorOf(n) + (i === 0 ? ' is-nieuwste' : '');
-      li.textContent = String(n);
-      li.setAttribute('aria-label', n + ' ' + KLEURNAAM[E.colorOf(n)]);
+      li.textContent = E.numberLabel(n);
+      li.setAttribute('aria-label', betNaam('n' + n));
       hist.appendChild(li);
     });
   }
@@ -501,11 +515,11 @@
     }
     var kleur = E.colorOf(u.nummer);
     var netto = u.uitbetaling - u.inzet;
-    num.textContent = String(u.nummer);
+    num.textContent = E.numberLabel(u.nummer);
     num.className = 'hi-uitslag-nummer is-' + kleur;
     tekst.innerHTML = '';
     var kop = document.createElement('strong');
-    kop.textContent = u.nummer + ' ' + KLEURNAAM[kleur];
+    kop.textContent = E.isZero(u.nummer) ? E.numberLabel(u.nummer) + ' groen' : u.nummer + ' ' + KLEURNAAM[kleur];
     var regel = document.createElement('span');
     regel.textContent = 'Uitbetaling ' + fmt(u.uitbetaling) + ' · netto ' + fmtNetto(netto);
     tekst.appendChild(kop);
@@ -597,14 +611,15 @@
       weergaveSaldo = null;
       rWeergaveInzet = null;
       state = E.acknowledge(state);
-      bewaar();
+      if (!syncNodig) bewaar();
       markeerVak(r.uitslag.nummer);
       toonRUitslag(state.roulette.laatste);
       flitsSaldo(r.uitslag.netto);
       geluid(r.uitslag.netto > 0 ? 'winst' : 'verlies');
       renderAlles();
-      aankondig('Uitslag ' + r.uitslag.nummer + ' ' + KLEURNAAM[r.uitslag.kleur] + '. Uitbetaling ' + fmt(r.uitslag.uitbetaling) +
+      aankondig('Uitslag ' + betNaam('n' + r.uitslag.nummer) + '. Uitbetaling ' + fmt(r.uitslag.uitbetaling) +
         ', netto ' + fmtNetto(r.uitslag.netto) + '. Saldo ' + fmt(state.saldo) + '.');
+      if (syncNodig) synchroniseer();
     }, duur + 60);
   }
 
@@ -646,68 +661,142 @@
     while (houder.children.length > aantal) houder.removeChild(houder.lastChild);
   }
 
+  var UITKOMST_KORT = { blackjack: 'Blackjack', winst: 'Wint', push: 'Gelijk', verlies: 'Verliest' };
+
+  function isGesplitst(h) { return !!(h && h.handen.length > 1); }
+
+  function handNaam(h, i) { return isGesplitst(h) ? 'Hand ' + (i + 1) : 'Jij'; }
+
   function bjUitslagTekst(h) {
     var terug = h.uitbetaling, netto = h.uitbetaling - h.inzet;
-    var pTot = E.handValue(h.speler).total, dTot = E.handValue(h.dealer).total;
+    var dTot = E.handValue(h.dealer).total;
     var kop;
-    switch (h.uitkomst) {
-      case 'blackjack': kop = 'Blackjack! Je wint 3 tegen 2.'; break;
+    if (isGesplitst(h)) {
+      var levend = h.handen.some(function (x) { return x.status !== 'dood'; });
+      kop = !levend ? 'Al je handen zijn dood.' : dTot > 21 ? 'De dealer is dood met ' + dTot + '.' : 'De dealer heeft ' + dTot + '.';
+      var per = h.handen.map(function (x, i) {
+        return 'hand ' + (i + 1) + ' ' + (x.status === 'dood' ? 'dood' : UITKOMST_KORT[x.uitkomst].toLowerCase());
+      }).join(', ');
+      return { kop: kop, regel: 'Terug ' + fmt(terug) + ' · netto ' + fmtNetto(netto), netto: netto, per: per };
+    }
+    var x = h.handen[0], pTot = E.handValue(x.kaarten).total;
+    switch (x.uitkomst) {
+      case 'blackjack': kop = 'Blackjack! Je wint 6 tegen 5.'; break;
       case 'winst': kop = dTot > 21 ? 'De dealer is dood. Je wint.' : 'Je wint met ' + pTot + ' tegen ' + dTot + '.'; break;
       case 'push':
-        kop = E.isNatural(h.speler) ? 'Allebei blackjack. Gelijkspel.' : 'Gelijkspel op ' + pTot + '.'; break;
+        kop = E.isNatural(x.kaarten) ? 'Allebei blackjack. Gelijkspel.' : 'Gelijkspel op ' + pTot + '.'; break;
       default:
         if (pTot > 21) kop = 'Dood met ' + pTot + '. Je verliest.';
         else if (E.isNatural(h.dealer)) kop = 'De dealer heeft blackjack.';
         else kop = 'De dealer wint met ' + dTot + ' tegen ' + pTot + '.';
     }
-    return { kop: kop, regel: 'Terug ' + fmt(terug) + ' · netto ' + fmtNetto(netto), netto: netto };
+    return { kop: kop, regel: 'Terug ' + fmt(terug) + ' · netto ' + fmtNetto(netto), netto: netto, per: '' };
   }
 
+  // Weergave: hoeveel kaarten per spelershand (s) en van de dealer (d) zichtbaar zijn, en of de
+  // dichte dealerkaart al om is.
   function volledigeView(h) {
     if (!h) return null;
-    return { s: h.speler.length, d: h.fase === 'klaar' ? h.dealer.length : 2, open: h.fase === 'klaar' };
+    return {
+      s: h.handen.map(function (x) { return x.kaarten.length; }),
+      d: h.fase === 'klaar' ? h.dealer.length : 2,
+      open: h.fase === 'klaar'
+    };
+  }
+
+  function waardeTekst(kaarten) {
+    if (!kaarten.length) return '';
+    var v = E.handValue(kaarten);
+    return v.soft && v.total < 21 ? (v.total - 10) + ' / ' + v.total : String(v.total);
+  }
+
+  // Zorgt dat er precies `aantal` handvakken staan en geeft ze terug.
+  function handVakken(aantal) {
+    var houder = $('[data-bj-handen]');
+    while (houder.children.length > aantal) houder.removeChild(houder.lastChild);
+    while (houder.children.length < aantal) {
+      var vak = document.createElement('div');
+      vak.className = 'hi-hand hi-speler-hand';
+      vak.innerHTML =
+        '<div class="hi-hand-kop"><span data-naam></span><span class="hi-waarde" data-waarde></span></div>' +
+        '<div class="hi-kaarten" role="list" data-kaarten></div>' +
+        '<div class="hi-bj-inzet" data-inzet hidden></div>' +
+        '<p class="hi-hand-uitslag" data-hand-uitslag hidden></p>';
+      houder.appendChild(vak);
+    }
+    houder.classList.toggle('is-gesplitst', aantal > 1);
+    return Array.prototype.slice.call(houder.children);
+  }
+
+  function renderHand(vak, h, i, aantal, actief, afgerond) {
+    var x = h.handen[i];
+    var naam = handNaam(h, i);
+    $('[data-naam]', vak).textContent = naam;
+    var kEl = $('[data-kaarten]', vak);
+    kEl.setAttribute('aria-label', isGesplitst(h) ? 'Kaarten van hand ' + (i + 1) : 'Jouw kaarten');
+    renderKaarten(kEl, x.kaarten, aantal, -1);
+    $('[data-waarde]', vak).textContent = waardeTekst(x.kaarten.slice(0, aantal));
+    vak.classList.toggle('is-actief', actief);
+    if (actief) vak.setAttribute('aria-current', 'true'); else vak.removeAttribute('aria-current');
+
+    var inzetEl = $('[data-inzet]', vak);
+    inzetEl.hidden = false;
+    inzetEl.innerHTML = '';
+    var chip = document.createElement('span');
+    chip.className = 'hi-zet is-zichtbaar ' + chipKlasse(x.inzet / (x.verdubbeld ? 2 : 1));
+    chip.textContent = fmt(x.inzet);
+    chip.setAttribute('aria-hidden', 'true');
+    var lbl = document.createElement('span');
+    lbl.textContent = 'Inzet ' + fmt(x.inzet) + (x.verdubbeld ? ' (verdubbeld)' : '');
+    inzetEl.appendChild(chip);
+    inzetEl.appendChild(lbl);
+
+    // Bij gesplitste handen staat per hand wat hij opleverde.
+    var uEl = $('[data-hand-uitslag]', vak);
+    vak.classList.remove('is-winst', 'is-verlies', 'is-push');
+    if (afgerond && isGesplitst(h)) {
+      var netto = x.uitbetaling - x.inzet;
+      uEl.textContent = (x.status === 'dood' ? 'Dood' : UITKOMST_KORT[x.uitkomst]) + ' · ' + fmtNetto(netto);
+      uEl.hidden = false;
+      vak.classList.add(netto > 0 ? 'is-winst' : netto < 0 ? 'is-verlies' : 'is-push');
+    } else {
+      uEl.hidden = true;
+      uEl.textContent = '';
+    }
   }
 
   function renderBlackjack() {
     var h = state.blackjack.hand;
     var view = bjView || volledigeView(h);
-    var dKaarten = $('[data-bj-dealer-kaarten]'), sKaarten = $('[data-bj-speler-kaarten]');
-    var dWaarde = $('[data-bj-dealer-waarde]'), sWaarde = $('[data-bj-speler-waarde]');
-    var uitslag = $('[data-bj-uitslag]'), inzetEl = $('[data-bj-inzet]');
+    var dKaarten = $('[data-bj-dealer-kaarten]');
+    var dWaarde = $('[data-bj-dealer-waarde]');
+    var uitslag = $('[data-bj-uitslag]');
 
     if (!h || !view) {
       renderKaarten(dKaarten, [], 0, -1);
-      renderKaarten(sKaarten, [], 0, -1);
+      handVakken(0);
       dWaarde.textContent = '';
-      sWaarde.textContent = '';
-      inzetEl.hidden = true;
       uitslag.className = 'hi-bj-uitslag';
       uitslag.textContent = 'Kies je inzet en druk op Deel.';
     } else {
-      renderKaarten(sKaarten, h.speler, view.s, -1);
+      var afgerond = !bezig && h.fase === 'klaar';
+      var vakken = handVakken(h.handen.length);
+      vakken.forEach(function (vak, i) {
+        var aantal = view.s[i] || 0;
+        var actief = !bezig && h.fase === 'speler' && isGesplitst(h) && i === h.actief;
+        renderHand(vak, h, i, aantal, actief, afgerond);
+      });
       renderKaarten(dKaarten, h.dealer, view.d, view.open ? -1 : 1);
-      var sZicht = h.speler.slice(0, view.s);
-      var sv = E.handValue(sZicht);
-      sWaarde.textContent = view.s ? (sv.soft && sv.total < 21 ? (sv.total - 10) + ' / ' + sv.total : String(sv.total)) : '';
       // Zolang de tweede dealerkaart dicht is, tellen we alleen de open kaart.
       var dZicht = view.open ? h.dealer.slice(0, view.d) : h.dealer.slice(0, Math.min(1, view.d));
       dWaarde.textContent = dZicht.length ? (view.open ? String(E.handValue(dZicht).total) : 'toont ' + E.handValue(dZicht).total) : '';
-      inzetEl.hidden = false;
-      inzetEl.innerHTML = '';
-      var chip = document.createElement('span');
-      chip.className = 'hi-zet is-zichtbaar ' + chipKlasse(h.inzet / (h.verdubbeld ? 2 : 1));
-      chip.textContent = fmt(h.inzet);
-      chip.setAttribute('aria-hidden', 'true');
-      var lbl = document.createElement('span');
-      lbl.textContent = 'Inzet ' + fmt(h.inzet) + (h.verdubbeld ? ' (verdubbeld)' : '');
-      inzetEl.appendChild(chip);
-      inzetEl.appendChild(lbl);
 
       uitslag.className = 'hi-bj-uitslag';
       if (bezig) {
         uitslag.textContent = view.open ? 'De dealer speelt…' : 'Delen…';
       } else if (h.fase === 'speler') {
-        uitslag.textContent = 'Jouw beurt: kaart, pas of verdubbel.';
+        var opties = E.canSplit(state) ? 'kaart, pas, verdubbel of splits' : E.canDouble(state) ? 'kaart, pas of verdubbel' : 'kaart of pas';
+        uitslag.textContent = (isGesplitst(h) ? 'Hand ' + (h.actief + 1) + ' van ' + h.handen.length + ': ' : 'Jouw beurt: ') + opties + '.';
       } else {
         var t = bjUitslagTekst(h);
         uitslag.innerHTML = '';
@@ -724,21 +813,25 @@
     $('[data-kaart]').disabled = bezig || !actief;
     $('[data-pas]').disabled = bezig || !actief;
     $('[data-verdubbel]').disabled = bezig || !E.canDouble(state);
+    $('[data-splits]').disabled = bezig || !E.canSplit(state);
     var tekort = $('#hi-paneel-blackjack [data-tekort]');
     tekort.hidden = bezig || actief || state.saldo >= E.CHIP_VALUES[0];
   }
 
-  // Stappen van de huidige weergave naar de doelweergave: eerst om en om delen, dan extra
-  // spelerskaarten, dan de dichte kaart omdraaien, dan de dealerkaarten.
+  // Stappen van de huidige weergave naar de doelweergave: eerst om en om delen, dan per hand de
+  // extra kaarten van links naar rechts, dan de dichte kaart omdraaien, dan de dealerkaarten.
   function stappenNaar(van, naar) {
-    var v = { s: van.s, d: van.d, open: van.open };
+    var v = { s: naar.s.map(function (_, i) { return van.s[i] || 0; }), d: van.d, open: van.open };
     var out = [];
-    var kopie = function () { return { s: v.s, d: v.d, open: v.open }; };
-    while (v.s < Math.min(2, naar.s) || v.d < Math.min(2, naar.d)) {
-      if (v.s <= v.d && v.s < Math.min(2, naar.s)) v.s++; else v.d++;
+    var kopie = function () { return { s: v.s.slice(), d: v.d, open: v.open }; };
+    var enkel = naar.s.length === 1;
+    while ((enkel && v.s[0] < Math.min(2, naar.s[0])) || v.d < Math.min(2, naar.d)) {
+      if (enkel && v.s[0] <= v.d && v.s[0] < Math.min(2, naar.s[0])) v.s[0]++; else v.d++;
       out.push(kopie());
     }
-    while (v.s < naar.s) { v.s++; out.push(kopie()); }
+    for (var i = 0; i < naar.s.length; i++) {
+      while (v.s[i] < naar.s[i]) { v.s[i]++; out.push(kopie()); }
+    }
     if (naar.open && !v.open) { v.open = true; out.push(kopie()); }
     while (v.d < naar.d) { v.d++; out.push(kopie()); }
     return out;
@@ -758,7 +851,7 @@
     bezig = true;
     // Een afgeronde hand is al uitbetaald; tot de laatste kaart ligt toon je het saldo nog zonder uitbetaling.
     weergaveSaldo = h.fase === 'klaar' ? state.saldo - h.uitbetaling : null;
-    bjView = { s: van.s, d: van.d, open: van.open };
+    bjView = { s: van.s.slice(), d: van.d, open: van.open };
     renderAlles();
     stappen.forEach(function (stap, i) {
       later(function () {
@@ -773,25 +866,27 @@
       weergaveSaldo = null;
       if (h.fase === 'klaar') {
         state = E.acknowledge(state);
-        bewaar();
+        if (!syncNodig) bewaar();
         var t = bjUitslagTekst(h);
         flitsSaldo(t.netto);
         geluid(t.netto > 0 ? 'winst' : t.netto < 0 ? 'verlies' : 'push');
         renderAlles();
-        aankondig(t.kop + ' ' + t.regel + '. Saldo ' + fmt(state.saldo) + '.');
+        aankondig(t.kop + (t.per ? ' ' + t.per.charAt(0).toUpperCase() + t.per.slice(1) + '.' : '') + ' ' + t.regel + '. Saldo ' + fmt(state.saldo) + '.');
         focusNaAnimatie($('[data-deel]'));
       } else {
         renderAlles();
-        var sv = E.handValue(h.speler).total;
-        aankondig('Jij hebt ' + sv + '. De dealer toont ' + E.handValue([h.dealer[0]]).total + '.');
+        var x = h.handen[h.actief];
+        aankondig((isGesplitst(h) ? 'Hand ' + (h.actief + 1) + ': ' + E.handValue(x.kaarten).total : 'Jij hebt ' + E.handValue(x.kaarten).total) +
+          '. De dealer toont ' + E.handValue([h.dealer[0]]).total + '.');
         focusNaAnimatie($('[data-kaart]'));
       }
+      if (syncNodig) synchroniseer();
     }, (stappen.length + 1) * stapMs);
   }
 
   function huidigeView() {
     var h = state.blackjack.hand;
-    if (!h) return { s: 0, d: 0, open: false };
+    if (!h) return { s: [0], d: 0, open: false };
     return volledigeView(h);
   }
 
@@ -804,8 +899,8 @@
     state = r.state;
     bewaar();
     $('[data-bj-dealer-kaarten]').innerHTML = '';
-    $('[data-bj-speler-kaarten]').innerHTML = '';
-    speelBj({ s: 0, d: 0, open: false });
+    handVakken(0);
+    speelBj({ s: [0], d: 0, open: false });
   }
 
   function bjActie(fn) {
@@ -816,6 +911,40 @@
     state = r.state;
     bewaar();
     speelBj(van);
+  }
+
+  // Splitsen: de twee kaarten gaan uit elkaar en elke nieuwe hand krijgt daarna zijn tweede kaart.
+  function splits() {
+    if (bezig) return;
+    var oud = state.blackjack.hand;
+    var r = E.bjSplit(state);
+    if (!r.ok) { aankondig(r.reden); return; }
+    var van = volledigeView(oud);
+    van.s = van.s.slice(0, oud.actief).concat([1, 1], van.s.slice(oud.actief + 1));
+    state = r.state;
+    bewaar();
+    speelBj(van);
+  }
+
+  /* ─── Andere tabbladen ───────────────────────────────── */
+
+  // Neemt de bewaarde stand over. Wacht als hier nog een animatie loopt; die roept dit daarna aan.
+  function synchroniseer() {
+    if (bezig) { syncNodig = true; return; }
+    syncNodig = false;
+    state = E.acknowledge(laad());
+    bKeuze = state.blackjack.laatsteInzet;
+    bjView = null;
+    rWeergaveInzet = null;
+    weergaveSaldo = null;
+    var laatste = state.roulette.laatste;
+    zetWielDirect(laatste ? E.norm(E.wheelRotationFor(laatste.nummer, 0, 0)) : 0, !!laatste);
+    markeerVak(laatste ? laatste.nummer : null);
+    toonRUitslag(laatste);
+    $('[data-bj-dealer-kaarten]').innerHTML = '';
+    handVakken(0);
+    toonMelding('Je stand is bijgewerkt met wat je in een ander tabblad speelde.');
+    renderAlles();
   }
 
   /* ─── Alles tekenen ──────────────────────────────────── */
@@ -845,6 +974,7 @@
     $('[data-kaart]').addEventListener('click', function () { bjActie(E.bjHit); });
     $('[data-pas]').addEventListener('click', function () { bjActie(E.bjStand); });
     $('[data-verdubbel]').addEventListener('click', function () { bjActie(E.bjDouble); });
+    $('[data-splits]').addEventListener('click', splits);
     $('[data-nieuw]').addEventListener('click', openBevestig);
     $$('[data-tekort-nieuw]').forEach(function (b) { b.addEventListener('click', openBevestig); });
     $('[data-bevestig-ja]').addEventListener('click', nieuwSpel);
@@ -866,8 +996,8 @@
     // Een ronde die al was afgerekend maar waarvan de animatie niet af was (herladen tijdens het draaien of delen).
     var wasOpen = state.open;
     if (state.open === 'roulette' && laatste) {
-      toonMelding('Je herlaadde tijdens het draaien. Die draai was al afgerekend: ' + laatste.nummer + ' ' +
-        KLEURNAAM[E.colorOf(laatste.nummer)] + ', uitbetaling ' + fmt(laatste.uitbetaling) + ', netto ' + fmtNetto(laatste.uitbetaling - laatste.inzet) + '.');
+      toonMelding('Je herlaadde tijdens het draaien. Die draai was al afgerekend: ' + betNaam('n' + laatste.nummer) +
+        ', uitbetaling ' + fmt(laatste.uitbetaling) + ', netto ' + fmtNetto(laatste.uitbetaling - laatste.inzet) + '.');
     } else if (state.open === 'blackjack' && state.blackjack.hand) {
       var t = bjUitslagTekst(state.blackjack.hand);
       toonMelding('Je herlaadde tijdens de hand. Die was al afgerekend: ' + t.kop + ' ' + t.regel + '.');
@@ -882,6 +1012,14 @@
       kiesTab('blackjack', false);
     }
     renderAlles();
+
+    window.addEventListener('storage', function (e) {
+      if (e.key === E.STORAGE_KEY) synchroniseer();
+    });
+    // Terug naar deze pagina via de terugknop: de pagina komt uit de cache met een oude stand.
+    window.addEventListener('pageshow', function (e) {
+      if (e.persisted) synchroniseer();
+    });
   }
 
   init();

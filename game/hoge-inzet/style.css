@@ -289,15 +289,15 @@ a { color: var(--hi-goud-licht); }
 .hi-fiche-50 { --hi-chip: #275b72; --hi-chip-rand: #f3e9d2; }
 .hi-fiche-100 { --hi-chip: #1b1613; --hi-chip-rand: #c9a45c; --hi-chip-ink: #e2c27a; }
 
-/* Bord: standaard staand (smal), liggend zodra er ruimte is. */
+/* Bord: standaard staand (smal), liggend zodra er ruimte is. Elk vakje krijgt zijn plek uit app.js
+   via --vc/--vr (staand) en --hc/--hr (liggend); 0 en 00 delen samen de ruimte van één nummerrij. */
 .hi-bord-wrap { display: flex; flex-direction: column; gap: 8px; }
 .hi-bord {
   display: grid; gap: 4px;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(6, minmax(0, 1fr));
   grid-auto-rows: 46px;
 }
 .hi-bord .hi-vakje { grid-column: var(--vc); grid-row: var(--vr); }
-.hi-bord .hi-nul { grid-column: 1 / span 3; grid-row: 1; }
 
 .hi-vakje {
   position: relative; min-height: 44px; min-width: 0; border-radius: 8px; cursor: pointer; padding: 0;
@@ -358,9 +358,8 @@ a { color: var(--hi-goud-licht); }
 
 /* Liggend bord zodra de tafelkolom breed genoeg is */
 @container (min-width: 620px) {
-  .hi-bord { grid-template-columns: repeat(13, minmax(0, 1fr)); grid-auto-rows: 50px; }
+  .hi-bord { grid-template-columns: repeat(13, minmax(0, 1fr)); grid-template-rows: repeat(6, 23px); grid-auto-rows: 23px; }
   .hi-bord .hi-vakje { grid-column: var(--hc); grid-row: var(--hr); flex-direction: column; gap: 0; }
-  .hi-bord .hi-nul { grid-column: 1; grid-row: 1 / span 3; }
   .hi-bord .hi-zet { right: 50%; top: auto; bottom: -6px; transform: translateX(50%); z-index: 1; min-width: 24px; height: 24px; }
   .hi-bord .hi-zet.is-geplaatst { animation: none; }
   .hi-num { min-width: 30px; font-size: 15px; }
@@ -442,6 +441,19 @@ a { color: var(--hi-goud-licht); }
   margin: 0; font-family: var(--hi-display); font-size: 12.5px; letter-spacing: 0.14em; text-transform: uppercase;
   color: rgba(226, 194, 122, 0.72);
 }
+
+/* Spelershanden: één hand over de volle breedte, na splitsen naast elkaar en met kleinere kaarten. */
+.hi-handen { display: flex; flex-wrap: wrap; justify-content: center; align-items: flex-start; gap: 12px 14px; width: 100%; min-width: 0; }
+.hi-handen.is-gesplitst .hi-kaarten { --kb: clamp(44px, 11vw, 66px); }
+.hi-handen.is-gesplitst .hi-speler-hand {
+  width: auto; padding: 8px 10px 10px; border-radius: 14px; border: 1px solid rgba(243, 233, 210, 0.14);
+  transition: border-color 0.2s, background 0.2s;
+}
+.hi-handen.is-gesplitst .hi-speler-hand.is-actief { border-color: var(--hi-goud-licht); background: rgba(243, 233, 210, 0.07); }
+.hi-handen.is-gesplitst .hi-bj-inzet { font-size: 12px; }
+.hi-hand-uitslag { margin: 0; font-size: 13px; font-weight: 700; color: var(--hi-creme-zacht); }
+.hi-speler-hand.is-winst .hi-hand-uitslag { color: var(--hi-winst); }
+.hi-speler-hand.is-verlies .hi-hand-uitslag { color: var(--hi-verlies); }
 
 .hi-bj-inzet { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 700; color: var(--hi-creme-zacht); }
 .hi-bj-inzet .hi-zet { position: static; transform: none; display: grid; min-width: 34px; height: 34px; font-size: 12px; }

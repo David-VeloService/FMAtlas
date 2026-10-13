@@ -17,19 +17,27 @@ Een nieuwe pagina komt ook in `sitemap.xml` en in `FA_SEARCH_INDEX`.
 
 ## Game: Hoge Inzet
 
-`game/hoge-inzet/`: roulette (Europees wiel, 0 t/m 36) en blackjack (zes decks) met één gedeelde
-bank van 1000 speelfiches. Alleen speelfiches: geen echt geld, geen Firebase, geen XP, niets wordt
-gedeeld. Geen dependencies of build: `index.html`, `style.css`, `engine.js`, `app.js` en `kaart.svg`.
-Lokaal openen kan door `game/hoge-inzet/index.html` in de browser te openen (ook via `file://`).
+`game/hoge-inzet/`: roulette (Amerikaans wiel, 0, 00 en 1 t/m 36) en blackjack (zes decks) met één
+gedeelde bank van 1000 speelfiches. Alleen speelfiches: geen echt geld, geen Firebase, geen XP, niets
+wordt gedeeld. Geen dependencies of build: `index.html`, `style.css`, `engine.js`, `app.js` en
+`kaart.svg`. Lokaal openen kan door `game/hoge-inzet/index.html` in de browser te openen (ook via
+`file://`).
 
 - Roulette: een nummer betaalt 36x de inzet terug, rood/zwart/even/oneven/1–18/19–36 betalen 2x. Op
-  de 0 verliezen alle buitenkansen.
-- Blackjack: blackjack betaalt 3:2, winst 2x terug, gelijk geeft de inzet terug. De dealer kijkt bij
-  het delen of hij blackjack heeft, trekt onder 17 en past op elke 17 (ook soft). Verdubbelen alleen
-  met de eerste twee kaarten; geen splitsen, verzekeren of opgeven.
+  0 en 00 verliezen alle buitenkansen. Huisvoordeel 5,3%. Intern heet de 00 nummer 37 (`E.DOUBLE_ZERO`);
+  `E.numberLabel` maakt er voor de weergave '00' van.
+- Blackjack: blackjack betaalt 6:5, winst 2x terug, gelijk geeft de inzet terug. De dealer kijkt bij
+  het delen of hij blackjack heeft, trekt onder 17 en ook op soft 17. Verdubbelen met de eerste twee
+  kaarten, ook na splitsen. Splitsen met twee kaarten van gelijke waarde, tot vier handen; gesplitste
+  azen krijgen één kaart. Geen verzekeren of opgeven. Nieuw schudden als de helft van de shoe op is.
+  Met basisstrategie verlies je zo'n 2% per inzet (gemeten met een simulatie van twee miljoen handen).
 - Opslag: `localStorage` onder `fa_hoge_inzet_v1` (saldo, topsaldo, rondes, uitslagen, lopende
   inzet of hand). Een uitslag wordt eerst afgerekend en bewaard, daarna pas geanimeerd: herladen
-  tijdens een draai of dealerbeurt geeft dus nooit een dubbele of gemiste uitbetaling.
+  tijdens een draai of dealerbeurt geeft dus nooit een dubbele of gemiste uitbetaling. De shoe gaat
+  niet mee (`E.forStorage`) en een opgeslagen shoe wordt nooit ingelezen: na herladen wordt er
+  nieuw geschud, zodat niemand via localStorage de volgende kaarten kan lezen of kiezen. Een tweede
+  tabblad of een pagina uit de terugknop-cache neemt eerst de bewaarde stand over (`storage`- en
+  `pageshow`-event), zodat je een verloren ronde niet ongedaan maakt door elders verder te spelen.
 - `engine.js` bevat alle spelregels als pure functies en is ook in Node te laden:
   `const E = require('./game/hoge-inzet/engine.js')`.
 

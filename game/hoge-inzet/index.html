@@ -95,11 +95,11 @@
       <details class="hi-regels">
         <summary>Spelregels roulette</summary>
         <ul>
-          <li>Een Europees wiel met 0 tot en met 36. Alle uitkomsten zijn even waarschijnlijk.</li>
+          <li>Een Amerikaans wiel met 0, 00 en 1 tot en met 36: 38 vakjes, die allemaal even waarschijnlijk zijn.</li>
           <li>Leg zoveel fiches als je wilt op nummers en kansen. Ze gaan direct van je saldo af; met <em>Wis inzet</em> krijg je alles terug zolang er niet gedraaid is.</li>
           <li>Een nummer betaalt 36 keer je inzet terug: 35 winst plus je eigen fiches.</li>
           <li>Rood, zwart, even, oneven, 1–18 en 19–36 betalen 2 keer je inzet terug.</li>
-          <li>Valt de bal op de groene 0, dan verliezen alle kansen, ook even en 1–18. Alleen een fiche op de 0 zelf wint.</li>
+          <li>Valt de bal op de groene 0 of 00, dan verliezen alle kansen, ook even en 1–18. Alleen een fiche op dat vakje zelf wint.</li>
           <li><em>Herhaal inzet</em> legt je vorige inzet in zijn geheel opnieuw, als die nog in je saldo past.</li>
         </ul>
       </details>
@@ -115,13 +115,9 @@
       </div>
       <div class="hi-bj-midden">
         <p class="hi-bj-uitslag" data-bj-uitslag>Kies je inzet en druk op Deel.</p>
-        <p class="hi-bj-opdruk" aria-hidden="true">Blackjack betaalt 3 tegen 2 · Dealer past op elke 17</p>
+        <p class="hi-bj-opdruk" aria-hidden="true">Blackjack betaalt 6 tegen 5 · Dealer trekt op soft 17</p>
       </div>
-      <div class="hi-hand" data-bj-speler>
-        <div class="hi-hand-kop"><span>Jij</span><span class="hi-waarde" data-bj-speler-waarde></span></div>
-        <div class="hi-kaarten" data-bj-speler-kaarten role="list" aria-label="Jouw kaarten"></div>
-        <div class="hi-bj-inzet" data-bj-inzet hidden></div>
-      </div>
+      <div class="hi-handen" data-bj-handen></div>
     </div>
 
     <div class="hi-bj-bediening">
@@ -131,6 +127,7 @@
         <button type="button" class="hi-knop hi-knop-creme" data-kaart>Kaart</button>
         <button type="button" class="hi-knop hi-knop-creme" data-pas>Pas</button>
         <button type="button" class="hi-knop hi-knop-rand" data-verdubbel>Verdubbel</button>
+        <button type="button" class="hi-knop hi-knop-rand" data-splits>Splits</button>
       </div>
       <p class="hi-tekort" data-tekort hidden>Te weinig fiches voor een nieuwe hand. <button type="button" class="hi-linkknop" data-tekort-nieuw>Begin een nieuw spel</button></p>
       <details class="hi-regels">
@@ -138,11 +135,12 @@
         <ul>
           <li>Kom dichter bij 21 dan de dealer, zonder eroverheen te gaan. Boven 21 ben je dood en verlies je meteen.</li>
           <li>Kaarten 2 tot en met 10 tellen hun waarde, boer, vrouw en heer tellen 10, een aas telt 1 of 11.</li>
-          <li><em>Kaart</em> geeft je een extra kaart, met <em>Pas</em> blijf je staan. <em>Verdubbel</em> kan alleen met je eerste twee kaarten: je inzet gaat keer twee, je krijgt precies één kaart en daarna is de dealer.</li>
-          <li>De dealer trekt tot hij 17 of meer heeft en past op elke 17, ook met een aas als 11.</li>
-          <li>Blackjack (een aas en een 10-kaart als eerste twee kaarten) betaalt 3 tegen 2: bij 10 fiches krijg je er 25 terug. Heeft de dealer ook blackjack, dan krijg je je inzet terug.</li>
+          <li><em>Kaart</em> geeft je een extra kaart, met <em>Pas</em> blijf je staan. <em>Verdubbel</em> kan alleen met je eerste twee kaarten: je inzet gaat keer twee, je krijgt precies één kaart en daarna is de volgende hand of de dealer.</li>
+          <li><em>Splits</em> kan met twee kaarten van dezelfde waarde, ook boer en heer. Je legt dezelfde inzet nog een keer en speelt twee handen, die elk een nieuwe tweede kaart krijgen. Opnieuw splitsen kan tot vier handen, en na splitsen mag je verdubbelen. Gesplitste azen krijgen elk één kaart. Een 21 na splitsen telt als 21, niet als blackjack.</li>
+          <li>De dealer trekt tot hij 17 of meer heeft. Met een zachte 17 (een aas die als 11 telt) trekt hij nog een kaart; op een harde 17 past hij.</li>
+          <li>Blackjack (een aas en een 10-kaart als eerste twee kaarten) betaalt 6 tegen 5: bij 25 fiches krijg je er 55 terug. Heeft de dealer ook blackjack, dan krijg je je inzet terug.</li>
           <li>De dealer kijkt bij het delen of hij blackjack heeft. Dan is de hand meteen voorbij en wint hij van alles behalve jouw blackjack.</li>
-          <li>Winst betaalt 2 keer je inzet terug, gelijkspel geeft je inzet terug. Er wordt gespeeld met zes kaartspellen; splitsen, verzekeren en opgeven kan hier niet.</li>
+          <li>Winst betaalt 2 keer je inzet terug, gelijkspel geeft je inzet terug. Er wordt gespeeld met zes kaartspellen, die opnieuw geschud worden als de helft op is. Verzekeren en opgeven kan hier niet.</li>
         </ul>
       </details>
     </div>

@@ -8,9 +8,10 @@
  *   browser (klassiek script):  window.HogeInzetEngine
  *   Node:                       const E = require('./engine.js');
  *
- * Geld: alle bedragen zijn speelfiches. Inzetten zijn hele getallen (10/25/50/100). Alleen een
- * blackjack betaalt 3:2 en kan dus een halve fiche opleveren (25 -> 62,5 terug). Bedragen zijn
- * daarom altijd een veelvoud van 0,5. Veelvouden van 0,5 zijn in een JavaScript-double exact
+ * Geld: alle bedragen zijn speelfiches. Inzetten zijn hele getallen (10/25/50/100) en alle
+ * uitbetalingen ook: een blackjack betaalt 6:5 (25 -> 55 terug). Een stand van vóór 13-10-2026,
+ * toen blackjack nog 3:2 betaalde, kan een halve fiche bevatten. Bedragen zijn daarom altijd een
+ * veelvoud van 0,5. Veelvouden van 0,5 zijn in een JavaScript-double exact
  * (het zijn binaire breuken) zolang ze onder 2^52 blijven; MAX_SALDO houdt ze daar ruim onder.
  * isAmount() bewaakt die regel bij elke invoer en bij het inlezen van opslag.
  *
@@ -114,17 +115,22 @@
 
   /* ─── Roulette: wiel ─────────────────────────────────── */
 
-  // Europees wiel, met de klok mee vanaf de nul.
-  var WHEEL_ORDER = [0, 32, 15, 19, 4, 21, 2, 25, 17, 34, 6, 27, 13, 36, 11, 30, 8, 23, 10, 5, 24, 16,
-    33, 1, 20, 14, 31, 9, 22, 18, 29, 7, 28, 12, 35, 3, 26];
+  // Amerikaans wiel met 0 en 00, met de klok mee vanaf de nul. De dubbele nul heet intern 37,
+  // zodat elk vakje een gewoon getal is; numberLabel maakt er voor de weergave '00' van.
+  var DOUBLE_ZERO = 37;
+  var WHEEL_ORDER = [0, 28, 9, 26, 30, 11, 7, 20, 32, 17, 5, 22, 34, 15, 3, 24, 36, 13, 1, DOUBLE_ZERO,
+    27, 10, 25, 29, 12, 8, 19, 31, 18, 6, 21, 33, 16, 4, 23, 35, 14, 2];
+  var POCKETS = WHEEL_ORDER.length;            // 38
   var RED_NUMBERS = [1, 3, 5, 7, 9, 12, 14, 16, 18, 19, 21, 23, 25, 27, 30, 32, 34, 36];
-  var POCKET_DEG = 360 / 37;
+  var POCKET_DEG = 360 / POCKETS;
 
-  function isRouletteNumber(n) { return Number.isInteger(n) && n >= 0 && n <= 36; }
+  function isRouletteNumber(n) { return Number.isInteger(n) && n >= 0 && n <= DOUBLE_ZERO; }
+  function isZero(n) { return n === 0 || n === DOUBLE_ZERO; }
+  function numberLabel(n) { return n === DOUBLE_ZERO ? '00' : String(n); }
 
   function colorOf(n) {
     if (!isRouletteNumber(n)) throw new RangeError('colorOf: geen roulettenummer');
-    if (n === 0) return 'groen';
+    if (isZero(n)) return 'groen';
     return RED_NUMBERS.indexOf(n) >= 0 ? 'rood' : 'zwart';
   }
 
@@ -133,7 +139,7 @@
    *
    * Assenstelsel: hoeken in graden, 0 = boven (12 uur), positief = met de klok mee, net als CSS
    * rotate(). In zijn eigen assenstelsel (rotatie 0) ligt het midden van vakje WHEEL_ORDER[i] op
-   * i * 360/37 graden. Draait het wiel R graden, dan staat dat vakje op norm(pocketAngle(n) + R).
+   * i * 360/38 graden. Draait het wiel R graden, dan staat dat vakje op norm(pocketAngle(n) + R).
    *
    * De wijzer staat vast boven (0 graden). De bal draait in een eigen laag tegen de klok in en komt
    * altijd tot stilstand op een veelvoud van 360, dus ook boven. Wiel en bal stoppen dus allebei op
@@ -162,7 +168,7 @@
 
   // Welk nummer staat onder de wijzer bij wielrotatie R?
   function numberAtRotation(R) {
-    var idx = Math.round(norm(-R) / POCKET_DEG) % 37;
+    var idx = Math.round(norm(-R) / POCKET_DEG) % POCKETS;
     return WHEEL_ORDER[idx];
   }
 
@@ -174,22 +180,22 @@
 
   /* ─── Roulette: inzetten en uitbetaling ──────────────── */
 
-  // Sleutels: 'n0' t/m 'n36' voor een nummer, plus zes buitenkansen.
+  // Sleutels: 'n0' t/m 'n36' en 'n37' (de 00) voor een nummer, plus zes buitenkansen.
   var OUTSIDE_BETS = ['rood', 'zwart', 'even', 'oneven', 'laag', 'hoog'];
 
   function isBetKey(k) {
     if (typeof k !== 'string') return false;
     if (OUTSIDE_BETS.indexOf(k) >= 0) return true;
     var m = /^n(\d{1,2})$/.exec(k);
-    return !!m && String(Number(m[1])) === m[1] && Number(m[1]) <= 36;
+    return !!m && String(Number(m[1])) === m[1] && Number(m[1]) <= DOUBLE_ZERO;
   }
 
-  // Wint deze inzet bij uitkomst n? Op de nul verliezen alle buitenkansen, ook even en laag.
+  // Wint deze inzet bij uitkomst n? Op 0 en 00 verliezen alle buitenkansen, ook even en laag.
   function betWins(k, n) {
     if (!isBetKey(k)) throw new RangeError('betWins: onbekende inzet');
     if (!isRouletteNumber(n)) throw new RangeError('betWins: geen roulettenummer');
     if (k.charAt(0) === 'n') return Number(k.slice(1)) === n;
-    if (n === 0) return false;
+    if (isZero(n)) return false;
     switch (k) {
       case 'rood': return colorOf(n) === 'rood';
       case 'zwart': return colorOf(n) === 'zwart';
@@ -274,7 +280,7 @@
     var bets = state.roulette.inzet;
     var totaal = betTotal(bets);
     if (totaal === 0) return fail('Leg eerst een inzet.');
-    var n = WHEEL_ORDER[randomInt(37, source)];
+    var n = WHEEL_ORDER[randomInt(POCKETS, source)];
     var res = settleBets(bets, n);
     var s = clone(state);
     boekUitslag(s, res.inzet, res.uitbetaling);
@@ -295,8 +301,10 @@
   var SUITS = ['S', 'H', 'D', 'C'];            // schoppen, harten, ruiten, klaveren
   var RANKS = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'];
   var DECKS = 6;
-  var RESHUFFLE_BELOW = 78;                    // een kwart van zes decks: daaronder nieuw schudden
+  var RESHUFFLE_BELOW = 156;                   // de helft van zes decks: daaronder nieuw schudden
+  var MAX_HANDEN = 4;                          // splitsen kan tot vier handen
   var OUTCOMES = ['blackjack', 'winst', 'push', 'verlies'];
+  var STATUSSEN = ['speelt', 'staat', 'dood'];
 
   // Kaarten zijn korte strings: rang + kleur, bijvoorbeeld 'AS', '10H', 'QD'.
   function cardRank(c) { return c.slice(0, -1); }
@@ -326,8 +334,8 @@
     return { total: total, soft: soft };
   }
 
-  // Natuurlijke blackjack: 21 met de eerste twee kaarten. Een hand van twee kaarten is altijd de
-  // beginhand (na een extra kaart heb je er minstens drie), dus dit is genoeg.
+  // Natuurlijke blackjack: 21 met de eerste twee kaarten. Na splitsen telt 21 met twee kaarten niet
+  // als blackjack; daarvoor geeft bjOutcome `gesplitst` mee.
   function isNatural(cards) { return cards.length === 2 && handValue(cards).total === 21; }
 
   function orderedShoe(decks) {
@@ -340,8 +348,11 @@
 
   function newShoe(source, decks) { return shuffle(orderedShoe(decks || DECKS), source); }
 
-  // Dealer trekt onder 17 en past op elke 17, ook soft 17.
-  function dealerShouldHit(cards) { return handValue(cards).total < 17; }
+  // Dealer trekt onder 17 en ook op soft 17 (een aas die als 11 telt); hij past op harde 17.
+  function dealerShouldHit(cards) {
+    var v = handValue(cards);
+    return v.total < 17 || (v.total === 17 && v.soft);
+  }
 
   function playDealer(dealer, shoe) {
     var d = dealer.slice(), sh = shoe.slice();
@@ -353,8 +364,9 @@
   }
 
   // Uitkomst vanuit de speler gezien. Beide natural: push. Dealer-natural wint van elke andere 21.
-  function bjOutcome(player, dealer) {
-    var pNat = isNatural(player), dNat = isNatural(dealer);
+  // Een gesplitste hand kan geen natural zijn.
+  function bjOutcome(player, dealer, gesplitst) {
+    var pNat = !gesplitst && isNatural(player), dNat = isNatural(dealer);
     if (pNat && dNat) return 'push';
     if (pNat) return 'blackjack';
     if (dNat) return 'verlies';
@@ -366,10 +378,11 @@
     return 'push';
   }
 
-  // Wat er terugkomt, inclusief de inzet: blackjack 2,5x (3:2 winst), winst 2x, push 1x, verlies 0.
+  // Wat er terugkomt, inclusief de inzet: blackjack inzet plus 6/5 (6:5 winst, 25 -> 55), winst 2x,
+  // push 1x, verlies 0. Eerst vermenigvuldigen, dan delen: 10 * 1.2 is in een double net niet 12.
   function bjPayout(stake, outcome) {
     switch (outcome) {
-      case 'blackjack': return stake * 2.5;
+      case 'blackjack': return stake + stake * 6 / 5;
       case 'winst': return stake * 2;
       case 'push': return stake;
       case 'verlies': return 0;
@@ -383,7 +396,28 @@
     return c;
   }
 
-  // Sluit de hand af in één stap: eventueel dealer laten spelen, uitkomst bepalen en uitbetalen.
+  /*
+   * Een lopende ronde:
+   *   { fase: 'speler' | 'klaar', dealer: [kaarten], actief: index, inzet: totaal,
+   *     handen: [{ kaarten, inzet, verdubbeld, azen, status: 'speelt' | 'staat' | 'dood',
+   *                uitkomst, uitbetaling }],
+   *     uitbetaling: totaal (alleen bij 'klaar') }
+   * Zonder splitsen is er één hand. Na splitsen speel je de handen van links naar rechts; `actief`
+   * wijst de hand aan die aan de beurt is. `azen` markeert een hand uit gesplitste azen: die krijgt
+   * precies één kaart en kan niet verder.
+   */
+  function nieuweHand(kaarten, inzet) {
+    return { kaarten: kaarten, inzet: inzet, verdubbeld: false, azen: false, status: 'speelt' };
+  }
+
+  function totaalInzet(h) {
+    var t = 0;
+    for (var i = 0; i < h.handen.length; i++) t += h.handen[i].inzet;
+    return t;
+  }
+
+  // Sluit de ronde af in één stap: eventueel dealer laten spelen, per hand uitkomst bepalen en
+  // alles samen uitbetalen.
   function finishHand(s, dealerPlays) {
     var h = s.blackjack.hand;
     if (dealerPlays) {
@@ -391,13 +425,36 @@
       h.dealer = r.dealer;
       s.blackjack.shoe = r.shoe;
     }
-    var uitkomst = bjOutcome(h.speler, h.dealer);
-    var uitbetaling = bjPayout(h.inzet, uitkomst);
+    var gesplitst = h.handen.length > 1, uitbetaling = 0;
+    h.handen.forEach(function (x) {
+      if (x.status === 'speelt') x.status = 'staat';
+      x.uitkomst = bjOutcome(x.kaarten, h.dealer, gesplitst);
+      x.uitbetaling = bjPayout(x.inzet, x.uitkomst);
+      uitbetaling += x.uitbetaling;
+    });
+    h.inzet = totaalInzet(h);
     boekUitslag(s, h.inzet, uitbetaling);
     h.fase = 'klaar';
-    h.uitkomst = uitkomst;
     h.uitbetaling = uitbetaling;
     s.open = 'blackjack';
+  }
+
+  // Door naar de eerste hand die nog speelt. Is er geen meer, dan is de dealer. Zijn alle handen
+  // dood, dan hoeft de dealer niet te trekken.
+  function volgende(s) {
+    var h = s.blackjack.hand;
+    while (h.actief < h.handen.length && h.handen[h.actief].status !== 'speelt') h.actief++;
+    if (h.actief < h.handen.length) return;
+    h.actief = h.handen.length - 1;
+    var levend = h.handen.some(function (x) { return x.status !== 'dood'; });
+    finishHand(s, levend);
+  }
+
+  // Status van een hand na een nieuwe kaart: boven 21 dood, op 21 blijft hij automatisch staan.
+  function zetStatus(x) {
+    var t = handValue(x.kaarten).total;
+    if (t > 21) x.status = 'dood';
+    else if (t === 21) x.status = 'staat';
   }
 
   function handActive(state) {
@@ -405,9 +462,14 @@
     return !!(h && h.fase === 'speler');
   }
 
-  // Nieuwe hand: inzet direct van het saldo, kaarten in de volgorde speler, dealer, speler, dealer.
+  function actieveHand(state) {
+    var h = state.blackjack.hand;
+    return handActive(state) ? h.handen[h.actief] : null;
+  }
+
+  // Nieuwe ronde: inzet direct van het saldo, kaarten in de volgorde speler, dealer, speler, dealer.
   // De dealer kijkt meteen of hij blackjack heeft (peek); heeft speler of dealer een natural, dan is
-  // de hand direct afgelopen.
+  // de ronde direct afgelopen.
   function bjDeal(state, bet, source) {
     if (handActive(state)) return fail('Speel eerst de hand af die nog loopt.');
     if (CHIP_VALUES.indexOf(bet) < 0) return fail('Kies een inzet van 10, 25, 50 of 100.');
@@ -417,47 +479,76 @@
     s.saldo -= bet;
     s.blackjack.laatsteInzet = bet;
     var p1 = draw(s), d1 = draw(s), p2 = draw(s), d2 = draw(s);
-    s.blackjack.hand = { fase: 'speler', inzet: bet, verdubbeld: false, speler: [p1, p2], dealer: [d1, d2] };
-    if (isNatural(s.blackjack.hand.speler) || isNatural(s.blackjack.hand.dealer)) finishHand(s, false);
+    s.blackjack.hand = { fase: 'speler', dealer: [d1, d2], actief: 0, inzet: bet, handen: [nieuweHand([p1, p2], bet)] };
+    if (isNatural([p1, p2]) || isNatural([d1, d2])) finishHand(s, false);
     return { ok: true, state: s };
   }
 
   function bjHit(state) {
     if (!handActive(state)) return fail('Er loopt geen hand.');
-    var s = clone(state), h = s.blackjack.hand;
-    h.speler.push(draw(s));
-    var t = handValue(h.speler).total;
-    if (t > 21) finishHand(s, false);       // dood: direct verloren, dealer hoeft niet
-    else if (t === 21) finishHand(s, true);  // 21: automatisch passen
+    var s = clone(state), h = s.blackjack.hand, x = h.handen[h.actief];
+    x.kaarten.push(draw(s));
+    zetStatus(x);
+    volgende(s);
     return { ok: true, state: s };
   }
 
   function bjStand(state) {
     if (!handActive(state)) return fail('Er loopt geen hand.');
-    var s = clone(state);
-    finishHand(s, true);
+    var s = clone(state), h = s.blackjack.hand;
+    h.handen[h.actief].status = 'staat';
+    volgende(s);
     return { ok: true, state: s };
   }
 
   function canDouble(state) {
-    var h = state.blackjack.hand;
-    return !!(h && h.fase === 'speler' && !h.verdubbeld && h.speler.length === 2 && state.saldo >= h.inzet);
+    var x = actieveHand(state);
+    return !!(x && !x.verdubbeld && !x.azen && x.kaarten.length === 2 && state.saldo >= x.inzet);
   }
 
-  // Verdubbelen: alleen met precies twee kaarten. Extra inzet gaat direct van het saldo, je krijgt
-  // precies één kaart en daarna speelt de dealer.
+  // Verdubbelen: alleen met precies twee kaarten, ook na splitsen. Extra inzet gaat direct van het
+  // saldo, je krijgt precies één kaart en daarna is de volgende hand of de dealer.
   function bjDouble(state) {
     if (!handActive(state)) return fail('Er loopt geen hand.');
     if (!canDouble(state)) return fail('Verdubbelen kan alleen met je eerste twee kaarten en genoeg fiches.');
-    var s = clone(state), h = s.blackjack.hand;
-    s.saldo -= h.inzet;
-    h.inzet *= 2;
-    h.verdubbeld = true;
-    h.speler.push(draw(s));
-    finishHand(s, handValue(h.speler).total <= 21);
+    var s = clone(state), h = s.blackjack.hand, x = h.handen[h.actief];
+    s.saldo -= x.inzet;
+    x.inzet *= 2;
+    x.verdubbeld = true;
+    x.kaarten.push(draw(s));
+    x.status = handValue(x.kaarten).total > 21 ? 'dood' : 'staat';
+    h.inzet = totaalInzet(h);
+    volgende(s);
     return { ok: true, state: s };
   }
 
+  // Splitsen kan met twee kaarten van dezelfde waarde (ook boer en heer), tot vier handen, als je
+  // de inzet nog een keer kunt betalen.
+  function canSplit(state) {
+    var x = actieveHand(state), h = state.blackjack.hand;
+    return !!(x && !x.verdubbeld && !x.azen && x.kaarten.length === 2 && h.handen.length < MAX_HANDEN &&
+      cardPoints(x.kaarten[0]) === cardPoints(x.kaarten[1]) && state.saldo >= x.inzet);
+  }
+
+  // Splitsen: de twee kaarten worden twee handen met elk dezelfde inzet en elk een nieuwe tweede
+  // kaart. Gesplitste azen krijgen ieder precies één kaart en blijven dan staan.
+  function bjSplit(state) {
+    if (!handActive(state)) return fail('Er loopt geen hand.');
+    if (!canSplit(state)) return fail('Splitsen kan alleen met twee kaarten van dezelfde waarde en genoeg fiches.');
+    var s = clone(state), h = s.blackjack.hand, x = h.handen[h.actief];
+    var azen = cardRank(x.kaarten[0]) === 'A';
+    s.saldo -= x.inzet;
+    var a = nieuweHand([x.kaarten[0], draw(s)], x.inzet);
+    var b = nieuweHand([x.kaarten[1], draw(s)], x.inzet);
+    [a, b].forEach(function (y) {
+      if (azen) { y.azen = true; y.status = 'staat'; }
+      else zetStatus(y);
+    });
+    h.handen.splice(h.actief, 1, a, b);
+    h.inzet = totaalInzet(h);
+    volgende(s);
+    return { ok: true, state: s };
+  }
   // De animatie van een afgerekende ronde is afgespeeld.
   function acknowledge(state) {
     if (!state.open) return state;
@@ -468,29 +559,81 @@
 
   /* ─── Opslag inlezen ─────────────────────────────────── */
 
-  function sanitizeHand(h) {
-    if (!h || typeof h !== 'object') return null;
-    if (h.fase !== 'speler' && h.fase !== 'klaar') return null;
-    if (typeof h.verdubbeld !== 'boolean') return null;
-    var basis = h.verdubbeld ? h.inzet / 2 : h.inzet;
-    if (CHIP_VALUES.indexOf(basis) < 0) return null;
-    if (!Array.isArray(h.speler) || !Array.isArray(h.dealer)) return null;
+  function sanitizeSubHand(x, fase, gesplitst) {
+    if (!x || typeof x !== 'object') return null;
+    if (typeof x.verdubbeld !== 'boolean' || typeof x.azen !== 'boolean') return null;
+    if (STATUSSEN.indexOf(x.status) < 0) return null;
     // Elke kaart telt minstens 1 en er wordt niet doorgetrokken vanaf 21, dus een hand heeft hooguit 21 kaarten.
-    if (h.speler.length < 2 || h.dealer.length < 2 || h.speler.length > 21 || h.dealer.length > 21) return null;
-    if (!h.speler.every(isCard) || !h.dealer.every(isCard)) return null;
-    var out = { fase: h.fase, inzet: h.inzet, verdubbeld: h.verdubbeld, speler: h.speler.slice(), dealer: h.dealer.slice() };
-    if (h.fase === 'speler') {
-      if (handValue(out.speler).total >= 21 || isNatural(out.dealer)) return null;
-      if (out.verdubbeld) return null;
-    } else {
-      if (OUTCOMES.indexOf(h.uitkomst) < 0 || !isAmount(h.uitbetaling)) return null;
-      if (h.uitbetaling !== bjPayout(out.inzet, h.uitkomst)) return null;
-      out.uitkomst = h.uitkomst;
-      out.uitbetaling = h.uitbetaling;
+    if (!Array.isArray(x.kaarten) || x.kaarten.length < 2 || x.kaarten.length > 21 || !x.kaarten.every(isCard)) return null;
+    var basis = x.verdubbeld ? x.inzet / 2 : x.inzet;
+    if (CHIP_VALUES.indexOf(basis) < 0) return null;
+    var t = handValue(x.kaarten).total;
+    if ((x.status === 'dood') !== (t > 21)) return null;
+    if (x.status === 'speelt' && (fase !== 'speler' || t >= 21 || x.verdubbeld || x.azen)) return null;
+    if (x.azen && (!gesplitst || x.kaarten.length !== 2 || cardRank(x.kaarten[0]) !== 'A')) return null;
+    var out = { kaarten: x.kaarten.slice(), inzet: x.inzet, verdubbeld: x.verdubbeld, azen: x.azen, status: x.status };
+    if (fase === 'klaar') {
+      if (OUTCOMES.indexOf(x.uitkomst) < 0 || !isAmount(x.uitbetaling)) return null;
+      if (x.uitbetaling !== bjPayout(out.inzet, x.uitkomst)) return null;
+      out.uitkomst = x.uitkomst;
+      out.uitbetaling = x.uitbetaling;
     }
     return out;
   }
 
+  // Een stand van voor het splitsen had één hand in `speler` en `inzet`. Die zet je om, zodat een
+  // lopende hand van de vorige versie niet verloren gaat.
+  function oudeHandOmzetten(h) {
+    if (!Array.isArray(h.speler) || h.handen) return h;
+    var t = h.speler.every(isCard) ? handValue(h.speler).total : 0;
+    var status = t > 21 ? 'dood' : h.fase === 'speler' ? 'speelt' : 'staat';
+    return {
+      fase: h.fase, dealer: h.dealer, actief: 0, inzet: h.inzet, uitbetaling: h.uitbetaling,
+      handen: [{ kaarten: h.speler, inzet: h.inzet, verdubbeld: h.verdubbeld, azen: false, status: status,
+        uitkomst: h.uitkomst, uitbetaling: h.uitbetaling }]
+    };
+  }
+
+  function sanitizeHand(raw) {
+    if (!raw || typeof raw !== 'object') return null;
+    var h = oudeHandOmzetten(raw);
+    if (h.fase !== 'speler' && h.fase !== 'klaar') return null;
+    if (!Array.isArray(h.dealer) || h.dealer.length < 2 || h.dealer.length > 21 || !h.dealer.every(isCard)) return null;
+    if (!Array.isArray(h.handen) || h.handen.length < 1 || h.handen.length > MAX_HANDEN) return null;
+    var gesplitst = h.handen.length > 1;
+    var handen = [];
+    for (var i = 0; i < h.handen.length; i++) {
+      var x = sanitizeSubHand(h.handen[i], h.fase, gesplitst);
+      if (!x) return null;
+      handen.push(x);
+    }
+    var basis = handen[0].verdubbeld ? handen[0].inzet / 2 : handen[0].inzet;
+    if (!handen.every(function (x) { return (x.verdubbeld ? x.inzet / 2 : x.inzet) === basis; })) return null;
+    var out = { fase: h.fase, dealer: h.dealer.slice(), actief: 0, handen: handen };
+    out.inzet = totaalInzet(out);
+    if (h.fase === 'speler') {
+      if (isNatural(out.dealer)) return null;
+      if (!gesplitst && isNatural(handen[0].kaarten)) return null;
+      var a = h.actief;
+      if (!Number.isInteger(a) || a < 0 || a >= handen.length || handen[a].status !== 'speelt') return null;
+      for (var j = 0; j < a; j++) if (handen[j].status === 'speelt') return null;
+      out.actief = a;
+    } else {
+      if (handen.some(function (x) { return x.status === 'speelt'; })) return null;
+      out.actief = handen.length - 1;
+      out.uitbetaling = handen.reduce(function (t, x) { return t + x.uitbetaling; }, 0);
+    }
+    return out;
+  }
+
+  // Wat er in localStorage komt: alles behalve de shoe. Zo valt er niet vooruit te kijken welke
+  // kaarten er komen, en kan een zelf ingevulde shoe niet terugkomen. Na herladen wordt er nieuw
+  // geschud.
+  function forStorage(state) {
+    var s = clone(state);
+    s.blackjack.shoe = [];
+    return s;
+  }
   // Leest een opgeslagen stand in. Alles wat niet klopt wordt vervangen door een veilige waarde;
   // is het saldo zelf onbruikbaar, dan begint een nieuw spel. Gooit nooit.
   function sanitizeState(raw) {
@@ -512,11 +655,11 @@
         s.roulette.laatste = { nummer: r.laatste.nummer, inzet: r.laatste.inzet, uitbetaling: r.laatste.uitbetaling };
 
       var b = raw.blackjack && typeof raw.blackjack === 'object' ? raw.blackjack : {};
-      if (Array.isArray(b.shoe) && b.shoe.length <= DECKS * 52 && b.shoe.every(isCard)) s.blackjack.shoe = b.shoe.slice();
+      // Een opgeslagen shoe wordt nooit overgenomen: wie localStorage aanpast, zou anders de kaarten
+      // kunnen kiezen. Er komt altijd een vers geschudde shoe.
+      s.blackjack.shoe = newShoe();
       if (CHIP_VALUES.indexOf(b.laatsteInzet) >= 0) s.blackjack.laatsteInzet = b.laatsteInzet;
       s.blackjack.hand = sanitizeHand(b.hand);
-      // Een lopende hand zonder genoeg kaarten in de shoe kan niet verder; nieuwe shoe erbij.
-      if (s.blackjack.hand && s.blackjack.hand.fase === 'speler' && s.blackjack.shoe.length < 20) s.blackjack.shoe = s.blackjack.shoe.concat(newShoe());
 
       if (s.open === 'roulette' && !s.roulette.laatste) s.open = null;
       if (s.open === 'blackjack' && !(s.blackjack.hand && s.blackjack.hand.fase === 'klaar')) s.open = null;
@@ -540,8 +683,13 @@
     newGame: newGame,
     acknowledge: acknowledge,
     sanitizeState: sanitizeState,
+    forStorage: forStorage,
     // roulette
     WHEEL_ORDER: WHEEL_ORDER.slice(),
+    DOUBLE_ZERO: DOUBLE_ZERO,
+    POCKETS: POCKETS,
+    isZero: isZero,
+    numberLabel: numberLabel,
     RED_NUMBERS: RED_NUMBERS.slice(),
     OUTSIDE_BETS: OUTSIDE_BETS.slice(),
     POCKET_DEG: POCKET_DEG,
@@ -565,6 +713,7 @@
     RANKS: RANKS.slice(),
     DECKS: DECKS,
     RESHUFFLE_BELOW: RESHUFFLE_BELOW,
+    MAX_HANDEN: MAX_HANDEN,
     cardRank: cardRank,
     cardSuit: cardSuit,
     isCard: isCard,
@@ -578,9 +727,11 @@
     bjOutcome: bjOutcome,
     bjPayout: bjPayout,
     canDouble: canDouble,
+    canSplit: canSplit,
     bjDeal: bjDeal,
     bjHit: bjHit,
     bjStand: bjStand,
-    bjDouble: bjDouble
+    bjDouble: bjDouble,
+    bjSplit: bjSplit
   };
 });
