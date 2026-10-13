@@ -8,7 +8,7 @@
 </script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Spelletjes · FM Atlas</title>
-<meta name="description" content="Speel een spelletje tijdens de pauze of met je klas: racen in Slipstroom, overleven in Stadsstorm, 8-ball pool tegen de computer, op één scherm of online met z'n tweeën, of roulette en blackjack met speelfiches in Hoge Inzet. Racen en overleven kan ook online met maximaal 6 spelers."/>
+<meta name="description" content="Speel een spelletje tijdens de pauze of met je klas: racen in Slipstroom, overleven in Stadsstorm, 8-ball pool tegen de computer, op één scherm of online met z'n tweeën, of roulette en blackjack met speelfiches in Hoge Inzet. Plus de games van vrienden op CLV Play. Racen en overleven kan ook online met maximaal 6 spelers."/>
 <link rel="canonical" href="https://fmatlas.nl/game/"/>
 <link rel="icon" type="image/svg+xml" href="../logo.svg"/>
 <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png"/>
@@ -75,6 +75,25 @@
 .spel-binnenkort span { font-size: 13.5px; max-width: 240px; }
 .spel-binnenkort[hidden] { display: none; }
 
+/* Meer op CLV Play: games van vrienden, ze draaien op clvplay.nl */
+.clv { margin-top: 44px; }
+.clv-kop { display: flex; align-items: flex-end; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-bottom: 16px; }
+.clv-kop h2 { font-size: clamp(22px, 4.5vw, 28px); font-weight: 900; letter-spacing: -0.02em; line-height: 1.1; margin-bottom: 6px; }
+.clv-kop p { color: var(--ink-soft); font-size: 14.5px; max-width: 560px; }
+.clv-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 14px; }
+.clv-kaart { display: flex; flex-direction: column; background: var(--surface); border: 1.5px solid var(--line); border-radius: var(--radius);
+  overflow: hidden; color: inherit; text-decoration: none; transition: border-color 0.15s, transform 0.15s; }
+.clv-kaart:hover { border-color: var(--accent); transform: translateY(-2px); }
+.clv-beeld { aspect-ratio: 16 / 9; background: var(--surface-alt); display: grid; place-items: center; overflow: hidden;
+  font-weight: 900; font-size: 15px; color: var(--muted); text-align: center; padding: 8px; }
+.clv-beeld:has(img) { padding: 0; }
+.clv-beeld img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.clv-tekst { display: flex; flex-direction: column; gap: 2px; padding: 10px 12px 12px; }
+.clv-tekst strong { font-size: 15px; font-weight: 900; letter-spacing: -0.01em; }
+.clv-tekst span { font-size: 12.5px; font-weight: 700; color: var(--muted); }
+.clv-grid:empty + .clv-leeg { display: block; }
+.clv-leeg { display: none; color: var(--muted); font-size: 14px; }
+
 .spel-terug { display: inline-flex; margin-top: 28px; }
 
 @media (max-width: 700px) {
@@ -85,6 +104,7 @@
   .spel-body { padding: 14px 16px 16px; }
   .spel-body .fa-btn { align-self: stretch; }
   .spel-binnenkort { min-height: 160px; }
+  .clv-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
 }
 </style>
 </head>
@@ -215,6 +235,18 @@
     </div>
   </div>
 
+  <section class="clv" aria-labelledby="clv-titel">
+    <div class="clv-kop">
+      <div>
+        <h2 id="clv-titel">Meer op CLV Play</h2>
+        <p>Games van vrienden, gemaakt door Jochem, Koen, Sven, Jippe en anderen. Ze draaien op clvplay.nl en openen in een nieuw tabblad.</p>
+      </div>
+      <a class="fa-btn fa-btn-ghost fa-btn-sm" href="https://clvplay.nl/" target="_blank" rel="noopener">Naar CLV Play →</a>
+    </div>
+    <div class="clv-grid" data-clv></div>
+    <p class="clv-leeg">De games van CLV Play zijn nu niet te laden. Kijk op <a href="https://clvplay.nl/" target="_blank" rel="noopener">clvplay.nl</a>.</p>
+  </section>
+
   <a class="fa-btn fa-btn-ghost spel-terug" href="../app.html">← Terug naar FM Atlas</a>
 </main>
 
@@ -270,6 +302,96 @@
     });
     verder.classList.add('is-zichtbaar');
   }
+})();
+</script>
+
+<script>
+// Meer op CLV Play. Zodra clvplay.nl een games.json heeft, komt de lijst daarvandaan;
+// tot dan (of als het ophalen mislukt) staat hieronder een kopie van de catalogus van 13-10-2026.
+// Alleen uitgebrachte games met een link; Chat is geen game en staat er niet bij.
+(function () {
+  const BASIS = 'https://clvplay.nl/';
+  const OVERSLAAN = ['chat'];
+  const KOPIE = [
+    { id: 'skigame',        title: 'SkiGame',           href: 'skigame/',                         thumbnail: 'Thubnails/skigamev2.png',       credit: 'Jochem' },
+    { id: 'driftshot',      title: 'Drift Shot',        href: 'driftshot/game/',                  thumbnail: 'Thubnails/Driftshot.png',       credit: 'Koen' },
+    { id: 'supermario',     title: 'Super Mario',       href: 'Supermario/Supermario/',           thumbnail: 'Thubnails/supermario.png',      credit: 'Sven' },
+    { id: 'clvsp',          title: 'CLV Space Program', href: 'spaceprogram/',                    thumbnail: 'Thubnails/spaceprogram.png',    credit: 'Jochem' },
+    { id: 'turfroyale',     title: 'Turf Royale',       href: 'paarden/',                         thumbnail: 'Thubnails/TurfRoyale.png',      credit: 'Jochem' },
+    { id: 'poker',          title: 'Poker',             href: 'Poker/',                           thumbnail: 'Thubnails/RoyalFlushpoker.jpg', credit: 'Jochem' },
+    { id: 'blackjack',      title: 'Blackjack',         href: 'blackjack/',                       thumbnail: 'Thubnails/Blackjack.jpg',       credit: 'Koen' },
+    { id: 'roulette',       title: 'Roulette',          href: 'roulette/',                        thumbnail: 'Thubnails/roulette.png',        credit: 'Jochem' },
+    { id: 'chess',          title: 'Chess',             href: 'chess/',                           thumbnail: 'Thubnails/chess.png',           credit: 'Koen' },
+    { id: 'impostergame',   title: 'Imposter Game',     href: 'impostergame/',                    thumbnail: 'Thubnails/Impostergame.png',    credit: 'Koen' },
+    { id: 'mcgeoguesser',   title: 'Mc geoguesser',     href: 'Geodinges/',                       thumbnail: '',                              credit: 'Koen' },
+    { id: 'blockexploder',  title: 'Block Exploder',    href: 'blockexploder/BlockBlast.html',    thumbnail: 'Thubnails/blockexploder.png',   credit: 'Sven' },
+    { id: 'betterbirdgame', title: 'Vogelspel',         href: 'BetterBirdgame/',                  thumbnail: 'Thubnails/BetterBridgame.png',  credit: 'Jippe' },
+    { id: 'fallinkeys',     title: 'Fallin Keys',       href: 'fallinkeys/fallingkeysweb/',       thumbnail: 'Thubnails/Fallinkeys.png',      credit: 'David' },
+    { id: 'clicker',        title: 'Biscuit Clicker',   href: 'clicker/biscuit_clicker.html',     thumbnail: 'Thubnails/clicker.png',         credit: 'Jochem' },
+    { id: 'snake',          title: 'Snake',             href: 'snake/',                           thumbnail: 'Thubnails/Snake.png',           credit: 'Jochem' }
+  ];
+  const grid = document.querySelector('[data-clv]');
+  if (!grid) return;
+
+  // games.json mag velden in het Engels (title/href/credit) of Nederlands (titel/link/maker) hebben.
+  function netjes(lijst) {
+    return lijst.map(g => ({
+      id: String(g.id || ''),
+      titel: g.title || g.titel || '',
+      link: g.href || g.link || '',
+      beeld: g.thumbnail || '',
+      maker: g.credit || g.maker || '',
+      stage: g.stage || 'released'
+    })).filter(g => g.titel && g.link && g.stage === 'released' && !OVERSLAAN.includes(g.id.toLowerCase()));
+  }
+  function url(pad) {
+    try { return new URL(pad, BASIS).href; } catch (_) { return ''; }
+  }
+  function toon(lijst) {
+    grid.textContent = '';
+    lijst.forEach(g => {
+      const a = document.createElement('a');
+      a.className = 'clv-kaart';
+      a.href = url(g.link);
+      a.target = '_blank';
+      a.rel = 'noopener';
+      const beeld = document.createElement('span');
+      beeld.className = 'clv-beeld';
+      const tekstBeeld = () => { beeld.textContent = 'CLV Play'; };
+      if (g.beeld) {
+        const img = document.createElement('img');
+        img.src = url(g.beeld);
+        img.alt = '';
+        img.loading = 'lazy';
+        img.width = 480; img.height = 270;
+        img.onerror = tekstBeeld;
+        beeld.appendChild(img);
+      } else tekstBeeld();
+      const tekst = document.createElement('span');
+      tekst.className = 'clv-tekst';
+      const t = document.createElement('strong');
+      t.textContent = g.titel;
+      tekst.appendChild(t);
+      if (g.maker && g.maker !== 'Unknown') {
+        const m = document.createElement('span');
+        m.textContent = 'door ' + g.maker;
+        tekst.appendChild(m);
+      }
+      a.append(beeld, tekst);
+      grid.appendChild(a);
+    });
+  }
+
+  toon(netjes(KOPIE));
+  const stop = new AbortController();
+  setTimeout(() => stop.abort(), 4000);
+  fetch(BASIS + 'games.json', { signal: stop.signal })
+    .then(r => r.ok ? r.json() : Promise.reject())
+    .then(data => {
+      const lijst = netjes(Array.isArray(data) ? data : (data && data.games) || []);
+      if (lijst.length) toon(lijst);
+    })
+    .catch(() => {});
 })();
 </script>
 
