@@ -176,6 +176,8 @@ meldt via `vincent.py --meld david "..."` wat er openstaat. Jaar 2 wordt gegener
 
 `js/spel-reclame.js` toont in Hoge Inzet, Slipstroom en Stadsstorm een willekeurige video van
 JonasMS (youtube.com/@JonasMeloSousa), via youtube-nocookie.com, met een timer van 30 seconden.
+De video start met geluid (YouTube IFrame API); blokkeert de browser dat, dan speelt hij gedempt
+met een melding "Tik op de video voor geluid".
 Er draait geen advertentienetwerk: FM Atlas promoot het kanaal van Jonas, met zijn akkoord.
 
 - `FMReclame.toon({ beloning })` toont meteen een video en geeft een Promise die `true` oplevert als
