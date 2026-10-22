@@ -107,7 +107,7 @@ function faRenderHeader({ homeUrl = 'app.html', user = null, breadcrumb = null }
       <span class="fa-brand-name">FM Atlas</span>
       <span class="fa-brand-tag">· studiehulp FM</span>
     </a>
-    <button type="button" class="fa-search" onclick="faOpenSearch()" aria-label="Zoeken in FM Atlas">
+    <button type="button" class="fa-search" onclick="faOpenSearch()">
       <span aria-hidden="true">${faIcon('search', { size: 16, color: '#6b7378' })}</span>
       <span>Zoek samenvattingen, begrippen, flashcards…</span>
       <span class="fa-kbd" style="margin-left:auto">${isMac ? '⌘K' : 'Ctrl K'}</span>
@@ -186,8 +186,10 @@ function faMarkActiveToday({ studied = false } = {}) {
 function faStudiedToday() { return faGetStreakData().last === faToday(); }
 
 function faGetXP() {
-  const n = parseInt(localStorage.getItem('fa_xp') || '0', 10);
-  return isNaN(n) ? 0 : n;
+  try {
+    const n = parseInt(localStorage.getItem('fa_xp') || '0', 10);
+    return isNaN(n) ? 0 : n;
+  } catch (_) { return 0; }
 }
 function faAddXP(amount) {
   const next = faGetXP() + amount;
@@ -363,6 +365,7 @@ const FA_SEARCH_INDEX = [
   { title: 'Huisvesting — Proeftentamen · hele stof', sub: 'Huisvesting', url: 'huisvesting-oefentoets-3.html', icon: 'check' },
   { title: 'Huisvesting — Toetsing & beoordeling', sub: 'Huisvesting', url: 'huisvesting-toetsing.html', icon: 'compass' },
   { title: 'Huisvesting — Begrippentoets', sub: 'Huisvesting', url: 'begrippentoets.html?vak=huisvesting', icon: 'check' },
+  { title: 'Huisvesting · Lesvideo\'s', sub: 'Huisvesting', url: 'huisvesting-video.html', icon: 'book' },
   { title: 'Praktijkproject Business Management', sub: 'J2 P1 · vakpagina · PRJBUS01 · DMAGIC · procesverbetering bij een echte opdrachtgever · scrum-light · adviespresentatie (P1 + P2)', url: 'praktijkproject-business-management.html', icon: 'refresh' },
   { title: 'Praktijkproject Business Management — Samenvatting', sub: 'Praktijkproject Business Management', url: 'praktijkproject-business-management-samenvatting.html', icon: 'book' },
   { title: 'Praktijkproject Business Management — Begrippenlijst', sub: 'Praktijkproject Business Management', url: 'praktijkproject-business-management-begrippen.html', icon: 'book' },

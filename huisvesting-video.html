@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Lesvideo's · Huisvesting · FM Atlas</title>
+<meta name="description" content="Lesvideo's voor Huisvesting, met hoofdstukken, Nederlandse ondertitels en checkvragen in tentamenvorm."/>
+<link rel="canonical" href="https://fmatlas.nl/huisvesting-video.html"/>
+<link rel="icon" type="image/svg+xml" href="logo.svg"/>
+<meta name="theme-color" content="#f7f3ec"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="css/fmatlas.css"/>
+<style>
+.video-wrap { max-width: 1152px; padding: 32px 24px 64px; margin: auto; }
+.video-wrap h1 { font-size: clamp(28px, 5vw, 38px); line-height: 1.15; font-weight: 900; letter-spacing: -.028em; }
+.video-wrap h2 { font-size: 22px; line-height: 1.3; font-weight: 900; }
+.video-intro { max-width: 800px; margin: 12px 0 24px; color: var(--ink-soft); }
+.video-layout { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); gap: 24px; align-items: start; }
+.video-panel, .chapter-panel { min-width: 0; background: var(--surface); border: 1.5px solid var(--line); border-radius: var(--radius-lg); overflow: hidden; }
+.video-panel video { width: 100%; aspect-ratio: 16 / 9; display: block; background: var(--ink); }
+.video-panel [hidden], .video-wrap [hidden] { display: none; }
+.video-info, .chapter-panel { padding: 24px; }
+.video-meta { font-size: 13px; font-weight: 800; color: var(--muted); margin-bottom: 8px; }
+.video-controls { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-top: 16px; }
+.video-controls button, .video-controls select { min-height: 44px; font: inherit; font-size: 14px; font-weight: 800; border: 1.5px solid var(--line); border-radius: var(--radius); padding: 8px 12px; background: var(--bg); color: var(--ink); }
+.video-controls label { font-size: 14px; font-weight: 700; }
+.video-controls button { cursor: pointer; }
+.video-controls button[aria-pressed="true"] { background: var(--ink); color: var(--surface); border-color: var(--ink); }
+.video-controls button:disabled, .video-controls select:disabled { opacity: .6; cursor: default; }
+.video-status { color: var(--ink-soft); font-size: 14px; margin-top: 12px; }
+.video-upcoming { padding: 48px 24px; background: var(--surface-alt); font-size: 20px; font-weight: 800; }
+.chapter-panel h2 { font-size: 18px; margin-bottom: 12px; }
+.chapter-list { list-style: none; }
+.chapter-list li + li { border-top: 1px solid var(--line-soft); }
+.chapter-list button { display: flex; gap: 12px; align-items: baseline; text-align: left; width: 100%; min-height: 48px; padding: 12px 8px; font: inherit; font-size: 14px; color: var(--ink-soft); background: transparent; border: 0; border-radius: 8px; cursor: pointer; }
+.chapter-list time { font-size: 12px; font-weight: 800; font-variant-numeric: tabular-nums; flex-shrink: 0; }
+.chapter-list button[aria-current="true"] { background: var(--accent-soft); color: var(--ink); font-weight: 800; box-shadow: inset 3px 0 var(--accent-deep); }
+.chapter-list button:disabled { cursor: default; }
+.video-blocks { margin-top: 32px; }
+.video-blocks > p { color: var(--ink-soft); margin: 8px 0 16px; font-size: 14px; }
+.video-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; list-style: none; }
+.video-card { display: block; height: 100%; border: 1.5px solid var(--line); border-top: 5px solid var(--block-color); border-radius: var(--radius-lg); padding: 20px; background: var(--surface); }
+.video-card:hover { border-color: var(--ink-soft); border-top-color: var(--block-color); }
+.video-card[aria-current="true"] { outline: 2px solid var(--ink); outline-offset: 2px; }
+.video-card h3 { font-size: 17px; line-height: 1.35; margin: 8px 0; font-weight: 800; }
+.video-card p { font-size: 13px; color: var(--ink-soft); }
+.video-card-top { display: flex; flex-wrap: wrap; gap: 8px; justify-content: space-between; font-size: 12px; font-weight: 800; }
+.video-viewed { display: inline-flex; align-items: center; gap: 6px; color: var(--ink); margin-top: 12px; font-size: 12px; font-weight: 800; }
+.video-viewed::before { content: ''; width: 6px; height: 11px; border: solid currentColor; border-width: 0 2px 2px 0; transform: rotate(45deg); margin: 0 4px 3px 2px; }
+.video-wrap a:focus-visible, .video-wrap button:focus-visible, .video-wrap select:focus-visible, .video-wrap video:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
+.video-wrap h2, .video-card, .chapter-list button { overflow-wrap: anywhere; }
+.video-skip { position: absolute; left: 16px; top: -100px; padding: 12px; z-index: 100; background: var(--surface); }
+.video-skip:focus { top: 8px; }
+.fa-site-footer a { text-decoration: underline; text-underline-offset: 3px; }
+#fa-header-slot { min-height: 78px; background: var(--surface); }
+@media (max-width: 760px) { #fa-header-slot { min-height: 144px; } }
+@media (max-width: 760px) {
+  .video-layout, .video-grid { grid-template-columns: minmax(0, 1fr); }
+  .video-wrap { padding: 24px 16px 48px; }
+  .video-info, .chapter-panel { padding: 16px; }
+}
+</style>
+</head>
+<body>
+<a class="video-skip" href="#video-main">Naar de lesvideo's</a>
+<div id="fa-header-slot"></div>
+<nav class="fa-breadcrumb" aria-label="Broodkruimel">
+  <a href="app.html">Vakken</a><span aria-hidden="true">›</span>
+  <a href="huisvesting.html">Huisvesting</a><span aria-hidden="true">›</span>
+  <span class="current" aria-current="page">Lesvideo's</span>
+</nav>
+<main class="video-wrap" id="video-main">
+  <h1>Lesvideo's · Huisvesting</h1>
+  <p class="video-intro">Deze lesvideo's leggen alle lesstof van les 1.1 tot en met 7.2 en de Syllabus Bouwkundige Begrippen uit, met checkvragen in tentamenvorm. De boekstof zit er niet volledig in; lees de opgegeven boekhoofdstukken erbij.</p>
+  <noscript><p>Schakel JavaScript in om een video te kiezen en de hoofdstukken te gebruiken.</p></noscript>
+  <div class="video-layout">
+    <section class="video-panel" aria-labelledby="video-title">
+      <video id="lesson-video" controls preload="metadata" playsinline crossorigin="anonymous" aria-labelledby="video-title" hidden>
+        <track id="lesson-subtitles" kind="subtitles" srclang="nl" label="Nederlands"/>
+        Je browser ondersteunt deze videospeler niet.
+      </video>
+      <p class="video-upcoming" id="video-upcoming" hidden>Volgt binnenkort</p>
+      <div class="video-info">
+        <p class="video-meta" id="video-meta"></p>
+        <h2 id="video-title"></h2>
+        <div class="video-controls" id="video-controls" hidden>
+          <button type="button" id="subtitle-toggle" aria-pressed="false" aria-controls="lesson-video" disabled>Ondertitels</button>
+          <label for="video-speed">Snelheid</label>
+          <select id="video-speed" disabled>
+            <option value="1">1x</option><option value="1.25">1,25x</option><option value="1.5">1,5x</option>
+          </select>
+          <button type="button" id="video-resume" hidden></button>
+        </div>
+        <p class="video-status" id="video-status" role="status"></p>
+      </div>
+    </section>
+    <section class="chapter-panel" aria-labelledby="chapters-title">
+      <h2 id="chapters-title">Hoofdstukken</h2>
+      <ol class="chapter-list" id="chapter-list"></ol>
+    </section>
+  </div>
+  <section class="video-blocks" aria-labelledby="blocks-title">
+    <h2 id="blocks-title">Alle blokken</h2>
+    <p id="video-count"></p>
+    <ol class="video-grid" id="video-grid"></ol>
+  </section>
+</main>
+<footer class="fa-site-footer">
+  <span>FM Atlas · gratis studiehulp voor HAN Facilitair Management, gemaakt door een student</span>
+  <span>Niet officieel verbonden aan de HAN · <a href="privacy.html">Privacy</a> · <a href="app.html#contact">Fout gezien?</a></span>
+</footer>
+<script id="lesson-data" type="application/json">{"video_base": "video/huisvesting/", "blokken": [{"blok": 1, "titel": "Waarom huisvesting ertoe doet", "kleur": "#3b82f6", "lessen": ["1.1", "1.2"], "duur": 811.8, "beschikbaar": true, "hoofdstukken": [{"id": "h1", "titel": "Wat huisvesting is", "start": 0}, {"id": "h2", "titel": "De huisvestingscyclus", "start": 198.467333}, {"id": "h3", "titel": "Wat huisvesting kost en oplevert", "start": 337.91866699999997}, {"id": "h4", "titel": "Van missie naar prestaties", "start": 542.020083}, {"id": "h5", "titel": "Maatschappij en stakeholders", "start": 701.4377499999999}], "mp4": "blok-01.mp4", "vtt": "video/huisvesting/blok-01.vtt", "poster": "video/huisvesting/blok-01.jpg"}, {"blok": 2, "titel": "Bouwtekeningen lezen", "kleur": "#0ea5e9", "lessen": ["1.3", "2.2"], "duur": null, "beschikbaar": false, "hoofdstukken": [{"id": "h1", "titel": "Waarom tekeningen en welke schaal", "start": 0}, {"id": "h2", "titel": "Acht soorten tekeningen", "start": 168.877083}, {"id": "h3", "titel": "Maten: stramien, peil en draairichting", "start": 331.09225}, {"id": "h4", "titel": "De grond: kavel, kaart en regels", "start": 505.937417}, {"id": "h5", "titel": "Van tekening naar gebouwanalyse", "start": 642.13325}], "mp4": "blok-02.mp4", "vtt": "video/huisvesting/blok-02.vtt", "poster": "video/huisvesting/blok-02.jpg"}, {"blok": 3, "titel": "Bouwkunde 1: van grond tot vloer", "kleur": "#f97316", "lessen": ["2.1"], "duur": null, "beschikbaar": false, "hoofdstukken": [{"id": "h1", "titel": "Opbouw en belasting", "start": 0}, {"id": "h2", "titel": "Fundering en de grond", "start": 179.658792}, {"id": "h3", "titel": "Beton en wapening", "start": 404.174375}, {"id": "h4", "titel": "Vloeren", "start": 556.450728275}], "mp4": "blok-03.mp4", "vtt": "video/huisvesting/blok-03.vtt", "poster": "video/huisvesting/blok-03.jpg"}, {"blok": 4, "titel": "Bouwkunde 2: muren, gevels en openingen", "kleur": "#f97316", "lessen": ["2.1"], "duur": null, "beschikbaar": false, "hoofdstukken": [{"id": "h1", "titel": "Vier manieren om muren te bouwen", "start": 0}, {"id": "h2", "titel": "De spouwmuur", "start": 176.422208}, {"id": "h3", "titel": "Stenen, dikte en verbanden", "start": 367.22145800000004}, {"id": "h4", "titel": "Openingen in de gevel", "start": 548.7355946315789}, {"id": "h5", "titel": "Binnenwanden en voegen die bewegen", "start": 704.4094580000001}], "mp4": "blok-04.mp4", "vtt": "video/huisvesting/blok-04.vtt", "poster": "video/huisvesting/blok-04.jpg"}, {"blok": 5, "titel": "Daken, trappen en afwerking", "kleur": "#f97316", "lessen": ["2.1"], "duur": null, "beschikbaar": false, "hoofdstukken": [{"id": "h1", "titel": "Het schuine dak", "start": null}, {"id": "h2", "titel": "Het platte dak en de waterafvoer", "start": null}, {"id": "h3", "titel": "Trappen en open ruimtes", "start": null}, {"id": "h4", "titel": "Afwerking van vloer, wand en plafond", "start": null}], "mp4": "blok-05.mp4", "vtt": "video/huisvesting/blok-05.vtt", "poster": "video/huisvesting/blok-05.jpg"}, {"blok": 6, "titel": "Mensgericht huisvesten", "kleur": "#ec4899", "lessen": ["2.3", "3.1"], "duur": null, "beschikbaar": false, "hoofdstukken": [{"id": "h1", "titel": "Comfort en behoeften", "start": null}, {"id": "h2", "titel": "Omgevingspsychologie", "start": null}, {"id": "h3", "titel": "Prestaties voor de gebruiker", "start": null}, {"id": "h4", "titel": "Waarnemen en de kaart in je hoofd", "start": null}], "mp4": "blok-06.mp4", "vtt": "video/huisvesting/blok-06.vtt", "poster": "video/huisvesting/blok-06.jpg"}, {"blok": 7, "titel": "Werkplekconcepten en hybride werken", "kleur": "#ec4899", "lessen": ["3.2"], "duur": null, "beschikbaar": false, "hoofdstukken": [{"id": "h1", "titel": "Wat doen mensen op kantoor", "start": null}, {"id": "h2", "titel": "Van kantoorzaal naar activiteitgebonden werken", "start": null}, {"id": "h3", "titel": "Hybride werken", "start": null}, {"id": "h4", "titel": "Bruis, ruis, rust en de bouwstenen", "start": null}, {"id": "h5", "titel": "Voorbeelden en het aantal werkplekken", "start": null}], "mp4": "blok-07.mp4", "vtt": "video/huisvesting/blok-07.vtt", "poster": "video/huisvesting/blok-07.jpg"}, {"blok": 8, "titel": "Het programma van eisen", "kleur": "#8b5cf6", "lessen": ["4.1"], "duur": null, "beschikbaar": false, "hoofdstukken": [{"id": "h1", "titel": "Waarom een programma van eisen", "start": null}, {"id": "h2", "titel": "Eisen, wensen en geen oplossingen", "start": null}, {"id": "h3", "titel": "Inhoud, opbouw, visie en beeldverwachting", "start": null}, {"id": "h4", "titel": "Functioneel, ruimtelijk, technisch, facilitair", "start": null}, {"id": "h5", "titel": "Van globaal naar gedetailleerd", "start": null}], "mp4": "blok-08.mp4", "vtt": "video/huisvesting/blok-08.vtt", "poster": "video/huisvesting/blok-08.jpg"}, {"blok": 9, "titel": "Rekenen met ruimte", "kleur": "#8b5cf6", "lessen": ["4.1", "4.2"], "duur": null, "beschikbaar": false, "hoofdstukken": [{"id": "h1", "titel": "Hoeveel werkplekken heb je nodig", "start": 0}, {"id": "h2", "titel": "Ruimte per werkplek en de ruimtestaat", "start": 121.70594975490197}, {"id": "h3", "titel": "Soorten vloeroppervlak: BVO, NVO, NO, FNO", "start": 302.52702800000003}, {"id": "h4", "titel": "Woonunits en herbestemming", "start": 457.990322827957}], "mp4": "blok-09.mp4", "vtt": "video/huisvesting/blok-09.vtt", "poster": "video/huisvesting/blok-09.jpg"}, {"blok": 10, "titel": "Van ruimtestaat naar inrichting", "kleur": "#8b5cf6", "lessen": ["4.2", "4.3"], "duur": null, "beschikbaar": false, "hoofdstukken": [{"id": "h1", "titel": "Ruimtelijke relaties", "start": null}, {"id": "h2", "titel": "Het vlekkenplan", "start": null}, {"id": "h3", "titel": "Inrichten: zones en flow", "start": null}, {"id": "h4", "titel": "Wat kost inrichten", "start": null}, {"id": "h5", "titel": "Kleur en materiaal", "start": null}], "mp4": "blok-10.mp4", "vtt": "video/huisvesting/blok-10.vtt", "poster": "video/huisvesting/blok-10.jpg"}, {"blok": 11, "titel": "Bouwbesluit en plantoetsing", "kleur": "#d97706", "lessen": ["5.1"], "duur": null, "beschikbaar": false, "hoofdstukken": [{"id": "h1", "titel": "Wat het Bouwbesluit regelt", "start": null}, {"id": "h2", "titel": "Plantoetsing en gebruiksfuncties", "start": null}, {"id": "h3", "titel": "Stap 2: het gebruiksoppervlak", "start": null}, {"id": "h4", "titel": "Stap 3 tot 5: ruimtes benoemen", "start": null}], "mp4": "blok-11.mp4", "vtt": "video/huisvesting/blok-11.vtt", "poster": "video/huisvesting/blok-11.jpg"}, {"blok": 12, "titel": "Het bouwproces: fasen, bestek en aanbesteden", "kleur": "#d97706", "lessen": ["5.2"], "duur": null, "beschikbaar": false, "hoofdstukken": [{"id": "h1", "titel": "De zes bouwfasen", "start": null}, {"id": "h2", "titel": "Ontwerpen van grof naar fijn", "start": null}, {"id": "h3", "titel": "Het bestek", "start": null}, {"id": "h4", "titel": "Uitvoering en aanbesteden", "start": null}], "mp4": "blok-12.mp4", "vtt": "video/huisvesting/blok-12.vtt", "poster": "video/huisvesting/blok-12.jpg"}, {"blok": 13, "titel": "Partijen, contracten en informatie", "kleur": "#d97706", "lessen": ["5.3"], "duur": null, "beschikbaar": false, "hoofdstukken": [{"id": "h1", "titel": "Stakeholders in kaart", "start": null}, {"id": "h2", "titel": "Wie bouwt er mee", "start": null}, {"id": "h3", "titel": "Vier contractmodellen", "start": null}, {"id": "h4", "titel": "Business case en informatiebeheersing", "start": null}, {"id": "h5", "titel": "BIM, IWMS en FMIS", "start": null}], "mp4": "blok-13.mp4", "vtt": "video/huisvesting/blok-13.vtt", "poster": "video/huisvesting/blok-13.jpg"}, {"blok": 14, "titel": "Duurzaam bouwen en binnenklimaat", "kleur": "#10b981", "lessen": ["6.1", "7.2"], "duur": null, "beschikbaar": false, "hoofdstukken": [{"id": "h1", "titel": "Waarom duurzaam bouwen", "start": null}, {"id": "h2", "titel": "De Trias energetica", "start": null}, {"id": "h3", "titel": "Circulair bouwen", "start": null}, {"id": "h4", "titel": "De R-ladder en circulair beheren", "start": null}, {"id": "h5", "titel": "Het binnenklimaat", "start": null}], "mp4": "blok-14.mp4", "vtt": "video/huisvesting/blok-14.vtt", "poster": "video/huisvesting/blok-14.jpg"}, {"blok": 15, "titel": "Beheer, onderhoud en het MJOP", "kleur": "#14b8a6", "lessen": ["6.2", "7.2"], "duur": null, "beschikbaar": false, "hoofdstukken": [{"id": "h1", "titel": "Beheer, POE en het MJOP", "start": null}, {"id": "h2", "titel": "Wat bepaalt de onderhoudsbehoefte", "start": null}, {"id": "h3", "titel": "Drie soorten levensduur", "start": null}, {"id": "h4", "titel": "Soorten onderhoud en kosten", "start": null}, {"id": "h5", "titel": "Het duurzame MJOP", "start": null}], "mp4": "blok-15.mp4", "vtt": "video/huisvesting/blok-15.vtt", "poster": "video/huisvesting/blok-15.jpg"}, {"blok": 16, "titel": "Conditiemeting en onderhoudsstrategie", "kleur": "#14b8a6", "lessen": ["6.3"], "duur": null, "beschikbaar": false, "hoofdstukken": [{"id": "h1", "titel": "Soorten onderhoud en de plek van inspectie", "start": null}, {"id": "h2", "titel": "NEN 2767 en de zes conditiescores", "start": null}, {"id": "h3", "titel": "Een gebrek beoordelen: ernst, intensiteit, omvang", "start": null}, {"id": "h4", "titel": "Van gebrek naar conditiescore", "start": null}, {"id": "h5", "titel": "Inspectiekaart, MJOP en onderhoudsstrategie", "start": null}], "mp4": "blok-16.mp4", "vtt": "video/huisvesting/blok-16.vtt", "poster": "video/huisvesting/blok-16.jpg"}], "intro": "Deze lesvideo's leggen alle lesstof van les 1.1 tot en met 7.2 en de Syllabus Bouwkundige Begrippen uit, met checkvragen in tentamenvorm. De boekstof zit er niet volledig in; lees de opgegeven boekhoofdstukken erbij."}</script>
+<script>
+(() => {
+  'use strict';
+  const data = JSON.parse(document.getElementById('lesson-data').textContent);
+  const blocks = data.blokken;
+  const selectedNumber = Number(new URL(location.href).searchParams.get('blok'));
+  const block = blocks.find(b => b.blok === selectedNumber) || blocks.find(b => b.beschikbaar) || blocks[0];
+  const video = document.getElementById('lesson-video');
+  const subtitles = document.getElementById('lesson-subtitles');
+  const toggle = document.getElementById('subtitle-toggle');
+  const speed = document.getElementById('video-speed');
+  const resume = document.getElementById('video-resume');
+  const status = document.getElementById('video-status');
+  const storageKey = number => 'fa_video_huisvesting_' + number;
+  const time = seconds => {
+    const s = Math.max(0, Math.floor(seconds || 0));
+    return String(Math.floor(s / 60)).padStart(2, '0') + ':' + String(s % 60).padStart(2, '0');
+  };
+  const lessons = b => 'Lesstof: ' + b.lessen.join(', ');
+  function readProgress(number) {
+    try {
+      const saved = JSON.parse(localStorage.getItem(storageKey(number)) || '{}');
+      return {
+        position: Number.isFinite(saved.position) ? Math.max(0, saved.position) : 0,
+        ranges: Array.isArray(saved.ranges) ? saved.ranges.filter(r => Array.isArray(r) && r.length === 2 && r.every(Number.isFinite) && r[0] >= 0 && r[1] > r[0]) : [],
+        viewed: saved.viewed === true
+      };
+    } catch (_) { return { position: 0, ranges: [], viewed: false }; }
+  }
+  const progress = readProgress(block.blok);
+  const savedPosition = progress.position;
+  let dirty = false;
+  let lastSave = 0;
+  let metadataReady = false;
+  function markViewed() {
+    const badge = document.querySelector('[data-viewed="' + block.blok + '"]');
+    if (badge) badge.hidden = !progress.viewed;
+  }
+  function saveProgress() {
+    if (!block.beschikbaar || !metadataReady) return;
+    progress.position = video.currentTime;
+    // Merge the actual played ranges across sessions. Seeking does not count as viewing.
+    const ranges = progress.ranges.slice();
+    for (let i = 0; i < video.played.length; i++) ranges.push([video.played.start(i), video.played.end(i)]);
+    ranges.sort((a, b) => a[0] - b[0]);
+    const merged = [];
+    for (const [a, b] of ranges) {
+      const start = Math.min(a, video.duration), end = Math.min(b, video.duration);
+      if (end <= start) continue;
+      const last = merged[merged.length - 1];
+      if (last && start <= last[1]) last[1] = Math.max(last[1], end);
+      else merged.push([start, end]);
+    }
+    progress.ranges = merged;
+    if (merged.reduce((sum, r) => sum + r[1] - r[0], 0) > video.duration * .9) progress.viewed = true;
+    try { localStorage.setItem(storageKey(block.blok), JSON.stringify(progress)); } catch (_) {}
+    markViewed();
+    lastSave = Date.now();
+  }
+  const currentUrl = new URL(location.href);
+  currentUrl.searchParams.set('blok', block.blok);
+  history.replaceState(null, '', currentUrl);
+  document.getElementById('video-title').textContent = block.titel;
+  document.getElementById('video-meta').textContent = 'Blok ' + String(block.blok).padStart(2, '0') + ' · ' + lessons(block) + (block.duur ? ' · ' + time(block.duur) : '');
+  video.setAttribute('aria-label', 'Lesvideo: ' + block.titel);
+  document.getElementById('video-count').textContent = blocks.filter(b => b.beschikbaar).length + ' van ' + blocks.length + " video's beschikbaar. Je voortgang wordt in deze browser bewaard.";
+
+  for (const b of blocks) {
+    const li = document.createElement('li');
+    const link = document.createElement('a');
+    const url = new URL(location.href);
+    url.searchParams.set('blok', b.blok);
+    link.href = url.pathname + url.search;
+    link.className = 'video-card';
+    link.style.setProperty('--block-color', b.kleur);
+    if (b.blok === block.blok) link.setAttribute('aria-current', 'true');
+    const top = document.createElement('div');
+    top.className = 'video-card-top';
+    const num = document.createElement('span');
+    num.textContent = 'Blok ' + String(b.blok).padStart(2, '0');
+    const state = document.createElement('span');
+    state.textContent = !b.beschikbaar ? 'Volgt binnenkort' : b.blok === block.blok ? 'Gekozen video' : 'Beschikbaar';
+    top.append(num, state);
+    const title = document.createElement('h3');
+    title.textContent = b.titel;
+    const meta = document.createElement('p');
+    meta.textContent = lessons(b) + (b.duur ? ' · ' + time(b.duur) : ' · Duur volgt');
+    const badge = document.createElement('span');
+    badge.className = 'video-viewed';
+    badge.dataset.viewed = b.blok;
+    badge.textContent = 'Bekeken';
+    badge.hidden = !readProgress(b.blok).viewed;
+    link.append(top, title, meta, badge);
+    li.append(link);
+    document.getElementById('video-grid').append(li);
+  }
+
+  const chapterButtons = [];
+  block.hoofdstukken.forEach((chapter, i) => {
+    const li = document.createElement('li');
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.disabled = true;
+    const stamp = document.createElement('time');
+    stamp.textContent = chapter.start === null ? 'Volgt' : time(chapter.start);
+    if (chapter.start !== null) stamp.dateTime = 'PT' + chapter.start + 'S';
+    const label = document.createElement('span');
+    label.textContent = chapter.titel;
+    button.append(stamp, label);
+    button.addEventListener('click', () => {
+      video.currentTime = chapter.start;
+      dirty = true;
+      resume.hidden = true;
+      status.textContent = 'Hoofdstuk ' + (i + 1) + ': ' + chapter.titel + ', ' + time(chapter.start) + '. Druk op afspelen om te kijken.';
+      updateChapter();
+    });
+    chapterButtons.push(button);
+    li.append(button);
+    document.getElementById('chapter-list').append(li);
+  });
+  function updateChapter() {
+    let active = -1;
+    block.hoofdstukken.forEach((c, i) => { if (c.start !== null && video.currentTime >= c.start) active = i; });
+    chapterButtons.forEach((button, i) => {
+      if (i === active) button.setAttribute('aria-current', 'true');
+      else button.removeAttribute('aria-current');
+    });
+  }
+  function updateSubtitles() {
+    toggle.setAttribute('aria-pressed', String(subtitles.track.mode === 'showing'));
+  }
+  if (block.beschikbaar) {
+    video.hidden = false;
+    document.getElementById('video-controls').hidden = false;
+    video.poster = block.poster;
+    subtitles.src = block.vtt;
+    video.addEventListener('loadedmetadata', () => {
+      metadataReady = Number.isFinite(video.duration) && video.duration > 0;
+      if (!metadataReady) return;
+      speed.disabled = false;
+      toggle.disabled = false;
+      subtitles.track.mode = 'hidden';
+      updateSubtitles();
+      chapterButtons.forEach((button, i) => { button.disabled = block.hoofdstukken[i].start === null; });
+      if (savedPosition > 0 && savedPosition < video.duration - 1) {
+        resume.textContent = 'Verder kijken bij ' + time(savedPosition);
+        resume.hidden = false;
+      }
+      updateChapter();
+    });
+    video.src = new URL(block.mp4, new URL(data.video_base, location.href)).href;
+    toggle.addEventListener('click', () => {
+      subtitles.track.mode = subtitles.track.mode === 'showing' ? 'hidden' : 'showing';
+      updateSubtitles();
+    });
+    video.textTracks.addEventListener('change', updateSubtitles);
+    subtitles.addEventListener('error', () => {
+      toggle.disabled = true;
+      status.textContent = 'De ondertitels konden niet laden. Probeer de pagina opnieuw te openen.';
+    });
+    speed.addEventListener('change', () => { video.playbackRate = Number(speed.value); });
+    resume.addEventListener('click', () => {
+      video.currentTime = savedPosition;
+      dirty = true;
+      resume.hidden = true;
+      video.focus();
+      status.textContent = 'Verder bij ' + time(savedPosition) + '. Druk op afspelen om te kijken.';
+    });
+    video.addEventListener('play', () => { dirty = true; resume.hidden = true; });
+    video.addEventListener('seeking', () => { dirty = true; });
+    video.addEventListener('seeked', () => { updateChapter(); saveProgress(); });
+    video.addEventListener('timeupdate', () => {
+      updateChapter();
+      if (dirty && Date.now() - lastSave > 5000) saveProgress();
+    });
+    video.addEventListener('pause', () => { if (dirty) saveProgress(); });
+    video.addEventListener('ended', saveProgress);
+    window.addEventListener('pagehide', () => { if (dirty) saveProgress(); });
+    document.addEventListener('visibilitychange', () => { if (document.hidden && dirty) saveProgress(); });
+    video.addEventListener('error', () => {
+      status.textContent = 'De video kon niet laden. Probeer het later opnieuw of kies een ander blok.';
+    });
+  } else {
+    document.getElementById('video-upcoming').hidden = false;
+    status.textContent = 'Deze video is nog niet beschikbaar. Kies hieronder een beschikbaar blok.';
+  }
+})();
+</script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+<script src="js/fmatlas.js"></script>
+<script>
+document.getElementById('fa-header-slot').replaceChildren(faRenderHeader());
+</script>
+<script>
+const firebaseConfig = {
+  apiKey: "AIzaSyBB397Wk2eqpBjic8E7aGV1mTgIjhQ21a8",
+  authDomain: "fmkompas-ff8bc.firebaseapp.com",
+  projectId: "fmkompas-ff8bc",
+  storageBucket: "fmkompas-ff8bc.firebasestorage.app",
+  messagingSenderId: "487972024689",
+  appId: "1:487972024689:web:712c3117080745d14746d0"
+};
+firebase.initializeApp(firebaseConfig);
+firebase.auth().onAuthStateChanged(user => {
+  document.getElementById('fa-header-slot').replaceChildren(faRenderHeader({ user }));
+  faMarkActiveToday();
+});
+</script>
+</body>
+</html>
