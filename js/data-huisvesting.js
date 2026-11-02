@@ -4404,6 +4404,223 @@ window.HUIV = {
      "model": "Een PvE dat de huidige werkwijze tot in detail vastlegt, veroudert zodra de organisatie verandert. Ambities en doelen zijn houdbaarder dan de technische uitwerking. Daarom formuleer je een <strong>gedeelde ambitie</strong> van opdrachtgever, eindgebruiker en beheerder en maak je elke belangrijke eis daarnaar <strong>herleidbaar</strong> ('daarom willen wij dit'). Eisen zijn SMART en beschrijven wat een ruimte moet kunnen, niet hoe die eruitziet. Voorbeeld: niet 'een glazen gevel in de hal', maar 'omdat we open en transparant willen zijn, heeft de centrale hal veel daglicht en een open uitstraling naar binnen en buiten'. Adaptiviteit en multifunctioneel gebruik worden volgens het artikel de norm, dus het PvE laat ruimte voor ontwikkeling."
     }
    ]
+  },
+  {
+   "title": "Oefentoets 6 · inzicht met afbeeldingen",
+   "cesuur": 55,
+   "mc": [
+    {
+     "section": "Les 1.1 · huisvestingscyclus",
+     "text": "Een organisatie zit acht jaar in haar gebouw en laat een post-occupancy evaluation (POE) uitvoeren. Waar hoort die evaluatie in de cyclus op de afbeelding, en waarom is hij nodig om de cirkel rond te maken?",
+     "img": "media/huisvesting/toets-4/vraag-4.jpg",
+     "alt": "De huisvestingscyclus met vier kwadranten: visie en strategie, initiatief en haalbaarheid, ontwerp en realisatie, exploitatie en beheer",
+     "options": [
+      "In exploitatie en beheer; de uitkomsten voeden de volgende ronde van visie en strategie",
+      "In ontwerp en realisatie; zo kan de architect het ontwerp vóór de oplevering nog op tijd aanpassen",
+      "In initiatief en haalbaarheid; de POE bepaalt of een verhuizing betaalbaar is",
+      "In visie en strategie; de POE vervangt daar het programma van eisen"
+     ],
+     "answer": 0,
+     "explanation": "Een POE kijkt na ingebruikname hoe het gebouw in de praktijk werkt, dus in de fase exploitatie en beheer. Huisvesten is een continu proces: wat de POE oplevert, gaat terug naar visie en strategie en kan een nieuwe ronde van de cyclus starten. Een POE vervangt geen PvE en komt pas na de oplevering."
+    },
+    {
+     "section": "Les 1.2 · impact van huisvesting",
+     "text": "Een kantoor stelt zijn binnentuin en vergaderzalen 's avonds open voor buurtverenigingen. Omwonenden waarderen dat, en medewerkers zijn daardoor trotser op hun werkgever. Welke pijlen uit het schema beschrijven deze redenering?",
+     "img": "media/huisvesting/toets-4/vraag-9.jpg",
+     "alt": "Schema van de impact van huisvesting met directe pijlen a tot en met d en indirecte pijlen e tot en met h tussen mensen, proces en product, maatschappij en economie",
+     "options": [
+      "Pijl a en daarna pijl e",
+      "Pijl a, daarna pijl e en dan pijl f",
+      "Pijl c en daarna pijl h",
+      "Pijl b en daarna pijl f"
+     ],
+     "answer": 2,
+     "explanation": "Het openstellen voor de buurt is direct maatschappelijke impact (pijl c). Die werkt door op mensen, de trots van medewerkers (pijl h, van maatschappij naar mensen). Pijl g loopt van maatschappij naar economie en a en e beginnen bij de mensen zelf, niet bij de buurt."
+    },
+    {
+     "section": "Les 1.3 · tekeningen lezen",
+     "text": "Een facility manager wil voor een nieuw woonblok beoordelen hoe de tuinen ten opzichte van de zon liggen en hoe de bouwblokken bij elkaar staan. Wat haalt hij uit deze situatietekening dat hij níet uit de plattegrond van één woning haalt?",
+     "img": "media/huisvesting/toets-4/vraag-16.jpg",
+     "alt": "Situatietekening van zes bouwblokken met genummerde woningen, parkeerplaatsen, bomen, water en een noordpijl",
+     "options": [
+      "De draairichting van alle deuren binnen in elke afzonderlijke woning",
+      "De vrije hoogte onder het dak van elke afzonderlijke woning",
+      "Het bruto vloeroppervlak van elke woning volgens NEN 2580",
+      "De ligging ten opzichte van de zon en van de andere bouwblokken"
+     ],
+     "answer": 3,
+     "explanation": "Een situatietekening toont het project op de kavel: de plek van de gebouwen, de erfgrenzen, de omgeving en met een noordpijl de ligging ten opzichte van de zon. Deuren met draairichting zie je op de plattegrond, hoogtes in een doorsnede, en vloeroppervlakken bereken je uit de plattegronden."
+    },
+    {
+     "section": "Les 2.1 · bouwkunde",
+     "text": "Een eigenaar wil bij deze spouwmuur de spouw helemaal volstorten met isolatie en de open stootvoegen in het buitenblad dichtzetten, 'tegen de tocht'. Waarom is dat vanuit de opbouw op de afbeelding een slecht idee?",
+     "img": "media/huisvesting/toets-4/vraag-22.jpg",
+     "alt": "Opbouw van een spouwmuur: binnenblad, spouwisolatie, luchtspouw, spouwankers en een buitenblad van baksteen",
+     "options": [
+      "Isolatie hoort juist tegen het buitenblad, dus volstorten zit precies verkeerd om",
+      "De luchtspouw en de open stootvoegen ventileren de muur en voeren vocht af",
+      "Spouwankers mogen niet in isolatie zitten, dan roesten ze direct door",
+      "Open stootvoegen zijn alleen nodig zolang het metselwerk nog uithardt"
+     ],
+     "answer": 1,
+     "explanation": "In een spouwmuur zit de isolatie altijd tegen het binnenblad; daarachter blijft een luchtspouw, en de open stootvoegen ventileren die spouw. Zo kan vocht dat door het buitenblad komt weg. Dicht je spouw en stootvoegen, dan verdwijnt die afvoer. Isolatie tegen het buitenblad is juist de omgekeerde opbouw."
+    },
+    {
+     "section": "Les 2.3 en 3.2 · werkplekconcepten",
+     "text": "Een organisatie wil overstappen op werken in bruis, ruis en rust, met een profiel van 20% geconcentreerd, 50% routinematig en 30% communicatief werk. Welke uitspraak over plattegrond A en B klopt?",
+     "img": "media/huisvesting/toets-4/vraag-27.jpg",
+     "alt": "Plattegrond A met tien kamers langs een gang en één vergaderruimte; plattegrond B met open werkplekken, focusplekken, stilteplek, belplek, overlegruimtes, projectruimte en een koffie- en ontmoetingsplek",
+     "options": [
+      "B, want die heeft plekken voor alle drie de zones; A heeft vooral rustplekken",
+      "A, want aparte kamers geven iedereen rust en daarmee de hoogste productiviteit",
+      "B, want open werkplekken zijn bij hybride werken voor iedereen het beste",
+      "Geen van beide, want bruis, ruis en rust vraagt drie aparte verdiepingen"
+     ],
+     "answer": 0,
+     "explanation": "Plattegrond A is een kamerkantoor: rust en een vergaderruimte, met weinig ontmoeting. Plattegrond B heeft bruis (koffie en informeel, ontmoeten), ruis (open werkplekken, overleg, projectruimte) en rust (focus, stilteplek, belplek). Bij dit profiel moet de inrichting alle drie bieden. Open werkplekken zijn niet voor iedereen het beste: de rustzone blijft nodig."
+    },
+    {
+     "section": "Les 3.2 · bruis, ruis en rust",
+     "text": "Een adviseur komt om 10:30 op kantoor binnen, heeft om 11:00 een afspraak en wil in dat halfuur zijn mail wegwerken en een collega even bijpraten. Waar past dat volgens het concept op de afbeelding het best?",
+     "img": "media/huisvesting/toets-4/vraag-37.jpg",
+     "alt": "Het bruis-ruis-rustconcept van Buro Wierda: van bruis (ontmoeten) via ruis (samenwerken) naar rust (concentratie)",
+     "options": [
+      "Rust: een stilteruimte, omdat het lezen van mail om concentratie vraagt",
+      "Ruis: een vaste projectruimte, omdat hij daar ook kan overleggen met zijn team",
+      "Rust: thuis, omdat het kantoor alleen nog een ontmoetingsplek is",
+      "Bruis: een aanlandplek in het werkcafé, voor kort werken tussen afspraken"
+     ],
+     "answer": 3,
+     "explanation": "Aanlanden, kort werken tussen afspraken, is een bouwsteen van de bruiszone, net als bijpraten en informeel overleg. Een stilteruimte is voor langer geconcentreerd werk, en een projectruimte reserveer je niet voor een halfuur. Het kantoor faciliteert ook rust, maar daar gaat deze situatie niet over."
+    },
+    {
+     "section": "Les 3.2 · bezetting en werkplekken",
+     "text": "Een organisatie met 120 fte richt op basis van de gemiddelde bezetting op de afbeelding 64 werkplekken in. Wat gaat er mis?",
+     "img": "media/huisvesting/toets-6/kantoorkameel.svg",
+     "alt": "Staafdiagram van de bezetting per dag: maandag 45%, dinsdag 70%, woensdag 50%, donderdag 70%, vrijdag 30%, met een stippellijn bij het gemiddelde van 53%",
+     "options": [
+      "Op vrijdag staan 28 plekken leeg, dus er moeten er minder komen",
+      "Niets, want de flexfactor vangt de piekdagen al vanzelf op",
+      "Op dinsdag en donderdag komen 84 mensen op 64 plekken",
+      "Er zijn 56 plekken te weinig, want je rekent met 120 personen"
+     ],
+     "answer": 2,
+     "explanation": "Het gemiddelde is (45 + 70 + 50 + 70 + 30) / 5 = 53%, en 120 x 0,53 is ongeveer 64. Maar op dinsdag en donderdag is 70% er: 120 x 0,7 = 84 mensen, dus 20 te weinig plekken. Dit is de kantoorkameel: ontwerp niet op het gemiddelde zonder naar de piek te kijken. De lege plekken op vrijdag zijn het gevolg daarvan, geen reden om te schrappen."
+    },
+    {
+     "section": "Les 4.2 en 4.3 · ruimtestaat en vlekkenplan",
+     "text": "Afdeling Y heeft 15 medewerkers en 12 fte. De ruimtestaat rekent met flexfactor 0,8, 7 m2 per werkplek en 10% circulatie. In het vlekkenplan op de afbeelding krijgt afdeling Y 99 m2. Wat volgt hieruit?",
+     "img": "media/huisvesting/toets-4/vraag-49.jpg",
+     "alt": "Vlekkenplan van een verdieping met afdeling X 70 m2, Y 99 m2, Z 84 m2, Q 90 m2, directie 104 m2 en een vlek met vraagtekens",
+     "options": [
+      "Ongeveer 15 m2 indelingsverlies, want 12 fte keer 7 m2 is precies 84 m2",
+      "Ongeveer 25 m2 indelingsverlies; bedenk daar een passende functie voor",
+      "Ongeveer 17 m2 te weinig, want 15 medewerkers vragen ruim 115 m2",
+      "Geen verschil, want een vlek volgt altijd precies de ruimtestaat"
+     ],
+     "answer": 1,
+     "explanation": "12 fte x 0,8 = 9,6 werkplekken x 7 m2 = 67,2 m2, plus 10% circulatie = ongeveer 74 m2. De vlek is 99 m2, dus ongeveer 25 m2 indelingsverlies. Wie de flexfactor vergeet komt op 84 m2, wie met medewerkers rekent op 115,5 m2. Vlekken volgen meestal de stramienmaten, daardoor wijken ze af van de ruimtestaat."
+    },
+    {
+     "section": "Les 4.3 · relatieschema",
+     "text": "Het ontwerpteam legt vier functies naast elkaar langs één lange zone, van de entree naar achteren. Welke volgorde past bij de relatiematrix op de afbeelding?",
+     "img": "media/huisvesting/toets-6/relatiematrix.svg",
+     "alt": "Relatiematrix met receptie, werkcafé, open werkplekken, stilteruimte en directie; p is primaire relatie, s secundair, a anti-relatie",
+     "options": [
+      "Receptie, stilteruimte, open werkplekken, werkcafé",
+      "Werkcafé, stilteruimte, receptie, open werkplekken",
+      "Receptie, werkcafé, open werkplekken, stilteruimte",
+      "Receptie, open werkplekken, werkcafé en stilteruimte achteraan"
+     ],
+     "answer": 2,
+     "explanation": "Receptie en werkcafé (p), werkcafé en open werkplekken (p) en open werkplekken en stilteruimte (p) moeten naast elkaar. De stilteruimte heeft een anti-relatie met receptie en werkcafé en ligt dus achteraan. Dat is ook de lijn van bruis naar rust. In de andere volgordes ligt de stilteruimte naast de receptie of het werkcafé."
+    },
+    {
+     "section": "Les 5.1 · gebruiksoppervlak",
+     "text": "Bepaal het gebruiksoppervlak (GO) van de zolderverdieping op de afbeelding.",
+     "img": "media/huisvesting/toets-6/gebruiksoppervlak.svg",
+     "alt": "Plattegrond van een zolder van 20 bij 10 meter met een strook onder 1,5 m vrije hoogte, een dragende binnenwand, een liftschacht, een trapgat en een kleine leidingschacht",
+     "options": [
+      "168,4 m2",
+      "175 m2",
+      "192 m2",
+      "172 m2"
+     ],
+     "answer": 3,
+     "explanation": "Van 200 m2 gaan af: de strook onder 1,5 m vrije hoogte (20 m2), de dragende binnenwand (10 x 0,3 = 3 m2) en de liftschacht (2 x 2,5 = 5 m2, groter dan 4 m2). Het trapgat is 3,6 m2 en de leidingschacht 0,36 m2; die blijven onder de grenzen van 4 m2 en 0,5 m2 en tellen dus mee. 200 - 20 - 3 - 5 = 172 m2."
+    },
+    {
+     "section": "Les 5.1 · plantoetsing",
+     "text": "Bij een plantoetsing van deze Montessorischool benoem je eerst de gebruiksfuncties. Welke benadering is juist?",
+     "img": "media/huisvesting/toets-4/vraag-54.png",
+     "alt": "Plattegrond van Montessorischool Lindenholt met lokalen H1 tot en met H9 rond een aula, een speellokaal, twee ingangen en een schuur",
+     "options": [
+      "Per ruimte: lokalen onderwijs, aula bijeenkomst, speellokaal sport",
+      "Eén onderwijsfunctie voor het geheel, want het gebouw is een school",
+      "Alleen de lokalen hebben een functie; aula en speellokaal zijn restruimte",
+      "De aula en het speellokaal zijn verblijfsruimtes en hebben dus geen functie"
+     ],
+     "answer": 0,
+     "explanation": "Een gebruiksfunctie hoort bij een ruimte, niet bij het hele gebouw; een school heeft volgens de les vaak een onderwijs-, bijeenkomst-, sport- en kantoorfunctie. Restruimte is ruimte die je niet kunt benoemen, en een verblijfsruimte is juist een ruimte binnen een gebruiksfunctie."
+    },
+    {
+     "section": "Les 6.1 · circulair bouwen",
+     "text": "Een kantoor vervangt zijn tapijttegels. De leverancier neemt de oude tegels terug, reinigt ze en levert ze aan een ander kantoor. Waar zit dit in het vlindermodel, en waarom is het beter dan recycling?",
+     "img": "media/huisvesting/toets-4/vraag-73.jpg",
+     "alt": "Het vlindermodel van circulair bouwen met een biologische en een technische kringloop en lussen voor onderhoud, hergebruik, herstel en recycling",
+     "options": [
+      "Biologische kringloop, cascadering: de tegels krijgen een lagere toepassing",
+      "Technische kringloop, hergebruik: een kleinere lus die meer waarde behoudt",
+      "Technische kringloop, recycling: het materiaal gaat terug naar de makers",
+      "Energieterugwinning: de tegels verlaten de kringloop en leveren energie"
+     ],
+     "answer": 1,
+     "explanation": "Tapijttegels zijn een technisch product, dus de rechterkant van de vlinder. Reinigen en opnieuw leveren is hergebruik en herdistributie: een lus dicht bij de gebruiker, waarbij het product zelf behouden blijft. Bij recycling wordt het product afgebroken tot materiaal en gaat er meer waarde verloren. Energieterugwinning is het einde van de kringloop."
+    },
+    {
+     "section": "Les 6.3 · NEN 2767",
+     "text": "Op de afbeelding staan drie gebreken van één gevel van 800 m2 metselwerk. Welk gebrek geeft de slechtste conditiescore?",
+     "img": "media/huisvesting/toets-6/gevel.svg",
+     "alt": "Inspectie van een gevel van 800 m2 met drie gebreken: een constructieve scheur in eindstadium over 24 m2, verzanding van voegwerk in gevorderd stadium over 200 m2 en algen en mos in beginstadium over 600 m2",
+     "options": [
+      "De algen en het mos, met conditie 4",
+      "De verzanding, met conditie 3",
+      "De scheur, met conditie 3",
+      "De scheur, met conditie 2"
+     ],
+     "answer": 2,
+     "explanation": "Scheur: ernstig, hoog, 24 / 800 = 3% dus omvang 2, conditie 3. Verzanding: serieus, midden, 200 / 800 = 25% dus omvang 3, conditie 2. Algen: gering, laag, 600 / 800 = 75% dus omvang 5, conditie 2. Het grootste oppervlak is dus niet het slechtste gebrek: de ernst weegt zwaar."
+    },
+    {
+     "section": "Les 6.2 · onderhoudsbeheercyclus",
+     "text": "Na een jaar blijkt dat de prijzen voor dakbedekking 20% hoger liggen dan in het MJOP is geraamd. Waar komt die informatie in het schema binnen, en wat verandert daardoor?",
+     "img": "media/huisvesting/toets-4/vraag-91.jpg",
+     "alt": "Figuur 11.9, planning en budgettering van onderhoud: strategie, prijzen en normen, inventarisatie en inspectie leiden tot MJOP met raming, jaarplan met begroting, plan met budget en opdracht, met bijsturing terug",
+     "options": [
+      "Bij de opdracht; de aannemer moet het verschil in prijs zelf opvangen",
+      "Bij de strategie; die verandert automatisch in bruikbaar houden",
+      "Bij de inspectie; de conditiescore van het dak gaat erdoor omhoog",
+      "Bij prijzen en normen; daarna worden raming en begroting bijgesteld"
+     ],
+     "answer": 3,
+     "explanation": "De cyclus loopt van strategie, prijzen en normen, inventarisatie en inspectie naar het MJOP met raming, het jaarplan met begroting, het plan met budget en de opdracht. Via bijsturing gaat informatie terug naar de invoer. Een hogere prijs verandert de prijzen en normen, en dus de raming en begroting, niet de conditie van het dak."
+    },
+    {
+     "section": "Les 7.2 · MJOP",
+     "text": "In dit MJOP-overzicht staat in 2019 bij dakafwerkingen € 57.880 (rood omlijnd), en daarna om de paar jaar € 1.621. Welke lezing is het meest logisch?",
+     "img": "media/huisvesting/toets-4/vraag-85.jpg",
+     "alt": "MJOP-overzicht per hoofdgroep van 2019 tot en met 2028 met kosten per jaar, totaal, btw en totaal inclusief btw",
+     "options": [
+      "Eenmalig vervangen in 2019, daarna terugkerend klein onderhoud",
+      "Een jaarlijkse post in 2019, die na een korting zakt naar € 1.621",
+      "Het dak is na 2019 conditie 1, dus daarna is alleen inspectie nodig",
+      "€ 57.880 is inclusief btw en € 1.621 is het bedrag zonder btw"
+     ],
+     "answer": 0,
+     "explanation": "Een MJOP zet per element de maatregelen per jaar uiteen, zodat grote pieken en terugkerende posten zichtbaar worden. De grote post in 2019 is een vervanging; de kleine terugkerende post is periodiek onderhoud. Ook een nieuw dak heeft onderhoud nodig, en de btw staat in dit overzicht in aparte regels onderaan."
+    }
+   ],
+   "open": []
   }
  ]
 };

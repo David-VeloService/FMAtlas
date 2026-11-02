@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="400" viewBox="0 0 720 400" font-family="system-ui,-apple-system,Segoe UI,Arial,sans-serif">
+<rect width="720" height="400" fill="#fff"/>
+<text x="24" y="34" font-size="18" font-weight="700" fill="#222">Inspectie gevel kantoor · metselwerk, totaal 800 m²</text>
+<rect x="24" y="56" width="430" height="300" fill="#c9764f" stroke="#7a3f25" stroke-width="2"/>
+<g stroke="#a65d3c" stroke-width="1">
+<line x1="24" y1="86" x2="454" y2="86"/><line x1="24" y1="116" x2="454" y2="116"/><line x1="24" y1="146" x2="454" y2="146"/><line x1="24" y1="176" x2="454" y2="176"/><line x1="24" y1="206" x2="454" y2="206"/><line x1="24" y1="236" x2="454" y2="236"/><line x1="24" y1="266" x2="454" y2="266"/><line x1="24" y1="296" x2="454" y2="296"/><line x1="24" y1="326" x2="454" y2="326"/></g>
+<g fill="#dfe9f2" stroke="#555" stroke-width="2"><rect x="60" y="96" width="70" height="60"/><rect x="190" y="96" width="70" height="60"/><rect x="320" y="96" width="70" height="60"/><rect x="60" y="206" width="70" height="60"/><rect x="190" y="206" width="70" height="60"/><rect x="320" y="206" width="70" height="60"/></g>
+<rect x="24" y="290" width="430" height="66" fill="#5f8f3f" fill-opacity="0.45"/>
+<rect x="140" y="160" width="160" height="40" fill="#e9d38b" fill-opacity="0.7" stroke="#b08a1a" stroke-dasharray="5 4"/>
+<path d="M410 70 L404 100 L414 125 L405 150 L413 178" stroke="#111" stroke-width="3" fill="none"/>
+<g font-size="15" fill="#222">
+<circle cx="485" cy="88" r="11" fill="#111"/><text x="481" y="93" fill="#fff" font-size="13" font-weight="700">1</text>
+<text x="506" y="84" font-weight="700">Constructieve scheur</text><text x="506" y="104">eindstadium · 24 m²</text>
+<circle cx="485" cy="168" r="11" fill="#b08a1a"/><text x="481" y="173" fill="#fff" font-size="13" font-weight="700">2</text>
+<text x="506" y="164" font-weight="700">Verzanding voegwerk</text><text x="506" y="184">gevorderd stadium · 200 m²</text>
+<circle cx="485" cy="248" r="11" fill="#5f8f3f"/><text x="481" y="253" fill="#fff" font-size="13" font-weight="700">3</text>
+<text x="506" y="244" font-weight="700">Algen en mos</text><text x="506" y="264">beginstadium · 600 m²</text>
+</g>
+<text x="24" y="384" font-size="13" fill="#555">Schematisch, niet op schaal. Oppervlaktes uit de inspectie.</text>
+</svg>
