@@ -2799,14 +2799,16 @@ window.HUIV = {
     },
     {
      "section": "Les 1.1 · huisvesting",
-     "text": "Vraag 4. Bekijk de afbeelding van de huisvestingscyclus. Een organisatie heeft besloten te verhuizen en brengt vervolgens systematisch in kaart waaraan het nieuwe gebouw moet voldoen. Bij welke stap past dit het best? (De afbeelding staat in de pdf van de docent.)",
+     "text": "Vraag 4. Bekijk de afbeelding van de huisvestingscyclus. Een organisatie heeft besloten te verhuizen en brengt vervolgens systematisch in kaart waaraan het nieuwe gebouw moet voldoen. Bij welke stap past dit het best?",
      "options": [
       "Beheer en exploitatie",
       "Startpunt",
       "Programma van eisen"
      ],
      "answer": 2,
-     "explanation": "Eisen aan nieuwe huisvesting worden vastgelegd in het programma van eisen. (Antwoordmodel van de docent.)"
+     "explanation": "Eisen aan nieuwe huisvesting worden vastgelegd in het programma van eisen. (Antwoordmodel van de docent.)",
+     "img": "media/huisvesting/toets-4/vraag-4.jpg",
+     "alt": "Schema van de huisvestingscyclus"
     },
     {
      "section": "Les 1.1 · huisvesting",
@@ -2854,14 +2856,16 @@ window.HUIV = {
     },
     {
      "section": "Les 1.2 · Organisatiegericht huisvesten",
-     "text": "Vraag 9. Bekijk de onderstaande afbeelding over de impact van huisvesting. Welke interpretatie past het beste bij de boodschap van deze afbeelding? (De afbeelding staat in de pdf van de docent.)",
+     "text": "Vraag 9. Bekijk de onderstaande afbeelding over de impact van huisvesting. Welke interpretatie past het beste bij de boodschap van deze afbeelding?",
      "options": [
       "Huisvesting beïnvloedt alleen de kosten van een organisatie",
       "Huisvesting kan gevolgen hebben voor meerdere onderdelen en prestaties van een organisatie",
       "De impact van huisvesting ontstaat pas nadat een gebouw is afgeschreven"
      ],
      "answer": 1,
-     "explanation": "Huisvesting kan meerdere onderdelen en prestaties van een organisatie beïnvloeden. (Antwoordmodel van de docent.)"
+     "explanation": "Huisvesting kan meerdere onderdelen en prestaties van een organisatie beïnvloeden. (Antwoordmodel van de docent.)",
+     "img": "media/huisvesting/toets-4/vraag-9.jpg",
+     "alt": "Afbeelding over de impact van huisvesting"
     },
     {
      "section": "Les 1.2 · Organisatiegericht huisvesten",
@@ -2931,14 +2935,16 @@ window.HUIV = {
     },
     {
      "section": "Les 1.3 · Tekeningen lezen",
-     "text": "Vraag 16. Bekijk de situatietekening. Een facility manager wil beoordelen of de ligging van een gebouw op het perceel en de oriëntatie ten opzichte van de zon gunstig zijn. Waarom is juist deze tekening hiervoor geschikt? (De afbeelding staat in de pdf van de docent.)",
+     "text": "Vraag 16. Bekijk de situatietekening. Een facility manager wil beoordelen of de ligging van een gebouw op het perceel en de oriëntatie ten opzichte van de zon gunstig zijn. Waarom is juist deze tekening hiervoor geschikt?",
      "options": [
       "Omdat een situatietekening uitsluitend de inrichting van afzonderlijke ruimten weergeeft",
       "Omdat een situatietekening de positie van gebouw, perceelgrenzen en noordrichting in samenhang laat zien",
       "Omdat een situatietekening vooral materiaalverbindingen op ware grootte toont"
      ],
      "answer": 1,
-     "explanation": "Een situatietekening toont gebouw, perceel en noordrichting in samenhang. (Antwoordmodel van de docent.)"
+     "explanation": "Een situatietekening toont gebouw, perceel en noordrichting in samenhang. (Antwoordmodel van de docent.)",
+     "img": "media/huisvesting/toets-4/vraag-16.jpg",
+     "alt": "Situatietekening"
     },
     {
      "section": "Les 1.3 · Tekeningen lezen",
@@ -2997,14 +3003,16 @@ window.HUIV = {
     },
     {
      "section": "Les 2.1 · Inleiding in de Bouwkunde",
-     "text": "Vraag 22. Bekijk de afbeelding van de spouwmuur. Waarom wordt isolatiemateriaal tegen het binnenspouwblad geplaatst en blijft er een spouw aanwezig? (De afbeelding staat in de pdf van de docent.)",
+     "text": "Vraag 22. Bekijk de afbeelding van de spouwmuur. Waarom wordt isolatiemateriaal tegen het binnenspouwblad geplaatst en blijft er een spouw aanwezig?",
      "options": [
       "Om warmteverlies te beperken en tegelijk ruimte te houden voor vochtbeheersing en ventilatie",
       "Om de buitenmuur minder zwaar te maken",
       "Beide antwoorden zijn juist"
      ],
      "answer": 0,
-     "explanation": "Een spouwmuur combineert een binnenblad, isolatie en een spouw. De isolatie beperkt warmteverlies, terwijl de spouw helpt bij de vochtbeheersing en kan worden geventileerd. (Antwoordmodel van de docent.)"
+     "explanation": "Een spouwmuur combineert een binnenblad, isolatie en een spouw. De isolatie beperkt warmteverlies, terwijl de spouw helpt bij de vochtbeheersing en kan worden geventileerd. (Antwoordmodel van de docent.)",
+     "img": "media/huisvesting/toets-4/vraag-22.jpg",
+     "alt": "Doorsnede van een spouwmuur met buitenblad, spouwisolatie, spouwankers en luchtspouw"
     },
     {
      "section": "Les 2.1 · Inleiding in de Bouwkunde",
@@ -3059,7 +3067,9 @@ window.HUIV = {
       "Dat is niet te beantwoorden omdat dit afhankelijk is van het soort organisatie"
      ],
      "answer": 2,
-     "explanation": "Een activiteit gerelateerd kantoor heeft beschikking over meerdere werkplekconcepten die verschillende activiteiten kunnen ondersteunen. (Antwoordmodel van de docent.)"
+     "explanation": "Een activiteit gerelateerd kantoor heeft beschikking over meerdere werkplekconcepten die verschillende activiteiten kunnen ondersteunen. (Antwoordmodel van de docent.)",
+     "img": "media/huisvesting/toets-4/vraag-27.jpg",
+     "alt": "Twee kantoorplattegronden, A met kamers langs een gang en B met open werkplekken en verschillende werkplekken"
     },
     {
      "section": "Les 2.3 · Mensgericht huisvesten",
@@ -3096,7 +3106,7 @@ window.HUIV = {
     },
     {
      "section": "Les 2.3 · Mensgericht huisvesten",
-     "text": "Vraag 31. Bekijk de afbeelding bij density en crowding. Een ruimte bevat objectief veel mensen, maar gebruikers ervaren de situatie niet als storend druk. Hoe moet dit worden geïnterpreteerd? (De afbeelding staat in de pdf van de docent.)",
+     "text": "Vraag 31. Bekijk de afbeelding bij density en crowding. Een ruimte bevat objectief veel mensen, maar gebruikers ervaren de situatie niet als storend druk. Hoe moet dit worden geïnterpreteerd? (In de oefenvragen van de docent staat bij deze vraag geen afbeelding.)",
      "options": [
       "De density is hoog, terwijl de ervaren crowding laag kan zijn",
       "Density en crowding betekenen hetzelfde, maar worden anders gemeten",
@@ -3162,14 +3172,16 @@ window.HUIV = {
     },
     {
      "section": "Les 3.2 · Hybride werken en werkplekconcepten",
-     "text": "Vraag 37. Bekijk de afbeelding van het bruis-ruis-rustconcept. Een medewerker wil een complex document schrijven zonder afleiding. Welke zone past daar het beste bij? (De afbeelding staat in de pdf van de docent.)",
+     "text": "Vraag 37. Bekijk de afbeelding van het bruis-ruis-rustconcept. Een medewerker wil een complex document schrijven zonder afleiding. Welke zone past daar het beste bij?",
      "options": [
       "De bruisende zone",
       "De rustige zone",
       "De ruisende zone"
      ],
      "answer": 1,
-     "explanation": "In het bruis-ruis-rustmodel loopt de behoefte van veel communicatie en weinig concentratie naar weinig communicatie en veel concentratie. Voor geconcentreerd individueel werk past daarom de rustige zone. (Antwoordmodel van de docent.)"
+     "explanation": "In het bruis-ruis-rustmodel loopt de behoefte van veel communicatie en weinig concentratie naar weinig communicatie en veel concentratie. Voor geconcentreerd individueel werk past daarom de rustige zone. (Antwoordmodel van de docent.)",
+     "img": "media/huisvesting/toets-4/vraag-37.jpg",
+     "alt": "Het bruis-ruis-rustconcept"
     },
     {
      "section": "Les 3.2 · Hybride werken en werkplekconcepten",
@@ -3294,14 +3306,16 @@ window.HUIV = {
     },
     {
      "section": "Les 4.2 · Ruimtestaat, vlekkenplan en inrichtingsplan",
-     "text": "Vraag 49. Bekijk het voorbeeld van het vlekkenplan. Een afdeling X heeft volgens de ruimtestaat 70 m² nodig, maar krijgt door het gebouwstramien een vlek van 9 × 9 meter. Hoe moet de extra 11 m² worden geïnterpreteerd? (De afbeelding staat in de pdf van de docent.)",
+     "text": "Vraag 49. Bekijk het voorbeeld van het vlekkenplan. Een afdeling X heeft volgens de ruimtestaat 70 m² nodig, maar krijgt door het gebouwstramien een vlek van 9 × 9 meter. Hoe moet de extra 11 m² worden geïnterpreteerd?",
      "options": [
       "Als circulatieruimte die altijd buiten de vlek moet liggen",
       "Als indelingsverlies doordat de ruimtelijke inpassing groter uitvalt dan de berekende ruimtebehoefte",
       "Als een fout waardoor het hele vlekkenplan opnieuw moet worden gemaakt"
      ],
      "answer": 1,
-     "explanation": "De presentatie noemt het verschil tussen de benodigde oppervlakte uit de ruimtestaat en een grotere passende vlek door stramienmaten indelingsverlies. (Antwoordmodel van de docent.)"
+     "explanation": "De presentatie noemt het verschil tussen de benodigde oppervlakte uit de ruimtestaat en een grotere passende vlek door stramienmaten indelingsverlies. (Antwoordmodel van de docent.)",
+     "img": "media/huisvesting/toets-4/vraag-49.jpg",
+     "alt": "Voorbeeld van een vlekkenplan"
     },
     {
      "section": "Les 4.2 · Ruimtestaat, vlekkenplan en inrichtingsplan",
@@ -3349,14 +3363,16 @@ window.HUIV = {
     },
     {
      "section": "Les 5.1 · Regelgeving en plantoetsing",
-     "text": "Vraag 54. Bekijk de plattegrond van de Montessorischool Lindenholt. Waarom kan deze school bij een plantoetsing niet zonder meer als uitsluitend onderwijsfunctie worden beschouwd? (De afbeelding staat in de pdf van de docent.)",
+     "text": "Vraag 54. Bekijk de plattegrond van de Montessorischool Lindenholt. Waarom kan deze school bij een plantoetsing niet zonder meer als uitsluitend onderwijsfunctie worden beschouwd?",
      "options": [
       "Omdat een onderwijsgebouw volgens de presentatie nooit een onderwijsfunctie heeft",
       "Omdat alleen vrijstaande gebouwen verschillende gebruiksfuncties mogen bevatten",
       "Omdat binnen het gebouw verschillende ruimten andere gebruiksfuncties kunnen hebben, zoals bijeenkomst-, sport- en kantoorfunctie"
      ],
      "answer": 2,
-     "explanation": "Het voorbeeld van de school laat zien dat binnen één gebouw meerdere gebruiksfuncties kunnen voorkomen, afhankelijk van de bestemming van ruimten. (Antwoordmodel van de docent.)"
+     "explanation": "Het voorbeeld van de school laat zien dat binnen één gebouw meerdere gebruiksfuncties kunnen voorkomen, afhankelijk van de bestemming van ruimten. (Antwoordmodel van de docent.)",
+     "img": "media/huisvesting/toets-4/vraag-54.png",
+     "alt": "Plattegrond van de Montessorischool Lindenholt"
     },
     {
      "section": "Les 5.1 · Regelgeving en plantoetsing",
@@ -3558,14 +3574,16 @@ window.HUIV = {
     },
     {
      "section": "Les 6.1 · Duurzaamheid",
-     "text": "Vraag 73. Bekijk het vlindermodel van circulair bouwen. Welke interpretatie sluit hier het beste bij aan? (De afbeelding staat in de pdf van de docent.)",
+     "text": "Vraag 73. Bekijk het vlindermodel van circulair bouwen. Welke interpretatie sluit hier het beste bij aan?",
      "options": [
       "Materialen moeten zo lang mogelijk in kringlopen met behoud van waarde blijven",
       "Alle materialen moeten direct worden gerecycled",
       "Afvalverwerking is het belangrijkste doel van circulariteit"
      ],
      "answer": 0,
-     "explanation": "Het vlindermodel laat zien dat behoud, hergebruik, reparatie en refurbishment vaak waardevoller zijn dan recycling. (Antwoordmodel van de docent.)"
+     "explanation": "Het vlindermodel laat zien dat behoud, hergebruik, reparatie en refurbishment vaak waardevoller zijn dan recycling. (Antwoordmodel van de docent.)",
+     "img": "media/huisvesting/toets-4/vraag-73.jpg",
+     "alt": "Figuur 10.22, het vlindermodel van circulair bouwen"
     },
     {
      "section": "Les 6.1 · Duurzaamheid",
@@ -3624,14 +3642,16 @@ window.HUIV = {
     },
     {
      "section": "Les 6.2 · Introductie MJOP",
-     "text": "Vraag 79. Bekijk de onderhoudsbeheercyclus. Welke gedachte past het beste bij deze cyclus? (De afbeelding staat in de pdf van de docent.)",
+     "text": "Vraag 79. Bekijk de onderhoudsbeheercyclus. Welke gedachte past het beste bij deze cyclus?",
      "options": [
       "Onderhoud wordt alleen uitgevoerd wanneer een gebouw ernstige gebreken vertoont",
       "Onderhoud bestaat uit één inspectie waarna het proces stopt",
       "Onderhoud is een continu proces van inspecteren, plannen, uitvoeren en evalueren"
      ],
      "answer": 2,
-     "explanation": "De onderhoudsbeheercyclus laat onderhoud zien als een voortdurend proces van terugkerende stappen. (Antwoordmodel van de docent.)"
+     "explanation": "De onderhoudsbeheercyclus laat onderhoud zien als een voortdurend proces van terugkerende stappen. (Antwoordmodel van de docent.)",
+     "img": "media/huisvesting/toets-4/vraag-79.jpg",
+     "alt": "Figuur 11.9, planning en budgettering van onderhoud"
     },
     {
      "section": "Les 6.2 · Introductie MJOP",
@@ -3690,14 +3710,16 @@ window.HUIV = {
     },
     {
      "section": "Les 6.3 · Soorten onderhoud en NEN2767",
-     "text": "Vraag 85. Bekijk het voorbeeld van een MJOP. Waarom worden onderhoudsactiviteiten vaak geclusterd in één plan? (De afbeelding staat in de pdf van de docent.)",
+     "text": "Vraag 85. Bekijk het voorbeeld van een MJOP. Waarom worden onderhoudsactiviteiten vaak geclusterd in één plan?",
      "options": [
       "Om werkzaamheden en budgetten beter te kunnen plannen en afstemmen",
       "Om inspecties overbodig te maken",
       "Omdat alle bouwdelen altijd tegelijk onderhoud nodig hebben"
      ],
      "answer": 0,
-     "explanation": "Clusteren helpt plannen en budgetteren. (Antwoordmodel van de docent.)"
+     "explanation": "Clusteren helpt plannen en budgetteren. (Antwoordmodel van de docent.)",
+     "img": "media/huisvesting/toets-4/vraag-85.jpg",
+     "alt": "Voorbeeld van een meerjarenonderhoudsplan"
     },
     {
      "section": "Les 6.3 · Soorten onderhoud en NEN2767",
@@ -3756,14 +3778,16 @@ window.HUIV = {
     },
     {
      "section": "Les 7.2 · Van inspectie naar DMJOP",
-     "text": "Vraag 91. Bekijk de planning- en budgetteringscyclus. Welke gedachte staat centraal in dit schema? (De afbeelding staat in de pdf van de docent.)",
+     "text": "Vraag 91. Bekijk de planning- en budgetteringscyclus. Welke gedachte staat centraal in dit schema?",
      "options": [
       "Alleen de begroting bepaalt welk onderhoud wordt uitgevoerd",
       "Inspectie, strategie, planning en budgettering vormen een doorlopend proces",
       "Onderhoud wordt eenmalig gepland en daarna niet meer aangepast"
      ],
      "answer": 1,
-     "explanation": "Het schema laat een continue cyclus van inspecteren, plannen, begroten en bijsturen zien. (Antwoordmodel van de docent.)"
+     "explanation": "Het schema laat een continue cyclus van inspecteren, plannen, begroten en bijsturen zien. (Antwoordmodel van de docent.)",
+     "img": "media/huisvesting/toets-4/vraag-91.jpg",
+     "alt": "Figuur 11.9, planning en budgettering van onderhoud"
     },
     {
      "section": "Les 7.2 · Van inspectie naar DMJOP",

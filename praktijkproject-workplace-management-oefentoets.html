@@ -78,6 +78,7 @@
 .ot-q.answered.wrong .ot-q-num { background: var(--accent); color: #fff; border-color: var(--accent); }
 
 .ot-q-text { font-size: 15.5px; font-weight: 700; color: var(--ink); line-height: 1.45; flex: 1; }
+.ot-q-img { display: block; max-width: 100%; height: auto; margin: 0 0 14px; border: 1px solid var(--line); border-radius: 10px; background: #fff; }
 
 /* Meerkeuze-opties: volle breedte, met letterbadge */
 .ot-opts { display: flex; flex-direction: column; gap: 8px; margin-top: 12px; }
@@ -330,6 +331,7 @@ function renderQuestions() {
         <span class="ot-q-num">${q.num}</span>
         <div class="ot-q-text">${q.text}</div>
       </div>
+      ${q.img ? `<img class="ot-q-img" src="${q.img}" alt="${(q.alt || '').replace(/"/g, '&quot;')}" loading="lazy">` : ''}
       <div class="ot-opts">
         ${q.options.map((opt, i) => `
           <button class="ot-opt" data-idx="${i}" onclick="answer(${q.num}, ${i})">
