@@ -2759,6 +2759,1036 @@ window.HUIV = {
     }
    ],
    "open": []
+  },
+  {
+   "title": "Oefenvragen van de docent · 93 vragen",
+   "cesuur": 55,
+   "mc": [
+    {
+     "section": "Les 1.1 · huisvesting",
+     "text": "Vraag 1. Een organisatie wil een nieuw kantoor kiezen dat goed past bij de mobiliteitsdoelstelling van de organisatie. Welk gebouwkenmerk is dan het meest direct van belang?",
+     "options": [
+      "De gebouwafwerking",
+      "De locatie van het gebouw",
+      "De eigendomsvorm van het meubilair"
+     ],
+     "answer": 1,
+     "explanation": "Locatie is direct bepalend voor bereikbaarheid. (Antwoordmodel van de docent.)"
+    },
+    {
+     "section": "Les 1.1 · huisvesting",
+     "text": "Vraag 2. Een gebouw heeft een goed ventilatiesysteem, maar medewerkers kunnen nauwelijks geschikte werkplekken vinden voor hun activiteiten. Welk onderdeel van huisvesting vraagt dan vooral aandacht?",
+     "options": [
+      "Alleen de financiering van het gebouw",
+      "Alleen de werktuigbouwkundige installaties",
+      "De inrichting en gebruiksaspecten van het gebouw"
+     ],
+     "answer": 2,
+     "explanation": "Ook inrichting en gebruiksaspecten bepalen de geschiktheid van huisvesting. (Antwoordmodel van de docent.)"
+    },
+    {
+     "section": "Les 1.1 · huisvesting",
+     "text": "Vraag 3. Een organisatie wil verhuizen omdat medewerkers nu verspreid over meerdere locaties werken en daardoor weinig samenwerken. In welke fase van de huisvestingscyclus zit de organisatie vooral?",
+     "options": [
+      "Initiatieffase",
+      "Beheer en exploitatie",
+      "Ruimtelijke uitwerking"
+     ],
+     "answer": 0,
+     "explanation": "Er zijn nog geen keuzes gemaakt er is alleen nog een wens/initiatief. (Antwoordmodel van de docent.)"
+    },
+    {
+     "section": "Les 1.1 · huisvesting",
+     "text": "Vraag 4. Bekijk de afbeelding van de huisvestingscyclus. Een organisatie heeft besloten te verhuizen en brengt vervolgens systematisch in kaart waaraan het nieuwe gebouw moet voldoen. Bij welke stap past dit het best? (De afbeelding staat in de pdf van de docent.)",
+     "options": [
+      "Beheer en exploitatie",
+      "Startpunt",
+      "Programma van eisen"
+     ],
+     "answer": 2,
+     "explanation": "Eisen aan nieuwe huisvesting worden vastgelegd in het programma van eisen. (Antwoordmodel van de docent.)"
+    },
+    {
+     "section": "Les 1.1 · huisvesting",
+     "text": "Vraag 5. Voor het vak huisvesting adviseren studenten een woningcorporatie over herhuisvesting. Waarom begint de opdracht met een contextanalyse van de organisatie?",
+     "options": [
+      "Om huisvestingskeuzes te kunnen verbinden aan strategie, gebruikers, activiteiten en ontwikkelingen",
+      "Om alleen de marktwaarde van het gebouw te bepalen",
+      "Om direct de technische installaties van het nieuwe gebouw te kunnen bestellen"
+     ],
+     "answer": 0,
+     "explanation": "Een contextanalyse verbindt keuzes aan strategie, gebruikers, activiteiten en ontwikkelingen. (Antwoordmodel van de docent.)"
+    },
+    {
+     "section": "Les 1.1 · huisvesting",
+     "text": "Vraag 6. Een facility manager vergelijkt twee huisvestingsopties. Optie 1 is goedkoper, optie 2 ondersteunt welzijn beter en is duurzamer. Welke aanpak is de verstandigste?",
+     "options": [
+      "Financiële, maatschappelijke en duurzaamheidsaspecten afwegen en de keuze onderbouwen",
+      "Alleen bekijken welke optie de meeste vierkante meters heeft",
+      "Altijd de goedkoopste optie kiezen"
+     ],
+     "answer": 0,
+     "explanation": "Een onderbouwde keuze weegt financiële, maatschappelijke en duurzaamheidsaspecten af. (Antwoordmodel van de docent.)"
+    },
+    {
+     "section": "Les 1.2 · Organisatiegericht huisvesten",
+     "text": "Vraag 7. Een organisatie groeit snel en merkt dat medewerkers steeds vaker geen geschikte werkplek kunnen vinden. Van welke fase uit de huisvestingscyclus is hier sprake?",
+     "options": [
+      "Exploitatiefase",
+      "Programma van eisen fase",
+      "Realisatiefase"
+     ],
+     "answer": 0,
+     "explanation": "Snelle groei kan direct tot ruimtegebrek leiden. (Antwoordmodel van de docent.)"
+    },
+    {
+     "section": "Les 1.2 · Organisatiegericht huisvesten",
+     "text": "Vraag 8. Een organisatie wil dat het gebouw niet alleen onderdak biedt, maar ook samenwerking ondersteunt en aantrekkelijk is voor medewerkers. Wat laat dit vooral zien over huisvesting?",
+     "options": [
+      "Huisvesting heeft alleen een technische functie",
+      "Huisvesting kan meerdere vormen van toegevoegde waarde voor de organisatie leveren",
+      "Huisvesting is alleen relevant wanneer de organisatie eigenaar van het gebouw is"
+     ],
+     "answer": 1,
+     "explanation": "Huisvesting kan meerdere vormen van toegevoegde waarde leveren. (Antwoordmodel van de docent.)"
+    },
+    {
+     "section": "Les 1.2 · Organisatiegericht huisvesten",
+     "text": "Vraag 9. Bekijk de onderstaande afbeelding over de impact van huisvesting. Welke interpretatie past het beste bij de boodschap van deze afbeelding? (De afbeelding staat in de pdf van de docent.)",
+     "options": [
+      "Huisvesting beïnvloedt alleen de kosten van een organisatie",
+      "Huisvesting kan gevolgen hebben voor meerdere onderdelen en prestaties van een organisatie",
+      "De impact van huisvesting ontstaat pas nadat een gebouw is afgeschreven"
+     ],
+     "answer": 1,
+     "explanation": "Huisvesting kan meerdere onderdelen en prestaties van een organisatie beïnvloeden. (Antwoordmodel van de docent.)"
+    },
+    {
+     "section": "Les 1.2 · Organisatiegericht huisvesten",
+     "text": "Vraag 10. Een kantoor is technisch in uitstekende staat, maar de indeling sluit slecht aan bij de werkzaamheden van medewerkers. Op welk prestatieveld scoort het gebouw vooral onvoldoende?",
+     "options": [
+      "Functionele kwaliteit",
+      "Financieel-economische kwaliteit",
+      "Technische kwaliteit"
+     ],
+     "answer": 0,
+     "explanation": "De aansluiting van de indeling op het werk betreft functionele kwaliteit. (Antwoordmodel van de docent.)"
+    },
+    {
+     "section": "Les 1.2 · Organisatiegericht huisvesten",
+     "text": "Vraag 11. Een organisatie wil haar huisvestingsvisie formuleren. Welke aanpak past het best bij organisatiegericht huisvesten?",
+     "options": [
+      "Eerst een aantrekkelijk gebouw kiezen en daarna bekijken of het bij de organisatie past",
+      "Eerst de organisatiestrategie en relevante ontwikkelingen analyseren en daarna bepalen welke waarde de huisvesting moet toevoegen",
+      "Alleen de huidige huisvestingskosten als uitgangspunt nemen"
+     ],
+     "answer": 1,
+     "explanation": "Organisatiegericht huisvesten begint bij strategie, ontwikkelingen en gewenste waarde. (Antwoordmodel van de docent.)"
+    },
+    {
+     "section": "Les 1.2 · Organisatiegericht huisvesten",
+     "text": "Vraag 12. Een organisatie heeft net een nieuw kantoor in gebruik genomen. Welke stelling daarover is juist?",
+     "options": [
+      "Het huisvestingsproces is nooit afgerond, want veranderingen in de organisatie of omgeving kunnen aanleiding zijn om strategie, beheer of huisvesting bij te stellen",
+      "Het huisvestingsmanagementproces is pas afgerond als de exploitatiefase is beëindigd",
+      "Het huisvestingsmanagementproces is lineair en is dus na ingebruikname afgerond"
+     ],
+     "answer": 0,
+     "explanation": "Huisvestingsmanagement blijft nodig omdat organisatie en omgeving veranderen. (Antwoordmodel van de docent.)"
+    },
+    {
+     "section": "Les 1.3 · Tekeningen lezen",
+     "text": "Vraag 13. Een bestaande woning wordt verbouwd. De tekening klopt op papier, maar tijdens de uitvoering blijken muren op andere plekken te staan. Welke fout in de voorbereiding heeft dit waarschijnlijk veroorzaakt?",
+     "options": [
+      "Er is een te gedetailleerde schaal gebruikt",
+      "De bestaande situatie is vooraf niet voldoende nagemeten",
+      "Er zijn te veel verschillende tekeningen gemaakt"
+     ],
+     "answer": 1,
+     "explanation": "Bij verbouwing moet de bestaande situatie eerst betrouwbaar worden ingemeten. (Antwoordmodel van de docent.)"
+    },
+    {
+     "section": "Les 1.3 · Tekeningen lezen",
+     "text": "Vraag 14. Een architect wil een compleet gebouw op één blad laten zien en toch de indeling van de ruimten herkenbaar houden. Welke schaal ligt volgens de presentatie het meest voor de hand?",
+     "options": [
+      "1:5000",
+      "1:10",
+      "1:100"
+     ],
+     "answer": 2,
+     "explanation": "Schaal 1:100 is geschikt om een gebouw en de ruimte-indeling herkenbaar weer te geven. (Antwoordmodel van de docent.)"
+    },
+    {
+     "section": "Les 1.3 · Tekeningen lezen",
+     "text": "Vraag 15. Een opdrachtgever wil vóór de bouw vooral een realistisch beeld krijgen van hoe het toekomstige gebouw eruit kan zien. Welk type tekening past het beste bij dit doel?",
+     "options": [
+      "Een detailtekening",
+      "Een kadastrale tekening",
+      "Een artist impression"
+     ],
+     "answer": 2,
+     "explanation": "Een artist impression geeft een realistische indruk van een toekomstig gebouw. (Antwoordmodel van de docent.)"
+    },
+    {
+     "section": "Les 1.3 · Tekeningen lezen",
+     "text": "Vraag 16. Bekijk de situatietekening. Een facility manager wil beoordelen of de ligging van een gebouw op het perceel en de oriëntatie ten opzichte van de zon gunstig zijn. Waarom is juist deze tekening hiervoor geschikt? (De afbeelding staat in de pdf van de docent.)",
+     "options": [
+      "Omdat een situatietekening uitsluitend de inrichting van afzonderlijke ruimten weergeeft",
+      "Omdat een situatietekening de positie van gebouw, perceelgrenzen en noordrichting in samenhang laat zien",
+      "Omdat een situatietekening vooral materiaalverbindingen op ware grootte toont"
+     ],
+     "answer": 1,
+     "explanation": "Een situatietekening toont gebouw, perceel en noordrichting in samenhang. (Antwoordmodel van de docent.)"
+    },
+    {
+     "section": "Les 1.3 · Tekeningen lezen",
+     "text": "Vraag 17. Op een plattegrond staat een deur met een booglijn bij het deurblad. Welke informatie kan de lezer daar vooral uit afleiden?",
+     "options": [
+      "De hoogte van het plafond",
+      "De draairichting van de deur",
+      "De materiaalsoort van de vloer"
+     ],
+     "answer": 1,
+     "explanation": "De booglijn op een plattegrond geeft de draairichting van de deur aan. (Antwoordmodel van de docent.)"
+    },
+    {
+     "section": "Les 1.3 · Tekeningen lezen",
+     "text": "Vraag 18. Een gebruiker wil weten of twee verdiepingen verschillende vloerniveaus hebben en hoe die niveaus zich verticaal tot elkaar verhouden. Welke tekening geeft daarvoor de meest bruikbare informatie?",
+     "options": [
+      "Een horizontale doorsnede",
+      "Een verticale doorsnede",
+      "Een detailtekening"
+     ],
+     "answer": 1,
+     "explanation": "Een verticale doorsnede laat verticale opbouw en niveauverschillen zien. (Antwoordmodel van de docent.)"
+    },
+    {
+     "section": "Les 2.1 · Inleiding in de Bouwkunde",
+     "text": "Vraag 19. Bij bodemonderzoek blijkt dat de draagkrachtige zandlaag pas op ongeveer 5 meter diepte ligt. Welke funderingskeuze past het best bij deze situatie?",
+     "options": [
+      "Een fundering op staal direct onder het maaiveld",
+      "Alleen een dikkere afwerkvloer aanbrengen",
+      "Een fundering op palen die de belasting naar de diepere draagkrachtige laag brengt"
+     ],
+     "answer": 2,
+     "explanation": "De diepte van de draagkrachtige ondergrond bepaalt het funderingstype. Ligt die laag diep, dan wordt een fundering op palen toegepast. (Antwoordmodel van de docent.)"
+    },
+    {
+     "section": "Les 2.1 · Inleiding in de Bouwkunde",
+     "text": "Vraag 20. Een betonnen vloer moet krachten kunnen opnemen. Waarom wordt wapening in het beton toegevoegd?",
+     "options": [
+      "Omdat wapening bedoeld is om het beton lichter te maken om zo beter krachten op te kunnen vangen",
+      "Omdat wapening ervoor zorgt dat beton geen cement meer nodig heeft om steviger te zijn",
+      "Omdat staal trekkrachten kan opnemen die beton zelf slecht kan verdragen"
+     ],
+     "answer": 2,
+     "explanation": "Beton is sterk bij druk maar kan trekkrachten slecht opnemen. Stalen wapening neemt juist trekspanningen op. (Antwoordmodel van de docent.)"
+    },
+    {
+     "section": "Les 2.1 · Inleiding in de Bouwkunde",
+     "text": "Vraag 21. Een gebouw krijgt veel binnenwanden die later eenvoudig verplaatst moeten kunnen worden. Welke oplossing sluit het beste aan bij die wens?",
+     "options": [
+      "Systeemwanden of metal-studwanden",
+      "Dragende gemetselde steensmuren",
+      "In het werk gestorte betonnen wanden"
+     ],
+     "answer": 0,
+     "explanation": "Systeemwanden en metal-studwanden zijn niet-dragende scheidingswanden en passen beter bij een flexibel indeelbaar gebouw. (Antwoordmodel van de docent.)"
+    },
+    {
+     "section": "Les 2.1 · Inleiding in de Bouwkunde",
+     "text": "Vraag 22. Bekijk de afbeelding van de spouwmuur. Waarom wordt isolatiemateriaal tegen het binnenspouwblad geplaatst en blijft er een spouw aanwezig? (De afbeelding staat in de pdf van de docent.)",
+     "options": [
+      "Om warmteverlies te beperken en tegelijk ruimte te houden voor vochtbeheersing en ventilatie",
+      "Om de buitenmuur minder zwaar te maken",
+      "Beide antwoorden zijn juist"
+     ],
+     "answer": 0,
+     "explanation": "Een spouwmuur combineert een binnenblad, isolatie en een spouw. De isolatie beperkt warmteverlies, terwijl de spouw helpt bij de vochtbeheersing en kan worden geventileerd. (Antwoordmodel van de docent.)"
+    },
+    {
+     "section": "Les 2.1 · Inleiding in de Bouwkunde",
+     "text": "Vraag 23. Het balkon van een groot gebouw bestaat uit lange bouwdelen. In het gebouw zijn zogenaamde dilatatievoegen aangebracht. Welk probleem probeert de ontwerper van het gebouw daarmee vooral te voorkomen?",
+     "options": [
+      "Schade door werking, zetting en krimp van bouwdelen",
+      "Opvangen van de variabele belasting die oor mensen ontstaat",
+      "Het probleem dat binnenwanden anders niet meer verplaatst kunnen worden"
+     ],
+     "answer": 0,
+     "explanation": "Dilatatievoegen geven bouwdelen ruimte om horizontale en verticale bewegingen door werking, zetting en krimp op te vangen. (Antwoordmodel van de docent.)"
+    },
+    {
+     "section": "Les 2.1 · Inleiding in de Bouwkunde",
+     "text": "Vraag 24. Op het dak van een gebouw ligt permanent het eigen gewicht van de dakconstructie. In de winter kan daar tijdelijk sneeuw bijkomen. Hoe moeten deze belastingen worden ingedeeld?",
+     "options": [
+      "Zowel eigen gewicht als sneeuw zijn permanente belastingen",
+      "Eigen gewicht is permanent; sneeuw is variabel",
+      "Eigen gewicht is variabel; sneeuw is permanent"
+     ],
+     "answer": 1,
+     "explanation": "Het eigen gewicht hoort continu bij het gebouw en is dus permanent. Sneeuw kan veranderen of verdwijnen en is daarom een variabele belasting. (Antwoordmodel van de docent.)"
+    },
+    {
+     "section": "Les 2.2 · Gebouwanalyse op basis van tekeningen en inspectie",
+     "text": "Vraag 25. Een student beoordeelt alleen de plattegrond en concludeert dat het gebouw geschikt is voor kantoor en woonunits. Waarom is die conclusie nog onvoldoende onderbouwd?",
+     "options": [
+      "Omdat een gebouw uitsluitend op basis van foto’s kan worden beoordeeld als het niet bezocht kan worden",
+      "Omdat een tekening alleen informatie geeft over de eigendomswaarde van het gebouw",
+      "Omdat tekeningen moeten worden aangevuld met een gebouwinspectie en beoordeling van functionele prestatie-indicatoren"
+     ],
+     "answer": 2,
+     "explanation": "De opdracht combineert het bestuderen van tekeningen met een gebouwinspectie en functionele prestatie-indicatoren. Zo kunnen gegevens uit de tekening in de praktijk worden gecontroleerd. (Antwoordmodel van de docent.)"
+    },
+    {
+     "section": "Les 2.2 · Gebouwanalyse op basis van tekeningen en inspectie",
+     "text": "Vraag 26. Een student neemt “locatie” op in een inspectieformat voor een gebouw, maar noteert alleen of de locatie goed of slecht is. Wat ontbreekt vooral om de beoordeling bruikbaar te maken?",
+     "options": [
+      "Een berekening van de totale bouwkosten",
+      "Concrete aspecten en prestatie-indicatoren waarmee de locatie beoordeeld wordt",
+      "Een bouwtekening op een grotere papiersoort"
+     ],
+     "answer": 1,
+     "explanation": "Bij het inspectieformat moet worden bepaald waarop wordt gelet en hoe die aspecten worden beoordeeld. Concrete prestatie-indicatoren maken een beoordeling navolgbaar. (Antwoordmodel van de docent.)"
+    },
+    {
+     "section": "Les 2.2 · Gebouwanalyse op basis van tekeningen en inspectie",
+     "text": "Vraag 27. Een organisatie wil activiteit gerelateerd gaan werken. Voor welke kantoorverdieping kunnen ze het beste kiezen?",
+     "options": [
+      "Voor A, want daarin kunnen mensen rustig werken",
+      "Voor B, want daar hebben medewerkers keuze uit verschillende soorten werkplekken",
+      "Dat is niet te beantwoorden omdat dit afhankelijk is van het soort organisatie"
+     ],
+     "answer": 2,
+     "explanation": "Een activiteit gerelateerd kantoor heeft beschikking over meerdere werkplekconcepten die verschillende activiteiten kunnen ondersteunen. (Antwoordmodel van de docent.)"
+    },
+    {
+     "section": "Les 2.3 · Mensgericht huisvesten",
+     "text": "Vraag 28. Een organisatie wil meer medewerkers tegelijk op kantoor laten werken en zet daarom werkplekken dichter op elkaar. Waarom kan deze maatregel vanuit mensgericht huisvesten juist nadelig uitpakken?",
+     "options": [
+      "Omdat een hogere bezetting altijd leidt tot minder samenwerking",
+      "Omdat medewerkers dan geen functioneel comfort ervaren",
+      "Omdat efficiënt ruimtegebruik kan botsen met behoeften aan rust, privacy en persoonlijke ruimte"
+     ],
+     "answer": 2,
+     "explanation": "De slides laten zien dat organisatiebelangen zoals efficiëntie en hoge bezetting kunnen botsen met gebruikersbehoeften, bijvoorbeeld rust, privacy en het vermijden van ervaren drukte. (Antwoordmodel van de docent.)"
+    },
+    {
+     "section": "Les 2.3 · Mensgericht huisvesten",
+     "text": "Vraag 29. Een kantoor voldoet aan eisen voor veiligheid en toegankelijkheid, maar medewerkers kunnen zich nauwelijks afzonderen voor geconcentreerd werk. Welke conclusie past het beste bij de drie vormen van environmental comfort?",
+     "options": [
+      "Als fysieke veiligheid op orde is, zijn de andere comfortvormen automatisch ook op orde",
+      "Alleen functioneel comfort is relevant voor deze situatie",
+      "Fysiek comfort is aanwezig, maar psychologisch comfort kan onvoldoende zijn"
+     ],
+     "answer": 2,
+     "explanation": "Veiligheid en toegankelijkheid horen bij fysiek comfort. Behoeften aan privacy, autonomie en geborgenheid horen bij psychologisch comfort en moeten afzonderlijk worden beoordeeld. (Antwoordmodel van de docent.)"
+    },
+    {
+     "section": "Les 2.3 · Mensgericht huisvesten",
+     "text": "Vraag 30. Een organisatie heeft medewerkers met sterk verschillende werkzaamheden en voorkeuren voor mobiliteit. Welke ontwerpkeuze sluit het beste aan bij de typologieën van kenniswerkers?",
+     "options": [
+      "Alleen mobiele werkplekken aanbieden omdat flexibiliteit altijd beter is",
+      "Een mix van werkplekken aanbieden zodat verschillende typen gebruikers passende plekken kunnen kiezen",
+      "Iedereen permanent één identieke vaste werkplek geven"
+     ],
+     "answer": 1,
+     "explanation": "De slides benadrukken individuele verschillen tussen typen kenniswerkers. Een anchor heeft bijvoorbeeld andere mobiliteitsbehoeften dan een navigator. (Antwoordmodel van de docent.)"
+    },
+    {
+     "section": "Les 2.3 · Mensgericht huisvesten",
+     "text": "Vraag 31. Bekijk de afbeelding bij density en crowding. Een ruimte bevat objectief veel mensen, maar gebruikers ervaren de situatie niet als storend druk. Hoe moet dit worden geïnterpreteerd? (De afbeelding staat in de pdf van de docent.)",
+     "options": [
+      "De density is hoog, terwijl de ervaren crowding laag kan zijn",
+      "Density en crowding betekenen hetzelfde, maar worden anders gemeten",
+      "De crowding is per definitie hoog zodra de density hoog is"
+     ],
+     "answer": 0,
+     "explanation": "Density is het objectief vastgestelde aantal mensen per eenheid. Crowding is het subjectieve gevoel van drukte. Een hoge density hoeft daarom niet automatisch tot hoge crowding te leiden. (Antwoordmodel van de docent.)"
+    },
+    {
+     "section": "Les 2.3 · Mensgericht huisvesten",
+     "text": "Vraag 32. Een organisatie legt opvallende voetstappen op de vloer richting de trap, terwijl de lift gewoon beschikbaar blijft. Waarom past dit bij nudging?",
+     "options": [
+      "Omdat medewerkers een financiële beloning krijgen voor trapgebruik",
+      "Omdat de organisatie trapgebruik verplicht stelt",
+      "Omdat de omgeving gedrag subtiel probeert te sturen zonder een keuze te verbieden"
+     ],
+     "answer": 2,
+     "explanation": "Bij nudging wordt de keuzeomgeving zo aangepast dat gedrag voorspelbaar wordt beïnvloed, zonder opties te verbieden of belangrijke financiële prikkels te veranderen. (Antwoordmodel van de docent.)"
+    },
+    {
+     "section": "Les 2.3 · Mensgericht huisvesten",
+     "text": "Vraag 33. Uit een tevredenheidsonderzoek blijkt dat medewerkers de bereikbaarheid goed vinden, maar zeer ontevreden zijn over geluid en temperatuur. Wat is voor een facility manager de beste vervolgstap?",
+     "options": [
+      "Concluderen dat de huisvesting functioneel voldoende is omdat de bereikbaarheid goed scoort",
+      "De lage scores op geluid en temperatuur nader onderzoeken en gerichte verbetermaatregelen bepalen",
+      "Alleen de totaalscore rapporteren, omdat afzonderlijke aspecten weinig zeggen"
+     ],
+     "answer": 1,
+     "explanation": "Belevingsonderzoek legt de perceptie van gebruikers per aspect vast. Juist verschillen tussen aspecten kunnen richting geven aan vervolgonderzoek en verbeteracties. (Antwoordmodel van de docent.)"
+    },
+    {
+     "section": "Les 3.2 · Hybride werken en werkplekconcepten",
+     "text": "Vraag 34. Een medewerker moet in de ochtend een vertrouwelijk rapport schrijven en wil in de middag samen met collega’s ideeën ontwikkelen. Welke keuze past het beste bij activiteit gerelateerd werken?",
+     "options": [
+      "Beide activiteiten thuis uitvoeren omdat een kantoor alleen bedoeld is voor overleg",
+      "De hele dag dezelfde open werkplek gebruiken",
+      "Voor het rapport een rustige concentratieplek kiezen en voor het samenwerken een passende overleg- of projectplek"
+     ],
+     "answer": 2,
+     "explanation": "Bij activiteitgerelateerd werken kiest een medewerker een werkplek die past bij de behoefte aan concentratie en communicatie van de activiteit op dat moment. (Antwoordmodel van de docent.)"
+    },
+    {
+     "section": "Les 3.2 · Hybride werken en werkplekconcepten",
+     "text": "Vraag 35. Een organisatie ziet dat op sommige dagen veel werkplekken leegstaan, terwijl het op andere dagen aanzienlijk drukker is. Wat laat de “kantoorkameel” vooral zien?",
+     "options": [
+      "Dat een kantoor meer vergaderruimten dan bureauwerkplekken nodig heeft",
+      "Dat medewerkers gedurende een werkdag altijd van werkplek wisselen",
+      "Dat de bezetting van een kantoor door de week sterk kan schommelen"
+     ],
+     "answer": 2,
+     "explanation": "De kantoorkameel maakt schommelingen in de kantoorbezetting zichtbaar. Hybride werken, parttime werken en afwezigheid kunnen de lage en wisselende bezettingsgraad versterken. (Antwoordmodel van de docent.)"
+    },
+    {
+     "section": "Les 3.2 · Hybride werken en werkplekconcepten",
+     "text": "Vraag 36. Een organisatie voert hybride werken in. Welke verandering in het werkplekconcept ligt dan het meest voor de hand?",
+     "options": [
+      "Een mix van werkplekken aanbieden voor concentreren, samenwerken, overleggen en ontmoeten",
+      "Voor iedere medewerker een vaste identieke bureauwerkplek reserveren",
+      "Alleen informele ontmoetingsplekken maken en alle bureauwerkplekken verwijderen"
+     ],
+     "answer": 0,
+     "explanation": "Hybride kantooromgevingen ondersteunen verschillende activiteiten. Daarom is een mix van werkpleksettings nodig die zowel communicatie als concentratie faciliteert. (Antwoordmodel van de docent.)"
+    },
+    {
+     "section": "Les 3.2 · Hybride werken en werkplekconcepten",
+     "text": "Vraag 37. Bekijk de afbeelding van het bruis-ruis-rustconcept. Een medewerker wil een complex document schrijven zonder afleiding. Welke zone past daar het beste bij? (De afbeelding staat in de pdf van de docent.)",
+     "options": [
+      "De bruisende zone",
+      "De rustige zone",
+      "De ruisende zone"
+     ],
+     "answer": 1,
+     "explanation": "In het bruis-ruis-rustmodel loopt de behoefte van veel communicatie en weinig concentratie naar weinig communicatie en veel concentratie. Voor geconcentreerd individueel werk past daarom de rustige zone. (Antwoordmodel van de docent.)"
+    },
+    {
+     "section": "Les 3.2 · Hybride werken en werkplekconcepten",
+     "text": "Vraag 38. Een organisatie heeft 1.500 medewerkers, maar 1.000 fte. Waarom is het aantal medewerkers niet het ideale uitgangspunt om het aantal bureauwerkplekken te bepalen?",
+     "options": [
+      "Omdat medewerkers op kantoor niet altijd aan een bureau werken",
+      "Omdat uitsluitend het vloeroppervlak bepaalt hoeveel werkplekken nodig zijn",
+      "Omdat niet alle medewerkers tegelijk werken of aanwezig zijn, waardoor rekenen met het aantal medewerkers tot te veel werkplekken kan leiden"
+     ],
+     "answer": 2,
+     "explanation": "De presentatie adviseert uit te gaan van fte en vervolgens rekening te houden met aanvullende afwezigheid, zoals thuiswerken, ziekte, vakantie en vrije dagen. (Antwoordmodel van de docent.)"
+    },
+    {
+     "section": "Les 3.2 · Hybride werken en werkplekconcepten",
+     "text": "Vraag 39. Een organisatie wil het kantoor aantrekkelijker maken voor hybride werkers en richt vooral extra ontmoetings- en samenwerkingsplekken in. Welke ontwikkeling wordt hiermee het meest ondersteund?",
+     "options": [
+      "Het kantoor keert terug naar een traditioneel kantoorconcept met allemaal dezelfde werkplekken",
+      "Het kantoor wordt uitsluitend een plek voor individueel geconcentreerd werk",
+      "Het kantoor ontwikkelt zich meer tot ontmoetingsplek voor activiteiten waarvoor fysieke aanwezigheid toegevoegde waarde heeft"
+     ],
+     "answer": 2,
+     "explanation": "De presentatie beschrijft een ontwikkeling waarbij moderne kantoren nadrukkelijker worden ingericht voor ontmoeten en samenwerken, terwijl medewerkers geconcentreerd werk ook elders kunnen uitvoeren. (Antwoordmodel van de docent.)"
+    },
+    {
+     "section": "Les 4.1 · Programma van Eisen",
+     "text": "Vraag 40. Een opdrachtgever schrijft in het PvE: “De centrale hal moet een grote glazen gevel krijgen.” Waarom is dit geen goede functionele eis?",
+     "options": [
+      "Er wordt al een ontwerpoplossing voorgeschreven in plaats van de gewenste prestatie te beschrijven",
+      "Functionele eisen mogen alleen over oppervlakte gaan",
+      "Glas mag niet in een centrale hal worden gebruikt"
+     ],
+     "answer": 0,
+     "explanation": "Een functioneel PvE beschrijft wat de huisvesting moet bereiken; de ontwerper bepaalt hoe dat wordt opgelost. (Antwoordmodel van de docent.)"
+    },
+    {
+     "section": "Les 4.1 · Programma van Eisen",
+     "text": "Vraag 41. Een organisatie wil dat het nieuwe gebouw openheid, innovatie en samenwerking uitstraalt. Waar hoort dit uitgangspunt het meest logisch thuis?",
+     "options": [
+      "Alleen bij de technische installatie-eisen",
+      "Alleen in de berekening van het vloeroppervlak",
+      "In de huisvestingsvisie en beeldverwachting"
+     ],
+     "answer": 2,
+     "explanation": "Huisvestingsvisie en beeldverwachting verbinden organisatie-identiteit en gewenste uitstraling aan de huisvesting. (Antwoordmodel van de docent.)"
+    },
+    {
+     "section": "Les 4.1 · Programma van Eisen",
+     "text": "Vraag 42. Een organisatie wil een ruimte waar 30 personen tegelijk instructie kunnen krijgen. Waarom moet deze functionele eis nog worden vertaald naar ruimtelijke eisen?",
+     "options": [
+      "Omdat iedere functionele eis automatisch een installatie-eis is",
+      "Omdat een aannemer functionele eisen eerst moet goedkeuren",
+      "Om aantallen ruimten, capaciteit en benodigde oppervlakte te bepalen"
+     ],
+     "answer": 2,
+     "explanation": "De functionele behoefte wordt ruimtelijk vertaald naar onder meer aantallen, capaciteit en vierkante meters. (Antwoordmodel van de docent.)"
+    },
+    {
+     "section": "Les 4.1 · Programma van Eisen",
+     "text": "Vraag 43. Waarom is een goed geformuleerd Programma van Eisen belangrijk?",
+     "options": [
+      "Onduidelijke eisen kunnen leiden tot een resultaat dat niet aansluit bij de werkelijke behoefte",
+      "De architect moet letterlijk tekenen wat de opdrachtgever in het pve beschrijft",
+      "Een PvE wordt vooral na oplevering gebruikt om kosten te beoordelen"
+     ],
+     "answer": 0,
+     "explanation": "Een helder PvE beperkt interpretatieverschillen tussen behoefte, eisen en uiteindelijke oplossing. (Antwoordmodel van de docent.)"
+    },
+    {
+     "section": "Les 4.1 · Programma van Eisen",
+     "text": "Vraag 44. Een organisatie heeft 600 medewerkers maar 420 fte en wil de werkplekbehoefte bepalen. Welke aanpak past het best?",
+     "options": [
+      "Alleen het beschikbare vloeroppervlak delen door een standaardoppervlakte",
+      "Uitgaan van fte en daarna rekening houden met aanwezigheid, afwezigheid en piekbezetting",
+      "Voor alle 600 medewerkers een bureauwerkplek reserveren"
+     ],
+     "answer": 1,
+     "explanation": "De werkplekbehoefte wordt gekoppeld aan fte en daadwerkelijke aanwezigheid, niet rechtstreeks aan het aantal personen. (Antwoordmodel van de docent.)"
+    },
+    {
+     "section": "Les 4.1 · Programma van Eisen",
+     "text": "Vraag 45. Tijdens een project worden eisen steeds concreter naarmate het ontwerp vordert. Waarom past dit bij het werken met een PvE?",
+     "options": [
+      "Bij elke ontwerpfase vervallen alle eerdere eisen",
+      "Een PvE ontwikkelt zich van globale uitgangspunten naar steeds gedetailleerdere eisen",
+      "Technische eisen mogen pas na oplevering worden opgesteld"
+     ],
+     "answer": 1,
+     "explanation": "Een PvE wordt gedurende het proces nader uitgewerkt, passend bij de toenemende detaillering van het ontwerp. (Antwoordmodel van de docent.)"
+    },
+    {
+     "section": "Les 4.2 · Ruimtestaat, vlekkenplan en inrichtingsplan",
+     "text": "Vraag 46. Een organisatie heeft 500 medewerkers, maar samen vertegenwoordigen zij 360 fte. Waarom is 500 geen goed uitgangspunt voor het bepalen van het aantal kantoorwerkplekken?",
+     "options": [
+      "Omdat de ruimtebehoefte uitsluitend met BVO wordt berekend",
+      "Omdat per afdeling altijd exact hetzelfde aantal werkplekken nodig is",
+      "Omdat rekenen met het aantal medewerkers tot te veel werkplekken kan leiden; fte en aanvullende afwezigheid geven een realistischer basis"
+     ],
+     "answer": 2,
+     "explanation": "Voor de werkplekbehoefte wordt uitgegaan van fte en vervolgens rekening gehouden met extra afwezigheid, zoals thuiswerken, ziekte, vakantie en vrije dagen. (Antwoordmodel van de docent.)"
+    },
+    {
+     "section": "Les 4.2 · Ruimtestaat, vlekkenplan en inrichtingsplan",
+     "text": "Vraag 47. Een ruimtestaat vermeldt voor een afdeling 70 m². Om welk type vloeroppervlak gaat het volgens de presentatie in principe?",
+     "options": [
+      "Netto vloeroppervlak (NVO)",
+      "Bruto vloeroppervlak (BVO)",
+      "Functioneel nuttig vloeroppervlak (FNO)"
+     ],
+     "answer": 2,
+     "explanation": "De presentatie geeft expliciet aan dat FNO het oppervlak is dat in de ruimtestaat wordt opgenomen. (Antwoordmodel van de docent.)"
+    },
+    {
+     "section": "Les 4.2 · Ruimtestaat, vlekkenplan en inrichtingsplan",
+     "text": "Vraag 48. Een ontwerpteam maakt eerst een relatieschema voordat het een vlekkenplan tekent. Waarom is die volgorde logisch?",
+     "options": [
+      "Het relatieschema helpt bepalen welke functies dicht bij elkaar, juist niet bij elkaar of verspreid moeten liggen",
+      "Het relatieschema is alleen nodig om de investeringskosten per werkplek te berekenen",
+      "Het relatieschema bepaalt al exact waar alle scheidingswanden en meubels komen"
+     ],
+     "answer": 0,
+     "explanation": "Een relatieschema visualiseert de relaties tussen ruimtelijke functies. Die informatie vormt samen met de ruimtestaat de basis voor het vlekkenplan. (Antwoordmodel van de docent.)"
+    },
+    {
+     "section": "Les 4.2 · Ruimtestaat, vlekkenplan en inrichtingsplan",
+     "text": "Vraag 49. Bekijk het voorbeeld van het vlekkenplan. Een afdeling X heeft volgens de ruimtestaat 70 m² nodig, maar krijgt door het gebouwstramien een vlek van 9 × 9 meter. Hoe moet de extra 11 m² worden geïnterpreteerd? (De afbeelding staat in de pdf van de docent.)",
+     "options": [
+      "Als circulatieruimte die altijd buiten de vlek moet liggen",
+      "Als indelingsverlies doordat de ruimtelijke inpassing groter uitvalt dan de berekende ruimtebehoefte",
+      "Als een fout waardoor het hele vlekkenplan opnieuw moet worden gemaakt"
+     ],
+     "answer": 1,
+     "explanation": "De presentatie noemt het verschil tussen de benodigde oppervlakte uit de ruimtestaat en een grotere passende vlek door stramienmaten indelingsverlies. (Antwoordmodel van de docent.)"
+    },
+    {
+     "section": "Les 4.2 · Ruimtestaat, vlekkenplan en inrichtingsplan",
+     "text": "Vraag 50. Een organisatie maakt een inrichtingsplan voor een hybride kantoor. Het activiteitenprofiel bestaat vooral uit routinematig werk, met daarnaast geconcentreerd werk en overleg. Welke aanpak past het best?",
+     "options": [
+      "Alle werkplekken als identieke open bureauplekken uitvoeren",
+      "Alleen afgesloten concentratieruimtes ontwerpen omdat hybride werken vooral individueel is",
+      "De verhouding tussen open werkplekken, concentratieplekken en overlegplekken laten aansluiten op het activiteitenprofiel"
+     ],
+     "answer": 2,
+     "explanation": "Het activiteitenschema wordt gebruikt om de benodigde mix van open werkplekken, concentratieplekken en formele of informele overlegplekken te bepalen. (Antwoordmodel van de docent.)"
+    },
+    {
+     "section": "Les 4.2 · Ruimtestaat, vlekkenplan en inrichtingsplan",
+     "text": "Vraag 51. Bij het uitwerken van een inrichtingsplan plaatst een ontwerper kasten tussen een druk loopgebied en werkplekken. Waarom kan dat functioneel zijn?",
+     "options": [
+      "Omdat kasten helpen de circulatiezone en werkzone van elkaar te scheiden en zo de inrichting ondersteunen",
+      "Omdat kasten altijd tot het bruto vloeroppervlak en nooit tot de inrichting behoren",
+      "Omdat circulatiezones volgens de presentatie volledig moeten worden afgesloten"
+     ],
+     "answer": 0,
+     "explanation": "De presentatie laat zien dat circulatiezones als leidraad voor de inrichting kunnen dienen en noemt kasten tussen loopgebied en werkplekken als voorbeeld. (Antwoordmodel van de docent.)"
+    },
+    {
+     "section": "Les 5.1 · Regelgeving en plantoetsing",
+     "text": "Vraag 52. Een bestaand kantoorgebouw wordt verbouwd tot een combinatie van kantoren en woningen. Waarom moeten bij de plantoetsing eerst de gebruiksfuncties worden benoemd?",
+     "options": [
+      "Omdat de gebruiksfunctie bepaalt welke regels en eisen op de verschillende delen van het gebouw van toepassing zijn",
+      "Omdat ieder gebouw maar één gebruiksfunctie mag hebben",
+      "Omdat de gebruiksfunctie alleen nodig is om de marktwaarde van het gebouw te bepalen"
+     ],
+     "answer": 0,
+     "explanation": "De presentatie definieert een gebruiksfunctie als een gebruikseenheid met dezelfde bestemming. Het benoemen daarvan is de eerste stap van de plantoetsing en vormt de basis voor de verdere beoordeling. (Antwoordmodel van de docent.)"
+    },
+    {
+     "section": "Les 5.1 · Regelgeving en plantoetsing",
+     "text": "Vraag 53. In één gebouw bevinden zich een kantoor, een sportzaal en een ontmoetingsruimte. Welke uitspraak over gebruiksfuncties is volgens de presentatie juist?",
+     "options": [
+      "Het hele gebouw moet één gebruiksfunctie krijgen",
+      "Alleen de grootste ruimte bepaalt de gebruiksfunctie van alle andere ruimten",
+      "Gebruiksfuncties zijn gekoppeld aan ruimten; verschillende delen van één gebouw kunnen dus verschillende functies hebben"
+     ],
+     "answer": 2,
+     "explanation": "Een gebruiksfunctie is gekoppeld aan een ruimte en niet automatisch aan het hele gebouw. Een gebouw kan daarom meerdere gebruiksfuncties bevatten. (Antwoordmodel van de docent.)"
+    },
+    {
+     "section": "Les 5.1 · Regelgeving en plantoetsing",
+     "text": "Vraag 54. Bekijk de plattegrond van de Montessorischool Lindenholt. Waarom kan deze school bij een plantoetsing niet zonder meer als uitsluitend onderwijsfunctie worden beschouwd? (De afbeelding staat in de pdf van de docent.)",
+     "options": [
+      "Omdat een onderwijsgebouw volgens de presentatie nooit een onderwijsfunctie heeft",
+      "Omdat alleen vrijstaande gebouwen verschillende gebruiksfuncties mogen bevatten",
+      "Omdat binnen het gebouw verschillende ruimten andere gebruiksfuncties kunnen hebben, zoals bijeenkomst-, sport- en kantoorfunctie"
+     ],
+     "answer": 2,
+     "explanation": "Het voorbeeld van de school laat zien dat binnen één gebouw meerdere gebruiksfuncties kunnen voorkomen, afhankelijk van de bestemming van ruimten. (Antwoordmodel van de docent.)"
+    },
+    {
+     "section": "Les 5.1 · Regelgeving en plantoetsing",
+     "text": "Vraag 55. Bij het berekenen van het gebruiksoppervlak van een woning bevindt zich een vide van 6 m². Waarom wordt die oppervlakte niet als gebruiksoppervlak meegerekend?",
+     "options": [
+      "Omdat iedere vide, ongeacht de grootte, buiten het gebruiksoppervlak valt",
+      "Omdat alleen ruimten met ramen tot het gebruiksoppervlak behoren",
+      "Omdat een vide groter dan 4 m² volgens de presentatie niet in het gebruiksoppervlak wordt opgenomen"
+     ],
+     "answer": 2,
+     "explanation": "Bij de bepaling van GO worden onder andere trapgaten, liftschachten en vides groter dan 4 m² niet meegerekend. (Antwoordmodel van de docent.)"
+    },
+    {
+     "section": "Les 5.1 · Regelgeving en plantoetsing",
+     "text": "Vraag 56. In een woning worden woonkamer, slaapkamer, toilet en technische ruimte beoordeeld. Welke ruimten zijn verblijfsruimten?",
+     "options": [
+      "Toilet en technische ruimte, omdat deze noodzakelijk zijn voor het functioneren van de woning",
+      "Alle vier, omdat iedere afgesloten ruimte automatisch een verblijfsruimte is",
+      "Woonkamer en slaapkamer, omdat daar de voor de woonfunctie kenmerkende activiteiten plaatsvinden"
+     ],
+     "answer": 2,
+     "explanation": "Een verblijfsruimte is een ruimte waarin kenmerkende activiteiten van de gebruiksfunctie plaatsvinden. Voor een woonfunctie zijn bijvoorbeeld woonkamer en slaapkamer verblijfsruimten; toilet en technische ruimte niet. (Antwoordmodel van de docent.)"
+    },
+    {
+     "section": "Les 5.1 · Regelgeving en plantoetsing",
+     "text": "Vraag 57. Studenten toetsen drie zones van hun ontwerp aan regelgeving. Waarom is het niet voldoende om alleen de afmetingen van de ruimten te controleren?",
+     "options": [
+      "Omdat afmetingen uitsluitend voor bestaande gebouwen relevant zijn",
+      "Omdat een globale plantoetsing ook kijkt naar onder meer gebruiksfunctie, routing, toegankelijkheid, daglicht, ventilatie, geluid en veiligheid",
+      "Omdat regelgeving alleen betrekking heeft op de uitstraling van het gebouw"
+     ],
+     "answer": 1,
+     "explanation": "De opdracht voor plantoetsing vraagt om een bredere beoordeling, waaronder gebruiksfuncties, verblijfsruimten, routing, scheiding van functies, toegankelijkheid en aandachtspunten voor binnenmilieu en veiligheid. (Antwoordmodel van de docent.)"
+    },
+    {
+     "section": "Les 5.2 · Bouwfasering, bestek en aanbesteden",
+     "text": "Vraag 58. Een opdrachtgever weet dat er behoefte is aan uitbreiding, maar heeft nog niet vastgelegd wat het nieuwe gebouw precies moet kunnen. In welke bouwfase bevindt het project zich vooral?",
+     "options": [
+      "De exploitatiefase, waarin het gebouw wordt beheerd",
+      "De initiatieffase, waarin aanleiding, behoefte en haalbaarheid worden verkend",
+      "De besteksfase, waarin materialen en uitvoeringsvoorwaarden volledig vastliggen"
+     ],
+     "answer": 1,
+     "explanation": "In de initiatieffase staat de aanleiding centraal en wordt de bouwbehoefte verkend. Het Programma van Eisen volgt pas in de definitiefase. (Antwoordmodel van de docent.)"
+    },
+    {
+     "section": "Les 5.2 · Bouwfasering, bestek en aanbesteden",
+     "text": "Vraag 59. Een ontwerpteam gaat van een schetsontwerp naar een voorlopig ontwerp en daarna naar een definitief ontwerp. Wat is de belangrijkste gedachte achter deze volgorde?",
+     "options": [
+      "Het ontwerp wordt stap voor stap van globaal naar steeds concreter en gedetailleerder uitgewerkt",
+      "Het definitief ontwerp bevat minder informatie dan het schetsontwerp",
+      "Iedere ontwerpfase begint opnieuw zonder gebruik te maken van eerdere keuzes"
+     ],
+     "answer": 0,
+     "explanation": "De presentatie beschrijft ontwerpen als een proces van grof naar fijn: structuur en hoofdkeuzes worden steeds verder uitgewerkt tot een definitief ontwerp. (Antwoordmodel van de docent.)"
+    },
+    {
+     "section": "Les 5.2 · Bouwfasering, bestek en aanbesteden",
+     "text": "Vraag 60. Een definitief ontwerp laat zien hoe een geveldetail is opgebouwd, maar vermeldt nog niet welke kleur baksteen, welk type isolatie en welke houtsoort moeten worden toegepast. Waarom is het ontwerp dan nog niet uitvoeringsgereed?",
+     "options": [
+      "Omdat uitvoeringsinformatie over materialen en voorwaarden nog nader in bestektekeningen en bestek moet worden vastgelegd",
+      "Omdat een definitief ontwerp nooit technische informatie mag bevatten",
+      "Omdat pas tijdens de exploitatie wordt gekozen welke materialen gebruikt worden"
+     ],
+     "answer": 0,
+     "explanation": "In de besteksfase wordt het definitief ontwerp technisch uitgewerkt. De bestektekening en het bestek beschrijven in detail hoe en met welke materialen moet worden gebouwd. (Antwoordmodel van de docent.)"
+    },
+    {
+     "section": "Les 5.2 · Bouwfasering, bestek en aanbesteden",
+     "text": "Vraag 61. Een aannemer moet op basis van het bestek een prijs aanbieden. Waarom helpt een nauwkeurig bestek om het financiële risico voor opdrachtgever en aannemer te beperken?",
+     "options": [
+      "Omdat de opdrachtgever dan geen bestektekeningen meer hoeft te maken",
+      "Omdat een nauwkeurig bestek garandeert dat tijdens de bouw nooit wijzigingen nodig zijn",
+      "Omdat precieze beschrijvingen minder ruimte laten voor verschillende interpretaties, onverwacht meerwerk en onzekerheid in de prijs"
+     ],
+     "answer": 2,
+     "explanation": "Volgens de presentatie is het bestek nodig voor prijsvorming en geldt: hoe preciezer het bestek, hoe kleiner het risico op onduidelijkheden en prijsverschillen. (Antwoordmodel van de docent.)"
+    },
+    {
+     "section": "Les 5.2 · Bouwfasering, bestek en aanbesteden",
+     "text": "Vraag 62. In de bouw bestaan verschillende fases. Waarom vindt een aanbesteding logisch plaats nadat het ontwerp en bestek voldoende zijn uitgewerkt?",
+     "options": [
+      "Omdat aannemers dan op dezelfde omschreven werkzaamheden en voorwaarden kunnen inschrijven en prijzen beter vergelijkbaar zijn",
+      "Omdat pas na de aanbesteding wordt bepaald wat voor gebouw de opdrachtgever wil",
+      "Omdat een aannemer tijdens de aanbesteding het Programma van Eisen volledig vervangt"
+     ],
+     "answer": 0,
+     "explanation": "Aanbesteding gebruikt het uitgewerkte ontwerp en bestek als basis voor de inschrijvingen. Daardoor kunnen aannemers een prijs bepalen voor dezelfde beschreven opdracht. (Antwoordmodel van de docent.)"
+    },
+    {
+     "section": "Les 5.2 · Bouwfasering, bestek en aanbesteden",
+     "text": "Vraag 63. Een opdrachtgever wil niet dat iedere aannemer kan inschrijven, maar wil vooraf zelf een beperkte groep van vier geschikte aannemers uitnodigen. Welke aanbestedingsvorm past daar het beste bij?",
+     "options": [
+      "Onderhandse aanbesteding of aanbesteding op uitnodiging",
+      "Openbare aanbesteding zonder selectie",
+      "Openbare aanbesteding waarbij iedere aannemer automatisch de opdracht krijgt"
+     ],
+     "answer": 0,
+     "explanation": "Bij een onderhandse aanbesteding kiest de opdrachtgever zelf een beperkt aantal aannemers en vraagt deze partijen om in te schrijven. (Antwoordmodel van de docent.)"
+    },
+    {
+     "section": "Les 5.3 · Uitvoering van de bouw",
+     "text": "Vraag 64. Een projectteam heeft veel stakeholders, maar weinig tijd om iedereen even intensief te betrekken. Waarom is het nuttig stakeholders eerst te rubriceren en prioriteren?",
+     "options": [
+      "Om alle communicatie met minder invloedrijke stakeholders volledig te stoppen",
+      "Om te bepalen welke stakeholders juridisch eigenaar van het gebouw worden",
+      "Om vooral stakeholders met het grootste belang en de meeste invloed passend te kunnen betrekken"
+     ],
+     "answer": 2,
+     "explanation": "Stakeholders benoemen, rubriceren en prioriteren helpt om communicatie en aandacht af te stemmen op hun belang en invloed in het project. (Antwoordmodel van de docent.)"
+    },
+    {
+     "section": "Les 5.3 · Uitvoering van de bouw",
+     "text": "Vraag 65. Tijdens de uitvoering blijkt een afwerking niet overeen te komen met de bestektekening. Welke partij heeft de taak om namens de aannemer op de bouw het juiste te bouwen?",
+     "options": [
+      "De opzichter",
+      "De onderaannemer",
+      "De uitvoerder"
+     ],
+     "answer": 2,
+     "explanation": "De uitvoerder vertegenwoordigt de aannemer op de bouw. (Antwoordmodel van de docent.)"
+    },
+    {
+     "section": "Les 5.3 · Uitvoering van de bouw",
+     "text": "Vraag 66. Een opdrachtgever wil dat uitvoerbaarheid en bouwkosten al tijdens het ontwerp snel kunnen worden getoetst met kennis van de aannemer. Welk contractmodel past hier het beste bij?",
+     "options": [
+      "Traditioneel, omdat de aannemer pas na het definitief ontwerp betrokken wordt",
+      "Bouwteam, omdat de aannemer vanaf de ontwerpfase adviserend betrokken is",
+      "Design & Construct, omdat de opdrachtgever alle uitvoeringsbeslissingen zelf blijft nemen"
+     ],
+     "answer": 1,
+     "explanation": "In een bouwteam wordt de expertise van de aannemer al in de ontwerpfase ingezet, zodat ontwerpkeuzes vroeg op haalbaarheid in de uitvoering kunnen worden getoetst. (Antwoordmodel van de docent.)"
+    },
+    {
+     "section": "Les 5.3 · Uitvoering van de bouw",
+     "text": "Vraag 67. Een opdrachtgever wil één partij verantwoordelijk maken voor zowel ontwerp als uitvoering en accepteert dat er daardoor minder directe invloed is. Welk model past het beste?",
+     "options": [
+      "Traditioneel",
+      "Bouwteam",
+      "Design & Construct"
+     ],
+     "answer": 2,
+     "explanation": "Bij Design & Construct besteedt de opdrachtgever het project uit aan één contractpartij voor ontwerp en uitvoering. Goede voorafgaande afspraken en meetpunten zijn dan extra belangrijk. (Antwoordmodel van de docent.)"
+    },
+    {
+     "section": "Les 5.3 · Uitvoering van de bouw",
+     "text": "Vraag 68. Een facility manager ontvangt na oplevering een BIM-model. Waarom kan dit model ook tijdens de exploitatiefase waardevol blijven?",
+     "options": [
+      "Omdat BIM alleen de driedimensionale vorm van het gebouw bevat",
+      "Omdat informatie over ruimten, installaties en gebouwonderdelen kan worden gebruikt voor beheer, onderhoud en koppelingen met FM-systemen",
+      "Omdat het BIM-model na oplevering het Programma van Eisen volledig vervangt"
+     ],
+     "answer": 1,
+     "explanation": "BIM omvat meer dan een 3D-model: informatie wordt over de levenscyclus beheerd en kan in FM worden gebruikt voor onder meer ruimtebeheer, schoonmaak en onderhoud. (Antwoordmodel van de docent.)"
+    },
+    {
+     "section": "Les 5.3 · Uitvoering van de bouw",
+     "text": "Vraag 69. Een organisatie overweegt al het bestaande meubilair te vervangen in een nieuw gebouw. Welke aanpak past volgens de presentatie het beste bij een business case?",
+     "options": [
+      "Alleen de aanschafprijs van nieuw meubilair vergelijken met de boekwaarde van het oude",
+      "De keuze uitsluitend baseren op de voorkeur van de projectleider",
+      "Alternatieven vergelijken op relatie met de huisvestingsvisie, effecten voor stakeholders, investeringen, randvoorwaarden en risico’s"
+     ],
+     "answer": 2,
+     "explanation": "Een business case brengt alternatieven, relatie met de huisvestingsvisie, randvoorwaarden, effecten, investeringen en risico’s samen om een beslissing onderbouwd te kunnen nemen. (Antwoordmodel van de docent.)"
+    },
+    {
+     "section": "Les 6.1 · Duurzaamheid",
+     "text": "Vraag 70. Waarom staat in de trias energetica het beperken van de energievraag vóór het opwekken van duurzame energie?",
+     "options": [
+      "Omdat isoleren alleen bij nieuwbouw mogelijk is",
+      "Omdat duurzame energie altijd duurder is",
+      "Omdat een lagere energievraag eerst de behoefte aan installaties en energieproductie vermindert"
+     ],
+     "answer": 2,
+     "explanation": "Volgens de trias energetica wordt eerst de energievraag beperkt, daarna duurzame energie toegepast en pas als laatste fossiele energie efficiënt gebruikt. (Antwoordmodel van de docent.)"
+    },
+    {
+     "section": "Les 6.1 · Duurzaamheid",
+     "text": "Vraag 71. Een gebouw heeft slecht geïsoleerde gevels maar veel zonnepanelen op het dak. Welke conclusie past het best bij de trias energetica?",
+     "options": [
+      "Het gebouw slaat de eerste stap van de trias energetica deels over",
+      "Zonnepanelen maken isolatie overbodig",
+      "De volgorde van maatregelen is niet relevant"
+     ],
+     "answer": 0,
+     "explanation": "De eerste stap is het beperken van de energievraag door bijvoorbeeld de buitenschil goed te isoleren. (Antwoordmodel van de docent.)"
+    },
+    {
+     "section": "Les 6.1 · Duurzaamheid",
+     "text": "Vraag 72. Waarom wordt circulair bouwen vaak gezien als een belangrijk onderdeel van de trias materia?",
+     "options": [
+      "Omdat circulair bouwen uitsluitend over energie gaat",
+      "Omdat materialen dan sneller kunnen worden weggegooid",
+      "Omdat hergebruik en demontage de vraag naar nieuwe grondstoffen kunnen verminderen"
+     ],
+     "answer": 2,
+     "explanation": "De trias materia richt zich onder meer op het beperken van materiaalgebruik en het hergebruiken van materialen. (Antwoordmodel van de docent.)"
+    },
+    {
+     "section": "Les 6.1 · Duurzaamheid",
+     "text": "Vraag 73. Bekijk het vlindermodel van circulair bouwen. Welke interpretatie sluit hier het beste bij aan? (De afbeelding staat in de pdf van de docent.)",
+     "options": [
+      "Materialen moeten zo lang mogelijk in kringlopen met behoud van waarde blijven",
+      "Alle materialen moeten direct worden gerecycled",
+      "Afvalverwerking is het belangrijkste doel van circulariteit"
+     ],
+     "answer": 0,
+     "explanation": "Het vlindermodel laat zien dat behoud, hergebruik, reparatie en refurbishment vaak waardevoller zijn dan recycling. (Antwoordmodel van de docent.)"
+    },
+    {
+     "section": "Les 6.1 · Duurzaamheid",
+     "text": "Vraag 74. Een organisatie vervangt versleten stof van bureaustoelen maar behoudt het frame. Welke strategie op de circulariteitsladder past hier het beste bij?",
+     "options": [
+      "Repair of refurbish",
+      "Recycle",
+      "Recover"
+     ],
+     "answer": 0,
+     "explanation": "De levensduur wordt verlengd zonder volledige vervanging van het product. (Antwoordmodel van de docent.)"
+    },
+    {
+     "section": "Les 6.1 · Duurzaamheid",
+     "text": "Vraag 75. Waarom is een LCA (levenscyclusanalyse) nuttig bij materiaalkeuzes in gebouwen?",
+     "options": [
+      "Omdat milieueffecten over de gehele levenscyclus van een materiaal in beeld worden gebracht",
+      "Omdat alleen de aanschafkosten worden beoordeeld",
+      "Omdat een LCA uitsluitend kijkt naar de sloopfase"
+     ],
+     "answer": 0,
+     "explanation": "Een LCA bekijkt winning, productie, transport, gebruik en einde levensduur van materialen. (Antwoordmodel van de docent.)"
+    },
+    {
+     "section": "Les 6.2 · Introductie MJOP",
+     "text": "Vraag 76. Een nieuw gebouw is net opgeleverd. Waarom stopt het huisvestingsproces volgens de presentatie niet na de ingebruikname?",
+     "options": [
+      "Omdat alleen de bouwfase onderdeel uitmaakt van huisvestingsmanagement",
+      "Omdat beheer, evaluatie en onderhoud nodig blijven om prestaties op peil te houden",
+      "Omdat een gebouw na oplevering direct opnieuw ontworpen moet worden"
+     ],
+     "answer": 1,
+     "explanation": "Na oplevering volgen beheer, exploitatie, evaluatie en onderhoud als onderdeel van de huisvestingscyclus. (Antwoordmodel van de docent.)"
+    },
+    {
+     "section": "Les 6.2 · Introductie MJOP",
+     "text": "Vraag 77. Wat is het belangrijkste verschil tussen een Post-Occupancy Evaluation en een MJOP?",
+     "options": [
+      "Een POE richt zich op ervaringen en prestaties; een MJOP richt zich op gepland onderhoud",
+      "Een POE beschrijft alleen technische gebreken; een MJOP alleen financiële gegevens",
+      "Beide documenten hebben exact hetzelfde doel"
+     ],
+     "answer": 0,
+     "explanation": "Een POE kijkt naar gebruikservaringen en effecten, terwijl een MJOP onderhoud voor de lange termijn plant. (Antwoordmodel van de docent.)"
+    },
+    {
+     "section": "Les 6.2 · Introductie MJOP",
+     "text": "Vraag 78. Waarom begint een MJOP met een inventarisatie van onderhoudsgevoelige elementen?",
+     "options": [
+      "Omdat anders geen begroting kan worden gemaakt voor energieverbruik",
+      "Omdat een MJOP alleen over installaties gaat",
+      "Omdat eerst duidelijk moet zijn welke onderdelen onderhoud nodig kunnen hebben en wanneer"
+     ],
+     "answer": 2,
+     "explanation": "Een inventarisatie vormt de basis voor inspecties, planning en kostenramingen. (Antwoordmodel van de docent.)"
+    },
+    {
+     "section": "Les 6.2 · Introductie MJOP",
+     "text": "Vraag 79. Bekijk de onderhoudsbeheercyclus. Welke gedachte past het beste bij deze cyclus? (De afbeelding staat in de pdf van de docent.)",
+     "options": [
+      "Onderhoud wordt alleen uitgevoerd wanneer een gebouw ernstige gebreken vertoont",
+      "Onderhoud bestaat uit één inspectie waarna het proces stopt",
+      "Onderhoud is een continu proces van inspecteren, plannen, uitvoeren en evalueren"
+     ],
+     "answer": 2,
+     "explanation": "De onderhoudsbeheercyclus laat onderhoud zien als een voortdurend proces van terugkerende stappen. (Antwoordmodel van de docent.)"
+    },
+    {
+     "section": "Les 6.2 · Introductie MJOP",
+     "text": "Vraag 80. Een gebouw wordt zeer intensief gebruikt door veel bezoekers. Welke factor die de onderhoudsbehoefte bepaalt is hier vooral van toepassing?",
+     "options": [
+      "Architectonische stijl",
+      "Gebruiksintensiteit",
+      "Klimaat"
+     ],
+     "answer": 1,
+     "explanation": "Intensief gebruik leidt vaak tot meer slijtage en daardoor tot een grotere onderhoudsbehoefte. (Antwoordmodel van de docent.)"
+    },
+    {
+     "section": "Les 6.2 · Introductie MJOP",
+     "text": "Vraag 81. Een gebouw voldoet technisch nog goed, maar sluit niet meer aan bij de manier waarop het wordt gebruikt. Welke vorm van levensduur staat dan vooral onder druk?",
+     "options": [
+      "Technische levensduur",
+      "Functionele levensduur",
+      "Economische levensduur"
+     ],
+     "answer": 1,
+     "explanation": "Functionele levensduur betreft de mate waarin een gebouw nog past bij het gebruik. (Antwoordmodel van de docent.)"
+    },
+    {
+     "section": "Les 6.3 · Soorten onderhoud en NEN2767",
+     "text": "Vraag 82. Wat is het belangrijkste doel van een conditiemeting volgens NEN 2767?",
+     "options": [
+      "Alleen de financiële waarde van een gebouw bepalen",
+      "Alleen achterstallig onderhoud registreren",
+      "Objectief vaststellen in welke technische staat bouw- of installatiedelen verkeren"
+     ],
+     "answer": 2,
+     "explanation": "Objectieve technische toestand. (Antwoordmodel van de docent.)"
+    },
+    {
+     "section": "Les 6.3 · Soorten onderhoud en NEN2767",
+     "text": "Vraag 83. Waarom wordt bij een conditiemeting gekeken naar ernst, intensiteit en omvang van een gebrek?",
+     "options": [
+      "Om de functionele levensduur te bepalen",
+      "Om de conditie van een element op een gestandaardiseerde manier vast te stellen",
+      "Om de onderhoudskosten direct te berekenen"
+     ],
+     "answer": 1,
+     "explanation": "Gestandaardiseerde conditiebepaling. (Antwoordmodel van de docent.)"
+    },
+    {
+     "section": "Les 6.3 · Soorten onderhoud en NEN2767",
+     "text": "Vraag 84. Een gevel bevat een klein aantal constructieve scheuren. Welk aspect van de gebrekenopname geeft aan hoe zwaar het gebrek het functioneren beïnvloedt?",
+     "options": [
+      "Intensiteit",
+      "Ernst",
+      "Omvang"
+     ],
+     "answer": 1,
+     "explanation": "Ernst gaat over invloed op functioneren. (Antwoordmodel van de docent.)"
+    },
+    {
+     "section": "Les 6.3 · Soorten onderhoud en NEN2767",
+     "text": "Vraag 85. Bekijk het voorbeeld van een MJOP. Waarom worden onderhoudsactiviteiten vaak geclusterd in één plan? (De afbeelding staat in de pdf van de docent.)",
+     "options": [
+      "Om werkzaamheden en budgetten beter te kunnen plannen en afstemmen",
+      "Om inspecties overbodig te maken",
+      "Omdat alle bouwdelen altijd tegelijk onderhoud nodig hebben"
+     ],
+     "answer": 0,
+     "explanation": "Clusteren helpt plannen en budgetteren. (Antwoordmodel van de docent.)"
+    },
+    {
+     "section": "Les 6.3 · Soorten onderhoud en NEN2767",
+     "text": "Vraag 86. Een gebouw heeft conditie 3 maar wordt de komende jaren intensief gebruikt. Welke onderhoudsstrategie ligt dan het meest voor de hand?",
+     "options": [
+      "Direct slopen",
+      "Helemaal niets doen",
+      "In goede staat houden"
+     ],
+     "answer": 2,
+     "explanation": "Intensief gebruik vraagt hoge kwaliteit. (Antwoordmodel van de docent.)"
+    },
+    {
+     "section": "Les 6.3 · Soorten onderhoud en NEN2767",
+     "text": "Vraag 87. Waarom kan de gekozen onderhoudsstrategie per gebouw verschillen?",
+     "options": [
+      "Omdat alleen de leeftijd van het gebouw bepalend is",
+      "Omdat NEN 2767 voor ieder gebouw een vaste strategie voorschrijft",
+      "Omdat gebruik, risico’s, budget, termijn en organisatiedoelen verschillen"
+     ],
+     "answer": 2,
+     "explanation": "Strategie hangt af van context en risico. (Antwoordmodel van de docent.)"
+    },
+    {
+     "section": "Les 7.2 · Van inspectie naar DMJOP",
+     "text": "Vraag 88. Bij het opstellen van een MJOP wordt eerst bepaald welke onderhoudsmaatregelen nodig zijn. Welke informatie hoort daar volgens de presentatie direct bij?",
+     "options": [
+      "Alleen de naam van het gebouw",
+      "Maatregel, hoeveelheid en kosten",
+      "Alleen de onderhoudskosten"
+     ],
+     "answer": 1,
+     "explanation": "Maatregelen, hoeveelheden en kosten vormen samen de basis van het MJOP. (Antwoordmodel van de docent.)"
+    },
+    {
+     "section": "Les 7.2 · Van inspectie naar DMJOP",
+     "text": "Vraag 89. Waarom worden kengetallen en richtprijzen gebruikt bij het opstellen van een MJOP?",
+     "options": [
+      "Om onderhoudskosten op een onderbouwde manier te ramen",
+      "Om uitsluitend de laagste prijs te kiezen",
+      "Om inspecties overbodig te maken"
+     ],
+     "answer": 0,
+     "explanation": "Kengetallen en richtprijzen helpen om onderhoudskosten realistisch te begroten. (Antwoordmodel van de docent.)"
+    },
+    {
+     "section": "Les 7.2 · Van inspectie naar DMJOP",
+     "text": "Vraag 90. Waarom wordt een DMJOP gezien als meer dan alleen een onderhoudsplan?",
+     "options": [
+      "Omdat onderhoud daarin niet meer voorkomt",
+      "Omdat alleen installaties worden beoordeeld",
+      "Omdat ook duurzaamheids- en energiemaatregelen worden meegenomen"
+     ],
+     "answer": 2,
+     "explanation": "Een DMJOP combineert onderhoud met duurzaamheid en toekomstig energiebeleid. (Antwoordmodel van de docent.)"
+    },
+    {
+     "section": "Les 7.2 · Van inspectie naar DMJOP",
+     "text": "Vraag 91. Bekijk de planning- en budgetteringscyclus. Welke gedachte staat centraal in dit schema? (De afbeelding staat in de pdf van de docent.)",
+     "options": [
+      "Alleen de begroting bepaalt welk onderhoud wordt uitgevoerd",
+      "Inspectie, strategie, planning en budgettering vormen een doorlopend proces",
+      "Onderhoud wordt eenmalig gepland en daarna niet meer aangepast"
+     ],
+     "answer": 1,
+     "explanation": "Het schema laat een continue cyclus van inspecteren, plannen, begroten en bijsturen zien. (Antwoordmodel van de docent.)"
+    },
+    {
+     "section": "Les 7.2 · Van inspectie naar DMJOP",
+     "text": "Vraag 92. Een organisatie vervangt dakbedekking. Welke DMJOP-keuze sluit het beste aan bij de presentatie?",
+     "options": [
+      "Het onderhoudsmoment combineren met extra isolatie of zonnepanelen",
+      "Wachten tot het dak volledig faalt",
+      "Alleen dezelfde dakbedekking terugplaatsen"
+     ],
+     "answer": 0,
+     "explanation": "Een natuurlijk onderhoudsmoment is een kans om ook te verduurzamen. (Antwoordmodel van de docent.)"
+    },
+    {
+     "section": "Les 7.2 · Van inspectie naar DMJOP",
+     "text": "Vraag 93. Waarom wordt bij circulair beheren eerst gekeken naar herstel vóór vervanging?",
+     "options": [
+      "Omdat herstel altijd goedkoper is dan vervanging",
+      "Omdat vervangen verboden is",
+      "Om de levensduur van bestaande onderdelen te verlengen en grondstoffen te besparen"
+     ],
+     "answer": 2,
+     "explanation": "Behoud en levensduurverlenging passen bij circulaire strategieën. (Antwoordmodel van de docent.)"
+    }
+   ],
+   "open": []
   }
  ]
 };
