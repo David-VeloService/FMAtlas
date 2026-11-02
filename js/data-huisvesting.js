@@ -3813,6 +3813,585 @@ window.HUIV = {
     }
    ],
    "open": []
+  },
+  {
+   "title": "Oefentoets 5 · masterniveau",
+   "cesuur": 55,
+   "mc": [
+    {
+     "text": "Een woningcorporatie legt zonnepanelen op het dak van haar kantoor, zo dat ze vanaf de straat goed te zien zijn. Doel: huurders laten zien dat ze duurzaam werkt, en de energierekening omlaag. Welke combinatie van toegevoegde waarden (met hun groep) bedient deze ene maatregel?",
+     "options": [
+      "Cultuur (mensen), risico (proces en product) en waarde van vastgoed (economie)",
+      "Tevredenheid (mensen), aanpasbaarheid (proces en product) en CSR (maatschappij)",
+      "Imago (mensen), duurzaamheid (maatschappij) en kosten (economie)",
+      "Innovatie en creativiteit (proces en product), duurzaamheid (maatschappij) en gezondheid (mensen)"
+     ],
+     "explanation": "Les 1.2 noemt 'zichtbare duurzaamheid' als voorbeeld bij <strong>imago</strong> (groep mensen). Energiebesparing staat zowel bij <strong>duurzaamheid</strong> (maatschappij) als bij <strong>kosten</strong> (economie). Eén maatregel kan dus in drie groepen waarde leveren; dat is precies waarom je bij een huisvestingsvisie kiest welke waarden je wilt leveren.",
+     "section": "Organisatiegericht huisvesten en de grote lijnen",
+     "answer": 2
+    },
+    {
+     "text": "Een slecht binnenklimaat leidt tot meer verzuim. Daardoor lopen projecten vertraging op en mist de organisatie omzet. Welke keten van impact uit het schema van les 1.2 beschrijft dit?",
+     "options": [
+      "Directe impact op mensen, die doorwerkt op proces en product en vandaar op de economie",
+      "Directe impact op proces en product, die doorwerkt op mensen en daarna op de maatschappij",
+      "Directe economische impact, die via de maatschappij doorwerkt op mensen",
+      "Directe maatschappelijke impact, die doorwerkt op mensen en daarna op proces en product"
+     ],
+     "explanation": "Het gebouw raakt eerst de mensen (klachten, verzuim). Impact op mensen werkt door op proces en product (vertraging), en proces en product werken door op de economische impact (gemiste omzet). Een pijl van proces en product terug naar mensen staat niet in het schema, en maatschappelijke impact speelt hier geen rol.",
+     "answer": 0
+    },
+    {
+     "text": "Een adviseur wil voor elk van de vier prestatievelden één indicator meten. Welke toewijzing is volledig juist?",
+     "options": [
+      "Technisch: fysiek comfort; functioneel: staat van de installaties; esthetisch: cultuurhistorische waarde; financieel-economisch: exploitatiekosten per m2",
+      "Technisch: staat van de constructie; functioneel: beeldkwaliteit; esthetisch: privacy en sociaal contact; financieel-economisch: investeringskosten per m2",
+      "Technisch: toegankelijkheid; functioneel: staat van de gevel; esthetisch: betekenis; financieel-economisch: facilitaire kosten per m2",
+      "Technisch: staat van de gevel; functioneel: bereikbaarheid en parkeren; esthetisch: representativiteit; financieel-economisch: energiekosten per m2"
+     ],
+     "explanation": "Technisch gaat over de bouwtechnische staat (constructie, gevel, installaties). Functioneel over bruikbaarheid, en daar horen ook toegankelijkheid, privacy en sociaal contact en <strong>fysiek comfort</strong> bij. Esthetisch gaat over beeldkwaliteit, representativiteit en betekenis. In de andere opties staat telkens minstens één indicator in het verkeerde veld.",
+     "answer": 3
+    },
+    {
+     "text": "Bij een organisatie zijn de huisvestingskosten 10% en de personeelskosten 60% van de bedrijfskosten. Een nieuw kantoorconcept verlaagt de huisvestingskosten met 20%, maar verlaagt de productiviteit van het personeel met 5%. Neem aan dat het productiviteitsverlies evenredig is aan de waarde van de personeelsinzet. Wat is per saldo het effect, uitgedrukt in de bedrijfskosten?",
+     "options": [
+      "Per saldo wint de organisatie ongeveer 2% van de bedrijfskosten",
+      "Per saldo verliest de organisatie ongeveer 1% van de bedrijfskosten",
+      "Per saldo is het effect nul, omdat beide percentages op de bedrijfskosten slaan",
+      "Per saldo verliest de organisatie ongeveer 3% van de bedrijfskosten"
+     ],
+     "explanation": "Besparing: 20% van 10% = 2% van de bedrijfskosten. Verlies: 5% van 60% = 3%. Netto dus 1% verlies. Dit is de redenering uit les 1.2: huisvestingskosten zijn een klein deel van de bedrijfskosten, dus wie alleen op het gebouw bespaart kan meer verliezen aan wat het gebouw bijdraagt aan mensen en productiviteit. 2% is alleen de besparing, 3% alleen het verlies.",
+     "answer": 1
+    },
+    {
+     "text": "Hoe verhouden de huisvestingscyclus (les 1.1) en de zes bouwfasen (les 5.2) zich tot elkaar?",
+     "options": [
+      "De ontwerpfase levert het PvE; de definitiefase levert daarna het VO en het DO",
+      "De definitiefase levert het PvE; de exploitatiefase valt samen met beheer en exploitatie",
+      "De voorbereidingsfase levert het DO, dat de basis vormt voor het programma van eisen",
+      "De huisvestingscyclus eindigt bij de oplevering, terwijl de bouwfasen doorlopen tot in de exploitatie"
+     ],
+     "explanation": "In de bouwfasen hoort het PvE bij de definitiefase (wat?), het VO en DO bij de ontwerpfase (hoe?) en het bestek bij de voorbereiding. De huisvestingscyclus loopt van initiatief via PvE en ruimtelijke uitwerking naar beheer en exploitatie, en begint dan opnieuw. Hij eindigt dus niet bij de oplevering.",
+     "answer": 1
+    },
+    {
+     "text": "Op een plattegrond 1:50 meet een vergaderruimte 9,0 x 7,2 cm. Je rekent met 2 tot 2,5 m2 per zitplek. Hoeveel zitplekken passen er ongeveer in?",
+     "options": [
+      "Tussen 12 en 16",
+      "Tussen 25 en 32",
+      "Tussen 1 en 2",
+      "Tussen 6 en 8"
+     ],
+     "explanation": "Bij 1:50 is 1 cm in het echt 50 cm. De ruimte is dus 4,5 x 3,6 m = 16,2 m2. 16,2 / 2,5 = 6,5 en 16,2 / 2 = 8,1, dus 6 tot 8 plekken. Wie de oppervlakte op tekening (64,8 cm2) gewoon met 0,5 vermenigvuldigt, schaalt maar in één richting en komt op 12 tot 16. Wie 1:100 aanhoudt, komt op 25 tot 32.",
+     "section": "Tekeningen en bouwkunde",
+     "answer": 3
+    },
+    {
+     "text": "Op een doorsnede staat: bovenkant afgewerkte begane-grondvloer P = 0, maaiveld -0,45 en onderkant fundering -1,20. Welke uitspraak is juist?",
+     "options": [
+      "De onderkant van de fundering ligt 0,75 m onder het maaiveld, en 1,20 m onder peil past bij een fundering op staal",
+      "De onderkant van de fundering ligt 1,65 m onder het maaiveld, en 1,20 m onder peil past bij een fundering op staal",
+      "De onderkant van de fundering ligt 0,75 m onder het maaiveld, en die diepte wijst op een fundering op palen tot de draagkrachtige laag",
+      "De onderkant van de fundering ligt 1,20 m onder het maaiveld, omdat hoogtematen vanaf het maaiveld worden gegeven"
+     ],
+     "explanation": "Hoogtes worden gegeven ten opzichte van peil, de bovenkant van de afgewerkte begane-grondvloer, niet ten opzichte van het maaiveld. Het verschil tussen -1,20 en -0,45 is 0,75 m. Volgens de syllabus is bij een fundering op staal de bodem binnen 80 tot 300 cm onder peil draagkrachtig; 1,20 m valt daarin. Palen gebruik je als de draagkrachtige laag veel dieper ligt.",
+     "answer": 0
+    },
+    {
+     "text": "Een FM'er wil alleen op basis van een plattegrond beoordelen of een zolderverdieping onder een schuin dak geschikt is als werkruimte. Wat kan hij uit de plattegrond halen en wat niet?",
+     "options": [
+      "Wel de vrije hoogte, want alles boven 1 m wordt met een gestreepte lijn getekend; niet de draairichting van de deuren",
+      "Wel de hoogte van de nok, want die staat als stramienmaat langs de rand; niet de plek van de trap",
+      "Wel de maten en de draairichting van deuren; niet de vrije hoogte onder het schuine dak, die zie je in een doorsnede",
+      "Wel de vrije hoogte en de daglichttoetreding; niet de afmetingen, want die staan alleen op de situatietekening"
+     ],
+     "explanation": "Een plattegrond is een horizontale doorsnede op 1 m boven de vloer: je ziet muren, trappen, deuren met draairichting, ramen en maten. Hoogtes haal je uit een doorsnede of gevelaanzicht. Dat doet ertoe, want vloeroppervlak met een vrije hoogte onder 1,5 m telt niet mee in het gebruiksoppervlak. Een gestreepte lijn geeft aan dat iets boven de snede ligt, niet hoe hoog.",
+     "answer": 2
+    },
+    {
+     "text": "Een betonnen latei met wapening wordt per ongeluk ondersteboven ingemetseld, met de wapening bovenin. Wat is het gevolg als de latei wordt belast?",
+     "options": [
+      "Bovenin ontstaat trek, dus de wapening zit nu juist op de goede plek",
+      "Er verandert niets, omdat beton druk en trek even goed opneemt",
+      "Onderin ontstaat druk die het staal niet kan opnemen, dus gaat de wapening bovenin knikken",
+      "Onderin ontstaat trek die het beton niet opneemt, dus de latei scheurt aan de onderkant"
+     ],
+     "explanation": "Een balk op twee steunpunten buigt door: bovenin drukzone, onderin trekzone. Beton kan druk goed hebben maar trek niet, daarom hoort het staal onderin. Zit de wapening boven, dan staat het onbewapende beton onderin op trek en scheurt het.",
+     "answer": 3
+    },
+    {
+     "text": "Een organisatie wil vooral <strong>aanpasbaarheid</strong>: ruimtes moeten de komende jaren vaak anders ingedeeld kunnen worden. Les 1.2 noemt als bijdrage het loskoppelen van constructie, installaties en inbouw. Welk gebouw past daar het best bij?",
+     "options": [
+      "Een stapelbouw met dragende binnenmuren van kalkzandsteen, omdat gemetselde muren lang meegaan",
+      "Een gietbouw met tunnelbekisting, omdat wanden en vloeren in één keer worden gestort",
+      "Een skeletbouw met systeemwanden: het skelet draagt en de wanden zijn verplaatsbaar",
+      "Een montagebouw met prefab gevelpanelen, omdat de binnenmuren dan altijd niet-dragend zijn"
+     ],
+     "explanation": "Bij skeletbouw worden de muren in een skelet geplaatst; de draagfunctie zit in het skelet. Systeemwanden zijn niet-dragend en door de leverancier te plaatsen, dus je kunt bij een herindeling schuiven zonder constructieve maatregelen. Gemetselde dragende muren (stapelbouw) en gestorte wanden (gietbouw) verplaats je niet zoals een systeemwand. Dat prefab gevelpanelen iets zeggen over de binnenmuren, staat nergens.",
+     "answer": 2
+    },
+    {
+     "text": "Een gebouw met een ongeïsoleerde spouwmuur krijgt achteraf spouwisolatie en overal kierdichting. Daarna klagen gebruikers over benauwdheid en hoofdpijn, en er ontstaat schimmel in de badkamers. Welke verklaring en maatregel passen bij de stof?",
+     "options": [
+      "De isolatie is tegen het buitenspouwblad geblazen; die moet worden verwijderd en tegen het binnenspouwblad worden geplaatst",
+      "Het gebouw is luchtdichter geworden; isoleren betekent ventileren, dus zorg voor natuurlijke of mechanische ventilatie",
+      "De open stootvoegen laten vocht binnen; die moeten worden dichtgezet zodat de spouw droog blijft",
+      "De klachten komen door vocht uit de grond (hydrostatische druk); de isolatie heeft er niets mee te maken"
+     ],
+     "explanation": "Les 6.1: een goed geïsoleerd, luchtdicht gebouw heeft ventilatie nodig, natuurlijk (ramen, roosters) of mechanisch (afzuigen in keuken en badkamer, inblazen in verblijfsruimtes). Benauwdheid en hoofdpijn horen bij de klachten over het binnenklimaat. Open stootvoegen zijn juist bedoeld om de spouw te ventileren.",
+     "answer": 1
+    },
+    {
+     "text": "Twee afdelingen hebben dezelfde bezetting: één persoon per 8 m2. Afdeling A klaagt over drukte, afdeling B niet. Welke verklaring en maatregel sluiten het best aan bij de omgevingspsychologie?",
+     "options": [
+      "Crowding is subjectief; A mist waarschijnlijk controle over contact (privacy), dus voeg afschermbare rustplekken toe",
+      "Density is subjectief en crowding objectief; meet de density bij A daarom opnieuw, want die moet hoger zijn dan bij B",
+      "A heeft een hogere density dan gemeten; verlaag het aantal werkplekken tot B en A gelijk zijn",
+      "Het verschil komt door primaire territorialiteit; geef bij A iedereen een eigen kamer"
+     ],
+     "explanation": "Density is objectief (mensen per m2) en is hier gelijk. Crowding is het gevoel van drukte en verschilt per persoon en situatie. Omdat crowding subjectief is, ligt de oplossing niet in de density. Meer controle over contact met anderen (privacy volgens Altman: de selectieve controle over toegang tot jezelf) is dan een te verdedigen ingreep; dat is een redenering, de les legt dat verband niet letterlijk. Een kantoor valt onder secundaire, niet onder primaire territorialiteit.",
+     "section": "Mensgericht huisvesten",
+     "answer": 0
+    },
+    {
+     "text": "Een medewerker in een open kantoor wil vertrouwelijke telefoongesprekken voeren zonder dat collega's meeluisteren. Welke ingreep pakt dit het meest gericht aan, en welke vorm van comfort bedient die?",
+     "options": [
+      "Een belplek (ruis) of eenpersoonsruimte (rust); psychologisch comfort (auditieve privacy)",
+      "Een hogere scheidingswand tussen de bureaus die geen geluid dempt maar wel het zicht wegneemt; functioneel comfort",
+      "Een daglichtregeling en betere verlichting; psychologisch comfort",
+      "Een afsluitbare locker voor elke medewerker; fysiek comfort"
+     ],
+     "explanation": "Het gaat om auditieve privacy, een van de drie soorten privacy. Privacy hoort bij psychologisch comfort. Een belplek is een bouwsteen van de ruiszone, een eenpersoonsruimte van de rustzone. Een wand die geen geluid tegenhoudt geeft hooguit visuele privacy. Licht hoort bij functioneel comfort.",
+     "answer": 0
+    },
+    {
+     "text": "Op een duowerkplek zitten twee collega's tegenover elkaar op 1,0 m. Aan een tafel in het werkcafé zitten mensen op 1,5 m van elkaar. In welke zones van persoonlijke ruimte vallen deze afstanden?",
+     "options": [
+      "Intiem en persoonlijk",
+      "Persoonlijk en sociaal",
+      "Beide in de persoonlijke afstand",
+      "Sociaal en publiek"
+     ],
+     "explanation": "Intiem is tot 45 cm, persoonlijk 45 cm tot 1,25 m, sociaal 1,25 tot 3,5 m en publiek meer dan 3,5 m. 1,0 m is dus persoonlijk, 1,5 m sociaal. Let op de grens van 1,25 m.",
+     "answer": 1
+    },
+    {
+     "text": "Na de invoering van flexplekken leggen medewerkers 's ochtends hun jas op een bureau en komen ze pas na de lunch. Welk begrip en welke maatregel uit de stof passen hier het best bij?",
+     "options": [
+      "Crowding; extra werkplekken bijplaatsen tot de flexfactor 1,0 is",
+      "Persoonlijke ruimte; de bureaus zo ver uit elkaar zetten dat iedereen op publieke afstand zit",
+      "Territorialiteit; een clean desk policy en afspraken over kastgebruik",
+      "Cognitive maps; bewegwijzering naar de vrije werkplekken aanbrengen"
+     ],
+     "explanation": "Een jas op een bureau leggen is territoriaal gedrag: een plek markeren of bezetten, zoals handdoeken op ligbedden. Bij werkplekken delen hoort volgens les 3.2 juist een clean desk policy (bureau leeg als je gaat) en afspraken over kastgebruik. Meer plekken bijzetten ondermijnt het doel van delen.",
+     "answer": 2
+    },
+    {
+     "text": "Welke maatregel is volgens de definitie van Thaler en Sunstein een <strong>nudge</strong>?",
+     "options": [
+      "De lift alleen nog laten werken met een speciale pas voor mensen die slecht ter been zijn",
+      "Medewerkers die de lift nemen een bijdrage in rekening brengen voor de energie",
+      "Een verplichte beweegpauze van tien minuten opnemen in elk werkrooster",
+      "De trap prominent bij de entree plaatsen, terwijl de lift gewoon beschikbaar blijft"
+     ],
+     "explanation": "Een nudge verandert gedrag voorspelbaar <strong>zonder</strong> opties te verbieden en zonder financiële prikkels wezenlijk te veranderen, en is makkelijk en goedkoop te vermijden. Een liftpas verbiedt een optie, een bijdrage is een financiële prikkel en een verplichte pauze is een gebod.",
+     "answer": 3
+    },
+    {
+     "text": "Een adviseur legt per prestatie-indicator vast hoe belangrijk die voor de gebruiker is (0 tot 3) en zet daar naast wat het gebouw biedt. Welk instrument is dit en welke gebruikersprestatie meet het?",
+     "options": [
+      "Real Estate Norm (REN); functionaliteit",
+      "WELL Building Standard; gezondheid en geluk",
+      "NEN 8021; functionaliteit",
+      "WODI-tevredenheidsonderzoek; beleving"
+     ],
+     "explanation": "NEN 8021 legt een gebruikersprofiel naast een gebouwprofiel, per prestatie-indicator en met een belang van 0 tot 3. De REN meet ook functionaliteit, maar scoort kenmerken zoals de afstand tot het openbaar vervoer op een schaal van 1 tot 5. WELL hoort bij gezondheid en geluk, tevredenheidsonderzoek bij beleving.",
+     "answer": 2
+    },
+    {
+     "text": "Een meting in een vergaderruimte geeft: 23 °C, relatieve vochtigheid 40%, 500 lux, 45 dB(A) en 1.800 ppm CO2. Welke waarden vallen buiten de ideale comfortcondities van les 2.3?",
+     "options": [
+      "De temperatuur en de luchtkwaliteit",
+      "Alleen de luchtkwaliteit",
+      "De luchtkwaliteit en het geluid",
+      "De temperatuur, de vochtigheid en de luchtkwaliteit"
+     ],
+     "explanation": "Ideaal volgens de dia: 18 tot 22 °C, 35 tot 65% vocht, 100 tot 3.000 lux, 30 tot 70 dB(A) en 350 tot 1.500 ppm CO2. 23 °C en 1.800 ppm vallen erbuiten; de rest zit binnen de grenzen.",
+     "answer": 0
+    },
+    {
+     "text": "In een groot kantoor raken bezoekers de weg kwijt. Je ontwerpt een opvallend kunstwerk dat je vanaf veel plekken ziet, geeft elke afdeling een duidelijk begrensd gebied met een eigen sfeer, en maakt één doorlopende hoofdroute. Welke elementen van Lynch zet je in?",
+     "options": [
+      "Nodes, edges, paths",
+      "Landmark, edges, nodes",
+      "Districts, landmark en edges",
+      "Landmark, districts, paths"
+     ],
+     "explanation": "Een opvallend herkenningspunt is een landmark. Gebieden met een eigen karakter zijn districts. Een route is een path. Nodes zijn knooppunten zoals pleinen en kruispunten, edges zijn randen en grenzen; die worden hier niet als middel ingezet.",
+     "answer": 3
+    },
+    {
+     "text": "Een team bestaat vooral uit 'navigators' in de typologie van Greene en Meyerson. Welke conclusie voor het werkplekconcept sluit het best aan bij de stof?",
+     "options": [
+      "Zij hebben het kleinste bewegingspatroon, dus krijgen ze het best een vaste werkplek",
+      "Zij zijn het meest mobiel, dus passen minder werkplekken per fte en aanlandplekken in de bruiszone",
+      "Zij werken vooral in groepen rond een tafel, dus hebben ze vooral vergaderruimtes nodig",
+      "Zij hebben het grootste bewegingspatroon, dus is een flexfactor boven 1,0 nodig om de pieken op te vangen"
+     ],
+     "explanation": "De navigator heeft op de dia de hoogste mobiliteit: onderweg, met een rolkoffer. Wie vaak weg is, gebruikt een werkplek minder, dus past een lagere flexfactor. Aanlandplekken (kort werken tussen afspraken) zijn een bouwsteen van de bruiszone. De anchor is het minst mobiel; de connector werkt in een groep rond een tafel.",
+     "answer": 1
+    },
+    {
+     "text": "Op een juridische afdeling schrijven medewerkers zelfstandig lange adviezen, met weinig onderling contact. In een klantcontactcentrum doen medewerkers individueel procesmatig werk, ook met weinig interactie maar met weinig autonomie. Welke typen uit het model van les 3.2 zijn dit?",
+     "options": [
+      "Den en hive",
+      "Cell en hive",
+      "Club en cell",
+      "Hive en den"
+     ],
+     "explanation": "Het model heeft twee assen: interactie en autonomie. Weinig interactie en veel autonomie is geconcentreerd werk (cell). Weinig interactie en weinig autonomie is individueel procesmatig werk (hive). Den is formeel groepswerk, club afwisselend samenwerken en zelf werken.",
+     "section": "Werkplekconcepten, ruimtestaat en ruimteplanning",
+     "answer": 1
+    },
+    {
+     "text": "Een organisatie met 200 fte heeft het aantal werkplekken bepaald met flexfactor 0,7. Op dinsdag en donderdag is 85% van de fte aanwezig. Wat betekent dat voor de piekdagen?",
+     "options": [
+      "Er zijn 60 werkplekken te weinig",
+      "Er is geen tekort: er zijn 21 werkplekken over",
+      "Er zijn 15 werkplekken te weinig",
+      "Er zijn 30 werkplekken te weinig"
+     ],
+     "explanation": "Werkplekken: 200 x 0,7 = 140. Aanwezig op de piek: 200 x 0,85 = 170. Tekort: 30. Wie 0,85 ook nog met de flexfactor vermenigvuldigt (119), telt de afwezigheid dubbel. Dit is de kantoorkameel uit les 3.2: ontwerp niet op het gemiddelde zonder naar de piek te kijken.",
+     "answer": 3
+    },
+    {
+     "text": "Een afdeling krijgt 120 werkplekken. Het activiteitenprofiel is 25% geconcentreerd werk, 45% routinematig werk en 30% communicatief werk. Hoe verdeel je de plekken volgens de werkwijze van les 4.3?",
+     "options": [
+      "30 plekken in kleine afgesloten ruimtes, 54 bureauplekken in een open ruimte en 36 plekken in spreekruimtes",
+      "30 bureauplekken in een open ruimte, 54 plekken in kleine afgesloten ruimtes en 36 plekken in spreekruimtes",
+      "36 plekken in kleine afgesloten ruimtes, 54 bureauplekken in een open ruimte en 30 plekken in de spreekruimtes",
+      "30 plekken in spreekruimtes, 54 bureauplekken in een open ruimte en 36 plekken in kleine afgesloten ruimtes"
+     ],
+     "explanation": "Geconcentreerd werk (rust) hoort in kleine afgesloten ruimtes: 25% van 120 = 30. Routinematig werk (ruis) in een open ruimte: 45% = 54. Communicatief werk (bruis) in spreekruimtes: 30% = 36. In het voorbeeld van de les is dat 20, 50 en 30 bij 100 werkplekken.",
+     "answer": 0
+    },
+    {
+     "text": "Een afdeling heeft 30 medewerkers en 22 fte. Je rekent met flexfactor 0,8, 7 m2 per werkplek en 10% circulatie over de werkplekken. Daarnaast komt er een vergaderruimte met 10 zitplekken van 2 m2 (zonder extra circulatie). Hoeveel m2 BVO zoek je ongeveer, met de vuistregel uit les 4.2?",
+     "options": [
+      "Ongeveer 297 m2",
+      "Ongeveer 156 m2",
+      "Ongeveer 225 m2",
+      "Ongeveer 109 m2"
+     ],
+     "explanation": "22 x 0,8 = 17,6 werkplekken x 7 = 123,2 m2; plus 10% = 135,5 m2; plus 20 m2 vergaderruimte = 155,5 m2 FNO. In BVO: 155,5 x 1,45 = ongeveer 225 m2. Rekenen met 30 medewerkers geeft 297. 156 is de FNO zonder omrekening, en 109 krijg je als je FNO met 0,7 vermenigvuldigt in plaats van BVO.",
+     "answer": 2
+    },
+    {
+     "text": "Een gekocht gebouw heeft 2.000 m2 BVO. De ruimtestaat van het kantoor komt op 700 m2 FNO. In de rest wil de corporatie zelfstandige eenpersoonsunits zoals in het voorbeeld van de les (22 m2 plus 2 m2 circulatie). Hoeveel units passen er ongeveer in?",
+     "options": [
+      "54",
+      "58",
+      "31",
+      "29"
+     ],
+     "explanation": "FNO van het gebouw: 2.000 x 0,7 = 1.400 m2. Na het kantoor blijft 700 m2 FNO over. 700 / 24 = 29,2, dus 29 units. 54 krijg je als je de 700 m2 FNO van 2.000 m2 BVO aftrekt (appels en peren), 58 als je het kantoor vergeet, en 31 als je de circulatie weglaat.",
+     "answer": 3
+    },
+    {
+     "text": "Een afdeling heeft volgens de ruimtestaat 100 m2 nodig. Het gebouw heeft een stramien van 3,60 m. De vlek is twee stramienvakken diep (7,20 m) en moet uit hele stramienvakken bestaan. Hoeveel indelingsverlies ontstaat er?",
+     "options": [
+      "Ongeveer 29,6 m2",
+      "Geen verlies, maar een tekort van ongeveer 22,2 m2",
+      "Ongeveer 3,7 m2",
+      "Ongeveer 13,0 m2"
+     ],
+     "explanation": "Nodig in de lengte: 100 / 7,2 = 13,9 m. Hele vakken van 3,60 m: vier vakken = 14,4 m. De vlek wordt 7,2 x 14,4 = 103,7 m2, dus 3,7 m2 indelingsverlies. Drie vakken (77,8 m2) is te klein en vijf vakken (129,6 m2) geeft onnodig veel verlies.",
+     "answer": 2
+    },
+    {
+     "text": "Een opleiding wil een instructieruimte voor 24 studenten die zittend ongestoord instructie krijgen. Je rekent met 1,5 m2 per student plus 10% looproute. Past dat in één stramienvak van 7,20 x 7,20 m?",
+     "options": [
+      "Nee: nodig is ongeveer 54 m2 en een vak biedt ongeveer 51,8 m2",
+      "Ja: nodig is ongeveer 39,6 m2 en een vak biedt ongeveer 51,8 m2",
+      "Ja: nodig is precies 36 m2, looproute hoeft niet mee omdat die in de gang zit",
+      "Nee: nodig is ongeveer 39,6 m2 en een vak biedt ongeveer 28,8 m2"
+     ],
+     "explanation": "Ruimtelijke eis: 24 x 1,5 = 36 m2, plus 10% looproute = 39,6 m2. Een vak van 7,20 x 7,20 m is 51,84 m2. Het past dus, met ruimte over; volgens les 4.3 bedenk je voor overgebleven ruimte een passende functie. 28,8 m2 is 7,2 x 4 en klopt niet.",
+     "answer": 1
+    },
+    {
+     "text": "Welke formulering is een eis die past bij les 4.1: SMART, herleidbaar naar een ambitie en zonder een oplossing voor te schrijven?",
+     "options": [
+      "Omdat gezondheid ons uitgangspunt is, heeft elke werkplek daglicht en blijft CO2 onder 1.500 ppm",
+      "Omdat we duurzaam willen zijn, krijgt het kantoor een glazen gevel op het zuiden en een groen dak",
+      "Het kantoor moet prettig en gezond aanvoelen voor iedereen die er komt",
+      "Elke werkruimte krijgt een ventilatiesysteem met warmteterugwinning van een vooraf gekozen merk"
+     ],
+     "explanation": "Een eis beschrijft <strong>wat</strong> de ruimte moet doen, niet <strong>hoe</strong> het eruitziet, en hoort volgens het artikel herleidbaar te zijn naar een ambitie ('daarom willen wij dit') en SMART te zijn. Een glazen gevel en een gekozen systeem zijn oplossingen; 'prettig en gezond aanvoelen' is niet meetbaar.",
+     "section": "Programma van eisen",
+     "answer": 0
+    },
+    {
+     "text": "Een opdrachtgever wil weten of zijn wensen haalbaar zijn binnen het budget en het bestemmingsplan, nog voordat er een architect is gekozen. Welk PvE en welke functie van het PvE horen daarbij?",
+     "options": [
+      "Een globaal PvE, gebruikt als toetsingsinstrument vooraf",
+      "Een basis-PvE, gebruikt als contract met de architect",
+      "Een PvE voor het bouwbestek, gebruikt als communicatiemiddel",
+      "Een PvE voor het voorlopig ontwerp, gebruikt als toetsingsinstrument achteraf"
+     ],
+     "explanation": "Het globale PvE is de basis voor de eerste verkenning en de haalbaarheidsstudie. Het PvE is een toetsingsinstrument vooraf (is wat de opdrachtgever wil haalbaar?) en achteraf (is gerealiseerd wat gevraagd was?). Hier gaat het om vooraf. Het basis-PvE hoort bij de eerste ontwerpstudies.",
+     "answer": 0
+    },
+    {
+     "text": "Een PvE beschrijft tot op de stopcontacten nauwkeurig hoe elke afdeling op dit moment werkt. Wat is volgens het artikel bij les 4.1 het probleem?",
+     "options": [
+      "Het is te globaal: een PvE hoort per ruimte ook de merken en typen van de installaties voor te schrijven",
+      "Het legt de huidige situatie vast ('gestolde organisatie') in plaats van een gedeelde ambitie met ruimte voor ontwikkeling",
+      "Het mist de beeldverwachting, die het artikel het belangrijkste onderdeel van elk PvE noemt, nog boven de functionele eisen",
+      "Het is niet SMART, omdat technische details niet meetbaar zijn"
+     ],
+     "explanation": "Volgens het artikel is een goed PvE juist geen 'gestolde organisatie'. Blijvende waarde zit in een gedeelde ambitie van opdrachtgever, eindgebruiker en beheerder; ambities en doelen zijn houdbaarder dan de technische uitwerking. Daarom moet elke belangrijke eis naar een ambitie te herleiden zijn.",
+     "answer": 1
+    },
+    {
+     "text": "Een verdieping heeft binnen de buitenwanden 400 m2. Daarin liggen: dragende binnenwanden (6 m2), niet-dragende wanden (4 m2), een trapgat van 3,5 m2, een liftschacht van 5 m2, een leidingschacht van 0,4 m2 en 12 m2 onder een schuin dak met een vrije hoogte onder 1,5 m. Wat is het gebruiksoppervlak?",
+     "options": [
+      "369,1 m2",
+      "389 m2",
+      "377 m2",
+      "373,5 m2"
+     ],
+     "explanation": "Niet mee tellen: dragende binnenwanden (6), een liftschacht groter dan 4 m2 (5) en vloer met een vrije hoogte onder 1,5 m (12). Wel mee tellen: niet-dragende wanden, een trapgat tot 4 m2 en een leidingschacht tot 0,5 m2. 400 - 6 - 5 - 12 = 377 m2.",
+     "section": "Regelgeving, bouwproces en contracten",
+     "answer": 2
+    },
+    {
+     "text": "Een herbestemd gebouw krijgt kantoren op de begane grond, woonunits op de verdiepingen en een gedeelde fietsenstalling. Welke uitspraak klopt volgens de plantoetsing uit les 5.1?",
+     "options": [
+      "Het gebouw krijgt één gebruiksfunctie, namelijk die met de grootste oppervlakte",
+      "De fietsenstalling is een verblijfsruimte van de woonfunctie, omdat bewoners er dagelijks komen",
+      "De woonunits op twee verdiepingen zijn twee gebruiksfuncties, omdat een gebruiksfunctie aaneengesloten moet zijn",
+      "Het gebouw heeft meerdere gebruiksfuncties: een gebruiksfunctie hoort bij een ruimte, niet bij het gebouw"
+     ],
+     "explanation": "Een gebruiksfunctie hoort bij een ruimte, een gebouw heeft vaak meerdere functies (hier kantoorfunctie en woonfunctie) en er kan gemeenschappelijke ruimte zijn. Een stalling is geen verblijfsruimte. Een gebruiksfunctie hoeft niet aaneengesloten te zijn.",
+     "answer": 3
+    },
+    {
+     "text": "Een opdrachtgever met weinig bouwkennis wil één aanspreekpunt voor ontwerp én bouw. Welk contractmodel past daarbij, en waar moet hij volgens les 5.3 op letten?",
+     "options": [
+      "Traditioneel; de architect bouwt dan zelf, zodat er één contract is",
+      "Bouwteam; de aannemer heeft dan een resultaatsverplichting voor het ontwerp",
+      "Design & Construct, met vooraf goede afspraken en tussentijdse meetpunten",
+      "PPS; elke opdrachtgever krijgt daarmee dertig jaar zekerheid over de prestaties"
+     ],
+     "explanation": "Bij Design & Construct gaat het hele project naar één partij. De opdrachtgever heeft daardoor minder invloed, dus moeten er vooraf goede afspraken en tussentijdse meetpunten zijn. Bij traditioneel contracteert de opdrachtgever partijen apart; bij een bouwteam heeft de aannemer in de ontwerpfase een inspanningsverplichting; PPS is voor de overheid als opdrachtgever.",
+     "answer": 2
+    },
+    {
+     "text": "Een opdrachtgever wil een scherpe prijs en laat vier aannemers onderhands inschrijven. In het bestek staat: 'gevel in baksteen, kleur passend bij de omgeving'. Wat is het probleem?",
+     "options": [
+      "Het bestek is te vaag: voor een scherpe prijs moeten soort en kleur baksteen precies beschreven zijn",
+      "Er is geen probleem: bij een onderhandse aanbesteding wint altijd de aannemer met de beste kwaliteit",
+      "Het probleem zit in de aanbestedingsvorm: bij onderhands aanbesteden mag de laagste inschrijver niet winnen",
+      "Een bestek hoort geen kleur te noemen; dat is een oplossing en hoort alleen in het PvE"
+     ],
+     "explanation": "Hoe preciezer het bestek, hoe minder risico. Wil je een scherpe prijs, dan beschrijf je heel precies: soort en kleur baksteen, isolatie, houtsoort, kleur van verf en voeg. Bij onderhands aanbesteden wint in het algemeen de laagste inschrijver. Het verbod op oplossingen geldt voor het PvE, niet voor het bestek: dat is juist de technische uitwerking van het DO.",
+     "answer": 0
+    },
+    {
+     "text": "Bij een kantoorverbouwing heeft de ondernemingsraad veel invloed en een groot belang bij het nieuwe werkplekconcept. Omwonenden hebben een groot belang (bouwoverlast) maar weinig invloed. Hoe ga je volgens de matrix van Mendelow met ze om?",
+     "options": [
+      "Ondernemingsraad: beïnvloeder, tevreden houden; omwonenden: toeschouwers, monitoren",
+      "Ondernemingsraad: geïnteresseerde, informeren; omwonenden: sleutelfiguren, vertroetelen",
+      "Ondernemingsraad: sleutelfiguur, vertroetelen; omwonenden: toeschouwers, alleen monitoren",
+      "Ondernemingsraad: sleutelfiguur, vertroetelen; omwonenden: geïnteresseerden, informeren"
+     ],
+     "explanation": "Veel invloed en groot belang is een sleutelfiguur (vertroetelen). Weinig invloed en groot belang is een geïnteresseerde (informeren). Toeschouwers hebben weinig invloed én een klein belang; beïnvloeders veel invloed en een klein belang.",
+     "answer": 3
+    },
+    {
+     "text": "De financieel directeur wil vastgoed-, HR-, duurzaamheids- en IT-gegevens in één centrale database om te beslissen welke locaties worden afgestoten. Welk systeem past daarbij?",
+     "options": [
+      "Een FMIS, omdat het meldingen, catering, schoonmaak en operationeel onderhoud aan elkaar koppelt",
+      "Een IWMS: strategisch, met vastgoed, financiën, HR, duurzaamheid en IT in één database",
+      "FM-BIM, omdat dat BIM is dat in de ontwerpfase wordt gebruikt",
+      "Briefbuilder, omdat het objecten, eigenschappen en relaties vastlegt"
+     ],
+     "explanation": "Een IWMS richt zich op strategisch vastgoed- en werkplekbeheer, wordt gebruikt door directie, CFO en vastgoedmanagers en werkt met één centrale database. Een FMIS is operationeel en tactisch. FM-BIM is BIM in de exploitatiefase, niet de ontwerpfase. Briefbuilder is een tool voor het PvE.",
+     "answer": 1
+    },
+    {
+     "text": "Een analist onderzoekt of het bestaande meubilair mee moet naar de nieuwbouw. Hij zet aanschafkosten tegenover besparingen en trekt daaruit zijn conclusie. Wat ontbreekt nog volgens de business case uit les 5.3?",
+     "options": [
+      "Niets: een business case is een investeringsanalyse",
+      "Een impact- en een risicoanalyse, en de relatie met de huisvestingsvisie",
+      "Een LCA van het meubilair, omdat die volgens de les verplicht onderdeel is van elke business case",
+      "Een MJOP voor het nieuwe meubilair voor de komende twintig jaar"
+     ],
+     "explanation": "De ingrediënten van een business case zijn de alternatieven, de relatie met de huisvestingsvisie, de randvoorwaarden en drie analyses: impact (effecten voor stakeholders), investering (voor- en nadelen in geld) en risico (risico's en waarschijnlijkheid). De analist heeft alleen de investeringsanalyse gedaan.",
+     "answer": 1
+    },
+    {
+     "text": "Een slecht geïsoleerd kantoor heeft dit jaar budget voor één maatregel. De dakbedekking moet toch al worden vervangen. Welke keuze volgt zowel de Trias energetica als de principes van het DMJOP?",
+     "options": [
+      "Zonnepanelen plaatsen, omdat duurzame energie de eerste stap is",
+      "Een gebouwbeheersysteem (BMS) installeren, omdat verspilling eerst moet worden aangepakt",
+      "Een nieuwe hr-ketel plaatsen, omdat efficiënt gebruik van fossiele brandstof de eerste stap is",
+      "Bij het vervangen van de dakbedekking direct extra isolatie aanbrengen"
+     ],
+     "explanation": "Stap 1 van de Trias energetica is de energievraag beperken, en isoleren van de schil levert de meeste winst. Het DMJOP zegt: combineer onderhoud met verduurzaming op een natuurlijk onderhoudsmoment, zoals dakbedekking vervangen en meteen beter isoleren. Duurzame energie is stap 2; efficiënte installaties en monitoring zijn stap 3, de laatste optie.",
+     "section": "Duurzaamheid en circulariteit",
+     "answer": 3
+    },
+    {
+     "text": "Rangschik van meest naar minst circulair volgens de R-ladder: (1) oude tapijttegels vermalen tot nieuwe tegels, (2) bureaus van een andere organisatie overnemen en zo gebruiken, (3) besluiten dat er 20% minder bureaus nodig zijn doordat werkplekken worden gedeeld, (4) oude bureaubladen verwerken tot wandbekleding.",
+     "options": [
+      "3, 2, 4, 1",
+      "2, 3, 4, 1",
+      "3, 2, 1, 4",
+      "3, 4, 2, 1"
+     ],
+     "explanation": "Werkplekken delen intensiveert het gebruik (R1 rethink) of vermindert de behoefte, hoog op de ladder. Bureaus van een ander in dezelfde functie gebruiken is re-use (R3). Bureaubladen in een product met een andere functie is repurpose (R7). Vermalen tot nieuw materiaal is recycle (R8). Hoe lager het R-nummer, hoe circulairder.",
+     "answer": 0
+    },
+    {
+     "text": "De houten kozijnen van een kantoor zijn aan vervanging toe. Hoe motiveer je de keuze tussen aluminium, hout en kunststof volgens les 6.1 en 7.2?",
+     "options": [
+      "Alleen de aanschafprijs vergelijken, omdat het MJOP-overzicht de kosten per jaar toont",
+      "Altijd hout kiezen, omdat biobased materiaal stap 1 van de Trias materia is",
+      "Eerst kijken of herstel kan; bij echte vervanging vergelijken met een LCA over de hele cyclus",
+      "Een LCA maken die alleen de gebruiksfase meeneemt, omdat het MJOP uitsluitend over de exploitatie gaat"
+     ],
+     "explanation": "DMJOP-principe: herstel vóór vervangen, en bij echte vervanging aantoonbaar duurzamer kiezen. Een LCA berekent de milieueffecten over de hele cyclus: winning, productie, transport, gebruik en sloop. De les noemt precies dit voorbeeld van kozijnen. Biobased materiaal is stap 2 van de Trias materia, niet stap 1.",
+     "answer": 2
+    },
+    {
+     "text": "Een organisatie heeft 300 medewerkers met een bruto toegevoegde waarde van € 80.000 per medewerker per jaar. Betere ventilatie kost € 900.000 en verhoogt de productiviteit naar verwachting met 2%. Na hoeveel jaar is de investering terugverdiend als je alleen naar productiviteit kijkt?",
+     "options": [
+      "Na ongeveer 3,8 jaar",
+      "Na ongeveer 0,5 jaar",
+      "Na ongeveer 18,8 jaar",
+      "Na ongeveer 1,9 jaar"
+     ],
+     "explanation": "2% van € 80.000 = € 1.600 per medewerker; x 300 = € 480.000 per jaar. € 900.000 / € 480.000 = 1,9 jaar. Dit is de redenering van het rekenvoorbeeld in les 6.1: een beter binnenklimaat is geen luxe maar levert aantoonbaar waarde op. 3,8 jaar hoort bij 1% productiviteitswinst.",
+     "answer": 3
+    },
+    {
+     "text": "Een kantoor uit 1985 is technisch in goede staat. Door hybride werken staan de kamers grotendeels leeg en de huuropbrengst zakt onder de kosten. Welke levensduur of levensduren zijn voorbij?",
+     "options": [
+      "Alleen de technische levensduur, omdat leegstand tot veroudering leidt",
+      "De technische en de functionele levensduur, maar de economische levensduur nog niet",
+      "De functionele levensduur en de economische levensduur, niet de technische",
+      "Geen enkele, omdat levensduur alleen over bouwfysische prestaties gaat"
+     ],
+     "explanation": "Technisch is het gebouw in orde. Het past niet meer bij het gebruik (functioneel voorbij), en de kosten zijn hoger dan de baten door lagere opbrengst en leegstand (economisch voorbij). Les 6.2 noemt leegstand en lagere huren uitdrukkelijk bij de economische levensduur.",
+     "section": "Beheer, onderhoud en MJOP",
+     "answer": 2
+    },
+    {
+     "text": "De grafiek van de technische levensduur in les 6.2 laat zien dat het prestatieniveau na elk onderhoud deels wordt opgehaald maar per interval verder zakt, terwijl de eisen stijgen. Welke conclusie hoort daarbij?",
+     "options": [
+      "Goed onderhoud brengt het prestatieniveau telkens terug naar nieuwbouwniveau, dus renovatie is nooit nodig",
+      "Op termijn is renovatie nodig: onderhoud herstelt het niveau maar deels, terwijl de eisen stijgen",
+      "De acceptatiegrens daalt mee met het prestatieniveau, zodat het gebouw altijd bruikbaar blijft",
+      "Renovatie is pas aan de orde als de functionele levensduur voorbij is"
+     ],
+     "explanation": "Onderhoud haalt het niveau telkens maar deels op en de eisen stijgen. Raakt het prestatieniveau de acceptatiegrens, dan is een grotere investering (renovatie) nodig die het niveau weer boven de eisen brengt. Dat volgt uit de technische, niet uit de functionele levensduur.",
+     "answer": 1
+    },
+    {
+     "text": "Een gebouw heeft 240 m1 houten kozijnen. Over 30 m1 zit houtrot in het eindstadium. Wat is de conditiescore volgens NEN 2767?",
+     "options": [
+      "4",
+      "3",
+      "5",
+      "2"
+     ],
+     "explanation": "Houtrot bij kozijnen is <strong>ernstig</strong>; eindstadium is intensiteit <strong>hoog</strong>. Omvang: 30 / 240 = 12,5%, dat is omvang 3 (10 tot 30%). Ernstig / hoog / omvang 3 geeft conditie 4.",
+     "answer": 0
+    },
+    {
+     "text": "Een gevel van 1.500 m2 metselwerk heeft twee gebreken: verzanding van voegwerk in gevorderd stadium over 150 m2, en graffiti die zeer duidelijk zichtbaar is over 20 m2. Welke conditiescores horen bij deze gebreken?",
+     "options": [
+      "Verzanding 2, graffiti 1",
+      "Verzanding 1, graffiti 1",
+      "Verzanding 3, graffiti 2",
+      "Verzanding 2, graffiti 4"
+     ],
+     "explanation": "Verzanding: serieus, intensiteit midden, omvang 150 / 1.500 = precies 10%, en dat hoort bij omvang 3 (10 tot 30%). Serieus / midden / 3 = conditie 2. Wie 10% bij omvang 2 zet, komt op 1. Graffiti is altijd gering (esthetisch), intensiteit hoog, omvang 20 / 1.500 = 1,3%, dus omvang 1: gering / hoog / 1 = conditie 1.",
+     "answer": 0
+    },
+    {
+     "text": "Bij een inspectie van houten kozijnen vind je afbladderende verf, glansverlies en verkleuring. Welke ernst hoort volgens de tabel 'gebreken per element' bij elk van deze gebreken?",
+     "options": [
+      "Serieus, gering en gering",
+      "Ernstig, serieus en gering",
+      "Ernstig, ernstig en serieus",
+      "Serieus, serieus en gering"
+     ],
+     "explanation": "Bij kozijnen en deuren staat afbladderende verf (net als kale delen) bij ernstig, glansverlies bij serieus en verkleuring bij gering. Gering betekent: alleen esthetisch, geen afbreuk aan het functioneren.",
+     "answer": 1
+    },
+    {
+     "text": "Een basisschool wordt nog hooguit tien jaar gebruikt en heeft weinig budget. De houten kozijnen hebben houtrot (conditie 4); elders heeft het schilderwerk glansverlies (conditie 2). Welke aanpak is het best te verdedigen?",
+     "options": [
+      "In goede staat houden: alle kozijnen en al het schilderwerk direct vervangen door duurzame varianten",
+      "Verbeteren: in het eerste jaar nieuwe kozijnen met beter glas plaatsen om het gebouw toekomstbestendig te maken",
+      "Bruikbaar houden voor een beperkte termijn: houtrot snel herstellen vanwege technische vervolgschade, glansverlies laten",
+      "Bruikbaar houden voor een beperkte termijn: niets doen tot het einde van de gebruiksperiode, want elke investering is weggegooid geld"
+     ],
+     "explanation": "Dit is een casus uit les 6.3, en de dia geeft er geen antwoord bij: je moet het beredeneren. De strategie hangt af van termijn, budget, functie, beleving en risico. Met weinig budget en een eindige gebruiksduur is 'bruikbaar houden voor een beperkte termijn' het best te verdedigen: alleen doen wat nodig is. Houtrot is een ernstig gebrek en technische vervolgschade is een van de risico's die de prioriteit bepalen, dus dat laat je niet liggen. Glansverlies is een serieus gebrek met conditie 2. Volledig vervangen of verbeteren past niet bij het budget, en niets doen negeert het risico op vervolgschade.",
+     "answer": 2
+    },
+    {
+     "text": "De dakbedekking van een kantoor is over drie jaar aan vervanging toe en de cv-ketel over vier jaar. Het kantoor moet de komende jaren aan strengere energie-eisen voldoen. Welke planning volgt de principes van het DMJOP en de Trias energetica?",
+     "options": [
+      "Nu direct dak en ketel vervangen, omdat verduurzaming altijd voorgaat op de natuurlijke onderhoudsmomenten in het MJOP",
+      "Eerst een warmtepomp plaatsen en pas daarna het dak isoleren, omdat duurzame energie het meeste oplevert voor het label",
+      "Het dak vervangen zonder extra isolatie, omdat isolatie een aparte verduurzamingsinvestering is die buiten het MJOP valt",
+      "Bij de dakvervanging extra isoleren; de ketel aan het einde van zijn levensduur vervangen door een warmtepomp"
+     ],
+     "explanation": "Drie jaar valt in de middellange termijn (3 tot 7 jaar). Het DMJOP combineert onderhoud met verduurzaming op natuurlijke momenten: bij dakbedekking extra isolatie, bij een ketel aan het einde van de levensduur een warmtepomp, warmtenet of lagetemperatuurverwarming. De Trias energetica zegt: eerst de vraag beperken (isoleren), dan duurzame bronnen.",
+     "answer": 3
+    },
+    {
+     "text": "In welke volgorde loopt de onderhoudsbeheercyclus uit les 6.2?",
+     "options": [
+      "Inspectie; jaarplan met begroting; MJOP met raming; opdracht; plan met budget; bijsturing naar de inspectie",
+      "Strategie; plan met budget; MJOP met raming; jaarplan met begroting; opdracht; bijsturing naar het budget",
+      "Strategie en inspectie; MJOP met raming; jaarplan met begroting; plan met budget; opdracht; bijsturing",
+      "MJOP met raming; strategie; inspectie; opdracht; jaarplan met begroting; bijsturing naar het MJOP"
+     ],
+     "explanation": "De invoer is de onderhoudsstrategie, prijzen en normen, en inventarisatie en inspectie. Daaruit volgt het MJOP met raming, dan het jaarplan met begroting, het plan met budget en de opdracht aan de uitvoerder. Via bijsturing gaat de informatie terug naar de strategie en de prijzen en normen.",
+     "answer": 2
+    },
+    {
+     "text": "Na een interne verhuizing worden wanden verplaatst en wordt vloerbedekking hersteld. Een kapotte lift wordt gerepareerd. De daken worden jaarlijks volgens planning geïnspecteerd. Welke soorten onderhoud zijn dit?",
+     "options": [
+      "Mutatieonderhoud (niet gepland), storingsonderhoud (niet gepland) en inspectief onderhoud (planmatig)",
+      "Preventief onderhoud (planmatig), correctief onderhoud (planmatig) en inspectief onderhoud (niet gepland)",
+      "Mutatieonderhoud (planmatig), storingsonderhoud (niet gepland) en preventief onderhoud (niet gepland)",
+      "Correctief onderhoud (niet gepland), preventief onderhoud (planmatig) en schoonmaakonderhoud"
+     ],
+     "explanation": "Niet-gepland onderhoud ontstaat door een storing, een gebrek of een mutatie, zoals een verhuizing: dat is mutatie- en storingsonderhoud. Planmatig onderhoud plan je vooraf in, en daaronder vallen preventief en inspectief onderhoud.",
+     "answer": 0
+    }
+   ],
+   "open": [
+    {
+     "casus": "Een gemeente wil haar stadskantoor uit 1990 (6.000 m2 BVO, opgezet als kamerkantoor) nog twintig jaar gebruiken. Door hybride werken is de bezetting gemiddeld laag, met duidelijke pieken op dinsdag en donderdag. Het gebouw heeft energielabel D. De dakbedekking is over twee jaar aan vervanging toe en de houten kozijnen scoren conditie 4 (houtrot). Het bestuur wil dat het gebouw toegankelijk, gezond en duurzaam overkomt op inwoners.",
+     "text": "Geef een samenhangend advies. Behandel (a) welke levensduur onder druk staat en waarom, (b) hoe je het aantal en het soort werkplekken bepaalt, en (c) welke onderhouds- en verduurzamingsmaatregelen je in welke volgorde en op welke termijn plant.",
+     "model": "<strong>(a)</strong> Technisch is het gebouw deels op (kozijnen conditie 4, dak aan het einde), maar vooral de <strong>functionele</strong> levensduur staat onder druk: een kamerkantoor met lage bezetting past niet meer bij hybride werken. Label D voldoet niet aan de eis van minimaal label C voor kantoren sinds 2023.<br><strong>(b)</strong> Reken op fte maal flexfactor, niet op medewerkers, en toets aan de pieken op dinsdag en donderdag (kantoorkameel), niet aan het gemiddelde. Verdeel de plekken volgens een activiteitenprofiel over bruis, ruis en rust, met concentratieplekken omdat kamerkantoren wegvallen. Zet de ruimtestaat (FNO) om naar BVO om te zien hoeveel van de 6.000 m2 vrijkomt.<br><strong>(c)</strong> Kozijnen: houtrot is ernstig en geeft vervolgschade, daarom zou ik het op korte termijn (0 tot 2 jaar) plannen, eerst nagaan of herstel kan (herstel vóór vervangen), en bij vervanging motiveren met een LCA. Dak: over twee jaar vervangen en direct extra isolatie meenemen (natuurlijk onderhoudsmoment, Trias energetica stap 1), eventueel met zonnepanelen (stap 2). Bij luchtdichter maken ventilatie meenemen. Strategie: gezien twintig jaar gebruik en een publieke functie eerder 'in goede staat houden' of 'verbeteren' dan 'bruikbaar houden voor een beperkte termijn'."
+    },
+    {
+     "text": "Een directeur wil de flexfactor van 0,8 naar 0,6 brengen om op huisvestingskosten te besparen. Beoordeel dit voorstel kritisch met argumenten uit organisatiegericht én mensgericht huisvesten.",
+     "model": "<strong>Voor:</strong> werkplekken delen en efficiënt ruimtegebruik zijn een bijdrage aan de toegevoegde waarde <strong>kosten</strong>; bij een lage bezetting staan veel plekken leeg.<br><strong>Tegen of voorwaarden:</strong> huisvestingskosten zijn gemiddeld maar 5 tot 15% van de bedrijfskosten, personeelskosten veel meer; een kleine daling in productiviteit kan de besparing tenietdoen. De flexfactor moet passen bij de afwezigheid en vooral de pieken (kantoorkameel), anders ontstaat er op dinsdag en donderdag een tekort. Een hogere density kan leiden tot meer <strong>crowding</strong>, dat subjectief is, en tot minder privacy (controle over contact), vooral auditief. Territoriaal gedrag (plekken claimen) vraagt om een clean desk policy en afspraken. Conclusie: alleen verantwoord met een onderbouwing van de bezetting, voldoende rustplekken en een evaluatie (bijvoorbeeld een POE)."
+    },
+    {
+     "text": "Leg uit waarom een PvE volgens het artikel bij les 4.1 geen 'gestolde organisatie' moet zijn, en hoe je in een PvE borgt dat eisen bij een veranderende organisatie toch bruikbaar blijven. Gebruik een voorbeeld van een eis.",
+     "model": "Een PvE dat de huidige werkwijze tot in detail vastlegt, veroudert zodra de organisatie verandert. Ambities en doelen zijn houdbaarder dan de technische uitwerking. Daarom formuleer je een <strong>gedeelde ambitie</strong> van opdrachtgever, eindgebruiker en beheerder en maak je elke belangrijke eis daarnaar <strong>herleidbaar</strong> ('daarom willen wij dit'). Eisen zijn SMART en beschrijven wat een ruimte moet kunnen, niet hoe die eruitziet. Voorbeeld: niet 'een glazen gevel in de hal', maar 'omdat we open en transparant willen zijn, heeft de centrale hal veel daglicht en een open uitstraling naar binnen en buiten'. Adaptiviteit en multifunctioneel gebruik worden volgens het artikel de norm, dus het PvE laat ruimte voor ontwikkeling."
+    }
+   ]
   }
  ]
 };

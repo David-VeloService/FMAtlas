@@ -364,6 +364,7 @@ const FA_SEARCH_INDEX = [
   { title: 'Huisvesting — Oefentoets 2 · week 4 t/m 7', sub: 'Huisvesting', url: 'huisvesting-oefentoets-2.html', icon: 'check' },
   { title: 'Huisvesting — Proeftentamen · hele stof', sub: 'Huisvesting', url: 'huisvesting-oefentoets-3.html', icon: 'check' },
   { title: 'Huisvesting — Oefenvragen van de docent · 93 vragen', sub: 'Huisvesting', url: 'huisvesting-oefentoets-4.html', icon: 'check' },
+  { title: 'Huisvesting — Oefentoets 5 · masterniveau', sub: 'Huisvesting', url: 'huisvesting-oefentoets-5.html', icon: 'check' },
   { title: 'Huisvesting — Toetsing & beoordeling', sub: 'Huisvesting', url: 'huisvesting-toetsing.html', icon: 'compass' },
   { title: 'Huisvesting — Begrippentoets', sub: 'Huisvesting', url: 'begrippentoets.html?vak=huisvesting', icon: 'check' },
   { title: 'Huisvesting · Lesvideo\'s', sub: 'Huisvesting', url: 'huisvesting-video.html', icon: 'book' },
