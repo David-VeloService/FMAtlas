@@ -3839,7 +3839,9 @@ window.HUIV = {
       "Directe maatschappelijke impact, die doorwerkt op mensen en daarna op proces en product"
      ],
      "explanation": "Het gebouw raakt eerst de mensen (klachten, verzuim). Impact op mensen werkt door op proces en product (vertraging), en proces en product werken door op de economische impact (gemiste omzet). Een pijl van proces en product terug naar mensen staat niet in het schema, en maatschappelijke impact speelt hier geen rol.",
-     "answer": 0
+     "answer": 0,
+     "img": "media/huisvesting/toets-5/vraag-2.jpg",
+     "alt": "Schema van de impact van huisvesting: directe impact op mensen, proces en product, maatschappij en economie, met pijlen voor de indirecte impact (les 1.2)"
     },
     {
      "text": "Een adviseur wil voor elk van de vier prestatievelden één indicator meten. Welke toewijzing is volledig juist?",
@@ -4039,7 +4041,9 @@ window.HUIV = {
       "Zij hebben het grootste bewegingspatroon, dus is een flexfactor boven 1,0 nodig om de pieken op te vangen"
      ],
      "explanation": "De navigator heeft op de dia de hoogste mobiliteit: onderweg, met een rolkoffer. Wie vaak weg is, gebruikt een werkplek minder, dus past een lagere flexfactor. Aanlandplekken (kort werken tussen afspraken) zijn een bouwsteen van de bruiszone. De anchor is het minst mobiel; de connector werkt in een groep rond een tafel.",
-     "answer": 1
+     "answer": 1,
+     "img": "media/huisvesting/toets-5/vraag-20.jpg",
+     "alt": "Typologie van Greene en Meyerson: anchor, connector, gatherer en navigator, van lage naar hoge mobiliteit (les 2.3)"
     },
     {
      "text": "Op een juridische afdeling schrijven medewerkers zelfstandig lange adviezen, met weinig onderling contact. In een klantcontactcentrum doen medewerkers individueel procesmatig werk, ook met weinig interactie maar met weinig autonomie. Welke typen uit het model van les 3.2 zijn dit?",
@@ -4051,7 +4055,9 @@ window.HUIV = {
      ],
      "explanation": "Het model heeft twee assen: interactie en autonomie. Weinig interactie en veel autonomie is geconcentreerd werk (cell). Weinig interactie en weinig autonomie is individueel procesmatig werk (hive). Den is formeel groepswerk, club afwisselend samenwerken en zelf werken.",
      "section": "Werkplekconcepten, ruimtestaat en ruimteplanning",
-     "answer": 1
+     "answer": 1,
+     "img": "media/huisvesting/toets-5/vraag-21.jpg",
+     "alt": "Model met de assen interactie en autonomie: den, club, hive en cell (les 3.2)"
     },
     {
      "text": "Een organisatie met 200 fte heeft het aantal werkplekken bepaald met flexfactor 0,7. Op dinsdag en donderdag is 85% van de fte aanwezig. Wat betekent dat voor de piekdagen?",
@@ -4207,7 +4213,9 @@ window.HUIV = {
       "Ondernemingsraad: sleutelfiguur, vertroetelen; omwonenden: geïnteresseerden, informeren"
      ],
      "explanation": "Veel invloed en groot belang is een sleutelfiguur (vertroetelen). Weinig invloed en groot belang is een geïnteresseerde (informeren). Toeschouwers hebben weinig invloed én een klein belang; beïnvloeders veel invloed en een klein belang.",
-     "answer": 3
+     "answer": 3,
+     "img": "media/huisvesting/toets-5/vraag-35.jpg",
+     "alt": "Mendelows matrix: belang voor de stakeholder tegenover invloed of macht (les 5.3)"
     },
     {
      "text": "De financieel directeur wil vastgoed-, HR-, duurzaamheids- en IT-gegevens in één centrale database om te beslissen welke locaties worden afgestoten. Welk systeem past daarbij?",
@@ -4297,7 +4305,9 @@ window.HUIV = {
       "Renovatie is pas aan de orde als de functionele levensduur voorbij is"
      ],
      "explanation": "Onderhoud haalt het niveau telkens maar deels op en de eisen stijgen. Raakt het prestatieniveau de acceptatiegrens, dan is een grotere investering (renovatie) nodig die het niveau weer boven de eisen brengt. Dat volgt uit de technische, niet uit de functionele levensduur.",
-     "answer": 1
+     "answer": 1,
+     "img": "media/huisvesting/toets-5/vraag-43.jpg",
+     "alt": "Grafiek van de technische levensduur van huisvesting: prestatieniveau, onderhoudsintervallen, eisen, acceptatiegrens en investering (les 6.2)"
     },
     {
      "text": "Een gebouw heeft 240 m1 houten kozijnen. Over 30 m1 zit houtrot in het eindstadium. Wat is de conditiescore volgens NEN 2767?",
@@ -4330,7 +4340,9 @@ window.HUIV = {
       "Serieus, serieus en gering"
      ],
      "explanation": "Bij kozijnen en deuren staat afbladderende verf (net als kale delen) bij ernstig, glansverlies bij serieus en verkleuring bij gering. Gering betekent: alleen esthetisch, geen afbreuk aan het functioneren.",
-     "answer": 1
+     "answer": 1,
+     "img": "media/huisvesting/toets-5/vraag-46.png",
+     "alt": "Tabel met gebreken per element, ingedeeld in ernstig, serieus en gering (les 6.3)"
     },
     {
      "text": "Een basisschool wordt nog hooguit tien jaar gebruikt en heeft weinig budget. De houten kozijnen hebben houtrot (conditie 4); elders heeft het schilderwerk glansverlies (conditie 2). Welke aanpak is het best te verdedigen?",
