@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd">
+<channel>
+<title>Huisvesting tentamen</title>
+<link>https://fmatlas.nl/huisvesting.html</link>
+<language>nl</language>
+<description>Herhaling van de tentamenstof Huisvesting (HUIVES01), les 1.1 tot en met 7.2.</description>
+<itunes:author>FM Atlas</itunes:author>
+<itunes:block>Yes</itunes:block>
+<itunes:explicit>false</itunes:explicit>
+<itunes:image href="https://fmatlas.nl/p/de11c671fc51/cover.png"/>
+<item>
+<title>Herhaling voor het tentamen (64 min)</title>
+<description>Zes delen: cyclus en impact, tekeningen en bouwkunde, mensgericht huisvesten en werkplekken, PvE en ruimtestaat, plantoetsing en contracten, duurzaamheid, MJOP en NEN 2767.</description>
+<enclosure url="https://fmatlas.nl/p/de11c671fc51/huisvesting-herhaling.mp3" length="30877749" type="audio/mpeg"/>
+<guid isPermaLink="false">huisvesting-herhaling-de11c671fc51</guid>
+<pubDate>Tue, 03 Nov 2026 05:02:04 +0000</pubDate>
+<itunes:duration>1:04:19</itunes:duration>
+</item>
+</channel>
+</rss>
