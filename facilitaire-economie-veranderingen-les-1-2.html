@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+<title>Les 1.2: Excel en de start van CentraZorg · Facilitaire economie bij veranderingen · FM Atlas</title>
+<meta name="description" content="Les 1.2 van Facilitaire economie bij veranderingen: Excel en de start van CentraZorg. Met lesvoorbereiding en toetsvoorbereiding."/>
+<link rel="icon" type="image/svg+xml" href="logo.svg"/>
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png"/>
+<link rel="apple-touch-icon" href="apple-touch-icon.png"/>
+<meta name="theme-color" content="#efe5d4"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="css/atlas.css"/>
+<link rel="stylesheet" href="css/leer.css"/>
+<link rel="stylesheet" href="css/toets.css"/>
+<link rel="canonical" href="https://fmatlas.nl/facilitaire-economie-veranderingen-les-1-2.html"/>
+<style>
+.les-wrap { max-width: 1180px; margin: 0 auto; padding: 36px 16px 64px; color: var(--ink); }
+.les-wrap [hidden] { display: none !important; }
+.les-kop { margin-bottom: 28px; }
+.les-kop h1 { font-family: var(--font-display); font-size: clamp(28px, 4vw, 40px); font-weight: 700; letter-spacing: -0.03em; line-height: 1.1; max-width: 26ch; }
+.les-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+.chip { display: inline-block; padding: 4px 12px; border-radius: var(--r-pill); font-size: 14px; font-weight: 600; font-variant-numeric: tabular-nums; background: var(--glass-strong); border: 1px solid var(--glass-edge-low); }
+
+.les-grid { display: grid; grid-template-columns: minmax(0, 360px) minmax(0, 1fr); gap: 32px; align-items: start; }
+.les-grid.zonder-reel { grid-template-columns: minmax(0, 1fr); }
+.les-route { min-width: 0; }
+
+/* Reel: staand beeld, op desktop niet breder dan 360 px */
+.reel { width: 100%; max-width: 360px; }
+.reel-vlak { position: relative; aspect-ratio: 9 / 16; border-radius: var(--r-lg); overflow: hidden; background: var(--olive-950); color: var(--sand-50); box-shadow: var(--glass-shadow); }
+.reel-vlak iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; display: block; }
+.reel-start { position: absolute; inset: 0; width: 100%; height: 100%; background: var(--olive-950); color: var(--sand-50); }
+.reel-start img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.reel-start span { position: absolute; inset: 0; display: grid; place-items: end center; padding: 24px 16px; background: linear-gradient(to top, rgba(20, 23, 15, .75), transparent 45%); }
+.reel-start strong { min-height: 48px; display: inline-flex; align-items: center; padding: 12px 24px; background: var(--olive-900); color: var(--sand-50); border: 1px solid var(--sand-50); border-radius: var(--r-pill); font-size: 17px; }
+.reel-start:focus-visible { outline-offset: -6px; }
+.reel-volgt { position: absolute; inset: 0; display: grid; place-items: center; padding: 24px; text-align: center; font-family: var(--font-display); font-size: 22px; font-weight: 600; }
+.reel figcaption { margin-top: 12px; font-size: 15px; color: var(--ink-soft); font-variant-numeric: tabular-nums; }
+.reel-privacy, .reel-status { margin-top: 6px; font-size: 13px; color: var(--ink-soft); line-height: 1.5; }
+.reel-status:empty { display: none; }
+.reel-keuze { display: none; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+.js .reel-keuze { display: flex; }
+.reel-knop { min-height: 44px; padding: 8px 16px; border-radius: var(--r-pill); font-size: 14px; font-weight: 600; text-align: left; line-height: 1.3; background: var(--glass-strong); border: 1px solid var(--glass-edge); font-variant-numeric: tabular-nums; }
+.reel-knop:hover { background: var(--glass-hover); }
+.reel-knop[aria-pressed="true"] { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+
+/* Keuze tussen twee routes */
+.route-keuze { display: none; gap: 8px; margin-bottom: 28px; }
+.js .route-keuze { display: flex; flex-wrap: wrap; }
+.route-tab { min-height: 48px; padding: 12px 24px; border-radius: var(--r-pill); font-weight: 600; background: var(--glass-strong); border: 1px solid var(--glass-edge); }
+.route-tab:hover { background: var(--glass-hover); }
+.route-tab[aria-selected="true"] { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+.js .route-kop { display: none; }
+.route-kop { font-family: var(--font-display); font-size: 26px; margin-bottom: 8px; }
+.route-paneel + .route-paneel { margin-top: 48px; }
+.js .route-paneel + .route-paneel { margin-top: 0; }
+.route-paneel:focus { outline: none; }
+
+.tekst h2.les-h { font-family: var(--font-display); font-size: 21px; font-weight: 700; letter-spacing: -0.015em; line-height: 1.25; margin-top: 36px; }
+.tekst > h2.les-h:first-child, .route-kop + .tekst > h2.les-h:first-child { margin-top: 0; }
+
+.denk { border-radius: var(--r-md); padding: 4px 20px; }
+.denk summary { cursor: pointer; font-weight: 600; list-style: none; min-height: 48px; padding: 12px 0; display: flex; gap: 12px; align-items: baseline; }
+.denk summary::-webkit-details-marker { display: none; }
+.denk summary::before { content: "+"; flex: none; width: 14px; color: var(--accent); font-weight: 700; }
+.denk[open] summary::before { content: "\2013"; }
+.denk-antwoord { padding: 12px 0 16px; border-top: 1px solid var(--glass-edge-low); color: var(--ink-soft); }
+
+.mc-set, .open-set { display: grid; gap: 20px; }
+.mc-vraag, .open-vraag { border-radius: var(--r-lg); padding: clamp(20px, 3vw, 32px); overflow-wrap: anywhere; }
+.tekst .mc-vraag h3, .tekst .open-vraag h3 { margin-top: 0; font-size: 19px; line-height: 1.45; }
+.mc-nr { display: block; margin-bottom: 6px; font-size: 13px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; color: var(--ink-soft); }
+.mc-vraag .toets-options { margin-top: 20px; gap: 10px; }
+.mc-vraag .toets-option { font-size: 16px; padding: 14px 18px; }
+.mc-vraag .toets-actions, .open-vraag .toets-actions { margin-top: 20px; }
+.toets-option.mc-goed { background: rgba(31, 122, 63, .18); border-color: #1f7a3f; box-shadow: inset 0 0 0 1px #1f7a3f; color: var(--ink); }
+.toets-option.mc-fout { background: rgba(179, 38, 30, .16); border-color: #b3261e; box-shadow: inset 0 0 0 1px #b3261e; color: var(--ink); }
+.toets-option[aria-disabled="true"] { cursor: default; }
+.mc-tag { flex: none; margin-left: auto; padding-left: 12px; font-size: 14px; font-weight: 700; white-space: nowrap; }
+.mc-uitleg { margin-top: 20px; padding: 16px 20px; border-radius: var(--r-md); border-left: 4px solid var(--accent); background: var(--glass-strong); line-height: 1.7; }
+.mc-uitleg:focus { outline: none; }
+.mc-score { font-weight: 600; font-size: 17px; }
+.open-vraag .toets-model { padding: 16px 20px; border-radius: var(--r-md); border-left: 4px solid var(--accent); background: var(--glass-strong); }
+.open-vraag .toets-model h4 { font-family: var(--font-display); font-size: 17px; margin-bottom: 8px; }
+.mc-vraag .beeld, .tekst .toets-casus { margin: 16px 0 0; }
+
+.les-wrap .verder { margin-top: 56px; }
+@media (max-width: 900px) {
+  .les-grid { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+}
+@media (max-width: 600px) {
+  .les-wrap { padding-top: 24px; }
+  .reel { max-width: none; }
+  .js .reel-keuze { flex-wrap: nowrap; overflow-x: auto; scroll-snap-type: x proximity; padding-bottom: 6px; }
+  .reel-knop { flex: none; white-space: nowrap; scroll-snap-align: start; }
+  .route-tab { flex: 1 1 auto; padding-inline: 16px; }
+  .mc-vraag .toets-option { padding: 14px; gap: 12px; }
+  .verder a { max-width: 100%; }
+  .verder { flex-direction: column; }
+}
+</style>
+</head>
+<body>
+<script>document.documentElement.classList.add('js');</script>
+<div class="scene" aria-hidden="true"><i></i></div>
+<header class="topbar" id="topbar"></header>
+<main class="les-wrap" id="main" data-laag="verdieping">
+  <header class="les-kop">
+    <span class="les-pill">Les 1.2</span>
+    <h1>Excel en de start van CentraZorg</h1>
+    <div class="les-chips"><span class="chip">Week 1</span><span class="chip">vrijdag 13 november</span><span class="chip">09:00-11:30</span><span class="chip">F2.78b</span><span class="chip">werkcollege</span></div>
+  </header>
+  <div class="les-grid zonder-reel">
+    
+    <div class="les-route">
+      <div class="route-keuze" role="tablist" aria-label="Kies je voorbereiding"><button class="route-tab" type="button" role="tab" id="tab-les" data-route="les" aria-controls="panel-les" aria-selected="true" tabindex="0">Lesvoorbereiding</button><button class="route-tab" type="button" role="tab" id="tab-toets" data-route="toets" aria-controls="panel-toets" aria-selected="false" tabindex="-1">Toetsvoorbereiding</button></div>
+<section class="route-paneel" id="panel-les" data-route="les" role="tabpanel" aria-labelledby="tab-les"><h2 class="route-kop">Lesvoorbereiding</h2><div class="tekst">
+<h2 class="les-h">Wat er gebeurt</h2>
+<p>Eerst Excel: er staat een introductievideo bij met tijdcodes tot 17:27, daarna de oefenopdracht het personeelsreisje. Dan een korte terugblik op wat een businesscase is, en de introductie van de casus CentraZorg, die elke week nieuwe informatie krijgt. Je leest de brief van Albert-Jan de Graaf en beantwoordt de vragen van stap 1, verkennen, inclusief een SMART-doelstelling.</p>
+<h2 class="les-h">De kern</h2>
+<ul><li>Geen hoofdrekenen (ook geen rekenmachine).</li><li>Geen getallen in formules, alleen celverwijzingen (B1, E6, G12).</li><li>Geen getallen en letters samen in één cel; alleen het valutateken en % mogen.</li><li>Formules beginnen met =. Vermenigvuldigen doe je met *.</li></ul>
+<div class="let-op"><b>Let op</b>Op de dia staat dat je deelt met \. In Excel deel je met /.</div>
+<div class="kader glass"><h4>Controlegetallen personeelsreisje</h4><ul><li>Subtotaal uitgaven (D13): € 9.550,00</li><li>Totaal uitgaven met 5% onvoorzien (D16): € 10.027,50</li><li>Bijdrage per persoon: € 239,21</li><li>Vijf afmeldingen, overnachting € 44 en geen bijdrage uit de personeelspot: € 297,41</li></ul></div>
+<p><strong>CentraZorg</strong>: een zorgorganisatie met 12 locaties en 1.500 zorgprofessionals. De 45 koffiemachines zijn aan het eind van hun levensduur: slechte kwaliteit, gemiddeld drie storingen per week zonder all-in onderhoudscontract, en ze passen niet bij de Green Deal Zorg. De Raad van Bestuur wil een waterdichte financiële onderbouwing. Uitgangspunten: disconteringsvoet 5%, looptijd 5 jaar, de investering moet zich vlot terugverdienen.</p>
+<div class="tabel"><table><thead><tr><th>Scenario</th><th>Wat het inhoudt</th></tr></thead><tbody><tr><td>1 Status quo+</td><td>Huidige leverancier reviseert de 45 machines, met een all-in onderhoudscontract. Lage eenmalige kosten, kwaliteit waarschijnlijk niet opgelost.</td></tr><tr><td>2 Koop &amp; Regie</td><td>45 energiezuinige bonenmachines kopen; het eigen facilitaire team vult bij en maakt schoon.</td></tr><tr><td>3 Outsourcing</td><td>Eén externe partner op alle 12 locaties: bemande koffiecorners op de 3 grootste, automaten (full operating) op de 9 kleinere.</td></tr></tbody></table></div>
+<p>De eigen projectmanager FM kost intern € 50 per uur: 40 uur (scenario 1), 120 uur (scenario 2) of 200 uur (scenario 3).</p>
+<h2 class="les-h">Denk alvast na</h2>
+<details class="denk glass"><summary>Waarom mag je in Excel geen getallen in formules zetten, maar alleen celverwijzingen?</summary><div class="denk-antwoord">Dan rekent alles vanzelf door als een invoer verandert. Bij het reisje pas je het aantal personen, de prijs van een overnachting en de bijdrage uit de personeelspot aan, en de bijdrage per persoon volgt. In een businesscase doe je straks hetzelfde met scenario's.</div></details>
+<details class="denk glass"><summary>Wie is bij CentraZorg de opdrachtgever, en wie lijkt de beslisser?</summary><div class="denk-antwoord">Opdrachtgever is Albert-Jan de Graaf, directeur Facilitair &amp; Vastgoed. De Raad van Bestuur eist een financiële onderbouwing voordat er grote meerjarige contracten worden getekend, dus die lijkt de beslisser. Precies dat onderscheid vraagt stap 1.</div></details>
+<details class="denk glass"><summary>Welke financiële eisen noemt de brief al, en wat moet je nog navragen?</summary><div class="denk-antwoord">Genoemd: een disconteringsvoet van 5%, een looptijd van 5 jaar en een investering die zich vlot terugverdient. Hoe snel "vlot" is staat er niet: een harde eis aan de terugverdientijd en een budgetkader vraag je na bij de opdrachtgever.</div></details>
+<h2 class="les-h">Wat er deze week nog komt</h2>
+<p>Sla je Excel-bestand op onder je naam en studentnummer en zet het na afloop op Brightspace; alleen de laatste versie blijft bewaard. Volgende week stap 2: onderzoeken, met de kasstromen over de looptijd.</p>
+</div></section>
+<section class="route-paneel" id="panel-toets" data-route="toets" role="tabpanel" aria-labelledby="tab-toets"><h2 class="route-kop">Toetsvoorbereiding</h2><div class="tekst">
+<h2 class="les-h">De kern voor de toets</h2>
+<p>Of het tentamen ook in Excel rekent, staat nog niet in de cursusinformatie (het is een kennistentamen in ANS, op je eigen laptop). De casus CentraZorg is wel het type situatie waarin je moet redeneren. Oefen hier vooral het verkennen: rollen, aanleiding en context, het project en de beslissingscriteria uit een tekst halen.</p>
+<h2 class="les-h">Open vragen</h2>
+<div class="open-set"><article class="open-vraag glass" data-open="0" role="group" aria-labelledby="open-0-t"><div class="toets-casus"><strong>Casus</strong>Een hogeschool wil de verlichting in drie gebouwen vervangen door ledverlichting met aanwezigheidssensoren. De manager Facilitair Bedrijf krijgt de opdracht van de directeur Bedrijfsvoering. Investeringen boven € 250.000 moeten langs het college van bestuur. De energierekening is het afgelopen jaar sterk gestegen en de hogeschool heeft beloofd in 2030 energieneutraal te zijn. De directeur wil dat de investering binnen zes jaar is terugverdiend.</div><h3 id="open-0-t"><span class="mc-nr">Open vraag 1</span>Werk stap 1, verkennen, uit voor deze casus: rollen, aanleiding en context, en de financiële eisen. Welke vraag stel je als eerste aan de opdrachtgever?</h3><div class="toets-actions"><button class="toets-btn glass" type="button" data-model aria-expanded="false" aria-controls="open-0-m">Toon modelantwoord</button></div><div class="toets-model" id="open-0-m" tabindex="-1" hidden></div></article></div>
+</div></section>
+      <noscript><p>Schakel JavaScript in om de oefenvragen na te kijken.</p></noscript>
+    </div>
+  </div>
+<nav class="verder" aria-label="Vorige en volgende les"><a class="glass" href="facilitaire-economie-veranderingen-les-1-1.html">&#8249; <span>Les 1.1: Introductie en verkennen</span></a><span></span></nav>
+</main>
+<div class="lightbox" id="lightbox" hidden><figure><img alt=""/><p></p></figure></div>
+<script src="js/atlas-data.js"></script>
+<script src="js/atlas.js"></script>
+<script src="js/lessen-facilitaire-economie-veranderingen.js"></script>
+<script>
+(() => {
+  'use strict';
+  const $ = (s, r = document) => r.querySelector(s);
+  const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+  Atlas.topbar('<span class="sep">/</span><a href="vak.html?v=facilitaire-economie-veranderingen">Facilitaire economie bij veranderingen</a><span class="sep">/</span><a href="facilitaire-economie-veranderingen-lessen.html">Lessen</a><span class="sep">/</span><span class="here">Les 1.2</span>');
+  // De antwoorden staan niet in de pagina maar in js/lessen-<key>.js; pas na het nakijken komen ze in beeld.
+  const data = (window.FEV_LESSEN || {})["1.2"] || { mc: [], open: [] };
+
+  // ── Keuze tussen lesvoorbereiding en toetsvoorbereiding ──
+  const tabs = $$('.route-tab');
+  const panels = $$('.route-paneel');
+  const routes = tabs.map(t => t.dataset.route);
+  const storeKey = 'fa_les_route_facilitaire-economie-veranderingen';
+  const stored = () => { try { return localStorage.getItem(storeKey); } catch (_) { return null; } };
+  const store = route => { try { localStorage.setItem(storeKey, route); } catch (_) {} };
+  const hashRoute = () => location.hash.slice(1);
+  const pick = () => {
+    if (routes.includes(hashRoute())) return hashRoute();
+    const saved = stored();
+    if (routes.includes(saved)) return saved;
+    return routes.includes('les') ? 'les' : routes[0];
+  };
+  function show(route) {
+    tabs.forEach(t => {
+      const on = t.dataset.route === route;
+      t.setAttribute('aria-selected', String(on));
+      t.tabIndex = on ? 0 : -1;
+    });
+    panels.forEach(p => { p.hidden = p.dataset.route !== route; });
+  }
+  tabs.forEach((tab, i) => {
+    tab.addEventListener('click', () => {
+      store(tab.dataset.route);
+      show(tab.dataset.route);
+      if (hashRoute() !== tab.dataset.route) location.hash = tab.dataset.route;
+    });
+    tab.addEventListener('keydown', event => {
+      const step = { ArrowLeft: -1, ArrowRight: 1 }[event.key];
+      if (!step || tabs.length < 2) return;
+      event.preventDefault();
+      const next = tabs[(i + step + tabs.length) % tabs.length];
+      next.focus();
+      next.click();
+    });
+  });
+  window.addEventListener('hashchange', () => {
+    if (routes.includes(hashRoute())) store(hashRoute());
+    show(pick());
+  });
+  if (routes.includes(hashRoute())) store(hashRoute());
+  show(pick());
+
+  // ── Meerkeuze: kiezen, nakijken, uitleg ──
+  const cards = $$('.mc-vraag');
+  const done = cards.map(() => null);
+  const score = $('#mc-score');
+  const paintScore = () => {
+    if (!score) return;
+    const all = done.every(d => d !== null);
+    score.hidden = !all;
+    score.textContent = all ? `Je hebt ${done.filter(Boolean).length} van ${done.length} oefenvragen goed.` : '';
+  };
+  cards.forEach((card, i) => {
+    const options = $$('.toets-option', card);
+    const check = $('[data-check]', card);
+    const uitleg = $('.mc-uitleg', card);
+    let choice = null;
+    const reset = () => {
+      choice = null;
+      done[i] = null;
+      options.forEach(o => {
+        o.classList.remove('mc-goed', 'mc-fout');
+        o.removeAttribute('aria-disabled');
+        o.setAttribute('aria-pressed', 'false');
+        $('.mc-tag', o)?.remove();
+      });
+      check.hidden = false;
+      check.disabled = true;
+      uitleg.hidden = true;
+      uitleg.replaceChildren();
+      paintScore();
+    };
+    options.forEach((option, j) => option.addEventListener('click', () => {
+      if (done[i] !== null) return;
+      choice = j;
+      options.forEach(o => o.setAttribute('aria-pressed', String(o === option)));
+      check.disabled = false;
+    }));
+    check.addEventListener('click', () => {
+      const q = data.mc[i];
+      if (done[i] !== null || choice === null || !q) return;
+      done[i] = choice === q.answer;
+      options.forEach((o, j) => {
+        o.setAttribute('aria-disabled', 'true');
+        const tag = j === q.answer ? 'Juist antwoord' : j === choice ? 'Jouw keuze' : '';
+        if (j === q.answer) o.classList.add('mc-goed');
+        else if (j === choice) o.classList.add('mc-fout');
+        if (tag) o.insertAdjacentHTML('beforeend', `<span class="mc-tag">${tag}</span>`);
+      });
+      check.hidden = true;
+      uitleg.innerHTML = `<p><strong>${done[i] ? 'Goed.' : 'Niet goed.'}</strong> Het juiste antwoord is ${String.fromCharCode(65 + q.answer)}.</p>
+        <div>${q.explanation}</div>
+        <div class="toets-actions"><button class="toets-btn glass" type="button" data-retry>Probeer opnieuw</button></div>`;
+      uitleg.hidden = false;
+      paintScore();
+    });
+    uitleg.addEventListener('click', event => {
+      if (!event.target.closest('[data-retry]')) return;
+      reset();
+      options[0].focus({ preventScroll: true });
+    });
+  });
+
+  // ── Open vragen: modelantwoord ──
+  $$('.open-vraag').forEach((card, i) => {
+    const button = $('[data-model]', card);
+    const model = $('.toets-model', card);
+    button.addEventListener('click', () => {
+      const open = button.getAttribute('aria-expanded') === 'true';
+      if (open) {
+        model.hidden = true;
+        model.replaceChildren();
+      } else {
+        const q = data.open[i];
+        if (!q) return;
+        model.innerHTML = `<h4>Modelantwoord</h4><div>${q.model}</div>`;
+        model.hidden = false;
+      }
+      button.setAttribute('aria-expanded', String(!open));
+      button.textContent = open ? 'Toon modelantwoord' : 'Verberg modelantwoord';
+    });
+  });
+
+  // ── Reels: één speler tegelijk; de YouTube-API en de speler pas na een klik op afspelen ──
+  const reelBox = $('#reel');
+  if (reelBox) {
+    const reels = JSON.parse($('#reel-data').textContent);
+    const vlak = $('#reel-vlak');
+    const status = $('#reel-status');
+    const caption = $('#reel-caption');
+    const knoppen = $$('.reel-knop');
+    let current = 0, player = null, loading = false, timer = null;
+    function teardown() {
+      clearTimeout(timer);
+      loading = false;
+      try { if (player && player.destroy) player.destroy(); } catch (_) {}
+      player = null;
+      vlak.replaceChildren();
+    }
+    function mount(i, message) {
+      teardown();
+      current = i;
+      const r = reels[i];
+      knoppen.forEach((k, j) => k.setAttribute('aria-pressed', String(j === i)));
+      const strong = document.createElement('strong');
+      strong.textContent = r.titel;
+      caption.replaceChildren(strong, r.duur ? ' · ' + r.duur : '');
+      status.textContent = message || '';
+      if (!r.youtube_id) {
+        const volgt = document.createElement('p');
+        volgt.className = 'reel-volgt';
+        volgt.textContent = 'Video volgt binnenkort';
+        vlak.append(volgt);
+        return;
+      }
+      const start = document.createElement('button');
+      start.type = 'button';
+      start.className = 'reel-start';
+      start.id = 'reel-start';
+      start.dataset.video = r.youtube_id;
+      start.setAttribute('aria-label', 'Afspelen op YouTube: ' + r.titel);
+      const poster = document.createElement('img');
+      poster.id = 'reel-poster';
+      poster.alt = '';
+      poster.decoding = 'async';
+      poster.addEventListener('error', () => {
+        if (poster.src !== r.thumb) poster.src = r.thumb;
+        else poster.hidden = true;
+      });
+      poster.src = r.poster || r.thumb;
+      const label = document.createElement('span');
+      label.innerHTML = '<strong>Afspelen op YouTube</strong>';
+      start.append(poster, label);
+      start.addEventListener('click', () => play(start, r, i));
+      vlak.append(start);
+    }
+    function failed() {
+      mount(current, 'De video kon niet laden. Klik op afspelen om het opnieuw te proberen.');
+    }
+    function create(r, i) {
+      if (!loading || player || i !== current) return;
+      const iframe = document.createElement('iframe');
+      iframe.id = 'reel-video';
+      iframe.title = 'Reel: ' + r.titel;
+      iframe.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
+      iframe.allowFullscreen = true;
+      iframe.referrerPolicy = 'strict-origin-when-cross-origin';
+      const url = new URL('https://www.youtube-nocookie.com/embed/' + encodeURIComponent(r.youtube_id));
+      url.search = new URLSearchParams({ enablejsapi: '1', origin: location.origin, autoplay: '1', playsinline: '1', cc_lang_pref: 'nl', rel: '0' });
+      iframe.src = url.href;
+      vlak.replaceChildren(iframe);
+      player = new YT.Player(iframe, {
+        events: {
+          onReady: event => {
+            player = event.target;
+            clearTimeout(timer);
+            loading = false;
+            status.textContent = '';
+            event.target.playVideo();
+          },
+          // Na het einde staat de volgende reel klaar; hij begint niet vanzelf.
+          onStateChange: event => {
+            if (event.data === 0 && current + 1 < reels.length) {
+              mount(current + 1, 'Volgende reel klaar: ' + reels[current + 1].titel + '. Klik op afspelen om hem te starten.');
+            }
+          },
+          onError: failed
+        }
+      });
+    }
+    function play(start, r, i) {
+      if (loading || player) return;
+      loading = true;
+      start.disabled = true;
+      status.textContent = 'YouTube-speler laden…';
+      timer = setTimeout(failed, 15000);
+      if (window.YT && window.YT.Player) { create(r, i); return; }
+      window.onYouTubeIframeAPIReady = () => create(r, i);
+      $('#youtube-api')?.remove();
+      const script = document.createElement('script');
+      script.id = 'youtube-api';
+      script.src = 'https://www.youtube.com/iframe_api';
+      script.async = true;
+      script.onerror = failed;
+      document.head.append(script);
+    }
+    knoppen.forEach((knop, i) => knop.addEventListener('click', () => { if (i !== current) mount(i); }));
+    mount(0);
+  }
+
+  // ── Beeld vergroten (blokken van het type img) ──
+  const lb = $('#lightbox');
+  document.addEventListener('click', e => {
+    const b = e.target.closest('.beeld button');
+    if (b) {
+      const img = b.querySelector('img');
+      lb.querySelector('img').src = img.src;
+      lb.querySelector('p').textContent = b.parentNode.querySelector('figcaption')?.textContent || '';
+      lb.hidden = false;
+    } else if (e.target.closest('#lightbox')) lb.hidden = true;
+  });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') lb.hidden = true; });
+})();
+</script>
+</body>
+</html>

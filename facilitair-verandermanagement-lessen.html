@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+<title>Lessen · Facilitair verandermanagement · FM Atlas</title>
+<meta name="description" content="Alle lessen van Facilitair verandermanagement per week, met per les een korte reel, een lesvoorbereiding en een toetsvoorbereiding."/>
+<link rel="icon" type="image/svg+xml" href="logo.svg"/>
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png"/>
+<link rel="apple-touch-icon" href="apple-touch-icon.png"/>
+<meta name="theme-color" content="#efe5d4"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="css/atlas.css"/>
+<link rel="canonical" href="https://fmatlas.nl/facilitair-verandermanagement-lessen.html"/>
+<style>
+.lessen-wrap { max-width: 1120px; margin: 0 auto; padding: 36px 16px 64px; color: var(--ink); }
+.lessen-wrap h1, .lessen-wrap h2, .lessen-wrap h3 { font-family: var(--font-display); letter-spacing: -.025em; line-height: 1.2; }
+.lessen-wrap h1 { font-size: clamp(28px, 4vw, 40px); }
+.lessen-intro { max-width: 76ch; margin: 16px 0 8px; font-size: 17px; line-height: 1.7; }
+.week { margin-top: 40px; }
+.week h2 { font-size: clamp(22px, 3vw, 28px); margin-bottom: 16px; }
+.les-kaarten { list-style: none; display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 14px; }
+.les-kaart { border-radius: var(--r-lg); padding: 22px 22px 18px; display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+.les-kaart-wanneer { font-size: 14px; font-weight: 600; color: var(--ink-soft); font-variant-numeric: tabular-nums; }
+.les-kaart h3 { font-size: 20px; overflow-wrap: anywhere; }
+.les-kaart h3 a { display: block; }
+.les-kaart h3 a:hover { text-decoration: underline; text-underline-offset: 3px; }
+.les-nr { color: var(--accent); font-variant-numeric: tabular-nums; }
+.les-kaart-meta { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip { display: inline-block; padding: 4px 12px; border-radius: var(--r-pill); font-size: 13px; font-weight: 600; background: var(--glass-strong); border: 1px solid var(--glass-edge-low); }
+.chip-reel { background: var(--olive-800); color: var(--gold); border-color: transparent; }
+.les-kaart-routes { margin-top: auto; padding-top: 8px; display: flex; flex-wrap: wrap; gap: 8px; }
+.route-link { display: inline-flex; align-items: center; min-height: 44px; padding: 0 18px; border-radius: var(--r-pill); font-size: 15px; font-weight: 600; background: var(--glass-strong); border: 1px solid var(--glass-edge); }
+.route-link:hover { background: var(--accent); color: var(--accent-ink); }
+@media (max-width: 480px) {
+  .lessen-wrap { padding-top: 24px; }
+  .les-kaarten { grid-template-columns: minmax(0, 1fr); }
+  .les-kaart-routes .route-link { flex: 1 1 auto; justify-content: center; }
+}
+</style>
+</head>
+<body>
+<div class="scene" aria-hidden="true"><i></i></div>
+<header class="topbar" id="topbar"></header>
+<main class="lessen-wrap" id="main">
+  <h1>Lessen</h1>
+  <p class="lessen-intro">Per les een paar korte video's en twee routes: <strong>lesvoorbereiding</strong> als je de les nog moet volgen, <strong>toetsvoorbereiding</strong> als je de stof wilt oefenen in de vorm van het tentamen.</p>
+<section class="week" aria-labelledby="week-1"><h2 id="week-1">Week 1 · 9 november</h2><ul class="les-kaarten"><li class="les-kaart glass" data-laag="verdieping"><p class="les-kaart-wanneer">ma 9 november · 15:30-17:00 · F0.13</p><h3><a href="facilitair-verandermanagement-les-1-1.html"><span class="les-nr">1.1</span> Introductie en veranderdiagnose</a></h3><p class="les-kaart-meta"><span class="chip">theorie</span><span class="chip">3 reels volgen</span></p><p class="les-kaart-routes"><a class="route-link" href="facilitair-verandermanagement-les-1-1.html#les">Lesvoorbereiding</a><a class="route-link" href="facilitair-verandermanagement-les-1-1.html#toets">Toetsvoorbereiding</a></p></li><li class="les-kaart glass" data-laag="verdieping"><p class="les-kaart-wanneer">do 12 november · 09:00-11:30 · F0.13</p><h3><a href="facilitair-verandermanagement-les-1-2.html"><span class="les-nr">1.2</span> Veranderdiagnose De Bijenkorf</a></h3><p class="les-kaart-meta"><span class="chip">casus</span></p><p class="les-kaart-routes"><a class="route-link" href="facilitair-verandermanagement-les-1-2.html#les">Lesvoorbereiding</a><a class="route-link" href="facilitair-verandermanagement-les-1-2.html#toets">Toetsvoorbereiding</a></p></li></ul></section>
+</main>
+<script src="js/atlas-data.js"></script>
+<script src="js/atlas.js"></script>
+<script>
+Atlas.topbar('<span class="sep">/</span><a href="vak.html?v=facilitair-verandermanagement">Facilitair verandermanagement</a><span class="sep">/</span><span class="here">Lessen</span>');
+</script>
+</body>
+</html>

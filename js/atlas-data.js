@@ -12,14 +12,36 @@ window.ATLAS_VAKKEN = [
     title: 'Facilitair verandermanagement',
     sub: 'IOV-model · niveaus van verandering · verandervermogen · veranderplan',
     year: 2, periods: [2], icon: 'shift',
-    leren: [], oefenen: [], toetsen: [],
+    leren: [
+      ['Lessen · reels en voorbereiding', 'facilitair-verandermanagement-lessen.html', 'play'],
+      ['Samenvatting', 'facilitair-verandermanagement-samenvatting.html', 'book'],
+      ['Begrippenlijst', 'facilitair-verandermanagement-begrippen.html', 'list'],
+    ],
+    oefenen: [
+      ['Flashcards', 'facilitair-verandermanagement-flashcards.html', 'cards'],
+      ['Begrippentoets', 'begrippentoets.html?vak=facilitair-verandermanagement', 'check'],
+    ],
+    toetsen: [
+      ['Oefentoets · week 1 t/m 4', 'facilitair-verandermanagement-oefentoets.html', 'quiz'],
+    ],
   },
   {
     key: 'facilitaire-economie-veranderingen', code: 'WPMBEC01',
     title: 'Facilitaire economie bij veranderingen',
     sub: 'Businesscase in zes stappen · kasstromen · terugverdientijd · NCW',
     year: 2, periods: [2], icon: 'coin',
-    leren: [], oefenen: [], toetsen: [],
+    leren: [
+      ['Lessen · reels en voorbereiding', 'facilitaire-economie-veranderingen-lessen.html', 'play'],
+      ['Samenvatting', 'facilitaire-economie-veranderingen-samenvatting.html', 'book'],
+      ['Begrippenlijst', 'facilitaire-economie-veranderingen-begrippen.html', 'list'],
+    ],
+    oefenen: [
+      ['Flashcards', 'facilitaire-economie-veranderingen-flashcards.html', 'cards'],
+      ['Begrippentoets', 'begrippentoets.html?vak=facilitaire-economie-veranderingen', 'check'],
+    ],
+    toetsen: [
+      ['Oefentoets · de businesscase in zes stappen', 'facilitaire-economie-veranderingen-oefentoets.html', 'quiz'],
+    ],
   },
 
   // ── Jaar 2 · periode 1 ─────────────────────────────
