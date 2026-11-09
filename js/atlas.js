@@ -6,11 +6,18 @@
   const VAKKEN = window.ATLAS_VAKKEN;
   const HUIDIG = window.ATLAS_HUIDIG;
   const accountScript = new URL('atlas-account.js', document.currentScript.src).href;
+  const measurementScript = new URL('atlas-meten.js', document.currentScript.src).href;
   const accountReady = window.AtlasAccount ? Promise.resolve(window.AtlasAccount) : new Promise(resolve => {
     const script = document.createElement('script');
     script.src = accountScript;
     script.onload = () => resolve(window.AtlasAccount || null);
     script.onerror = () => resolve(null);
+    document.head.appendChild(script);
+  });
+  accountReady.then(() => {
+    if (window.AtlasMeten) return;
+    const script = document.createElement('script');
+    script.src = measurementScript;
     document.head.appendChild(script);
   });
 

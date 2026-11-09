@@ -32,10 +32,19 @@ Project `fmkompas-ff8bc` (Google-login en Firestore).
 
 - `voortgang/{uid}.kaarten`: kaartvoortgang en historie per vak, via `js/atlas-account.js`.
 - `voortgang/{uid}.toetsen`: beste toetsscores, via dezelfde accountcode.
-- De beheerpagina leest daarnaast de bestaande collecties `scores`, `statistiek`,
-  `statistiek/{dag}/spel` en `feedback`, en de oude velden `progress`, `streak` en `last`.
-  De nieuwe leerpagina's sturen die oude tellers niet meer bij. Het dashboard toont daardoor
-  geen volledig beeld van het gebruik en de voortgang op de nieuwe site.
+- `statistiek/{dag}` met `paginas/{pagina}` en `toetsen/{toets}`: anonieme tellers (bezoekers per
+  dag, weergaven per pagina, ingeleverde toetsen en de som van hun scores). Geschreven door
+  `js/atlas-meten.js`, gelezen door het dashboard in `beheer.html`. Geen namen, accounts of IP-adressen.
+- `activiteit/{uid}_{dag}`: actieve tijd, geopende onderdelen en toetsscores per ingelogde student
+  per dag, ook via `js/atlas-meten.js`. Zie "Meten" hieronder.
+- `statistiek/{dag}/spel/{teller}`: anonieme tellers van de game Slipstroom in `game/slipstroom/` (keer geopend,
+  races, kamers, baan, apparaat, kwaliteit). De game stuurt alleen window-events `slipstroom:stat`;
+  `js/spel-statistiek.js` (alleen geladen door de FM Atlas-build van de game) telt ze als `n` (+1) en
+  bij online races `som` (+aantal spelers, hooguit 6). Getoond in het blok "Game: Slipstroom" op
+  `beheer.html`.
+- De beheerpagina leest daarnaast de bestaande collecties `scores` en `feedback`, en de oude velden
+  `progress`, `streak` en `last`. Die oude velden worden door de nieuwe leerpagina's niet meer
+  bijgewerkt.
 
 Onderstaande regels zijn de bestaande beheerconfiguratie uit de oude site. Ze zijn bij de
 opruiming niet gewijzigd; de daadwerkelijk ingestelde regels zijn hier niet opnieuw gecontroleerd.
@@ -113,6 +122,58 @@ service cloud.firestore {
 
 De update-regel voor `scores` hoort bij de oude site. De nieuwe accountcode bewaart zijn
 voortgang in `voortgang/{uid}`.
+
+## Meten in de nieuwe site
+
+`js/atlas.js` laadt `js/atlas-meten.js` na het accountscript, zonder aanpassingen aan de HTML.
+De module houdt de bestaande anonieme dag-, pagina- en toetstellers bij via REST-increments.
+Iedere aanroep van `AtlasAccount.saveTest` geeft een `atlas:toets-ingeleverd`-event; alleen geldige
+scores worden geteld, ook als de score lager is dan een eerdere poging. `AtlasAccount.currentUser`
+is `undefined` tijdens accountherstel, daarna `null` of `{uid, getIdToken}`. `atlas:account` meldt
+de accountstatus. De meting wacht daarop, zodat de beheerder nergens meetelt.
+
+Voor ingelogde studenten komt er daarnaast `activiteit/{uid}_{dag}`: uid, lokale dag, actieve
+seconden, opens en seconden per vak/onderdeel, en aantal/som van toetspercentages per toets.
+Pagina's worden via bestandsnaam en query aan `ATLAS_VAKKEN` gekoppeld; zonder vak vallen ze onder
+`_site`. Elke 15 seconden telt een zichtbare pagina mee als de laatste interactie hooguit 60 seconden
+geleden is, bij video's 15 minuten. Bij later inloggen begint de studentmeting op dat moment.
+Activiteit wordt per 60 seconden gebundeld, met extra flushes bij verbergen, sluiten en uitloggen.
+Wijzigingen gebruiken increments; ontbrekende nulwaarden worden met `maximum: 0` geïnitialiseerd
+zonder bestaande totalen te verlagen. Lege batches worden niet verstuurd. `bijgewerkt` gebruikt de
+servertijd. REST-verzoeken gebruiken `keepalive`; het ID-token blijft in het geheugen en wordt via
+de accountgetter ververst. Netwerkfouten blijven stil en mislukte/ongelijke antwoorden worden niet
+automatisch herhaald om dubbele increments te voorkomen.
+
+De beheerder (`EFkA4kexkLNjBKCGuKD9eiyUvfM2`), localhost, `127.0.0.1`, `file:` en browsers met
+`localStorage.fa_stats_uit === '1'` worden uitgesloten. De bestaande pagina-attributen `data-no-stats`
+en `data-no-feedback` blijven gerespecteerd. Zet `localStorage.fa_meten_debug = '1'` en herlaad voor
+debugmodus: ook lokaal actief, alle payloads naar `console.debug('[meten]', ...)`, geen meetverzoeken
+en geen tokens in de log. De bezoekersmarkering `fa_stats_dag` wordt in debugmodus niet aangepast.
+Met `localStorage.removeItem('fa_meten_debug')` en herladen zet je debugmodus uit.
+
+**De beheerder plakt zelf onderstaande nieuwe regel in de Firebase-console**, binnen
+`match /databases/{database}/documents`, naast de bestaande regels hierboven. Die blijven
+ongewijzigd. Zonder deze toevoeging weigert Firestore de studentactiviteit; de anonieme tellers
+blijven werken.
+
+```
+match /activiteit/{id} {
+  allow read: if isBeheerder()
+    || (request.auth != null && resource.data.uid == request.auth.uid);
+  allow create, update: if request.auth != null
+    && request.resource.data.uid == request.auth.uid
+    && request.resource.data.dag is string
+    && request.resource.data.dag.matches('^[0-9]{4}-[0-9]{2}-[0-9]{2}$')
+    && id == request.auth.uid + '_' + request.resource.data.dag
+    && request.resource.data.keys().hasOnly(['uid','dag','sec','vakken','toetsen','bijgewerkt']);
+  allow delete: if false;
+}
+```
+
+Controle: `node --test tests/` en `node --check js/atlas-meten.js`, `node --check js/atlas.js`,
+`node --check js/atlas-account.js`. REST-increments en authenticatie volgen de
+[Firestore Write-referentie](https://firebase.google.com/docs/firestore/reference/rest/v1/Write)
+en de [REST-documentatie](https://firebase.google.com/docs/firestore/use-rest-api).
 
 ## Feedback en automatische verwerking
 

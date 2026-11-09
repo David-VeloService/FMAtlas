@@ -19,6 +19,12 @@
   const mounts = new Set();
   let auth = null, db = null, user = null, boot = null, busy = false, message = '';
   let syncTimer = null, syncing = false, resync = false, revision = 0, generation = 0;
+  let accountResolved = false;
+
+  function announceAccount() {
+    accountResolved = true;
+    window.dispatchEvent(new CustomEvent('atlas:account', { detail: { uid: user?.uid || null } }));
+  }
 
   const record = value => value && typeof value === 'object' && !Array.isArray(value) ? value : {};
   const timestamp = value => {
@@ -171,6 +177,9 @@
     return state;
   }
   function saveTest(key, value) {
+    window.dispatchEvent(new CustomEvent('atlas:toets-ingeleverd', {
+      detail: { key, goed: value?.goed, totaal: value?.totaal }
+    }));
     if (typeof key !== 'string' || !key || !normaliseTest(value)) return null;
     const state = persistTest(key, mergeTest(readTest(key), value));
     revision++;
@@ -292,6 +301,7 @@
         paintAll();
         courseKeys().forEach(key => window.dispatchEvent(new CustomEvent('atlas:kaarten', { detail: { key, account: true } })));
         testKeys().forEach(key => window.dispatchEvent(new CustomEvent('atlas:toetsen', { detail: { key, account: true } })));
+        announceAccount();
         if (user) connectStore(generation);
       }, () => { message = 'Inloggen lukt nu niet. Je kunt verder oefenen.'; paintAll(); });
       auth.getRedirectResult().catch(() => {
@@ -401,7 +411,16 @@
   }
   window.addEventListener('online', reconnect);
   document.addEventListener('visibilitychange', () => { if (!document.hidden) reconnect(); });
-  window.AtlasAccount = { mount, login, logout, read, save, merge, cardId, today, known, readTest, saveTest };
+  window.AtlasAccount = {
+    mount, login, logout, read, save, merge, cardId, today, known, readTest, saveTest,
+    get currentUser() {
+      // undefined: herstel loopt nog; null: uitgelogd. Houd Firebase zelf binnen deze module.
+      const current = user;
+      return !accountResolved ? undefined : current ? {
+        uid: current.uid, getIdToken: () => current.getIdToken()
+      } : null;
+    }
+  };
 
   let restore = false, marker = null;
   try {
@@ -414,6 +433,8 @@
   else if (marker !== '0' && window.indexedDB && typeof indexedDB.databases === 'function') {
     indexedDB.databases().then(databases => {
       if (databases.some(database => database.name === 'firebaseLocalStorageDb')) initialise().catch(() => {});
+      else announceAccount();
     }).catch(() => {});
   }
+  else announceAccount();
 })();
