@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+<title>Les 6.1: Adviseren en afsluiten · Facilitaire economie bij veranderingen · FM Atlas</title>
+<meta name="description" content="Les 6.1 van Facilitaire economie bij veranderingen: Adviseren en afsluiten. Korte reels met lesvoorbereiding en toetsvoorbereiding."/>
+<link rel="icon" type="image/svg+xml" href="logo.svg"/>
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png"/>
+<link rel="apple-touch-icon" href="apple-touch-icon.png"/>
+<meta name="theme-color" content="#efe5d4"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="css/atlas.css"/>
+<link rel="stylesheet" href="css/leer.css"/>
+<link rel="stylesheet" href="css/toets.css"/>
+<link rel="canonical" href="https://fmatlas.nl/facilitaire-economie-veranderingen-les-6-1.html"/>
+<style>
+.les-wrap { max-width: 1180px; margin: 0 auto; padding: 36px 16px 64px; color: var(--ink); }
+.les-wrap [hidden] { display: none !important; }
+.les-kop { margin-bottom: 28px; }
+.les-kop h1 { font-family: var(--font-display); font-size: clamp(28px, 4vw, 40px); font-weight: 700; letter-spacing: -0.03em; line-height: 1.1; max-width: 26ch; }
+.les-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+.chip { display: inline-block; padding: 4px 12px; border-radius: var(--r-pill); font-size: 14px; font-weight: 600; font-variant-numeric: tabular-nums; background: var(--glass-strong); border: 1px solid var(--glass-edge-low); }
+
+.les-grid { display: grid; grid-template-columns: minmax(0, 360px) minmax(0, 1fr); gap: 32px; align-items: start; }
+.les-grid.zonder-reel { grid-template-columns: minmax(0, 1fr); }
+.les-route { min-width: 0; }
+
+/* Reel: staand beeld, op desktop niet breder dan 360 px */
+.reel { width: 100%; max-width: 360px; }
+.reel-vlak { position: relative; aspect-ratio: 9 / 16; border-radius: var(--r-lg); overflow: hidden; background: var(--olive-950); color: var(--sand-50); box-shadow: var(--glass-shadow); }
+.reel-vlak iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; display: block; }
+.reel-start { position: absolute; inset: 0; width: 100%; height: 100%; background: var(--olive-950); color: var(--sand-50); }
+.reel-start img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.reel-start span { position: absolute; inset: 0; display: grid; place-items: end center; padding: 24px 16px; background: linear-gradient(to top, rgba(20, 23, 15, .75), transparent 45%); }
+.reel-start strong { min-height: 48px; display: inline-flex; align-items: center; padding: 12px 24px; background: var(--olive-900); color: var(--sand-50); border: 1px solid var(--sand-50); border-radius: var(--r-pill); font-size: 17px; }
+.reel-start:focus-visible { outline-offset: -6px; }
+.reel-volgt { position: absolute; inset: 0; display: grid; place-items: center; padding: 24px; text-align: center; font-family: var(--font-display); font-size: 22px; font-weight: 600; }
+.reel figcaption { margin-top: 12px; font-size: 15px; color: var(--ink-soft); font-variant-numeric: tabular-nums; }
+.reel-privacy, .reel-status { margin-top: 6px; font-size: 13px; color: var(--ink-soft); line-height: 1.5; }
+.reel-status:empty { display: none; }
+.reel-keuze { display: none; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+.js .reel-keuze { display: flex; }
+.reel-knop { min-height: 44px; padding: 8px 16px; border-radius: var(--r-pill); font-size: 14px; font-weight: 600; text-align: left; line-height: 1.3; background: var(--glass-strong); border: 1px solid var(--glass-edge); font-variant-numeric: tabular-nums; }
+.reel-knop:hover { background: var(--glass-hover); }
+.reel-knop[aria-pressed="true"] { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+
+/* Keuze tussen twee routes */
+.route-keuze { display: none; gap: 8px; margin-bottom: 28px; }
+.js .route-keuze { display: flex; flex-wrap: wrap; }
+.route-tab { min-height: 48px; padding: 12px 24px; border-radius: var(--r-pill); font-weight: 600; background: var(--glass-strong); border: 1px solid var(--glass-edge); }
+.route-tab:hover { background: var(--glass-hover); }
+.route-tab[aria-selected="true"] { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+.js .route-kop { display: none; }
+.route-kop { font-family: var(--font-display); font-size: 26px; margin-bottom: 8px; }
+.route-paneel + .route-paneel { margin-top: 48px; }
+.js .route-paneel + .route-paneel { margin-top: 0; }
+.route-paneel:focus { outline: none; }
+
+.tekst h2.les-h { font-family: var(--font-display); font-size: 21px; font-weight: 700; letter-spacing: -0.015em; line-height: 1.25; margin-top: 36px; }
+.tekst > h2.les-h:first-child, .route-kop + .tekst > h2.les-h:first-child { margin-top: 0; }
+
+.denk { border-radius: var(--r-md); padding: 4px 20px; }
+.denk summary { cursor: pointer; font-weight: 600; list-style: none; min-height: 48px; padding: 12px 0; display: flex; gap: 12px; align-items: baseline; }
+.denk summary::-webkit-details-marker { display: none; }
+.denk summary::before { content: "+"; flex: none; width: 14px; color: var(--accent); font-weight: 700; }
+.denk[open] summary::before { content: "\2013"; }
+.denk-antwoord { padding: 12px 0 16px; border-top: 1px solid var(--glass-edge-low); color: var(--ink-soft); }
+
+.mc-set, .open-set { display: grid; gap: 20px; }
+.mc-vraag, .open-vraag { border-radius: var(--r-lg); padding: clamp(20px, 3vw, 32px); overflow-wrap: anywhere; }
+.tekst .mc-vraag h3, .tekst .open-vraag h3 { margin-top: 0; font-size: 19px; line-height: 1.45; }
+.mc-nr { display: block; margin-bottom: 6px; font-size: 13px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; color: var(--ink-soft); }
+.mc-vraag .toets-options { margin-top: 20px; gap: 10px; }
+.mc-vraag .toets-option { font-size: 16px; padding: 14px 18px; }
+.mc-vraag .toets-actions, .open-vraag .toets-actions { margin-top: 20px; }
+.toets-option.mc-goed { background: rgba(31, 122, 63, .18); border-color: #1f7a3f; box-shadow: inset 0 0 0 1px #1f7a3f; color: var(--ink); }
+.toets-option.mc-fout { background: rgba(179, 38, 30, .16); border-color: #b3261e; box-shadow: inset 0 0 0 1px #b3261e; color: var(--ink); }
+.toets-option[aria-disabled="true"] { cursor: default; }
+.mc-tag { flex: none; margin-left: auto; padding-left: 12px; font-size: 14px; font-weight: 700; white-space: nowrap; }
+.mc-uitleg { margin-top: 20px; padding: 16px 20px; border-radius: var(--r-md); border-left: 4px solid var(--accent); background: var(--glass-strong); line-height: 1.7; }
+.mc-uitleg:focus { outline: none; }
+.mc-score { font-weight: 600; font-size: 17px; }
+.open-vraag .toets-model { padding: 16px 20px; border-radius: var(--r-md); border-left: 4px solid var(--accent); background: var(--glass-strong); }
+.open-vraag .toets-model h4 { font-family: var(--font-display); font-size: 17px; margin-bottom: 8px; }
+.mc-vraag .beeld, .tekst .toets-casus { margin: 16px 0 0; }
+
+.les-wrap .verder { margin-top: 56px; }
+@media (max-width: 900px) {
+  .les-grid { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+}
+@media (max-width: 600px) {
+  .les-wrap { padding-top: 24px; }
+  .reel { max-width: none; }
+  .js .reel-keuze { flex-wrap: nowrap; overflow-x: auto; scroll-snap-type: x proximity; padding-bottom: 6px; }
+  .reel-knop { flex: none; white-space: nowrap; scroll-snap-align: start; }
+  .route-tab { flex: 1 1 auto; padding-inline: 16px; }
+  .mc-vraag .toets-option { padding: 14px; gap: 12px; }
+  .verder a { max-width: 100%; }
+  .verder { flex-direction: column; }
+}
+</style>
+</head>
+<body>
+<script>document.documentElement.classList.add('js');</script>
+<div class="scene" aria-hidden="true"><i></i></div>
+<header class="topbar" id="topbar"></header>
+<main class="les-wrap" id="main" data-laag="verdieping">
+  <header class="les-kop">
+    <span class="les-pill">Les 6.1</span>
+    <h1>Adviseren en afsluiten</h1>
+    <div class="les-chips"><span class="chip">Week 6</span><span class="chip">maandag 14 december</span><span class="chip">13:45-15:15</span><span class="chip">F0.13</span><span class="chip">theorie</span></div>
+  </header>
+  <div class="les-grid">
+    <figure class="reel" id="reel"><div class="reel-vlak" id="reel-vlak"><p class="reel-volgt">Video volgt binnenkort</p></div><figcaption id="reel-caption"><strong>Meer dan geld</strong> · 1:00</figcaption><div class="reel-keuze" role="group" aria-label="Reels bij deze les"><button type="button" class="reel-knop" data-reel="0" aria-pressed="true">1 · Meer dan geld · 1:00</button><button type="button" class="reel-knop" data-reel="1" aria-pressed="false">2 · Het advies · 1:09</button><button type="button" class="reel-knop" data-reel="2" aria-pressed="false">3 · Het businesscaserapport · 1:08</button></div><p class="reel-status" id="reel-status" role="status"></p><script type="application/json" id="reel-data">[{"titel": "Meer dan geld", "youtube_id": null, "thumb": null, "poster": null, "duur": "1:00"}, {"titel": "Het advies", "youtube_id": null, "thumb": null, "poster": null, "duur": "1:09"}, {"titel": "Het businesscaserapport", "youtube_id": null, "thumb": null, "poster": null, "duur": "1:08"}]</script></figure>
+    <div class="les-route">
+      <div class="route-keuze" role="tablist" aria-label="Kies je voorbereiding"><button class="route-tab" type="button" role="tab" id="tab-les" data-route="les" aria-controls="panel-les" aria-selected="true" tabindex="0">Lesvoorbereiding</button><button class="route-tab" type="button" role="tab" id="tab-toets" data-route="toets" aria-controls="panel-toets" aria-selected="false" tabindex="-1">Toetsvoorbereiding</button></div>
+<section class="route-paneel" id="panel-les" data-route="les" role="tabpanel" aria-labelledby="tab-les"><h2 class="route-kop">Lesvoorbereiding</h2><div class="tekst">
+<h2 class="les-h">Wat er gebeurt</h2>
+<p>Terugblik op stap 5. Dan meervoudige waardecreatie en de zes waardensoorten, met een groepsopdracht: je krijgt één investering en bedenkt zoveel mogelijk voordelen op de vraag van een directeur "Waarom zouden we hier geld aan uitgeven?". Daarna de FM-value map, de FM-waarden en een model van de economische impact van huisvesting. Tot slot stap 6: het advies formuleren, het businesscaserapport opstellen, de spreadsheet vormgeven en de businesscase afsluiten.</p>
+<h2 class="les-h">De kern</h2>
+<dl class="begrip"><dt>Meervoudige waardecreatie</dt><dd>Een organisatiestrategie waarin een organisatie niet alleen financieel-economische waarde creëert, maar ook expliciet aanstuurt op andere waarden. Het leidt tot een triple win: profit, people en planet. Zes waardensoorten: intellectueel, menselijk, sociaal-relationeel, financieel, natuurlijk en materieel.</dd></dl>
+<p>Facilitaire investeringen leveren vaak meer op dan een besparing. De FM-waarden: kostenreductie, productiviteit, gebruikerstevredenheid, organisatiecultuur, innovatie, imago, gezondheid en welzijn, risicobeheersing, flexibiliteit, duurzaamheid, waardestijging van vastgoed of activa en veiligheid. Het model van de economische impact laat zien dat huisvesting effect heeft op mensen, op proces en product, op de maatschappij en rechtstreeks op de economische impact, en dat die effecten op elkaar en op de economische impact doorwerken.</p>
+<div class="naast"><div><h3>Het businesscaserapport</h3>
+<ol><li>Samenvatting</li><li>Aanleiding, context en beschrijving</li><li>Uitgaven</li><li>Ontvangsten</li><li>Financiële analyse</li><li>Sensitiviteitsanalyse</li><li>Scenarioanalyse</li><li>Risicoanalyse</li><li>Acties en maatregelen</li><li>Advies</li></ol></div><div><h3>De spreadsheet</h3>
+<ol><li>Voorblad</li><li>Uitgaven in kaart</li><li>Overzicht ontvangsten</li><li>Gegevens, financieel model en kasstromen</li><li>Financiële analyse</li><li>Gevoeligheidsanalyse met conclusie</li><li>Scenariosamenvatting met toelichting</li><li>Risicotabel met maatregelen</li><li>Kort advies over de haalbaarheid</li></ol></div></div>
+<div class="kern">De kern van het advies is het antwoord op de centrale vraag: is deze investeringsbeslissing zakelijk te rechtvaardigen? Dat is zelden een simpel ja of nee.</div>
+<p>Afsluiten: de businesscase blijft na de overdracht in gebruik. Budgetten worden erop gebaseerd, je vergelijkt periodiek de werkelijke cijfers met de businesscase en voert ze in het model in, en aan het eind kijk je of de ontvangsten zijn gehaald. Pas na de evaluatie is de businesscase afgesloten.</p>
+<h2 class="les-h">Denk alvast na</h2>
+<details class="denk glass"><summary>Een investering heeft een negatieve NCW, maar verlaagt het ziekteverzuim en de CO2-uitstoot. Kan je advies dan toch positief zijn?</summary><div class="denk-antwoord">Ja, maar dan maak je de afweging zichtbaar. Een negatieve NCW betekent dat de rendementseis niet gehaald wordt, niet automatisch dat je het niet doet: duurzaamheid of gezondheid en welzijn kunnen zwaarder wegen. Noem het bedrag dat het financieel kost, de niet-financiële waarde ertegenover en laat de beslisser besluiten.</div></details>
+<details class="denk glass"><summary>Een hogeschool vervangt haar oude koffieautomaten door bonenmachines met herbruikbare bekers. Welke FM-waarden kun je naast de TVT en de NCW in het advies noemen?</summary><div class="denk-antwoord">Bijvoorbeeld gebruikerstevredenheid (betere koffie), duurzaamheid (minder wegwerpbekers), imago en organisatiecultuur (gastvrijheid naar bezoekers) en productiviteit (minder tijd kwijt aan koffie halen buiten de deur). Kostenreductie noem je alleen als de uitgaven echt dalen; dat zie je dan al terug in de kasstromen.</div></details>
+<details class="denk glass"><summary>Waarom is de businesscase na de overdracht aan de beslisser nog niet af?</summary><div class="denk-antwoord">Hij blijft het document waarop budgetten en de financiële planning rusten. Je vergelijkt periodiek de werkelijke cijfers met de businesscase, voert ze in het model in om de haalbaarheid opnieuw vast te stellen, en aan het eind beoordeel je of de ontvangsten gehaald zijn en wat wijzigingen deden. Pas na die evaluatie wordt hij afgesloten.</div></details>
+<h2 class="les-h">Wat er deze week nog komt</h2>
+<p>Vrijdag 18 december (09:00-11:30, F2.78b) het werkcollege van week 6. Lesweek 7 (vanaf 4 januari 2027) staat op Brightspace nog leeg.</p>
+</div></section>
+<section class="route-paneel" id="panel-toets" data-route="toets" role="tabpanel" aria-labelledby="tab-toets"><h2 class="route-kop">Toetsvoorbereiding</h2><div class="tekst">
+<h2 class="les-h">De kern voor de toets</h2>
+<p>Bij een casusvraag moet je kunnen: een advies formuleren dat financiële uitkomsten, onzekerheid en niet-financiële waarde samenbrengt. Daarnaast ken je de opbouw van het rapport, de spreadsheet en wat er na de overdracht gebeurt.</p>
+<div class="let-op"><b>Let op</b>Een advies met alleen "NCW positief, dus doen" is te mager. Leg de TVT en de NCW naast de eisen, noem de gevoeligheid en de grootste risico's, noem de niet-financiële waarde en kom dan tot een oordeel, eventueel met voorwaarden.</div>
+<h2 class="les-h">Oefenvragen</h2>
+<div class="mc-set"><article class="mc-vraag glass" data-mc="0" role="group" aria-labelledby="mc-0-t"><h3 id="mc-0-t"><span class="mc-nr">Vraag 1</span>Een zorginstelling richt de wachtruimte in met meer daglicht en planten, zodat cliënten en medewerkers zich beter voelen. Welke FM-waarde staat hier voorop?</h3><div class="toets-options" role="group" aria-labelledby="mc-0-t"><button class="toets-option glass" type="button" data-choice="0" aria-pressed="false"><span class="toets-letter">A.</span><span>Waardestijging van vastgoed</span></button><button class="toets-option glass" type="button" data-choice="1" aria-pressed="false"><span class="toets-letter">B.</span><span>Gezondheid en welzijn</span></button><button class="toets-option glass" type="button" data-choice="2" aria-pressed="false"><span class="toets-letter">C.</span><span>Risicobeheersing</span></button><button class="toets-option glass" type="button" data-choice="3" aria-pressed="false"><span class="toets-letter">D.</span><span>Innovatie stimuleren</span></button></div><div class="toets-actions"><button class="toets-btn toets-primary" type="button" data-check disabled>Kijk na</button></div><div class="mc-uitleg" id="mc-0-u" role="status" aria-live="polite" tabindex="-1" hidden></div></article>
+<article class="mc-vraag glass" data-mc="1" role="group" aria-labelledby="mc-1-t"><h3 id="mc-1-t"><span class="mc-nr">Vraag 2</span>In het concept van een businesscaserapport staat de risicoanalyse vóór de sensitiviteitsanalyse, en het advies vóór de acties en maatregelen. Wat klopt er niet met de opbouw uit stap 6?</h3><div class="toets-options" role="group" aria-labelledby="mc-1-t"><button class="toets-option glass" type="button" data-choice="0" aria-pressed="false"><span class="toets-letter">A.</span><span>Beide: eerst sensitiviteit, en maatregelen vóór advies</span></button><button class="toets-option glass" type="button" data-choice="1" aria-pressed="false"><span class="toets-letter">B.</span><span>Alleen het advies, want dat hoort vooraan in het rapport</span></button><button class="toets-option glass" type="button" data-choice="2" aria-pressed="false"><span class="toets-letter">C.</span><span>Alleen de risicoanalyse, die hoort na de uitgaven</span></button><button class="toets-option glass" type="button" data-choice="3" aria-pressed="false"><span class="toets-letter">D.</span><span>Niets, de volgorde van de onderdelen is vrij</span></button></div><div class="toets-actions"><button class="toets-btn toets-primary" type="button" data-check disabled>Kijk na</button></div><div class="mc-uitleg" id="mc-1-u" role="status" aria-live="polite" tabindex="-1" hidden></div></article>
+<article class="mc-vraag glass" data-mc="2" role="group" aria-labelledby="mc-2-t"><h3 id="mc-2-t"><span class="mc-nr">Vraag 3</span>Je hebt in je spreadsheet uitgerekend dat de NCW negatief wordt als er 400 in plaats van 500 extra bezoekers komen. In welk tabblad zet je die uitkomst, met een korte conclusie?</h3><div class="toets-options" role="group" aria-labelledby="mc-2-t"><button class="toets-option glass" type="button" data-choice="0" aria-pressed="false"><span class="toets-letter">A.</span><span>Tabblad 5: financiële analyse</span></button><button class="toets-option glass" type="button" data-choice="1" aria-pressed="false"><span class="toets-letter">B.</span><span>Tabblad 7: scenariosamenvatting</span></button><button class="toets-option glass" type="button" data-choice="2" aria-pressed="false"><span class="toets-letter">C.</span><span>Tabblad 8: risicotabel met maatregelen</span></button><button class="toets-option glass" type="button" data-choice="3" aria-pressed="false"><span class="toets-letter">D.</span><span>Tabblad 6: gevoeligheidsanalyse</span></button></div><div class="toets-actions"><button class="toets-btn toets-primary" type="button" data-check disabled>Kijk na</button></div><div class="mc-uitleg" id="mc-2-u" role="status" aria-live="polite" tabindex="-1" hidden></div></article>
+<article class="mc-vraag glass" data-mc="3" role="group" aria-labelledby="mc-3-t"><h3 id="mc-3-t"><span class="mc-nr">Vraag 4</span>De TVT is 3,8 jaar bij een norm van 4 jaar, de NCW is + € 1.200 en bij 5% minder ontvangsten wordt de NCW negatief. Welk advies past het best bij stap 6?</h3><div class="toets-options" role="group" aria-labelledby="mc-3-t"><button class="toets-option glass" type="button" data-choice="0" aria-pressed="false"><span class="toets-letter">A.</span><span>Doen, want beide eisen worden gehaald</span></button><button class="toets-option glass" type="button" data-choice="1" aria-pressed="false"><span class="toets-letter">B.</span><span>Niet doen, want de NCW kan negatief worden</span></button><button class="toets-option glass" type="button" data-choice="2" aria-pressed="false"><span class="toets-letter">C.</span><span>Doen, mits de ontvangsten beter onderbouwd zijn</span></button><button class="toets-option glass" type="button" data-choice="3" aria-pressed="false"><span class="toets-letter">D.</span><span>Geen advies geven, want de beslisser besluit zelf</span></button></div><div class="toets-actions"><button class="toets-btn toets-primary" type="button" data-check disabled>Kijk na</button></div><div class="mc-uitleg" id="mc-3-u" role="status" aria-live="polite" tabindex="-1" hidden></div></article>
+<article class="mc-vraag glass" data-mc="4" role="group" aria-labelledby="mc-4-t"><h3 id="mc-4-t"><span class="mc-nr">Vraag 5</span>Twee jaar na de opening van een nieuwe vergaderlocatie blijft het aantal boekingen achter bij de businesscase. Wat doe je volgens stap 6 met de businesscase?</h3><div class="toets-options" role="group" aria-labelledby="mc-4-t"><button class="toets-option glass" type="button" data-choice="0" aria-pressed="false"><span class="toets-letter">A.</span><span>De werkelijke cijfers invoeren en vergelijken</span></button><button class="toets-option glass" type="button" data-choice="1" aria-pressed="false"><span class="toets-letter">B.</span><span>Archiveren, want het besluit is al genomen</span></button><button class="toets-option glass" type="button" data-choice="2" aria-pressed="false"><span class="toets-letter">C.</span><span>Alleen opnieuw rekenen bij een budgetoverschrijding</span></button><button class="toets-option glass" type="button" data-choice="3" aria-pressed="false"><span class="toets-letter">D.</span><span>Een nieuwe businesscase maken voor de rest</span></button></div><div class="toets-actions"><button class="toets-btn toets-primary" type="button" data-check disabled>Kijk na</button></div><div class="mc-uitleg" id="mc-4-u" role="status" aria-live="polite" tabindex="-1" hidden></div></article></div>
+<p class="mc-score" id="mc-score" role="status" aria-live="polite" hidden></p>
+<h2 class="les-h">Open vragen</h2>
+<div class="open-set"><article class="open-vraag glass" data-open="0" role="group" aria-labelledby="open-0-t"><div class="toets-casus"><strong>Casus</strong>Hogeschool Lindenborg overweegt een overdekte fietsenstalling met oplaadpunten voor e-bikes en camerabewaking. De businesscase bij 6% geeft een terugverdientijd van 6,5 jaar, terwijl het college van bestuur hooguit 5 jaar wil, en een NCW van - € 4.000. Bij een 10% duurdere bouw wordt de NCW - € 7.000. Het grootste risico is dat minder studenten de betaalde plekken gebruiken dan verwacht. De stalling vermindert fietsdiefstal, past bij het duurzaamheidsbeleid van de hogeschool en wordt in de studentenenquête vaak gevraagd.</div><h3 id="open-0-t"><span class="mc-nr">Open vraag 6</span>Formuleer het advies aan het college van bestuur zoals stap 6 het vraagt.</h3><div class="toets-actions"><button class="toets-btn glass" type="button" data-model aria-expanded="false" aria-controls="open-0-m">Toon modelantwoord</button></div><div class="toets-model" id="open-0-m" tabindex="-1" hidden></div></article>
+<article class="open-vraag glass" data-open="1" role="group" aria-labelledby="open-1-t"><div class="toets-casus"><strong>Casus</strong>Een jaar na de start van een nieuw restaurantconcept blijken de ontvangsten 20% lager te liggen dan in de businesscase. De uitgaven liggen op schema.</div><h3 id="open-1-t"><span class="mc-nr">Open vraag 7</span>Wat doe je met de businesscase, en hoe hangt dit samen met het afsluiten van de businesscase?</h3><div class="toets-actions"><button class="toets-btn glass" type="button" data-model aria-expanded="false" aria-controls="open-1-m">Toon modelantwoord</button></div><div class="toets-model" id="open-1-m" tabindex="-1" hidden></div></article></div>
+</div></section>
+      <noscript><p>Schakel JavaScript in om de oefenvragen na te kijken.</p></noscript>
+    </div>
+  </div>
+<nav class="verder" aria-label="Vorige en volgende les"><a class="glass" href="facilitaire-economie-veranderingen-les-5-2.html">&#8249; <span>Les 5.2: CentraZorg: wat als, en wat kan misgaan</span></a><a class="glass" href="facilitaire-economie-veranderingen-les-6-2.html"><span>Les 6.2: CentraZorg: het advies en de complete spreadsheet</span> &#8250;</a></nav>
+</main>
+<div class="lightbox" id="lightbox" hidden><figure><img alt=""/><p></p></figure></div>
+<script src="js/atlas-data.js"></script>
+<script src="js/atlas.js"></script>
+<script src="js/lessen-facilitaire-economie-veranderingen.js"></script>
+<script>
+(() => {
+  'use strict';
+  const $ = (s, r = document) => r.querySelector(s);
+  const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+  Atlas.topbar('<span class="sep">/</span><a href="vak.html?v=facilitaire-economie-veranderingen">Facilitaire economie bij veranderingen</a><span class="sep">/</span><a href="facilitaire-economie-veranderingen-lessen.html">Lessen</a><span class="sep">/</span><span class="here">Les 6.1</span>');
+  // De antwoorden staan niet in de pagina maar in js/lessen-<key>.js; pas na het nakijken komen ze in beeld.
+  const data = (window.FEV_LESSEN || {})["6.1"] || { mc: [], open: [] };
+
+  // ── Keuze tussen lesvoorbereiding en toetsvoorbereiding ──
+  const tabs = $$('.route-tab');
+  const panels = $$('.route-paneel');
+  const routes = tabs.map(t => t.dataset.route);
+  const storeKey = 'fa_les_route_facilitaire-economie-veranderingen';
+  const stored = () => { try { return localStorage.getItem(storeKey); } catch (_) { return null; } };
+  const store = route => { try { localStorage.setItem(storeKey, route); } catch (_) {} };
+  const hashRoute = () => location.hash.slice(1);
+  const pick = () => {
+    if (routes.includes(hashRoute())) return hashRoute();
+    const saved = stored();
+    if (routes.includes(saved)) return saved;
+    return routes.includes('les') ? 'les' : routes[0];
+  };
+  function show(route) {
+    tabs.forEach(t => {
+      const on = t.dataset.route === route;
+      t.setAttribute('aria-selected', String(on));
+      t.tabIndex = on ? 0 : -1;
+    });
+    panels.forEach(p => { p.hidden = p.dataset.route !== route; });
+  }
+  tabs.forEach((tab, i) => {
+    tab.addEventListener('click', () => {
+      store(tab.dataset.route);
+      show(tab.dataset.route);
+      if (hashRoute() !== tab.dataset.route) location.hash = tab.dataset.route;
+    });
+    tab.addEventListener('keydown', event => {
+      const step = { ArrowLeft: -1, ArrowRight: 1 }[event.key];
+      if (!step || tabs.length < 2) return;
+      event.preventDefault();
+      const next = tabs[(i + step + tabs.length) % tabs.length];
+      next.focus();
+      next.click();
+    });
+  });
+  window.addEventListener('hashchange', () => {
+    if (routes.includes(hashRoute())) store(hashRoute());
+    show(pick());
+  });
+  if (routes.includes(hashRoute())) store(hashRoute());
+  show(pick());
+
+  // ── Meerkeuze: kiezen, nakijken, uitleg ──
+  const cards = $$('.mc-vraag');
+  const done = cards.map(() => null);
+  const score = $('#mc-score');
+  const paintScore = () => {
+    if (!score) return;
+    const all = done.every(d => d !== null);
+    score.hidden = !all;
+    score.textContent = all ? `Je hebt ${done.filter(Boolean).length} van ${done.length} oefenvragen goed.` : '';
+  };
+  cards.forEach((card, i) => {
+    const options = $$('.toets-option', card);
+    const check = $('[data-check]', card);
+    const uitleg = $('.mc-uitleg', card);
+    let choice = null;
+    const reset = () => {
+      choice = null;
+      done[i] = null;
+      options.forEach(o => {
+        o.classList.remove('mc-goed', 'mc-fout');
+        o.removeAttribute('aria-disabled');
+        o.setAttribute('aria-pressed', 'false');
+        $('.mc-tag', o)?.remove();
+      });
+      check.hidden = false;
+      check.disabled = true;
+      uitleg.hidden = true;
+      uitleg.replaceChildren();
+      paintScore();
+    };
+    options.forEach((option, j) => option.addEventListener('click', () => {
+      if (done[i] !== null) return;
+      choice = j;
+      options.forEach(o => o.setAttribute('aria-pressed', String(o === option)));
+      check.disabled = false;
+    }));
+    check.addEventListener('click', () => {
+      const q = data.mc[i];
+      if (done[i] !== null || choice === null || !q) return;
+      done[i] = choice === q.answer;
+      options.forEach((o, j) => {
+        o.setAttribute('aria-disabled', 'true');
+        const tag = j === q.answer ? 'Juist antwoord' : j === choice ? 'Jouw keuze' : '';
+        if (j === q.answer) o.classList.add('mc-goed');
+        else if (j === choice) o.classList.add('mc-fout');
+        if (tag) o.insertAdjacentHTML('beforeend', `<span class="mc-tag">${tag}</span>`);
+      });
+      check.hidden = true;
+      uitleg.innerHTML = `<p><strong>${done[i] ? 'Goed.' : 'Niet goed.'}</strong> Het juiste antwoord is ${String.fromCharCode(65 + q.answer)}.</p>
+        <div>${q.explanation}</div>
+        <div class="toets-actions"><button class="toets-btn glass" type="button" data-retry>Probeer opnieuw</button></div>`;
+      uitleg.hidden = false;
+      paintScore();
+    });
+    uitleg.addEventListener('click', event => {
+      if (!event.target.closest('[data-retry]')) return;
+      reset();
+      options[0].focus({ preventScroll: true });
+    });
+  });
+
+  // ── Open vragen: modelantwoord ──
+  $$('.open-vraag').forEach((card, i) => {
+    const button = $('[data-model]', card);
+    const model = $('.toets-model', card);
+    button.addEventListener('click', () => {
+      const open = button.getAttribute('aria-expanded') === 'true';
+      if (open) {
+        model.hidden = true;
+        model.replaceChildren();
+      } else {
+        const q = data.open[i];
+        if (!q) return;
+        model.innerHTML = `<h4>Modelantwoord</h4><div>${q.model}</div>`;
+        model.hidden = false;
+      }
+      button.setAttribute('aria-expanded', String(!open));
+      button.textContent = open ? 'Toon modelantwoord' : 'Verberg modelantwoord';
+    });
+  });
+
+  // ── Reels: één speler tegelijk; de YouTube-API en de speler pas na een klik op afspelen ──
+  const reelBox = $('#reel');
+  if (reelBox) {
+    const reels = JSON.parse($('#reel-data').textContent);
+    const vlak = $('#reel-vlak');
+    const status = $('#reel-status');
+    const caption = $('#reel-caption');
+    const knoppen = $$('.reel-knop');
+    let current = 0, player = null, loading = false, timer = null;
+    function teardown() {
+      clearTimeout(timer);
+      loading = false;
+      try { if (player && player.destroy) player.destroy(); } catch (_) {}
+      player = null;
+      vlak.replaceChildren();
+    }
+    function mount(i, message) {
+      teardown();
+      current = i;
+      const r = reels[i];
+      knoppen.forEach((k, j) => k.setAttribute('aria-pressed', String(j === i)));
+      const strong = document.createElement('strong');
+      strong.textContent = r.titel;
+      caption.replaceChildren(strong, r.duur ? ' · ' + r.duur : '');
+      status.textContent = message || '';
+      if (!r.youtube_id) {
+        const volgt = document.createElement('p');
+        volgt.className = 'reel-volgt';
+        volgt.textContent = 'Video volgt binnenkort';
+        vlak.append(volgt);
+        return;
+      }
+      const start = document.createElement('button');
+      start.type = 'button';
+      start.className = 'reel-start';
+      start.id = 'reel-start';
+      start.dataset.video = r.youtube_id;
+      start.setAttribute('aria-label', 'Afspelen op YouTube: ' + r.titel);
+      const poster = document.createElement('img');
+      poster.id = 'reel-poster';
+      poster.alt = '';
+      poster.decoding = 'async';
+      poster.addEventListener('error', () => {
+        if (poster.src !== r.thumb) poster.src = r.thumb;
+        else poster.hidden = true;
+      });
+      poster.src = r.poster || r.thumb;
+      const label = document.createElement('span');
+      label.innerHTML = '<strong>Afspelen op YouTube</strong>';
+      start.append(poster, label);
+      start.addEventListener('click', () => play(start, r, i));
+      vlak.append(start);
+    }
+    function failed() {
+      mount(current, 'De video kon niet laden. Klik op afspelen om het opnieuw te proberen.');
+    }
+    function create(r, i) {
+      if (!loading || player || i !== current) return;
+      const iframe = document.createElement('iframe');
+      iframe.id = 'reel-video';
+      iframe.title = 'Reel: ' + r.titel;
+      iframe.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
+      iframe.allowFullscreen = true;
+      iframe.referrerPolicy = 'strict-origin-when-cross-origin';
+      const url = new URL('https://www.youtube-nocookie.com/embed/' + encodeURIComponent(r.youtube_id));
+      url.search = new URLSearchParams({ enablejsapi: '1', origin: location.origin, autoplay: '1', playsinline: '1', cc_lang_pref: 'nl', rel: '0' });
+      iframe.src = url.href;
+      vlak.replaceChildren(iframe);
+      player = new YT.Player(iframe, {
+        events: {
+          onReady: event => {
+            player = event.target;
+            clearTimeout(timer);
+            loading = false;
+            status.textContent = '';
+            event.target.playVideo();
+          },
+          // Na het einde staat de volgende reel klaar; hij begint niet vanzelf.
+          onStateChange: event => {
+            if (event.data === 0 && current + 1 < reels.length) {
+              mount(current + 1, 'Volgende reel klaar: ' + reels[current + 1].titel + '. Klik op afspelen om hem te starten.');
+            }
+          },
+          onError: failed
+        }
+      });
+    }
+    function play(start, r, i) {
+      if (loading || player) return;
+      loading = true;
+      start.disabled = true;
+      status.textContent = 'YouTube-speler laden…';
+      timer = setTimeout(failed, 15000);
+      if (window.YT && window.YT.Player) { create(r, i); return; }
+      window.onYouTubeIframeAPIReady = () => create(r, i);
+      $('#youtube-api')?.remove();
+      const script = document.createElement('script');
+      script.id = 'youtube-api';
+      script.src = 'https://www.youtube.com/iframe_api';
+      script.async = true;
+      script.onerror = failed;
+      document.head.append(script);
+    }
+    knoppen.forEach((knop, i) => knop.addEventListener('click', () => { if (i !== current) mount(i); }));
+    mount(0);
+  }
+
+  // ── Beeld vergroten (blokken van het type img) ──
+  const lb = $('#lightbox');
+  document.addEventListener('click', e => {
+    const b = e.target.closest('.beeld button');
+    if (b) {
+      const img = b.querySelector('img');
+      lb.querySelector('img').src = img.src;
+      lb.querySelector('p').textContent = b.parentNode.querySelector('figcaption')?.textContent || '';
+      lb.hidden = false;
+    } else if (e.target.closest('#lightbox')) lb.hidden = true;
+  });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') lb.hidden = true; });
+})();
+</script>
+</body>
+</html>
