@@ -2,124 +2,90 @@
 <html lang="nl">
 <head>
 <meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Privacy — FM Atlas</title>
-<meta name="description" content="Welke gegevens FM Atlas bewaart, waarom, en hoe je ze laat verwijderen."/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+<title>Privacy · FM Atlas</title>
+<meta name="description" content="Welke gegevens FM Atlas bewaart en waarom."/>
 <link rel="canonical" href="https://fmatlas.nl/privacy.html"/>
 <link rel="icon" type="image/svg+xml" href="logo.svg"/>
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png"/>
 <link rel="apple-touch-icon" href="apple-touch-icon.png"/>
-<meta name="theme-color" content="#f7f3ec"/>
+<meta name="theme-color" content="#efe5d4"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet"/>
-<link rel="stylesheet" href="css/fmatlas.css"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="css/atlas.css"/>
 <style>
-.priv-wrap { max-width: 760px; margin: 0 auto; padding: 32px 20px 24px; }
-.priv-wrap h1 { font-size: clamp(28px, 6vw, 38px); font-weight: 900; letter-spacing: -0.02em; margin-bottom: 8px; }
-.priv-wrap .lead { color: var(--ink-soft); font-size: 15px; margin-bottom: 28px; }
-.priv-wrap h2 { font-size: 19px; font-weight: 800; margin: 28px 0 8px; }
-.priv-wrap p, .priv-wrap li { font-size: 15px; line-height: 1.65; color: var(--ink); }
-.priv-wrap ul { padding-left: 20px; margin: 6px 0 10px; }
+.priv-wrap { max-width: 800px; }
+.priv-wrap h1 { font: 700 clamp(32px, 6vw, 44px)/1.1 var(--font-display); letter-spacing: -.03em; margin-bottom: 16px; }
+.priv-wrap .lead { color: var(--ink-soft); margin-bottom: 32px; }
+.priv-wrap h2 { font: 700 20px/1.4 var(--font-display); margin: 32px 0 8px; }
+.priv-wrap p, .priv-wrap li { font-size: 15px; line-height: 1.65; }
+.priv-wrap ul { padding-left: 24px; margin: 8px 0 16px; }
 .priv-wrap li { margin-bottom: 4px; }
-.priv-table { width: 100%; border-collapse: collapse; margin: 10px 0 6px; font-size: 14px; background: var(--surface); border: 1.5px solid var(--line); border-radius: var(--radius); overflow: hidden; }
-.priv-table th, .priv-table td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--line-soft); vertical-align: top; }
-.priv-table th { background: var(--surface-alt); font-weight: 800; }
-.priv-table-wrap { overflow-x: auto; }
+.priv-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.priv-table th, .priv-table td { text-align: left; padding: 12px; border-bottom: 1px solid var(--glass-edge); vertical-align: top; overflow-wrap: anywhere; }
+.priv-table th { background: var(--glass-strong); font-weight: 600; }
+.priv-table-wrap { overflow-x: auto; margin: 16px 0; border-radius: var(--r-md); }
 </style>
 </head>
 <body>
 
-<div id="fa-header-slot"></div>
+<div class="scene" aria-hidden="true"><i></i></div>
+<header class="topbar" id="topbar"></header>
 
-<nav class="fa-breadcrumb">
-  <a href="app.html">Vakken</a>
-  <span aria-hidden="true">›</span>
-  <span class="current">Privacy</span>
-</nav>
-
-<main class="priv-wrap">
+<main class="page priv-wrap">
   <h1>Privacy</h1>
-  <p class="lead">FM Atlas is een gratis studiesite die door één student wordt bijgehouden. Hieronder staat welke gegevens er bewaard worden, waarom, en hoe je ze laat verwijderen. Bijgewerkt op 13 oktober 2026.</p>
+  <p class="lead">FM Atlas is een gratis studiesite die door één student wordt bijgehouden. Hieronder staat welke gegevens er bewaard worden, waarom, en hoe je ze laat verwijderen. Bijgewerkt op 9 november 2026.</p>
 
   <h2>Zonder inloggen</h2>
-  <p>Je kunt alle samenvattingen, begrippenlijsten, flashcards en oefentoetsen gebruiken zonder account. Je punten, je reeks en je voortgang worden dan alleen in je eigen browser bewaard (localStorage). Die gegevens komen niet bij FM Atlas terecht.</p>
+  <p>Je kunt alle samenvattingen, begrippenlijsten, flashcards en oefentoetsen gebruiken zonder account. Je voortgang wordt dan alleen in je eigen browser bewaard (localStorage). Die gegevens komen niet bij FM Atlas terecht.</p>
 
   <h2>Met inloggen via Google</h2>
   <p>Als je inlogt, regelt Google de login via Firebase Authentication. FM Atlas bewaart daarna in Firebase (Firestore) het volgende:</p>
-  <div class="priv-table-wrap">
+  <div class="priv-table-wrap glass">
   <table class="priv-table">
     <tr><th>Gegeven</th><th>Waarvoor</th><th>Wie ziet het</th></tr>
-    <tr><td>Je naam zoals Google die doorgeeft</td><td>Leaderboard</td><td>Andere bezoekers zien alleen je voornaam en de eerste letter van je achternaam</td></tr>
-    <tr><td>Je Google-profielfoto (een link)</td><td>Leaderboard en de knop rechtsboven</td><td>Andere bezoekers, op het leaderboard</td></tr>
-    <tr><td>Je totaal aantal punten en het tijdstip van de laatste wijziging</td><td>Leaderboard</td><td>Andere bezoekers, op het leaderboard</td></tr>
-    <tr><td>Je voortgang per vak, je reeks en het laatst geopende vak</td><td>Zodat je op elk apparaat verder kunt waar je was</td><td>Alleen jij</td></tr>
+    <tr><td>Je kaartvoortgang per vak: per flashcard in welk bakje hij zit en wanneer je hem het laatst en het volgende moment oefent, plus per dag hoeveel kaarten je kent</td><td>Zodat je op elk apparaat verder kunt waar je was en ziet hoe je vordert</td><td>Alleen jij</td></tr>
+    <tr><td>Je beste score per oefentoets</td><td>Zodat je op elk apparaat je beste resultaat terugziet</td><td>Alleen jij</td></tr>
   </table>
   </div>
   <p>Je e-mailadres wordt niet in de database van FM Atlas opgeslagen. Google en Firebase verwerken bij het inloggen wel je account­gegevens; daarvoor geldt het privacybeleid van Google.</p>
 
-  <h2>Contactformulier</h2>
-  <p>Als je een vraag of fout doorgeeft, gaan je e-mailadres en bericht (en je naam, als je die invult) via Formspree naar de beheerder. Die gegevens worden alleen gebruikt om je te antwoorden.</p>
-
-  <h2>Anonieme gebruiksstatistiek</h2>
-  <p>Om te zien welke vakken en oefentoetsen gebruikt worden, telt FM Atlas per dag hoeveel browsers de site bezoeken, hoe vaak elke pagina wordt geopend en welke score een ingeleverde oefentoets oplevert. Dat zijn alleen tellers: er gaat geen naam, account, IP-adres of apparaatnummer mee, en er worden geen cookies of trackers van anderen gebruikt. Om een bezoeker maar één keer per dag te tellen, onthoudt je browser de datum van je laatste bezoek (localStorage). Alleen de beheerder kan de tellers inzien.</p>
-
-  <h2>Feedback en meldingen</h2>
-  <p>Via de knoppen "Feedback" en "Meld een onjuistheid" gaan je bericht, de pagina waarop je zat, eventueel geselecteerde tekst en (als je dat invult) je e-mailadres naar de database van FM Atlas. De melding wordt nagekeken tegen het lesmateriaal en de site wordt aangepast als de melding klopt. Zolang de database voor meldingen nog niet aanstaat, gaan ze via Formspree per e-mail naar de beheerder. Alleen de beheerder kan de meldingen inzien. Ze worden verwijderd zodra ze zijn afgehandeld of als je daarom vraagt.</p>
-
-  <h2>Pool online spelen</h2>
-  <p>Pool tegen de computer of met z'n tweeën op één scherm speel je alleen in je eigen browser: daarbij gaat er geen speldata over het internet. Je browser bewaart (in localStorage) alleen je voorkeuren voor Pool: speelwijze, kracht, geluid, volume, richtlijn en de naam die je zelf invult.</p>
-  <p>Speel je Pool online tegen iemand op een ander apparaat, dan gaan de naam die je invult, de kamercode en de zetten en stand van de partij via een relayserver (een Cloudflare Worker) naar je tegenstander. FM Atlas zet online partijen en namen niet in zijn eigen database. Zoals bij elke internetverbinding ziet de server het IP-adres van je verbinding. Iedereen met de code kan meedoen zolang er plek is (twee spelers), dus deel de code alleen met wie je wilt.</p>
-
-  <h2>Reclame in de spelletjes</h2>
-  <p>In Hoge Inzet, Slipstroom en Stadsstorm komt soms een video van het YouTube-kanaal JonasMS in beeld, tussen potjes of als je zelf een video kijkt voor extra fiches. De video speelt met geluid in de speler van YouTube, via youtube-nocookie.com, de privacyvriendelijkere variant. Je browser maakt daarbij contact met YouTube en daarvoor geldt het privacybeleid van Google. FM Atlas krijgt niets door over wat je kijkt. Je browser onthoudt alleen wanneer de laatste video was en welke het was (localStorage), zodat je niet steeds dezelfde of te vaak een video krijgt.</p>
+  <h2>Gegevens van de vorige versie van FM Atlas</h2>
+  <p>Wie vóór 9 november 2026 inlogde of iets meldde, kan nog gegevens van de vorige versie van de site in Firebase hebben staan:</p>
+  <ul>
+    <li>je naam en een link naar je Google-profielfoto, je totaal aantal punten en het tijdstip van de laatste wijziging, voor het oude leaderboard dat andere bezoekers konden zien;</li>
+    <li>je oude voortgang per vak, je reeks en het laatst geopende vak;</li>
+    <li>feedback en meldingen die je via de knoppen "Feedback" en "Meld een onjuistheid" stuurde, met de pagina, eventueel geselecteerde tekst en het e-mailadres als je dat invulde.</li>
+  </ul>
+  <p>Het leaderboard bestaat niet meer en deze oude gegevens worden verwijderd. De oude voortgangsvelden worden ook gewist zodra je weer inlogt.</p>
 
   <h2>Wat er niet gebeurt</h2>
   <ul>
-    <li>Er draait geen advertentienetwerk en er staan geen trackers op de site. De reclame in de spelletjes is een video van JonasMS via YouTube (zie hierboven).</li>
+    <li>Er draait geen advertentienetwerk en er staan geen trackers op de site.</li>
     <li>Gegevens worden niet verkocht of gedeeld met anderen dan de diensten hierboven.</li>
     <li>FM Atlas is niet verbonden aan de HAN; de HAN krijgt niets van deze gegevens.</li>
   </ul>
 
   <h2>Externe diensten</h2>
   <ul>
-    <li><strong>Firebase (Google)</strong>: inloggen en opslag van punten en voortgang.</li>
-    <li><strong>Formspree</strong>: het contactformulier.</li>
+    <li><strong>Firebase (Google)</strong>: inloggen en opslag van voortgang.</li>
     <li><strong>Google Fonts</strong>: het lettertype van de site.</li>
     <li><strong>GitHub Pages</strong>: de hosting van de site.</li>
-    <li><strong>Cloudflare</strong>: de relayserver waarlangs online Pool loopt.</li>
-    <li><strong>YouTube (Google)</strong>: de lesvideo's en de reclamevideo's in de spelletjes, via youtube-nocookie.com.</li>
-    <li><strong>CLV Play</strong>: de plaatjes en de lijst in het blok "Meer op CLV Play" op de spelletjespagina komen van clvplay.nl. Die games draaien daar, niet op FM Atlas.</li>
-    <li><strong>Ko-fi</strong>: alleen als je zelf op de koffieknop klikt.</li>
+    <li><strong>YouTube (Google)</strong>: de lesvideo's, via youtube-nocookie.com.</li>
   </ul>
 
   <h2>Je gegevens laten verwijderen</h2>
-  <p>Wil je dat je naam, foto, punten en voortgang verdwijnen? Stuur een bericht via het <a href="app.html#contact">contactformulier</a> met het Google-account waarmee je inlogde. Je gegevens worden dan verwijderd. Je lokale gegevens wis je zelf door uit te loggen of je browsergegevens voor fmatlas.nl te wissen.</p>
+  <p>Wil je dat je gegevens in Firebase verdwijnen? Mail naar <a href="mailto:dpw.koolstra@student.han.nl">dpw.koolstra@student.han.nl</a> en noem het Google-account waarmee je inlogde. Je gegevens worden dan verwijderd. Je lokale gegevens wis je zelf door je browsergegevens voor fmatlas.nl te wissen.</p>
 </main>
 
-<footer class="fa-site-footer">
+<footer class="foot">
   <span>FM Atlas · gratis studiehulp voor HAN Facilitair Management, gemaakt door een student</span>
-  <span>Niet officieel verbonden aan de HAN · <a href="privacy.html">Privacy</a> · <a href="app.html#contact">Fout gezien?</a></span>
+  <span>Niet officieel verbonden aan de HAN · <a href="privacy.html">Privacy</a></span>
 </footer>
 
-<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
-<script src="js/fmatlas.js"></script>
-<script>
-firebase.initializeApp({
-  apiKey: "AIzaSyBB397Wk2eqpBjic8E7aGV1mTgIjhQ21a8",
-  authDomain: "fmkompas-ff8bc.firebaseapp.com",
-  projectId: "fmkompas-ff8bc",
-  storageBucket: "fmkompas-ff8bc.firebasestorage.app",
-  messagingSenderId: "487972024689",
-  appId: "1:487972024689:web:712c3117080745d14746d0"
-});
-firebase.auth().onAuthStateChanged(user => {
-  faMarkActiveToday();
-  const slot = document.getElementById('fa-header-slot');
-  slot.innerHTML = '';
-  slot.appendChild(faRenderHeader({ user }));
-});
-</script>
+<script src="js/atlas-data.js"></script>
+<script src="js/atlas.js"></script>
+<script>Atlas.topbar('<span class="sep">/</span><span class="here">Privacy</span>');</script>
 </body>
 </html>

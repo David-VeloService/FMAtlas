@@ -563,6 +563,681 @@ window.EM1 = {
    "cat": "overig",
    "term": "Netwerken",
    "def": "Actief opbouwen en onderhouden van professionele contacten die van waarde kunnen zijn voor het project of de eigen carrière."
+  },
+  {
+   "cat": "overig",
+   "term": "635-methode",
+   "def": "Zes personen schrijven ieder drie ideeën op een vel. Daarna geven zij het papier door en vult de volgende weer drie ideeën aan, totdat het blad vol is."
+  },
+  {
+   "cat": "kwaliteit",
+   "term": "Acceptatietest",
+   "def": "Gebruikers beoordelen of het resultaat logisch, gebruiksvriendelijk en geschikt is voor hun dagelijkse werk."
+  },
+  {
+   "cat": "overig",
+   "term": "Actiepunten",
+   "def": "De taken die uit de vergadering volgen, met een verantwoordelijke en een deadline."
+  },
+  {
+   "cat": "planning",
+   "term": "Activiteit of taak",
+   "def": "Een afgebakend onderdeel van het werk dat in de planning wordt opgenomen."
+  },
+  {
+   "cat": "planning",
+   "term": "Afhankelijke activiteit",
+   "def": "Een activiteit die pas kan beginnen nadat de benodigde voorganger is afgerond."
+  },
+  {
+   "cat": "fasering",
+   "term": "Afsluiten",
+   "def": "Zesde stap van P6: gebruik voorbereiden, documentatie verzorgen, evalueren en het projectteam opheffen."
+  },
+  {
+   "cat": "overig",
+   "term": "Agendapunten",
+   "def": "De onderwerpen die tijdens de vergadering worden besproken."
+  },
+  {
+   "cat": "planning",
+   "term": "ALAP",
+   "def": "As late as possible: een activiteit zo laat mogelijk inplannen. De activiteit benut daarmee haar speling. De dia koppelt dit aan kritiek worden en noemt lagere kosten als voordeel."
+  },
+  {
+   "cat": "overig",
+   "term": "APV",
+   "def": "Algemene Plaatselijke Verordening: de gemeentelijke regeling waarin onder meer evenementen en de plaatselijke spelregels daarvoor worden beschreven."
+  },
+  {
+   "cat": "planning",
+   "term": "ASAP",
+   "def": "As soon as possible: een activiteit zo vroeg mogelijk inplannen. De dia noemt de extra marge als voordeel."
+  },
+  {
+   "cat": "overig",
+   "term": "Auteursrecht",
+   "def": "Het recht van de maker of rechthebbende om een werk openbaar te maken en te verveelvoudigen, binnen de wettelijke grenzen. De dia verwijst naar artikel 1 Auteurswet."
+  },
+  {
+   "cat": "planning",
+   "term": "Begroting",
+   "def": "Een voorafgaande inschatting van kosten en opbrengsten, die tijdens het evenementproject wordt bijgewerkt met offertes en werkelijke bedragen."
+  },
+  {
+   "cat": "planning",
+   "term": "Benodigde werktijd",
+   "def": "De tijd die mensen daadwerkelijk aan de activiteit besteden."
+  },
+  {
+   "cat": "project",
+   "term": "Beïnvloeder",
+   "def": "Stakeholder met veel invloed en weinig belang; de matrix adviseert deze partij tevreden te houden."
+  },
+  {
+   "cat": "overig",
+   "term": "Brainstormen",
+   "def": "Een creatieve manier om met anderen ideeën over een onderwerp of probleem te bedenken en te delen. Het doel is zo veel mogelijk ideeën verzamelen, waarbij iedereen zich vrij kan uiten."
+  },
+  {
+   "cat": "overig",
+   "term": "Brainwriting",
+   "def": "Ideeën eerst in stilte opschrijven, bijvoorbeeld op post-its, en ze daarna met de groep delen."
+  },
+  {
+   "cat": "planning",
+   "term": "Budget",
+   "def": "De hoeveelheid geld die aan een bepaald onderdeel mag worden uitgegeven."
+  },
+  {
+   "cat": "overig",
+   "term": "BUMA/STEMRA",
+   "def": "Organisaties die volgens het college de auteursrechtelijke belangen van onder meer liedjesschrijvers, componisten, tekstschrijvers en uitgevers behartigen."
+  },
+  {
+   "cat": "overig",
+   "term": "Clusteren",
+   "def": "Ideeën na een brainstorm bij elkaar zetten op basis van overeenkomsten en opvallende mogelijkheden."
+  },
+  {
+   "cat": "project",
+   "term": "Communicatiekruispunt",
+   "def": "Model dat een- of tweerichtingsverkeer combineert met bekendmaking of beïnvloeding: informeren, overreden, dialoog en formeren."
+  },
+  {
+   "cat": "overig",
+   "term": "Conventie",
+   "def": "Een bijeenkomst om informatie uit te wisselen, te discussiëren, te leren en relaties te onderhouden."
+  },
+  {
+   "cat": "overig",
+   "term": "Crossmedia",
+   "def": "Dezelfde boodschap via verschillende kanalen verspreiden."
+  },
+  {
+   "cat": "overig",
+   "term": "Demografische segmentatie",
+   "def": "Een markt verdelen naar kenmerken als leeftijd, geslacht, gezin, inkomen, beroep of opleiding."
+  },
+  {
+   "cat": "project",
+   "term": "Dialoog",
+   "def": "In het communicatiekruispunt: bekendmaking via tweerichtingsverkeer."
+  },
+  {
+   "cat": "organisatie",
+   "term": "Divisiestructuur",
+   "def": "Deelt in naar programmaonderdelen of locaties. Medewerkers hebben meer onderlinge interactie per venue; nadelen zijn overlap van middelen en verspreiding van specialismen."
+  },
+  {
+   "cat": "planning",
+   "term": "Doorlooptijd",
+   "def": "De verstreken tijd tussen het begin en einde van een activiteit."
+  },
+  {
+   "cat": "organisatie",
+   "term": "Eenvoudige hiërarchische structuur",
+   "def": "Past bij kleine organisaties en geringe complexiteit. De indeling richt zich op personen, met een duidelijk herkenbare eindverantwoordelijke."
+  },
+  {
+   "cat": "overig",
+   "term": "EMBOK",
+   "def": "Event Management Body of Knowledge: een inventarisatie van kennis die nodig en nuttig is voor eventmanagement. De les gebruikt de daarop gebaseerde indeling van Berridge uit 2007, vooral naar doel van de bijeenkomst."
+  },
+  {
+   "cat": "overig",
+   "term": "Empathy map",
+   "def": "Een overzicht van wat de doelgroep denkt en voelt, ziet, hoort en zegt en doet, aangevuld met zorgen en frustraties, behoeften en gewenste opbrengsten."
+  },
+  {
+   "cat": "overig",
+   "term": "Enterprising",
+   "def": "Wees ondernemend: probeer iets nieuws en unieks en kijk verder dan het gebruikelijke aanbod."
+  },
+  {
+   "cat": "overig",
+   "term": "Entertainment",
+   "def": "Bied amusement dat bezoekers thuis niet hebben of zelf niet kunnen organiseren, bijvoorbeeld artiesten, sfeer of een bijzondere gebeurtenis."
+  },
+  {
+   "cat": "overig",
+   "term": "Evenement (Herlé)",
+   "def": "Een activiteit met een bijzonder karakter waarbij een groep genodigden aanwezig is."
+  },
+  {
+   "cat": "overig",
+   "term": "Evenement (Kuiper)",
+   "def": "Een georganiseerde gebeurtenis waarbij vooraf gekozen inhoud doordacht wordt aangeboden aan een uitgekozen publiek, dat daardoor deelnemer wordt."
+  },
+  {
+   "cat": "overig",
+   "term": "Evenement (Verhaar)",
+   "def": "Een bewust geplande, bijzondere gebeurtenis op een bepaalde tijd en plaats, georganiseerd door een individu, groep of organisatie voor een bepaalde doelgroep om met een gekozen vorm een doel te bereiken."
+  },
+  {
+   "cat": "overig",
+   "term": "Evenement in de APV",
+   "def": "In de aangehaalde APV’s: een voor publiek toegankelijke verrichting van vermaak, met nader omschreven uitzonderingen. Het college verwijst naar artikel 2.24 van Nijmegen en artikel 5.7.1 van Arnhem."
+  },
+  {
+   "cat": "overig",
+   "term": "Evenementenvergunning",
+   "def": "Gemeentelijke toestemming met spelregels voor een evenement, onder meer gericht op openbare orde en veiligheid. Afhankelijk van de omstandigheden kan een melding volstaan."
+  },
+  {
+   "cat": "overig",
+   "term": "Excitement",
+   "def": "Bepaal waarvan bezoekers enthousiast worden: een bijzondere spreker, nieuwe inzichten of een verrassende ervaring."
+  },
+  {
+   "cat": "overig",
+   "term": "Festival",
+   "def": "Een culturele viering, eventueel religieus, voor en door het publiek."
+  },
+  {
+   "cat": "overig",
+   "term": "Focusfase",
+   "def": "Na het clusteren kiezen met welke ideeën en richting het team verdergaat."
+  },
+  {
+   "cat": "overig",
+   "term": "Fondsenwervingsevenement",
+   "def": "Werft geld, ondersteuning of bekendheid."
+  },
+  {
+   "cat": "project",
+   "term": "Formeren",
+   "def": "In het communicatiekruispunt: beïnvloeding via tweerichtingsverkeer."
+  },
+  {
+   "cat": "organisatie",
+   "term": "Functionele structuur",
+   "def": "Verdeelt het werk naar expertise en specialisme. Dat geeft efficiëntie per vakgebied, maar vraagt regelmatig overleg tussen projectgroepen."
+  },
+  {
+   "cat": "overig",
+   "term": "Gedragsdoelstelling",
+   "def": "Beschrijft wat de doelgroep door de marketingactiviteiten moet doen."
+  },
+  {
+   "cat": "overig",
+   "term": "Gedragssegmentatie",
+   "def": "Een markt verdelen naar onder meer gelegenheid, gezochte voordelen, gebruikersstatus, gebruiksfrequentie en loyaliteit."
+  },
+  {
+   "cat": "overig",
+   "term": "Geografische segmentatie",
+   "def": "Een markt verdelen naar gebied, zoals regio, provincie, stad of wijk."
+  },
+  {
+   "cat": "project",
+   "term": "Geïnteresseerde",
+   "def": "Stakeholder met weinig invloed en veel belang; de matrix adviseert deze partij te informeren."
+  },
+  {
+   "cat": "overig",
+   "term": "Houdingsdoelstelling",
+   "def": "Beschrijft wat de doelgroep bij het merk of evenement moet voelen."
+  },
+  {
+   "cat": "overig",
+   "term": "Hybride evenement",
+   "def": "Fysieke en digitale deelname bestaan naast elkaar: bezoekers nemen fysiek óf digitaal deel."
+  },
+  {
+   "cat": "overig",
+   "term": "Ideeënboom",
+   "def": "Zet de kernwoorden van de vraag op een getekende boomstam. De groepsleden vullen de takken met hun ideeën."
+  },
+  {
+   "cat": "project",
+   "term": "Improviserend werken",
+   "def": "Zonder vooraf uitgestippelde aanpak handelen, zoals op de bonnefooi naar Zuid-Frankrijk gaan."
+  },
+  {
+   "cat": "project",
+   "term": "Informeren",
+   "def": "In het communicatiekruispunt: bekendmaking via gecontroleerd eenrichtingsverkeer."
+  },
+  {
+   "cat": "fasering",
+   "term": "Inrichten",
+   "def": "Tweede stap van P6: zorgen voor een werkend projectteam."
+  },
+  {
+   "cat": "overig",
+   "term": "Inspiratiekaarten",
+   "def": "Gebruik foto’s en andere afbeeldingen om ideeën op gang te brengen."
+  },
+  {
+   "cat": "kwaliteit",
+   "term": "Integratietest",
+   "def": "Testen of onderdelen samenwerken. In het voorbeeld: formulier, doorsturing naar de afdeling en e-mailbevestiging."
+  },
+  {
+   "cat": "project",
+   "term": "Interne en externe stakeholders",
+   "def": "Belanghebbenden binnen de eigen organisatie en projectorganisatie, of daarbuiten. Het project wisselt met hen informatie, geld, middelen en mensen uit."
+  },
+  {
+   "cat": "project",
+   "term": "IPMA-projectcode",
+   "def": "Gedragsregels voor integer projectwerk: wetten en vakethiek volgen, grenzen respecteren, projectmanagementregels toepassen en rekening houden met duurzaamheid."
+  },
+  {
+   "cat": "overig",
+   "term": "Kelderluikcriteria",
+   "def": "Vier afwegingspunten bij gevaarzetting: te verwachten onoplettendheid, kans op een ongeval, ernst van de gevolgen en bezwaarlijkheid van veiligheidsmaatregelen."
+  },
+  {
+   "cat": "overig",
+   "term": "Kennisdoelstelling",
+   "def": "Beschrijft wat de doelgroep na de marketingactiviteiten moet weten of onthouden."
+  },
+  {
+   "cat": "kwaliteit",
+   "term": "KPI",
+   "def": "Een Key Performance Indicator: een indicator die rechtstreeks aan een KSF is gekoppeld en met een norm meetbaar maakt hoe het project presteert. Een niet-kritische prestatie-indicator heet PI."
+  },
+  {
+   "cat": "kwaliteit",
+   "term": "KSF",
+   "def": "Een kritische succesfactor: een onderdeel van het project dat bepalend is voor succes."
+  },
+  {
+   "cat": "overig",
+   "term": "Leeswijzer",
+   "def": "Onderdeel van de inleiding dat uitlegt wat de lezer in de volgende hoofdstukken kan verwachten."
+  },
+  {
+   "cat": "overig",
+   "term": "Local community event (Wilkinson)",
+   "def": "Een activiteit die de lokale bevolking samenbrengt in een gedeelde ervaring waar de betrokkenen voordeel van hebben."
+  },
+  {
+   "cat": "organisatie",
+   "term": "Maatschappelijk verantwoord projectmanagement",
+   "def": "People, Planet en Profit meenemen in het project, aangevuld met de P van Project: ethisch aanvaardbaar werken, rekening houden met normen en waarden, integriteit en duurzaamheid."
+  },
+  {
+   "cat": "overig",
+   "term": "Managementsamenvatting",
+   "def": "Een beknopte rapportage achteraf over een uitgevoerd projectonderdeel, met verantwoording van het resultaat en conclusies, plus aanbevelingen en beslispunten voor het vervolg."
+  },
+  {
+   "cat": "overig",
+   "term": "Marketingcommunicatieplanning",
+   "def": "Een planning van wat wordt gecommuniceerd, wanneer dat gebeurt en wie daarvoor verantwoordelijk is."
+  },
+  {
+   "cat": "overig",
+   "term": "Marketingevenement",
+   "def": "Brengt vanuit een commercieel doel kopers en verkopers samen of vraagt aandacht voor een commercieel product."
+  },
+  {
+   "cat": "overig",
+   "term": "Marktsegmentatie",
+   "def": "Een markt opdelen in groepen om te begrijpen welke segmenten er zijn. Dit is de eerste stap van doelgroepenmarketing; daarna kies je welke groepen jouw doelgroepen worden."
+  },
+  {
+   "cat": "overig",
+   "term": "Naburige rechten",
+   "def": "Rechten rond uitvoeringen en opnamen, waaronder toestemming voor opnemen, reproduceren, verspreiden en openbaar maken. De dia noemt artikel 2 van de Wet op de naburige rechten."
+  },
+  {
+   "cat": "planning",
+   "term": "Netwerkplanning",
+   "def": "Een schema van activiteiten en hun onderlinge afhankelijkheden. De les noemt dit ook een PERT chart."
+  },
+  {
+   "cat": "organisatie",
+   "term": "Netwerkstructuur",
+   "def": "Combineert functionele efficiëntie met de binding van divisies. Bij grote evenementen met niet-routinematige taken voeren externe bedrijven specialistisch werk uit, zodat de organisatie zich op kernactiviteiten kan richten."
+  },
+  {
+   "cat": "kwaliteit",
+   "term": "Norm",
+   "def": "De meetbare grens die aangeeft wanneer aan een prestatie-indicator is voldaan."
+  },
+  {
+   "cat": "overig",
+   "term": "Notulen",
+   "def": "De vastlegging van de belangrijkste besproken punten, besluiten en afspraken van een vergadering."
+  },
+  {
+   "cat": "overig",
+   "term": "Omgekeerde brainstorm",
+   "def": "Bedenk hoe je het probleem erger kunt maken. Draai de verzamelde slechte ideeën daarna om naar mogelijke oplossingen."
+  },
+  {
+   "cat": "fasering",
+   "term": "Opleveren",
+   "def": "Vijfde stap van P6: het projectresultaat laten goedkeuren. Bij een evenementenproject is het evenement zelf de oplevering."
+  },
+  {
+   "cat": "fasering",
+   "term": "Opstarten",
+   "def": "Eerste stap van P6: eisen en zakelijke afweging uitwerken en een projectvoorstel of projectopdracht opleveren."
+  },
+  {
+   "cat": "overig",
+   "term": "Overeenkomst: aanbod en aanvaarding",
+   "def": "Een overeenkomst ontstaat door aanbod en aanvaarding. Het college verwijst hiervoor naar artikel 6:217 BW."
+  },
+  {
+   "cat": "project",
+   "term": "Overreden",
+   "def": "In het communicatiekruispunt: beïnvloeding via gecontroleerd eenrichtingsverkeer."
+  },
+  {
+   "cat": "kwaliteit",
+   "term": "PDCA-cyclus",
+   "def": "Een herhaalde werkwijze van Plan, Do, Check en Act om uitvoering en resultaten te beoordelen en te verbeteren."
+  },
+  {
+   "cat": "overig",
+   "term": "Persona",
+   "def": "Een uitgewerkt profiel van een beoogde bezoeker waarin onder meer achtergrond, gedrag, waarden, doelen, angsten en behoeften worden samengebracht."
+  },
+  {
+   "cat": "overig",
+   "term": "Persoonsgegevens",
+   "def": "Informatie over een geïdentificeerde of identificeerbare natuurlijke persoon. Ook een herkenbaar persoon op een foto of in een filmpje valt onder deze omschrijving uit artikel 4 lid 1 AVG."
+  },
+  {
+   "cat": "overig",
+   "term": "Phygital",
+   "def": "Fysieke en digitale elementen werken samen in één overkoepelende evenementervaring."
+  },
+  {
+   "cat": "kwaliteit",
+   "term": "PI (Performance Indicator)",
+   "def": "Een prestatie-indicator die niet als key of kritisch wordt aangemerkt. Met een norm wordt de gewenste prestatie meetbaar."
+  },
+  {
+   "cat": "overig",
+   "term": "Pitch",
+   "def": "Een presentatie waarmee je het publiek wilt overtuigen van een idee of oplossing en duidelijk maakt wat je van de luisteraars vraagt."
+  },
+  {
+   "cat": "overig",
+   "term": "Plaats (evenementenmarketing)",
+   "def": "Locatie, bereikbaarheid en sfeer van het evenement en hoe die passen bij product en behoefte."
+  },
+  {
+   "cat": "overig",
+   "term": "Politiek of overheidsevenement",
+   "def": "Een evenement van een politieke partij of overheidsinstantie."
+  },
+  {
+   "cat": "overig",
+   "term": "Positionering",
+   "def": "De creatieve boodschap die duidelijk maakt voor wie het evenement is, welke behoefte het vervult, wat het onderscheidt en waarom mensen enthousiast moeten worden en komen."
+  },
+  {
+   "cat": "planning",
+   "term": "Post onvoorzien",
+   "def": "Geld dat in de begroting wordt gereserveerd voor onverwachte kosten. Het bedrijfseconomiecollege noemt hiervoor 10%."
+  },
+  {
+   "cat": "risico",
+   "term": "Preventieve maatregel",
+   "def": "Een maatregel om het optreden van een risico te voorkomen of de kans erop te verkleinen."
+  },
+  {
+   "cat": "overig",
+   "term": "Prijs (evenementenmarketing)",
+   "def": "Wat deelname de doelgroep kost aan geld en tijd, afgezet tegen opbrengsten zoals plezier, sociale contacten of productiviteit."
+  },
+  {
+   "cat": "project",
+   "term": "Prioritering van eisen",
+   "def": "De vier niveaus op de dia zijn must have, should have, could have en won’t have: noodzakelijk, zo mogelijk, alleen zonder nadelige gevolgen, of voor later."
+  },
+  {
+   "cat": "kwaliteit",
+   "term": "Proceskwaliteit",
+   "def": "De kwaliteit van de projectuitvoering, onder meer ondersteund door een methode, deskundige mensen, gestructureerde samenwerking en terugkoppeling."
+  },
+  {
+   "cat": "overig",
+   "term": "Product (evenementenmarketing)",
+   "def": "De waarde en het onderscheidende aanbod van het evenement: welke behoefte vervul je, wat maakt het uniek en waarom is het anders dan thuis of bij andere evenementen?"
+  },
+  {
+   "cat": "project",
+   "term": "Programma",
+   "def": "Een samenhang van projecten die gezamenlijk bijdragen aan een strategisch doel. Ook medewerkers uit de lijnorganisatie kunnen diensten leveren en veranderingen uitvoeren."
+  },
+  {
+   "cat": "project",
+   "term": "Programma van eisen",
+   "def": "De belangrijkste uitgangspunten en eisen waaraan het resultaat moet voldoen, opgesteld in samenwerking met de opdrachtgever. Op basis daarvan formuleert de projectmanager het resultaat."
+  },
+  {
+   "cat": "project",
+   "term": "Projectgrenzen (scope)",
+   "def": "De afbakening van het project: wat het team nog wel uitvoert en wat er niet meer onder valt."
+  },
+  {
+   "cat": "project",
+   "term": "Projectmatig werken",
+   "def": "Een eenmalige opgave planmatig aanpakken, zoals een vooraf uitgestippelde wereldreis van vijf maanden."
+  },
+  {
+   "cat": "project",
+   "term": "Projectorganisatie",
+   "def": "De tijdelijke organisatie van een project, met een projectleider, projectgroep en eventueel werkgroepen, naast de lijnorganisatie."
+  },
+  {
+   "cat": "project",
+   "term": "Projectvoorstel",
+   "def": "Een eerste beschrijving van een mogelijk project, waarmee een opdrachtgever kan besluiten of het project doorgaat. Het bevat een globale uitwerking van resultaat, aanpak, haalbaarheid en benodigde middelen."
+  },
+  {
+   "cat": "overig",
+   "term": "Psychografische segmentatie",
+   "def": "Een markt verdelen naar sociale klasse, levensstijl en persoonlijkheid."
+  },
+  {
+   "cat": "overig",
+   "term": "Public relations",
+   "def": "Informatie via partijen buiten de organisatie laten verspreiden om de publieke beeldvorming te beïnvloeden. De dia noemt de betrouwbaarheid van zo’n externe afzender."
+  },
+  {
+   "cat": "scrum",
+   "term": "Punten pokeren",
+   "def": "De manier die de les noemt om gezamenlijk in te schatten hoeveel tijd een taak op de sprint backlog vraagt."
+  },
+  {
+   "cat": "project",
+   "term": "Randvoorwaarden",
+   "def": "Factoren waarop het projectteam meestal zelf geen invloed heeft, maar waaraan wel moet zijn voldaan om het project te laten slagen."
+  },
+  {
+   "cat": "risico",
+   "term": "Repressieve maatregel",
+   "def": "Een maatregel om de gevolgen van een risico te beperken of op te vangen."
+  },
+  {
+   "cat": "planning",
+   "term": "Resources",
+   "def": "De mensen en hulpmiddelen die in een planning aan activiteiten worden gekoppeld; hun beschikbaarheid wordt met kalenders vastgelegd."
+  },
+  {
+   "cat": "planning",
+   "term": "ROI",
+   "def": "Return on investment: nagaan of de investering in geld, tijd en middelen het gewenste resultaat oplevert. De les verbindt dit aan waarde creëren, een passende omgeving en meten."
+  },
+  {
+   "cat": "planning",
+   "term": "ROI-piramide voor evenementen",
+   "def": "Model met doelgroep, leeromgeving, cognitieve veranderingen, gedragsverandering, impact en ROI. De les gebruikt het bij evenementen die op gedragsverandering zijn gericht."
+  },
+  {
+   "cat": "overig",
+   "term": "Rollenbrainstorm",
+   "def": "Bedenk ideeën vanuit verschillende rollen, zoals dromer, realist, criticus, gebruiker of budgetbewaker."
+  },
+  {
+   "cat": "project",
+   "term": "Routinematig werken",
+   "def": "Een bekende werkwijze herhalen, zoals ieder jaar hetzelfde all-inclusiveresort via een reisbureau boeken."
+  },
+  {
+   "cat": "risico",
+   "term": "RPN (Risk Priority Number)",
+   "def": "De kans dat een risico optreedt vermenigvuldigd met het gevolg of de impact. In de oefening worden kans en impact elk op een schaal van 0 tot 10 beoordeeld. Het product heet Risk Priority Number: een hoger RPN krijgt meer aandacht."
+  },
+  {
+   "cat": "scrum",
+   "term": "Scrumbord",
+   "def": "Een bord waarop de sprinttaken van to do via busy naar done bewegen."
+  },
+  {
+   "cat": "overig",
+   "term": "SENA",
+   "def": "Organisatie die volgens het college belangen rond naburige rechten van uitvoerende artiesten, sessiemuzikanten en producenten behartigt."
+  },
+  {
+   "cat": "project",
+   "term": "Sleutelfiguur",
+   "def": "Stakeholder met veel invloed én veel belang; de matrix adviseert samenwerking."
+  },
+  {
+   "cat": "overig",
+   "term": "Sociaal evenement",
+   "def": "Een privégebeurtenis waarbij genodigden samen iets vieren of herdenken."
+  },
+  {
+   "cat": "overig",
+   "term": "Special event (Wilkinson)",
+   "def": "Een eenmalige gebeurtenis die is ontworpen om op een bepaald moment in specifieke behoeften te voorzien."
+  },
+  {
+   "cat": "project",
+   "term": "Spin-off",
+   "def": "Effecten die naast de beoogde effecten van een project ontstaan, eventueel bij andere stakeholders."
+  },
+  {
+   "cat": "overig",
+   "term": "Sportevenement",
+   "def": "Een recreatieve of competitieve sportactiviteit om naar te kijken of aan mee te doen."
+  },
+  {
+   "cat": "kwaliteit",
+   "term": "Systeemtest",
+   "def": "Controleren of het volledige systeem alle functies goed uitvoert, van melding tot afhandeling."
+  },
+  {
+   "cat": "overig",
+   "term": "Tentoonstelling, expositie of beurs",
+   "def": "Brengt verkopers, kopers en andere geïnteresseerden samen om producten of diensten te tonen en te verkopen."
+  },
+  {
+   "cat": "planning",
+   "term": "Terugverdientijd",
+   "def": "In het getoonde schema de tijd tijdens gebruik en beheer totdat de oplopende netto-opbrengsten de eerdere investering hebben terugverdiend."
+  },
+  {
+   "cat": "project",
+   "term": "Toeschouwer",
+   "def": "Stakeholder met weinig invloed en weinig belang; deze krijgt volgens de matrix weinig aandacht."
+  },
+  {
+   "cat": "planning",
+   "term": "Traceerbaarheid van uitgaven",
+   "def": "Van iedere uitgave is bewijs bewaard en de administratie sluit aan op bank of kas."
+  },
+  {
+   "cat": "project",
+   "term": "Turnkeyproject",
+   "def": "Een project dat een externe organisatie uitvoert op basis van duidelijke afspraken over resultaat, prijs en opleverdatum."
+  },
+  {
+   "cat": "fasering",
+   "term": "Tussenresultaat",
+   "def": "Een product dat tijdens het project wordt opgeleverd. De tussenproducten vormen samen het eindresultaat."
+  },
+  {
+   "cat": "project",
+   "term": "Twee-bazenprobleem",
+   "def": "Een projectmedewerker werkt ook in de lijnorganisatie en heeft daardoor te maken met zowel de eigen leidinggevende als de projectleider."
+  },
+  {
+   "cat": "overig",
+   "term": "Unique Selling Point",
+   "def": "Het unieke element waarmee je idee of aanbod zich onderscheidt."
+  },
+  {
+   "cat": "kwaliteit",
+   "term": "Unittest",
+   "def": "Een afzonderlijk onderdeel testen. In het voorbeeld: werkt het meldformulier voor facilitaire storingen technisch correct?"
+  },
+  {
+   "cat": "scrum",
+   "term": "User story",
+   "def": "Een omschrijving van een behoefte vanuit de belanghebbende: “Als [stakeholder] wil ik [functionaliteit], om [reden]”. Daarmee maak je doel en gewenste uitkomst duidelijk."
+  },
+  {
+   "cat": "project",
+   "term": "USMART",
+   "def": "SMART met de aanvullende eis Uitdagend: een doel is uitdagend, specifiek, meetbaar, aanwijsbaar en acceptabel, realistisch en tijdgebonden."
+  },
+  {
+   "cat": "planning",
+   "term": "Variabele kosten",
+   "def": "Kosten die in de gebruikte begroting meebewegen met de opkomst. De dia noemt locatie en parkeerterrein, inrichting, garderobe, vervoer, meubilair, catering, schoonmaak en cadeautjes of merchandise."
+  },
+  {
+   "cat": "planning",
+   "term": "Vaste of constante kosten",
+   "def": "Kosten die niet afhangen van het aantal bezoekers. De dia noemt technische voorzieningen, communicatie en PR, artiesten of sprekers, verzekeringen, bewegwijzering, EHBO en afval."
+  },
+  {
+   "cat": "overig",
+   "term": "Vermaak- of vrijetijdsevenement",
+   "def": "Eenmalig of terugkerend evenement dat, gratis of betaald, bezoekers vermaakt."
+  },
+  {
+   "cat": "overig",
+   "term": "Verwerking van persoonsgegevens",
+   "def": "Handelingen met persoonsgegevens, zoals verzamelen, vastleggen, ordenen, opslaan, aanpassen, raadplegen, gebruiken, verspreiden, afschermen en wissen. De les verwijst naar artikel 4 lid 2 AVG."
+  },
+  {
+   "cat": "project",
+   "term": "Werkgroep",
+   "def": "Een groep projectleden die een deelonderwerp of deeltaak uitwerkt."
+  },
+  {
+   "cat": "overig",
+   "term": "Zakelijk evenement",
+   "def": "Ondersteunt bedrijfsdoelen, zoals marketing, klantrelaties, training of bedrijfscommunicatie."
+  },
+  {
+   "cat": "overig",
+   "term": "Zorgplicht van de organisator",
+   "def": "De organisator moet voldoen aan de vergunning en geldende regels en moet rekening houden met veiligheidsrisico’s voor betrokkenen."
   }
  ],
  "oefentoetsen": [

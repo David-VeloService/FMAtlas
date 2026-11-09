@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+<title>Begrippen · Inkoop en recht · FM Atlas</title>
+<meta name="description" content="Blader door de begrippen van Inkoop en recht op FM Atlas, studiehulp voor HAN Facilitair Management."/>
+<link rel="icon" type="image/svg+xml" href="logo.svg"/>
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png"/>
+<link rel="apple-touch-icon" href="apple-touch-icon.png"/>
+<meta name="theme-color" content="#efe5d4"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="css/atlas.css"/>
+<style>
+.begrippen { max-width: 960px; }
+.begrippen .periods { margin-top: 24px; }
+.begrippen .period-btn { height: 44px; flex: none; }
+.period-btn[aria-pressed="true"] { background: var(--accent); color: var(--accent-ink); }
+.bl-search { display: grid; gap: 8px; margin: 24px 0; font-weight: 600; }
+.bl-search input { width: 100%; min-height: 48px; padding: 12px 16px; border-radius: var(--r-pill); background: var(--glass-strong); border: 1px solid var(--glass-edge); color: var(--ink); font: inherit; font-weight: 400; }
+.bl-search input::placeholder { color: var(--ink-soft); opacity: 1; }
+.bl-counter { text-align: center; margin-bottom: 12px; font-variant-numeric: tabular-nums; }
+.bl-card { min-height: 320px; padding: clamp(24px, 5vw, 56px); border-radius: var(--r-lg); display: flex; flex-direction: column; justify-content: center; text-align: center; touch-action: pan-y; overflow-wrap: anywhere; }
+.bl-card h2 { font-family: var(--font-display); font-size: clamp(28px, 4vw, 44px); line-height: 1.12; letter-spacing: -.03em; }
+.bl-card p { max-width: 64ch; margin: 24px auto 0; font-size: clamp(17px, 2vw, 20px); line-height: 1.65; }
+.bl-empty { border-radius: var(--r-lg); padding: 40px 24px; text-align: center; }
+.bl-empty p { margin-top: 12px; }
+.bl-actions { margin-top: 24px; display: flex; flex-wrap: wrap; gap: 12px; }
+.bl-btn { min-height: 48px; padding: 12px 24px; border-radius: var(--r-pill); display: inline-flex; justify-content: center; align-items: center; font-weight: 600; }
+.bl-btn:hover:not(:disabled) { background: var(--glass-hover); }
+.bl-btn:disabled { cursor: default; opacity: .6; }
+.bl-primary { margin-left: auto; background: var(--accent); color: var(--accent-ink); }
+.bl-primary:hover { background: var(--accent) !important; }
+.begrippen [hidden] { display: none; }
+@media (max-width: 480px) {
+  .bl-actions { display: grid; grid-template-columns: 1fr 1fr; }
+  .bl-primary { grid-column: 1 / -1; margin-left: 0; }
+  .bl-btn { padding-inline: 16px; }
+  .bl-card { min-height: 300px; }
+}
+</style>
+</head>
+<body>
+<div class="scene" aria-hidden="true"><i></i></div>
+<header class="topbar" id="topbar"></header>
+<main class="page begrippen">
+  <h1 class="hero-title">Begrippen</h1>
+  <div class="periods glass" id="blCatFilters" role="group" aria-label="Categorie"></div>
+  <label class="bl-search" for="blSearch">Spring naar een begrip
+    <input id="blSearch" type="search" placeholder="Zoek een begrip of definitie" autocomplete="off"/>
+  </label>
+  <div class="bl-counter" id="blCounter" role="status" aria-live="polite"></div>
+  <article class="bl-card glass" id="blCard" aria-labelledby="blTerm" aria-describedby="blDef" aria-live="polite" aria-atomic="true">
+    <h2 id="blTerm"></h2>
+    <p id="blDef"></p>
+  </article>
+  <div class="bl-empty glass" id="blEmpty" role="status" hidden>
+    <h2>Geen begrip gevonden</h2>
+    <p>Probeer een andere zoekterm of categorie.</p>
+  </div>
+  <nav class="bl-actions" aria-label="Begrippen doorbladeren">
+    <button class="bl-btn glass" id="blPrev" type="button">Vorige</button>
+    <button class="bl-btn glass" id="blNext" type="button">Volgende</button>
+    <a class="bl-btn bl-primary" id="blQuiz" href="inkoop-en-recht-flashcards.html">Overhoor mij</a>
+  </nav>
+</main>
+<script src="js/atlas-data.js"></script>
+<script src="js/atlas-account.js"></script>
+<script src="js/atlas.js"></script>
+<script src="js/data-inkoop-en-recht.js"></script>
+<script>
+(function () {
+  'use strict';
+  Atlas.topbar('<span class="sep">/</span><a href="vak.html?v=inkoop-en-recht">Inkoop en recht</a><span class="sep">/</span><span class="here">Begrippen</span>');
+  const data = window.INKR || {};
+  const cards = data.begrippen || [], cats = data.cats || [];
+  const search = document.getElementById('blSearch');
+  const filters = document.getElementById('blCatFilters');
+  const card = document.getElementById('blCard');
+  const previous = document.getElementById('blPrev'), next = document.getElementById('blNext');
+  const initial = new URLSearchParams(location.search).get('cat');
+  let category = cats.some(c => c.key === initial) ? initial : '';
+  let deck = [], index = 0;
+  const fold = value => String(value).normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLocaleLowerCase('nl');
+
+  [{ key: '', short: 'Alle' }, ...cats].forEach(c => {
+    const button = document.createElement('button');
+    button.type = 'button'; button.className = 'period-btn'; button.dataset.cat = c.key;
+    button.textContent = c.short || c.label;
+    button.setAttribute('aria-label', c.label || 'Alle categorieën');
+    button.addEventListener('click', () => {
+      category = c.key; index = 0; search.value = '';
+      const url = new URL(location.href);
+      if (category) url.searchParams.set('cat', category); else url.searchParams.delete('cat');
+      history.replaceState(null, '', url);
+      filter();
+    });
+    filters.appendChild(button);
+  });
+  function filter() {
+    deck = category ? cards.filter(c => c.cat === category) : cards;
+    filters.querySelectorAll('button').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.cat === category)));
+    document.getElementById('blQuiz').href = 'inkoop-en-recht-flashcards.html' + (category ? '?cat=' + encodeURIComponent(category) : '');
+    show();
+  }
+  function show(found = true) {
+    const current = deck[index], visible = !!current && found;
+    card.hidden = !visible;
+    document.getElementById('blEmpty').hidden = visible;
+    document.getElementById('blCounter').textContent = visible ? `${index + 1} van ${deck.length}` : '0 gevonden';
+    previous.disabled = !visible || index === 0;
+    next.disabled = !visible || index === deck.length - 1;
+    if (visible) {
+      document.getElementById('blTerm').textContent = current.term;
+      document.getElementById('blDef').textContent = current.def;
+    }
+  }
+  function move(step) {
+    if (card.hidden) return;
+    index = Math.max(0, Math.min(deck.length - 1, index + step));
+    search.value = '';
+    show();
+  }
+  previous.addEventListener('click', () => move(-1));
+  next.addEventListener('click', () => move(1));
+  search.addEventListener('input', () => {
+    const query = fold(search.value.trim());
+    if (!query) { show(); return; }
+    let match = cards.find(c => fold(c.term) === query);
+    if (!match) match = cards.find(c => fold(c.term).startsWith(query));
+    if (!match) match = cards.find(c => fold(c.term).includes(query) || fold(c.def).includes(query));
+    if (match && !deck.includes(match)) {
+      category = cats.some(c => c.key === match.cat) ? match.cat : '';
+      index = 0;
+      filter();
+      const url = new URL(location.href);
+      if (category) url.searchParams.set('cat', category); else url.searchParams.delete('cat');
+      history.replaceState(null, '', url);
+    }
+    if (match) index = deck.indexOf(match);
+    show(!!match);
+  });
+  document.addEventListener('keydown', event => {
+    if (event.altKey || event.ctrlKey || event.metaKey || event.target.closest('input, textarea, select, a, .atlas-account, .search, [contenteditable]')) return;
+    if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
+      event.preventDefault(); move(event.key === 'ArrowLeft' ? -1 : 1);
+    }
+  });
+  let touch = null;
+  card.addEventListener('touchstart', event => {
+    touch = event.touches.length === 1 ? { x: event.touches[0].clientX, y: event.touches[0].clientY } : null;
+  }, { passive: true });
+  card.addEventListener('touchend', event => {
+    if (!touch || !event.changedTouches.length) return;
+    const dx = event.changedTouches[0].clientX - touch.x, dy = event.changedTouches[0].clientY - touch.y;
+    if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.3) move(dx < 0 ? 1 : -1);
+    touch = null;
+  }, { passive: true });
+  card.addEventListener('touchcancel', () => { touch = null; }, { passive: true });
+  filter();
+})();
+</script>
+</body>
+</html>

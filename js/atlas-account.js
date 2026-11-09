@@ -225,6 +225,10 @@
         const update = Object.create(null);
         if (Object.keys(patch).length) update.kaarten = patch;
         if (Object.keys(testPatch).length) update.toetsen = testPatch;
+        // Velden van de vorige site worden niet meer gebruikt: wis ze (zie privacy.html).
+        ['progress', 'streak', 'last'].forEach(field => {
+          if (field in document) update[field] = window.firebase.firestore.FieldValue.delete();
+        });
         if (Object.keys(update).length) transaction.set(ref, update, { merge: true });
         return { kaarten: result, toetsen: testResult };
       });

@@ -83,7 +83,7 @@ window.EVLOG = {
   {
    "cat": "proces",
    "term": "Five rights",
-   "def": "Logistiek principe van Lambert en Stock: het juiste product, in de juiste hoeveelheid, op de juiste plaats, op het juiste moment, in de juiste conditie, tegen de juiste kosten. De naam 'five rights' is historisch; in de meeste uitwerkingen staan er zes."
+   "def": "Logistiek principe van Lambert en Stock (1993): het juiste product, op de juiste plaats, op het juiste moment, in de juiste conditie, tegen de juiste kosten. De dia geeft vijf onderdelen."
   },
   {
    "cat": "proces",
@@ -213,7 +213,7 @@ window.EVLOG = {
   {
    "cat": "veiligheid",
    "term": "GRIP",
-   "def": "Gecoördineerde Regionale Incidentenbestrijdings Procedure: landelijk opschalingsmodel voor hulpdiensten met de niveaus GRIP 1 tot en met 5 en GRIP Rijk, waarbij elke stap meer coördinatie en beslissingsbevoegdheid samenbrengt bij grotere incidenten."
+   "def": "Gecoördineerde Regionale Incidentenbestrijdings Procedure: landelijk opschalingsmodel voor hulpdiensten met de niveaus GRIP 0 tot en met 4 (volgens de dia’s), waarbij elke stap meer coördinatie en beslissingsbevoegdheid samenbrengt bij grotere incidenten."
   },
   {
    "cat": "veiligheid",
@@ -289,6 +289,106 @@ window.EVLOG = {
    "cat": "draaiboek",
    "term": "Rijplaten",
    "def": "Tijdelijke verhardingsplaten van kunststof of metaal die toe- en afritten geschikt maken voor zwaar verkeer en voorkomen dat voertuigen wegzakken in zachte ondergrond."
+  },
+  {
+   "cat": "proces",
+   "term": "Evenement",
+   "def": "Speciale, tijd- en plaatsgebonden gebeurtenis die een initiatiefnemer bewust plant voor een bepaalde doelgroep, met een bewust gekozen vorm en om een bepaald doel te bereiken (Verhaar, 2022)."
+  },
+  {
+   "cat": "proces",
+   "term": "Proces (input, proces, output)",
+   "def": "Stap die input omzet in waardevolle output. Alle stappen die je maakt zijn processen. Bij het evenement als geheel is de input de aankomst van bezoekers en de output het vertrek van tevreden bezoekers."
+  },
+  {
+   "cat": "proces",
+   "term": "Capaciteit (van een proces)",
+   "def": "Het aantal output dat een proces in een bepaalde tijdseenheid kan leveren. Het bepaalt onder meer hoeveel bezoekers in een bepaalde periode kunnen worden geholpen."
+  },
+  {
+   "cat": "proces",
+   "term": "Succesfactoren van een project",
+   "def": "Naast tijd, geld en kwaliteit ook organisatie (O), informatie (I) en risicobeheersing (R). Je gebruikt ze bij de evaluatie om te bepalen of een project geslaagd is."
+  },
+  {
+   "cat": "schillenmodel",
+   "term": "Mobiliteit",
+   "def": "Het geheel van verplaatsingsbehoeften, -middelen en -mogelijkheden en het uiteindelijke verplaatsingsgedrag. Het is een persoonsgebonden kenmerk en vaak gewoontegedrag."
+  },
+  {
+   "cat": "schillenmodel",
+   "term": "Mobiliteitskeuze",
+   "def": "Het te verwachten comfort van de reis, op basis van kosten en betrouwbaarheid."
+  },
+  {
+   "cat": "schillenmodel",
+   "term": "Klantwaarde",
+   "def": "De te verwachten waarde van de keuze voor een bepaalde vervoerwijze. Doelgroepen, mobiliteit, beïnvloeding, modal split, locatie, maatregelen en bereikbaarheid bepalen die samen."
+  },
+  {
+   "cat": "schillenmodel",
+   "term": "Bereikbaarheid",
+   "def": "Wordt voor een klantengroep bepaald door het aanbod van infrastructuur en mobiliteitsdiensten en de mate waarin dat aan de behoeften van de reiziger voldoet (XTNT, 2004). Ze is locatiegebonden en wordt in schil 2 gestuurd."
+  },
+  {
+   "cat": "schillenmodel",
+   "term": "Beïnvloedingsprocessen (schil 1)",
+   "def": "Processen die de keuze van de vervoerswijze beïnvloeden, bijvoorbeeld met een treinticket-combinatie."
+  },
+  {
+   "cat": "schillenmodel",
+   "term": "Sturingsprocessen (schil 2)",
+   "def": "Processen rond openbare voorzieningen, zoals de capaciteit van OV en toegangswegen. De organisatie stuurt hiermee de bereikbaarheid voor, tijdens en na het evenement."
+  },
+  {
+   "cat": "toegang",
+   "term": "Toegangsprocessen (schil 3)",
+   "def": "Processen op weg naar en bij het evenemententerrein, zoals parkeren, entree, kaartverkoop en visitatie. Schil 3 wordt beïnvloed door schil 1 en schil 2."
+  },
+  {
+   "cat": "schillenmodel",
+   "term": "Evenementprocessen (kern)",
+   "def": "Processen in de kern van het schillenmodel op het terrein zelf, zoals installaties, tenten en sanitair."
+  },
+  {
+   "cat": "sitedesign",
+   "term": "Basis Ontwerp Kaart (BOK)",
+   "def": "Kaart met het ontwerp van het terrein. Voor het definitieve ontwerp wordt de BOK omgezet in een gedetailleerde plattegrond."
+  },
+  {
+   "cat": "veiligheid",
+   "term": "Vergunninghouder",
+   "def": "De partij die als eerste verantwoordelijk is voor de veiligheid op het evenemententerrein."
+  },
+  {
+   "cat": "veiligheid",
+   "term": "Crisisstructuur",
+   "def": "Onderdeel van het calamiteitenplan: wie is crisismanager en beslissingsbevoegd, en wie vervangt de crisismanager."
+  },
+  {
+   "cat": "draaiboek",
+   "term": "Capaciteitenplanning",
+   "def": "Aanvulling op het draaiboek van het evenement zelf, waarin de inzet van menskracht, ruimten, machines en apparatuur inzichtelijk wordt."
+  },
+  {
+   "cat": "draaiboek",
+   "term": "Calamiteitendraaiboek",
+   "def": "Apart draaiboek dat nodig is voor risicovolle projecten, zoals voetbalwedstrijden of een presidentieel bezoek aan Nederland."
+  },
+  {
+   "cat": "draaiboek",
+   "term": "Briefing (medewerkers)",
+   "def": "Moment, bij voorkeur fysiek, waarop je eigen personeel, inhuur en vrijwilligers vertelt wat van hen wordt verwacht: doel van het evenement, wanneer het geslaagd is, kernwaarden, instructies en richtlijnen."
+  },
+  {
+   "cat": "draaiboek",
+   "term": "Nazorg (na het evenement)",
+   "def": "Wat na afloop en afbouw wordt geregeld: bedanken, evaluatie met betrokkenen, aftermovie of fotoboek, website bijwerken, publiciteit en contact met betrokkenen bij ongevallen."
+  },
+  {
+   "cat": "marketing",
+   "term": "Early bird",
+   "def": "Vroege kaartverkoop die vroege inkomsten oplevert om kosten te dekken die in een vroeg stadium voor de volgende editie gemaakt moeten worden."
   }
  ],
  "oefentoetsen": [

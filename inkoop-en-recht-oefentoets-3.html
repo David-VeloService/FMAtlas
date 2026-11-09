@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+<title>Oefentoets recht · week 7 · Inkoop en recht · FM Atlas</title>
+<meta name="description" content="Oefentoets van Inkoop en recht op FM Atlas. Eén vraag tegelijk, met uitleg en modelantwoorden."/>
+<link rel="icon" type="image/svg+xml" href="logo.svg"/>
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png"/>
+<link rel="apple-touch-icon" href="apple-touch-icon.png"/>
+<meta name="theme-color" content="#efe5d4"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="css/atlas.css"/>
+<link rel="stylesheet" href="css/leer.css"/>
+<link rel="stylesheet" href="css/toets.css"/>
+</head>
+<body>
+<div class="scene" aria-hidden="true"><i></i></div>
+<header class="topbar" id="topbar"></header>
+<main class="toets">
+  <h1 id="toets-title">Oefentoets recht · week 7</h1>
+  <p class="toets-best" id="toets-best" hidden></p>
+  <section class="toets-intro glass" id="toets-intro" aria-label="Over deze toets">
+    <p>De klassikale oefentoets over een raamovereenkomst voor AV-middelen bij de HAN. De docent raadt aan om alleen met je wettenbundel of reader te werken, je antwoord uit te werken met alle voorwaarden, het toe te passen op de casus en naar het juiste artikel te verwijzen. Vraag 5 en 7 zijn hier in drie losse vragen gesplitst (a, b en c). Je krijgt <strong>16 open vragen</strong> die je zelf nakijkt met het modelantwoord. Je ziet één vraag tegelijk. De cesuur is <strong>55%</strong>.</p>
+    <div class="toets-facts">      <span><strong>Open:</strong> 16</span>
+      <span><strong>Duur:</strong> ±60 min</span>
+      <span><strong>Cesuur:</strong> 55%</span></div>
+    <div class="toets-actions">
+      <button class="toets-btn toets-primary" id="toets-start" type="button" >Begin oefentoets</button>
+      <a class="toets-btn glass toets-back" href="vak.html?v=inkoop-en-recht">Terug naar vak</a>
+    </div>
+  </section>
+  <section id="toets-test" aria-label="Vragen" hidden>
+    <div class="toets-progress">
+      <p id="toets-counter" role="status" aria-live="polite"></p>
+      <div class="toets-meter" id="toets-meter" role="progressbar" aria-labelledby="toets-counter" aria-valuemin="0" aria-valuemax="1" aria-valuenow="0"><span id="toets-bar"></span></div>
+    </div>
+    <article class="toets-question glass" id="toets-question" aria-labelledby="question-title"></article>
+    <nav class="toets-nav" aria-label="Vragen doorlopen">
+      <button class="toets-btn glass" id="toets-prev" type="button">Vorige</button>
+      <button class="toets-btn toets-primary" id="toets-next" type="button">Volgende</button>
+    </nav>
+  </section>
+  <section id="toets-results" aria-labelledby="results-title" hidden>
+    <div class="toets-summary glass">
+      <h2 id="results-title" tabindex="-1">Je resultaat</h2>
+      <p class="toets-score" id="toets-score"></p>
+      <p id="toets-verdict"></p>
+      <div class="toets-actions">
+        <button class="toets-btn toets-primary" id="toets-wrong" type="button">Alleen de foute opnieuw</button>
+        <button class="toets-btn glass" id="toets-restart" type="button">Hele toets opnieuw</button>
+
+        <a class="toets-btn glass toets-back" href="vak.html?v=inkoop-en-recht">Terug naar vak</a>
+      </div>
+    </div>
+    <ol class="toets-review-list" id="toets-review" aria-label="Antwoorden met uitleg"></ol>
+  </section>
+  <noscript><p>Schakel JavaScript in om de toets te maken.</p></noscript>
+</main>
+<dialog class="toets-lightbox" id="toets-lightbox" aria-label="Afbeelding vergroot">
+  <button class="toets-btn glass" type="button" id="toets-close">Sluiten</button>
+  <figure><img alt=""/><figcaption></figcaption></figure>
+</dialog>
+<script src="js/atlas-data.js"></script>
+<script src="js/atlas.js"></script>
+<script src="js/data-inkoop-en-recht.js"></script>
+<script>
+(() => {
+  'use strict';
+  const $ = id => document.getElementById(id);
+  const esc = Atlas.esc;
+  const letter = i => String.fromCharCode(65 + i);
+
+  const from = new URLSearchParams(location.search).get('from');
+  const origin = (window.ATLAS_VAKKEN || []).find(vak => vak.key === from);
+  const back = 'vak.html?v=' + encodeURIComponent(origin ? origin.key : 'inkoop-en-recht');
+  const vakTitle = origin ? esc(origin.title) : 'Inkoop en recht';
+  Atlas.topbar('<span class="sep">/</span><a href="' + esc(back) + '">' + vakTitle + '</a><span class="sep">/</span><span class="here">Oefentoets</span>');
+  document.querySelectorAll('.toets-back').forEach(link => link.setAttribute('href', back));
+  const test = window.INKR.oefentoetsen[2];
+  let number = 0;
+  const all = [
+    ...(test.mc || []).map(q => ({ ...q, kind: 'mc', num: ++number })),
+    ...(test.open || []).map(q => ({ ...q, kind: 'open', num: ++number }))
+  ];
+  const createQuestions = () => all.slice();
+  const scoreKey = () => 'inkoop-en-recht-oefentoets-' + (2 + 1) + '-' + all.length;
+  const submitLabel = 'Lever oefentoets in';
+  const verdict = pct => `De cesuur is ${test.cesuur || 55}%. ${pct >= (test.cesuur || 55) ? 'Je hebt de cesuur gehaald.' : 'Je hebt de cesuur nog niet gehaald.'}`;
+
+
+  let questions = [], answers = Object.create(null), current = 0, retry = false, mistakes = [];
+  function paintBest() {
+    const key = scoreKey();
+    Atlas.accountReady.then(account => {
+      if (key !== scoreKey()) return;
+      const best = key && account?.readTest(key);
+      $('toets-best').hidden = !best;
+      $('toets-best').textContent = best ? `Beste score: ${best.goed} van ${best.totaal}` : '';
+    });
+  }
+  paintBest();
+  window.addEventListener('atlas:toetsen', event => { if (event.detail.key === scoreKey()) paintBest(); });
+  function image(q) {
+    if (!q.img) return '';
+    return `<figure class="beeld"><button type="button" data-image aria-label="Afbeelding bij vraag ${q.num} vergroten"><img src="${esc(q.img)}" alt="${esc(q.alt || 'Afbeelding bij de vraag')}" loading="lazy"/></button><figcaption>${esc(q.alt || 'Afbeelding bij de vraag')}. Klik om te vergroten.</figcaption></figure>`;
+  }
+  function start(selected = null) {
+    questions = selected ? selected.slice() : createQuestions();
+    if (!questions.length) return;
+    answers = Object.create(null);
+    current = 0;
+    retry = selected !== null;
+    $('toets-intro').hidden = true;
+    $('toets-results').hidden = true;
+    $('toets-review').replaceChildren();
+    $('toets-test').hidden = false;
+    render();
+  }
+  function render() {
+    const q = questions[current];
+    if (!q) return;
+    const state = answers[q.num] || {};
+    $('toets-counter').textContent = `Vraag ${current + 1} van ${questions.length}`;
+    $('toets-meter').setAttribute('aria-valuemax', questions.length);
+    $('toets-meter').setAttribute('aria-valuenow', current + 1);
+    $('toets-bar').style.width = (current + 1) / questions.length * 100 + '%';
+    $('toets-prev').disabled = current === 0;
+    $('toets-next').textContent = current === questions.length - 1 ? submitLabel : 'Volgende';
+    $('toets-question').innerHTML = `
+      ${q.section ? `<p class="toets-section">${esc(q.section)}</p>` : ''}
+      ${q.casus ? `<div class="toets-casus"><strong>Casus</strong>${q.casus}</div>` : ''}
+      <h2 id="question-title" tabindex="-1">${q.text}</h2>${image(q)}
+      ${q.kind === 'mc' ? `<div class="toets-options" role="group" aria-labelledby="question-title">${q.options.map((option, i) => `
+        <button class="toets-option glass" type="button" data-choice="${i}" aria-pressed="${state.choice === i}"><span class="toets-letter">${letter(i)}.</span><span>${option}</span></button>`).join('')}</div>` : `
+        <label class="toets-answer-label" for="toets-answer">Jouw antwoord</label>
+        <textarea class="toets-answer" id="toets-answer" placeholder="Schrijf je antwoord op voordat je het modelantwoord bekijkt."></textarea>
+        <div class="toets-actions"><button class="toets-btn glass" type="button" data-reveal ${state.reveal ? 'hidden' : ''}>Toon modelantwoord</button></div>
+        <div class="toets-model" id="toets-model" tabindex="-1" ${state.reveal ? '' : 'hidden'}><h3>Modelantwoord</h3><div>${q.model}</div>
+          <div class="toets-mark"><p>Vergelijk je antwoord met het modelantwoord.</p><div class="toets-actions">
+            <button class="toets-btn glass" type="button" data-mark="good" aria-pressed="${state.good === true}">Goed</button>
+            <button class="toets-btn glass" type="button" data-mark="wrong" aria-pressed="${state.good === false}">Fout</button>
+          </div></div>
+        </div>`}`;
+    if (q.kind === 'open') $('toets-answer').value = state.text || '';
+    $('question-title').focus({ preventScroll: true });
+    window.scrollTo({ top: 0 });
+  }
+  $('toets-question').addEventListener('input', event => {
+    if (event.target.id === 'toets-answer') {
+      (answers[questions[current].num] ||= {}).text = event.target.value;
+    }
+  });
+  $('toets-question').addEventListener('click', event => {
+    const q = questions[current];
+    const choice = event.target.closest('[data-choice]');
+    if (choice) {
+      (answers[q.num] ||= {}).choice = Number(choice.dataset.choice);
+      $('toets-question').querySelectorAll('[data-choice]').forEach(button => button.setAttribute('aria-pressed', String(button === choice)));
+    }
+    if (event.target.closest('[data-reveal]')) {
+      (answers[q.num] ||= {}).reveal = true;
+      $('toets-question').querySelector('[data-reveal]').hidden = true;
+      $('toets-model').hidden = false;
+      $('toets-model').focus({ preventScroll: true });
+    }
+    const mark = event.target.closest('[data-mark]');
+    if (mark) {
+      (answers[q.num] ||= {}).good = mark.dataset.mark === 'good';
+      $('toets-question').querySelectorAll('[data-mark]').forEach(button => button.setAttribute('aria-pressed', String(button === mark)));
+    }
+  });
+  const isCorrect = q => q.kind === 'mc' ? answers[q.num]?.choice === q.answer : answers[q.num]?.good === true;
+  function submit() {
+    const correct = questions.filter(isCorrect).length;
+    mistakes = questions.filter(q => !isCorrect(q));
+    const pct = Math.round(correct / questions.length * 100);
+    $('toets-score').textContent = `Je hebt ${correct} van ${questions.length} vragen goed (${pct}%).`;
+    $('toets-verdict').textContent = retry ? 'Dit is het resultaat van je herhaling.' : verdict(pct);
+    $('toets-wrong').hidden = mistakes.length === 0;
+    $('toets-review').innerHTML = questions.map(q => {
+      const state = answers[q.num] || {};
+      return `<li class="toets-review glass"><h3>Vraag ${q.num} · ${isCorrect(q) ? 'Goed' : 'Fout'}</h3><div>${q.text}</div>${image(q)}
+        ${q.casus ? `<div class="toets-casus"><strong>Casus</strong>${q.casus}</div>` : ''}
+        ${q.kind === 'mc' ? `<p><strong>Jouw antwoord:</strong> ${state.choice === undefined ? 'Niet beantwoord' : q.options[state.choice]}</p><p><strong>Juiste antwoord:</strong> ${q.options[q.answer]}</p><div class="toets-explanation">${q.explanation || ''}</div>` : `
+          <p class="toets-written"><strong>Jouw antwoord:</strong> ${esc(state.text || 'Niet ingevuld')}</p>${state.good === undefined ? '<p>Niet zelf nagekeken; telt als fout.</p>' : '<p>Door jou nagekeken met het modelantwoord.</p>'}<div class="toets-explanation"><strong>Modelantwoord</strong><br/>${q.model}</div>`}</li>`;
+    }).join('');
+    $('toets-test').hidden = true;
+    $('toets-results').hidden = false;
+    if (!retry) {
+      const key = scoreKey();
+      const result = { goed: correct, totaal: questions.length, laatst: Date.now() };
+      Atlas.accountReady.then(account => account?.saveTest(key, result));
+    }
+    $('results-title').focus({ preventScroll: true });
+    window.scrollTo({ top: 0 });
+  }
+  $('toets-start').addEventListener('click', () => start());
+  $('toets-restart').addEventListener('click', () => start());
+  $('toets-wrong').addEventListener('click', () => { if (mistakes.length) start(mistakes); });
+  $('toets-configure')?.addEventListener('click', () => {
+    $('toets-results').hidden = true;
+    $('toets-intro').hidden = false;
+    $('toets-start').focus();
+  });
+  document.querySelectorAll('input[name="bt-n"]').forEach(input => input.addEventListener('change', paintBest));
+  $('toets-prev').addEventListener('click', () => { if (current > 0) { current--; render(); } });
+  $('toets-next').addEventListener('click', () => { if (current < questions.length - 1) { current++; render(); } else submit(); });
+  const dialog = $('toets-lightbox');
+  document.addEventListener('click', event => {
+    const button = event.target.closest('[data-image]');
+    if (button) {
+      const img = button.querySelector('img');
+      dialog.querySelector('img').src = img.src;
+      dialog.querySelector('img').alt = img.alt;
+      dialog.querySelector('figcaption').textContent = img.alt;
+      dialog.showModal();
+    } else if (event.target === dialog || event.target.closest('#toets-close')) dialog.close();
+  });
+  document.addEventListener('keydown', event => {
+    if ($('toets-test').hidden || dialog.open || event.altKey || event.ctrlKey || event.metaKey || event.target.closest('input, textarea, select, [contenteditable="true"], .atlas-account')) return;
+    if (event.key === 'ArrowLeft' && current > 0) { event.preventDefault(); current--; render(); }
+    if (event.key === 'ArrowRight' && current < questions.length - 1) { event.preventDefault(); current++; render(); }
+  });
+
+})();
+</script>
+</body>
+</html>

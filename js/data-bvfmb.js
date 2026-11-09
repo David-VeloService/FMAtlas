@@ -18,6 +18,12 @@ window.BVFMB = {
    "label": "Veiligheidszorg",
    "short": "Veiligheid",
    "color": "#a855f7"
+  },
+  {
+   "key": "gebouw",
+   "label": "Gebouwbeheer en diensten",
+   "short": "Gebouw",
+   "color": "#f97316"
   }
  ],
  "begrippen": [
@@ -523,6 +529,246 @@ window.BVFMB = {
    "cat": "veiligheid",
    "term": "Niveau 3, impliciet/onzichtbaar",
    "def": "Het diepste niveau van veiligheidscultuur: onderliggende aannames en overtuigingen die alleen via observatie zijn af te leiden. Voorbeelden: onuitgesproken verwachtingen over 'zo doen wij dat hier'."
+  },
+  {
+   "cat": "schoonmaak",
+   "term": "Schoonmaakfrequenties",
+   "def": "Indeling van schoonmaakonderhoud naar frequentie: dagelijks onderhoud, periodiek onderhoud (bijvoorbeeld één keer per maand), jaarlijks onderhoud en specialistisch onderhoud (bijvoorbeeld vloeronderhoud of asbestverwijdering)."
+  },
+  {
+   "cat": "schoonmaak",
+   "term": "Kwaliteitsmetingen schoonmaak",
+   "def": "Vier manieren om schoonmaakkwaliteit te meten: administratieve controle, visuele kwaliteitscontrole (DKS of VSR-KMS), belevingsonderzoek (bijvoorbeeld VSR-KBS) en een bacteriologische of microbiologische test. Per meting bepaal je welke, wie, wanneer, hoe vaak en waarom."
+  },
+  {
+   "cat": "schoonmaak",
+   "term": "Schoonmaakmanagementplan",
+   "def": "Plan met meerdere onderdelen: personele inzet, communicatie, kwaliteitsmetingen, financiële consequenties en toegevoegde waarde."
+  },
+  {
+   "cat": "schoonmaak",
+   "term": "Systematisch onderhoud (schoonmaak)",
+   "def": "Onderhoud dat de relatie legt tussen het schoonmaakprogramma en de gewenste kwaliteit. Het is een combinatie van de keuze voor een methodiek en de keuze voor een frequentie."
+  },
+  {
+   "cat": "schoonmaak",
+   "term": "Taakindeling schoonmaak",
+   "def": "Hoe schoonmaaktaken over medewerkers worden verdeeld: geografisch, specialistisch, een combinatie of zelfsturende teams. Geografisch gaat uit van de plek, specialistisch van de soort taak."
+  },
+  {
+   "cat": "catering",
+   "term": "Lijnbuffet",
+   "def": "Buffetvorm waarbij je achter in de rij aansluit en al lopend langs het buffet je lunch verzamelt. Nadeel: tegen de stroom in lopen is lastig, iedereen sluit aan in de rij en de rij eindigt bij de kassa."
+  },
+  {
+   "cat": "catering",
+   "term": "Free-flow buffet",
+   "def": "Buffetvorm met losse buffetten als eilandjes in het uitgiftegebied en kassa's op de scheiding met het zitgedeelte. Ook het La Place-concept genoemd. De meeste nieuwe bedrijfsrestaurants zijn zo ingericht."
+  },
+  {
+   "cat": "catering",
+   "term": "Moodboard",
+   "def": "Visueel hulpmiddel dat sfeer, stijl en concept van een cateringaanpak in beeld brengt, met onder meer beelden van gerechten, een kleurenpalet, servies, interieur, sfeerbeelden en kernwoorden. Gebruikt bij de ontwikkeling en bij de presentatie aan een klant."
+  },
+  {
+   "cat": "catering",
+   "term": "Schijf van Vijf",
+   "def": "Richtlijn van het Voedingscentrum om gezonder én duurzamer te eten. Ze laat zien welke producten goed zijn voor je gezondheid en welke keuzes beter zijn voor het milieu, en laat iedereen eigen invulling geven."
+  },
+  {
+   "cat": "catering",
+   "term": "Hygiënecode",
+   "def": "Per branche een hulpmiddel om het voedselveiligheidssysteem (HACCP-plan) uit te werken. In 1996 kwam de hygiënecode voor de contractcatering."
+  },
+  {
+   "cat": "catering",
+   "term": "Kenmerken van dienstverlening",
+   "def": "Dienstverlening is ontastbaar, vergankelijk, heterogeen en kent interactieve consumptie."
+  },
+  {
+   "cat": "catering",
+   "term": "Verwachting en realiteit (dienstverlening)",
+   "def": "Een klant is tevreden als zijn verwachtingen en de invulling in balans zijn. Te hoge of andere verwachtingen leiden tot teleurstelling, overtroffen verwachtingen tot verrassing en zeer tevreden klanten."
+  },
+  {
+   "cat": "catering",
+   "term": "Lunchgebruikers berekenen",
+   "def": "Aantal medewerkers × 70% (aanwezig) × 70% (lunchend). Zitplaatsen zijn ongeveer 75% van het aantal lunchgebruikers. Voorbeeld uit het boek: 500 medewerkers geeft 350 aanwezigen, 245 lunchgebruikers en 184 zitplaatsen."
+  },
+  {
+   "cat": "catering",
+   "term": "Ruimtenormen catering (boek)",
+   "def": "Zitgedeelte 1,2 tot 1,4 m² per zitplaats. Keuken 25% van het zitgedeelte (0,3 m² per zitplaats), uitgiftegebied 10 tot 15% (0,15 m²) en spoelkeuken en opslag 5% (0,07 m²). Wijkt af van de kengetallen uit les 6."
+  },
+  {
+   "cat": "catering",
+   "term": "Kengetallen kosten catering (% omzet)",
+   "def": "Marktconforme percentages van de omzet volgens het boek: derving 2 tot 5, ingrediënten 50 tot 80, personeel 60 tot 140 (zo gedrukt in de bron), exploitatie 10 tot 15 en beheervergoeding 3 tot 6."
+  },
+  {
+   "cat": "catering",
+   "term": "Facility card",
+   "def": "Organisatiegebonden betaalkaart die gebruikers kunnen opwaarderen om te betalen bij de kassa of bij automaten. Zo kunnen kosten ook worden doorberekend aan een afdeling."
+  },
+  {
+   "cat": "catering",
+   "term": "Vergaderservice",
+   "def": "Verstrekking van koffie, thee, frisdrank en lunches tijdens vergaderingen, meestal in vergaderruimten. Lunches zijn vaak een basislunch, een luxe lunch of een directielunch, geserveerd in porselein."
+  },
+  {
+   "cat": "veiligheid",
+   "term": "Veiligheid (definitie)",
+   "def": "Het voorkómen van schade aan of verlies van bedrijfsmiddelen of mensen."
+  },
+  {
+   "cat": "veiligheid",
+   "term": "Beveiligen",
+   "def": "Het geheel van maatregelen om een object, informatie of een persoon te beschermen tegen invloeden van binnenuit of van buitenaf die schade kunnen toebrengen. Verschilt van bewaken."
+  },
+  {
+   "cat": "veiligheid",
+   "term": "Bewaken",
+   "def": "Constant in het oog houden van een persoon of (gedeelte van) een object of voorwerp dat men geheel kan overzien. Verschilt van beveiligen."
+  },
+  {
+   "cat": "veiligheid",
+   "term": "Risicomanagement",
+   "def": "Het continu en systematisch doorlopen van de organisatie op risico's, met als doel de gevolgen te verminderen en de kans te verkleinen."
+  },
+  {
+   "cat": "veiligheid",
+   "term": "Preventiewiel",
+   "def": "Wiel met veiligheid van mensen en eigendommen in het midden en onderdelen als beleid, voorzieningen, cultuur en organisatie. Voordeel: alle factoren in beeld en aanknopingspunten voor maatregelen. Nadeel: eenzijdig accent op preventie."
+  },
+  {
+   "cat": "veiligheid",
+   "term": "Uitwijkplan",
+   "def": "Plan om bij een calamiteit het werk elders voort te zetten, bijvoorbeeld door relocatie naar een ander pand, bilaterale uitwijk naar een soortgelijke organisatie, een mobile site, een cold site of een hot site."
+  },
+  {
+   "cat": "veiligheid",
+   "term": "Hot site",
+   "def": "Uitwijkvorm met een volledig uitgerust computercentrum, via aanbieders of zelf geregeld. De les noemt de luchtverkeersleiding op Schiphol als voorbeeld."
+  },
+  {
+   "cat": "veiligheid",
+   "term": "Veiligheidsketen",
+   "def": "Keten van vijf onderdelen waarin de taken van een facility manager passen: proactie, preventie, preparatie, repressie en nazorg."
+  },
+  {
+   "cat": "veiligheid",
+   "term": "Collectieve veiligheid",
+   "def": "Regeling waarin landen samenwerken om veiligheid voor iedereen te bieden. Ook een organisatie kan samenwerken met partijen in haar omgeving, zoals buurtpreventie en afspraken met brandweer, politie en gemeente."
+  },
+  {
+   "cat": "veiligheid",
+   "term": "Quick scan (RIE)",
+   "def": "Eerste fase van een risico-inventarisatie: globaal nagaan aan welke risico's een organisatie blootstaat, met een algemene checklist. De antwoorden kunnen aanleiding zijn voor een diepgaandere RIE."
+  },
+  {
+   "cat": "veiligheid",
+   "term": "RIE-checklist",
+   "def": "Lijst met aandachtspunten en vragen over mogelijke risico's. Geeft structuur, maar werkt alleen als de vragen specifiek op de eigen organisatie zijn afgestemd."
+  },
+  {
+   "cat": "veiligheid",
+   "term": "Incidentenregistratie",
+   "def": "Het vastleggen van incidenten. Typen: (arbeids)ongeval, (operationeel) incident, bijna-ongeval, gevaarlijke situatie en milieu-incident."
+  },
+  {
+   "cat": "veiligheid",
+   "term": "Risicoclassificatie incidenten",
+   "def": "Indeling naar ernst met een rapportagetermijn: minder ernstig (beïnvloeding) en ernstig (tijdelijk) per kwartaal aan de RvB, zeer ernstig (blijvend) binnen 8 uur aan de RvB, fataal (overlijden) binnen 8 uur aan de RvB en de arbeidsinspectie."
+  },
+  {
+   "cat": "veiligheid",
+   "term": "Veiligheidsmonitor",
+   "def": "Landelijk CBS-onderzoek naar onder meer leefbaarheid en overlast, veiligheidsbeleving, traditionele en online criminaliteit, burgers en politie, preventie en respectloos gedrag."
+  },
+  {
+   "cat": "veiligheid",
+   "term": "Maatregel versus eis",
+   "def": "Een maatregel is het besluit over hoe iets wordt opgelost. Een eis beschrijft de criteria waaraan die maatregel moet voldoen. Voorbeeld: vluchtroutebordjes (maatregel) met pictogrammen en reflecterend materiaal (eisen)."
+  },
+  {
+   "cat": "veiligheid",
+   "term": "Gebruiksvergunning",
+   "def": "Verplicht bij 50 personen tegelijk, opslag van bepaalde stoffen, meer dan 10 personen met nachtverblijf en meer dan 10 kinderen onder 12 jaar of meer dan 10 gehandicapten."
+  },
+  {
+   "cat": "veiligheid",
+   "term": "Securityplan (deel 2)",
+   "def": "Deelplan met OBE-maatregelen voor incidenten door opzettelijk menselijk handelen tegen middelen, informatie en mensen, zoals bommelding, overval, diefstal, vandalisme en agressie."
+  },
+  {
+   "cat": "veiligheid",
+   "term": "Safetyplan (HSE-plan)",
+   "def": "Deelplan (health, safety, environmental) met procedures en richtlijnen voor incidenten door niet-opzettelijk handelen: arbeidsomstandigheden, EHBO, milieu, bedrijfshygiëne en brandveiligheid."
+  },
+  {
+   "cat": "veiligheid",
+   "term": "Cybercrime-continuüm",
+   "def": "Schaal van technology crime (Type I) naar people crime (Type II). Voorbeelden uit de les: phishing, identiteitsdiefstal en DDoS zijn Type I, cyberstalking en cyberterrorisme (communicatie) Type II."
+  },
+  {
+   "cat": "veiligheid",
+   "term": "Spiritontwikkeling",
+   "def": "Werken aan motivatie, attitude, bereidheid en verantwoordelijkheidsgevoel, met sensibilisatie- en motivatiecampagnes, terugkoppeling van teamprestaties, opleiding en peer-to-peer coaching."
+  },
+  {
+   "cat": "veiligheid",
+   "term": "Veiligheidsmotivatie (stimuleer en rem)",
+   "def": "Twee sporen: veiligheid stimuleren (voordelen benadrukken, nadelen beperken) en onveiligheid remmen (gevolgen benadrukken, mogelijkheden beperken)."
+  },
+  {
+   "cat": "veiligheid",
+   "term": "Volwassenheid veiligheidscultuur (5 niveaus)",
+   "def": "Ladder van pathological (veiligheid is niet belangrijk), reactive, calculative (systemen voor alle gevaren), pro-active tot best in class of generative (veiligheid is een voorwaarde voor ons werk)."
+  },
+  {
+   "cat": "gebouw",
+   "term": "Gebouwbeheer",
+   "def": "Alle maatregelen om de prestaties van een bestaand gebouw tijdens de gebruiksperiode in stand te houden. Uitgangspunten: fysiek voortbestaan, gebruikskwaliteit en cosmetische kwaliteit."
+  },
+  {
+   "cat": "gebouw",
+   "term": "Correctief onderhoud",
+   "def": "Onderhoud waarbij je wacht tot duidelijk zichtbaar is dat ingrijpen nodig is, bijvoorbeeld bij bladderend schilderwerk. Tegenover preventief onderhoud."
+  },
+  {
+   "cat": "gebouw",
+   "term": "Preventief onderhoud",
+   "def": "Onderhoud dat problemen voor is en gericht is op het voorkómen van storingen, bijvoorbeeld een tl-balk vervangen als de branduren om zijn. Tegenover correctief onderhoud."
+  },
+  {
+   "cat": "gebouw",
+   "term": "MJOP (meerjarenonderhoudsplan)",
+   "def": "Plan voor regulier onderhoud met onderhoudsconcept, cyclus, kosten per eenheid, hoeveelheden en plaats. Bestaat uit het meerjarenplan, het jaarplan en de bekostiging, waarbij de kosten worden gekapitaliseerd tot een vast jaarbedrag."
+  },
+  {
+   "cat": "gebouw",
+   "term": "Primaire, secundaire en tertiaire elementen",
+   "def": "Gebouwdelen naar levensduur: primair (fundering, gevel, dak) 30 tot 50 jaar, secundair (systeemwanden, installaties, sanitair) 15 tot 20 jaar, tertiair (inrichting, vloerbedekking, stoffering) ongeveer 10 jaar."
+  },
+  {
+   "cat": "gebouw",
+   "term": "Stramienmaat",
+   "def": "Het onzichtbare raster over een gebouw, zichtbaar in de afstand tussen kolommen of ramen. Bij kantoren gangbaar 1,80 m of een veelvoud: kolommen 7,20 m uit elkaar, kantoorkamers 3,60 m breed."
+  },
+  {
+   "cat": "gebouw",
+   "term": "Wagenparkbeheer (fleetmanagement)",
+   "def": "Invulling van het leasecontract voor medewerkers die een leaseauto krijgen, met onder meer uitgifte, schadeafhandeling en vervangend vervoer. Verschuift onder maatschappelijk verantwoord ondernemen naar het bredere begrip mobiliteit."
+  },
+  {
+   "cat": "gebouw",
+   "term": "Textielservices",
+   "def": "Verzorging van bedrijfskleding, beddengoed en tafellinnen in drie stappen: inname, reinigen (meestal uitbesteed) en uitgifte."
+  },
+  {
+   "cat": "gebouw",
+   "term": "Facility corner",
+   "def": "Plek op een afdeling waar decentrale printers en kopieerapparaten vaak samen staan met automaten voor koffie en thee."
   }
  ],
  "oefentoetsen": []

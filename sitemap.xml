@@ -1,11 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://fmatlas.nl/game/</loc><lastmod>2026-10-09</lastmod></url>
-  <url><loc>https://fmatlas.nl/game/slipstroom/</loc><lastmod>2026-10-09</lastmod></url>
-  <url><loc>https://fmatlas.nl/game/stadsstorm/</loc><lastmod>2026-10-09</lastmod></url>
-  <url><loc>https://fmatlas.nl/game/hoge-inzet/</loc><lastmod>2026-10-11</lastmod></url>
-  <url><loc>https://fmatlas.nl/game/pool/</loc><lastmod>2026-10-11</lastmod></url>
-  <url><loc>https://fmatlas.nl/app.html</loc><lastmod>2026-10-07</lastmod></url>
   <url><loc>https://fmatlas.nl/bedrijfseconomie-begrippen.html</loc><lastmod>2026-10-07</lastmod></url>
   <url><loc>https://fmatlas.nl/bedrijfseconomie-flashcards.html</loc><lastmod>2026-10-07</lastmod></url>
   <url><loc>https://fmatlas.nl/bedrijfseconomie-samenvatting.html</loc><lastmod>2026-10-07</lastmod></url>
@@ -82,6 +76,14 @@
   <url><loc>https://fmatlas.nl/vak.html?v=facilitaire-bedrijfskunde</loc><lastmod>2026-11-07</lastmod></url>
   <url><loc>https://fmatlas.nl/vak.html?v=facilitaire-inkoop</loc><lastmod>2026-11-07</lastmod></url>
   <url><loc>https://fmatlas.nl/vak.html?v=fm-tech</loc><lastmod>2026-11-07</lastmod></url>
+  <url><loc>https://fmatlas.nl/vak.html?v=inkoop-en-recht</loc><lastmod>2026-11-09</lastmod></url>
+  <url><loc>https://fmatlas.nl/inkoop-en-recht-samenvatting.html</loc><lastmod>2026-11-09</lastmod></url>
+  <url><loc>https://fmatlas.nl/inkoop-en-recht-begrippen.html</loc><lastmod>2026-11-09</lastmod></url>
+  <url><loc>https://fmatlas.nl/inkoop-en-recht-flashcards.html</loc><lastmod>2026-11-09</lastmod></url>
+  <url><loc>https://fmatlas.nl/inkoop-en-recht-oefentoets.html</loc><lastmod>2026-11-09</lastmod></url>
+  <url><loc>https://fmatlas.nl/inkoop-en-recht-oefentoets-2.html</loc><lastmod>2026-11-09</lastmod></url>
+  <url><loc>https://fmatlas.nl/inkoop-en-recht-oefentoets-3.html</loc><lastmod>2026-11-09</lastmod></url>
+  <url><loc>https://fmatlas.nl/inkoop-en-recht-oefentoets-4.html</loc><lastmod>2026-11-09</lastmod></url>
   <url><loc>https://fmatlas.nl/vak.html?v=huisvesting</loc><lastmod>2026-11-07</lastmod></url>
   <url><loc>https://fmatlas.nl/vak.html?v=projectvaardigheden</loc><lastmod>2026-11-07</lastmod></url>
   <url><loc>https://fmatlas.nl/vak.html?v=trendwatchers</loc><lastmod>2026-11-07</lastmod></url>

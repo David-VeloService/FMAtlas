@@ -43,6 +43,25 @@ window.ATLAS_VAKKEN = [
       ['Oefentoets · de businesscase in zes stappen', 'facilitaire-economie-veranderingen-oefentoets.html', 'quiz'],
     ],
   },
+  {
+    key: 'inkoop-en-recht', title: 'Inkoop en recht',
+    sub: 'TCO · sourcing · Europees aanbesteden · contractmanagement · recht',
+    year: 2, periods: [2], icon: 'cart',
+    leren: [
+      ['Samenvatting', 'inkoop-en-recht-samenvatting.html', 'book'],
+      ['Begrippenlijst', 'inkoop-en-recht-begrippen.html', 'list'],
+    ],
+    oefenen: [
+      ['Flashcards', 'inkoop-en-recht-flashcards.html', 'cards'],
+      ['Begrippentoets', 'begrippentoets.html?vak=inkoop-en-recht', 'check'],
+    ],
+    toetsen: [
+      ['Oefentoets inkoop', 'inkoop-en-recht-oefentoets-4.html', 'quiz'],
+      ['Oefentoets recht · docent', 'inkoop-en-recht-oefentoets.html', 'quiz'],
+      ['Casussen aanbestedingsplicht', 'inkoop-en-recht-oefentoets-2.html', 'quiz'],
+      ['Oefentoets recht · week 7', 'inkoop-en-recht-oefentoets-3.html', 'quiz'],
+    ],
+  },
 
   // ── Jaar 2 · periode 1 ─────────────────────────────
   {

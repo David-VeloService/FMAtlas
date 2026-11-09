@@ -87,7 +87,7 @@ const FA_LOGO = `
 </svg>`;
 
 /* ─── Header rendering ─────────── */
-function faRenderHeader({ homeUrl = 'app.html', user = null, breadcrumb = null } = {}) {
+function faRenderHeader({ homeUrl = 'index.html', user = null, breadcrumb = null } = {}) {
   const header = document.createElement('header');
   header.className = 'fa-header';
   const streak = faGetStreak();
@@ -127,7 +127,7 @@ function faRenderHeader({ homeUrl = 'app.html', user = null, breadcrumb = null }
           <div class="fa-account-name">${faEsc(user?.displayName || 'Je bent niet ingelogd')}</div>
           ${user
             ? `<button type="button" role="menuitem" onclick="faLogout()">Uitloggen</button>`
-            : `<a role="menuitem" href="app.html?login=1">Inloggen</a>`}
+            : `<a role="menuitem" href="/">Inloggen</a>`}
           <a role="menuitem" href="privacy.html">Privacy</a>
         </div>
       </div>
@@ -421,8 +421,6 @@ const FA_SEARCH_INDEX = [
   { title: 'Eventmanagement 2 — Oefentoets 1', sub: 'Evenementenlogistiek', url: 'evenementenlogistiek-oefentoets.html', icon: 'check' },
   { title: 'Eventmanagement 2 — Oefentoets 2', sub: 'logistiek + projectvaardigheden', url: 'evenementenlogistiek-oefentoets-2.html', icon: 'check' },
   { title: 'Eventmanagement 2 — Oefentoets 3', sub: 'extra moeilijk', url: 'evenementenlogistiek-oefentoets-3.html', icon: 'check' },
-  { title: 'Hoge Inzet — roulette en blackjack', sub: 'spelletje · casino met speelfiches', url: 'game/hoge-inzet/index.html', icon: 'coin' },
-  { title: 'Pool — 8-ball tegen de computer, met z\'n tweeën of online', sub: 'spelletje · biljart met volle en halve ballen, ook op twee apparaten', url: 'game/pool/index.html', icon: 'scope' },
 ];
 
 function faOpenSearch() {
@@ -508,21 +506,3 @@ document.addEventListener('keydown', e => {
 
 /* Auto-render icons on load */
 document.addEventListener('DOMContentLoaded', () => faRenderIcons());
-
-/* Feedbackknoppen op elke pagina (niet op de beheerpagina zelf) */
-document.addEventListener('DOMContentLoaded', () => {
-  if (document.body.dataset.noFeedback !== undefined) return;
-  const sc = document.createElement('script');
-  sc.src = 'js/feedback.js';
-  sc.defer = true;
-  document.body.appendChild(sc);
-});
-
-/* Anonieme gebruiksstatistiek voor het beheerdersdashboard (niet op beheerpagina's) */
-document.addEventListener('DOMContentLoaded', () => {
-  if (document.body.dataset.noStats !== undefined || document.body.dataset.noFeedback !== undefined) return;
-  const sc = document.createElement('script');
-  sc.src = 'js/statistiek.js';
-  sc.defer = true;
-  document.body.appendChild(sc);
-});

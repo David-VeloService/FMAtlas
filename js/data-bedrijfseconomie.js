@@ -479,6 +479,356 @@ window.BECO = {
    "cat": "uurtarieven",
    "term": "Winstpercentage",
    "def": "Het percentage winst dat je bovenop je kosten in je tarief verwerkt. Afweging: wordt het tarief daardoor te hoog, dan kan de klant de opdracht aan een andere leverancier geven."
+  },
+  {
+   "cat": "overzichten",
+   "term": "Activeren",
+   "def": "Een aankoop als bezit op de balans opnemen, zodat je de waarde ervan kunt blijven volgen."
+  },
+  {
+   "cat": "overzichten",
+   "term": "Omzet",
+   "def": "Het aantal verkochte eenheden maal de verkoopprijs per eenheid, exclusief btw."
+  },
+  {
+   "cat": "overzichten",
+   "term": "Inkoopwaarde van de omzet (IWO)",
+   "def": "De inkoopwaarde of kostprijs van de verkochte eenheden. Inkoopwaarde omzet = aantal verkochte eenheden × inkoopprijs of kostprijs per eenheid, exclusief btw."
+  },
+  {
+   "cat": "overzichten",
+   "term": "Brutowinst",
+   "def": "Omzet minus de inkoopwaarde van de omzet. Hier moeten de overige kosten nog van af."
+  },
+  {
+   "cat": "overzichten",
+   "term": "Liquide middelen",
+   "def": "Het saldo van bank, ook rekening-courant genoemd, en kas. Een positief banktegoed staat bij de vlottende activa; roodstand is kort vreemd vermogen."
+  },
+  {
+   "cat": "algemeen",
+   "term": "Financieel feit",
+   "def": "Een gebeurtenis met een financieel gevolg voor de balans, de resultatenrekening en/of het kasstroomoverzicht."
+  },
+  {
+   "cat": "kosten",
+   "term": "Factuurstelsel",
+   "def": "Btw boeken zodra je een inkoopfactuur ontvangt of een verkoopfactuur verstuurt. Een latere betaling levert geen nieuwe btw-boeking op."
+  },
+  {
+   "cat": "kosten",
+   "term": "Kasstelsel",
+   "def": "Btw boeken wanneer je betaalt of een betaling ontvangt. De cursus rekent verder met het factuurstelsel."
+  },
+  {
+   "cat": "beoordelen",
+   "term": "Vermogenskostenvoet of discontovoet",
+   "def": "Het rendement dat je op de investering wilt behalen. Het bestaat uit een vergoeding voor tijd en een vergoeding voor risico. In de opgaven wordt het percentage gegeven."
+  },
+  {
+   "cat": "beoordelen",
+   "term": "Risico-opslag",
+   "def": "De extra vergoeding boven de vergoeding voor tijd die je verlangt vanwege het risico van de investering."
+  },
+  {
+   "cat": "beoordelen",
+   "term": "Perunage",
+   "def": "Een percentage geschreven als getal achter de komma. Zo is 4,9% gelijk aan 0,049."
+  },
+  {
+   "cat": "beoordelen",
+   "term": "Toekomstige waarde (TW)",
+   "def": "De waarde van een bedrag na een aantal perioden. TW = waarde nu × (1 + r)^n."
+  },
+  {
+   "cat": "algemeen",
+   "term": "Input",
+   "def": "Wat de organisatie uit haar omgeving haalt en gebruikt om haar activiteiten te kunnen uitvoeren."
+  },
+  {
+   "cat": "algemeen",
+   "term": "Output",
+   "def": "Wat de organisatie met haar bedrijfsmodel voortbrengt, zoals de frietjes en hamburgers in het lesvoorbeeld."
+  },
+  {
+   "cat": "algemeen",
+   "term": "Outcome",
+   "def": "De gevolgen van de activiteiten voor de organisatie en haar omgeving. Die gevolgen kunnen verder gaan dan het geleverde product."
+  },
+  {
+   "cat": "algemeen",
+   "term": "Governance",
+   "def": "Toezicht en controle waarmee een organisatie bewaakt dat zij haar doelen bereikt en dat de bedrijfsvoering goed verloopt."
+  },
+  {
+   "cat": "kengetallen",
+   "term": "Intellectuele waarde",
+   "def": "Het kennis- en opleidingsniveau, gevolgde trainingen, cursussen en technologieën die een organisatie tot haar beschikking heeft."
+  },
+  {
+   "cat": "kengetallen",
+   "term": "Financiële waarde",
+   "def": "Het beschikbare kapitaal, de ontwikkeling van het eigen vermogen, de schulden en de mogelijkheid om financiering te krijgen."
+  },
+  {
+   "cat": "kengetallen",
+   "term": "Menselijke waarde",
+   "def": "De vaardigheden, ervaring en motivatie van medewerkers en management die ontwikkeling en groei mogelijk maken, zoals klantvriendelijkheid, sociale en analytische vaardigheden en leidinggeven."
+  },
+  {
+   "cat": "kengetallen",
+   "term": "Sociaal-relationele waarde",
+   "def": "Relaties, merken en reputatie: contacten met klanten, partners, leveranciers, medewerkers, overheden en de gemeenschap rond de organisatie."
+  },
+  {
+   "cat": "kengetallen",
+   "term": "Natuurlijke waarde",
+   "def": "Toegang tot milieubronnen en de invloed op natuur en milieu, zoals gebruik van grondstoffen, afval en vervuiling."
+  },
+  {
+   "cat": "kengetallen",
+   "term": "Materiële waarde",
+   "def": "De materiële goederen en infrastructuur die de organisatie bezit, least of gebruikt om diensten of producten te leveren, zoals gebouwen, auto’s en voorraden."
+  },
+  {
+   "cat": "uurtarieven",
+   "term": "Brutoloon",
+   "def": "Het loon vóór inhouding van loonheffing, sociale premies en de werknemersbijdrage aan pensioen."
+  },
+  {
+   "cat": "uurtarieven",
+   "term": "Nettoloon",
+   "def": "Wat de werknemer na inhoudingen en eventuele extra vergoedingen overhoudt."
+  },
+  {
+   "cat": "uurtarieven",
+   "term": "Wig",
+   "def": "Het verschil tussen wat de werkgever aan arbeid betaalt en wat de werknemer netto ontvangt."
+  },
+  {
+   "cat": "uurtarieven",
+   "term": "Leegloop",
+   "def": "Het deel van de gewerkte uren dat niet aan klanten kan worden doorberekend."
+  },
+  {
+   "cat": "uurtarieven",
+   "term": "Kostprijs per productief uur",
+   "def": "Totale werkgeverslasten gedeeld door het aantal productieve uren."
+  },
+  {
+   "cat": "uurtarieven",
+   "term": "Pensioen",
+   "def": "Inkomen voor de periode waarin je stopt met werken. Het pensioenhuis onderscheidt een basispensioen, collectief pensioen en individueel pensioen."
+  },
+  {
+   "cat": "uurtarieven",
+   "term": "AOW",
+   "def": "Het door de overheid geregelde basispensioen. De dia beschrijft opbouw van rechten voor de jaren dat je in de vijftig jaar vóór de AOW-leeftijd in Nederland verblijft."
+  },
+  {
+   "cat": "uurtarieven",
+   "term": "Omslagstelsel",
+   "def": "Een financiering waarbij de lopende premieontvangsten van werkenden worden gebruikt om de huidige pensioenen te betalen. In de les hoort dit bij de AOW."
+  },
+  {
+   "cat": "uurtarieven",
+   "term": "Collectief pensioen",
+   "def": "Pensioen dat je tijdens je werkende leven opbouwt via een pensioenfonds. Zowel werkgever als werknemer betaalt premie; de werkgever houdt het werknemersdeel in en draagt het af."
+  },
+  {
+   "cat": "uurtarieven",
+   "term": "Kapitaaldekkingsstelsel",
+   "def": "Een stelsel waarbij met premies pensioenvermogen wordt opgebouwd voor later. In de les hoort dit bij het collectieve pensioen."
+  },
+  {
+   "cat": "uurtarieven",
+   "term": "Franchise",
+   "def": "Het deel van het pensioengevende salaris waarover geen collectieve pensioenpremie wordt berekend, omdat de AOW al in een basisuitkering voorziet."
+  },
+  {
+   "cat": "uurtarieven",
+   "term": "Pensioengrondslag",
+   "def": "Pensioengevend salaris minus franchise. Over deze grondslag worden de werkgevers- en werknemerspremie berekend."
+  },
+  {
+   "cat": "uurtarieven",
+   "term": "Individueel pensioen",
+   "def": "Vrijwillige eigen aanvulling op het pensioen, bijvoorbeeld om extra te sparen of een pensioengat te repareren."
+  },
+  {
+   "cat": "uurtarieven",
+   "term": "Pensioengat",
+   "def": "Een tekort in de pensioenopbouw dat volgens de les kan ontstaan door bijvoorbeeld een baanwisseling, verblijf in het buitenland of niet werken."
+  },
+  {
+   "cat": "uurtarieven",
+   "term": "Werkkostenregeling",
+   "def": "De regeling waarmee je bepaalt hoe vergoedingen, verstrekkingen en terbeschikkingstellingen aan werknemers fiscaal worden behandeld."
+  },
+  {
+   "cat": "uurtarieven",
+   "term": "Vergoeding",
+   "def": "Terugbetaling van kosten die de werknemer voor het werk maakt, zoals een gedeclareerd treinkaartje voor een vakbeurs."
+  },
+  {
+   "cat": "uurtarieven",
+   "term": "Verstrekking",
+   "def": "Goederen die de werkgever aan de werknemer geeft. Het eigendom gaat over; de dia noemt de factuurwaarde inclusief btw als waarde."
+  },
+  {
+   "cat": "uurtarieven",
+   "term": "Terbeschikkingstelling",
+   "def": "De werknemer mag een goed gebruiken, maar het blijft eigendom van de werkgever, zoals een dienstfiets of tijdelijk meegegeven mobiel of OV-kaart."
+  },
+  {
+   "cat": "uurtarieven",
+   "term": "Intermediaire kosten",
+   "def": "Kosten die een werknemer namens en voor rekening van de werkgever voorschiet. De terugbetaling is geen loon, bijvoorbeeld voor benzine van een leaseauto, parkeren of een cadeau voor een externe relatie."
+  },
+  {
+   "cat": "uurtarieven",
+   "term": "Gerichte vrijstelling",
+   "def": "Een categorie vergoeding die volgens de regeling onbelast kan blijven. De les noemt werkreizen, bijscholing, cursussen en maaltijden bij overwerk."
+  },
+  {
+   "cat": "uurtarieven",
+   "term": "Nihilwaardering",
+   "def": "Een voorziening waaraan voor de belasting een waarde van nul wordt toegekend. De dia noemt werkplekvoorzieningen, arbovoorzieningen, werkkleding en een fitnessruimte."
+  },
+  {
+   "cat": "uurtarieven",
+   "term": "Eindheffingsloon",
+   "def": "Loonbestanddelen waarvoor de werkgever de belasting voor zijn rekening neemt in plaats van de werknemer."
+  },
+  {
+   "cat": "uurtarieven",
+   "term": "Fiscale loonsom",
+   "def": "Het totale fiscale loon van alle werknemers samen."
+  },
+  {
+   "cat": "uurtarieven",
+   "term": "Vrije ruimte",
+   "def": "Het deel van de fiscale loonsom waarbinnen aangewezen eindheffingsloon volgens de regeling onbelast kan blijven."
+  },
+  {
+   "cat": "uurtarieven",
+   "term": "Bijtelling",
+   "def": "De fictieve loonwaarde van het privégebruik van een auto van de werkgever. De werknemer betaalt belasting over die loonwaarde, niet de bijtelling zelf als aparte rekening."
+  },
+  {
+   "cat": "managen",
+   "term": "Kostprijs",
+   "def": "Het bedrag dat het kost om één product te maken of een dienst te leveren."
+  },
+  {
+   "cat": "kosten",
+   "term": "Proportioneel variabele kosten",
+   "def": "De variabele kosten per eenheid blijven gelijk."
+  },
+  {
+   "cat": "kosten",
+   "term": "Progressief variabele kosten",
+   "def": "De variabele kosten per eenheid worden hoger, bijvoorbeeld door voedselschaarste."
+  },
+  {
+   "cat": "kosten",
+   "term": "Degressief variabele kosten",
+   "def": "De variabele kosten per eenheid worden lager, bijvoorbeeld door kwantumkorting."
+  },
+  {
+   "cat": "managen",
+   "term": "Normale hoeveelheid (N)",
+   "def": "De gemiddelde productiehoeveelheid over meerdere jaren."
+  },
+  {
+   "cat": "managen",
+   "term": "Werkelijke hoeveelheid (W)",
+   "def": "De werkelijke hoeveelheid in de gekozen periode, of de verwachte of begrote hoeveelheid als je vooruit rekent."
+  },
+  {
+   "cat": "managen",
+   "term": "Gemiddelde dekkingsbijdrage",
+   "def": "Het gewogen gemiddelde van de dekkingsbijdragepercentages van de producten. Per product vermenigvuldig je het aandeel in de totale omzet met het dekkingsbijdragepercentage; daarna tel je de uitkomsten op."
+  },
+  {
+   "cat": "offertes",
+   "term": "Uitbesteding of outsourcing",
+   "def": "Eén of meer bedrijfsprocessen door een externe partij laten uitvoeren. Je ruilt een deel van je directe zeggenschap in voor de mogelijke voordelen van een gespecialiseerde leverancier."
+  },
+  {
+   "cat": "offertes",
+   "term": "Shirking",
+   "def": "Een leverancier presteert structureel minder dan afgesproken terwijl hij volledig wordt betaald, bijvoorbeeld door meer uren te declareren dan gewerkt."
+  },
+  {
+   "cat": "offertes",
+   "term": "Poaching",
+   "def": "Een leverancier misbruikt zijn vertrouwenspositie, bijvoorbeeld door kennis of concurrentiegevoelige informatie voor zichzelf of andere klanten te gebruiken."
+  },
+  {
+   "cat": "offertes",
+   "term": "Opportunistic repricing",
+   "def": "Een leverancier gebruikt toenemende afhankelijkheid van de klant om financiële contractvoorwaarden in zijn voordeel te veranderen."
+  },
+  {
+   "cat": "algemeen",
+   "term": "Aandeelhouder",
+   "def": "Een eigenaar van een stukje van een BV of NV. Een aandeel vertegenwoordigt een deel van het eigendom; de directeur kan bij de onderneming in dienst zijn."
+  },
+  {
+   "cat": "algemeen",
+   "term": "Dividend",
+   "def": "Een deel van de winst dat als vergoeding aan de aandeelhouders wordt uitgekeerd."
+  },
+  {
+   "cat": "kengetallen",
+   "term": "Rendement of rentabiliteit",
+   "def": "De winstgevendheid uitgedrukt als percentage van het gemiddeld geïnvesteerde vermogen."
+  },
+  {
+   "cat": "kengetallen",
+   "term": "Debt ratio",
+   "def": "Vreemd vermogen / totaal vermogen. De uitkomst wordt als verhouding achter de komma weergegeven."
+  },
+  {
+   "cat": "kengetallen",
+   "term": "Solvabiliteitspercentage",
+   "def": "Eigen vermogen / totaal vermogen × 100%. Dit laat zien welk deel van de financiering eigen vermogen is."
+  },
+  {
+   "cat": "kosten",
+   "term": "Dotatie aan een voorziening",
+   "def": "Het bedrag dat je in een periode als kosten boekt en tegelijk aan de voorziening toevoegt. Bij de gelijkmatige voorbeelden: totale voorziene kosten / aantal jaren."
+  },
+  {
+   "cat": "kosten",
+   "term": "Differentieel resultaat",
+   "def": "Extra opbrengsten door de opdracht minus extra kosten door de opdracht."
+  },
+  {
+   "cat": "overzichten",
+   "term": "Nog te betalen bedragen",
+   "def": "Een schuld voor kosten die al bij deze periode horen, maar nog betaald moeten worden. Dit kan bijvoorbeeld loon zijn of een afgenomen dienst waarvoor de factuur nog moet komen."
+  },
+  {
+   "cat": "algemeen",
+   "term": "Economische levensduur",
+   "def": "De periode waarin een bezit economisch waarde heeft. Slijtage, veroudering, nieuwe versies en veranderde technologie kunnen die waarde verminderen."
+  },
+  {
+   "cat": "algemeen",
+   "term": "Technische levensduur",
+   "def": "De periode waarin je het bezit technisch nog kunt blijven gebruiken. De notities onderscheiden dit van de economische levensduur, die eerder kan eindigen."
+  },
+  {
+   "cat": "overzichten",
+   "term": "Vooruitontvangen bedragen",
+   "def": "Geld dat al binnen is terwijl de bijbehorende prestatie nog geleverd moet worden. Het staat voorlopig als schuld aan de creditzijde."
+  },
+  {
+   "cat": "overzichten",
+   "term": "Vooruitbetaalde bedragen",
+   "def": "Geld dat al betaald is voor een prestatie die je pas later afneemt. Het staat voorlopig als vordering aan de debetzijde."
   }
  ],
  "oefentoetsen": []

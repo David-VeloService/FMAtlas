@@ -51,7 +51,7 @@ window.TRDW = {
   {
    "cat": "destep",
    "term": "AAOCC-criteria",
-   "def": "Criteria voor het beoordelen van bronnen: Autoriteit (wie schrijft het?), Accuraatheid (kloppen de gegevens?), Objectiviteit (is het neutraal?), Actualiteit (hoe actueel?), Compleetheid (is het volledig?)."
+   "def": "Criteria voor het beoordelen van bronnen: Autoriteit (wie schrijft het?), Accuraatheid (kloppen de gegevens?), Objectiviteit (is het neutraal?), Currency (recentheid) en Coverage (dekking)."
   },
   {
    "cat": "destep",
@@ -81,7 +81,7 @@ window.TRDW = {
   {
    "cat": "destep",
    "term": "Conjunctuurklok (CBS)",
-   "def": "Instrument dat de stand van de economie weergeeft via 13 indicatoren: verwachtingsindicatoren (consumentenvertrouwen, producentenvertrouwen), economische indicatoren (BBP, consumptie, investeringen) en arbeidsmarktindicatoren (werkloosheid, vacatures). Indicatoren bewegen met de klok mee door vier fasen: hoogconjunctuur, afnemende groei, laagconjunctuur en herstel."
+   "def": "Instrument dat de stand van de economie weergeeft via 13 indicatoren: verwachtingsindicatoren (consumentenvertrouwen, producentenvertrouwen), economische indicatoren (BBP, consumptie, investeringen) en arbeidsmarktindicatoren (werkloosheid, vacatures). Volgens de notities bewegen de indicatoren in de regel tegen de klok in door de vier fasen: laagconjunctuur, conjuncturele opgang, hoogconjunctuur en conjuncturele neergang."
   },
   {
    "cat": "destep",
@@ -282,6 +282,91 @@ window.TRDW = {
    "cat": "impact",
    "term": "Planbureau voor de Leefomgeving (PBL)",
    "def": "Nederlands onderzoeksinstituut dat onderzoek doet naar de leefomgeving en leefomgevingsbeleid. Belangrijke bron voor ecologische en ruimtelijke data in een DESTEP-analyse."
+  },
+  {
+   "cat": "destep",
+   "term": "Praktijkgericht onderzoek",
+   "def": "Onderzoek waarbij je één geval bestudeert om een diagnose te kunnen stellen en een plan van aanpak voor verbetering te maken. Heeft twee vormen: deskresearch en praktijkresearch. Verschil met wetenschappelijk onderzoek, dat nieuwe algemene kennis wil verwerven."
+  },
+  {
+   "cat": "destep",
+   "term": "Wetenschappelijk onderzoek",
+   "def": "Onderzoek dat nieuwe algemene kennis wil verwerven. Verschil met praktijkgericht onderzoek, dat één geval bestudeert om te verbeteren."
+  },
+  {
+   "cat": "destep",
+   "term": "APA",
+   "def": "Bronvermeldingsstijl die de HAN gebruikt. De volledige beschrijving van een bron staat in de bronnenlijst achter je tekst; in de tekst zelf staat een verkorte verwijzing tussen haakjes, waar mogelijk met een exacte bladzijde."
+  },
+  {
+   "cat": "destep",
+   "term": "Verwijzing in de tekst (APA)",
+   "def": "Korte verwijzing met de achternaam van de auteur en het jaar van publicatie, indien nodig met paginanummer. Voorbeeld: (Jansen, 2022, p. 15). Elke verwijzing moet overeenkomen met een vermelding in de bronnenlijst."
+  },
+  {
+   "cat": "destep",
+   "term": "Bronnenlijst (APA)",
+   "def": "Alfabetisch gesorteerde lijst achter je tekst met de volledige gegevens van elke gebruikte bron: auteur, jaar, titel en publicatiegegevens. Bij online bronnen komen ook de raadpleegdatum en de URL erbij."
+  },
+  {
+   "cat": "destep",
+   "term": "z.d. (zonder datum)",
+   "def": "Aanduiding in een APA-verwijzing wanneer er geen publicatiedatum zichtbaar is. Bij een dynamisch dashboard zoals de conjunctuurklok voeg je ook de raadpleegdatum toe, omdat de inhoud regelmatig wordt geactualiseerd."
+  },
+  {
+   "cat": "destep",
+   "term": "Artificial Intelligence (AI)",
+   "def": "Door mensen ontworpen systemen die, gegeven een complex doel, in de fysieke of digitale wereld handelen: ze nemen hun omgeving waar, interpreteren data, redeneren op basis van de verworven kennis en bepalen de beste actie volgens door mensen vooraf bepaalde parameters (High-level expert group on AI, 2018)."
+  },
+  {
+   "cat": "destep",
+   "term": "Taalmodel (large language model)",
+   "def": "AI-systeem zoals ChatGPT, dat een neuraal netwerk is en statistische relaties tussen woorden legt. Het bevat geen kennis maar voorspelt het volgende woord, dus wat jij zou willen horen. Controleer daarom altijd zelf of de informatie klopt. AI als bron is niet toegestaan."
+  },
+  {
+   "cat": "destep",
+   "term": "Statista",
+   "def": "Databron met branchegerichte statistieken, filters en infographics, te bereiken via de HAN-bibliotheek. Handig voor survey-data, generatietrends en Consumer insights."
+  },
+  {
+   "cat": "destep",
+   "term": "CIA Factbook",
+   "def": "Databron met internationale vergelijkingen, bevolkingspiramides en migratiedata. Bruikbaar voor demografie en voor inzichten over cultuur."
+  },
+  {
+   "cat": "destep",
+   "term": "Euromonitor en MarketLine",
+   "def": "Databanken met PEST- en PESTEL-rapporten en landenprofielen (bijvoorbeeld 'PEST analysis Netherlands'). MarketLine bereik je via de HAN-bibliotheek. Bruikbaar voor sociaal-culturele, technologische en politiek-juridische trends."
+  },
+  {
+   "cat": "destep",
+   "term": "PEST-analyse",
+   "def": "Hetzelfde als DESTEP, minus de Ecologische en Demografische factor."
+  },
+  {
+   "cat": "destep",
+   "term": "Trend-canvas",
+   "def": "A2-document waarin je per DESTEP-factor trends en ontwikkelingen, bronnen en relevantie invult, plus missie en visie van de organisatie, impact maken met de organisatie en met Facilitair, en een impact-matrix van kans tegen impact. Wordt aan het eind van de periode toegevoegd aan je portfolio bij het Facilitair Bedrijfsproject."
+  },
+  {
+   "cat": "trends",
+   "term": "Indicatoren van de conjunctuurklok",
+   "def": "De 13 indicatoren van de CBS-conjunctuurklok: 2 verwachtingsindicatoren (vertrouwen, voorspellend: slecht vertrouwen betekent dat de bestedingen een kwartaal later dalen), 6 economische indicatoren (het huidige moment, zoals bbp, productie, bestedingen en huizenprijzen) en 5 arbeidsmarktindicatoren (lopen vaak achter op de economie)."
+  },
+  {
+   "cat": "risico",
+   "term": "ESCO-contract",
+   "def": "Overeenkomst met een Energy Service Company waarbij de leverancier energiebesparing garandeert en het risico draagt. Voorbeeld van risico overdragen bij de financiële impact van strengere duurzaamheidseisen."
+  },
+  {
+   "cat": "ethiek",
+   "term": "Utilisme",
+   "def": "Voorbeeld van gevolgenethiek: je streeft naar maximaal geluk en minimaal lijden voor zoveel mogelijk mensen."
+  },
+  {
+   "cat": "impact",
+   "term": "Waarde",
+   "def": "Het belang, de betekenis of het nut dat iemand toekent aan iets (object, idee, principe of ervaring). In FM gaat het vooral om organisatiewaarden: principes die bepalen hoe een organisatie haar maatschappelijke verantwoordelijkheid invult en hoe FM-beslissingen worden genomen."
   }
  ],
  "oefentoetsen": []

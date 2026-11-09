@@ -548,6 +548,126 @@ window.INKOOP = {
    "cat": "wanprestatie",
    "term": "Escalatieladder (in SLA)",
    "def": "Vooraf vastgelegde stappen om geschillen op te lossen: operationeel overleg → tactisch overleg → directieoverleg → mediation → arbitrage of rechter. Voorkomt dat één incident direct in een rechtszaak eindigt."
+  },
+  {
+   "cat": "vanweele",
+   "term": "Inkooptraject",
+   "def": "Alle activiteiten vanaf het ontstaan van een behoefte tot en met het afsluiten van het leverancierscontract. Geschikt voor simpele, eenmalige trajecten die een pragmatische aanpak vragen."
+  },
+  {
+   "cat": "basis",
+   "term": "Goederenclassificatie",
+   "def": "Indeling van wat je kunt inkopen in acht soorten: grondstoffen, halffabricaten, componenten, gereed product, hulpstoffen, indirecte- of verbruiksgoederen, diensten en investerings(kapitaal)goederen. Vaak is de indeling organisatie- of branchespecifiek."
+  },
+  {
+   "cat": "basis",
+   "term": "Inkoopbeleid",
+   "def": "Beleid dat is afgeleid van het organisatiebeleid en aansluit op de wensen en behoeften van de interne gebruikers. Daarom heeft inkoop een brugfunctie. De inkoopdoelstellingen moeten in overeenstemming zijn met het organisatiebeleid."
+  },
+  {
+   "cat": "basis",
+   "term": "Kickbackfee",
+   "def": "Bedrag dat een afnemer terugkrijgt van een groothandel als hij boven een afgesproken bedrag van een merk afneemt. Bij decentraal inkopen wordt die grens vaak niet gehaald, omdat elke afdeling een ander merk kiest."
+  },
+  {
+   "cat": "tactisch",
+   "term": "Kwalificatieseisen",
+   "def": "Eisen die op basis van de specificaties worden vastgesteld en waaraan de te benaderen leveranciers moeten voldoen."
+  },
+  {
+   "cat": "tactisch",
+   "term": "Richtbudget",
+   "def": "Het bedrag dat in het programma van eisen wordt opgenomen en waarin de voorstellen van de leveranciers moeten passen."
+  },
+  {
+   "cat": "tactisch",
+   "term": "Marktoriëntatie",
+   "def": "Onderzoek naar de leveranciersmarkt om potentiële leveranciers en hun capaciteiten in beeld te krijgen en na te gaan of zij ideeën hebben om de specificatie te verbeteren. Kan met deskresearch en fieldresearch."
+  },
+  {
+   "cat": "tactisch",
+   "term": "Marktconsultatie",
+   "def": "Een schriftelijke ronde waarbij specifieke informatie wordt opgehaald bij potentiële leveranciers. Het resultaat kan zijn dat je je specificaties aanpast."
+  },
+  {
+   "cat": "tactisch",
+   "term": "Preselectie en gunning",
+   "def": "Preselectie bepaalt wie mag meedoen. Gunning bepaalt wie de opdracht wint."
+  },
+  {
+   "cat": "tactisch",
+   "term": "Contract",
+   "def": "Schriftelijke overeenkomst tussen meerdere partijen over wat, waar, wanneer en onder welke condities en voorwaarden geleverd moet worden."
+  },
+  {
+   "cat": "operationeel",
+   "term": "Orderbewaking",
+   "def": "Erop toezien dat bestellingen op tijd, volledig, op het afgesproken leverpunt en met de afgesproken documenten worden aangeboden. Drie vormen: exception expediting, routine statuscheck en advanced statuscheck."
+  },
+  {
+   "cat": "operationeel",
+   "term": "HEB (HAN Elektronisch Bestellen)",
+   "def": "Het centrale portal waar HAN-medewerkers goederen en diensten bestellen, via roundtrip, catalogus of vrije aanvraag. Voorbeeld uit de les van een elektronisch inkoopsysteem."
+  },
+  {
+   "cat": "digitaal",
+   "term": "E-procurement",
+   "def": "Het inkopen met gebruikmaking van internettechnologie."
+  },
+  {
+   "cat": "strategie",
+   "term": "Inkoopportfolio en leveranciersportfolio",
+   "def": "De matrix die ontstaat als je invloed op het financiële resultaat afzet tegen toeleveringsrisico (Kraljic). Op productniveau heet dit inkoopportfolio, op leveranciersniveau leveranciersportfolio."
+  },
+  {
+   "cat": "strategie",
+   "term": "Leveranciersstrategie",
+   "def": "Het plan of beleid van een organisatie voor hoe zij met haar leveranciers omgaat om haar doelstellingen te bereiken. Begint met een analyse van invloed op het financiële resultaat en toeleveringsrisico."
+  },
+  {
+   "cat": "strategie",
+   "term": "Strategische samenwerking (partnership)",
+   "def": "Leveranciersstrategie voor strategische producten: het inkoopbeleid richt zich op strategische samenwerking met de leverancier."
+  },
+  {
+   "cat": "strategie",
+   "term": "Brede concurrentiestelling",
+   "def": "Strategie voor hefboomproducten: je vergelijkt niet met één of een paar leveranciers, maar betrekt een brede groep potentiële leveranciers of laat ze tegen elkaar bieden. Ook competitive bidding genoemd."
+  },
+  {
+   "cat": "strategie",
+   "term": "Verdeel-en-heers",
+   "def": "Leveranciers bewust niet te machtig laten worden: opdrachten verdelen, leveranciers laten concurreren, een monopoliepositie en afhankelijkheid voorkomen. Hoort bij hefboomproducten."
+  },
+  {
+   "cat": "mvi",
+   "term": "SDG's (Sustainable Development Goals)",
+   "def": "Duurzame ontwikkelingsdoelen van de VN voor 2015-2030, de opvolger van de millenniumdoelen. Organisaties gebruiken ze in hun MVO-beleid en inkopers vertalen ze in contracten, bijvoorbeeld SDG 7, 12 en 13."
+  },
+  {
+   "cat": "mvi",
+   "term": "ISO 20400",
+   "def": "Internationale richtlijn voor maatschappelijk verantwoord inkopen. Biedt handvatten om het inkoopproces maatschappelijk verantwoord in te richten en te laten aansluiten op de organisatiestrategie."
+  },
+  {
+   "cat": "mvi",
+   "term": "Rapporteren op duurzaamheid",
+   "def": "Naast het financieel jaarverslag ook verslag doen over duurzaamheid, met getallen en feiten, om te laten zien welke maatschappelijke waarde de organisatie levert."
+  },
+  {
+   "cat": "mvi",
+   "term": "MVI Criteria tool",
+   "def": "Hulpmiddel (www.mvicriteria.nl) waarmee bedrijven aangeven welk ambitieniveau ze van een leverancier verwachten, bijvoorbeeld voor catering en schoonmaak."
+  },
+  {
+   "cat": "mvi",
+   "term": "Inkoopethiek",
+   "def": "De vraag of een inkoophandeling als goed of fout kan worden gekwalificeerd, bijvoorbeeld bij het aannemen van uitnodigingen van een leverancier of het opvragen van offertes om de huidige leverancier scherp te houden."
+  },
+  {
+   "cat": "mvi",
+   "term": "NEVI-gedragscode",
+   "def": "Gedragscode van de NEVI, het kennisnetwerk voor inkoop, contract- en supply management, waarbij de vraag is of een inkoper zich erbij aanschuift."
   }
  ],
  "oefentoetsen": []

@@ -357,6 +357,76 @@ window.PVRD = {
    "cat": "analyse",
    "term": "Triangulatie",
    "def": "Methode om de geloofwaardigheid van onderzoek te versterken door meerdere methoden, bronnen of onderzoekers te combineren. Methode-triangulatie: interview + observatie + enquête. Bron-triangulatie: managers, medewerkers en klanten. Onderzoeker-triangulatie: twee onderzoekers analyseren onafhankelijk."
+  },
+  {
+   "cat": "observeren",
+   "term": "Observatieschema",
+   "def": "Schema dat je vooraf maakt voor wat je gaat observeren. Het is gericht op objectieve waarnemingen en past bij het doel van je onderzoek. Een turflijst is een vorm ervan."
+  },
+  {
+   "cat": "observeren",
+   "term": "Standaardisatie (observeren)",
+   "def": "Een systematische werkwijze in de vorm van een meetprocedure, bijvoorbeeld een turflijst of scoreformulier, plus standaardisatie van het moment van observatie met time sampling of event sampling. Het maakt observeren herhaalbaar en transparant."
+  },
+  {
+   "cat": "observeren",
+   "term": "Observeren versus interpreteren",
+   "def": "Bij observeren noteer je concreet gedrag (geen interpretaties, geen woorden als ‘soms’ of ‘vaak’). Emoties zijn moeilijk te observeren, dus observeer gedrag. Interpreteren maakt de waarneming subjectief."
+  },
+  {
+   "cat": "observeren",
+   "term": "Veldnotities",
+   "def": "Korte aantekeningen die je tijdens het observeren maakt, zodra je een waardevolle observatie doet (de dia noemt het bierviltje)."
+  },
+  {
+   "cat": "communiceren",
+   "term": "Communicatieanalyse",
+   "def": "Analyse van een zakelijke tekst op doel (informeren, overtuigen, appelleren, instrueren of motiveren), boodschap (kort, concreet, nieuws, actief) en doelgroep."
+  },
+  {
+   "cat": "communiceren",
+   "term": "Verbindingswoorden",
+   "def": "Woorden die ervoor zorgen dat een lezer de samenhang van de tekst opmerkt. Ze maken verbanden duidelijk binnen een zin, tussen zinnen, tussen kernzin en ondersteuning, tussen alinea’s en tussen groepen alinea’s."
+  },
+  {
+   "cat": "communiceren",
+   "term": "Typen alineaondersteuning",
+   "def": "Manieren om een kernzin te ondersteunen: opsomming, oorzaak, gevolg, voorbeeld, voorwaarde, tegenstelling, beschrijving en andere typen. Elk type heeft eigen verbindingswoorden."
+  },
+  {
+   "cat": "communiceren",
+   "term": "Overbodige werkwoorden",
+   "def": "Werkwoorden als zullen, gaan, willen en kunnen die je in veel gevallen kunt weglaten (‘We inventariseren de mogelijkheden’). Niet altijd: ze kunnen twijfel, richting of een wens aangeven."
+  },
+  {
+   "cat": "interviewen",
+   "term": "Probleemanalyse",
+   "def": "Het verkennen van het ‘probleem’ (literatuurverkenning), met aandacht voor stakeholders (invloed en belangen) en een interne en externe analyse aan de hand van bronnen. Leidt tot doelstelling en vraagstelling van het onderzoek."
+  },
+  {
+   "cat": "interviewen",
+   "term": "Face-to-facegesprek",
+   "def": "Gesprek tussen een onderzoeker en één respondent, of tussen een onderzoeker en een groep respondenten (focusgroepgesprek)."
+  },
+  {
+   "cat": "interviewen",
+   "term": "Interview guide",
+   "def": "Leidraad voor het interview, resultaat van een goede operationalisering van de thema’s. Bij de post-it methode bevat hij ook momenten voor een ‘break’ waarop de respondent samenvat en reflecteert."
+  },
+  {
+   "cat": "enquêteren",
+   "term": "Operationaliseringsschema",
+   "def": "Schema dat een begrip uiteenrafelt in dimensies, indicatoren en enquêtevragen, zodat het meetbaar wordt."
+  },
+  {
+   "cat": "enquêteren",
+   "term": "Proefenquête",
+   "def": "Eerste afname van de enquête om te zien of de respondent de vragen begrijpt. Dient om de validiteit te borgen."
+  },
+  {
+   "cat": "analyse",
+   "term": "Peer-examination",
+   "def": "Controle van de resultaten door iemand anders. Dient om de betrouwbaarheid te borgen."
   }
  ],
  "oefentoetsen": []
