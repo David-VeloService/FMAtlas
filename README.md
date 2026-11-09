@@ -170,7 +170,7 @@ match /activiteit/{id} {
 }
 ```
 
-Controle: `node --test tests/` en `node --check js/atlas-meten.js`, `node --check js/atlas.js`,
+Controle: `node --test tests/meten.test.mjs` en `node --check js/atlas-meten.js`, `node --check js/atlas.js`,
 `node --check js/atlas-account.js`. REST-increments en authenticatie volgen de
 [Firestore Write-referentie](https://firebase.google.com/docs/firestore/reference/rest/v1/Write)
 en de [REST-documentatie](https://firebase.google.com/docs/firestore/use-rest-api).
