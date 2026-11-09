@@ -1,0 +1,65 @@
+/* FM Atlas: toetsen, op de tokens van atlas.css. */
+.toets { max-width: 880px; margin: 0 auto; padding: 36px 16px 64px; color: var(--ink); }
+.toets [hidden] { display: none; }
+.toets h1, .toets h2, .toets h3 { font-family: var(--font-display); letter-spacing: -.025em; line-height: 1.2; }
+.toets h1 { font-size: clamp(28px, 4vw, 40px); margin-bottom: 24px; }
+.toets-best { margin: -8px 0 24px; font-variant-numeric: tabular-nums; }
+.toets-intro, .toets-question, .toets-summary, .toets-review { border-radius: var(--r-lg); padding: clamp(24px, 4vw, 40px); overflow-wrap: anywhere; }
+.toets-intro p + p { margin-top: 16px; }
+.toets-facts { display: flex; flex-wrap: wrap; gap: 12px 24px; margin: 24px 0; }
+.toets-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
+.toets-btn { min-height: 48px; padding: 12px 24px; border-radius: var(--r-pill); font-weight: 600; display: inline-flex; align-items: center; justify-content: center; text-align: center; }
+.toets-btn:hover:not(:disabled) { background: var(--glass-hover); }
+.toets-primary, .toets-primary:hover:not(:disabled) { background: var(--accent); color: var(--accent-ink); }
+.toets-btn:disabled { cursor: default; border: 1px dashed var(--ink-soft); box-shadow: none; }
+.toets-progress { margin-bottom: 24px; }
+.toets-progress p { margin-bottom: 12px; font-variant-numeric: tabular-nums; }
+.toets-meter { height: 6px; overflow: hidden; border-radius: var(--r-pill); background: var(--glass-strong); }
+.toets-meter span { display: block; height: 100%; background: var(--accent); }
+.toets-section { margin-bottom: 16px; font-size: 16px; font-weight: 600; }
+.toets-question h2 { font-size: clamp(23px, 3vw, 30px); line-height: 1.4; }
+.toets-question h2:focus, .toets-summary h2:focus, .toets-model:focus { outline: none; }
+.toets-options { display: grid; gap: 12px; margin-top: 28px; }
+.toets-option { display: flex; gap: 16px; align-items: baseline; width: 100%; min-height: 56px; padding: 16px 24px; border-radius: var(--r-md); text-align: left; font-size: 18px; line-height: 1.5; overflow-wrap: anywhere; }
+.toets-option:hover { background: var(--glass-hover); }
+.toets-option[aria-pressed="true"] { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+.toets-letter { font-weight: 700; flex: none; }
+.toets-nav { display: flex; justify-content: space-between; gap: 12px; margin-top: 24px; }
+.toets-casus { padding: 20px 24px; margin-bottom: 24px; border-radius: var(--r-md); border-left: 4px solid var(--accent); background: var(--glass-strong); line-height: 1.7; }
+.toets-casus strong { display: block; margin-bottom: 8px; }
+.toets-answer-label { display: block; margin: 24px 0 12px; font-weight: 600; }
+.toets-answer { width: 100%; min-height: 160px; padding: 16px; border: 1px solid var(--glass-edge); border-radius: var(--r-md); background: var(--glass-strong); font: inherit; color: var(--ink); line-height: 1.7; resize: vertical; }
+.toets-answer::placeholder { color: var(--ink-soft); }
+.toets-model { margin-top: 24px; line-height: 1.7; }
+.toets-model h3 { font-size: 22px; margin-bottom: 12px; }
+.toets-mark { margin-top: 24px; }
+.toets-mark .toets-actions { margin-top: 12px; }
+.toets-mark [aria-pressed="true"] { background: var(--accent); color: var(--accent-ink); }
+.toets-summary h2 { font-size: 28px; margin-bottom: 16px; }
+.toets-score { font-size: 22px; margin-bottom: 12px; }
+.toets-review-list { list-style: none; display: grid; gap: 24px; margin-top: 32px; }
+.toets-review h3 { font-size: 22px; margin-bottom: 16px; }
+.toets-review p + p, .toets-review .toets-explanation { margin-top: 16px; }
+.toets-review .toets-explanation { line-height: 1.7; }
+.toets-review .toets-written { white-space: pre-wrap; }
+.toets-choice { display: flex; flex-wrap: wrap; gap: 12px; margin: 24px 0; border: 0; }
+.toets-choice legend { margin-bottom: 12px; font-weight: 600; }
+.toets-choice label { display: flex; align-items: center; gap: 12px; min-height: 48px; padding: 12px 16px; border-radius: var(--r-pill); cursor: pointer; }
+.toets-choice input { width: 18px; height: 18px; accent-color: var(--accent); }
+.toets-status { margin: 16px 0; }
+.toets .beeld { margin-block: 24px; }
+.toets-lightbox { width: min(1120px, calc(100% - 32px)); max-height: calc(100dvh - 32px); margin: auto; padding: 16px; border: 1px solid var(--glass-edge); border-radius: var(--r-lg); background: var(--bg); color: var(--ink); overflow: auto; }
+.toets-lightbox::backdrop { background: var(--olive-950); opacity: .9; }
+.toets-lightbox[open] { display: flex; flex-direction: column; gap: 16px; }
+.toets-lightbox > button { align-self: flex-end; }
+.toets-lightbox img { display: block; max-width: 100%; max-height: 72dvh; margin: auto; object-fit: contain; background: var(--sand-50); border-radius: var(--r-sm); }
+.toets-lightbox figcaption { margin-top: 16px; text-align: center; }
+@media (max-width: 480px) {
+  .toets { padding-top: 24px; }
+  .toets-intro, .toets-question, .toets-summary, .toets-review { padding: 24px 20px; }
+  .toets-option { padding: 16px; gap: 12px; font-size: 17px; }
+  .toets-btn { padding-inline: 18px; }
+  .toets-actions .toets-btn { flex: 1 1 auto; }
+  .toets-nav .toets-btn { flex: 1; }
+  .toets-casus { padding: 16px; }
+}

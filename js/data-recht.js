@@ -1,384 +1,533 @@
-// data-recht.js — gedeelde data (Facilitaire Inkoop)
-window.RECHT = window.RECHT || {};
-RECHT.cats = [
+/* Facilitaire inkoop (FMINKR01) — gegenereerd door fmatlas-vakken/build.py, niet met de hand bewerken */
+window.RECHT = {
+ "cats": [
   {
-    "key": "inleiding",
-    "label": "Inleiding recht",
-    "short": "Inleiding recht",
-    "color": "#3b82f6"
+   "key": "inleiding",
+   "label": "Inleiding recht",
+   "short": "Inleiding recht",
+   "color": "#3b82f6"
   },
   {
-    "key": "ongeldigheid",
-    "label": "Ongeldigheid",
-    "short": "Ongeldigheid",
-    "color": "#10b981"
+   "key": "ongeldigheid",
+   "label": "Ongeldigheid",
+   "short": "Ongeldigheid",
+   "color": "#10b981"
   },
   {
-    "key": "overeenkomst",
-    "label": "Overeenkomst",
-    "short": "Overeenkomst",
-    "color": "#d97706"
+   "key": "overeenkomst",
+   "label": "Overeenkomst",
+   "short": "Overeenkomst",
+   "color": "#d97706"
   },
   {
-    "key": "volmacht",
-    "label": "Vertegenwoordiging & Volmacht",
-    "short": "Vertegenwoordiging",
-    "color": "#8b5cf6"
+   "key": "volmacht",
+   "label": "Vertegenwoordiging & Volmacht",
+   "short": "Vertegenwoordiging",
+   "color": "#8b5cf6"
   },
   {
-    "key": "tekortkoming",
-    "label": "Tekortkoming & Acties",
-    "short": "Tekortkoming",
-    "color": "#ef4444"
+   "key": "tekortkoming",
+   "label": "Tekortkoming & Acties",
+   "short": "Tekortkoming",
+   "color": "#ef4444"
   },
   {
-    "key": "onrechtmatige_daad",
-    "label": "Onrechtmatige daad",
-    "short": "OD",
-    "color": "#0ea5e9"
+   "key": "onrechtmatige_daad",
+   "label": "Onrechtmatige daad",
+   "short": "OD",
+   "color": "#0ea5e9"
   }
-];
-RECHT.begrippen = [
-
-  /* ══════════════════════════════════════════
-     1. INLEIDING IN HET RECHT (Week 1)
-  ══════════════════════════════════════════ */
-  {cat:"inleiding", term:"Recht",
-   def:"Het geheel van gedragsregels dat door de overheid is gemaakt om de samenleving rechtvaardig te ordenen. Eigenrichting (zelf voor rechter spelen) is niet toegestaan."},
-  {cat:"inleiding", term:"Rechtsbronnen",
-   def:"De vier vindplaatsen van het recht: (1) wetten, (2) verdragen, (3) jurisprudentie en (4) gewoonte. Uit deze bronnen ontstaat al ons recht."},
-  {cat:"inleiding", term:"Wetten",
-   def:"Door de wetgever vastgestelde gedragsregels. Hiërarchie: rijkswetten → AMvB's → ministeriële regelingen → gemeentelijke verordeningen."},
-  {cat:"inleiding", term:"Verdragen",
-   def:"Internationale afspraken tussen staten die doorwerken in het nationale recht. Bijv. het EVRM, VN-verdragen en de EU-verdragen (VEU, VWEU)."},
-  {cat:"inleiding", term:"Jurisprudentie",
-   def:"Rechterlijke uitspraken die als richtlijn dienen bij toekomstige vergelijkbare zaken. Rechters zijn in beginsel niet gebonden aan eerdere uitspraken, maar volgen ze doorgaans wel."},
-  {cat:"inleiding", term:"Gewoonte",
-   def:"Ongeschreven regels die door langdurige herhaling en algemene aanvaarding rechtskracht hebben gekregen. Wordt toegepast als wetten of verdragen niets regelen."},
-  {cat:"inleiding", term:"Dwingend recht",
-   def:"Rechtsregels waarvan partijen niet bij overeenkomst mogen afwijken, ook niet als beiden dat willen. Geldt ter bescherming van de zwakkere partij of het algemeen belang. Signaalwoorden: 'nietig', 'vernietigbaar', 'kan niet anders zijn dan'."},
-  {cat:"inleiding", term:"Regelend (aanvullend) recht",
-   def:"Rechtsregels die alleen gelden als partijen zelf niets anders hebben afgesproken. Partijen mogen hiervan bij overeenkomst afwijken. Vult leemten in de overeenkomst op."},
-  {cat:"inleiding", term:"Privaatrecht",
-   def:"Het deel van het recht dat de verhouding tussen burgers en/of bedrijven onderling regelt. Bijv. BW (Burgerlijk Wetboek): koop, huur, arbeidsovereenkomst, aansprakelijkheid."},
-  {cat:"inleiding", term:"Publiekrecht",
-   def:"Het deel van het recht dat de verhouding tussen de overheid en burgers regelt. Bijv. Grondwet, Wetboek van Strafrecht, Algemene wet bestuursrecht."},
-  {cat:"inleiding", term:"Verbintenis (art. 6:1 BW)",
-   def:"Een rechtsverhouding waarbij de schuldenaar verplicht is tot een prestatie jegens de schuldeiser, en de schuldeiser die prestatie kan vorderen. Verbintenissen ontstaan alleen als de wet dat bepaalt (art. 6:1 BW): uit overeenkomst of rechtstreeks uit de wet (onrechtmatige daad, zaakwaarneming, onverschuldigde betaling, ongerechtvaardigde verrijking).",
-   art:"art. 6:1 BW"},
-  {cat:"inleiding", term:"Schuldeiser",
-   def:"De partij die het recht heeft om nakoming van de verbintenis te vorderen. In een koopovereenkomst: de koper heeft recht op levering (schuldeiser voor levering); de verkoper heeft recht op betaling (schuldeiser voor betaling)."},
-  {cat:"inleiding", term:"Schuldenaar",
-   def:"De partij die verplicht is tot een prestatie. In een koopovereenkomst: de verkoper is schuldenaar voor levering; de koper is schuldenaar voor betaling."},
-  {cat:"inleiding", term:"Rechtshandeling (art. 3:33 BW)",
-   def:"Een handeling die wordt verricht met de bedoeling om een rechtsgevolg in het leven te roepen. Vereiste: de wil moet overeenstemmen met de verklaring. Eenzijdig (bijv. testament) of meerzijdig (bijv. overeenkomst).",
-   art:"art. 3:33 BW"},
-  {cat:"inleiding", term:"Eigenrichting",
-   def:"Zelf voor rechter spelen — iemand eigenmachtig dwingen tot een bepaalde handeling of zelf schade verhalen zonder tussenkomst van de rechter. In ons rechtssysteem niet toegestaan."},
-  {cat:"inleiding", term:"Hoe verwijzen naar een wetsartikel",
-   def:"Volgorde: Boek → art. → lid → sub → afkorting wet. Voorbeeld: art. 7:617 lid 1 sub b BW. Altijd in deze volgorde noteren."},
-
-  /* ══════════════════════════════════════════
-     2. ONGELDIGHEID RECHTSHANDELING (Week 2-3)
-  ══════════════════════════════════════════ */
-  {cat:"ongeldigheid", term:"Nietig",
-   def:"De rechtshandeling heeft nooit bestaan. Werkt van rechtswege — geen actie nodig. Iedereen kan een beroep op nietigheid doen, ook de rechter ambtshalve. Bijv.: vergissing (art. 3:33), strijd met openbare orde/goede zeden (art. 3:40)."},
-  {cat:"ongeldigheid", term:"Vernietigbaar",
-   def:"De rechtshandeling is geldig totdat zij vernietigd wordt. Actie vereist door de beschermde partij (buitengerechtelijk of via rechter). Na vernietiging: terugwerkende kracht — ongedaanmakingsverplichtingen.",
-   art:"art. 3:49 BW"},
-  {cat:"ongeldigheid", term:"Vergissing / Wilsontbreken (art. 3:33 BW)",
-   def:"Als de wil niet overeenstemt met de verklaring (bijv. verspreking, verschrijving), is de rechtshandeling in beginsel nietig. Maar: als de wederpartij redelijkerwijs mocht vertrouwen op de verklaring (art. 3:35 BW), is zij toch geldig.",
-   art:"art. 3:33 BW"},
-  {cat:"ongeldigheid", term:"Wilsvertrouwensleer (art. 3:35 BW)",
-   def:"Beschermt de wederpartij die redelijkerwijs mocht vertrouwen op de verklaring van de andere partij, ook als die verklaring niet overeenstemt met de werkelijke wil. Maakt de anders-nietige rechtshandeling toch geldig.",
-   art:"art. 3:35 BW"},
-  {cat:"ongeldigheid", term:"Geestelijke stoornis (art. 3:34 BW)",
-   def:"Een rechtshandeling verricht onder invloed van een geestelijke stoornis is vernietigbaar (als gericht op een wederpartij) of nietig (als eenzijdig ongericht, bijv. testament). Gerechtvaardigd vertrouwen van wederpartij kan geldigheid redden (art. 3:35 BW).",
-   art:"art. 3:34 BW"},
-  {cat:"ongeldigheid", term:"Strijd met wet, openbare orde of goede zeden (art. 3:40 BW)",
-   def:"Strijd met een dwingende wetsbepaling: nietig, tenzij de bepaling alleen één partij beschermt, dan vernietigbaar. Strijd met openbare orde of goede zeden: nietig. Openbare orde = fundamentele beginselen van onze samenleving. Goede zeden = algemeen aanvaarde morele normen.",
-   art:"art. 3:40 BW"},
-  {cat:"ongeldigheid", term:"Bedreiging (art. 3:44 lid 2 BW)",
-   def:"Wilsgebrek: iemand wordt door bedreiging bewogen tot een rechtshandeling. Vijf elementen vereist: (1) opzet, (2) onrechtmatige bedreiging, (3) zodanig dat een redelijk mens wordt beïnvloed, (4) nadeel in persoon of goed, (5) causaal verband. Gevolg: vernietigbaar.",
-   art:"art. 3:44 lid 2 BW"},
-  {cat:"ongeldigheid", term:"Bedrog (art. 3:44 lid 3 BW)",
-   def:"Wilsgebrek: iemand wordt door opzettelijke misleiding bewogen tot een rechtshandeling. Drie elementen: (1) opzet, (2) onjuiste mededeling, zwijgen of kunstgreep, (3) causaal verband. Let op: algemene aanprijzingen zijn geen bedrog. Gevolg: vernietigbaar.",
-   art:"art. 3:44 lid 3 BW"},
-  {cat:"ongeldigheid", term:"Misbruik van omstandigheden (art. 3:44 lid 4 BW)",
-   def:"Wilsgebrek: partij maakt misbruik van een bijzondere omstandigheid (onervarenheid, noodtoestand, afhankelijkheid) bij de andere partij. Drie elementen: (1) bijzondere omstandigheid, (2) kenbaarheid + bevordering, (3) causaal verband. Gevolg: vernietigbaar.",
-   art:"art. 3:44 lid 4 BW"},
-  {cat:"ongeldigheid", term:"Dwaling (art. 6:228 BW)",
-   def:"Wilsgebrek: partij heeft een onjuiste voorstelling van zaken. Alleen bij overeenkomsten. Vereisten: (1) onjuiste voorstelling, (2) causaal verband, (3) één van drie situaties: inlichting wederpartij, ongeoorloofd zwijgen of wederzijdse dwaling. Gevolg: vernietigbaar.",
-   art:"art. 6:228 BW"},
-  {cat:"ongeldigheid", term:"Handelingsonbekwaamheid (art. 3:32 BW)",
-   def:"Minderjarigen en onder curatele gestelden zijn handelingsonbekwaam: zij kunnen alleen met toestemming van wettelijk vertegenwoordiger rechtshandelingen verrichten. Rechtshandeling zonder toestemming: vernietigbaar (eenzijdig ongericht: nietig).",
-   art:"art. 3:32 BW"},
-
-  /* ══════════════════════════════════════════
-     3. TOTSTANDKOMING OVEREENKOMST (Week 3)
-  ══════════════════════════════════════════ */
-  {cat:"overeenkomst", term:"Overeenkomst (art. 6:217 BW)",
-   def:"Een meerzijdige rechtshandeling die tot stand komt door overeenstemmend aanbod en aanvaarding. Beide partijen moeten handelingsbekwaam zijn en de overeenkomst mag niet in strijd zijn met wet, openbare orde of goede zeden.",
-   art:"art. 6:217 BW"},
-  {cat:"overeenkomst", term:"Aanbod (art. 6:219 BW)",
-   def:"Een voorstel tot het sluiten van een overeenkomst dat voldoende bepaald is (art. 6:227 BW). Kan herroepelijk, onherroepelijk of vrijblijvend zijn. Geldigheidsduur: mondeling → direct; schriftelijk → redelijke termijn (art. 6:221 BW).",
-   art:"art. 6:219 BW"},
-  {cat:"overeenkomst", term:"Aanvaarding (art. 6:225 BW)",
-   def:"Onvoorwaardelijk akkoord met het aanbod. Als aanvaarding afwijkt van het aanbod: verwerping + nieuw (tegen)aanbod. Uitzondering: kleine afwijkingen op ondergeschikte punten (art. 6:225 lid 2 BW).",
-   art:"art. 6:225 BW"},
-  {cat:"overeenkomst", term:"Ontvangsttheorie (art. 3:37 lid 3 BW)",
-   def:"Een verklaring heeft werking vanaf het moment dat zij de ontvanger bereikt (niet verzonden, maar ontvangen). Bepaalt wanneer een aanbod of aanvaarding effect heeft.",
-   art:"art. 3:37 lid 3 BW"},
-  {cat:"overeenkomst", term:"Uitnodiging tot aanbieding",
-   def:"Geen aanbod maar een uitnodiging om een aanbod te doen (bijv. een advertentie voor een uniek goed). De adverteerder is niet verplicht te verkopen als slechts één persoon wil kopen — hij nodigt uit tot het doen van een aanbod."},
-  {cat:"overeenkomst", term:"Vrijblijvend aanbod",
-   def:"Aanbod waarbij de aanbieder zich het recht voorbehoudt om het aanbod in te trekken zelfs na ontvangst van de aanvaarding. Mag echter niet te kwader trouw worden ingetrokken."},
-  {cat:"overeenkomst", term:"Koopovereenkomst",
-   def:"Overeenkomst waarbij de verkoper een zaak levert en de koper de koopprijs betaalt. Meest voorkomende contractvorm in de praktijk."},
-  {cat:"overeenkomst", term:"Aannemingsovereenkomst",
-   def:"Overeenkomst waarbij de aannemer zich verbindt om een werk van stoffelijke aard tot stand te brengen en op te leveren (bouw, renovatie, installatie)."},
-  {cat:"overeenkomst", term:"Dienstverleningsovereenkomst",
-   def:"Overeenkomst waarbij de opdrachtnemer diensten verleent aan de opdrachtgever (bijv. catering, schoonmaak, beveiliging, advies). Veelvoorkomend in facilitaire inkoop."},
-  {cat:"overeenkomst", term:"Huurovereenkomst",
-   def:"Overeenkomst waarbij de verhuurder het gebruik van een zaak ter beschikking stelt aan de huurder voor een bepaalde tijd, in ruil voor een tegenprestatie (huurprijs)."},
-  {cat:"overeenkomst", term:"Arbeidsovereenkomst",
-   def:"Overeenkomst waarbij de werknemer arbeid verricht in dienst van de werkgever, in ruil voor loon, in een gezagsverhouding. Geregeld in Boek 7 BW."},
-  {cat:"overeenkomst", term:"Algemene voorwaarden (art. 6:233 BW)",
-   def:"Standaardbedingen die van toepassing zijn op meerdere overeenkomsten. Moeten vóór het sluiten van de overeenkomst ter hand gesteld worden — anders vernietigbaar. Onredelijk bezwarende bedingen kunnen worden vernietigd. B2C: meer consumentenbescherming dan B2B.",
-   art:"art. 6:233 BW"},
-  {cat:"overeenkomst", term:"Wilsovereenstemming",
-   def:"Beide partijen zijn het eens over de wezenlijke onderdelen van de overeenkomst (wat, hoeveel, prijs, levering). Vereiste voor het tot stand komen van een geldige overeenkomst."},
-
-  /* ══════════════════════════════════════════
-     4. VERTEGENWOORDIGING & VOLMACHT (Week 4)
-  ══════════════════════════════════════════ */
-  {cat:"volmacht", term:"Volmacht (art. 3:60 BW)",
-   def:"Een bevoegdheid die een gevolmachtigde van de volmachtgever heeft gekregen om namens hem rechtshandelingen te verrichten die de volmachtgever direct binden. Kan mondeling, schriftelijk of stilzwijgend worden verleend.",
-   art:"art. 3:60 BW"},
-  {cat:"volmacht", term:"Volmachtgever",
-   def:"De persoon die de volmacht verleent en door de rechtshandelingen van de gevolmachtigde wordt gebonden. Verantwoordelijk voor de gevolgen van bevoegd handelen van de gevolmachtigde."},
-  {cat:"volmacht", term:"Gevolmachtigde",
-   def:"De persoon die de volmacht ontvangt en namens de volmachtgever rechtshandelingen mag verrichten. Handelt voor rekening en risico van de volmachtgever, binnen de grenzen van de volmacht."},
-  {cat:"volmacht", term:"Algemene volmacht (art. 3:62 lid 1 BW)",
-   def:"Volmacht die de gevolmachtigde bevoegd maakt tot alle rechtshandelingen die de volmachtgever zelf ook mag verrichten. Ruime reikwijdte.",
-   art:"art. 3:62 lid 1 BW"},
-  {cat:"volmacht", term:"Bijzondere volmacht (art. 3:62 lid 2 BW)",
-   def:"Volmacht beperkt tot een of meer specifiek genoemde rechtshandelingen of een bepaald doel. Engere reikwijdte dan algemene volmacht.",
-   art:"art. 3:62 lid 2 BW"},
-  {cat:"volmacht", term:"Bevoegde vertegenwoordiging (art. 3:66 BW)",
-   def:"De gevolmachtigde handelt binnen de grenzen van de volmacht. Gevolg: de rechtshandeling treft de volmachtgever direct — alsof hij het zelf heeft gedaan.",
-   art:"art. 3:66 lid 1 BW"},
-  {cat:"volmacht", term:"Onbevoegde vertegenwoordiging",
-   def:"De gevolmachtigde handelt buiten de grenzen van de volmacht. Gevolg: de rechtshandeling treft de volmachtgever in beginsel NIET. Uitzonderingen: schijn van volmacht (art. 3:61 lid 2) of bekrachtiging (art. 3:69)."},
-  {cat:"volmacht", term:"Schijn van volmacht (art. 3:61 lid 2 BW)",
-   def:"Als de wederpartij redelijkerwijs mocht aannemen dat een volmacht was verleend, is de volmachtgever toch gebonden — ook al was er geen volmacht. Beschermt de goede trouw van de wederpartij.",
-   art:"art. 3:61 lid 2 BW"},
-  {cat:"volmacht", term:"Bekrachtiging (art. 3:69 BW)",
-   def:"De volmachtgever keurt de onbevoegde rechtshandeling achteraf goed. Gevolg: de rechtshandeling wordt alsnog aan hem toegerekend, met terugwerkende kracht.",
-   art:"art. 3:69 lid 1 BW"},
-  {cat:"volmacht", term:"Instaan voor de volmacht (art. 3:70 BW)",
-   def:"Als de gevolmachtigde onbevoegd heeft gehandeld én geen uitzondering van toepassing is, moet hij zelf instaan voor de volmacht: hij is aansprakelijk voor de schade die de wederpartij daardoor lijdt.",
-   art:"art. 3:70 BW"},
-
-  /* ══════════════════════════════════════════
-     5. TEKORTKOMING, VERZUIM & ACTIES (Week 4-6)
-  ══════════════════════════════════════════ */
-  {cat:"tekortkoming", term:"Tekortkoming / Wanprestatie",
-   def:"Het geheel niet, te laat, gedeeltelijk of onbehoorlijk nakomen van een contractuele verplichting. Kan leiden tot vier acties: nakoming, opschorting, schadevergoeding of ontbinding."},
-  {cat:"tekortkoming", term:"Tijdig klagen (art. 6:89 BW)",
-   def:"Een schuldeiser die een gebrek ontdekt, moet de schuldenaar hierover tijdig informeren. Wie niet tijdig klaagt, verliest zijn recht op schadevergoeding of ontbinding.",
-   art:"art. 6:89 BW"},
-  {cat:"tekortkoming", term:"Nakoming (art. 3:296 BW)",
-   def:"De schuldeiser vordert dat de schuldenaar alsnog presteert wat is overeengekomen. Drie vereisten: (1) opeisbare vordering, (2) tekortkoming, (3) nakoming nog niet blijvend onmogelijk. Toerekenbaarheid is niet vereist.",
-   art:"art. 3:296 BW"},
-  {cat:"tekortkoming", term:"Opschorting (art. 6:52 BW)",
-   def:"Tijdelijk weigeren van de eigen prestatie als drukmiddel totdat de wederpartij nakomt. Vier vereisten: (1) opeisbare vordering, (2) connexiteit (samenhang), (3) proportionaliteit, (4) nakoming niet blijvend onmogelijk.",
-   art:"art. 6:52 BW"},
-  {cat:"tekortkoming", term:"Connexiteit",
-   def:"Vereiste voor opschorting: er moet voldoende samenhang bestaan tussen de vordering en de op te schorten verbintenis (art. 6:52 lid 1 BW). Bijv. zelfde rechtsverhouding of regelmatig zaken doen samen."},
-  {cat:"tekortkoming", term:"Retentierecht (art. 3:290 BW)",
-   def:"Het recht om een zaak van een ander onder zich te houden totdat de vordering op die ander is voldaan. Bijv. een reparateur houdt de gerepareerde auto totdat de factuur betaald is.",
-   art:"art. 3:290 BW"},
-  {cat:"tekortkoming", term:"Schadevergoeding wegens wanprestatie (art. 6:74 BW)",
-   def:"Financiële compensatie voor schade door tekortkoming. Vijf vereisten: (1) tekortkoming, (2) toerekenbaarheid, (3) schade, (4) causaal verband, (5) verzuim of blijvende onmogelijkheid. Onderscheid van ontbinding: toerekenbaarheid IS vereist.",
-   art:"art. 6:74 BW"},
-  {cat:"tekortkoming", term:"Toerekenbaarheid (art. 6:75 BW)",
-   def:"De tekortkoming moet aan de schuldenaar kunnen worden toegerekend: schuld, of toerekening op grond van wet, rechtshandeling of verkeersopvattingen. Vereiste voor schadevergoeding (niet voor ontbinding).",
-   art:"art. 6:75 BW"},
-  {cat:"tekortkoming", term:"Overmacht (art. 6:75 BW)",
-   def:"Een tekortkoming die niet aan de schuldenaar kan worden toegerekend: de oorzaak is buiten zijn schuld en risico. Gevolg: geen schadevergoedingsplicht. Ontbinding blijft wel mogelijk.",
-   art:"art. 6:75 BW"},
-  {cat:"tekortkoming", term:"Force majeure-clausule",
-   def:"Contractuele bepaling die preciezer regelt wat als overmacht geldt dan de wettelijke uitleg van art. 6:75 BW. Bevat doorgaans: een lijst van kwalificerende gebeurtenissen (oorlog, pandemie, staking, energiecrisis, IT-storing), de gevolgen (opschorting, hardship-overleg, recht op ontbinding zonder schadevergoeding), een meldingsplicht binnen een afgesproken termijn en een mitigatieplicht. Voorkomt discussie tijdens incidenten."},
-  {cat:"tekortkoming", term:"Mitigatieplicht",
-   def:"Plicht van de getroffen partij om bij overmacht of dreigende schade redelijke maatregelen te nemen om de schade zoveel mogelijk te beperken (bijv. uitwijken naar een alternatieve leverancier). Volgt zowel uit de wet (art. 6:101 BW) als doorgaans expliciet uit force majeure-clausules."},
-  {cat:"tekortkoming", term:"Hulppersonen (art. 6:76 BW)",
-   def:"De schuldenaar is voor gedragingen van personen die hij inschakelt bij de uitvoering van de verbintenis (onderaannemers, ZZP'ers, leveranciers) op gelijke wijze aansprakelijk als voor eigen gedragingen. Bij outsourcing belangrijk: de uitbestedende partij blijft contractueel verantwoordelijk richting opdrachtgever.",
-   art:"art. 6:76 BW"},
-  {cat:"tekortkoming", term:"Ingebrekestelling (art. 6:82 BW)",
-   def:"Schriftelijke aanmaning aan de schuldenaar om binnen een redelijke termijn alsnog na te komen. Noodzakelijke stap om verzuim te laten intreden (behalve in de gevallen van art. 6:83 BW).",
-   art:"art. 6:82 BW"},
-  {cat:"tekortkoming", term:"Verzuim (art. 6:81 BW)",
-   def:"Toestand waarin de schuldenaar verkeert als hij na ingebrekestelling niet nakomt. Vereiste voor schadevergoeding (deels) en vervangende schadevergoeding. Treedt ook van rechtswege in bij: verstrijken afgesproken termijn, mededeling schuldenaar, of OD-grondslag.",
-   art:"art. 6:81 en 6:83 BW"},
-  {cat:"tekortkoming", term:"Vermogensschade (art. 6:96 BW)",
-   def:"Geleden verlies + gederfde winst. Twee categorieën die voor vergoeding in aanmerking komen bij wanprestatie en onrechtmatige daad.",
-   art:"art. 6:96 BW"},
-  {cat:"tekortkoming", term:"Smartengeld (art. 6:106 BW)",
-   def:"Vergoeding van immaterieel nadeel (pijn, verdriet, geschokt rechtsgevoel). Wordt alleen toegekend in de door de wet bepaalde gevallen. Ook wel: ander nadeel dan vermogensschade.",
-   art:"art. 6:106 BW"},
-  {cat:"tekortkoming", term:"Condicio sine qua non (csqn)",
-   def:"Het 'maar-voor-test' causaalverband: zou de schade ook geleden zijn zonder de tekortkoming? Als het antwoord nee is, is er causaal verband. Vereiste voor schadevergoeding. Aangevuld door de toerekeningsnorm (art. 6:98 BW)."},
-  {cat:"tekortkoming", term:"Vertragingsschade",
-   def:"Schade door te late nakoming. Verzuim is vereist; schade wordt slechts vergoed vanaf het moment van verzuim (art. 6:85 BW)."},
-  {cat:"tekortkoming", term:"Gevolgschade",
-   def:"Schade die verder strekt dan de te late of gebrekkige nakoming zelf. Verzuim is hiervoor niet vereist."},
-  {cat:"tekortkoming", term:"Vervangende schadevergoeding",
-   def:"Schadevergoeding die de waarde van de prestatie in geld uitdrukt, in plaats van nakoming te vorderen. Verzuim is vereist. Kan niet worden gecombineerd met ontbinding."},
-  {cat:"tekortkoming", term:"Ontbinding (art. 6:265 BW)",
-   def:"Beëindigen van de overeenkomst wegens tekortkoming. Vier vereisten: (1) wederkerige overeenkomst, (2) tekortkoming, (3) verzuim of onmogelijkheid, (4) tekortkoming rechtvaardigt ontbinding. Toerekenbaarheid is NIET vereist (verschil met schadevergoeding).",
-   art:"art. 6:265 BW"},
-  {cat:"tekortkoming", term:"Wederkerige overeenkomst",
-   def:"Een overeenkomst met twee tegenover elkaar staande verbintenissen. Bijv. koop: levering (verkoper) tegenover betaling (koper). Vereiste voor ontbinding (art. 6:265 BW)."},
-  {cat:"tekortkoming", term:"Ongedaanmaking (art. 6:271 BW)",
-   def:"Na ontbinding moeten al verrichte prestaties ongedaan worden gemaakt (teruggeven). Als ongedaanmaking onmogelijk is, moet de waarde worden vergoed.",
-   art:"art. 6:271 jo. 6:272 BW"},
-  {cat:"tekortkoming", term:"Combinaties van acties bij wanprestatie",
-   def:"Toegestaan: nakoming + gevolgschade; opschorting + gevolgschade; ontbinding + gevolgschade; vervangende schadevergoeding + gevolgschade. Niet toegestaan: ontbinding + vervangende schadevergoeding tegelijk (vervangende schadevergoeding vervangt de nakoming)."},
-
-  /* ══════════════════════════════════════════
-     6. ONRECHTMATIGE DAAD (Week 6)
-  ══════════════════════════════════════════ */
-  {cat:"onrechtmatige_daad", term:"Onrechtmatige daad (art. 6:162 BW)",
-   def:"Buitencontractuele grondslag voor aansprakelijkheid: wie jegens een ander een onrechtmatige daad pleegt en daarvoor verantwoordelijk is, moet de daardoor veroorzaakte schade vergoeden. Geen overeenkomst tussen partijen vereist (verschil met wanprestatie).",
-   art:"art. 6:162 BW"},
-  {cat:"onrechtmatige_daad", term:"Vijf vereisten onrechtmatige daad",
-   def:"Cumulatief: (1) onrechtmatige gedraging, (2) toerekenbaarheid, (3) schade, (4) causaal verband, (5) relativiteit. Pas als alle vijf voldaan zijn, is er aansprakelijkheid.",
-   art:"art. 6:162–6:163 BW"},
-  {cat:"onrechtmatige_daad", term:"Onrechtmatige gedraging",
-   def:"Drie categorieën: (a) inbreuk op een recht (eigendom, lichamelijke integriteit, eer en goede naam), (b) doen of nalaten in strijd met een wettelijke plicht, (c) doen of nalaten in strijd met de maatschappelijke zorgvuldigheid (ongeschreven recht).",
-   art:"art. 6:162 lid 2 BW"},
-  {cat:"onrechtmatige_daad", term:"Maatschappelijke zorgvuldigheid",
-   def:"Ongeschreven norm: gedrag dat in het maatschappelijk verkeer betamelijk is. Beoordeling per geval. Klassiek voorbeeld: Kelderluik-arrest (HR 1965) — wie een gevaarlijke situatie schept, moet maatregelen nemen om ongelukken te voorkomen."},
-  {cat:"onrechtmatige_daad", term:"Toerekenbaarheid bij OD",
-   def:"De daad moet aan de dader toe te rekenen zijn op grond van: (1) schuld (verwijtbaarheid), (2) wet (risicoaansprakelijkheid), of (3) verkeersopvattingen. Bij risicoaansprakelijkheid is schuld niet vereist.",
-   art:"art. 6:162 lid 3 BW"},
-  {cat:"onrechtmatige_daad", term:"Risicoaansprakelijkheid",
-   def:"Aansprakelijkheid die op een specifieke persoon rust ongeacht schuld. De wet wijst de drager aan: ouders voor kinderen onder 14, werkgever voor werknemer, bezitter dier of opstal, producent voor gebrekkig product."},
-  {cat:"onrechtmatige_daad", term:"Aansprakelijkheid voor kinderen onder 14",
-   def:"Ouders of voogd zijn aansprakelijk voor schade door doen of nalaten van kinderen jonger dan 14 jaar — risicoaansprakelijkheid, geen schuld vereist. Bij 14–15 jaar: ouders aansprakelijk tenzij zij niet kan worden verweten dat zij de gedraging niet hebben belet (art. 6:169 lid 2 BW).",
-   art:"art. 6:169 lid 1 BW"},
-  {cat:"onrechtmatige_daad", term:"Werkgeversaansprakelijkheid",
-   def:"De werkgever is aansprakelijk voor fouten van een ondergeschikte (werknemer) gemaakt in de uitoefening van zijn functie. De kans op de fout moet door de opgedragen taak zijn vergroot en de werkgever moet zeggenschap hebben gehad over de gedraging.",
-   art:"art. 6:170 BW"},
-  {cat:"onrechtmatige_daad", term:"Aansprakelijkheid bezitter opstal",
-   def:"De bezitter van een gebouw of werk is aansprakelijk voor schade door een gebrekkige toestand ervan. Risicoaansprakelijkheid: schuld niet vereist. Voor FM relevant bij vallende delen, glibberige vloeren, defecte trappen.",
-   art:"art. 6:174 BW"},
-  {cat:"onrechtmatige_daad", term:"Productaansprakelijkheid",
-   def:"De producent is aansprakelijk voor schade door een gebrekkig product. Schuld niet vereist. Bedoeld voor consumentenbescherming: lichamelijk letsel of schade aan privé-zaken.",
-   art:"art. 6:185 e.v. BW"},
-  {cat:"onrechtmatige_daad", term:"Relativiteit (Schutznorm)",
-   def:"De geschonden norm moet strekken tot bescherming tegen de schade die de benadeelde lijdt. Niet elke wetsovertreding levert aansprakelijkheid op tegenover iedereen. Klassieker: de norm 'rij niet door rood' beschermt verkeersdeelnemers, niet bijv. een aandeelhouder die door de file in waarde verliest.",
-   art:"art. 6:163 BW"},
-  {cat:"onrechtmatige_daad", term:"Rechtvaardigingsgronden",
-   def:"Omstandigheden die het onrechtmatige karakter wegnemen: noodweer, overmacht, wettelijk voorschrift, bevoegd gegeven ambtelijk bevel, toestemming van de benadeelde. Bewijslast bij wie zich erop beroept."},
-  {cat:"onrechtmatige_daad", term:"Verschil OD versus wanprestatie",
-   def:"Wanprestatie: binnen een bestaande overeenkomst (art. 6:74 BW), schadevergoeding vereist verzuim en toerekenbaarheid. OD: buitencontractueel (art. 6:162 BW), geen verzuim vereist, wél relativiteit. Bij samenloop kan benadeelde kiezen, tenzij wet of overeenkomst dat uitsluit."},
-  {cat:"onrechtmatige_daad", term:"Verjaring OD-vordering",
-   def:"De vordering uit onrechtmatige daad verjaart vijf jaar nadat de benadeelde bekend is geworden met zowel de schade als de aansprakelijke persoon. Absolute uiterste termijn: 20 jaar na de gebeurtenis (30 jaar bij milieuschade).",
-   art:"art. 3:310 BW"},
-
-];;
-RECHT.flashcards = [
-  /* ── INLEIDING IN HET RECHT ── */
-  {cat:"inleiding",term:"Recht",def:"Het geheel van gedragsregels dat door de overheid is gemaakt om de samenleving rechtvaardig te ordenen. Eigenrichting (zelf voor rechter spelen) is niet toegestaan."},
-  {cat:"inleiding",term:"Rechtsbronnen",def:"De vier vindplaatsen van het recht: (1) wetten, (2) verdragen, (3) jurisprudentie en (4) gewoonte. Uit deze bronnen ontstaat al ons recht."},
-  {cat:"inleiding",term:"Dwingend recht",def:"Rechtsregels waarvan partijen niet bij overeenkomst mogen afwijken, ook niet als beiden dat willen. Geldt ter bescherming van de zwakkere partij of het algemeen belang."},
-  {cat:"inleiding",term:"Regelend (aanvullend) recht",def:"Rechtsregels die alleen gelden als partijen zelf niets anders hebben afgesproken. Partijen mogen hiervan bij overeenkomst afwijken. Vult leemten in de overeenkomst op."},
-  {cat:"inleiding",term:"Privaatrecht",def:"Het deel van het recht dat de verhouding tussen burgers en/of bedrijven onderling regelt. Bijv. BW: koop, huur, arbeidsovereenkomst, aansprakelijkheid."},
-  {cat:"inleiding",term:"Publiekrecht",def:"Het deel van het recht dat de verhouding tussen de overheid en burgers regelt. Bijv. Grondwet, Wetboek van Strafrecht, Algemene wet bestuursrecht."},
-  {cat:"inleiding",term:"Verbintenis",def:"Een rechtsverhouding waarbij de schuldenaar verplicht is tot een prestatie jegens de schuldeiser, en de schuldeiser die prestatie kan vorderen. Verbintenissen ontstaan alleen uit door de wet erkende bronnen.",art:"art. 6:1 BW"},
-  {cat:"inleiding",term:"Schuldeiser",def:"De partij die het recht heeft om nakoming van de verbintenis te vorderen. In een koopovereenkomst: de koper heeft recht op levering; de verkoper heeft recht op betaling."},
-  {cat:"inleiding",term:"Schuldenaar",def:"De partij die verplicht is tot een prestatie. In een koopovereenkomst: de verkoper is schuldenaar voor levering; de koper is schuldenaar voor betaling."},
-  {cat:"inleiding",term:"Rechtshandeling",def:"Een handeling die wordt verricht met de bedoeling om een rechtsgevolg in het leven te roepen. Vereiste: de wil moet overeenstemmen met de verklaring.",art:"art. 3:33 BW"},
-  {cat:"inleiding",term:"Eigenrichting",def:"Zelf voor rechter spelen — iemand eigenmachtig dwingen tot een bepaalde handeling of zelf schade verhalen zonder tussenkomst van de rechter. In ons rechtssysteem niet toegestaan."},
-  {cat:"inleiding",term:"Hoe verwijzen naar een wetsartikel",def:"Volgorde: Boek → art. → lid → sub → afkorting wet. Voorbeeld: art. 7:617 lid 1 sub b BW. Altijd in deze volgorde noteren."},
-
-  /* ── ONGELDIGHEID RECHTSHANDELING ── */
-  {cat:"ongeldigheid",term:"Nietig",def:"De rechtshandeling heeft nooit bestaan. Werkt van rechtswege — geen actie nodig. Iedereen kan een beroep op nietigheid doen, ook de rechter ambtshalve. Bijv. vergissing (art. 3:33), strijd met openbare orde/goede zeden."},
-  {cat:"ongeldigheid",term:"Vernietigbaar",def:"De rechtshandeling is geldig totdat zij vernietigd wordt. Actie vereist door de beschermde partij. Na vernietiging: terugwerkende kracht — ongedaanmakingsverplichtingen.",art:"art. 3:49 BW"},
-  {cat:"ongeldigheid",term:"Vergissing / Wilsontbreken",def:"Als de wil niet overeenstemt met de verklaring (bijv. verspreking, verschrijving), is de rechtshandeling in beginsel nietig. Maar: als de wederpartij redelijkerwijs mocht vertrouwen op de verklaring (art. 3:35 BW), is zij toch geldig.",art:"art. 3:33 BW"},
-  {cat:"ongeldigheid",term:"Wilsvertrouwensleer",def:"Beschermt de wederpartij die redelijkerwijs mocht vertrouwen op de verklaring van de andere partij, ook als die verklaring niet overeenstemt met de werkelijke wil.",art:"art. 3:35 BW"},
-  {cat:"ongeldigheid",term:"Geestelijke stoornis",def:"Een rechtshandeling verricht onder invloed van een geestelijke stoornis is vernietigbaar (gericht) of nietig (eenzijdig ongericht, bijv. testament). Gerechtvaardigd vertrouwen van wederpartij kan geldigheid redden.",art:"art. 3:34 BW"},
-  {cat:"ongeldigheid",term:"Strijd met wet, openbare orde of goede zeden",def:"Strijd met een dwingende wetsbepaling: nietig (vernietigbaar als de bepaling alleen één partij beschermt). Strijd met openbare orde of goede zeden: nietig. Openbare orde = fundamentele beginselen van onze samenleving.",art:"art. 3:40 BW"},
-  {cat:"ongeldigheid",term:"Bedreiging",def:"Wilsgebrek: iemand wordt door bedreiging bewogen tot een rechtshandeling. Vijf elementen vereist: (1) opzet, (2) onrechtmatige bedreiging, (3) zodanig dat een redelijk mens wordt beïnvloed, (4) nadeel in persoon of goed, (5) causaal verband. Gevolg: vernietigbaar.",art:"art. 3:44 lid 2 BW"},
-  {cat:"ongeldigheid",term:"Bedrog",def:"Wilsgebrek: iemand wordt door opzettelijke misleiding bewogen tot een rechtshandeling. Drie elementen: (1) opzet, (2) onjuiste mededeling, zwijgen of kunstgreep, (3) causaal verband. Algemene aanprijzingen zijn geen bedrog. Gevolg: vernietigbaar.",art:"art. 3:44 lid 3 BW"},
-  {cat:"ongeldigheid",term:"Misbruik van omstandigheden",def:"Wilsgebrek: partij maakt misbruik van een bijzondere omstandigheid (onervarenheid, noodtoestand, afhankelijkheid). Drie elementen: (1) bijzondere omstandigheid, (2) kenbaarheid + bevordering, (3) causaal verband. Gevolg: vernietigbaar.",art:"art. 3:44 lid 4 BW"},
-  {cat:"ongeldigheid",term:"Dwaling",def:"Wilsgebrek: partij heeft een onjuiste voorstelling van zaken. Alleen bij overeenkomsten. Vereisten: (1) onjuiste voorstelling, (2) causaal verband, (3) één van drie situaties. Gevolg: vernietigbaar.",art:"art. 6:228 BW"},
-  {cat:"ongeldigheid",term:"Handelingsonbekwaamheid",def:"Minderjarigen en onder curatele gestelden zijn handelingsonbekwaam: zij kunnen alleen met toestemming van wettelijk vertegenwoordiger rechtshandelingen verrichten. Zonder toestemming: vernietigbaar (eenzijdig ongericht: nietig).",art:"art. 3:32 BW"},
-
-  /* ── TOTSTANDKOMING OVEREENKOMST ── */
-  {cat:"overeenkomst",term:"Overeenkomst",def:"Een meerzijdige rechtshandeling die tot stand komt door overeenstemmend aanbod en aanvaarding. Beide partijen moeten handelingsbekwaam zijn en de overeenkomst mag niet in strijd zijn met wet, openbare orde of goede zeden.",art:"art. 6:217 BW"},
-  {cat:"overeenkomst",term:"Aanbod",def:"Een voorstel tot het sluiten van een overeenkomst dat voldoende bepaald is. Kan herroepelijk, onherroepelijk of vrijblijvend zijn. Geldigheidsduur: mondeling → direct; schriftelijk → redelijke termijn.",art:"art. 6:219 BW"},
-  {cat:"overeenkomst",term:"Aanvaarding",def:"Onvoorwaardelijk akkoord met het aanbod. Als aanvaarding afwijkt van het aanbod: verwerping + nieuw (tegen)aanbod. Uitzondering: kleine afwijkingen op ondergeschikte punten.",art:"art. 6:225 BW"},
-  {cat:"overeenkomst",term:"Ontvangsttheorie",def:"Een verklaring heeft werking vanaf het moment dat zij de ontvanger bereikt (niet verzonden, maar ontvangen). Bepaalt wanneer een aanbod of aanvaarding effect heeft.",art:"art. 3:37 lid 3 BW"},
-  {cat:"overeenkomst",term:"Uitnodiging tot aanbieding",def:"Geen aanbod maar een uitnodiging om een aanbod te doen (bijv. advertentie voor uniek goed). De adverteerder is niet verplicht te verkopen als slechts één persoon wil kopen."},
-  {cat:"overeenkomst",term:"Vrijblijvend aanbod",def:"Aanbod waarbij de aanbieder zich het recht voorbehoudt om het aanbod in te trekken zelfs na ontvangst van de aanvaarding. Mag echter niet te kwader trouw worden ingetrokken."},
-  {cat:"overeenkomst",term:"Koopovereenkomst",def:"Overeenkomst waarbij de verkoper een zaak levert en de koper de koopprijs betaalt. Meest voorkomende contractvorm in de praktijk."},
-  {cat:"overeenkomst",term:"Aannemingsovereenkomst",def:"Overeenkomst waarbij de aannemer zich verbindt om een werk van stoffelijke aard tot stand te brengen en op te leveren (bouw, renovatie, installatie)."},
-  {cat:"overeenkomst",term:"Dienstverleningsovereenkomst",def:"Overeenkomst waarbij de opdrachtnemer diensten verleent aan de opdrachtgever (bijv. catering, schoonmaak, beveiliging, advies). Veelvoorkomend in facilitaire inkoop."},
-  {cat:"overeenkomst",term:"Algemene voorwaarden",def:"Standaardbedingen die van toepassing zijn op meerdere overeenkomsten. Moeten vóór het sluiten van de overeenkomst ter hand gesteld worden — anders vernietigbaar. B2C: meer consumentenbescherming dan B2B.",art:"art. 6:233 BW"},
-  {cat:"overeenkomst",term:"Wilsovereenstemming",def:"Beide partijen zijn het eens over de wezenlijke onderdelen van de overeenkomst (wat, hoeveel, prijs, levering). Vereiste voor het tot stand komen van een geldige overeenkomst."},
-
-  /* ── VERTEGENWOORDIGING & VOLMACHT ── */
-  {cat:"volmacht",term:"Volmacht",def:"Een bevoegdheid die een gevolmachtigde van de volmachtgever heeft gekregen om namens hem rechtshandelingen te verrichten die de volmachtgever direct binden.",art:"art. 3:60 BW"},
-  {cat:"volmacht",term:"Volmachtgever",def:"De persoon die de volmacht verleent en door de rechtshandelingen van de gevolmachtigde wordt gebonden. Verantwoordelijk voor de gevolgen van bevoegd handelen van de gevolmachtigde."},
-  {cat:"volmacht",term:"Gevolmachtigde",def:"De persoon die de volmacht ontvangt en namens de volmachtgever rechtshandelingen mag verrichten. Handelt voor rekening en risico van de volmachtgever, binnen de grenzen van de volmacht."},
-  {cat:"volmacht",term:"Algemene volmacht",def:"Volmacht die de gevolmachtigde bevoegd maakt tot alle rechtshandelingen die de volmachtgever zelf ook mag verrichten. Ruime reikwijdte.",art:"art. 3:62 lid 1 BW"},
-  {cat:"volmacht",term:"Bijzondere volmacht",def:"Volmacht beperkt tot een of meer specifiek genoemde rechtshandelingen of een bepaald doel. Engere reikwijdte dan algemene volmacht.",art:"art. 3:62 lid 2 BW"},
-  {cat:"volmacht",term:"Bevoegde vertegenwoordiging",def:"De gevolmachtigde handelt binnen de grenzen van de volmacht. Gevolg: de rechtshandeling treft de volmachtgever direct — alsof hij het zelf heeft gedaan.",art:"art. 3:66 BW"},
-  {cat:"volmacht",term:"Onbevoegde vertegenwoordiging",def:"De gevolmachtigde handelt buiten de grenzen van de volmacht. Gevolg: de rechtshandeling treft de volmachtgever in beginsel NIET. Uitzonderingen: schijn van volmacht of bekrachtiging."},
-  {cat:"volmacht",term:"Schijn van volmacht",def:"Als de wederpartij redelijkerwijs mocht aannemen dat een volmacht was verleend, is de volmachtgever toch gebonden — ook al was er geen volmacht. Beschermt de goede trouw van de wederpartij.",art:"art. 3:61 lid 2 BW"},
-  {cat:"volmacht",term:"Bekrachtiging",def:"De volmachtgever keurt de onbevoegde rechtshandeling achteraf goed. Gevolg: de rechtshandeling wordt alsnog aan hem toegerekend, met terugwerkende kracht.",art:"art. 3:69 BW"},
-  {cat:"volmacht",term:"Instaan voor de volmacht",def:"Als de gevolmachtigde onbevoegd heeft gehandeld én geen uitzondering van toepassing is, moet hij zelf instaan voor de volmacht: hij is aansprakelijk voor de schade die de wederpartij daardoor lijdt.",art:"art. 3:70 BW"},
-
-  /* ── TEKORTKOMING, VERZUIM & ACTIES ── */
-  {cat:"tekortkoming",term:"Tekortkoming / Wanprestatie",def:"Het geheel niet, te laat, gedeeltelijk of onbehoorlijk nakomen van een contractuele verplichting. Kan leiden tot vier acties: nakoming, opschorting, schadevergoeding of ontbinding."},
-  {cat:"tekortkoming",term:"Tijdig klagen",def:"Een schuldeiser die een gebrek ontdekt, moet de schuldenaar hierover tijdig informeren. Wie niet tijdig klaagt, verliest zijn recht op schadevergoeding of ontbinding.",art:"art. 6:89 BW"},
-  {cat:"tekortkoming",term:"Nakoming",def:"De schuldeiser vordert dat de schuldenaar alsnog presteert wat is overeengekomen. Drie vereisten: (1) opeisbare vordering, (2) tekortkoming, (3) nakoming nog niet blijvend onmogelijk. Toerekenbaarheid is NIET vereist.",art:"art. 3:296 BW"},
-  {cat:"tekortkoming",term:"Opschorting",def:"Tijdelijk weigeren van de eigen prestatie als drukmiddel. Vier vereisten: (1) opeisbare vordering, (2) connexiteit (samenhang), (3) proportionaliteit, (4) nakoming niet blijvend onmogelijk.",art:"art. 6:52 BW"},
-  {cat:"tekortkoming",term:"Connexiteit",def:"Vereiste voor opschorting: er moet voldoende samenhang bestaan tussen de vordering en de op te schorten verbintenis. Bijv. zelfde rechtsverhouding of regelmatig zaken doen samen."},
-  {cat:"tekortkoming",term:"Retentierecht",def:"Het recht om een zaak van een ander onder zich te houden totdat de vordering op die ander is voldaan. Bijv. een reparateur houdt de gerepareerde auto totdat de factuur betaald is.",art:"art. 3:290 BW"},
-  {cat:"tekortkoming",term:"Schadevergoeding wegens wanprestatie",def:"Financiële compensatie voor schade door tekortkoming. Vijf vereisten: (1) tekortkoming, (2) toerekenbaarheid, (3) schade, (4) causaal verband, (5) verzuim of blijvende onmogelijkheid. Toerekenbaarheid IS vereist (verschil met ontbinding).",art:"art. 6:74 BW"},
-  {cat:"tekortkoming",term:"Toerekenbaarheid",def:"De tekortkoming moet aan de schuldenaar kunnen worden toegerekend: schuld, of toerekening op grond van wet, rechtshandeling of verkeersopvattingen. Vereiste voor schadevergoeding (NIET voor ontbinding).",art:"art. 6:75 BW"},
-  {cat:"tekortkoming",term:"Overmacht",def:"Een tekortkoming die niet aan de schuldenaar kan worden toegerekend: de oorzaak is buiten zijn schuld en risico. Gevolg: geen schadevergoedingsplicht. Ontbinding blijft WEL mogelijk.",art:"art. 6:75 BW"},
-  {cat:"tekortkoming",term:"Ingebrekestelling",def:"Schriftelijke aanmaning aan de schuldenaar om binnen een redelijke termijn alsnog na te komen. Noodzakelijke stap om verzuim te laten intreden (behalve in de gevallen van art. 6:83 BW).",art:"art. 6:82 BW"},
-  {cat:"tekortkoming",term:"Verzuim",def:"Toestand waarin de schuldenaar verkeert als hij na ingebrekestelling niet nakomt. Vereiste voor schadevergoeding (deels) en vervangende schadevergoeding. Treedt ook van rechtswege in: bij verstrijken termijn, mededeling schuldenaar, of OD-grondslag.",art:"art. 6:83 BW"},
-  {cat:"tekortkoming",term:"Vermogensschade",def:"Geleden verlies + gederfde winst. Twee categorieën die voor vergoeding in aanmerking komen bij wanprestatie en onrechtmatige daad.",art:"art. 6:96 BW"},
-  {cat:"tekortkoming",term:"Smartengeld",def:"Vergoeding van immaterieel nadeel (pijn, verdriet, geschokt rechtsgevoel). Wordt alleen toegekend in de door de wet bepaalde gevallen. Ook wel: ander nadeel dan vermogensschade.",art:"art. 6:106 BW"},
-  {cat:"tekortkoming",term:"Condicio sine qua non (csqn)",def:"Het 'maar-voor-test' causaalverband: zou de schade ook geleden zijn zonder de tekortkoming? Als het antwoord nee is, is er causaal verband. Vereiste voor schadevergoeding."},
-  {cat:"tekortkoming",term:"Vervangende schadevergoeding",def:"Schadevergoeding die de waarde van de prestatie in geld uitdrukt, in plaats van nakoming te vorderen. Verzuim is vereist. Kan NIET worden gecombineerd met ontbinding."},
-  {cat:"tekortkoming",term:"Ontbinding",def:"Beëindigen van de overeenkomst wegens tekortkoming. Vier vereisten: (1) wederkerige overeenkomst, (2) tekortkoming, (3) verzuim of onmogelijkheid, (4) tekortkoming rechtvaardigt ontbinding. Toerekenbaarheid is NIET vereist (verschil met schadevergoeding).",art:"art. 6:265 BW"},
-  {cat:"tekortkoming",term:"Wederkerige overeenkomst",def:"Een overeenkomst met twee tegenover elkaar staande verbintenissen. Bijv. koop: levering (verkoper) tegenover betaling (koper). Vereiste voor ontbinding."},
-  {cat:"tekortkoming",term:"Ongedaanmaking",def:"Na ontbinding moeten al verrichte prestaties ongedaan worden gemaakt (teruggeven). Als ongedaanmaking onmogelijk is, moet de waarde worden vergoed.",art:"art. 6:272 BW"},
-  {cat:"tekortkoming",term:"Combinaties van acties bij wanprestatie",def:"Toegestaan: nakoming + gevolgschade; opschorting + gevolgschade; ontbinding + gevolgschade. NIET toegestaan: ontbinding + vervangende schadevergoeding tegelijk."},
-
-  /* ── ONRECHTMATIGE DAAD ── */
-  {cat:"onrechtmatige_daad",term:"Onrechtmatige daad",def:"Buitencontractuele grondslag voor aansprakelijkheid: wie onrechtmatig schade veroorzaakt aan een ander, moet die schade vergoeden. Geen overeenkomst tussen partijen vereist.",art:"art. 6:162 BW"},
-  {cat:"onrechtmatige_daad",term:"Vijf vereisten OD",def:"Cumulatief: (1) onrechtmatige gedraging, (2) toerekenbaarheid, (3) schade, (4) causaal verband, (5) relativiteit. Pas als alle vijf voldaan zijn ontstaat aansprakelijkheid.",art:"art. 6:162-6:163 BW"},
-  {cat:"onrechtmatige_daad",term:"Onrechtmatige gedraging — drie categorieën",def:"(a) inbreuk op een recht (eigendom, lichaam, eer); (b) doen of nalaten in strijd met een wettelijke plicht; (c) doen of nalaten in strijd met de maatschappelijke zorgvuldigheid (ongeschreven recht).",art:"art. 6:162 lid 2 BW"},
-  {cat:"onrechtmatige_daad",term:"Maatschappelijke zorgvuldigheid",def:"Ongeschreven norm voor wat in het maatschappelijk verkeer betamelijk is. Klassiek voorbeeld: Kelderluik-arrest — wie een gevaar schept moet maatregelen nemen om ongelukken te voorkomen."},
-  {cat:"onrechtmatige_daad",term:"Toerekenbaarheid bij OD",def:"Drie gronden: schuld (verwijtbaarheid), wet (risicoaansprakelijkheid) of verkeersopvattingen. Bij risicoaansprakelijkheid is schuld niet vereist.",art:"art. 6:162 lid 3 BW"},
-  {cat:"onrechtmatige_daad",term:"Risicoaansprakelijkheid",def:"Aansprakelijkheid zonder dat schuld bewezen hoeft te worden. De wet wijst de drager aan: ouders, werkgever, bezitter dier, bezitter opstal, producent."},
-  {cat:"onrechtmatige_daad",term:"Aansprakelijkheid kinderen onder 14",def:"Ouders/voogd zijn aansprakelijk voor schade door kinderen jonger dan 14. Risicoaansprakelijkheid — schuld niet vereist.",art:"art. 6:169 lid 1 BW"},
-  {cat:"onrechtmatige_daad",term:"Werkgeversaansprakelijkheid",def:"Werkgever is aansprakelijk voor fouten van werknemer in de functie-uitoefening. Voorwaarden: kans op fout vergroot door taak, en werkgever had zeggenschap over gedraging.",art:"art. 6:170 BW"},
-  {cat:"onrechtmatige_daad",term:"Aansprakelijkheid bezitter opstal",def:"Bezitter van gebouw of werk is aansprakelijk voor schade door gebrekkige toestand. Voor FM relevant bij defecte trappen, glibberige vloeren, vallende plafondonderdelen.",art:"art. 6:174 BW"},
-  {cat:"onrechtmatige_daad",term:"Productaansprakelijkheid",def:"Producent is aansprakelijk voor schade door gebrekkig product. Schuld niet vereist. Vooral bij lichamelijk letsel of schade aan privé-zaken.",art:"art. 6:185 e.v. BW"},
-  {cat:"onrechtmatige_daad",term:"Relativiteit (Schutznorm)",def:"De geschonden norm moet strekken tot bescherming tegen de schade die de benadeelde lijdt. Niet elke regelovertreding levert aansprakelijkheid op tegenover iedereen.",art:"art. 6:163 BW"},
-  {cat:"onrechtmatige_daad",term:"Rechtvaardigingsgronden",def:"Heffen het onrechtmatige karakter op: noodweer, overmacht, wettelijk voorschrift, bevoegd gegeven ambtelijk bevel, toestemming van de benadeelde. Wie zich erop beroept moet bewijzen."},
-  {cat:"onrechtmatige_daad",term:"OD versus wanprestatie",def:"Wanprestatie = binnen overeenkomst (6:74), verzuim vereist. OD = buitencontractueel (6:162), geen verzuim, wél relativiteit. Bij samenloop kan de benadeelde kiezen tenzij wet of overeenkomst dat uitsluit."},
-  {cat:"onrechtmatige_daad",term:"Verjaring OD-vordering",def:"5 jaar na bekendheid met schade én aansprakelijke persoon. Absolute uiterste termijn: 20 jaar na de gebeurtenis (30 jaar bij milieuschade).",art:"art. 3:310 BW"},
-];;
-
-/* Flashcards = de begrippen (met wetsartikel), zodat kaart en begrippenlijst nooit uiteenlopen */
-RECHT.flashcards = RECHT.begrippen.slice();
+ ],
+ "begrippen": [
+  {
+   "cat": "inleiding",
+   "term": "Recht",
+   "def": "Het geheel van gedragsregels dat door de overheid is gemaakt om de samenleving rechtvaardig te ordenen. Eigenrichting (zelf voor rechter spelen) is niet toegestaan."
+  },
+  {
+   "cat": "inleiding",
+   "term": "Rechtsbronnen",
+   "def": "De vier vindplaatsen van het recht: (1) wetten, (2) verdragen, (3) jurisprudentie en (4) gewoonte. Uit deze bronnen ontstaat al ons recht."
+  },
+  {
+   "cat": "inleiding",
+   "term": "Wetten",
+   "def": "Door de wetgever vastgestelde gedragsregels. Hiërarchie: rijkswetten → AMvB's → ministeriële regelingen → gemeentelijke verordeningen."
+  },
+  {
+   "cat": "inleiding",
+   "term": "Verdragen",
+   "def": "Internationale afspraken tussen staten die doorwerken in het nationale recht. Bijv. het EVRM, VN-verdragen en de EU-verdragen (VEU, VWEU)."
+  },
+  {
+   "cat": "inleiding",
+   "term": "Jurisprudentie",
+   "def": "Rechterlijke uitspraken die als richtlijn dienen bij toekomstige vergelijkbare zaken. Rechters zijn in beginsel niet gebonden aan eerdere uitspraken, maar volgen ze doorgaans wel."
+  },
+  {
+   "cat": "inleiding",
+   "term": "Gewoonte",
+   "def": "Ongeschreven regels die door langdurige herhaling en algemene aanvaarding rechtskracht hebben gekregen. Wordt toegepast als wetten of verdragen niets regelen."
+  },
+  {
+   "cat": "inleiding",
+   "term": "Dwingend recht",
+   "def": "Rechtsregels waarvan partijen niet bij overeenkomst mogen afwijken, ook niet als beiden dat willen. Geldt ter bescherming van de zwakkere partij of het algemeen belang. Signaalwoorden: 'nietig', 'vernietigbaar', 'kan niet anders zijn dan'."
+  },
+  {
+   "cat": "inleiding",
+   "term": "Regelend (aanvullend) recht",
+   "def": "Rechtsregels die alleen gelden als partijen zelf niets anders hebben afgesproken. Partijen mogen hiervan bij overeenkomst afwijken. Vult leemten in de overeenkomst op."
+  },
+  {
+   "cat": "inleiding",
+   "term": "Privaatrecht",
+   "def": "Het deel van het recht dat de verhouding tussen burgers en/of bedrijven onderling regelt. Bijv. BW (Burgerlijk Wetboek): koop, huur, arbeidsovereenkomst, aansprakelijkheid."
+  },
+  {
+   "cat": "inleiding",
+   "term": "Publiekrecht",
+   "def": "Het deel van het recht dat de verhouding tussen de overheid en burgers regelt. Bijv. Grondwet, Wetboek van Strafrecht, Algemene wet bestuursrecht."
+  },
+  {
+   "cat": "inleiding",
+   "term": "Verbintenis (art. 6:1 BW)",
+   "def": "Een rechtsverhouding waarbij de schuldenaar verplicht is tot een prestatie jegens de schuldeiser, en de schuldeiser die prestatie kan vorderen. Verbintenissen ontstaan alleen als de wet dat bepaalt (art. 6:1 BW): uit overeenkomst of rechtstreeks uit de wet (onrechtmatige daad, zaakwaarneming, onverschuldigde betaling, ongerechtvaardigde verrijking).",
+   "art": "art. 6:1 BW"
+  },
+  {
+   "cat": "inleiding",
+   "term": "Schuldeiser",
+   "def": "De partij die het recht heeft om nakoming van de verbintenis te vorderen. In een koopovereenkomst: de koper heeft recht op levering (schuldeiser voor levering); de verkoper heeft recht op betaling (schuldeiser voor betaling)."
+  },
+  {
+   "cat": "inleiding",
+   "term": "Schuldenaar",
+   "def": "De partij die verplicht is tot een prestatie. In een koopovereenkomst: de verkoper is schuldenaar voor levering; de koper is schuldenaar voor betaling."
+  },
+  {
+   "cat": "inleiding",
+   "term": "Rechtshandeling (art. 3:33 BW)",
+   "def": "Een handeling die wordt verricht met de bedoeling om een rechtsgevolg in het leven te roepen. Vereiste: de wil moet overeenstemmen met de verklaring. Eenzijdig (bijv. testament) of meerzijdig (bijv. overeenkomst).",
+   "art": "art. 3:33 BW"
+  },
+  {
+   "cat": "inleiding",
+   "term": "Eigenrichting",
+   "def": "Zelf voor rechter spelen, iemand eigenmachtig dwingen tot een bepaalde handeling of zelf schade verhalen zonder tussenkomst van de rechter. In ons rechtssysteem niet toegestaan."
+  },
+  {
+   "cat": "inleiding",
+   "term": "Hoe verwijzen naar een wetsartikel",
+   "def": "Volgorde: Boek → art. → lid → sub → afkorting wet. Voorbeeld: art. 7:617 lid 1 sub b BW. Altijd in deze volgorde noteren."
+  },
+  {
+   "cat": "ongeldigheid",
+   "term": "Nietig",
+   "def": "De rechtshandeling heeft nooit bestaan. Werkt van rechtswege, geen actie nodig. Iedereen kan een beroep op nietigheid doen, ook de rechter ambtshalve. Bijv.: vergissing (art. 3:33), strijd met openbare orde/goede zeden (art. 3:40)."
+  },
+  {
+   "cat": "ongeldigheid",
+   "term": "Vernietigbaar",
+   "def": "De rechtshandeling is geldig totdat zij vernietigd wordt. Actie vereist door de beschermde partij (buitengerechtelijk of via rechter). Na vernietiging: terugwerkende kracht, ongedaanmakingsverplichtingen. art. 3:49 BW",
+   "art": "art. 3:49 BW"
+  },
+  {
+   "cat": "ongeldigheid",
+   "term": "Vergissing / Wilsontbreken (art. 3:33 BW)",
+   "def": "Als de wil niet overeenstemt met de verklaring (bijv. verspreking, verschrijving), is de rechtshandeling in beginsel nietig. Maar: als de wederpartij redelijkerwijs mocht vertrouwen op de verklaring (art. 3:35 BW), is zij toch geldig.",
+   "art": "art. 3:33 BW"
+  },
+  {
+   "cat": "ongeldigheid",
+   "term": "Wilsvertrouwensleer (art. 3:35 BW)",
+   "def": "Beschermt de wederpartij die redelijkerwijs mocht vertrouwen op de verklaring van de andere partij, ook als die verklaring niet overeenstemt met de werkelijke wil. Maakt de anders-nietige rechtshandeling toch geldig.",
+   "art": "art. 3:35 BW"
+  },
+  {
+   "cat": "ongeldigheid",
+   "term": "Geestelijke stoornis (art. 3:34 BW)",
+   "def": "Een rechtshandeling verricht onder invloed van een geestelijke stoornis is vernietigbaar (als gericht op een wederpartij) of nietig (als eenzijdig ongericht, bijv. testament). Gerechtvaardigd vertrouwen van wederpartij kan geldigheid redden (art. 3:35 BW).",
+   "art": "art. 3:34 BW"
+  },
+  {
+   "cat": "ongeldigheid",
+   "term": "Strijd met wet, openbare orde of goede zeden (art. 3:40 BW)",
+   "def": "Strijd met een dwingende wetsbepaling: nietig, tenzij de bepaling alleen één partij beschermt, dan vernietigbaar. Strijd met openbare orde of goede zeden: nietig. Openbare orde = fundamentele beginselen van onze samenleving. Goede zeden = algemeen aanvaarde morele normen.",
+   "art": "art. 3:40 BW"
+  },
+  {
+   "cat": "ongeldigheid",
+   "term": "Bedreiging (art. 3:44 lid 2 BW)",
+   "def": "Wilsgebrek: iemand wordt door bedreiging bewogen tot een rechtshandeling. Vijf elementen vereist: (1) opzet, (2) onrechtmatige bedreiging, (3) zodanig dat een redelijk mens wordt beïnvloed, (4) nadeel in persoon of goed, (5) causaal verband. Gevolg: vernietigbaar.",
+   "art": "art. 3:44 lid 2 BW"
+  },
+  {
+   "cat": "ongeldigheid",
+   "term": "Bedrog (art. 3:44 lid 3 BW)",
+   "def": "Wilsgebrek: iemand wordt door opzettelijke misleiding bewogen tot een rechtshandeling. Drie elementen: (1) opzet, (2) onjuiste mededeling, zwijgen of kunstgreep, (3) causaal verband. Let op: algemene aanprijzingen zijn geen bedrog. Gevolg: vernietigbaar.",
+   "art": "art. 3:44 lid 3 BW"
+  },
+  {
+   "cat": "ongeldigheid",
+   "term": "Misbruik van omstandigheden (art. 3:44 lid 4 BW)",
+   "def": "Wilsgebrek: partij maakt misbruik van een bijzondere omstandigheid (onervarenheid, noodtoestand, afhankelijkheid) bij de andere partij. Drie elementen: (1) bijzondere omstandigheid, (2) kenbaarheid + bevordering, (3) causaal verband. Gevolg: vernietigbaar.",
+   "art": "art. 3:44 lid 4 BW"
+  },
+  {
+   "cat": "ongeldigheid",
+   "term": "Dwaling (art. 6:228 BW)",
+   "def": "Wilsgebrek: partij heeft een onjuiste voorstelling van zaken. Alleen bij overeenkomsten. Vereisten: (1) onjuiste voorstelling, (2) causaal verband, (3) één van drie situaties: inlichting wederpartij, ongeoorloofd zwijgen of wederzijdse dwaling. Gevolg: vernietigbaar.",
+   "art": "art. 6:228 BW"
+  },
+  {
+   "cat": "ongeldigheid",
+   "term": "Handelingsonbekwaamheid (art. 3:32 BW)",
+   "def": "Minderjarigen en onder curatele gestelden zijn handelingsonbekwaam: zij kunnen alleen met toestemming van wettelijk vertegenwoordiger rechtshandelingen verrichten. Rechtshandeling zonder toestemming: vernietigbaar (eenzijdig ongericht: nietig).",
+   "art": "art. 3:32 BW"
+  },
+  {
+   "cat": "overeenkomst",
+   "term": "Overeenkomst (art. 6:217 BW)",
+   "def": "Een meerzijdige rechtshandeling die tot stand komt door overeenstemmend aanbod en aanvaarding. Beide partijen moeten handelingsbekwaam zijn en de overeenkomst mag niet in strijd zijn met wet, openbare orde of goede zeden.",
+   "art": "art. 6:217 BW"
+  },
+  {
+   "cat": "overeenkomst",
+   "term": "Aanbod (art. 6:219 BW)",
+   "def": "Een voorstel tot het sluiten van een overeenkomst dat voldoende bepaald is (art. 6:227 BW). Kan herroepelijk, onherroepelijk of vrijblijvend zijn. Geldigheidsduur: mondeling → direct; schriftelijk → redelijke termijn (art. 6:221 BW).",
+   "art": "art. 6:219 BW"
+  },
+  {
+   "cat": "overeenkomst",
+   "term": "Aanvaarding (art. 6:225 BW)",
+   "def": "Onvoorwaardelijk akkoord met het aanbod. Als aanvaarding afwijkt van het aanbod: verwerping + nieuw (tegen)aanbod. Uitzondering: kleine afwijkingen op ondergeschikte punten (art. 6:225 lid 2 BW).",
+   "art": "art. 6:225 BW"
+  },
+  {
+   "cat": "overeenkomst",
+   "term": "Ontvangsttheorie (art. 3:37 lid 3 BW)",
+   "def": "Een verklaring heeft werking vanaf het moment dat zij de ontvanger bereikt (niet verzonden, maar ontvangen). Bepaalt wanneer een aanbod of aanvaarding effect heeft.",
+   "art": "art. 3:37 lid 3 BW"
+  },
+  {
+   "cat": "overeenkomst",
+   "term": "Uitnodiging tot aanbieding",
+   "def": "Geen aanbod maar een uitnodiging om een aanbod te doen (bijv. een advertentie voor een uniek goed). De adverteerder is niet verplicht te verkopen als slechts één persoon wil kopen, hij nodigt uit tot het doen van een aanbod."
+  },
+  {
+   "cat": "overeenkomst",
+   "term": "Vrijblijvend aanbod",
+   "def": "Aanbod waarbij de aanbieder zich het recht voorbehoudt om het aanbod in te trekken zelfs na ontvangst van de aanvaarding. Mag echter niet te kwader trouw worden ingetrokken."
+  },
+  {
+   "cat": "overeenkomst",
+   "term": "Koopovereenkomst",
+   "def": "Overeenkomst waarbij de verkoper een zaak levert en de koper de koopprijs betaalt. Meest voorkomende contractvorm in de praktijk."
+  },
+  {
+   "cat": "overeenkomst",
+   "term": "Aannemingsovereenkomst",
+   "def": "Overeenkomst waarbij de aannemer zich verbindt om een werk van stoffelijke aard tot stand te brengen en op te leveren (bouw, renovatie, installatie)."
+  },
+  {
+   "cat": "overeenkomst",
+   "term": "Dienstverleningsovereenkomst",
+   "def": "Overeenkomst waarbij de opdrachtnemer diensten verleent aan de opdrachtgever (bijv. catering, schoonmaak, beveiliging, advies). Veelvoorkomend in facilitaire inkoop."
+  },
+  {
+   "cat": "overeenkomst",
+   "term": "Huurovereenkomst",
+   "def": "Overeenkomst waarbij de verhuurder het gebruik van een zaak ter beschikking stelt aan de huurder voor een bepaalde tijd, in ruil voor een tegenprestatie (huurprijs)."
+  },
+  {
+   "cat": "overeenkomst",
+   "term": "Arbeidsovereenkomst",
+   "def": "Overeenkomst waarbij de werknemer arbeid verricht in dienst van de werkgever, in ruil voor loon, in een gezagsverhouding. Geregeld in Boek 7 BW."
+  },
+  {
+   "cat": "overeenkomst",
+   "term": "Algemene voorwaarden (art. 6:233 BW)",
+   "def": "Standaardbedingen die van toepassing zijn op meerdere overeenkomsten. Moeten vóór het sluiten van de overeenkomst ter hand gesteld worden, anders vernietigbaar. Onredelijk bezwarende bedingen kunnen worden vernietigd. B2C: meer consumentenbescherming dan B2B.",
+   "art": "art. 6:233 BW"
+  },
+  {
+   "cat": "overeenkomst",
+   "term": "Wilsovereenstemming",
+   "def": "Beide partijen zijn het eens over de wezenlijke onderdelen van de overeenkomst (wat, hoeveel, prijs, levering). Vereiste voor het tot stand komen van een geldige overeenkomst."
+  },
+  {
+   "cat": "volmacht",
+   "term": "Volmacht (art. 3:60 BW)",
+   "def": "Een bevoegdheid die een gevolmachtigde van de volmachtgever heeft gekregen om namens hem rechtshandelingen te verrichten die de volmachtgever direct binden. Kan mondeling, schriftelijk of stilzwijgend worden verleend.",
+   "art": "art. 3:60 BW"
+  },
+  {
+   "cat": "volmacht",
+   "term": "Volmachtgever",
+   "def": "De persoon die de volmacht verleent en door de rechtshandelingen van de gevolmachtigde wordt gebonden. Verantwoordelijk voor de gevolgen van bevoegd handelen van de gevolmachtigde."
+  },
+  {
+   "cat": "volmacht",
+   "term": "Gevolmachtigde",
+   "def": "De persoon die de volmacht ontvangt en namens de volmachtgever rechtshandelingen mag verrichten. Handelt voor rekening en risico van de volmachtgever, binnen de grenzen van de volmacht."
+  },
+  {
+   "cat": "volmacht",
+   "term": "Algemene volmacht (art. 3:62 lid 1 BW)",
+   "def": "Volmacht die de gevolmachtigde bevoegd maakt tot alle rechtshandelingen die de volmachtgever zelf ook mag verrichten. Ruime reikwijdte.",
+   "art": "art. 3:62 lid 1 BW"
+  },
+  {
+   "cat": "volmacht",
+   "term": "Bijzondere volmacht (art. 3:62 lid 2 BW)",
+   "def": "Volmacht beperkt tot een of meer specifiek genoemde rechtshandelingen of een bepaald doel. Engere reikwijdte dan algemene volmacht.",
+   "art": "art. 3:62 lid 2 BW"
+  },
+  {
+   "cat": "volmacht",
+   "term": "Bevoegde vertegenwoordiging (art. 3:66 BW)",
+   "def": "De gevolmachtigde handelt binnen de grenzen van de volmacht. Gevolg: de rechtshandeling treft de volmachtgever direct, alsof hij het zelf heeft gedaan. art. 3:66 lid 1 BW",
+   "art": "art. 3:66 lid 1 BW"
+  },
+  {
+   "cat": "volmacht",
+   "term": "Onbevoegde vertegenwoordiging",
+   "def": "De gevolmachtigde handelt buiten de grenzen van de volmacht. Gevolg: de rechtshandeling treft de volmachtgever in beginsel NIET. Uitzonderingen: schijn van volmacht (art. 3:61 lid 2) of bekrachtiging (art. 3:69)."
+  },
+  {
+   "cat": "volmacht",
+   "term": "Schijn van volmacht (art. 3:61 lid 2 BW)",
+   "def": "Als de wederpartij redelijkerwijs mocht aannemen dat een volmacht was verleend, is de volmachtgever toch gebonden, ook al was er geen volmacht. Beschermt de goede trouw van de wederpartij.",
+   "art": "art. 3:61 lid 2 BW"
+  },
+  {
+   "cat": "volmacht",
+   "term": "Bekrachtiging (art. 3:69 BW)",
+   "def": "De volmachtgever keurt de onbevoegde rechtshandeling achteraf goed. Gevolg: de rechtshandeling wordt alsnog aan hem toegerekend, met terugwerkende kracht. art. 3:69 lid 1 BW",
+   "art": "art. 3:69 lid 1 BW"
+  },
+  {
+   "cat": "volmacht",
+   "term": "Instaan voor de volmacht (art. 3:70 BW)",
+   "def": "Als de gevolmachtigde onbevoegd heeft gehandeld én geen uitzondering van toepassing is, moet hij zelf instaan voor de volmacht: hij is aansprakelijk voor de schade die de wederpartij daardoor lijdt.",
+   "art": "art. 3:70 BW"
+  },
+  {
+   "cat": "tekortkoming",
+   "term": "Tekortkoming / Wanprestatie",
+   "def": "Het geheel niet, te laat, gedeeltelijk of onbehoorlijk nakomen van een contractuele verplichting. Kan leiden tot vier acties: nakoming, opschorting, schadevergoeding of ontbinding."
+  },
+  {
+   "cat": "tekortkoming",
+   "term": "Tijdig klagen (art. 6:89 BW)",
+   "def": "Een schuldeiser die een gebrek ontdekt, moet de schuldenaar hierover tijdig informeren. Wie niet tijdig klaagt, verliest zijn recht op schadevergoeding of ontbinding.",
+   "art": "art. 6:89 BW"
+  },
+  {
+   "cat": "tekortkoming",
+   "term": "Nakoming (art. 3:296 BW)",
+   "def": "De schuldeiser vordert dat de schuldenaar alsnog presteert wat is overeengekomen. Drie vereisten: (1) opeisbare vordering, (2) tekortkoming, (3) nakoming nog niet blijvend onmogelijk. Toerekenbaarheid is niet vereist.",
+   "art": "art. 3:296 BW"
+  },
+  {
+   "cat": "tekortkoming",
+   "term": "Opschorting (art. 6:52 BW)",
+   "def": "Tijdelijk weigeren van de eigen prestatie als drukmiddel totdat de wederpartij nakomt. Vier vereisten: (1) opeisbare vordering, (2) connexiteit (samenhang), (3) proportionaliteit, (4) nakoming niet blijvend onmogelijk.",
+   "art": "art. 6:52 BW"
+  },
+  {
+   "cat": "tekortkoming",
+   "term": "Connexiteit",
+   "def": "Vereiste voor opschorting: er moet voldoende samenhang bestaan tussen de vordering en de op te schorten verbintenis (art. 6:52 lid 1 BW). Bijv. zelfde rechtsverhouding of regelmatig zaken doen samen."
+  },
+  {
+   "cat": "tekortkoming",
+   "term": "Retentierecht (art. 3:290 BW)",
+   "def": "Het recht om een zaak van een ander onder zich te houden totdat de vordering op die ander is voldaan. Bijv. een reparateur houdt de gerepareerde auto totdat de factuur betaald is.",
+   "art": "art. 3:290 BW"
+  },
+  {
+   "cat": "tekortkoming",
+   "term": "Schadevergoeding wegens wanprestatie (art. 6:74 BW)",
+   "def": "Financiële compensatie voor schade door tekortkoming. Vijf vereisten: (1) tekortkoming, (2) toerekenbaarheid, (3) schade, (4) causaal verband, (5) verzuim of blijvende onmogelijkheid. Onderscheid van ontbinding: toerekenbaarheid IS vereist.",
+   "art": "art. 6:74 BW"
+  },
+  {
+   "cat": "tekortkoming",
+   "term": "Toerekenbaarheid (art. 6:75 BW)",
+   "def": "De tekortkoming moet aan de schuldenaar kunnen worden toegerekend: schuld, of toerekening op grond van wet, rechtshandeling of verkeersopvattingen. Vereiste voor schadevergoeding (niet voor ontbinding).",
+   "art": "art. 6:75 BW"
+  },
+  {
+   "cat": "tekortkoming",
+   "term": "Overmacht (art. 6:75 BW)",
+   "def": "Een tekortkoming die niet aan de schuldenaar kan worden toegerekend: de oorzaak is buiten zijn schuld en risico. Gevolg: geen schadevergoedingsplicht. Ontbinding blijft wel mogelijk.",
+   "art": "art. 6:75 BW"
+  },
+  {
+   "cat": "tekortkoming",
+   "term": "Force majeure-clausule",
+   "def": "Contractuele bepaling die preciezer regelt wat als overmacht geldt dan de wettelijke uitleg van art. 6:75 BW. Bevat doorgaans: een lijst van kwalificerende gebeurtenissen (oorlog, pandemie, staking, energiecrisis, IT-storing), de gevolgen (opschorting, hardship-overleg, recht op ontbinding zonder schadevergoeding), een meldingsplicht binnen een afgesproken termijn en een mitigatieplicht. Voorkomt discussie tijdens incidenten."
+  },
+  {
+   "cat": "tekortkoming",
+   "term": "Mitigatieplicht",
+   "def": "Plicht van de getroffen partij om bij overmacht of dreigende schade redelijke maatregelen te nemen om de schade zoveel mogelijk te beperken (bijv. uitwijken naar een alternatieve leverancier). Volgt zowel uit de wet (art. 6:101 BW) als doorgaans expliciet uit force majeure-clausules."
+  },
+  {
+   "cat": "tekortkoming",
+   "term": "Hulppersonen (art. 6:76 BW)",
+   "def": "De schuldenaar is voor gedragingen van personen die hij inschakelt bij de uitvoering van de verbintenis (onderaannemers, ZZP'ers, leveranciers) op gelijke wijze aansprakelijk als voor eigen gedragingen. Bij outsourcing belangrijk: de uitbestedende partij blijft contractueel verantwoordelijk richting opdrachtgever.",
+   "art": "art. 6:76 BW"
+  },
+  {
+   "cat": "tekortkoming",
+   "term": "Ingebrekestelling (art. 6:82 BW)",
+   "def": "Schriftelijke aanmaning aan de schuldenaar om binnen een redelijke termijn alsnog na te komen. Noodzakelijke stap om verzuim te laten intreden (behalve in de gevallen van art. 6:83 BW).",
+   "art": "art. 6:82 BW"
+  },
+  {
+   "cat": "tekortkoming",
+   "term": "Verzuim (art. 6:81 BW)",
+   "def": "Toestand waarin de schuldenaar verkeert als hij na ingebrekestelling niet nakomt. Vereiste voor schadevergoeding (deels) en vervangende schadevergoeding. Treedt ook van rechtswege in bij: verstrijken afgesproken termijn, mededeling schuldenaar, of OD-grondslag. art. 6:81 en 6:83 BW",
+   "art": "art. 6:81 en 6:83 BW"
+  },
+  {
+   "cat": "tekortkoming",
+   "term": "Vermogensschade (art. 6:96 BW)",
+   "def": "Geleden verlies + gederfde winst. Twee categorieën die voor vergoeding in aanmerking komen bij wanprestatie en onrechtmatige daad.",
+   "art": "art. 6:96 BW"
+  },
+  {
+   "cat": "tekortkoming",
+   "term": "Smartengeld (art. 6:106 BW)",
+   "def": "Vergoeding van immaterieel nadeel (pijn, verdriet, geschokt rechtsgevoel). Wordt alleen toegekend in de door de wet bepaalde gevallen. Ook wel: ander nadeel dan vermogensschade.",
+   "art": "art. 6:106 BW"
+  },
+  {
+   "cat": "tekortkoming",
+   "term": "Condicio sine qua non (csqn)",
+   "def": "Het 'maar-voor-test' causaalverband: zou de schade ook geleden zijn zonder de tekortkoming? Als het antwoord nee is, is er causaal verband. Vereiste voor schadevergoeding. Aangevuld door de toerekeningsnorm (art. 6:98 BW)."
+  },
+  {
+   "cat": "tekortkoming",
+   "term": "Vertragingsschade",
+   "def": "Schade door te late nakoming. Verzuim is vereist; schade wordt slechts vergoed vanaf het moment van verzuim (art. 6:85 BW)."
+  },
+  {
+   "cat": "tekortkoming",
+   "term": "Gevolgschade",
+   "def": "Schade die verder strekt dan de te late of gebrekkige nakoming zelf. Verzuim is hiervoor niet vereist."
+  },
+  {
+   "cat": "tekortkoming",
+   "term": "Vervangende schadevergoeding",
+   "def": "Schadevergoeding die de waarde van de prestatie in geld uitdrukt, in plaats van nakoming te vorderen. Verzuim is vereist. Kan niet worden gecombineerd met ontbinding."
+  },
+  {
+   "cat": "tekortkoming",
+   "term": "Ontbinding (art. 6:265 BW)",
+   "def": "Beëindigen van de overeenkomst wegens tekortkoming. Vier vereisten: (1) wederkerige overeenkomst, (2) tekortkoming, (3) verzuim of onmogelijkheid, (4) tekortkoming rechtvaardigt ontbinding. Toerekenbaarheid is NIET vereist (verschil met schadevergoeding).",
+   "art": "art. 6:265 BW"
+  },
+  {
+   "cat": "tekortkoming",
+   "term": "Wederkerige overeenkomst",
+   "def": "Een overeenkomst met twee tegenover elkaar staande verbintenissen. Bijv. koop: levering (verkoper) tegenover betaling (koper). Vereiste voor ontbinding (art. 6:265 BW)."
+  },
+  {
+   "cat": "tekortkoming",
+   "term": "Ongedaanmaking (art. 6:271 BW)",
+   "def": "Na ontbinding moeten al verrichte prestaties ongedaan worden gemaakt (teruggeven). Als ongedaanmaking onmogelijk is, moet de waarde worden vergoed. art. 6:271 jo. 6:272 BW",
+   "art": "art. 6:271 jo. 6:272 BW"
+  },
+  {
+   "cat": "tekortkoming",
+   "term": "Combinaties van acties bij wanprestatie",
+   "def": "Toegestaan: nakoming + gevolgschade; opschorting + gevolgschade; ontbinding + gevolgschade; vervangende schadevergoeding + gevolgschade. Niet toegestaan: ontbinding + vervangende schadevergoeding tegelijk (vervangende schadevergoeding vervangt de nakoming)."
+  },
+  {
+   "cat": "onrechtmatige_daad",
+   "term": "Onrechtmatige daad (art. 6:162 BW)",
+   "def": "Buitencontractuele grondslag voor aansprakelijkheid: wie jegens een ander een onrechtmatige daad pleegt en daarvoor verantwoordelijk is, moet de daardoor veroorzaakte schade vergoeden. Geen overeenkomst tussen partijen vereist (verschil met wanprestatie).",
+   "art": "art. 6:162 BW"
+  },
+  {
+   "cat": "onrechtmatige_daad",
+   "term": "Vijf vereisten onrechtmatige daad",
+   "def": "Cumulatief: (1) onrechtmatige gedraging, (2) toerekenbaarheid, (3) schade, (4) causaal verband, (5) relativiteit. Pas als alle vijf voldaan zijn, is er aansprakelijkheid. art. 6:162–6:163 BW",
+   "art": "art. 6:162–6:163 BW"
+  },
+  {
+   "cat": "onrechtmatige_daad",
+   "term": "Onrechtmatige gedraging",
+   "def": "Drie categorieën: (a) inbreuk op een recht (eigendom, lichamelijke integriteit, eer en goede naam), (b) doen of nalaten in strijd met een wettelijke plicht, (c) doen of nalaten in strijd met de maatschappelijke zorgvuldigheid (ongeschreven recht). art. 6:162 lid 2 BW",
+   "art": "art. 6:162 lid 2 BW"
+  },
+  {
+   "cat": "onrechtmatige_daad",
+   "term": "Maatschappelijke zorgvuldigheid",
+   "def": "Ongeschreven norm: gedrag dat in het maatschappelijk verkeer betamelijk is. Beoordeling per geval. Klassiek voorbeeld: Kelderluik-arrest (HR 1965), wie een gevaarlijke situatie schept, moet maatregelen nemen om ongelukken te voorkomen."
+  },
+  {
+   "cat": "onrechtmatige_daad",
+   "term": "Toerekenbaarheid bij OD",
+   "def": "De daad moet aan de dader toe te rekenen zijn op grond van: (1) schuld (verwijtbaarheid), (2) wet (risicoaansprakelijkheid), of (3) verkeersopvattingen. Bij risicoaansprakelijkheid is schuld niet vereist. art. 6:162 lid 3 BW",
+   "art": "art. 6:162 lid 3 BW"
+  },
+  {
+   "cat": "onrechtmatige_daad",
+   "term": "Risicoaansprakelijkheid",
+   "def": "Aansprakelijkheid die op een specifieke persoon rust ongeacht schuld. De wet wijst de drager aan: ouders voor kinderen onder 14, werkgever voor werknemer, bezitter dier of opstal, producent voor gebrekkig product."
+  },
+  {
+   "cat": "onrechtmatige_daad",
+   "term": "Aansprakelijkheid voor kinderen onder 14",
+   "def": "Ouders of voogd zijn aansprakelijk voor schade door doen of nalaten van kinderen jonger dan 14 jaar, risicoaansprakelijkheid, geen schuld vereist. Bij 14–15 jaar: ouders aansprakelijk tenzij zij niet kan worden verweten dat zij de gedraging niet hebben belet (art. 6:169 lid 2 BW). art. 6:169 lid 1 BW",
+   "art": "art. 6:169 lid 1 BW"
+  },
+  {
+   "cat": "onrechtmatige_daad",
+   "term": "Werkgeversaansprakelijkheid",
+   "def": "De werkgever is aansprakelijk voor fouten van een ondergeschikte (werknemer) gemaakt in de uitoefening van zijn functie. De kans op de fout moet door de opgedragen taak zijn vergroot en de werkgever moet zeggenschap hebben gehad over de gedraging. art. 6:170 BW",
+   "art": "art. 6:170 BW"
+  },
+  {
+   "cat": "onrechtmatige_daad",
+   "term": "Aansprakelijkheid bezitter opstal",
+   "def": "De bezitter van een gebouw of werk is aansprakelijk voor schade door een gebrekkige toestand ervan. Risicoaansprakelijkheid: schuld niet vereist. Voor FM relevant bij vallende delen, glibberige vloeren, defecte trappen. art. 6:174 BW",
+   "art": "art. 6:174 BW"
+  },
+  {
+   "cat": "onrechtmatige_daad",
+   "term": "Productaansprakelijkheid",
+   "def": "De producent is aansprakelijk voor schade door een gebrekkig product. Schuld niet vereist. Bedoeld voor consumentenbescherming: lichamelijk letsel of schade aan privé-zaken. art. 6:185 e.v. BW",
+   "art": "art. 6:185 e.v. BW"
+  },
+  {
+   "cat": "onrechtmatige_daad",
+   "term": "Relativiteit (Schutznorm)",
+   "def": "De geschonden norm moet strekken tot bescherming tegen de schade die de benadeelde lijdt. Niet elke wetsovertreding levert aansprakelijkheid op tegenover iedereen. Klassieker: de norm 'rij niet door rood' beschermt verkeersdeelnemers, niet bijv. een aandeelhouder die door de file in waarde verliest. art. 6:163 BW",
+   "art": "art. 6:163 BW"
+  },
+  {
+   "cat": "onrechtmatige_daad",
+   "term": "Rechtvaardigingsgronden",
+   "def": "Omstandigheden die het onrechtmatige karakter wegnemen: noodweer, overmacht, wettelijk voorschrift, bevoegd gegeven ambtelijk bevel, toestemming van de benadeelde. Bewijslast bij wie zich erop beroept."
+  },
+  {
+   "cat": "onrechtmatige_daad",
+   "term": "Verschil OD versus wanprestatie",
+   "def": "Wanprestatie: binnen een bestaande overeenkomst (art. 6:74 BW), schadevergoeding vereist verzuim en toerekenbaarheid. OD: buitencontractueel (art. 6:162 BW), geen verzuim vereist, wél relativiteit. Bij samenloop kan benadeelde kiezen, tenzij wet of overeenkomst dat uitsluit."
+  },
+  {
+   "cat": "onrechtmatige_daad",
+   "term": "Verjaring OD-vordering",
+   "def": "De vordering uit onrechtmatige daad verjaart vijf jaar nadat de benadeelde bekend is geworden met zowel de schade als de aansprakelijke persoon. Absolute uiterste termijn: 20 jaar na de gebeurtenis (30 jaar bij milieuschade). art. 3:310 BW",
+   "art": "art. 3:310 BW"
+  }
+ ],
+ "oefentoetsen": []
+};
+window.RECHT.flashcards = window.RECHT.begrippen;

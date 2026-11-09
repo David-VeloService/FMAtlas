@@ -2,1480 +2,460 @@
 <html lang="nl">
 <head>
 <meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Samenvatting · Eventmanagement 1 — FM Atlas</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+<title>Samenvatting · Eventmanagement 1 · FM Atlas</title>
+<meta name="description" content="Samenvatting van Eventmanagement 1 op FM Atlas, studiehulp voor HAN Facilitair Management."/>
 <link rel="icon" type="image/svg+xml" href="logo.svg"/>
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png"/>
 <link rel="apple-touch-icon" href="apple-touch-icon.png"/>
-<meta name="theme-color" content="#f7f3ec"/>
+<meta name="theme-color" content="#efe5d4"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet"/>
-<link rel="stylesheet" href="css/fmatlas.css"/>
-<style>
-/* Legacy samenvatting restyle — FMAtlas look */
-.sam-wrap { max-width: 1100px; margin: 0 auto; padding: 24px; }
-.sam-intro { background: var(--surface); border: 1.5px solid var(--line); border-radius: var(--radius-xl); padding: 28px 32px; margin-bottom: 18px; }
-.sam-intro-meta { font-size: 11px; font-weight: 800; color: var(--accent); letter-spacing: 0.08em; margin-bottom: 8px; }
-.sam-intro h1 { font-size: 32px; font-weight: 900; letter-spacing: -0.025em; line-height: 1.08; margin-bottom: 10px; }
-.sam-intro p { color: var(--ink-soft); font-size: 14.5px; line-height: 1.6; }
-
-.toetsinfo { display: none; } /* hide original stripe */
-
-nav.chapnav { background: var(--surface); border: 1.5px solid var(--line); border-radius: var(--radius-lg); padding: 12px 16px; margin: 0 24px 18px; max-width: 1052px; margin-left: auto; margin-right: auto; display: flex; flex-wrap: wrap; gap: 6px; position: sticky; top: 68px; z-index: 20; }
-nav.chapnav a { color: var(--ink-soft); text-decoration: none; padding: 4px 10px; border-radius: 8px; background: var(--bg); font-weight: 800; font-size: 11.5px; border: 1.5px solid var(--line); transition: all 0.12s; }
-nav.chapnav a:hover { background: var(--accent-soft); color: var(--accent-deep); border-color: var(--accent); }
-
-.main { max-width: 1052px; margin: 0 auto; padding: 0 24px 60px; display: flex; flex-direction: column; gap: 18px; }
-
-/* Chapter cards */
-.card { background: var(--surface); border: 1.5px solid var(--line); border-radius: var(--radius-xl); overflow: hidden; scroll-margin-top: 140px; }
-.card-header { padding: 16px 22px; display: flex; align-items: center; gap: 10px; color: var(--surface); background: var(--ink); }
-.card-header h2 { font-size: 17px; font-weight: 900; letter-spacing: -0.015em; }
-.card-header .icon { font-size: 20px; }
-.card-body { padding: 22px 24px; }
-
-/* Chapter colors — using accent + neutrals */
-.h1, .h2, .h3, .h4, .h5, .h6, .h7, .h8, .h9, .h10, .h11, .h12, .hpv, .hec, .hrt, .hmk, .hbec { background: var(--ink); }
-.h1 { background: var(--accent); }
-.hec, .hrt, .hmk, .hbec, .hpv { background: var(--ink-soft); }
-
-/* Content elements */
-.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-.three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
-@media (max-width: 740px) { .two-col, .three-col { grid-template-columns: 1fr; } }
-
-.section { margin-bottom: 18px; }
-.section h3 { font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin-bottom: 8px; padding-bottom: 6px; border-bottom: 1.5px solid var(--line); }
-
-ul.clean { list-style: none; display: flex; flex-direction: column; gap: 5px; margin: 0; padding: 0; }
-ul.clean li { font-size: 13.5px; line-height: 1.55; padding: 3px 0 3px 16px; position: relative; color: var(--ink-soft); font-weight: 500; }
-ul.clean li::before { content: '›'; position: absolute; left: 0; top: 3px; color: var(--accent); font-weight: 900; }
-ul.clean li strong { color: var(--ink); font-weight: 800; }
-
-.defbox { background: var(--bg); border: 1.5px solid var(--line); border-left: 4px solid var(--accent); border-radius: 0 var(--radius) var(--radius) 0; padding: 10px 14px; margin-bottom: 10px; font-size: 13.5px; line-height: 1.55; color: var(--ink-soft); }
-.defbox strong { display: block; font-size: 10.5px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); margin-bottom: 4px; }
-
-.highlight { background: var(--accent-soft); border: 1.5px solid rgba(239, 90, 63, 0.25); border-radius: var(--radius); padding: 10px 14px; font-size: 13.5px; line-height: 1.55; margin-bottom: 10px; color: var(--accent-deep); font-weight: 600; }
-.highlight strong { color: var(--accent-deep); font-weight: 900; }
-
-.warn { background: #fff7ed; border-left: 3px solid #f59e0b; padding: 9px 14px; border-radius: 0 var(--radius) var(--radius) 0; font-size: 12.5px; color: #92400e; margin-bottom: 10px; font-weight: 600; }
-
-.tag { display: inline-block; padding: 2px 8px; border-radius: 999px; font-size: 11px; font-weight: 800; }
-.blue   { background: #dbeafe;  color: #1e40af; }
-.green  { background: #dcfce7;  color: #166534; }
-.purple { background: #ede9fe;  color: #5b21b6; }
-.orange { background: #ffedd5;  color: #9a3412; }
-.red    { background: #fee2e2;  color: #991b1b; }
-.yellow { background: #fef3c7;  color: #854d0e; }
-
-.grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-.grid3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
-@media (max-width: 600px) { .grid2, .grid3 { grid-template-columns: 1fr; } }
-
-.box { background: var(--bg); border: 1.5px solid var(--line); border-radius: var(--radius); padding: 12px 14px; }
-.box h4 { font-size: 12.5px; font-weight: 900; margin-bottom: 8px; color: var(--ink); letter-spacing: -0.005em; }
-
-.nummer { display: inline-flex; align-items:center; justify-content:center; background: var(--accent); color: var(--surface); width: 22px; height: 22px; border-radius: 50%; font-size: 11px; font-weight: 900; margin-right: 8px; flex-shrink: 0; }
-.stap { display: flex; align-items: center; gap: 4px; font-size: 13.5px; color: var(--ink-soft); padding: 4px 0; line-height: 1.5; }
-.stap strong { color: var(--ink); }
-
-table.compact { width: 100%; border-collapse: collapse; font-size: 12.5px; margin-top: 6px; }
-table.compact th, table.compact td { padding: 7px 10px; text-align: left; border-bottom: 1.5px solid var(--line); color: var(--ink-soft); }
-table.compact th { font-size: 10.5px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
-table.compact td strong { color: var(--ink); font-weight: 800; }
-</style>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="css/atlas.css"/>
+<link rel="stylesheet" href="css/leer.css"/>
 </head>
 <body>
+<div class="scene" aria-hidden="true"><i></i></div>
+<header class="topbar" id="topbar"></header>
 
-<div id="fa-header-slot"></div>
+<div class="leer">
+  <nav class="toc glass" id="toc" aria-label="Inhoud">
+    <button class="toc-toggle" type="button" id="toc-toggle" aria-expanded="false"><span id="toc-now"></span><span aria-hidden="true">▾</span></button>
+    <div class="toc-list">
+      <div class="toc-title">Samenvatting</div>
+      <a href="#h1"><span>H1, Het Project</span></a>
+      <a href="#h2"><span>H2, Mensen en Projecten</span></a>
+      <a href="#h3"><span>H3, Het Project van Begin tot Eind</span></a>
+      <a href="#h4"><span>H4, Planning</span></a>
+      <a href="#h5"><span>H5, De P6-Methode</span></a>
+      <a href="#h6"><span>H6, Maken van een Plan van Aanpak</span></a>
+      <a href="#h7"><span>H7, Agile en Scrum</span></a>
+      <a href="#h8"><span>H8, Projectvergaderingen</span></a>
+      <a href="#h9"><span>H9, Een Interview Afnemen</span></a>
+      <a href="#h10"><span>H10, Een Rapport Schrijven</span></a>
+      <a href="#h11"><span>H11, Een Presentatie Houden</span></a>
+      <a href="#h12"><span>H12, Een Managementsamenvatting Maken</span></a>
+      <a href="#pv"><span>Projectvaardigheden, Weken 1 t/m 7</span></a>
+      <a href="#ec"><span>Expert-college, Evenementen</span></a>
+      <a href="#recht"><span>Expert-college, Recht bij Evenementen</span></a>
+      <a href="#mkt"><span>Expert-les, Evenementenmarketing</span></a>
+      <a href="#bec"><span>Expert-college, BEC: Financiën bij Evenementen</span></a>
+      <a href="#s18"><span>Snelreferentie, De Lijstjes die je Moet Kennen</span></a>
+    </div>
+  </nav>
 
-<nav class="fa-breadcrumb">
-  <a href="app.html">Vakken</a>
-  <span>›</span>
-  <a href="eventmanagement1.html">Eventmanagement 1</a>
-  <span>›</span>
-  <span class="current">Samenvatting</span>
-</nav>
-
-<div class="sam-wrap">
-  <div class="sam-intro">
-    <div class="sam-intro-meta">SAMENVATTING · Grit H1 t/m H6 + expert-colleges</div>
-    <h1>Eventmanagement 1: projectmanagement, volledige studiesamenvatting</h1>
-    <p>De stof uit de lessen (Grit H1 t/m H6; voor het tentamen geldt het hele boek) plus projectvaardigheden en de expert-colleges samengevat. Blader via de navigatie of scroll door alle secties.</p>
+  <main class="lees" id="lees">
+<section class="sectie" id="h1">
+  <header class="lees-kop"><h1>H1, Het Project</h1></header>
+  <div class="tekst">
+<div class="kern">De stof uit de lessen (Grit H1 t/m H6; voor het tentamen geldt het hele boek) plus projectvaardigheden en de expert-colleges samengevat. Blader via de navigatie of scroll door alle secties.</div>
+<h3>3 soorten werkzaamheden</h3>
+<div class="kader glass"><p><strong>Improvisatie</strong>, ad hoc, geen plan, onzeker resultaat, veel flexibiliteit nodig<br><strong>Routinematig</strong>, herhaaldelijk, vaste procedures, voorspelbaar resultaat<br><strong>Projectmatig</strong>, tussenin, eenmalig, tijdelijk, planmatig in fasen met Plan van Aanpak</p></div>
+<h3>Definitie van een project</h3>
+<dl class="begrip"><dt>Definitie</dt><dd>Een tijdelijke samenwerking van mensen, uit verschillende vakgebieden, om binnen een vastgestelde tijd een vooraf vastgesteld projectresultaat te bereiken met een vastgesteld budget.</dd></dl>
+<ul><li><strong>Tijdelijk</strong>, start (kick-off) en eindpunt</li><li><strong>Uniek</strong> projectresultaat, eenmalig</li><li><strong>Projectdoel</strong>, de reden waarom</li><li><strong>Opdrachtgever</strong>, stelt budget + capaciteit beschikbaar (ook: sponsor)</li><li><strong>Projectorganisatie</strong>, tijdelijk, naast de lijnorganisatie</li><li><strong>Eigen budget</strong>, vooraf geschatte kosten</li><li><strong>Bewaking voortgang</strong>, via planning en rapportages</li></ul>
+<h3>5 soorten projecten</h3>
+<ul><li><strong>Technisch</strong>, nieuwe techniek/product, goed planbaar</li><li><strong>Sociaal</strong>, cultuur-/organisatieverandering</li><li><strong>Commercieel</strong>, geld verdienen, bijv. marktonderzoek</li><li><strong>Gemengd</strong>, combinatie van soorten</li><li><strong>Evenement</strong>, resultaat op vast moment (bijv. festival) ⭐</li></ul>
+<h3>Traditionele fasering (watervalmodel)</h3>
+<ul><li>1 <strong>Initiatief</strong>, idee, haalbaarheid onderzoeken → projectvoorstel</li><li>2 <strong>Definitie</strong>, eindresultaat vaststellen, eisen &amp; wensen → Plan van Aanpak</li><li>3 <strong>Ontwerp</strong>, hoe ziet resultaat eruit? Brainstormen → ontwerprapport</li><li>4 <strong>Voorbereiding</strong>, ontwerp realisatiegeschikt maken</li><li>5 <strong>Realisatie</strong>, uitvoering, implementatie, conversie</li><li>6 <strong>Nazorg</strong>, onderhoud en aanpassingen na oplevering</li></ul>
+<div class="kern"><strong>Doel fasering:</strong> aan het eind van elke fase kan de opdrachtgever beslissen: doorgaan / doorgaan met aanpassingen / stoppen</div>
+<h3>SMART-doelen</h3>
+<ul><li><strong>S</strong>pecifiek, grondig omschreven</li><li><strong>M</strong>eetbaar, aantoonbaar behaald</li><li><strong>A</strong>anwijsbaar/Acceptabel, iemand is verantwoordelijk</li><li><strong>R</strong>ealistisch, haalbaar en uitvoerbaar</li><li><strong>T</strong>ijdgebonden, met eindtijd</li></ul>
+<h3>MVO, 4 P's</h3>
+<ul><li><strong>Project</strong>, duurzaamheid meenemen in alle plannen</li><li><strong>People</strong>, rekening houden met welzijn, ontwikkeling, werkomstandigheden</li><li><strong>Planet</strong>, natuur &amp; milieu: energie besparen, afval scheiden</li><li><strong>Profit/Prosperity</strong>, duurzame winst op lange termijn</li></ul>
+<h3>Levenscyclus van een project</h3>
+<div class="kern">Initiatief → fasering → Realisatie → <strong>Exploitatie</strong> (gebruik) → Nazorg/onderhoud → Stagnatie → nieuw project</div>
   </div>
-</div>
+  <nav class="verder" aria-label="Vorige en volgende"><span></span><a class="glass" href="#h2"><span>H2, Mensen en Projecten</span> &#8250;</a></nav>
+</section>
 
-<div class="toetsinfo">
-  <strong>Toets:</strong> 80 meerkeuzevragen (juist/onjuist) &nbsp;|&nbsp; <strong>Voldoende:</strong> minimaal 60 goed &nbsp;|&nbsp;
-  <strong>Stof:</strong> Boek Projectmanagement (Roel Grit) H1–H12 · PowerPoints Theorie · Projectvaardigheden · Expert-colleges
-</div>
-
-<nav class="chapnav">
-  <a href="#h1">H1 Project</a>
-  <a href="#h2">H2 Mensen</a>
-  <a href="#h3">H3 Begin–Eind</a>
-  <a href="#h4">H4 Planning</a>
-  <a href="#h5">H5 6P-methode</a>
-  <a href="#h6">H6 Plan v/A</a>
-  <a href="#h7">H7 Agile/Scrum</a>
-  <a href="#h8">H8 Vergaderen</a>
-  <a href="#h9">H9 Interview</a>
-  <a href="#h10">H10 Rapport</a>
-  <a href="#h11">H11 Presentatie</a>
-  <a href="#h12">H12 Mgmt-sam.</a>
-  <a href="#pv">Projectvaardigh.</a>
-  <a href="#ec">Expert Evenementen</a>
-  <a href="#recht">Expert Recht</a>
-  <a href="#mkt">Expert Marketing</a>
-  <a href="#bec">Expert BEC</a>
-</nav>
-
-<div class="main">
-
-<!-- ===== H1 ===== -->
-<div class="card" id="h1">
-  <div class="card-header h1"><span class="icon" aria-hidden="true">🏗️</span><h2>H1 — Het Project</h2></div>
-  <div class="card-body">
-    <div class="two-col">
-      <div>
-        <div class="section">
-          <h3>3 soorten werkzaamheden</h3>
-          <div class="box">
-            <div style="display:flex;flex-direction:column;gap:6px;font-size:13px;color:var(--muted)">
-              <div><strong style="color:var(--fg)">Improvisatie</strong> — ad hoc, geen plan, onzeker resultaat, veel flexibiliteit nodig</div>
-              <div><strong style="color:var(--fg)">Routinematig</strong> — herhaaldelijk, vaste procedures, voorspelbaar resultaat</div>
-              <div><strong style="color:var(--fg)">Projectmatig</strong> — tussenin, eenmalig, tijdelijk, planmatig in fasen met Plan van Aanpak</div>
-            </div>
-          </div>
-        </div>
-        <div class="section">
-          <h3>Definitie van een project</h3>
-          <div class="defbox" style="border-color:#3b82f6;">
-            <strong>Definitie</strong>
-            Een tijdelijke samenwerking van mensen — uit verschillende vakgebieden — om binnen een vastgestelde tijd een vooraf vastgesteld projectresultaat te bereiken met een vastgesteld budget.
-          </div>
-          <ul class="clean">
-            <li><strong>Tijdelijk</strong> — start (kick-off) en eindpunt</li>
-            <li><strong>Uniek</strong> projectresultaat — eenmalig</li>
-            <li><strong>Projectdoel</strong> — de reden waarom</li>
-            <li><strong>Opdrachtgever</strong> — stelt budget + capaciteit beschikbaar (ook: sponsor)</li>
-            <li><strong>Projectorganisatie</strong> — tijdelijk, naast de lijnorganisatie</li>
-            <li><strong>Eigen budget</strong> — vooraf geschatte kosten</li>
-            <li><strong>Bewaking voortgang</strong> — via planning en rapportages</li>
-          </ul>
-        </div>
-        <div class="section">
-          <h3>5 soorten projecten</h3>
-          <ul class="clean">
-            <li><strong>Technisch</strong> — nieuwe techniek/product, goed planbaar</li>
-            <li><strong>Sociaal</strong> — cultuur-/organisatieverandering</li>
-            <li><strong>Commercieel</strong> — geld verdienen, bijv. marktonderzoek</li>
-            <li><strong>Gemengd</strong> — combinatie van soorten</li>
-            <li><strong>Evenement</strong> — resultaat op vast moment (bijv. festival) ⭐</li>
-          </ul>
-        </div>
-      </div>
-      <div>
-        <div class="section">
-          <h3>Traditionele fasering (watervalmodel)</h3>
-          <div style="display:flex;flex-direction:column;gap:4px;">
-            <div class="stap"><span class="nummer">1</span><span><strong>Initiatief</strong> — idee, haalbaarheid onderzoeken → projectvoorstel</span></div>
-            <div class="stap"><span class="nummer">2</span><span><strong>Definitie</strong> — eindresultaat vaststellen, eisen & wensen → Plan van Aanpak</span></div>
-            <div class="stap"><span class="nummer">3</span><span><strong>Ontwerp</strong> — hoe ziet resultaat eruit? Brainstormen → ontwerprapport</span></div>
-            <div class="stap"><span class="nummer">4</span><span><strong>Voorbereiding</strong> — ontwerp realisatiegeschikt maken</span></div>
-            <div class="stap"><span class="nummer">5</span><span><strong>Realisatie</strong> — uitvoering, implementatie, conversie</span></div>
-            <div class="stap"><span class="nummer">6</span><span><strong>Nazorg</strong> — onderhoud en aanpassingen na oplevering</span></div>
-          </div>
-          <div class="highlight" style="margin-top:8px;">
-            <strong>Doel fasering:</strong> aan het eind van elke fase kan de opdrachtgever beslissen: doorgaan / doorgaan met aanpassingen / stoppen
-          </div>
-        </div>
-        <div class="section">
-          <h3>SMART-doelen</h3>
-          <ul class="clean">
-            <li><strong>S</strong>pecifiek — grondig omschreven</li>
-            <li><strong>M</strong>eetbaar — aantoonbaar behaald</li>
-            <li><strong>A</strong>anwijsbaar/Acceptabel — iemand is verantwoordelijk</li>
-            <li><strong>R</strong>ealistisch — haalbaar en uitvoerbaar</li>
-            <li><strong>T</strong>ijdgebonden — met eindtijd</li>
-          </ul>
-        </div>
-        <div class="section">
-          <h3>MVO — 4 P's</h3>
-          <ul class="clean">
-            <li><strong>Project</strong> — duurzaamheid meenemen in alle plannen</li>
-            <li><strong>People</strong> — rekening houden met welzijn, ontwikkeling, werkomstandigheden</li>
-            <li><strong>Planet</strong> — natuur & milieu: energie besparen, afval scheiden</li>
-            <li><strong>Profit/Prosperity</strong> — duurzame winst op lange termijn</li>
-          </ul>
-        </div>
-        <div class="section">
-          <h3>Levenscyclus van een project</h3>
-          <div class="highlight">Initiatief → fasering → Realisatie → <strong>Exploitatie</strong> (gebruik) → Nazorg/onderhoud → Stagnatie → nieuw project</div>
-        </div>
-      </div>
-    </div>
+<section class="sectie" id="h2">
+  <header class="lees-kop"><h1>H2, Mensen en Projecten</h1></header>
+  <div class="tekst">
+<h3>Lijnorganisatie vs. Projectorganisatie</h3>
+<ul><li><strong>Lijnorganisatie</strong>, normale hiërarchie, lijn- en stafafdelingen</li><li><strong>Stafafdeling</strong>, geeft advies/ondersteuning (bijv. P&amp;O, administratie), geen bevelsbevoegdheid</li><li><strong>Projectorganisatie</strong>, staat buiten de lijnorganisatie, tijdelijk</li><li><strong>Twee-bazen-probleem</strong>, projectlid heeft zowel afdelingshoofd als projectleider als leidinggevende</li></ul>
+<h3>Functies in en om een project</h3>
+<ul><li><strong>Opdrachtgever</strong>, stelt doel, budget en opdracht vast; neemt eindbesluit</li><li><strong>Stuurgroep</strong>, beheert meerdere projecten, informatie-uitwisseling, directielid + projectleiders</li><li><strong>Projectmanager/-leider</strong>, eindverantwoordelijk voor resultaat</li><li><strong>Werkgroepen</strong>, voeren deeltaken uit</li><li><strong>Klankbordgroep</strong>, ervaringen uitwisselen</li></ul>
+<h3>Leiderschap: Taak- vs. Mensgericht</h3>
+<ul><li><strong>Taakgericht</strong>, focust op resultaat, kan projectleden overbelasten</li><li><strong>Mensgericht</strong>, focust op team, kan resultaat verloren laten gaan</li><li>Ideaal = balans tussen beiden</li><li><strong>Deserteur</strong>, noch taak- noch mensgericht; vlucht van verantwoordelijkheden</li></ul>
+<h3>Besluitvorming in een project</h3>
+<ul><li><strong>Meerderheid van stemmen</strong>, meeste stemmen gelden; minderheid kan tegenwerken</li><li><strong>Consensus</strong>, niet gestemd, kost tijd, maar effectief; iedereen kan leven met besluit</li><li><strong>Unanimiteit</strong>, iedereen is het eens</li><li><strong>Gebrek aan negatieve reacties</strong>, voorstel waarop iedereen positief reageert</li></ul>
+<h3>Brainstormen (H2)</h3>
+<ul><li>Doel: zo veel mogelijk ideeën genereren</li><li>Spelregel: geen kritiek op andermans ideeën</li><li>Methoden: brainstorm, delphi, nominaal, mindmapping</li></ul>
+<h3>Onderhandelen, tips</h3>
+<ul><li>Bereid je voor; bepaal streefresultaat en strategie</li><li>Focus op resultaat; toon respect</li><li>Laat je niet onder druk zetten; laat ander in zijn waarde</li></ul>
+<h3>Teamrollen Belbin (9 rollen) ⭐</h3>
+<div class="kader glass"><h4>Denkrollen</h4><ul><li><strong>Plant</strong>, creatieveling met fantasie, origineel maar slordig</li><li><strong>Specialist</strong>, veel vakkennis, weinig oog voor geheel</li><li><strong>Monitor</strong>, kritisch, nuchter, goed beoordelingsvermogen</li></ul></div>
+<div class="kader glass"><h4>Actierollen</h4><ul><li><strong>Afmaker</strong>, perfectionistisch, kwaliteitsbewust, gespannen</li><li><strong>Bedrijfsman</strong>, harde werker, zelf-discipline, niet zo flexibel</li><li><strong>Vormer</strong>, ambitieus, dynamisch, ongeduldig</li></ul></div>
+<div class="kader glass"><h4>Sociale rollen</h4><ul><li><strong>Voorzitter</strong>, delegeert, motiveert, niet creatief</li><li><strong>Groepswerker</strong>, diplomatiek, bevordert teamgeest, gevoelig</li><li><strong>Brononderzoeker</strong>, nieuwsgierig, enthousiast, legt contacten</li></ul></div>
+<div class="let-op"><b>Let op</b>Één persoon kan meerdere rollen vervullen!</div>
+<h3>Communicatiekruispunt</h3>
+<ul><li><strong>Informeren</strong>, eenzijdig (website, nieuwsbrief)</li><li><strong>Overreden</strong>, YouTube, beelden (overtuigen)</li><li><strong>Dialoog</strong>, kennis opdoen via aanvullende kanalen</li><li><strong>Formeren</strong>, actieve samenwerking via Facebook/Yammer</li></ul>
+<h3>IPMA, Ethiek</h3>
+<ul><li>Houdt zich aan wetten en ethische normen</li><li>Rekening met ethische grenzen en duurzaamheid</li><li>Houdt zich aan gangbare regels projectmanagement</li></ul>
   </div>
-</div>
+  <nav class="verder" aria-label="Vorige en volgende"><a class="glass" href="#h1">&#8249; <span>H1, Het Project</span></a><a class="glass" href="#h3"><span>H3, Het Project van Begin tot Eind</span> &#8250;</a></nav>
+</section>
 
-<!-- ===== H2 ===== -->
-<div class="card" id="h2">
-  <div class="card-header h2"><span class="icon" aria-hidden="true">👥</span><h2>H2 — Mensen en Projecten</h2></div>
-  <div class="card-body">
-    <div class="two-col">
-      <div>
-        <div class="section">
-          <h3>Lijnorganisatie vs. Projectorganisatie</h3>
-          <ul class="clean">
-            <li><strong>Lijnorganisatie</strong> — normale hiërarchie, lijn- en stafafdelingen</li>
-            <li><strong>Stafafdeling</strong> — geeft advies/ondersteuning (bijv. P&O, administratie), geen bevelsbevoegdheid</li>
-            <li><strong>Projectorganisatie</strong> — staat buiten de lijnorganisatie, tijdelijk</li>
-            <li><strong>Twee-bazen-probleem</strong> — projectlid heeft zowel afdelingshoofd als projectleider als leidinggevende</li>
-          </ul>
-        </div>
-        <div class="section">
-          <h3>Functies in en om een project</h3>
-          <ul class="clean">
-            <li><strong>Opdrachtgever</strong> — stelt doel, budget en opdracht vast; neemt eindbesluit</li>
-            <li><strong>Stuurgroep</strong> — beheert meerdere projecten, informatie-uitwisseling, directielid + projectleiders</li>
-            <li><strong>Projectmanager/-leider</strong> — eindverantwoordelijk voor resultaat</li>
-            <li><strong>Werkgroepen</strong> — voeren deeltaken uit</li>
-            <li><strong>Klankbordgroep</strong> — ervaringen uitwisselen</li>
-          </ul>
-        </div>
-        <div class="section">
-          <h3>Leiderschap: Taak- vs. Mensgericht</h3>
-          <ul class="clean">
-            <li><strong>Taakgericht</strong> — focust op resultaat, kan projectleden overbelasten</li>
-            <li><strong>Mensgericht</strong> — focust op team, kan resultaat verloren laten gaan</li>
-            <li>Ideaal = balans tussen beiden</li>
-            <li><strong>Deserteur</strong> — noch taak- noch mensgericht; vlucht van verantwoordelijkheden</li>
-          </ul>
-        </div>
-        <div class="section">
-          <h3>Besluitvorming in een project</h3>
-          <ul class="clean">
-            <li><strong>Meerderheid van stemmen</strong> — meeste stemmen gelden; minderheid kan tegenwerken</li>
-            <li><strong>Consensus</strong> — niet gestemd, kost tijd, maar effectief; iedereen kan leven met besluit</li>
-            <li><strong>Unanimiteit</strong> — iedereen is het eens</li>
-            <li><strong>Gebrek aan negatieve reacties</strong> — voorstel waarop iedereen positief reageert</li>
-          </ul>
-        </div>
-        <div class="section">
-          <h3>Brainstormen (H2)</h3>
-          <ul class="clean">
-            <li>Doel: zo veel mogelijk ideeën genereren</li>
-            <li>Spelregel: geen kritiek op andermans ideeën</li>
-            <li>Methoden: brainstorm, delphi, nominaal, mindmapping</li>
-          </ul>
-        </div>
-        <div class="section">
-          <h3>Onderhandelen — tips</h3>
-          <ul class="clean">
-            <li>Bereid je voor; bepaal streefresultaat en strategie</li>
-            <li>Focus op resultaat; toon respect</li>
-            <li>Laat je niet onder druk zetten; laat ander in zijn waarde</li>
-          </ul>
-        </div>
-      </div>
-      <div>
-        <div class="section">
-          <h3>Teamrollen Belbin (9 rollen) ⭐</h3>
-          <div class="box">
-            <h4>🧠 Denkrollen</h4>
-            <ul class="clean">
-              <li><strong>Plant</strong> — creatieveling met fantasie, origineel maar slordig</li>
-              <li><strong>Specialist</strong> — veel vakkennis, weinig oog voor geheel</li>
-              <li><strong>Monitor</strong> — kritisch, nuchter, goed beoordelingsvermogen</li>
-            </ul>
-          </div>
-          <div class="box" style="margin-top:6px;">
-            <h4>⚡ Actierollen</h4>
-            <ul class="clean">
-              <li><strong>Afmaker</strong> — perfectionistisch, kwaliteitsbewust, gespannen</li>
-              <li><strong>Bedrijfsman</strong> — harde werker, zelf-discipline, niet zo flexibel</li>
-              <li><strong>Vormer</strong> — ambitieus, dynamisch, ongeduldig</li>
-            </ul>
-          </div>
-          <div class="box" style="margin-top:6px;">
-            <h4>🤝 Sociale rollen</h4>
-            <ul class="clean">
-              <li><strong>Voorzitter</strong> — delegeert, motiveert, niet creatief</li>
-              <li><strong>Groepswerker</strong> — diplomatiek, bevordert teamgeest, gevoelig</li>
-              <li><strong>Brononderzoeker</strong> — nieuwsgierig, enthousiast, legt contacten</li>
-            </ul>
-          </div>
-          <div class="warn">Één persoon kan meerdere rollen vervullen!</div>
-        </div>
-        <div class="section">
-          <h3>Communicatiekruispunt</h3>
-          <ul class="clean">
-            <li><strong>Informeren</strong> — eenzijdig (website, nieuwsbrief)</li>
-            <li><strong>Overreden</strong> — YouTube, beelden (overtuigen)</li>
-            <li><strong>Dialoog</strong> — kennis opdoen via aanvullende kanalen</li>
-            <li><strong>Formeren</strong> — actieve samenwerking via Facebook/Yammer</li>
-          </ul>
-        </div>
-        <div class="section">
-          <h3>IPMA — Ethiek</h3>
-          <ul class="clean">
-            <li>Houdt zich aan wetten en ethische normen</li>
-            <li>Rekening met ethische grenzen en duurzaamheid</li>
-            <li>Houdt zich aan gangbare regels projectmanagement</li>
-          </ul>
-        </div>
-      </div>
-    </div>
+<section class="sectie" id="h3">
+  <header class="lees-kop"><h1>H3, Het Project van Begin tot Eind</h1></header>
+  <div class="tekst">
+<h3>Aanleiding tot een project</h3>
+<ul><li>Spontaan (interne/externe signalen)</li><li>SWOT-analyse → kansen/bedreigingen</li><li>Periodieke plannen</li></ul>
+<div class="kern">Management kan signalen: <strong>niets doen</strong> · <strong>oplossen in lijn</strong> · <strong>projectvoorstel schrijven</strong> · <strong>direct project starten</strong></div>
+<h3>Projectstart-up / Kick-off</h3>
+<ul><li>Officieel begin van het project</li><li>Doel: saamhorigheidsgevoel creëren</li><li>Haalbaarheidsonderzoek → go/no-go beslissing</li></ul>
+<h3>Beheersaspecten GOKIT ⭐ (ook: TGKIO; KOFTIG = GOKIT + Facilitair)</h3>
+<div class="let-op"><b>Let op</b>⚠️ GOKIT en TGKIO zijn dezelfde 5 aspecten in andere volgorde. KOFTIG voegt een 6e aspect toe: Facilitair.</div>
+<div class="tabel"><table><thead><tr><th>Letter</th><th>Beheersaspect</th><th>Wat bewak je?</th></tr></thead><tbody><tr><td>G</td><td>Geld</td><td>Financiën, kosten, baten</td></tr><tr><td>O</td><td>Organisatie</td><td>Samenwerking, teamstructuur</td></tr><tr><td>K</td><td>Kwaliteit</td><td>Eisen van opdrachtgever</td></tr><tr><td>I</td><td>Informatie</td><td>Communicatie, documentatie</td></tr><tr><td>T</td><td>Tijd</td><td>Planning, doorlooptijd</td></tr><tr><td>F</td><td>Facilitair (alleen KOFTIG)</td><td>Faciliteiten, locatie, voorzieningen, Expert BEC</td></tr></tbody></table></div>
+<p>KOFTIG = K, O, F, T, I, G (6 aspecten). GOKIT/TGKIO = 5 aspecten zonder Facilitair.</p>
+<h3>Risico's van projecten ⭐</h3>
+<dl class="begrip"><dt>Risico = kans × gevolg</dt><dd>Risico's bedreigen de beheersaspecten (GOKIT)</dd></dl>
+<h3>4 manieren van risicobeheersing</h3>
+<ul><li><strong>Voorkomen</strong>, maatregel zodat risico niet optreedt</li><li><strong>Verminderen</strong>, kans of gevolg verkleinen</li><li><strong>Overdragen</strong>, risico naar anderen schuiven (bijv. verzekering)</li><li><strong>Accepteren</strong>, risico voor lief nemen</li></ul>
+<h3>Projectmanagementmethoden (overzicht)</h3>
+<ul><li><strong>SDM</strong>, voor softwareontwikkeling, strakke fasering (waterval)</li><li><strong>Scrum</strong>, als opdrachtgever niet precies weet wat hij wil; flexibel</li><li><strong>PRINCE2</strong>, grote projecten in grote organisaties</li><li><strong>PMW</strong>, traditionele fasen, nadruk op beheersing en besluitvorming</li><li><strong>6P-methode</strong>, synthese, bruikbaar voor kleine en middelgrote projecten</li><li><strong>PMBok</strong>, kennisverzameling, best practices</li><li><strong>JBF-methode</strong>, 'janboerenfluitjes': geen methode, gewoon maar wat doen</li></ul>
+<h3>Duivelsdriehoek</h3>
+<div class="kern"><strong>Tijd – Geld – Kwaliteit</strong> staan op gespannen voet met elkaar. Er moet een evenwicht zijn. Als je één aanpast, beïnvloeden de andere twee.</div>
   </div>
-</div>
+  <nav class="verder" aria-label="Vorige en volgende"><a class="glass" href="#h2">&#8249; <span>H2, Mensen en Projecten</span></a><a class="glass" href="#h4"><span>H4, Planning</span> &#8250;</a></nav>
+</section>
 
-<!-- ===== H3 ===== -->
-<div class="card" id="h3">
-  <div class="card-header h3"><span class="icon" aria-hidden="true">📊</span><h2>H3 — Het Project van Begin tot Eind</h2></div>
-  <div class="card-body">
-    <div class="two-col">
-      <div>
-        <div class="section">
-          <h3>Aanleiding tot een project</h3>
-          <ul class="clean">
-            <li>Spontaan (interne/externe signalen)</li>
-            <li>SWOT-analyse → kansen/bedreigingen</li>
-            <li>Periodieke plannen</li>
-          </ul>
-          <div class="highlight">Management kan signalen: <strong>niets doen</strong> · <strong>oplossen in lijn</strong> · <strong>projectvoorstel schrijven</strong> · <strong>direct project starten</strong></div>
-        </div>
-        <div class="section">
-          <h3>Projectstart-up / Kick-off</h3>
-          <ul class="clean">
-            <li>Officieel begin van het project</li>
-            <li>Doel: saamhorigheidsgevoel creëren</li>
-            <li>Haalbaarheidsonderzoek → go/no-go beslissing</li>
-          </ul>
-        </div>
-        <div class="section">
-          <h3>Beheersaspecten GOKIT ⭐ (ook: TGKIO; KOFTIG = GOKIT + Facilitair)</h3>
-          <div class="warn">⚠️ GOKIT en TGKIO zijn dezelfde 5 aspecten in andere volgorde. KOFTIG voegt een 6e aspect toe: Facilitair.</div>
-          <table class="compact">
-            <tr><th>Letter</th><th>Beheersaspect</th><th>Wat bewak je?</th></tr>
-            <tr><td><span class="tag blue">G</span></td><td>Geld</td><td>Financiën, kosten, baten</td></tr>
-            <tr><td><span class="tag green">O</span></td><td>Organisatie</td><td>Samenwerking, teamstructuur</td></tr>
-            <tr><td><span class="tag purple">K</span></td><td>Kwaliteit</td><td>Eisen van opdrachtgever</td></tr>
-            <tr><td><span class="tag orange">I</span></td><td>Informatie</td><td>Communicatie, documentatie</td></tr>
-            <tr><td><span class="tag red">T</span></td><td>Tijd</td><td>Planning, doorlooptijd</td></tr>
-            <tr><td><span class="tag" style="background:#0f766e;color:#fff">F</span></td><td>Facilitair (alleen KOFTIG)</td><td>Faciliteiten, locatie, voorzieningen — Expert BEC</td></tr>
-          </table>
-          <p style="font-size:11px;color:var(--muted);margin-top:4px;">KOFTIG = K, O, F, T, I, G (6 aspecten). GOKIT/TGKIO = 5 aspecten zonder Facilitair.</p>
-        </div>
-      </div>
-      <div>
-        <div class="section">
-          <h3>Risico's van projecten ⭐</h3>
-          <div class="defbox" style="border-color:#0f766e;">
-            <strong>Risico = kans × gevolg</strong>
-            Risico's bedreigen de beheersaspecten (GOKIT)
-          </div>
-          <div class="section">
-            <h3>4 manieren van risicobeheersing</h3>
-            <ul class="clean">
-              <li><strong>Voorkomen</strong> — maatregel zodat risico niet optreedt</li>
-              <li><strong>Verminderen</strong> — kans of gevolg verkleinen</li>
-              <li><strong>Overdragen</strong> — risico naar anderen schuiven (bijv. verzekering)</li>
-              <li><strong>Accepteren</strong> — risico voor lief nemen</li>
-            </ul>
-          </div>
-        </div>
-        <div class="section">
-          <h3>Projectmanagementmethoden (overzicht)</h3>
-          <ul class="clean">
-            <li><strong>SDM</strong> — voor softwareontwikkeling, strakke fasering (waterval)</li>
-            <li><strong>Scrum</strong> — als opdrachtgever niet precies weet wat hij wil; flexibel</li>
-            <li><strong>PRINCE2</strong> — grote projecten in grote organisaties</li>
-            <li><strong>PMW</strong> — traditionele fasen, nadruk op beheersing en besluitvorming</li>
-            <li><strong>6P-methode</strong> — synthese, bruikbaar voor kleine en middelgrote projecten</li>
-            <li><strong>PMBok</strong> — kennisverzameling, best practices</li>
-            <li><strong>JBF-methode</strong> — 'janboerenfluitjes': geen methode, gewoon maar wat doen</li>
-          </ul>
-        </div>
-        <div class="section">
-          <h3>Duivelsdriehoek</h3>
-          <div class="highlight"><strong>Tijd – Geld – Kwaliteit</strong> staan op gespannen voet met elkaar. Er moet een evenwicht zijn. Als je één aanpast, beïnvloeden de andere twee.</div>
-        </div>
-      </div>
-    </div>
+<section class="sectie" id="h4">
+  <header class="lees-kop"><h1>H4, Planning</h1></header>
+  <div class="tekst">
+<h3>Doel van een planning</h3>
+<ul><li>Organiseren van werk van projectmedewerkers</li><li>Vaststellen totale projecttijd</li><li>Vaststellen gevolgen van een vertraging</li><li>Vaststellen kosten van het project</li></ul>
+<h3>Werkwijze planning opstellen</h3>
+<ul><li>1 Activiteiten uit projectresultaat halen → activiteitentabel</li><li>2 Doorlooptijd &amp; benodigde werktijd per activiteit toevoegen</li><li>3 Afhankelijkheden tussen activiteiten aangeven</li><li>4 Netwerkplanning maken</li><li>5 Strokenplanning (Gantt-chart) afleiden uit netwerkplanning</li></ul>
+<h3>Soorten planningen</h3>
+<div class="kader glass"><h4>Netwerkplanning</h4><p>Toont de <strong>afhankelijkheden</strong> tussen activiteiten. Laat zien welke activiteiten parallel kunnen en wat het <strong>kritische pad</strong> is (de langste route = minimale projectduur).</p></div>
+<div class="kader glass"><h4>Strokenplanning (Gantt-chart)</h4><p>Toont activiteiten in een <strong>tijdsbalk</strong>. Visueel overzicht van wie wat doet wanneer. Wordt afgeleid uit de netwerkplanning.</p></div>
+<h3>Begrippen</h3>
+<ul><li><strong>Doorlooptijd</strong>, de kalendertijd van start tot eind van een activiteit</li><li><strong>Werktijd</strong>, het aantal uren dat daadwerkelijk aan een activiteit besteed wordt</li><li><strong>Mijlpaal (milestone)</strong>, belangrijk tussenresultaat in de planning</li></ul>
+<h3>Earned Value Management (EVM), rekenvoorbeeld</h3>
+<p>EVM combineert planning, voortgang en kosten in één set kengetallen. Vier basiswaarden:</p>
+<div class="tabel"><table><thead><tr><th>Begrip</th><th>Wat het is</th><th>Formule</th></tr></thead><tbody><tr><td><strong>BAC</strong></td><td>Budget at Completion, totaal projectbudget</td><td>vooraf vastgesteld</td></tr><tr><td><strong>PV</strong></td><td>Planned Value, gepland gewerkt budget tot meetmoment</td><td>% gepland × BAC</td></tr><tr><td><strong>EV</strong></td><td>Earned Value, daadwerkelijk verdiend budget (waarde van wat af is)</td><td>% gereed × BAC</td></tr><tr><td><strong>AC</strong></td><td>Actual Cost, werkelijk gemaakte kosten tot meetmoment</td><td>direct meten</td></tr></tbody></table></div>
+<div class="kern">// Afwijkingen<br>SV = EV − PV // Schedule Variance, &gt; 0 voor op schema, &lt; 0 vertraging<br>CV = EV − AC // Cost Variance, &gt; 0 onder budget, &lt; 0 over budget// Performance-indices<br>SPI = EV / PV // &gt; 1 op schema, &lt; 1 vertraging<br>CPI = EV / AC // &gt; 1 onder budget, &lt; 1 over budget// Voorspelling eindkosten<br>EAC = BAC / CPI // Estimate at Completion, verwacht eindbudget</div>
+<dl class="begrip"><dt>Voorbeeld</dt><dd>Project van € 100.000 (BAC), looptijd 10 maanden. Na 5 maanden zou er volgens planning 50% af moeten zijn (PV = € 50.000). In werkelijkheid is 40% gereed (EV = € 40.000) en is er € 55.000 uitgegeven (AC = € 55.000).<br>SV = 40.000 − 50.000 = <strong>−10.000</strong> → vertraging<br>CV = 40.000 − 55.000 = <strong>−15.000</strong> → over budget<br>SPI = 40.000 / 50.000 = <strong>0,80</strong> → 20% achter op schema<br>CPI = 40.000 / 55.000 = <strong>0,73</strong> → elke euro levert maar € 0,73 aan werk op; het project is zo’n 37% duurder dan gepland (55 / 40 = 1,375)<br>EAC = 100.000 / 0,73 ≈ <strong>€ 137.000</strong> → bij dezelfde efficiency loopt het project € 37.000 over budget.</dd></dl>
+<h3>Stakeholdermanagement, power/interest-matrix</h3>
+<p>Stakeholders zijn alle personen of partijen die invloed hebben op het project of erdoor beïnvloed worden. Plot ze op twee assen: hoeveel <strong>macht</strong> (kunnen ze beslissingen forceren?) en hoeveel <strong>belang</strong> (raakt het project hen direct?).</p>
+<div class="tabel"><table><thead><tr><th></th><th>Lage macht</th><th>Hoge macht</th></tr></thead><tbody><tr><td><strong>Hoog belang</strong></td><td><em>Informeren</em>, actief op de hoogte houden, behoud betrokkenheid</td><td><em>Nauw betrekken</em> (manage closely), intensief betrekken, sleutelfiguren</td></tr><tr><td><strong>Laag belang</strong></td><td><em>Monitor</em>, minimale aandacht, alleen bij verandering</td><td><em>Tevreden houden</em>, niet onnodig storen, wel risico bewaken</td></tr></tbody></table></div>
+<p>Werkwijze: lijst opstellen → scoren op macht en belang → in matrix plotten → strategie per kwadrant kiezen → herzien per fase, want belang en macht verschuiven door de tijd.</p>
   </div>
-</div>
+  <nav class="verder" aria-label="Vorige en volgende"><a class="glass" href="#h3">&#8249; <span>H3, Het Project van Begin tot Eind</span></a><a class="glass" href="#h5"><span>H5, De P6-Methode</span> &#8250;</a></nav>
+</section>
 
-<!-- ===== H4 ===== -->
-<div class="card" id="h4">
-  <div class="card-header h4"><span class="icon" aria-hidden="true">📅</span><h2>H4 — Planning</h2></div>
-  <div class="card-body">
-    <div class="two-col">
-      <div>
-        <div class="section">
-          <h3>Doel van een planning</h3>
-          <ul class="clean">
-            <li>Organiseren van werk van projectmedewerkers</li>
-            <li>Vaststellen totale projecttijd</li>
-            <li>Vaststellen gevolgen van een vertraging</li>
-            <li>Vaststellen kosten van het project</li>
-          </ul>
-        </div>
-        <div class="section">
-          <h3>Werkwijze planning opstellen</h3>
-          <div class="stap"><span class="nummer">1</span><span>Activiteiten uit projectresultaat halen → activiteitentabel</span></div>
-          <div class="stap"><span class="nummer">2</span><span>Doorlooptijd & benodigde werktijd per activiteit toevoegen</span></div>
-          <div class="stap"><span class="nummer">3</span><span>Afhankelijkheden tussen activiteiten aangeven</span></div>
-          <div class="stap"><span class="nummer">4</span><span>Netwerkplanning maken</span></div>
-          <div class="stap"><span class="nummer">5</span><span>Strokenplanning (Gantt-chart) afleiden uit netwerkplanning</span></div>
-        </div>
-      </div>
-      <div>
-        <div class="section">
-          <h3>Soorten planningen</h3>
-          <div class="box">
-            <h4>Netwerkplanning</h4>
-            <p style="font-size:13px;color:var(--muted)">Toont de <strong style="color:var(--fg)">afhankelijkheden</strong> tussen activiteiten. Laat zien welke activiteiten parallel kunnen en wat het <strong style="color:var(--fg)">kritische pad</strong> is (de langste route = minimale projectduur).</p>
-          </div>
-          <div class="box" style="margin-top:8px;">
-            <h4>Strokenplanning (Gantt-chart)</h4>
-            <p style="font-size:13px;color:var(--muted)">Toont activiteiten in een <strong style="color:var(--fg)">tijdsbalk</strong>. Visueel overzicht van wie wat doet wanneer. Wordt afgeleid uit de netwerkplanning.</p>
-          </div>
-        </div>
-        <div class="section">
-          <h3>Begrippen</h3>
-          <ul class="clean">
-            <li><strong>Doorlooptijd</strong> — de kalendertijd van start tot eind van een activiteit</li>
-            <li><strong>Werktijd</strong> — het aantal uren dat daadwerkelijk aan een activiteit besteed wordt</li>
-            <li><strong>Mijlpaal (milestone)</strong> — belangrijk tussenresultaat in de planning</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <div class="section" style="margin-top:18px;">
-      <h3>Earned Value Management (EVM) — rekenvoorbeeld</h3>
-      <p style="font-size:13px;color:var(--ink-soft);margin:0 0 8px;">EVM combineert planning, voortgang en kosten in één set kengetallen. Vier basiswaarden:</p>
-      <table class="compact">
-        <tr><th>Begrip</th><th>Wat het is</th><th>Formule</th></tr>
-        <tr><td><strong>BAC</strong></td><td>Budget at Completion — totaal projectbudget</td><td>vooraf vastgesteld</td></tr>
-        <tr><td><strong>PV</strong></td><td>Planned Value — gepland gewerkt budget tot meetmoment</td><td>% gepland × BAC</td></tr>
-        <tr><td><strong>EV</strong></td><td>Earned Value — daadwerkelijk verdiend budget (waarde van wat af is)</td><td>% gereed × BAC</td></tr>
-        <tr><td><strong>AC</strong></td><td>Actual Cost — werkelijk gemaakte kosten tot meetmoment</td><td>direct meten</td></tr>
-      </table>
-      <div class="formula-box" style="margin-top:8px;">
-<span class="comment">// Afwijkingen</span>
-SV = EV − PV   <span class="comment">// Schedule Variance — &gt; 0 voor op schema, &lt; 0 vertraging</span>
-CV = EV − AC   <span class="comment">// Cost Variance — &gt; 0 onder budget, &lt; 0 over budget</span>
-
-<span class="comment">// Performance-indices</span>
-SPI = EV / PV  <span class="comment">// &gt; 1 op schema, &lt; 1 vertraging</span>
-CPI = EV / AC  <span class="comment">// &gt; 1 onder budget, &lt; 1 over budget</span>
-
-<span class="comment">// Voorspelling eindkosten</span>
-EAC = BAC / CPI <span class="comment">// Estimate at Completion — verwacht eindbudget</span>
-      </div>
-      <div class="defbox" style="margin-top:8px;">
-        <strong>Voorbeeld</strong>
-        Project van € 100.000 (BAC), looptijd 10 maanden. Na 5 maanden zou er volgens planning 50% af moeten zijn (PV = € 50.000). In werkelijkheid is 40% gereed (EV = € 40.000) en is er € 55.000 uitgegeven (AC = € 55.000).
-        <br><br>
-        SV = 40.000 − 50.000 = <strong>−10.000</strong> → vertraging<br>
-        CV = 40.000 − 55.000 = <strong>−15.000</strong> → over budget<br>
-        SPI = 40.000 / 50.000 = <strong>0,80</strong> → 20% achter op schema<br>
-        CPI = 40.000 / 55.000 = <strong>0,73</strong> → elke euro levert maar € 0,73 aan werk op; het project is zo’n 37% duurder dan gepland (55 / 40 = 1,375)<br>
-        EAC = 100.000 / 0,73 ≈ <strong>€ 137.000</strong> → bij dezelfde efficiency loopt het project € 37.000 over budget.
-      </div>
-    </div>
-
-    <div class="section" style="margin-top:18px;">
-      <h3>Stakeholdermanagement — power/interest-matrix</h3>
-      <p style="font-size:13px;color:var(--ink-soft);margin:0 0 8px;">Stakeholders zijn alle personen of partijen die invloed hebben op het project of erdoor beïnvloed worden. Plot ze op twee assen: hoeveel <strong>macht</strong> (kunnen ze beslissingen forceren?) en hoeveel <strong>belang</strong> (raakt het project hen direct?).</p>
-      <table class="compact">
-        <tr><th></th><th>Lage macht</th><th>Hoge macht</th></tr>
-        <tr><td><strong>Hoog belang</strong></td><td><em>Informeren</em> — actief op de hoogte houden, behoud betrokkenheid</td><td><em>Nauw betrekken</em> (manage closely) — intensief betrekken, sleutelfiguren</td></tr>
-        <tr><td><strong>Laag belang</strong></td><td><em>Monitor</em> — minimale aandacht, alleen bij verandering</td><td><em>Tevreden houden</em> — niet onnodig storen, wel risico bewaken</td></tr>
-      </table>
-      <p style="font-size:12px;color:var(--muted);margin-top:6px;">Werkwijze: lijst opstellen → scoren op macht en belang → in matrix plotten → strategie per kwadrant kiezen → herzien per fase, want belang en macht verschuiven door de tijd.</p>
-    </div>
+<section class="sectie" id="h5">
+  <header class="lees-kop"><h1>H5, De P6-Methode</h1></header>
+  <div class="tekst">
+<h3>6 stappen van de P6-Methode ⭐</h3>
+<ul><li>1 <strong>Opstarten</strong>, idee/initiatief, haalbaarheid, projectvoorstel</li><li>2 <strong>Inrichten</strong>, projectteam samenstellen, afspraken maken</li><li>3 <strong>Plan van Aanpak</strong>, beoogd resultaat en aanpak vaststellen</li><li>4 <strong>Uitvoeren</strong>, via uitvoeringsfasen het doel bereiken; TGKIO bewaken</li><li>5 <strong>Opleveren</strong>, testen, goedkeuren door opdrachtgever</li><li>6 <strong>Afsluiten</strong>, overdracht, financiële afhandeling, evaluatie</li></ul>
+<h3>Verschil P6 vs. Traditioneel</h3>
+<ul><li>Traditioneel (waterval): Init → Def → Ontwerp → Voorbereiding → Realisatie → Nazorg</li><li>P6: voegt ontwerp, voorbereiding en realisatie samen tot <strong>stap 4 "Uitvoeren"</strong></li><li>P6 legt extra nadruk op opstarten, inrichten, opleveren en afsluiten</li></ul>
+<h3>Uitvoeringsfasen (stap 4)</h3>
+<p>In stap 4 worden per uitvoeringsfase de beheersaspecten TGKIO bewaakt:</p>
+<ul><li>Bewaak <strong>T</strong>ijd, tijdsverantwoording, periodieke aanpassingen</li><li>Bewaak <strong>G</strong>eld, financiële gegevens monitoren</li><li>Bewaak <strong>K</strong>waliteit, juiste mensen/middelen, tussenresultaten testen</li><li>Bewaak <strong>I</strong>nformatie, interne en externe communicatie, archivering</li><li>Bewaak <strong>O</strong>rganisatie, samenwerking, periodiek vergaderen</li></ul>
+<h3>6P-methode voor onderzoek</h3>
+<ul><li>Opstarten → onderzoeksvoorstel</li><li>Inrichten → onderzoeksteam</li><li>Onderzoeksplan → vragen, grenzen, kosten</li><li>Uitvoeren → ontwerp (hulpmiddelen), uitvoering, analyse</li><li>Opleveren → rapport + presentatie</li><li>Afsluiten → implementatie resultaten</li></ul>
   </div>
-</div>
+  <nav class="verder" aria-label="Vorige en volgende"><a class="glass" href="#h4">&#8249; <span>H4, Planning</span></a><a class="glass" href="#h6"><span>H6, Maken van een Plan van Aanpak</span> &#8250;</a></nav>
+</section>
 
-<!-- ===== H5 ===== -->
-<div class="card" id="h5">
-  <div class="card-header h5"><span class="icon" aria-hidden="true">🔄</span><h2>H5 — De P6-Methode</h2></div>
-  <div class="card-body">
-    <div class="two-col">
-      <div>
-        <div class="section">
-          <h3>6 stappen van de P6-Methode ⭐</h3>
-          <div class="stap"><span class="nummer" style="background:#7c3aed;">1</span><span><strong>Opstarten</strong> — idee/initiatief, haalbaarheid, projectvoorstel</span></div>
-          <div class="stap"><span class="nummer" style="background:#7c3aed;">2</span><span><strong>Inrichten</strong> — projectteam samenstellen, afspraken maken</span></div>
-          <div class="stap"><span class="nummer" style="background:#7c3aed;">3</span><span><strong>Plan van Aanpak</strong> — beoogd resultaat en aanpak vaststellen</span></div>
-          <div class="stap"><span class="nummer" style="background:#7c3aed;">4</span><span><strong>Uitvoeren</strong> — via uitvoeringsfasen het doel bereiken; TGKIO bewaken</span></div>
-          <div class="stap"><span class="nummer" style="background:#7c3aed;">5</span><span><strong>Opleveren</strong> — testen, goedkeuren door opdrachtgever</span></div>
-          <div class="stap"><span class="nummer" style="background:#7c3aed;">6</span><span><strong>Afsluiten</strong> — overdracht, financiële afhandeling, evaluatie</span></div>
-        </div>
-        <div class="section">
-          <h3>Verschil P6 vs. Traditioneel</h3>
-          <ul class="clean">
-            <li>Traditioneel (waterval): Init → Def → Ontwerp → Voorbereiding → Realisatie → Nazorg</li>
-            <li>P6: voegt ontwerp, voorbereiding en realisatie samen tot <strong>stap 4 "Uitvoeren"</strong></li>
-            <li>P6 legt extra nadruk op opstarten, inrichten, opleveren en afsluiten</li>
-          </ul>
-        </div>
-      </div>
-      <div>
-        <div class="section">
-          <h3>Uitvoeringsfasen (stap 4)</h3>
-          <p style="font-size:13px;margin-bottom:6px;color:var(--muted)">In stap 4 worden per uitvoeringsfase de beheersaspecten TGKIO bewaakt:</p>
-          <ul class="clean">
-            <li>Bewaak <strong>T</strong>ijd — tijdsverantwoording, periodieke aanpassingen</li>
-            <li>Bewaak <strong>G</strong>eld — financiële gegevens monitoren</li>
-            <li>Bewaak <strong>K</strong>waliteit — juiste mensen/middelen, tussenresultaten testen</li>
-            <li>Bewaak <strong>I</strong>nformatie — interne en externe communicatie, archivering</li>
-            <li>Bewaak <strong>O</strong>rganisatie — samenwerking, periodiek vergaderen</li>
-          </ul>
-        </div>
-        <div class="section">
-          <h3>6P-methode voor onderzoek</h3>
-          <ul class="clean">
-            <li>Opstarten → onderzoeksvoorstel</li>
-            <li>Inrichten → onderzoeksteam</li>
-            <li>Onderzoeksplan → vragen, grenzen, kosten</li>
-            <li>Uitvoeren → ontwerp (hulpmiddelen), uitvoering, analyse</li>
-            <li>Opleveren → rapport + presentatie</li>
-            <li>Afsluiten → implementatie resultaten</li>
-          </ul>
-        </div>
-      </div>
-    </div>
+<section class="sectie" id="h6">
+  <header class="lees-kop"><h1>H6, Maken van een Plan van Aanpak</h1></header>
+  <div class="tekst">
+<h3>Wat is een PvA?</h3>
+<dl class="begrip"><dt>Definitie</dt><dd>Het contract tussen het projectteam (projectmanager) en de opdrachtgever. Maakt voor iedereen duidelijk wat er gaat gebeuren. Een <em>planning is slechts een onderdeel</em> van het PvA.</dd></dl>
+<h3>Hoofdstukken van het PvA ⭐</h3>
+<ul><li>1 <strong>Achtergronden</strong>, organisatie, aanleiding, stakeholders</li><li>2 <strong>Projectresultaat</strong>, projectdoelstelling (waarom) + beoogd resultaat (wat)</li><li>3 <strong>Projectactiviteiten</strong>, alle taken om resultaat te maken</li><li>4 <strong>Projectgrenzen</strong>, scope, begin- en einddatum, maximaal budget, randvoorwaarden</li><li>5 <strong>Tussenresultaten</strong>, mijlpalen / milestones</li><li>6 <strong>Kwaliteitsbewaking</strong>, normen, acceptatietest</li><li>7 <strong>Projectorganisatie</strong>, teamsamenstelling, informatiematrix, coördinatie</li><li>8 <strong>Planning</strong>, strokenplanning/netwerkplanning</li><li>9 <strong>Kosten-baten</strong>, begroting, exploitatiekosten</li><li>10 <strong>Risicoanalyse</strong>, interne en externe risico's</li></ul>
+<h3>Kosten en baten</h3>
+<div class="kader glass"><h4>Soorten kosten</h4><ul><li>Werkuren (via tarieven omgerekend naar geld)</li><li>Materiaal (verbruikt) vs. Materieel (gehuurd/gebruikt)</li><li>Uitbesteed werk</li><li>Rentekosten</li><li>Onvoorziene uitgaven</li><li><strong>Exploitatiekosten</strong>, kosten ná oplevering</li></ul></div>
+<div class="kader glass"><h4>Soorten baten (opbrengsten)</h4><ul><li>Kostenbesparing door efficiënter werken</li><li>Meer inkomsten / hogere kwaliteit / meer winst</li><li>Betere service, beter imago</li><li>Gemotiveerder personeel</li></ul></div>
+<h3>Dossiers in een project</h3>
+<ul><li><strong>Projectdossier</strong>, organisatie &amp; beheer (PvA, notulen); waarde daalt na project</li><li><strong>Systeemdossier</strong>, inhoud/resultaat (interviewverslagen, adviezen); blijft waardevol</li></ul>
+<h3>Duivelsdriehoek</h3>
+<div class="kern"><strong>Tijd – Geld – Kwaliteit</strong> staan op gespannen voet. Aanpassing van één beïnvloedt de andere twee.</div>
   </div>
-</div>
+  <nav class="verder" aria-label="Vorige en volgende"><a class="glass" href="#h5">&#8249; <span>H5, De P6-Methode</span></a><a class="glass" href="#h7"><span>H7, Agile en Scrum</span> &#8250;</a></nav>
+</section>
 
-<!-- ===== H6 ===== -->
-<div class="card" id="h6">
-  <div class="card-header h6"><span class="icon" aria-hidden="true">📋</span><h2>H6 — Maken van een Plan van Aanpak</h2></div>
-  <div class="card-body">
-    <div class="two-col">
-      <div>
-        <div class="section">
-          <h3>Wat is een PvA?</h3>
-          <div class="defbox" style="border-color:#9333ea;">
-            <strong>Definitie</strong>
-            Het contract tussen het projectteam (projectmanager) en de opdrachtgever. Maakt voor iedereen duidelijk wat er gaat gebeuren. Een <em>planning is slechts een onderdeel</em> van het PvA.
-          </div>
-        </div>
-        <div class="section">
-          <h3>Hoofdstukken van het PvA ⭐</h3>
-          <div class="stap"><span class="nummer" style="background:#9333ea;">1</span><span><strong>Achtergronden</strong> — organisatie, aanleiding, stakeholders</span></div>
-          <div class="stap"><span class="nummer" style="background:#9333ea;">2</span><span><strong>Projectresultaat</strong> — projectdoelstelling (waarom) + beoogd resultaat (wat)</span></div>
-          <div class="stap"><span class="nummer" style="background:#9333ea;">3</span><span><strong>Projectactiviteiten</strong> — alle taken om resultaat te maken</span></div>
-          <div class="stap"><span class="nummer" style="background:#9333ea;">4</span><span><strong>Projectgrenzen</strong> — scope, begin- en einddatum, maximaal budget, randvoorwaarden</span></div>
-          <div class="stap"><span class="nummer" style="background:#9333ea;">5</span><span><strong>Tussenresultaten</strong> — mijlpalen / milestones</span></div>
-          <div class="stap"><span class="nummer" style="background:#9333ea;">6</span><span><strong>Kwaliteitsbewaking</strong> — normen, acceptatietest</span></div>
-          <div class="stap"><span class="nummer" style="background:#9333ea;">7</span><span><strong>Projectorganisatie</strong> — teamsamenstelling, informatiematrix, coördinatie</span></div>
-          <div class="stap"><span class="nummer" style="background:#9333ea;">8</span><span><strong>Planning</strong> — strokenplanning/netwerkplanning</span></div>
-          <div class="stap"><span class="nummer" style="background:#9333ea;">9</span><span><strong>Kosten-baten</strong> — begroting, exploitatiekosten</span></div>
-          <div class="stap"><span class="nummer" style="background:#9333ea;">10</span><span><strong>Risicoanalyse</strong> — interne en externe risico's</span></div>
-        </div>
-      </div>
-      <div>
-        <div class="section">
-          <h3>Kosten en baten</h3>
-          <div class="box">
-            <h4>Soorten kosten</h4>
-            <ul class="clean">
-              <li>Werkuren (via tarieven omgerekend naar geld)</li>
-              <li>Materiaal (verbruikt) vs. Materieel (gehuurd/gebruikt)</li>
-              <li>Uitbesteed werk</li>
-              <li>Rentekosten</li>
-              <li>Onvoorziene uitgaven</li>
-              <li><strong>Exploitatiekosten</strong> — kosten ná oplevering</li>
-            </ul>
-          </div>
-          <div class="box" style="margin-top:6px;">
-            <h4>Soorten baten (opbrengsten)</h4>
-            <ul class="clean">
-              <li>Kostenbesparing door efficiënter werken</li>
-              <li>Meer inkomsten / hogere kwaliteit / meer winst</li>
-              <li>Betere service, beter imago</li>
-              <li>Gemotiveerder personeel</li>
-            </ul>
-          </div>
-        </div>
-        <div class="section">
-          <h3>Dossiers in een project</h3>
-          <ul class="clean">
-            <li><strong>Projectdossier</strong> — organisatie & beheer (PvA, notulen); waarde daalt na project</li>
-            <li><strong>Systeemdossier</strong> — inhoud/resultaat (interviewverslagen, adviezen); blijft waardevol</li>
-          </ul>
-        </div>
-        <div class="section">
-          <h3>Duivelsdriehoek</h3>
-          <div class="highlight"><strong>Tijd – Geld – Kwaliteit</strong> staan op gespannen voet. Aanpassing van één beïnvloedt de andere twee.</div>
-        </div>
-      </div>
-    </div>
+<section class="sectie" id="h7">
+  <header class="lees-kop"><h1>H7, Agile en Scrum</h1></header>
+  <div class="tekst">
+<h3>Agile</h3>
+<dl class="begrip"><dt>Definitie</dt><dd>Wendbaar, behendig en lenig. Een <em>manier van denken (mindset)</em>, parapluterm voor methoden zoals Scrum. Doel: snel en slim inspelen op klantwensen.</dd></dl>
+<h3>Kenmerken agile projecten</h3>
+<ul><li>Werk opgedeeld in <strong>kleine eenheden</strong></li><li><strong>Korte werkcycli</strong> (sprints)</li><li>Vroeg en frequent opleveren</li><li>Voortdurend testen</li><li>Samenwerkende teams van klant + ontwikkelaars</li><li>Goede omgang met verandering</li><li>Eenvoudige, directe communicatie</li></ul>
+<h3>5 voordelen van agile</h3>
+<ul><li>Hoge productkwaliteit, testen ingebouwd</li><li>Hogere klanttevredenheid, klant blijft betrokken</li><li>Verminderd risico op mislukking, korte cycli</li><li>Snellere ROI, werkende onderdelen al vroeg</li><li>Betere projectcontrole, transparantie, regelmatige meetings</li></ul>
+<h3>Scrum ⭐</h3>
+<dl class="begrip"><dt>Definitie</dt><dd>Flexibele methode om (tussen)resultaten te maken in sprints: vaste, korte werkcycli.</dd></dl>
+<h3>3 rollen in Scrum</h3>
+<ul><li><strong>Product Owner</strong>, vertegenwoordigt stakeholders; maakt product backlog; bepaalt prioriteiten (enige met deze bevoegdheid)</li><li><strong>Scrum Master</strong>, coach/ondersteuner; zorgt dat proces goed verloopt; wijst GEEN taken toe</li><li><strong>Scrumteam</strong>, zelfsturend, multidisciplinair; pakt zelf taken op</li><li>Stakeholders zijn geen Scrum-rol; ze komen terug in de user story.</li></ul>
+<h3>Scrum-begrippen</h3>
+<ul><li><strong>User story</strong>, wens van gebruiker: "Als [X] wil ik [Y], om [Z]"</li><li><strong>Product backlog</strong>, geprioriteerde to-dolijst (hele project)</li><li><strong>Sprint backlog</strong>, taken voor één sprint</li><li><strong>Scrum task board</strong>, bord: To Do → Busy → Done</li><li><strong>Burndown-grafiek</strong>, voortgang grafisch</li></ul>
+<h3>4 Scrum-meetings</h3>
+<ul><li><strong>Sprint Planning</strong>, welke user stories in deze sprint?</li><li><strong>Daily Standup</strong>, dagelijks max 15 min; wat af, bezig, blokkades?</li><li><strong>Sprint Review</strong>, demo voor stakeholders, feedback</li><li><strong>Sprint Retrospective</strong>, evaluatie: wat ging goed/beter?</li></ul>
   </div>
-</div>
+  <nav class="verder" aria-label="Vorige en volgende"><a class="glass" href="#h6">&#8249; <span>H6, Maken van een Plan van Aanpak</span></a><a class="glass" href="#h8"><span>H8, Projectvergaderingen</span> &#8250;</a></nav>
+</section>
 
-<!-- ===== H7 ===== -->
-<div class="card" id="h7">
-  <div class="card-header h7"><span class="icon" aria-hidden="true">⚡</span><h2>H7 — Agile en Scrum</h2></div>
-  <div class="card-body">
-    <div class="two-col">
-      <div>
-        <div class="section">
-          <h3>Agile</h3>
-          <div class="defbox" style="border-color:#b45309;">
-            <strong>Definitie</strong>
-            Wendbaar, behendig en lenig. Een <em>manier van denken (mindset)</em>, parapluterm voor methoden zoals Scrum. Doel: snel en slim inspelen op klantwensen.
-          </div>
-          <div class="section">
-            <h3>Kenmerken agile projecten</h3>
-            <ul class="clean">
-              <li>Werk opgedeeld in <strong>kleine eenheden</strong></li>
-              <li><strong>Korte werkcycli</strong> (sprints)</li>
-              <li>Vroeg en frequent opleveren</li>
-              <li>Voortdurend testen</li>
-              <li>Samenwerkende teams van klant + ontwikkelaars</li>
-              <li>Goede omgang met verandering</li>
-              <li>Eenvoudige, directe communicatie</li>
-            </ul>
-          </div>
-          <div class="section">
-            <h3>5 voordelen van agile</h3>
-            <ul class="clean">
-              <li>Hoge productkwaliteit — testen ingebouwd</li>
-              <li>Hogere klanttevredenheid — klant blijft betrokken</li>
-              <li>Verminderd risico op mislukking — korte cycli</li>
-              <li>Snellere ROI — werkende onderdelen al vroeg</li>
-              <li>Betere projectcontrole — transparantie, regelmatige meetings</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div>
-        <div class="section">
-          <h3>Scrum ⭐</h3>
-          <div class="defbox" style="border-color:#b45309;">
-            <strong>Definitie</strong>
-            Flexibele methode om (tussen)resultaten te maken in sprints: vaste, korte werkcycli.
-          </div>
-          <div class="section">
-            <h3>3 rollen in Scrum</h3>
-            <ul class="clean">
-              <li><strong>Product Owner</strong> — vertegenwoordigt stakeholders; maakt product backlog; bepaalt prioriteiten (enige met deze bevoegdheid)</li>
-              <li><strong>Scrum Master</strong> — coach/ondersteuner; zorgt dat proces goed verloopt; wijst GEEN taken toe</li>
-              <li><strong>Scrumteam</strong> — zelfsturend, multidisciplinair; pakt zelf taken op</li>
-              <li style="color:var(--muted)">Stakeholders zijn geen Scrum-rol; ze komen terug in de user story.</li>
-            </ul>
-          </div>
-          <div class="section">
-            <h3>Scrum-begrippen</h3>
-            <ul class="clean">
-              <li><strong>User story</strong> — wens van gebruiker: "Als [X] wil ik [Y], om [Z]"</li>
-              <li><strong>Product backlog</strong> — geprioriteerde to-dolijst (hele project)</li>
-              <li><strong>Sprint backlog</strong> — taken voor één sprint</li>
-              <li><strong>Scrum task board</strong> — bord: To Do → Busy → Done</li>
-              <li><strong>Burndown-grafiek</strong> — voortgang grafisch</li>
-            </ul>
-          </div>
-          <div class="section">
-            <h3>4 Scrum-meetings</h3>
-            <ul class="clean">
-              <li><strong>Sprint Planning</strong> — welke user stories in deze sprint?</li>
-              <li><strong>Daily Standup</strong> — dagelijks max 15 min; wat af, bezig, blokkades?</li>
-              <li><strong>Sprint Review</strong> — demo voor stakeholders, feedback</li>
-              <li><strong>Sprint Retrospective</strong> — evaluatie: wat ging goed/beter?</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
+<section class="sectie" id="h8">
+  <header class="lees-kop"><h1>H8, Projectvergaderingen</h1></header>
+  <div class="tekst">
+<h3>Doel van een vergadering</h3>
+<ul><li>Informatieverstrekking</li><li>Meningsvorming</li><li>Besluitvorming</li></ul>
+<h3>Rollen in een vergadering</h3>
+<ul><li><strong>Voorzitter</strong>, leidt vergadering, bewaakt agenda en tijd</li><li><strong>Notulist</strong>, legt beslissingen en actiepunten vast; zo snel mogelijk uitwerken</li><li><strong>Moderator</strong>, bij online vergadering, technische kennis</li><li><strong>Deelnemers</strong></li></ul>
+<h3>Inhoud agenda</h3>
+<ul><li>Opening / notulen vorige vergadering</li><li>Ingekomen stukken / mededelingen</li><li>Agendapunten (inhoud)</li><li>Actiepunten / rondvraag</li><li>Sluiting</li></ul>
+<h3>Effectief vergaderen (PV Week 1)</h3>
+<ul><li>Doel vaststellen; voorzitter + notulist aanwijzen</li><li>Agenda <em>vooraf</em> delen</li><li>Tijdsduur en verwachtingen bespreken</li><li>Iedereen aan het woord laten</li><li>Tussentijdse checks op begrip</li><li>Beslispunten overleggen en <em>knopen hakken</em></li><li>Actiepunten vastleggen: wie doet wat wanneer?</li><li>Notulen + actiepuntenlijst na vergadering delen</li></ul>
+<h3>Wat kan er mis gaan?</h3>
+<ul><li>Eén iemand spreekt te veel</li><li>Geen duidelijk doel; voorzitter stuurt niet bij</li><li>Notulist kan hoofd- en bijzaken niet scheiden</li><li>Actiepunten niet vastgelegd</li></ul>
+<h3>Online vergaderen</h3>
+<ul><li>Bespaart reistijd; moderator regelt techniek</li><li>Mogelijkheden: video/bestanden delen, chat, opnemen</li></ul>
   </div>
-</div>
+  <nav class="verder" aria-label="Vorige en volgende"><a class="glass" href="#h7">&#8249; <span>H7, Agile en Scrum</span></a><a class="glass" href="#h9"><span>H9, Een Interview Afnemen</span> &#8250;</a></nav>
+</section>
 
-<!-- ===== H8 ===== -->
-<div class="card" id="h8">
-  <div class="card-header h8"><span class="icon" aria-hidden="true">🗣️</span><h2>H8 — Projectvergaderingen</h2></div>
-  <div class="card-body">
-    <div class="two-col">
-      <div>
-        <div class="section">
-          <h3>Doel van een vergadering</h3>
-          <ul class="clean">
-            <li>Informatieverstrekking</li>
-            <li>Meningsvorming</li>
-            <li>Besluitvorming</li>
-          </ul>
-        </div>
-        <div class="section">
-          <h3>Rollen in een vergadering</h3>
-          <ul class="clean">
-            <li><strong>Voorzitter</strong> — leidt vergadering, bewaakt agenda en tijd</li>
-            <li><strong>Notulist</strong> — legt beslissingen en actiepunten vast; zo snel mogelijk uitwerken</li>
-            <li><strong>Moderator</strong> — bij online vergadering, technische kennis</li>
-            <li><strong>Deelnemers</strong></li>
-          </ul>
-        </div>
-        <div class="section">
-          <h3>Inhoud agenda</h3>
-          <ul class="clean">
-            <li>Opening / notulen vorige vergadering</li>
-            <li>Ingekomen stukken / mededelingen</li>
-            <li>Agendapunten (inhoud)</li>
-            <li>Actiepunten / rondvraag</li>
-            <li>Sluiting</li>
-          </ul>
-        </div>
-      </div>
-      <div>
-        <div class="section">
-          <h3>Effectief vergaderen (PV Week 1)</h3>
-          <ul class="clean">
-            <li>Doel vaststellen; voorzitter + notulist aanwijzen</li>
-            <li>Agenda <em>vooraf</em> delen</li>
-            <li>Tijdsduur en verwachtingen bespreken</li>
-            <li>Iedereen aan het woord laten</li>
-            <li>Tussentijdse checks op begrip</li>
-            <li>Beslispunten overleggen en <em>knopen hakken</em></li>
-            <li>Actiepunten vastleggen: wie doet wat wanneer?</li>
-            <li>Notulen + actiepuntenlijst na vergadering delen</li>
-          </ul>
-        </div>
-        <div class="section">
-          <h3>Wat kan er mis gaan?</h3>
-          <ul class="clean">
-            <li>Eén iemand spreekt te veel</li>
-            <li>Geen duidelijk doel; voorzitter stuurt niet bij</li>
-            <li>Notulist kan hoofd- en bijzaken niet scheiden</li>
-            <li>Actiepunten niet vastgelegd</li>
-          </ul>
-        </div>
-        <div class="section">
-          <h3>Online vergaderen</h3>
-          <ul class="clean">
-            <li>Bespaart reistijd; moderator regelt techniek</li>
-            <li>Mogelijkheden: video/bestanden delen, chat, opnemen</li>
-          </ul>
-        </div>
-      </div>
-    </div>
+<section class="sectie" id="h9">
+  <header class="lees-kop"><h1>H9, Een Interview Afnemen</h1></header>
+  <div class="tekst">
+<h3>2 typen interviews</h3>
+<div class="tabel"><table><thead><tr><th>Type</th><th>Kenmerken</th><th>Voordelen</th><th>Nadelen</th></tr></thead><tbody><tr><td><strong>Gestandaardiseerd</strong></td><td>Vaste vragen, vaste volgorde</td><td>Systematisch, controle</td><td>Star gesprek, info blijft achter</td></tr><tr><td><strong>Vrij</strong></td><td>Aandachtspunten, vrije volgorde</td><td>Ongeremd, prettig voor respondent</td><td>Kost tijd, kans op misverstand</td></tr></tbody></table></div>
+<div class="kern"><strong>Best:</strong> tussenvorm van beide</div>
+<h3>3 fasen van een interview</h3>
+<ul><li>1 <strong>Voorbereiding</strong>, doelstellingen bepalen, kandidaat kiezen, vragen opstellen, alvast info opsturen</li><li>2 <strong>Uitvoering</strong>, inleiding (jezelf voorstellen, doel uitleggen) → kern (luisteren, doorvragen, kwantificeren) → afsluiting (samenvatten, check)</li><li>3 <strong>Verslaglegging</strong>, kopgegevens + zakelijk, gestructureerd verslag; kopie naar geïnterviewde</li></ul>
+<h3>Tips</h3>
+<ul><li>Overweeg met twee personen: één vraagt, ander schrijft</li><li>Korte, bondige, eenvoudige vragen</li><li>Neutraal blijven; doorvragen; kwantificeer (vraag om aantallen)</li></ul>
   </div>
-</div>
+  <nav class="verder" aria-label="Vorige en volgende"><a class="glass" href="#h8">&#8249; <span>H8, Projectvergaderingen</span></a><a class="glass" href="#h10"><span>H10, Een Rapport Schrijven</span> &#8250;</a></nav>
+</section>
 
-<!-- ===== H9 ===== -->
-<div class="card" id="h9">
-  <div class="card-header h9"><span class="icon" aria-hidden="true">🎙️</span><h2>H9 — Een Interview Afnemen</h2></div>
-  <div class="card-body">
-    <div class="two-col">
-      <div>
-        <div class="section">
-          <h3>2 typen interviews</h3>
-          <table class="compact">
-            <tr><th>Type</th><th>Kenmerken</th><th>Voordelen</th><th>Nadelen</th></tr>
-            <tr><td><strong>Gestandaardiseerd</strong></td><td>Vaste vragen, vaste volgorde</td><td>Systematisch, controle</td><td>Star gesprek, info blijft achter</td></tr>
-            <tr><td><strong>Vrij</strong></td><td>Aandachtspunten, vrije volgorde</td><td>Ongeremd, prettig voor respondent</td><td>Kost tijd, kans op misverstand</td></tr>
-          </table>
-          <div class="highlight" style="margin-top:6px;"><strong>Best:</strong> tussenvorm van beide</div>
-        </div>
-      </div>
-      <div>
-        <div class="section">
-          <h3>3 fasen van een interview</h3>
-          <div class="stap"><span class="nummer" style="background:#be185d;">1</span><span><strong>Voorbereiding</strong> — doelstellingen bepalen, kandidaat kiezen, vragen opstellen, alvast info opsturen</span></div>
-          <div class="stap"><span class="nummer" style="background:#be185d;">2</span><span><strong>Uitvoering</strong> — inleiding (jezelf voorstellen, doel uitleggen) → kern (luisteren, doorvragen, kwantificeren) → afsluiting (samenvatten, check)</span></div>
-          <div class="stap"><span class="nummer" style="background:#be185d;">3</span><span><strong>Verslaglegging</strong> — kopgegevens + zakelijk, gestructureerd verslag; kopie naar geïnterviewde</span></div>
-        </div>
-        <div class="section">
-          <h3>Tips</h3>
-          <ul class="clean">
-            <li>Overweeg met twee personen: één vraagt, ander schrijft</li>
-            <li>Korte, bondige, eenvoudige vragen</li>
-            <li>Neutraal blijven; doorvragen; kwantificeer (vraag om aantallen)</li>
-          </ul>
-        </div>
-      </div>
-    </div>
+<section class="sectie" id="h10">
+  <header class="lees-kop"><h1>H10, Een Rapport Schrijven</h1></header>
+  <div class="tekst">
+<h3>Indeling van een rapport ⭐</h3>
+<ul><li><strong>Omslag</strong>, titel, datum, auteurs</li><li><strong>Titelblad</strong>, herhaling + aanvullende info</li><li><strong>Voorwoord</strong>, context, schrijver, dankbetuigingen</li><li><strong>Inhoudsopgave</strong>, max. 3 niveaus</li><li><strong>Samenvatting</strong>, aanleiding, probleemstelling, conclusies</li><li><strong>Inleiding</strong>, onderwerp afbakenen, situatieschets, probleemstelling</li><li><strong>Uitwerking probleemstelling</strong></li><li><strong>Werkwijze</strong></li><li><strong>Onderzoek</strong></li><li><strong>Resultaten &amp; conclusies</strong></li><li><strong>Aanbevelingen</strong></li><li><strong>Literatuurlijst + Bijlagen</strong></li></ul>
+<h3>Veelgemaakte fouten (PV Week 5)</h3>
+<ul><li>Paginanummers vergeten</li><li>Hoofdstuk begint direct met paragraaf (moet inleiding eerst)</li><li>Punt niet áchter de bron (APA)</li><li>Bijlagen aanduiden met cijfers i.p.v. letters</li><li>Persoonlijke voornaamwoorden gebruiken (ik, je, we)</li><li>Figuurnummers en tabelnummers ontbreken</li><li>Literatuurlijst doornummeren</li></ul>
+<h3>Opbouw inleiding rapport</h3>
+<ul><li><strong>Aanleiding</strong>, waarom dit rapport, voor wie?</li><li><strong>Doel</strong>, wat wordt opgeleverd?</li><li><strong>Werkwijze</strong>, hoe globaal aangepakt?</li><li><strong>Leeswijzer</strong>, wat verwacht de lezer per hoofdstuk?</li></ul>
+<h3>Schrijfstijl</h3>
+<ul><li>Zakelijke stijl, geen ik/je/we/me</li><li>Correct Nederlands; eenheid van stijl</li><li>APA voor bronvermelding</li></ul>
   </div>
-</div>
+  <nav class="verder" aria-label="Vorige en volgende"><a class="glass" href="#h9">&#8249; <span>H9, Een Interview Afnemen</span></a><a class="glass" href="#h11"><span>H11, Een Presentatie Houden</span> &#8250;</a></nav>
+</section>
 
-<!-- ===== H10 ===== -->
-<div class="card" id="h10">
-  <div class="card-header h10"><span class="icon" aria-hidden="true">📝</span><h2>H10 — Een Rapport Schrijven</h2></div>
-  <div class="card-body">
-    <div class="two-col">
-      <div>
-        <div class="section">
-          <h3>Indeling van een rapport ⭐</h3>
-          <ul class="clean">
-            <li><strong>Omslag</strong> — titel, datum, auteurs</li>
-            <li><strong>Titelblad</strong> — herhaling + aanvullende info</li>
-            <li><strong>Voorwoord</strong> — context, schrijver, dankbetuigingen</li>
-            <li><strong>Inhoudsopgave</strong> — max. 3 niveaus</li>
-            <li><strong>Samenvatting</strong> — aanleiding, probleemstelling, conclusies</li>
-            <li><strong>Inleiding</strong> — onderwerp afbakenen, situatieschets, probleemstelling</li>
-            <li><strong>Uitwerking probleemstelling</strong></li>
-            <li><strong>Werkwijze</strong></li>
-            <li><strong>Onderzoek</strong></li>
-            <li><strong>Resultaten & conclusies</strong></li>
-            <li><strong>Aanbevelingen</strong></li>
-            <li><strong>Literatuurlijst + Bijlagen</strong></li>
-          </ul>
-        </div>
-      </div>
-      <div>
-        <div class="section">
-          <h3>Veelgemaakte fouten (PV Week 5)</h3>
-          <ul class="clean">
-            <li>Paginanummers vergeten</li>
-            <li>Hoofdstuk begint direct met paragraaf (moet inleiding eerst)</li>
-            <li>Punt niet áchter de bron (APA)</li>
-            <li>Bijlagen aanduiden met cijfers i.p.v. letters</li>
-            <li>Persoonlijke voornaamwoorden gebruiken (ik, je, we)</li>
-            <li>Figuurnummers en tabelnummers ontbreken</li>
-            <li>Literatuurlijst doornummeren</li>
-          </ul>
-        </div>
-        <div class="section">
-          <h3>Opbouw inleiding rapport</h3>
-          <ul class="clean">
-            <li><strong>Aanleiding</strong> — waarom dit rapport, voor wie?</li>
-            <li><strong>Doel</strong> — wat wordt opgeleverd?</li>
-            <li><strong>Werkwijze</strong> — hoe globaal aangepakt?</li>
-            <li><strong>Leeswijzer</strong> — wat verwacht de lezer per hoofdstuk?</li>
-          </ul>
-        </div>
-        <div class="section">
-          <h3>Schrijfstijl</h3>
-          <ul class="clean">
-            <li>Zakelijke stijl — geen ik/je/we/me</li>
-            <li>Correct Nederlands; eenheid van stijl</li>
-            <li>APA voor bronvermelding</li>
-          </ul>
-        </div>
-      </div>
-    </div>
+<section class="sectie" id="h11">
+  <header class="lees-kop"><h1>H11, Een Presentatie Houden</h1></header>
+  <div class="tekst">
+<h3>Opbouw van een presentatie ⭐</h3>
+<div class="kader glass"><h4>Inleiding</h4><ul><li>Aandacht trekken (anekdote, grap)</li><li>Jezelf voorstellen, doel en onderwerp</li><li>Vertellen wat je gaat bespreken</li><li>Aanpak van vragen uitleggen</li></ul></div>
+<div class="kader glass"><h4>Kern</h4><ul><li>Duidelijke structuur (oorzaak/gevolg, tijdvolgorde, vraag/antwoord)</li><li>PvA kan als uitgangspunt dienen</li></ul></div>
+<div class="kader glass"><h4>Afsluiting</h4><ul><li>Samenvatting; conclusies herhalen</li><li>Uitsmijter (pakkende zin)</li><li>Gelegenheid voor vragen</li></ul></div>
+<h3>Tips voor slides</h3>
+<ul><li>Leesbare teksten, voldoende kleurcontrast</li><li>Niet te veel informatie per dia</li><li>Niet te veel dia's; niet te snel wisselen</li><li>Test apparatuur en leesbaarheid vooraf</li><li>Zorg voor hand-outs</li></ul>
+<h3>Tijdens de presentatie</h3>
+<ul><li>Positief uitstralen, zelfverzekerd, goede houding</li><li>Spreek duidelijk, afwisselend stemgeluid</li><li>Kijk je publiek aan</li><li>Houd je aan de tijd</li><li>Gepaste humor; vermijd stopwoorden</li></ul>
+<h3>Pitch (PV Week 3)</h3>
+<ul><li><strong>Aantrekkelijke opening</strong></li><li><strong>Probleem</strong> benoemen</li><li><strong>Oplossing</strong> presenteren</li><li><strong>USP</strong>, wat maakt het uniek?</li><li><strong>Bewijs</strong>, onderbouwing</li><li><strong>Call-to-action</strong>, wat wil je van het publiek?</li><li><strong>Afsluiting</strong></li></ul>
   </div>
-</div>
+  <nav class="verder" aria-label="Vorige en volgende"><a class="glass" href="#h10">&#8249; <span>H10, Een Rapport Schrijven</span></a><a class="glass" href="#h12"><span>H12, Een Managementsamenvatting Maken</span> &#8250;</a></nav>
+</section>
 
-<!-- ===== H11 ===== -->
-<div class="card" id="h11">
-  <div class="card-header h11"><span class="icon" aria-hidden="true">🎤</span><h2>H11 — Een Presentatie Houden</h2></div>
-  <div class="card-body">
-    <div class="two-col">
-      <div>
-        <div class="section">
-          <h3>Opbouw van een presentatie ⭐</h3>
-          <div class="box">
-            <h4>Inleiding</h4>
-            <ul class="clean">
-              <li>Aandacht trekken (anekdote, grap)</li>
-              <li>Jezelf voorstellen, doel en onderwerp</li>
-              <li>Vertellen wat je gaat bespreken</li>
-              <li>Aanpak van vragen uitleggen</li>
-            </ul>
-          </div>
-          <div class="box" style="margin-top:6px;">
-            <h4>Kern</h4>
-            <ul class="clean">
-              <li>Duidelijke structuur (oorzaak/gevolg, tijdvolgorde, vraag/antwoord)</li>
-              <li>PvA kan als uitgangspunt dienen</li>
-            </ul>
-          </div>
-          <div class="box" style="margin-top:6px;">
-            <h4>Afsluiting</h4>
-            <ul class="clean">
-              <li>Samenvatting; conclusies herhalen</li>
-              <li>Uitsmijter (pakkende zin)</li>
-              <li>Gelegenheid voor vragen</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div>
-        <div class="section">
-          <h3>Tips voor slides</h3>
-          <ul class="clean">
-            <li>Leesbare teksten, voldoende kleurcontrast</li>
-            <li>Niet te veel informatie per dia</li>
-            <li>Niet te veel dia's; niet te snel wisselen</li>
-            <li>Test apparatuur en leesbaarheid vooraf</li>
-            <li>Zorg voor hand-outs</li>
-          </ul>
-        </div>
-        <div class="section">
-          <h3>Tijdens de presentatie</h3>
-          <ul class="clean">
-            <li>Positief uitstralen, zelfverzekerd, goede houding</li>
-            <li>Spreek duidelijk, afwisselend stemgeluid</li>
-            <li>Kijk je publiek aan</li>
-            <li>Houd je aan de tijd</li>
-            <li>Gepaste humor; vermijd stopwoorden</li>
-          </ul>
-        </div>
-        <div class="section">
-          <h3>Pitch (PV Week 3)</h3>
-          <ul class="clean">
-            <li><strong>Aantrekkelijke opening</strong></li>
-            <li><strong>Probleem</strong> benoemen</li>
-            <li><strong>Oplossing</strong> presenteren</li>
-            <li><strong>USP</strong> — wat maakt het uniek?</li>
-            <li><strong>Bewijs</strong> — onderbouwing</li>
-            <li><strong>Call-to-action</strong> — wat wil je van het publiek?</li>
-            <li><strong>Afsluiting</strong></li>
-          </ul>
-        </div>
-      </div>
-    </div>
+<section class="sectie" id="h12">
+  <header class="lees-kop"><h1>H12, Een Managementsamenvatting Maken</h1></header>
+  <div class="tekst">
+<h3>Wat is het?</h3>
+<dl class="begrip"><dt>Definitie</dt><dd>Rapportage <em>achteraf</em> over een uitgevoerd projectonderdeel. Bevat: verantwoording van resultaat, conclusies, aanbevelingen en beslispunten voor het management. <strong>Max. 1-2 pagina's</strong> (boek: max. 10 pagina's).</dd></dl>
+<h3>Uitgangspunten</h3>
+<ul><li>Houd het kort; direct begrijpelijk voor de manager</li><li>Leg vooraf doel en opbouw uit</li><li>Schrijf voor de manager, NIET voor een vakgenoot</li><li>Geen jargon; to-the-point</li></ul>
+<h3>Onderdelen van de managementsamenvatting ⭐</h3>
+<ul><li>Titelblad</li><li>Inhoudsopgave</li><li>Inleiding (doel, context, probleemstelling, opdrachtgever, periode)</li><li>Uitgangspunten &amp; werkwijze (aannames, wijzigingen)</li><li>Samenvatting van het resultaat</li><li>Verantwoording (producten, kosten, planning vs. realiteit)</li><li>Planning vervolgtraject + kosten-batenoverzicht</li><li>Conclusies &amp; aanbevelingen</li><li><strong>Beslispunten</strong>, goedkeuring fase, akkoord volgende fase, continueren/opheffen projectgroep</li><li>Bijlagen</li></ul>
   </div>
-</div>
+  <nav class="verder" aria-label="Vorige en volgende"><a class="glass" href="#h11">&#8249; <span>H11, Een Presentatie Houden</span></a><a class="glass" href="#pv"><span>Projectvaardigheden, Weken 1 t/m 7</span> &#8250;</a></nav>
+</section>
 
-<!-- ===== H12 ===== -->
-<div class="card" id="h12">
-  <div class="card-header h12"><span class="icon" aria-hidden="true">📄</span><h2>H12 — Een Managementsamenvatting Maken</h2></div>
-  <div class="card-body">
-    <div class="two-col">
-      <div>
-        <div class="section">
-          <h3>Wat is het?</h3>
-          <div class="defbox" style="border-color:#166534;">
-            <strong>Definitie</strong>
-            Rapportage <em>achteraf</em> over een uitgevoerd projectonderdeel. Bevat: verantwoording van resultaat, conclusies, aanbevelingen en beslispunten voor het management. <strong>Max. 1-2 pagina's</strong> (boek: max. 10 pagina's).
-          </div>
-        </div>
-        <div class="section">
-          <h3>Uitgangspunten</h3>
-          <ul class="clean">
-            <li>Houd het kort; direct begrijpelijk voor de manager</li>
-            <li>Leg vooraf doel en opbouw uit</li>
-            <li>Schrijf voor de manager, NIET voor een vakgenoot</li>
-            <li>Geen jargon; to-the-point</li>
-          </ul>
-        </div>
-      </div>
-      <div>
-        <div class="section">
-          <h3>Onderdelen van de managementsamenvatting ⭐</h3>
-          <ul class="clean">
-            <li>Titelblad</li>
-            <li>Inhoudsopgave</li>
-            <li>Inleiding (doel, context, probleemstelling, opdrachtgever, periode)</li>
-            <li>Uitgangspunten & werkwijze (aannames, wijzigingen)</li>
-            <li>Samenvatting van het resultaat</li>
-            <li>Verantwoording (producten, kosten, planning vs. realiteit)</li>
-            <li>Planning vervolgtraject + kosten-batenoverzicht</li>
-            <li>Conclusies & aanbevelingen</li>
-            <li><strong>Beslispunten</strong> — goedkeuring fase, akkoord volgende fase, continueren/opheffen projectgroep</li>
-            <li>Bijlagen</li>
-          </ul>
-        </div>
-      </div>
-    </div>
+<section class="sectie" id="pv">
+  <header class="lees-kop"><h1>Projectvaardigheden, Weken 1 t/m 7</h1></header>
+  <div class="tekst">
+<h3>Week 2, Brainstormen</h3>
+<ul><li><strong>Brainstormen</strong>, ideeën hardop uitspreken</li><li><strong>Brainwriting</strong>, ideeën stil opschrijven, dan delen (post-its)</li></ul>
+<h3>Spelregels brainstormen</h3>
+<ul><li>Kwantiteit boven kwaliteit</li><li>Geen oordeel; geen kritiek</li><li>Bouw verder op elkaars ideeën</li><li>Iedereen doet mee</li><li>Denk vrij (vergeet budget/regels)</li></ul>
+<h3>Brainstormvormen</h3>
+<ul><li><strong>Omgekeerde brainstorm</strong>, hoe maak je het erger? Omdraaien naar oplossing</li><li><strong>635-methode</strong>, 6 personen, 3 ideeën, blad doorgeven</li><li><strong>Rollen-brainstorm</strong>, dromer, realist, criticus, etc.</li><li><strong>Ideeënboom</strong>, boomstam met kernwoorden, takken met ideeën</li><li><strong>Inspiratiekaarten</strong>, ideeën via foto's/afbeeldingen</li></ul>
+<h3>3 fasen van brainstormsessie</h3>
+<ol><li>Brainstorm/Brainwriting, zo veel mogelijk ideeën</li><li>Clusteren, wat klopt, valt op?</li><li>Focus, beste ideeën uitwerken</li></ol>
+<h3>Week 3, Pitchen</h3>
+<ul><li>Aantrekkelijke opening</li><li>Probleem benoemen</li><li>Oplossing presenteren</li><li>USP (uniek element)</li><li>Bewijs/onderbouwing</li><li>Call-to-action</li><li>Afsluiting</li></ul>
+<h3>Week 6, Scrum: rollen</h3>
+<ul><li><strong>Product Owner</strong>, maakt backlog, prioriteert (enige bevoegde)</li><li><strong>Scrum Master</strong>, coach, lost blokkades op, wijst GEEN taken toe</li><li><strong>Team</strong>, zelfsturend, pakt zelf taken op</li></ul>
+<h3>Scrum meetings</h3>
+<ul><li><strong>Sprint Planning</strong>, wat doen we in sprint?</li><li><strong>Daily Standup</strong>, max 15 min, wat af/bezig/blokkades</li><li><strong>Review</strong>, oplevering aan opdrachtgever</li><li><strong>Retrospective</strong>, wat ging goed/beter?</li></ul>
+<h3>Week 7, Managementsamenvatting</h3>
+<ul><li>Max. 1-2 pagina's</li><li>Schrijf voor de manager (niet voor vakgenoot)</li><li>Bevat: resultaat, verantwoording, conclusies, aanbevelingen, beslispunten</li></ul>
+<h3>Teamrollen evenementenproject</h3>
+<ul><li>Projectleider / Projectmanager</li><li>Financieel manager</li><li>Secretaris / communicatie</li><li>Veiligheidscoördinator</li><li>Food &amp; Beverage manager</li><li>Marketing &amp; Communicatie</li><li>Logistiek</li><li>Hospitality</li><li>Verkoop / Productie</li></ul>
+<h3>Week 5, Rapport: veelgemaakte fouten</h3>
+<ul><li>Persoonlijke voornaamwoorden (ik/je/we)</li><li>Bijlagen aanduiden met cijfers (moet letters zijn)</li><li>Punt niet áchter de APA-bron</li><li>Geen inleiding vóór eerste paragraaf</li><li>Paginanummers vergeten</li></ul>
   </div>
-</div>
+  <nav class="verder" aria-label="Vorige en volgende"><a class="glass" href="#h12">&#8249; <span>H12, Een Managementsamenvatting Maken</span></a><a class="glass" href="#ec"><span>Expert-college, Evenementen</span> &#8250;</a></nav>
+</section>
 
-<!-- ===== PROJECTVAARDIGHEDEN ===== -->
-<div class="card" id="pv">
-  <div class="card-header hpv"><span class="icon" aria-hidden="true">🛠️</span><h2>Projectvaardigheden — Weken 1 t/m 7</h2></div>
-  <div class="card-body">
-    <div class="three-col">
-      <div>
-        <div class="section">
-          <h3>Week 2 — Brainstormen</h3>
-          <ul class="clean">
-            <li><strong>Brainstormen</strong> — ideeën hardop uitspreken</li>
-            <li><strong>Brainwriting</strong> — ideeën stil opschrijven, dan delen (post-its)</li>
-          </ul>
-          <div class="section">
-            <h3>Spelregels brainstormen</h3>
-            <ul class="clean">
-              <li>Kwantiteit boven kwaliteit</li>
-              <li>Geen oordeel; geen kritiek</li>
-              <li>Bouw verder op elkaars ideeën</li>
-              <li>Iedereen doet mee</li>
-              <li>Denk vrij (vergeet budget/regels)</li>
-            </ul>
-          </div>
-          <div class="section">
-            <h3>Brainstormvormen</h3>
-            <ul class="clean">
-              <li><strong>Omgekeerde brainstorm</strong> — hoe maak je het erger? Omdraaien naar oplossing</li>
-              <li><strong>635-methode</strong> — 6 personen, 3 ideeën, blad doorgeven</li>
-              <li><strong>Rollen-brainstorm</strong> — dromer, realist, criticus, etc.</li>
-              <li><strong>Ideeënboom</strong> — boomstam met kernwoorden, takken met ideeën</li>
-              <li><strong>Inspiratiekaarten</strong> — ideeën via foto's/afbeeldingen</li>
-            </ul>
-          </div>
-          <div class="section">
-            <h3>3 fasen van brainstormsessie</h3>
-            <ol style="padding-left:16px;font-size:13px;display:flex;flex-direction:column;gap:3px;color:var(--muted)">
-              <li>Brainstorm/Brainwriting — zo veel mogelijk ideeën</li>
-              <li>Clusteren — wat klopt, valt op?</li>
-              <li>Focus — beste ideeën uitwerken</li>
-            </ol>
-          </div>
-        </div>
-      </div>
-      <div>
-        <div class="section">
-          <h3>Week 3 — Pitchen</h3>
-          <ul class="clean">
-            <li>Aantrekkelijke opening</li>
-            <li>Probleem benoemen</li>
-            <li>Oplossing presenteren</li>
-            <li>USP (uniek element)</li>
-            <li>Bewijs/onderbouwing</li>
-            <li>Call-to-action</li>
-            <li>Afsluiting</li>
-          </ul>
-        </div>
-        <div class="section">
-          <h3>Week 6 — Scrum: rollen</h3>
-          <ul class="clean">
-            <li><strong>Product Owner</strong> — maakt backlog, prioriteert (enige bevoegde)</li>
-            <li><strong>Scrum Master</strong> — coach, lost blokkades op, wijst GEEN taken toe</li>
-            <li><strong>Team</strong> — zelfsturend, pakt zelf taken op</li>
-          </ul>
-          <div class="section">
-            <h3>Scrum meetings</h3>
-            <ul class="clean">
-              <li><strong>Sprint Planning</strong> — wat doen we in sprint?</li>
-              <li><strong>Daily Standup</strong> — max 15 min, wat af/bezig/blokkades</li>
-              <li><strong>Review</strong> — oplevering aan opdrachtgever</li>
-              <li><strong>Retrospective</strong> — wat ging goed/beter?</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div>
-        <div class="section">
-          <h3>Week 7 — Managementsamenvatting</h3>
-          <ul class="clean">
-            <li>Max. 1-2 pagina's</li>
-            <li>Schrijf voor de manager (niet voor vakgenoot)</li>
-            <li>Bevat: resultaat, verantwoording, conclusies, aanbevelingen, beslispunten</li>
-          </ul>
-        </div>
-        <div class="section">
-          <h3>Teamrollen evenementenproject</h3>
-          <ul class="clean">
-            <li>Projectleider / Projectmanager</li>
-            <li>Financieel manager</li>
-            <li>Secretaris / communicatie</li>
-            <li>Veiligheidscoördinator</li>
-            <li>Food & Beverage manager</li>
-            <li>Marketing & Communicatie</li>
-            <li>Logistiek</li>
-            <li>Hospitality</li>
-            <li>Verkoop / Productie</li>
-          </ul>
-        </div>
-        <div class="section">
-          <h3>Week 5 — Rapport: veelgemaakte fouten</h3>
-          <ul class="clean">
-            <li>Persoonlijke voornaamwoorden (ik/je/we)</li>
-            <li>Bijlagen aanduiden met cijfers (moet letters zijn)</li>
-            <li>Punt niet áchter de APA-bron</li>
-            <li>Geen inleiding vóór eerste paragraaf</li>
-            <li>Paginanummers vergeten</li>
-          </ul>
-        </div>
-      </div>
-    </div>
+<section class="sectie" id="ec">
+  <header class="lees-kop"><h1>Expert-college, Evenementen</h1></header>
+  <div class="tekst">
+<h3>Definitie evenement</h3>
+<dl class="begrip"><dt>Verhaar (2022)</dt><dd>"Een evenement is een speciale, tijd- en plaatsgebonden gebeurtenis die door een initiatiefnemer (individu, bedrijf of overheid) wordt georganiseerd."</dd></dl>
+<dl class="begrip"><dt>Herlé</dt><dd>"Een evenement is een activiteit met een bijzonder karakter waarbij een groep genodigden aanwezig is."</dd></dl>
+<h3>Waarom evenement projectmatig aanpakken?</h3>
+<ul><li>Complex</li><li>Duidelijk begin- en eindtijd</li><li>Planning en voortgangsbewaking nodig</li><li>Samenwerking van meerdere disciplines</li></ul>
+<h3>Doelen van evenementen</h3>
+<ul><li><strong>Informatieverstrekking</strong>, opendag</li><li><strong>Educatief</strong>, symposium, congres, workshop</li><li><strong>Beleidsvorming</strong>, algemene ledenvergadering</li><li><strong>Commercieel</strong>, beurs</li><li><strong>Ter promotie</strong>, productlancering</li><li><strong>Consumptie</strong>, festival, foodtruck</li></ul>
+<h3>Soorten evenementen</h3>
+<ul><li>Publieksevenementen vs. besloten evenementen</li><li>Dag-, weekend-, weekevenementen</li><li>Naar duur, locatie, bereikbaarheid, omvang, toegang, doelgroep</li></ul>
+<h3>Risico's bij evenementen</h3>
+<ul><li>Financiële risico's</li><li>Veiligheidsrisico's (openbare orde)</li><li>Juridische risico's (vergunningen)</li><li>Weersomstandigheden</li></ul>
+<h3>Competenties eventmanager</h3>
+<ul><li>Creatief, methodisch, samenwerken</li><li>Regie houden, inlevingsvermogen</li><li>Omgaan met weerstand, onderhandelen</li><li>Financieel inzicht</li></ul>
   </div>
-</div>
+  <nav class="verder" aria-label="Vorige en volgende"><a class="glass" href="#pv">&#8249; <span>Projectvaardigheden, Weken 1 t/m 7</span></a><a class="glass" href="#recht"><span>Expert-college, Recht bij Evenementen</span> &#8250;</a></nav>
+</section>
 
-<!-- ===== EXPERT EVENEMENTEN ===== -->
-<div class="card" id="ec">
-  <div class="card-header hec"><span class="icon" aria-hidden="true">🎪</span><h2>Expert-college — Evenementen</h2></div>
-  <div class="card-body">
-    <div class="two-col">
-      <div>
-        <div class="section">
-          <h3>Definitie evenement</h3>
-          <div class="defbox" style="border-color:#9a3412;">
-            <strong>Verhaar (2022)</strong>
-            "Een evenement is een speciale, tijd- en plaatsgebonden gebeurtenis die door een initiatiefnemer (individu, bedrijf of overheid) wordt georganiseerd."
-          </div>
-          <div class="defbox" style="border-color:#9a3412;">
-            <strong>Herlé</strong>
-            "Een evenement is een activiteit met een bijzonder karakter waarbij een groep genodigden aanwezig is."
-          </div>
-        </div>
-        <div class="section">
-          <h3>Waarom evenement projectmatig aanpakken?</h3>
-          <ul class="clean">
-            <li>Complex</li>
-            <li>Duidelijk begin- en eindtijd</li>
-            <li>Planning en voortgangsbewaking nodig</li>
-            <li>Samenwerking van meerdere disciplines</li>
-          </ul>
-        </div>
-        <div class="section">
-          <h3>Doelen van evenementen</h3>
-          <ul class="clean">
-            <li><strong>Informatieverstrekking</strong> — opendag</li>
-            <li><strong>Educatief</strong> — symposium, congres, workshop</li>
-            <li><strong>Beleidsvorming</strong> — algemene ledenvergadering</li>
-            <li><strong>Commercieel</strong> — beurs</li>
-            <li><strong>Ter promotie</strong> — productlancering</li>
-            <li><strong>Consumptie</strong> — festival, foodtruck</li>
-          </ul>
-        </div>
-      </div>
-      <div>
-        <div class="section">
-          <h3>Soorten evenementen</h3>
-          <ul class="clean">
-            <li>Publieksevenementen vs. besloten evenementen</li>
-            <li>Dag-, weekend-, weekevenementen</li>
-            <li>Naar duur, locatie, bereikbaarheid, omvang, toegang, doelgroep</li>
-          </ul>
-        </div>
-        <div class="section">
-          <h3>Risico's bij evenementen</h3>
-          <ul class="clean">
-            <li>Financiële risico's</li>
-            <li>Veiligheidsrisico's (openbare orde)</li>
-            <li>Juridische risico's (vergunningen)</li>
-            <li>Weersomstandigheden</li>
-          </ul>
-        </div>
-        <div class="section">
-          <h3>Competenties eventmanager</h3>
-          <ul class="clean">
-            <li>Creatief, methodisch, samenwerken</li>
-            <li>Regie houden, inlevingsvermogen</li>
-            <li>Omgaan met weerstand, onderhandelen</li>
-            <li>Financieel inzicht</li>
-          </ul>
-        </div>
-      </div>
-    </div>
+<section class="sectie" id="recht">
+  <header class="lees-kop"><h1>Expert-college, Recht bij Evenementen</h1></header>
+  <div class="tekst">
+<h3>Evenementenrecht</h3>
+<div class="let-op"><b>Let op</b>Er bestaat <em>geen</em> apart evenementenrecht. Betrokken rechtsgebieden: publiekrecht + privaatrecht.</div>
+<h3>Vergunningen</h3>
+<ul><li>Evenementenvergunning (APV, Algemene Plaatselijke Verordening)</li><li>Afhankelijk van omstandigheden: melding of vergunning</li><li>Naast evenementenvergunning mogelijk ook: alcoholontheffing, reclamevergunning, wegafzettingsvergunning, milieuvergunning</li></ul>
+<h3>Aansprakelijkheid</h3>
+<ul><li>Als organisator heb je een <strong>zorgplicht</strong></li><li>Aansprakelijkheid op basis van: kans op schade, ernst van schade, kosten van preventie</li></ul>
+<h3>Verzekeringen</h3>
+<ul><li>Annuleringsverzekering (weersomstandigheden)</li><li>WA-verzekering (aansprakelijkheid)</li></ul>
+<h3>Contracten / Verbintenissenrecht</h3>
+<ul><li>Overeenkomst = aanbod + aanvaarding (art. 6:217 BW)</li><li>Let op algemene voorwaarden bij contracten met artiesten, toeleveranciers, catering etc.</li></ul>
+<h3>Muziekrecht ⭐</h3>
+<ul><li>Je mag niet zomaar muziek van anderen draaien (uitzondering: besloten feest)</li><li><strong>BUMA/STEMRA</strong>, beheert auteursrechten van componisten en tekstschrijvers</li><li><strong>Sena</strong>, beheert naburige rechten van uitvoerende artiesten en producenten</li><li>Oplossing: <strong>licentie aanvragen</strong> (kost geld, vaak percentage van omzet)</li></ul>
+<h3>AVG, Promotiebeelden</h3>
+<ul><li>AVG regelt verwerking van persoonsgegevens</li><li>Foto's/video's van personen voor promotie → toestemming nodig</li><li>Grondslag: toestemming van de persoon (niet via algemene voorwaarden)</li></ul>
   </div>
-</div>
+  <nav class="verder" aria-label="Vorige en volgende"><a class="glass" href="#ec">&#8249; <span>Expert-college, Evenementen</span></a><a class="glass" href="#mkt"><span>Expert-les, Evenementenmarketing</span> &#8250;</a></nav>
+</section>
 
-<!-- ===== EXPERT RECHT ===== -->
-<div class="card" id="recht">
-  <div class="card-header hrt"><span class="icon" aria-hidden="true">⚖️</span><h2>Expert-college — Recht bij Evenementen</h2></div>
-  <div class="card-body">
-    <div class="two-col">
-      <div>
-        <div class="section">
-          <h3>Evenementenrecht</h3>
-          <div class="warn">Er bestaat <em>geen</em> apart evenementenrecht. Betrokken rechtsgebieden: publiekrecht + privaatrecht.</div>
-        </div>
-        <div class="section">
-          <h3>Vergunningen</h3>
-          <ul class="clean">
-            <li>Evenementenvergunning (APV — Algemene Plaatselijke Verordening)</li>
-            <li>Afhankelijk van omstandigheden: melding of vergunning</li>
-            <li>Naast evenementenvergunning mogelijk ook: alcoholontheffing, reclamevergunning, wegafzettingsvergunning, milieuvergunning</li>
-          </ul>
-        </div>
-        <div class="section">
-          <h3>Aansprakelijkheid</h3>
-          <ul class="clean">
-            <li>Als organisator heb je een <strong>zorgplicht</strong></li>
-            <li>Aansprakelijkheid op basis van: kans op schade, ernst van schade, kosten van preventie</li>
-          </ul>
-        </div>
-        <div class="section">
-          <h3>Verzekeringen</h3>
-          <ul class="clean">
-            <li>Annuleringsverzekering (weersomstandigheden)</li>
-            <li>WA-verzekering (aansprakelijkheid)</li>
-          </ul>
-        </div>
-      </div>
-      <div>
-        <div class="section">
-          <h3>Contracten / Verbintenissenrecht</h3>
-          <ul class="clean">
-            <li>Overeenkomst = aanbod + aanvaarding (art. 6:217 BW)</li>
-            <li>Let op algemene voorwaarden bij contracten met artiesten, toeleveranciers, catering etc.</li>
-          </ul>
-        </div>
-        <div class="section">
-          <h3>Muziekrecht ⭐</h3>
-          <ul class="clean">
-            <li>Je mag niet zomaar muziek van anderen draaien (uitzondering: besloten feest)</li>
-            <li><strong>BUMA/STEMRA</strong> — beheert auteursrechten van componisten en tekstschrijvers</li>
-            <li><strong>Sena</strong> — beheert naburige rechten van uitvoerende artiesten en producenten</li>
-            <li>Oplossing: <strong>licentie aanvragen</strong> (kost geld, vaak percentage van omzet)</li>
-          </ul>
-        </div>
-        <div class="section">
-          <h3>AVG — Promotiebeelden</h3>
-          <ul class="clean">
-            <li>AVG regelt verwerking van persoonsgegevens</li>
-            <li>Foto's/video's van personen voor promotie → toestemming nodig</li>
-            <li>Grondslag: toestemming van de persoon (niet via algemene voorwaarden)</li>
-          </ul>
-        </div>
-      </div>
-    </div>
+<section class="sectie" id="mkt">
+  <header class="lees-kop"><h1>Expert-les, Evenementenmarketing</h1></header>
+  <div class="tekst">
+<h3>De 3 E's van eventmarketing</h3>
+<ul><li><strong>Entertainment</strong>, wat bied je dat mensen zelf niet hebben?</li><li><strong>Excitement</strong>, waar worden mensen enthousiast van?</li><li><strong>Enterprise</strong>, wat maakt het evenement uniek en vernieuwend?</li></ul>
+<h3>Marktsegmentatie ⭐</h3>
+<ul><li><strong>Geografisch</strong>, regio's, steden, provincies</li><li><strong>Demografisch</strong>, leeftijd, geslacht, inkomen, opleiding</li><li><strong>Psychografisch</strong>, levensstijl, waarden, persoonlijkheid</li><li><strong>Gedragsmatig</strong>, aankoopgedrag, loyaliteit</li></ul>
+<h3>Marketingdoelstellingen (3-componentenmodel)</h3>
+<ul><li><strong>Cognitief</strong>, weten (80% moet van het evenement weten)</li><li><strong>Affectief</strong>, voelen (60% moet positief gevoel hebben)</li><li><strong>Conatief</strong>, doen (40% moet aanmelden)</li></ul>
+<h3>De 5 P's van evenementenmarketing ⭐</h3>
+<ul><li><strong>Product</strong>, wat is de waarde/uniekheid van het evenement?</li><li><strong>Prijs</strong>, wat kost het de doelgroep? (geld + tijd)</li><li><strong>Plaats</strong>, locatie, bereikbaarheid, sfeer, passend?</li><li><strong>Promotie</strong>, hoe bereik je de doelgroep? (PR, advertenties, social media)</li><li><strong>Proces</strong>, hoe wordt de dienst geleverd?</li></ul>
+<h3>Marketingcommunicatieplan</h3>
+<ul><li><strong>Spanningsboog</strong>, mensen zien ~2700 berichten per dag; zorg voor opvallende positionering</li><li>Crossmedia, zelfde boodschap via meerdere kanalen (social media, posters, mail, flyers)</li><li>Plan: <strong>wat – wanneer – door wie</strong></li></ul>
+<h3>Compleet marketingplan bevat</h3>
+<ul><li>Doelgroepen · Doelstellingen · Marketingstrategie</li><li>Marketingconcept · Crossmedia communicatie</li><li>Communicatieplanning · Budget</li></ul>
   </div>
-</div>
+  <nav class="verder" aria-label="Vorige en volgende"><a class="glass" href="#recht">&#8249; <span>Expert-college, Recht bij Evenementen</span></a><a class="glass" href="#bec"><span>Expert-college, BEC: Financiën bij Evenementen</span> &#8250;</a></nav>
+</section>
 
-<!-- ===== EXPERT MARKETING ===== -->
-<div class="card" id="mkt">
-  <div class="card-header hmk"><span class="icon" aria-hidden="true">📣</span><h2>Expert-les — Evenementenmarketing</h2></div>
-  <div class="card-body">
-    <div class="two-col">
-      <div>
-        <div class="section">
-          <h3>De 3 E's van eventmarketing</h3>
-          <ul class="clean">
-            <li><strong>Entertainment</strong> — wat bied je dat mensen zelf niet hebben?</li>
-            <li><strong>Excitement</strong> — waar worden mensen enthousiast van?</li>
-            <li><strong>Enterprise</strong> — wat maakt het evenement uniek en vernieuwend?</li>
-          </ul>
-        </div>
-        <div class="section">
-          <h3>Marktsegmentatie ⭐</h3>
-          <ul class="clean">
-            <li><strong>Geografisch</strong> — regio's, steden, provincies</li>
-            <li><strong>Demografisch</strong> — leeftijd, geslacht, inkomen, opleiding</li>
-            <li><strong>Psychografisch</strong> — levensstijl, waarden, persoonlijkheid</li>
-            <li><strong>Gedragsmatig</strong> — aankoopgedrag, loyaliteit</li>
-          </ul>
-        </div>
-        <div class="section">
-          <h3>Marketingdoelstellingen (3-componentenmodel)</h3>
-          <ul class="clean">
-            <li><strong>Cognitief</strong> — weten (80% moet van het evenement weten)</li>
-            <li><strong>Affectief</strong> — voelen (60% moet positief gevoel hebben)</li>
-            <li><strong>Conatief</strong> — doen (40% moet aanmelden)</li>
-          </ul>
-        </div>
-      </div>
-      <div>
-        <div class="section">
-          <h3>De 5 P's van evenementenmarketing ⭐</h3>
-          <ul class="clean">
-            <li><strong>Product</strong> — wat is de waarde/uniekheid van het evenement?</li>
-            <li><strong>Prijs</strong> — wat kost het de doelgroep? (geld + tijd)</li>
-            <li><strong>Plaats</strong> — locatie, bereikbaarheid, sfeer, passend?</li>
-            <li><strong>Promotie</strong> — hoe bereik je de doelgroep? (PR, advertenties, social media)</li>
-            <li><strong>Proces</strong> — hoe wordt de dienst geleverd?</li>
-          </ul>
-        </div>
-        <div class="section">
-          <h3>Marketingcommunicatieplan</h3>
-          <ul class="clean">
-            <li><strong>Spanningsboog</strong> — mensen zien ~2700 berichten per dag; zorg voor opvallende positionering</li>
-            <li>Crossmedia — zelfde boodschap via meerdere kanalen (social media, posters, mail, flyers)</li>
-            <li>Plan: <strong>wat – wanneer – door wie</strong></li>
-          </ul>
-        </div>
-        <div class="section">
-          <h3>Compleet marketingplan bevat</h3>
-          <ul class="clean">
-            <li>Doelgroepen · Doelstellingen · Marketingstrategie</li>
-            <li>Marketingconcept · Crossmedia communicatie</li>
-            <li>Communicatieplanning · Budget</li>
-          </ul>
-        </div>
-      </div>
-    </div>
+<section class="sectie" id="bec">
+  <header class="lees-kop"><h1>Expert-college, BEC: Financiën bij Evenementen</h1></header>
+  <div class="tekst">
+<h3>KOFTIG (beheersaspecten evenement), 6 aspecten</h3>
+<div class="let-op"><b>Let op</b>⚠️ KOFTIG = de 5 aspecten van GOKIT/TGKIO + 1 extra: Facilitair. Dus 6 aspecten in totaal, geen 5.</div>
+<ul><li><strong>K</strong>waliteit</li><li><strong>O</strong>rganisatie</li><li><strong>F</strong>acilitair (extra t.o.v. GOKIT)</li><li><strong>T</strong>ijd</li><li><strong>I</strong>nformatie</li><li><strong>G</strong>eld</li></ul>
+<h3>Vaste vs. variabele kosten</h3>
+<ul><li><strong>Vaste kosten</strong>, onafhankelijk van aantal bezoekers (bijv. artiesten, verzekeringen)</li><li><strong>Variabele kosten</strong>, afhankelijk van aantal bezoekers (catering per persoon)</li></ul>
+<h3>Categorieën kosten bij een evenement</h3>
+<ul><li><strong>1000</strong>, Locatiekosten</li><li><strong>2000</strong>, Promotiekosten</li><li><strong>3000</strong>, Technische faciliteiten</li><li><strong>4000</strong>, Rand faciliteiten</li><li><strong>5000+</strong>, Overige kosten</li><li><strong>9000</strong>, Inkomsten/opbrengsten</li></ul>
+<h3>Inkomsten (baten)</h3>
+<ul><li>Opdrachtgever (subsidie/budget)</li><li>Kaartverkoop</li><li>Drank/eten verkoop</li><li>Sponsoring</li></ul>
+<h3>Penningmeester, kenmerken (Belbin)</h3>
+<ul><li>Zorgvuldig, houdt van puzzelen, bewaart overzicht</li><li>Spreekt anderen aan op naleving</li><li>Belbin-rollen: Monitor + Specialist</li></ul>
+<div class="kern"><strong>Traceerbaarheid:</strong> bewaar van ALLE uitgaven het bewijs (bon, factuur). Administratie is essentieel!</div>
   </div>
-</div>
+  <nav class="verder" aria-label="Vorige en volgende"><a class="glass" href="#mkt">&#8249; <span>Expert-les, Evenementenmarketing</span></a><a class="glass" href="#s18"><span>Snelreferentie, De Lijstjes die je Moet Kennen</span> &#8250;</a></nav>
+</section>
 
-<!-- ===== EXPERT BEC ===== -->
-<div class="card" id="bec">
-  <div class="card-header hbec"><span class="icon" aria-hidden="true">💰</span><h2>Expert-college — BEC: Financiën bij Evenementen</h2></div>
-  <div class="card-body">
-    <div class="two-col">
-      <div>
-        <div class="section">
-          <h3>KOFTIG (beheersaspecten evenement) — 6 aspecten</h3>
-          <div class="warn">⚠️ KOFTIG = de 5 aspecten van GOKIT/TGKIO + 1 extra: Facilitair. Dus 6 aspecten in totaal, geen 5.</div>
-          <ul class="clean">
-            <li><strong>K</strong>waliteit</li>
-            <li><strong>O</strong>rganisatie</li>
-            <li><strong>F</strong>acilitair (extra t.o.v. GOKIT)</li>
-            <li><strong>T</strong>ijd</li>
-            <li><strong>I</strong>nformatie</li>
-            <li><strong>G</strong>eld</li>
-          </ul>
-        </div>
-        <div class="section">
-          <h3>Vaste vs. variabele kosten</h3>
-          <ul class="clean">
-            <li><strong>Vaste kosten</strong> — onafhankelijk van aantal bezoekers (bijv. artiesten, verzekeringen)</li>
-            <li><strong>Variabele kosten</strong> — afhankelijk van aantal bezoekers (catering per persoon)</li>
-          </ul>
-        </div>
-      </div>
-      <div>
-        <div class="section">
-          <h3>Categorieën kosten bij een evenement</h3>
-          <ul class="clean">
-            <li><strong>1000</strong> — Locatiekosten</li>
-            <li><strong>2000</strong> — Promotiekosten</li>
-            <li><strong>3000</strong> — Technische faciliteiten</li>
-            <li><strong>4000</strong> — Rand faciliteiten</li>
-            <li><strong>5000+</strong> — Overige kosten</li>
-            <li><strong>9000</strong> — Inkomsten/opbrengsten</li>
-          </ul>
-        </div>
-        <div class="section">
-          <h3>Inkomsten (baten)</h3>
-          <ul class="clean">
-            <li>Opdrachtgever (subsidie/budget)</li>
-            <li>Kaartverkoop</li>
-            <li>Drank/eten verkoop</li>
-            <li>Sponsoring</li>
-          </ul>
-        </div>
-        <div class="section">
-          <h3>Penningmeester — kenmerken (Belbin)</h3>
-          <ul class="clean">
-            <li>Zorgvuldig, houdt van puzzelen, bewaart overzicht</li>
-            <li>Spreekt anderen aan op naleving</li>
-            <li>Belbin-rollen: Monitor + Specialist</li>
-          </ul>
-        </div>
-        <div class="highlight">
-          <strong>Traceerbaarheid:</strong> bewaar van ALLE uitgaven het bewijs (bon, factuur). Administratie is essentieel!
-        </div>
-      </div>
-    </div>
+<section class="sectie" id="s18">
+  <header class="lees-kop"><h1>Snelreferentie, De Lijstjes die je Moet Kennen</h1></header>
+  <div class="tekst">
+<h3>6 Stappen P6-Methode</h3>
+<ol><li>Opstarten → projectvoorstel</li><li>Inrichten → team + afspraken</li><li>Plan van Aanpak</li><li>Uitvoeren → TGKIO bewaken</li><li>Opleveren → testen + acceptatie</li><li>Afsluiten → evaluatie, overdracht</li></ol>
+<h3>Traditionele Fasering</h3>
+<ol><li>Initiatief</li><li>Definitie</li><li>Ontwerp</li><li>Voorbereiding</li><li>Realisatie</li><li>Nazorg</li></ol>
+<div class="kader glass"><h4>SMART</h4><ul><li><strong>S</strong>pecifiek</li><li><strong>M</strong>eetbaar</li><li><strong>A</strong>anvaarbaar</li><li><strong>R</strong>ealistisch</li><li><strong>T</strong>ijdgebonden</li></ul></div>
+<h3>Belbin 9 rollen</h3>
+<p>Denk:</p>
+<ul><li>Plant · Specialist · Monitor</li></ul>
+<p>Actie:</p>
+<ul><li>Afmaker · Bedrijfsman · Vormer</li></ul>
+<p>Sociaal:</p>
+<ul><li>Voorzitter · Groepswerker · Brononderzoeker</li></ul>
+<h3>GOKIT = TGKIO · KOFTIG = + Facilitair</h3>
+<ul><li>G = Geld</li><li>O = Organisatie</li><li>K = Kwaliteit</li><li>I = Informatie</li><li>T = Tijd</li></ul>
+<p>KOFTIG voegt 6e aspect toe: F = Facilitair</p>
+<div class="kader glass"><h4>4 manieren risicobeheersing</h4><ul><li>Voorkomen</li><li>Verminderen</li><li>Overdragen</li><li>Accepteren</li></ul></div>
+<div class="kader glass"><h4>Scrum: 3 rollen</h4><ul><li>Product Owner</li><li>Scrum Master</li><li>Scrumteam</li></ul></div>
+<div class="kader glass"><h4>Scrum: 4 meetings</h4><ul><li>Sprint Planning</li><li>Daily Standup (max 15 min)</li><li>Sprint Review</li><li>Sprint Retrospective</li></ul></div>
+<div class="kader glass"><h4>4 Besluitvorming</h4><ul><li>Meerderheid van stemmen</li><li>Consensus</li><li>Unanimiteit</li><li>Gebrek aan negatieve reacties</li></ul></div>
+<div class="kader glass"><h4>MVO, 4 P's</h4><ul><li>Project · People · Planet · Profit</li></ul></div>
+<div class="kader glass"><h4>3 E's Eventmarketing</h4><ul><li>Entertainment · Excitement · Enterprise</li></ul></div>
   </div>
+  <nav class="verder" aria-label="Vorige en volgende"><a class="glass" href="#bec">&#8249; <span>Expert-college, BEC: Financiën bij Evenementen</span></a><span></span></nav>
+</section>
+  </main>
 </div>
 
-<!-- SNELREFERENTIE -->
-<div class="card">
-  <div class="card-header" style="background:#1a2a4a;"><span class="icon" aria-hidden="true">⚡</span><h2>Snelreferentie — De Lijstjes die je Moet Kennen</h2></div>
-  <div class="card-body">
-    <div class="three-col">
-      <div>
-        <div class="box">
-          <h4>6 Stappen P6-Methode</h4>
-          <ol style="padding-left:14px;font-size:12px;display:flex;flex-direction:column;gap:2px;color:var(--muted)">
-            <li>Opstarten → projectvoorstel</li>
-            <li>Inrichten → team + afspraken</li>
-            <li>Plan van Aanpak</li>
-            <li>Uitvoeren → TGKIO bewaken</li>
-            <li>Opleveren → testen + acceptatie</li>
-            <li>Afsluiten → evaluatie, overdracht</li>
-          </ol>
-        </div>
-        <div class="box" style="margin-top:8px;">
-          <h4>Traditionele Fasering</h4>
-          <ol style="padding-left:14px;font-size:12px;display:flex;flex-direction:column;gap:2px;color:var(--muted)">
-            <li>Initiatief</li>
-            <li>Definitie</li>
-            <li>Ontwerp</li>
-            <li>Voorbereiding</li>
-            <li>Realisatie</li>
-            <li>Nazorg</li>
-          </ol>
-        </div>
-        <div class="box" style="margin-top:8px;">
-          <h4>SMART</h4>
-          <ul style="list-style:none;font-size:12px;color:var(--muted)">
-            <li><strong style="color:var(--fg)">S</strong>pecifiek</li>
-            <li><strong style="color:var(--fg)">M</strong>eetbaar</li>
-            <li><strong style="color:var(--fg)">A</strong>anvaarbaar</li>
-            <li><strong style="color:var(--fg)">R</strong>ealistisch</li>
-            <li><strong style="color:var(--fg)">T</strong>ijdgebonden</li>
-          </ul>
-        </div>
-      </div>
-      <div>
-        <div class="box">
-          <h4>Belbin 9 rollen</h4>
-          <p style="font-size:11px;color:var(--muted);margin-bottom:4px;">Denk:</p>
-          <ul style="list-style:none;font-size:12px;color:var(--muted)"><li>Plant · Specialist · Monitor</li></ul>
-          <p style="font-size:11px;color:var(--muted);margin:4px 0 4px;">Actie:</p>
-          <ul style="list-style:none;font-size:12px;color:var(--muted)"><li>Afmaker · Bedrijfsman · Vormer</li></ul>
-          <p style="font-size:11px;color:var(--muted);margin:4px 0 4px;">Sociaal:</p>
-          <ul style="list-style:none;font-size:12px;color:var(--muted)"><li>Voorzitter · Groepswerker · Brononderzoeker</li></ul>
-        </div>
-        <div class="box" style="margin-top:8px;">
-          <h4>GOKIT = TGKIO · KOFTIG = + Facilitair</h4>
-          <ul style="list-style:none;font-size:12px;color:var(--muted)">
-            <li>G = Geld</li><li>O = Organisatie</li><li>K = Kwaliteit</li><li>I = Informatie</li><li>T = Tijd</li>
-          </ul>
-          <p style="font-size:11px;color:#fca5a5;margin-top:4px;">KOFTIG voegt 6e aspect toe: F = Facilitair</p>
-        </div>
-        <div class="box" style="margin-top:8px;">
-          <h4>4 manieren risicobeheersing</h4>
-          <ul style="list-style:none;font-size:12px;color:var(--muted)">
-            <li>Voorkomen</li><li>Verminderen</li><li>Overdragen</li><li>Accepteren</li>
-          </ul>
-        </div>
-      </div>
-      <div>
-        <div class="box">
-          <h4>Scrum: 3 rollen</h4>
-          <ul style="list-style:none;font-size:12px;color:var(--muted)">
-            <li>Product Owner</li><li>Scrum Master</li><li>Scrumteam</li>
-          </ul>
-        </div>
-        <div class="box" style="margin-top:8px;">
-          <h4>Scrum: 4 meetings</h4>
-          <ul style="list-style:none;font-size:12px;color:var(--muted)">
-            <li>Sprint Planning</li><li>Daily Standup (max 15 min)</li><li>Sprint Review</li><li>Sprint Retrospective</li>
-          </ul>
-        </div>
-        <div class="box" style="margin-top:8px;">
-          <h4>4 Besluitvorming</h4>
-          <ul style="list-style:none;font-size:12px;color:var(--muted)">
-            <li>Meerderheid van stemmen</li><li>Consensus</li><li>Unanimiteit</li><li>Gebrek aan negatieve reacties</li>
-          </ul>
-        </div>
-        <div class="box" style="margin-top:8px;">
-          <h4>MVO — 4 P's</h4>
-          <ul style="list-style:none;font-size:12px;color:var(--muted)">
-            <li>Project · People · Planet · Profit</li>
-          </ul>
-        </div>
-        <div class="box" style="margin-top:8px;">
-          <h4>3 E's Eventmarketing</h4>
-          <ul style="list-style:none;font-size:12px;color:var(--muted)">
-            <li>Entertainment · Excitement · Enterprise</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+<div class="lightbox" id="lightbox" hidden><figure><img alt=""/><p></p></figure></div>
 
-</div>
-
-<footer>
-  Studiesamenvatting Evenementenmanagement A — Succes met de toets! 🎓
-</footer>
-
-<footer class="fa-site-footer">
-  <span>FM Atlas · gratis studiehulp voor HAN Facilitair Management, gemaakt door een student</span>
-  <span>Niet officieel verbonden aan de HAN · <a href="privacy.html">Privacy</a> · <a href="app.html#contact">Fout gezien?</a></span>
-</footer>
-
-<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
-<script src="js/fmatlas.js"></script>
+<script src="js/atlas-data.js"></script>
+<script src="js/atlas.js"></script>
 <script>
-const firebaseConfig = {
-  apiKey: "AIzaSyBB397Wk2eqpBjic8E7aGV1mTgIjhQ21a8",
-  authDomain: "fmkompas-ff8bc.firebaseapp.com",
-  projectId: "fmkompas-ff8bc",
-  storageBucket: "fmkompas-ff8bc.firebasestorage.app",
-  messagingSenderId: "487972024689",
-  appId: "1:487972024689:web:712c3117080745d14746d0"
-};
-firebase.initializeApp(firebaseConfig);
-firebase.auth().onAuthStateChanged(user => {
-  document.getElementById('fa-header-slot').innerHTML = '';
-  faMarkActiveToday();
-  document.getElementById('fa-header-slot').appendChild(faRenderHeader({ user }));
-  faMarkLastSeen('eventmanagement1','Eventmanagement 1','eventmanagement1.html');
-});
+(function () {
+  Atlas.topbar('<span class="sep">/</span><a href="vak.html?v=eventmanagement1">Eventmanagement 1</a><span class="sep">/</span><span class="here">Samenvatting</span>');
+  const secties = [...document.querySelectorAll('.sectie')];
+  const links = [...document.querySelectorAll('#toc a')];
+  const toc = document.getElementById('toc');
+  const toggle = document.getElementById('toc-toggle');
+
+  function toon(id, scroll) {
+    const s = secties.find(x => x.id === id) || secties[0];
+    secties.forEach(x => x.classList.toggle('actief', x === s));
+    links.forEach(a => a.setAttribute('aria-current', String(a.getAttribute('href') === '#' + s.id)));
+    const a = links.find(x => x.getAttribute('href') === '#' + s.id);
+    document.getElementById('toc-now').textContent = a ? a.textContent.replace(/\s+/g, ' ').trim() : '';
+    toc.classList.remove('open'); toggle.setAttribute('aria-expanded', 'false');
+    if (scroll) window.scrollTo({ top: 0 });
+  }
+  window.addEventListener('hashchange', () => toon(location.hash.slice(1), true));
+  toggle.addEventListener('click', () => { const o = toc.classList.toggle('open'); toggle.setAttribute('aria-expanded', String(o)); });
+  if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+  toon(location.hash.slice(1), true);
+  window.addEventListener('load', () => window.scrollTo({ top: 0 }));
+
+  // Beeld vergroten
+  const lb = document.getElementById('lightbox');
+  document.addEventListener('click', e => {
+    const b = e.target.closest('.beeld button');
+    if (b) {
+      const img = b.querySelector('img');
+      lb.querySelector('img').src = img.src;
+      lb.querySelector('p').textContent = b.parentNode.querySelector('figcaption')?.textContent || '';
+      lb.hidden = false;
+    } else if (e.target.closest('#lightbox')) lb.hidden = true;
+  });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') lb.hidden = true; });
+})();
 </script>
 </body>
 </html>

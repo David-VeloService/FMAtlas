@@ -2,682 +2,243 @@
 <html lang="nl">
 <head>
 <meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Samenvatting · Verbintenissenrecht — volledige samenvatting — FM Atlas</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+<title>Samenvatting · Facilitaire inkoop · FM Atlas</title>
+<meta name="description" content="Samenvatting van Facilitaire inkoop op FM Atlas, studiehulp voor HAN Facilitair Management."/>
 <link rel="icon" type="image/svg+xml" href="logo.svg"/>
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png"/>
 <link rel="apple-touch-icon" href="apple-touch-icon.png"/>
-<meta name="theme-color" content="#f7f3ec"/>
+<meta name="theme-color" content="#efe5d4"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet"/>
-<link rel="stylesheet" href="css/fmatlas.css"/>
-<style>
-/* Legacy samenvatting restyle — FMAtlas look */
-.sam-wrap { max-width: 1100px; margin: 0 auto; padding: 24px; }
-.sam-intro { background: var(--surface); border: 1.5px solid var(--line); border-radius: var(--radius-xl); padding: 28px 32px; margin-bottom: 18px; }
-.sam-intro-meta { font-size: 11px; font-weight: 800; color: var(--accent); letter-spacing: 0.08em; margin-bottom: 8px; }
-.sam-intro h1 { font-size: 32px; font-weight: 900; letter-spacing: -0.025em; line-height: 1.08; margin-bottom: 10px; }
-.sam-intro p { color: var(--ink-soft); font-size: 14.5px; line-height: 1.6; }
-
-.toetsinfo { display: none; } /* hide original stripe */
-
-nav.chapnav { background: var(--surface); border: 1.5px solid var(--line); border-radius: var(--radius-lg); padding: 12px 16px; margin: 0 24px 18px; max-width: 1052px; margin-left: auto; margin-right: auto; display: flex; flex-wrap: wrap; gap: 6px; position: sticky; top: 68px; z-index: 20; }
-nav.chapnav a { color: var(--ink-soft); text-decoration: none; padding: 4px 10px; border-radius: 8px; background: var(--bg); font-weight: 800; font-size: 11.5px; border: 1.5px solid var(--line); transition: all 0.12s; }
-nav.chapnav a:hover { background: var(--accent-soft); color: var(--accent-deep); border-color: var(--accent); }
-
-.main { max-width: 1052px; margin: 0 auto; padding: 0 24px 60px; display: flex; flex-direction: column; gap: 18px; }
-
-/* Chapter cards */
-.card { background: var(--surface); border: 1.5px solid var(--line); border-radius: var(--radius-xl); overflow: hidden; scroll-margin-top: 140px; }
-.card-header { padding: 16px 22px; display: flex; align-items: center; gap: 10px; color: var(--surface); background: var(--ink); }
-.card-header h2 { font-size: 17px; font-weight: 900; letter-spacing: -0.015em; }
-.card-header .icon { font-size: 20px; }
-.card-body { padding: 22px 24px; }
-
-/* Chapter colors — using accent + neutrals */
-.h1, .h2, .h3, .h4, .h5, .h6, .h7, .h8, .h9, .h10, .h11, .h12, .hpv, .hec, .hrt, .hmk, .hbec { background: var(--ink); }
-.h1 { background: var(--accent); }
-.hec, .hrt, .hmk, .hbec, .hpv { background: var(--ink-soft); }
-
-/* Content elements */
-.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-.three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
-@media (max-width: 740px) { .two-col, .three-col { grid-template-columns: 1fr; } }
-
-.section { margin-bottom: 18px; }
-.section h3 { font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin-bottom: 8px; padding-bottom: 6px; border-bottom: 1.5px solid var(--line); }
-
-ul.clean { list-style: none; display: flex; flex-direction: column; gap: 5px; margin: 0; padding: 0; }
-ul.clean li { font-size: 13.5px; line-height: 1.55; padding: 3px 0 3px 16px; position: relative; color: var(--ink-soft); font-weight: 500; }
-ul.clean li::before { content: '›'; position: absolute; left: 0; top: 3px; color: var(--accent); font-weight: 900; }
-ul.clean li strong { color: var(--ink); font-weight: 800; }
-
-.defbox { background: var(--bg); border: 1.5px solid var(--line); border-left: 4px solid var(--accent); border-radius: 0 var(--radius) var(--radius) 0; padding: 10px 14px; margin-bottom: 10px; font-size: 13.5px; line-height: 1.55; color: var(--ink-soft); }
-.defbox strong { display: block; font-size: 10.5px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); margin-bottom: 4px; }
-
-.highlight { background: var(--accent-soft); border: 1.5px solid rgba(239, 90, 63, 0.25); border-radius: var(--radius); padding: 10px 14px; font-size: 13.5px; line-height: 1.55; margin-bottom: 10px; color: var(--accent-deep); font-weight: 600; }
-.highlight strong { color: var(--accent-deep); font-weight: 900; }
-
-.warn { background: #fff7ed; border-left: 3px solid #f59e0b; padding: 9px 14px; border-radius: 0 var(--radius) var(--radius) 0; font-size: 12.5px; color: #92400e; margin-bottom: 10px; font-weight: 600; }
-
-.tag { display: inline-block; padding: 2px 8px; border-radius: 999px; font-size: 11px; font-weight: 800; }
-.blue   { background: #dbeafe;  color: #1e40af; }
-.green  { background: #dcfce7;  color: #166534; }
-.purple { background: #ede9fe;  color: #5b21b6; }
-.orange { background: #ffedd5;  color: #9a3412; }
-.red    { background: #fee2e2;  color: #991b1b; }
-.yellow { background: #fef3c7;  color: #854d0e; }
-
-.grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-.grid3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
-@media (max-width: 600px) { .grid2, .grid3 { grid-template-columns: 1fr; } }
-
-.box { background: var(--bg); border: 1.5px solid var(--line); border-radius: var(--radius); padding: 12px 14px; }
-.box h4 { font-size: 12.5px; font-weight: 900; margin-bottom: 8px; color: var(--ink); letter-spacing: -0.005em; }
-
-.nummer { display: inline-flex; align-items:center; justify-content:center; background: var(--accent); color: var(--surface); width: 22px; height: 22px; border-radius: 50%; font-size: 11px; font-weight: 900; margin-right: 8px; flex-shrink: 0; }
-.stap { display: flex; align-items: center; gap: 4px; font-size: 13.5px; color: var(--ink-soft); padding: 4px 0; line-height: 1.5; }
-.stap strong { color: var(--ink); }
-
-table.compact { width: 100%; border-collapse: collapse; font-size: 12.5px; margin-top: 6px; }
-table.compact th, table.compact td { padding: 7px 10px; text-align: left; border-bottom: 1.5px solid var(--line); color: var(--ink-soft); }
-table.compact th { font-size: 10.5px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
-table.compact td strong { color: var(--ink); font-weight: 800; }
-
-/* Overgenomen uit de Inkoop-samenvatting (zelfde opbouw) */
-/* Chapter-pattern (gebruikt in body) — gemapt op FMAtlas-look */
-.content-wrap { max-width: 1052px; margin: 0 auto; padding: 0 24px 60px; display: flex; flex-direction: column; gap: 18px; }
-.page-nav { background: var(--surface); border: 1.5px solid var(--line); border-radius: var(--radius-lg); padding: 12px 16px; display: flex; flex-wrap: wrap; gap: 6px; position: sticky; top: 68px; z-index: 20; margin-bottom: 4px; }
-.page-nav a { color: var(--ink-soft); text-decoration: none; padding: 4px 10px; border-radius: 8px; background: var(--bg); font-weight: 800; font-size: 11.5px; border: 1.5px solid var(--line); transition: all 0.12s; }
-.page-nav a:hover { background: var(--accent-soft); color: var(--accent-deep); border-color: var(--accent); }
-.chapter { background: var(--surface); border: 1.5px solid var(--line); border-radius: var(--radius-xl); overflow: hidden; scroll-margin-top: 140px; }
-.chapter-header { padding: 16px 22px; display: flex; align-items: center; gap: 12px; color: var(--surface); background: var(--ink); }
-.chapter-header h2 { font-size: 17px; font-weight: 900; letter-spacing: -0.015em; margin: 0; }
-.chapter-num { display: inline-block; padding: 3px 10px; background: rgba(255,255,255,0.15); color: var(--surface); border-radius: 999px; font-size: 10.5px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; }
-.chapter > :not(.chapter-header) { padding-left: 24px; padding-right: 24px; }
-.chapter > :first-child:not(.chapter-header) { padding-top: 22px; }
-.chapter > :last-child { padding-bottom: 22px; }
-.section-title { font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin: 18px 0 8px; padding-bottom: 6px; border-bottom: 1.5px solid var(--line); }
-.chapter > .section-title:first-of-type { margin-top: 6px; }
-.prose { font-size: 13.5px; line-height: 1.6; color: var(--ink-soft); margin-bottom: 10px; }
-.prose strong { color: var(--ink); font-weight: 800; }
-.callout { background: var(--bg); border: 1.5px solid var(--line); border-left: 4px solid var(--accent); border-radius: 0 var(--radius) var(--radius) 0; padding: 12px 16px; margin-bottom: 12px; font-size: 13.5px; line-height: 1.6; color: var(--ink-soft); }
-.callout strong { color: var(--ink); font-weight: 800; }
-.callout em { color: var(--ink); font-style: italic; }
-.item-list { list-style: none; display: flex; flex-direction: column; gap: 5px; margin: 0 0 10px; padding: 0; }
-.item-list li { font-size: 13.5px; line-height: 1.55; padding: 3px 0 3px 16px; position: relative; color: var(--ink-soft); font-weight: 500; }
-.item-list li::before { content: '›'; position: absolute; left: 0; top: 3px; color: var(--accent); font-weight: 900; }
-.item-list li strong { color: var(--ink); font-weight: 800; }
-.item-list li ul { list-style: none; padding-left: 12px; margin-top: 4px; display: flex; flex-direction: column; gap: 3px; }
-.item-list li ul li { font-size: 12.5px; }
-.item-list li ul li::before { content: '–'; color: var(--muted); }
-.table-wrap { margin-bottom: 12px; overflow-x: auto; border: 1.5px solid var(--line); border-radius: var(--radius); }
-.table-wrap table { width: 100%; border-collapse: collapse; font-size: 12.5px; }
-.table-wrap th, .table-wrap td { padding: 8px 12px; text-align: left; border-bottom: 1.5px solid var(--line); color: var(--ink-soft); vertical-align: top; }
-.table-wrap tr:last-child td { border-bottom: none; }
-.table-wrap th { font-size: 10.5px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); background: var(--bg); }
-.table-wrap td strong { color: var(--ink); font-weight: 800; }
-.mini-card { background: var(--bg); border: 1.5px solid var(--line); border-radius: var(--radius); padding: 12px 14px; }
-.mini-card h4 { font-size: 12.5px; font-weight: 900; margin: 0 0 6px; color: var(--ink); }
-.mini-card p { font-size: 13px; line-height: 1.55; color: var(--ink-soft); margin: 0; }
-.chapter ol { font-size: 13.5px; line-height: 1.7; color: var(--ink-soft); padding-left: 22px; margin-bottom: 12px; }
-.chapter ol li { margin-bottom: 4px; }
-.chapter ol li strong { color: var(--ink); font-weight: 800; }
-.chapter ol ul { padding-left: 18px; margin-top: 4px; list-style: disc; }
-.chapter ol ul li { font-size: 13px; }
-/* Opmaak die alleen de Recht-samenvatting gebruikt */
-.art { display:inline-block; font-size:11.5px; font-weight:800; color:var(--accent-deep); background:var(--accent-soft); border-radius:6px; padding:1px 7px; margin-left:4px; white-space:nowrap; }
-.stappenplan { background:var(--surface); border:1.5px solid var(--line); border-radius:var(--radius-lg); padding:18px 20px; margin:16px 0; }
-.stappenplan-title { font-size:16px; font-weight:900; margin-bottom:2px; }
-.stappenplan-subtitle { font-size:13px; color:var(--muted); margin-bottom:12px; }
-.stappenplan ol, .stappenplan ul { list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:10px; }
-.stappenplan li { display:flex; gap:12px; align-items:flex-start; }
-.stap { display:flex; gap:12px; align-items:flex-start; margin-top:10px; }
-.stap-num { flex-shrink:0; width:26px; height:26px; border-radius:50%; background:var(--ink); color:var(--surface); display:grid; place-items:center; font-size:12.5px; font-weight:800; }
-.stap-text { font-size:14px; line-height:1.55; }
-
-</style>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="css/atlas.css"/>
+<link rel="stylesheet" href="css/leer.css"/>
 </head>
 <body>
+<div class="scene" aria-hidden="true"><i></i></div>
+<header class="topbar" id="topbar"></header>
 
-<div id="fa-header-slot"></div>
-
-<nav class="fa-breadcrumb">
-  <a href="app.html">Vakken</a>
-  <span>›</span>
-  <a href="recht.html">Recht</a>
-  <span>›</span>
-  <span class="current">Samenvatting</span>
-</nav>
-
-<div class="sam-wrap">
-  <div class="sam-intro">
-    <div class="sam-intro-meta">SAMENVATTING · 9 onderdelen · verbintenissenrecht</div>
-    <h1>Verbintenissenrecht — volledige samenvatting</h1>
-    <p>Inleiding recht, ongeldigheid, totstandkoming overeenkomst, vertegenwoordiging &amp; volmacht, tekortkoming &amp; nakoming, opschorting, schadevergoeding, ontbinding en onrechtmatige daad.</p>
-  </div>
-</div>
-
-<div class="content-wrap">
-
-  <nav class="page-nav">
-    <a href="#h1">Inleiding recht</a>
-    <a href="#h2">Ongeldigheid</a>
-    <a href="#h3">Totstandkoming overeenkomst</a>
-    <a href="#h4">Vertegenwoordiging &amp; Volmacht</a>
-    <a href="#h5">Tekortkoming &amp; Nakoming</a>
-    <a href="#h6">Opschorting</a>
-    <a href="#h7">Schadevergoeding</a>
-    <a href="#h8">Ontbinding</a>
-    <a href="#h9">Onrechtmatige daad</a>
+<div class="leer">
+  <nav class="toc glass" id="toc" aria-label="Inhoud">
+    <button class="toc-toggle" type="button" id="toc-toggle" aria-expanded="false"><span id="toc-now"></span><span aria-hidden="true">▾</span></button>
+    <div class="toc-list">
+      <div class="toc-title">Samenvatting</div>
+      <a href="#h1"><span>Inleiding in het recht</span></a>
+      <a href="#h2"><span>Ongeldigheid van de rechtshandeling</span></a>
+      <a href="#h3"><span>Totstandkoming van de overeenkomst</span></a>
+      <a href="#h4"><span>Vertegenwoordiging &amp; Volmacht</span></a>
+      <a href="#h5"><span>Tekortkoming in de nakoming, overzicht</span></a>
+      <a href="#h6"><span>Opschorting</span></a>
+      <a href="#h7"><span>Schadevergoeding wegens wanprestatie</span></a>
+      <a href="#h8"><span>Ontbinding</span></a>
+      <a href="#h9"><span>Onrechtmatige daad</span></a>
+    </div>
   </nav>
 
-  <!-- ═══════════════════════════════════════════ -->
-  <!-- HOOFDSTUK 1: INLEIDING RECHT -->
-  <!-- ═══════════════════════════════════════════ -->
-  <div class="chapter" id="h1">
-    <div class="chapter-header">
-      <span class="chapter-num">WEEK 1</span>
-      <h2>Inleiding in het recht</h2>
-    </div>
-
-    <div class="section-title">Wat is recht?</div>
-    <p class="prose">Recht = het geheel van gedragsregels dat door de overheid is gemaakt om de samenleving rechtvaardig te ordenen. <strong>Eigenrichting</strong> (zelf voor rechter spelen) is niet toegestaan — de overheid stelt vast wat in het concrete geval recht is.</p>
-
-    <div class="section-title">Rechtsbronnen</div>
-    <p class="prose">Ons recht ontstaat uit vier rechtsbronnen:</p>
-    <ul class="item-list">
-      <li><strong>Wetten</strong> — vastgesteld door de wetgever (rijkswetten, AMvB's, ministeriële regelingen, gemeentelijke verordeningen)</li>
-      <li><strong>Verdragen</strong> — internationale afspraken tussen staten; werken door in het nationale recht</li>
-      <li><strong>Jurisprudentie</strong> — rechterlijke uitspraken die als richtlijn dienen bij toekomstige zaken</li>
-      <li><strong>Gewoonte</strong> — ongeschreven regels die door herhaalde toepassing rechtskracht hebben gekregen</li>
-    </ul>
-    <p class="prose"><strong>Hoe verwijs je naar een wetsartikel?</strong> Altijd in volgorde: Boek → art. → lid → sub → afkorting wet.<br>
-    Voorbeeld: <span class="art">art. 7:617 lid 1 sub b BW</span></p>
-
-    <div class="section-title">Dwingend vs. regelend recht</div>
-    <div class="table-wrap">
-      <table>
-        <thead><tr><th>Type</th><th>Kenmerken</th><th>Signaalwoorden</th></tr></thead>
-        <tbody>
-          <tr><td><strong>Dwingend recht</strong></td><td>Partijen mogen hier niet van afwijken, ook niet als ze dat allebei willen. Geldt ter bescherming van de zwakkere partij of het algemeen belang.</td><td>'nietig', 'vernietigbaar', 'kan niet anders zijn dan', 'mag niet afgeweken worden'</td></tr>
-          <tr><td><strong>Regelend (aanvullend) recht</strong></td><td>Geldt alleen als partijen niets anders hebben afgesproken. Ze mogen er bij overeenkomst van afwijken.</td><td>Geen specifieke signaalwoorden; afwijking is mogelijk bij afspraak</td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div class="section-title">Privaatrecht vs. publiekrecht</div>
-    <div class="table-wrap">
-      <table>
-        <thead><tr><th>Aspect</th><th>Privaatrecht</th><th>Publiekrecht</th></tr></thead>
-        <tbody>
-          <tr><td><strong>Partijen</strong></td><td>Twee of meer burgers/bedrijven onderling</td><td>Overheid versus burger</td></tr>
-          <tr><td><strong>Doel</strong></td><td>Regelen van private verhoudingen (eigendom, contracten, aansprakelijkheid)</td><td>Regelen van publieke verhoudingen (bestuursrecht, strafrecht)</td></tr>
-          <tr><td><strong>Voorbeelden</strong></td><td>BW (Burgerlijk Wetboek), koop, huur, arbeidsrecht</td><td>Grondwet, AWB, WvSr (strafrecht)</td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div class="section-title">Verbintenis (art. 6:1 BW)</div>
-    <div class="callout">
-      <strong>Verbintenis</strong> = een rechtsverhouding waarbij de ene partij (schuldenaar) verplicht is tot een prestatie jegens de andere partij (schuldeiser), en de schuldeiser die prestatie kan vorderen.<br><br>
-      Verbintenissen ontstaan alleen als de wet dat bepaalt (art. 6:1 BW): uit een <strong>overeenkomst</strong> of rechtstreeks uit de <strong>wet</strong> (onrechtmatige daad, zaakwaarneming, onverschuldigde betaling, ongerechtvaardigde verrijking).
-    </div>
-
-    <div class="section-title">Rechtshandeling</div>
-    <p class="prose">Een <strong>rechtshandeling</strong> is een handeling die wordt verricht met de bedoeling om een rechtsgevolg in het leven te roepen (art. 3:33 BW). Vereiste: de wil moet overeenstemmen met de verklaring.</p>
+  <main class="lees" id="lees">
+<section class="sectie" id="h1">
+  <header class="lees-kop"><span class="les-pill">WEEK 1</span><h1>Inleiding in het recht</h1></header>
+  <div class="tekst">
+<div class="kern">Inleiding recht, ongeldigheid, totstandkoming overeenkomst, vertegenwoordiging &amp; volmacht, tekortkoming &amp; nakoming, opschorting, schadevergoeding, ontbinding en onrechtmatige daad.</div>
+<h3>Wat is recht?</h3>
+<p>Recht = het geheel van gedragsregels dat door de overheid is gemaakt om de samenleving rechtvaardig te ordenen. <strong>Eigenrichting</strong> (zelf voor rechter spelen) is niet toegestaan, de overheid stelt vast wat in het concrete geval recht is.</p>
+<h3>Rechtsbronnen</h3>
+<p>Ons recht ontstaat uit vier rechtsbronnen:</p>
+<ul><li><strong>Wetten</strong>, vastgesteld door de wetgever (rijkswetten, AMvB's, ministeriële regelingen, gemeentelijke verordeningen)</li><li><strong>Verdragen</strong>, internationale afspraken tussen staten; werken door in het nationale recht</li><li><strong>Jurisprudentie</strong>, rechterlijke uitspraken die als richtlijn dienen bij toekomstige zaken</li><li><strong>Gewoonte</strong>, ongeschreven regels die door herhaalde toepassing rechtskracht hebben gekregen</li></ul>
+<p><strong>Hoe verwijs je naar een wetsartikel?</strong> Altijd in volgorde: Boek → art. → lid → sub → afkorting wet.<br>Voorbeeld: art. 7:617 lid 1 sub b BW</p>
+<h3>Dwingend vs. regelend recht</h3>
+<div class="tabel"><table><thead><tr><th>Type</th><th>Kenmerken</th><th>Signaalwoorden</th></tr></thead><tbody><tr><td><strong>Dwingend recht</strong></td><td>Partijen mogen hier niet van afwijken, ook niet als ze dat allebei willen. Geldt ter bescherming van de zwakkere partij of het algemeen belang.</td><td>'nietig', 'vernietigbaar', 'kan niet anders zijn dan', 'mag niet afgeweken worden'</td></tr><tr><td><strong>Regelend (aanvullend) recht</strong></td><td>Geldt alleen als partijen niets anders hebben afgesproken. Ze mogen er bij overeenkomst van afwijken.</td><td>Geen specifieke signaalwoorden; afwijking is mogelijk bij afspraak</td></tr></tbody></table></div>
+<h3>Privaatrecht vs. publiekrecht</h3>
+<div class="tabel"><table><thead><tr><th>Aspect</th><th>Privaatrecht</th><th>Publiekrecht</th></tr></thead><tbody><tr><td><strong>Partijen</strong></td><td>Twee of meer burgers/bedrijven onderling</td><td>Overheid versus burger</td></tr><tr><td><strong>Doel</strong></td><td>Regelen van private verhoudingen (eigendom, contracten, aansprakelijkheid)</td><td>Regelen van publieke verhoudingen (bestuursrecht, strafrecht)</td></tr><tr><td><strong>Voorbeelden</strong></td><td>BW (Burgerlijk Wetboek), koop, huur, arbeidsrecht</td><td>Grondwet, AWB, WvSr (strafrecht)</td></tr></tbody></table></div>
+<h3>Verbintenis (art. 6:1 BW)</h3>
+<div class="kern"><strong>Verbintenis</strong> = een rechtsverhouding waarbij de ene partij (schuldenaar) verplicht is tot een prestatie jegens de andere partij (schuldeiser), en de schuldeiser die prestatie kan vorderen.<br>Verbintenissen ontstaan alleen als de wet dat bepaalt (art. 6:1 BW): uit een <strong>overeenkomst</strong> of rechtstreeks uit de <strong>wet</strong> (onrechtmatige daad, zaakwaarneming, onverschuldigde betaling, ongerechtvaardigde verrijking).</div>
+<h3>Rechtshandeling</h3>
+<p>Een <strong>rechtshandeling</strong> is een handeling die wordt verricht met de bedoeling om een rechtsgevolg in het leven te roepen (art. 3:33 BW). Vereiste: de wil moet overeenstemmen met de verklaring.</p>
   </div>
+  <nav class="verder" aria-label="Vorige en volgende"><span></span><a class="glass" href="#h2"><span>Ongeldigheid van de rechtshandeling</span> &#8250;</a></nav>
+</section>
 
-  <!-- ═══════════════════════════════════════════ -->
-  <!-- HOOFDSTUK 2: ONGELDIGHEID -->
-  <!-- ═══════════════════════════════════════════ -->
-  <div class="chapter" id="h2">
-    <div class="chapter-header">
-      <span class="chapter-num">WEEK 2–3</span>
-      <h2>Ongeldigheid van de rechtshandeling</h2>
-    </div>
-
-    <div class="two-col">
-      <div class="mini-card">
-        <h4>Nietig (art. 3:40 BW e.a.)</h4>
-        <p>De rechtshandeling heeft <strong>nooit bestaan</strong>. Geen actie nodig — werkt van rechtswege. Iedereen kan een beroep op nietigheid doen.</p>
-      </div>
-      <div class="mini-card">
-        <h4>Vernietigbaar (art. 3:34, 3:44, 6:228 BW e.a.)</h4>
-        <p>De rechtshandeling is <strong>geldig, totdat zij vernietigd wordt</strong>. Actie vereist door de beschermde partij. Gevolg: terugwerkende kracht.</p>
-      </div>
-    </div>
-
-    <div class="section-title">Overzicht: vier gronden voor ongeldigheid (acht vormen): wilsontbreken, strijd met wet/openbare orde/goede zeden, wilsgebreken en handelingsonbekwaamheid</div>
-    <div class="table-wrap">
-      <table>
-        <thead><tr><th>Grond</th><th>Wetsartikel</th><th>Type</th><th>Kern</th></tr></thead>
-        <tbody>
-          <tr><td><strong>Vergissing</strong> (wil ≠ verklaring)</td><td>art. 3:33 BW</td><td>Nietig</td><td>Maar: gerechtvaardigd vertrouwen van wederpartij maakt rechtshandeling toch geldig (art. 3:35 BW)</td></tr>
-          <tr><td><strong>Geestelijke stoornis</strong></td><td>art. 3:34 BW</td><td>Vernietigbaar (eenzijdig ongericht: nietig)</td><td>Stoornis moet bestaan ten tijde van de rechtshandeling</td></tr>
-          <tr><td><strong>Strijd met wet / openbare orde / goede zeden</strong></td><td>art. 3:40 BW</td><td>Nietig (of vernietigbaar)</td><td>Strijd met een dwingende wetsbepaling: nietig, tenzij de bepaling alleen één partij beschermt (dan vernietigbaar). Strijd met openbare orde of goede zeden: nietig.</td></tr>
-          <tr><td><strong>Bedreiging</strong></td><td>art. 3:44 lid 2 BW</td><td>Vernietigbaar</td><td>Vijf elementen vereist (zie stappenplan)</td></tr>
-          <tr><td><strong>Bedrog</strong></td><td>art. 3:44 lid 3 BW</td><td>Vernietigbaar</td><td>Drie elementen vereist (zie stappenplan)</td></tr>
-          <tr><td><strong>Misbruik van omstandigheden</strong></td><td>art. 3:44 lid 4 BW</td><td>Vernietigbaar</td><td>Drie elementen vereist (zie stappenplan)</td></tr>
-          <tr><td><strong>Dwaling</strong></td><td>art. 6:228 BW</td><td>Vernietigbaar</td><td>Alleen bij overeenkomsten. Drie eisen + één van drie situaties</td></tr>
-          <tr><td><strong>Handelingsonbekwaamheid</strong></td><td>art. 3:32 BW</td><td>Vernietigbaar (eenzijdig ongericht: nietig)</td><td>Bijv. minderjarigen, onder curatele gestelden</td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div class="section-title">Stappenplan: vergissing (art. 3:33 + 3:35 BW)</div>
-    <div class="stappenplan">
-      <div class="stappenplan-title">Vergissing — Wilsontbreken</div>
-      <div class="stap"><div class="stap-num">1</div><div class="stap-text">Komen wil en verklaring overeen? → Ja: geldige rechtshandeling <span class="art">art. 3:33 BW</span></div></div>
-      <div class="stap"><div class="stap-num">2</div><div class="stap-text">Nee: is er sprake van een vergissing, verspreking of verschrijving? → In beginsel <strong>nietige</strong> rechtshandeling</div></div>
-      <div class="stap"><div class="stap-num">3</div><div class="stap-text">Mocht de wederpartij redelijkerwijs vertrouwen op de verklaring? <span class="art">art. 3:35 BW</span> (wilsvertrouwensleer)<br>• Ja → rechtshandeling is tóch <strong>geldig</strong><br>• Nee → rechtshandeling is <strong>nietig</strong></div></div>
-    </div>
-
-    <div class="section-title">Stappenplan: geestelijke stoornis (art. 3:34 BW)</div>
-    <div class="stappenplan">
-      <div class="stappenplan-title">Geestelijke stoornis — Wilsontbreken</div>
-      <div class="stap"><div class="stap-num">1</div><div class="stap-text">Is er sprake van geestelijke stoornis bij het verrichten van de rechtshandeling?</div></div>
-      <div class="stap"><div class="stap-num">2</div><div class="stap-text">Is de rechtshandeling <strong>eenzijdig ongericht</strong> (bijv. testament)? → Zo ja: <strong>nietig</strong> <span class="art">art. 3:34 lid 2 BW</span></div></div>
-      <div class="stap"><div class="stap-num">3</div><div class="stap-text">Is de rechtshandeling gericht op een wederpartij? → <strong>Vernietigbaar</strong>, tenzij gerechtvaardigd vertrouwen <span class="art">art. 3:35 BW</span></div></div>
-      <div class="stap"><div class="stap-num">4</div><div class="stap-text">Mocht de wederpartij redelijkerwijs vertrouwen op de verklaring?<br>• Ja → rechtshandeling is <strong>geldig</strong><br>• Nee → rechtshandeling is <strong>vernietigbaar</strong></div></div>
-    </div>
-
-    <div class="section-title">Stappenplan: bedreiging (art. 3:44 lid 2 BW)</div>
-    <div class="stappenplan">
-      <div class="stappenplan-title">Bedreiging — Wilsgebrek → Vernietigbaar</div>
-      <div class="stappenplan-subtitle">Alle vijf elementen moeten aanwezig zijn:</div>
-      <div class="stap"><div class="stap-num">1</div><div class="stap-text"><strong>Opzet (oogmerk)</strong> — de bedreigende partij deed dit bewust</div></div>
-      <div class="stap"><div class="stap-num">2</div><div class="stap-text"><strong>Onrechtmatige bedreiging</strong> — bijv. dreigen met aangifte om een bepaald doel te bereiken</div></div>
-      <div class="stap"><div class="stap-num">3</div><div class="stap-text"><strong>Zodanig dat een redelijk oordelend mens wordt beïnvloed</strong> — objectieve toets <span class="art">art. 3:44 lid 2 zin 2 BW</span></div></div>
-      <div class="stap"><div class="stap-num">4</div><div class="stap-text"><strong>Met enig nadeel in persoon of goed</strong> — bedreiging met materieel of immaterieel nadeel</div></div>
-      <div class="stap"><div class="stap-num">5</div><div class="stap-text"><strong>Causaal verband</strong> — de bedreiging heeft de rechtshandeling veroorzaakt</div></div>
-    </div>
-
-    <div class="section-title">Stappenplan: bedrog (art. 3:44 lid 3 BW)</div>
-    <div class="stappenplan">
-      <div class="stappenplan-title">Bedrog — Wilsgebrek → Vernietigbaar</div>
-      <div class="stappenplan-subtitle">Alle drie elementen moeten aanwezig zijn:</div>
-      <div class="stap"><div class="stap-num">1</div><div class="stap-text"><strong>Opzet (oogmerk)</strong> — de partij deed dit bewust om de ander te misleiden</div></div>
-      <div class="stap"><div class="stap-num">2</div><div class="stap-text"><strong>Onjuiste mededeling, zwijgen of andere kunstgreep</strong> — bijv. terugdraaien kilometerteller, andere identiteit aannemen</div></div>
-      <div class="stap"><div class="stap-num">3</div><div class="stap-text"><strong>Causaal verband</strong> — de kunstgreep heeft de rechtshandeling veroorzaakt</div></div>
-      <div class="warn"><strong>Let op!</strong> Algemene aanprijzingen ('uniek', 'prachtig', 'bijzonder') zijn géén bedrog.</div>
-    </div>
-
-    <div class="section-title">Stappenplan: misbruik van omstandigheden (art. 3:44 lid 4 BW)</div>
-    <div class="stappenplan">
-      <div class="stappenplan-title">Misbruik van omstandigheden — Wilsgebrek → Vernietigbaar</div>
-      <div class="stappenplan-subtitle">Alle drie elementen moeten aanwezig zijn:</div>
-      <div class="stap"><div class="stap-num">1</div><div class="stap-text"><strong>Bijzondere omstandigheid</strong> — bijv. onervarenheid, noodtoestand, ondeskundigheid, afhankelijkheid</div></div>
-      <div class="stap"><div class="stap-num">2</div><div class="stap-text"><strong>Misbruik: kenbaarheid + bevorderen</strong> — de wederpartij wist van de omstandigheid én heeft die benut</div></div>
-      <div class="stap"><div class="stap-num">3</div><div class="stap-text"><strong>Causaal verband</strong> — het misbruik heeft de rechtshandeling veroorzaakt</div></div>
-    </div>
-
-    <div class="section-title">Stappenplan: dwaling (art. 6:228 BW)</div>
-    <div class="stappenplan">
-      <div class="stappenplan-title">Dwaling — Wilsgebrek → Vernietigbaar (alleen bij overeenkomsten!)</div>
-      <div class="stap"><div class="stap-num">1</div><div class="stap-text"><strong>Onjuiste voorstelling van zaken</strong> — de partij had een verkeerd beeld van de werkelijkheid</div></div>
-      <div class="stap"><div class="stap-num">2</div><div class="stap-text"><strong>Causaal verband</strong> — bij juiste voorstelling zou de overeenkomst niet (of anders) gesloten zijn</div></div>
-      <div class="stap"><div class="stap-num">3</div><div class="stap-text"><strong>Én één van de drie situaties</strong> <span class="art">art. 6:228 lid 1 BW</span>:<br>a. Inlichting van de wederpartij<br>b. Ongeoorloofd zwijgen van de wederpartij<br>c. Wederzijdse dwaling</div></div>
-    </div>
-    <div class="callout"><strong>Uitzondering</strong> <span class="art">art. 6:228 lid 2 BW</span>: dwaling is uitgesloten bij uitsluitend toekomstige omstandigheid, aard van de overeenkomst of verkeersopvattingen. <strong>Let op!</strong> Art. 3:35 BW (gerechtvaardigd vertrouwen) geldt NIET bij wilsgebreken.</div>
+<section class="sectie" id="h2">
+  <header class="lees-kop"><span class="les-pill">WEEK 2–3</span><h1>Ongeldigheid van de rechtshandeling</h1></header>
+  <div class="tekst">
+<h3>Nietig (art. 3:40 BW e.a.)</h3>
+<p>De rechtshandeling heeft <strong>nooit bestaan</strong>. Geen actie nodig, werkt van rechtswege. Iedereen kan een beroep op nietigheid doen.</p>
+<h3>Vernietigbaar (art. 3:34, 3:44, 6:228 BW e.a.)</h3>
+<p>De rechtshandeling is <strong>geldig, totdat zij vernietigd wordt</strong>. Actie vereist door de beschermde partij. Gevolg: terugwerkende kracht.</p>
+<h3>Overzicht: vier gronden voor ongeldigheid (acht vormen): wilsontbreken, strijd met wet/openbare orde/goede zeden, wilsgebreken en handelingsonbekwaamheid</h3>
+<div class="tabel"><table><thead><tr><th>Grond</th><th>Wetsartikel</th><th>Type</th><th>Kern</th></tr></thead><tbody><tr><td><strong>Vergissing</strong> (wil ≠ verklaring)</td><td>art. 3:33 BW</td><td>Nietig</td><td>Maar: gerechtvaardigd vertrouwen van wederpartij maakt rechtshandeling toch geldig (art. 3:35 BW)</td></tr><tr><td><strong>Geestelijke stoornis</strong></td><td>art. 3:34 BW</td><td>Vernietigbaar (eenzijdig ongericht: nietig)</td><td>Stoornis moet bestaan ten tijde van de rechtshandeling</td></tr><tr><td><strong>Strijd met wet / openbare orde / goede zeden</strong></td><td>art. 3:40 BW</td><td>Nietig (of vernietigbaar)</td><td>Strijd met een dwingende wetsbepaling: nietig, tenzij de bepaling alleen één partij beschermt (dan vernietigbaar). Strijd met openbare orde of goede zeden: nietig.</td></tr><tr><td><strong>Bedreiging</strong></td><td>art. 3:44 lid 2 BW</td><td>Vernietigbaar</td><td>Vijf elementen vereist (zie stappenplan)</td></tr><tr><td><strong>Bedrog</strong></td><td>art. 3:44 lid 3 BW</td><td>Vernietigbaar</td><td>Drie elementen vereist (zie stappenplan)</td></tr><tr><td><strong>Misbruik van omstandigheden</strong></td><td>art. 3:44 lid 4 BW</td><td>Vernietigbaar</td><td>Drie elementen vereist (zie stappenplan)</td></tr><tr><td><strong>Dwaling</strong></td><td>art. 6:228 BW</td><td>Vernietigbaar</td><td>Alleen bij overeenkomsten. Drie eisen + één van drie situaties</td></tr><tr><td><strong>Handelingsonbekwaamheid</strong></td><td>art. 3:32 BW</td><td>Vernietigbaar (eenzijdig ongericht: nietig)</td><td>Bijv. minderjarigen, onder curatele gestelden</td></tr></tbody></table></div>
+<h3>Stappenplan: vergissing (art. 3:33 + 3:35 BW)</h3>
+<div class="kader glass"><h4>Vergissing, Wilsontbreken</h4><ul><li>1 Komen wil en verklaring overeen? → Ja: geldige rechtshandeling art. 3:33 BW</li><li>2 Nee: is er sprake van een vergissing, verspreking of verschrijving? → In beginsel <strong>nietige</strong> rechtshandeling</li><li>3 Mocht de wederpartij redelijkerwijs vertrouwen op de verklaring? art. 3:35 BW (wilsvertrouwensleer)<br>• Ja → rechtshandeling is tóch <strong>geldig</strong><br>• Nee → rechtshandeling is <strong>nietig</strong></li></ul></div>
+<h3>Stappenplan: geestelijke stoornis (art. 3:34 BW)</h3>
+<div class="kader glass"><h4>Geestelijke stoornis, Wilsontbreken</h4><ul><li>1 Is er sprake van geestelijke stoornis bij het verrichten van de rechtshandeling?</li><li>2 Is de rechtshandeling <strong>eenzijdig ongericht</strong> (bijv. testament)? → Zo ja: <strong>nietig</strong> art. 3:34 lid 2 BW</li><li>3 Is de rechtshandeling gericht op een wederpartij? → <strong>Vernietigbaar</strong>, tenzij gerechtvaardigd vertrouwen art. 3:35 BW</li><li>4 Mocht de wederpartij redelijkerwijs vertrouwen op de verklaring?<br>• Ja → rechtshandeling is <strong>geldig</strong><br>• Nee → rechtshandeling is <strong>vernietigbaar</strong></li></ul></div>
+<h3>Stappenplan: bedreiging (art. 3:44 lid 2 BW)</h3>
+<div class="kader glass"><h4>Bedreiging, Wilsgebrek → Vernietigbaar</h4><p>Alle vijf elementen moeten aanwezig zijn:</p><ul><li>1 <strong>Opzet (oogmerk)</strong>, de bedreigende partij deed dit bewust</li><li>2 <strong>Onrechtmatige bedreiging</strong>, bijv. dreigen met aangifte om een bepaald doel te bereiken</li><li>3 <strong>Zodanig dat een redelijk oordelend mens wordt beïnvloed</strong>, objectieve toets art. 3:44 lid 2 zin 2 BW</li><li>4 <strong>Met enig nadeel in persoon of goed</strong>, bedreiging met materieel of immaterieel nadeel</li><li>5 <strong>Causaal verband</strong>, de bedreiging heeft de rechtshandeling veroorzaakt</li></ul></div>
+<h3>Stappenplan: bedrog (art. 3:44 lid 3 BW)</h3>
+<h3>Bedrog, Wilsgebrek → Vernietigbaar</h3>
+<p>Alle drie elementen moeten aanwezig zijn:</p>
+<ul><li>1 <strong>Opzet (oogmerk)</strong>, de partij deed dit bewust om de ander te misleiden</li><li>2 <strong>Onjuiste mededeling, zwijgen of andere kunstgreep</strong>, bijv. terugdraaien kilometerteller, andere identiteit aannemen</li><li>3 <strong>Causaal verband</strong>, de kunstgreep heeft de rechtshandeling veroorzaakt</li></ul>
+<div class="let-op"><b>Let op</b><strong>Let op!</strong> Algemene aanprijzingen ('uniek', 'prachtig', 'bijzonder') zijn géén bedrog.</div>
+<h3>Stappenplan: misbruik van omstandigheden (art. 3:44 lid 4 BW)</h3>
+<div class="kader glass"><h4>Misbruik van omstandigheden, Wilsgebrek → Vernietigbaar</h4><p>Alle drie elementen moeten aanwezig zijn:</p><ul><li>1 <strong>Bijzondere omstandigheid</strong>, bijv. onervarenheid, noodtoestand, ondeskundigheid, afhankelijkheid</li><li>2 <strong>Misbruik: kenbaarheid + bevorderen</strong>, de wederpartij wist van de omstandigheid én heeft die benut</li><li>3 <strong>Causaal verband</strong>, het misbruik heeft de rechtshandeling veroorzaakt</li></ul></div>
+<h3>Stappenplan: dwaling (art. 6:228 BW)</h3>
+<div class="kader glass"><h4>Dwaling, Wilsgebrek → Vernietigbaar (alleen bij overeenkomsten!)</h4><ul><li>1 <strong>Onjuiste voorstelling van zaken</strong>, de partij had een verkeerd beeld van de werkelijkheid</li><li>2 <strong>Causaal verband</strong>, bij juiste voorstelling zou de overeenkomst niet (of anders) gesloten zijn</li><li>3 <strong>Én één van de drie situaties</strong> art. 6:228 lid 1 BW:<br>a. Inlichting van de wederpartij<br>b. Ongeoorloofd zwijgen van de wederpartij<br>c. Wederzijdse dwaling</li></ul></div>
+<div class="kern"><strong>Uitzondering</strong> art. 6:228 lid 2 BW: dwaling is uitgesloten bij uitsluitend toekomstige omstandigheid, aard van de overeenkomst of verkeersopvattingen. <strong>Let op!</strong> Art. 3:35 BW (gerechtvaardigd vertrouwen) geldt NIET bij wilsgebreken.</div>
   </div>
+  <nav class="verder" aria-label="Vorige en volgende"><a class="glass" href="#h1">&#8249; <span>Inleiding in het recht</span></a><a class="glass" href="#h3"><span>Totstandkoming van de overeenkomst</span> &#8250;</a></nav>
+</section>
 
-  <!-- ═══════════════════════════════════════════ -->
-  <!-- HOOFDSTUK 3: TOTSTANDKOMING OVEREENKOMST -->
-  <!-- ═══════════════════════════════════════════ -->
-  <div class="chapter" id="h3">
-    <div class="chapter-header">
-      <span class="chapter-num">WEEK 3</span>
-      <h2>Totstandkoming van de overeenkomst</h2>
-    </div>
-
-    <div class="callout">
-      Een overeenkomst komt tot stand door een overeenstemmend aanbod en een aanvaarding (art. 6:217 BW). De overeenkomst is geldig als aan vijf voorwaarden is voldaan: aanbod, aanvaarding, wilsovereenstemming, handelingsbekwaamheid en geen strijd met wet of goede zeden.
-    </div>
-
-    <div class="section-title">Stappenplan: totstandkoming overeenkomst</div>
-    <div class="stappenplan">
-      <div class="stappenplan-title">Totstandkoming — art. 6:217–6:225 BW</div>
-      <div class="stap"><div class="stap-num">1</div><div class="stap-text"><strong>Is er een aanbod?</strong> <span class="art">art. 6:219 en 6:227 BW</span><br>• Voldoende bepaald? <span class="art">art. 6:227 BW</span><br>• Herroepelijk, onherroepelijk of vrijblijvend? <span class="art">art. 6:219 BW</span><br>• Geldigheidsduur: mondeling → direct; schriftelijk → redelijke termijn <span class="art">art. 6:221 BW</span><br>• Of is het slechts een uitnodiging tot het doen van een aanbod? (bijv. advertentie voor unieke zaak)</div></div>
-      <div class="stap"><div class="stap-num">2</div><div class="stap-text"><strong>Is er een aanvaarding?</strong> <span class="art">art. 6:225 BW</span><br>• Stemt de aanvaarding overeen met het aanbod?<br>• Nee → verwerping + nieuw (tegen)aanbod <span class="art">art. 6:225 lid 1 BW</span><br>• Tenzij: afwijking op ondergeschikte punten <span class="art">art. 6:225 lid 2 BW</span></div></div>
-      <div class="stap"><div class="stap-num">3</div><div class="stap-text"><strong>Wanneer heeft de rechtshandeling effect?</strong> → Ontvangsttheorie: moment van ontvangst <span class="art">art. 3:37 lid 3 BW</span></div></div>
-      <div class="stap"><div class="stap-num">4</div><div class="stap-text"><strong>Is de overeenkomst vormvrij of is er een vormvereiste?</strong> <span class="art">art. 6:226 BW</span> (bijv. koop woning = schriftelijk)</div></div>
-      <div class="stap"><div class="stap-num">5</div><div class="stap-text"><strong>Is de overeenkomst voldoende bepaalbaar?</strong> <span class="art">art. 6:227 BW</span></div></div>
-    </div>
-
-    <div class="section-title">Soorten overeenkomsten</div>
-    <div class="table-wrap">
-      <table>
-        <thead><tr><th>Type</th><th>Omschrijving</th></tr></thead>
-        <tbody>
-          <tr><td><strong>Koopovereenkomst</strong></td><td>Levering van goederen tegen betaling</td></tr>
-          <tr><td><strong>Aannemingsovereenkomst</strong></td><td>Uitvoering van een werk (bouw, renovatie)</td></tr>
-          <tr><td><strong>Dienstverleningsovereenkomst</strong></td><td>Levering van een dienst (catering, schoonmaak)</td></tr>
-          <tr><td><strong>Huurovereenkomst</strong></td><td>Gebruik van een zaak voor bepaalde/onbepaalde tijd</td></tr>
-          <tr><td><strong>Arbeidsovereenkomst</strong></td><td>Arbeid tegen loon in gezagsverhouding</td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div class="section-title">Algemene voorwaarden</div>
-    <ul class="item-list">
-      <li>Moeten vóór het sluiten van de overeenkomst ter hand gesteld worden — anders: vernietigbaar <span class="art">art. 6:233 BW</span></li>
-      <li>Onredelijk bezwarende bedingen kunnen worden vernietigd</li>
-      <li>B2C: consumenten krijgen meer bescherming dan B2B</li>
-      <li>Toepasselijkheid moet door beide partijen aanvaard zijn</li>
-    </ul>
+<section class="sectie" id="h3">
+  <header class="lees-kop"><span class="les-pill">WEEK 3</span><h1>Totstandkoming van de overeenkomst</h1></header>
+  <div class="tekst">
+<div class="kern">Een overeenkomst komt tot stand door een overeenstemmend aanbod en een aanvaarding (art. 6:217 BW). De overeenkomst is geldig als aan vijf voorwaarden is voldaan: aanbod, aanvaarding, wilsovereenstemming, handelingsbekwaamheid en geen strijd met wet of goede zeden.</div>
+<h3>Stappenplan: totstandkoming overeenkomst</h3>
+<div class="kader glass"><h4>Totstandkoming, art. 6:217–6:225 BW</h4><ul><li>1 <strong>Is er een aanbod?</strong> art. 6:219 en 6:227 BW<br>• Voldoende bepaald? art. 6:227 BW<br>• Herroepelijk, onherroepelijk of vrijblijvend? art. 6:219 BW<br>• Geldigheidsduur: mondeling → direct; schriftelijk → redelijke termijn art. 6:221 BW<br>• Of is het slechts een uitnodiging tot het doen van een aanbod? (bijv. advertentie voor unieke zaak)</li><li>2 <strong>Is er een aanvaarding?</strong> art. 6:225 BW<br>• Stemt de aanvaarding overeen met het aanbod?<br>• Nee → verwerping + nieuw (tegen)aanbod art. 6:225 lid 1 BW<br>• Tenzij: afwijking op ondergeschikte punten art. 6:225 lid 2 BW</li><li>3 <strong>Wanneer heeft de rechtshandeling effect?</strong> → Ontvangsttheorie: moment van ontvangst art. 3:37 lid 3 BW</li><li>4 <strong>Is de overeenkomst vormvrij of is er een vormvereiste?</strong> art. 6:226 BW (bijv. koop woning = schriftelijk)</li><li>5 <strong>Is de overeenkomst voldoende bepaalbaar?</strong> art. 6:227 BW</li></ul></div>
+<h3>Soorten overeenkomsten</h3>
+<div class="tabel"><table><thead><tr><th>Type</th><th>Omschrijving</th></tr></thead><tbody><tr><td><strong>Koopovereenkomst</strong></td><td>Levering van goederen tegen betaling</td></tr><tr><td><strong>Aannemingsovereenkomst</strong></td><td>Uitvoering van een werk (bouw, renovatie)</td></tr><tr><td><strong>Dienstverleningsovereenkomst</strong></td><td>Levering van een dienst (catering, schoonmaak)</td></tr><tr><td><strong>Huurovereenkomst</strong></td><td>Gebruik van een zaak voor bepaalde/onbepaalde tijd</td></tr><tr><td><strong>Arbeidsovereenkomst</strong></td><td>Arbeid tegen loon in gezagsverhouding</td></tr></tbody></table></div>
+<h3>Algemene voorwaarden</h3>
+<ul><li>Moeten vóór het sluiten van de overeenkomst ter hand gesteld worden, anders: vernietigbaar art. 6:233 BW</li><li>Onredelijk bezwarende bedingen kunnen worden vernietigd</li><li>B2C: consumenten krijgen meer bescherming dan B2B</li><li>Toepasselijkheid moet door beide partijen aanvaard zijn</li></ul>
   </div>
+  <nav class="verder" aria-label="Vorige en volgende"><a class="glass" href="#h2">&#8249; <span>Ongeldigheid van de rechtshandeling</span></a><a class="glass" href="#h4"><span>Vertegenwoordiging &amp; Volmacht</span> &#8250;</a></nav>
+</section>
 
-  <!-- ═══════════════════════════════════════════ -->
-  <!-- HOOFDSTUK 4: VERTEGENWOORDIGING & VOLMACHT -->
-  <!-- ═══════════════════════════════════════════ -->
-  <div class="chapter" id="h4">
-    <div class="chapter-header">
-      <span class="chapter-num">WEEK 4</span>
-      <h2>Vertegenwoordiging &amp; Volmacht</h2>
-    </div>
-
-    <div class="callout">
-      <strong>Volmacht</strong> = een bevoegdheid die een gevolmachtigde van de volmachtgever heeft gekregen om rechtshandelingen te verrichten die de volmachtgever direct binden <span class="art">art. 3:60 BW</span>.
-    </div>
-
-    <div class="section-title">Soorten volmacht</div>
-    <div class="table-wrap">
-      <table>
-        <thead><tr><th>Type</th><th>Reikwijdte</th><th>Wetsartikel</th></tr></thead>
-        <tbody>
-          <tr><td><strong>Algemene volmacht</strong></td><td>Alle rechtshandelingen die de volmachtgever zelf ook mag verrichten</td><td>art. 3:62 lid 1 BW</td></tr>
-          <tr><td><strong>Bijzondere volmacht</strong></td><td>Beperkt tot specifiek genoemde rechtshandelingen of een bepaald doel</td><td>art. 3:62 lid 2 BW</td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div class="section-title">Stappenplan: beoordeling volmacht</div>
-    <div class="stappenplan">
-      <div class="stappenplan-title">Volmacht — art. 3:60–3:72 BW</div>
-      <div class="stap"><div class="stap-num">1</div><div class="stap-text"><strong>Is er een volmacht verleend?</strong> <span class="art">art. 3:60 lid 1 BW</span> — mondeling, schriftelijk of stilzwijgend <span class="art">art. 3:61 lid 1 BW</span></div></div>
-      <div class="stap"><div class="stap-num">2</div><div class="stap-text"><strong>Wat is de reikwijdte?</strong> Algemeen of bijzonder <span class="art">art. 3:62 BW</span></div></div>
-      <div class="stap"><div class="stap-num">3</div><div class="stap-text"><strong>Valt de rechtshandeling binnen de reikwijdte?</strong><br>• Ja → <strong>bevoegde vertegenwoordiging</strong>: treffen de volmachtgever <span class="art">art. 3:66 lid 1 BW</span><br>• Nee → <strong>onbevoegde vertegenwoordiging</strong>: treffen de volmachtgever NIET</div></div>
-      <div class="stap"><div class="stap-num">4</div><div class="stap-text"><strong>Bij onbevoegde vertegenwoordiging: uitzonderingen?</strong><br>• Schijn van volmachtverlening <span class="art">art. 3:61 lid 2 BW</span> → tóch overeenkomst<br>• Bekrachtiging door volmachtgever achteraf <span class="art">art. 3:69 lid 1 BW</span> → tóch overeenkomst<br>• Geen uitzondering → gevolmachtigde moet instaan voor de volmacht <span class="art">art. 3:70 BW</span></div></div>
-    </div>
+<section class="sectie" id="h4">
+  <header class="lees-kop"><span class="les-pill">WEEK 4</span><h1>Vertegenwoordiging &amp; Volmacht</h1></header>
+  <div class="tekst">
+<div class="kern"><strong>Volmacht</strong> = een bevoegdheid die een gevolmachtigde van de volmachtgever heeft gekregen om rechtshandelingen te verrichten die de volmachtgever direct binden art. 3:60 BW.</div>
+<h3>Soorten volmacht</h3>
+<div class="tabel"><table><thead><tr><th>Type</th><th>Reikwijdte</th><th>Wetsartikel</th></tr></thead><tbody><tr><td><strong>Algemene volmacht</strong></td><td>Alle rechtshandelingen die de volmachtgever zelf ook mag verrichten</td><td>art. 3:62 lid 1 BW</td></tr><tr><td><strong>Bijzondere volmacht</strong></td><td>Beperkt tot specifiek genoemde rechtshandelingen of een bepaald doel</td><td>art. 3:62 lid 2 BW</td></tr></tbody></table></div>
+<h3>Stappenplan: beoordeling volmacht</h3>
+<div class="kader glass"><h4>Volmacht, art. 3:60–3:72 BW</h4><ul><li>1 <strong>Is er een volmacht verleend?</strong> art. 3:60 lid 1 BW, mondeling, schriftelijk of stilzwijgend art. 3:61 lid 1 BW</li><li>2 <strong>Wat is de reikwijdte?</strong> Algemeen of bijzonder art. 3:62 BW</li><li>3 <strong>Valt de rechtshandeling binnen de reikwijdte?</strong><br>• Ja → <strong>bevoegde vertegenwoordiging</strong>: treffen de volmachtgever art. 3:66 lid 1 BW<br>• Nee → <strong>onbevoegde vertegenwoordiging</strong>: treffen de volmachtgever NIET</li><li>4 <strong>Bij onbevoegde vertegenwoordiging: uitzonderingen?</strong><br>• Schijn van volmachtverlening art. 3:61 lid 2 BW → tóch overeenkomst<br>• Bekrachtiging door volmachtgever achteraf art. 3:69 lid 1 BW → tóch overeenkomst<br>• Geen uitzondering → gevolmachtigde moet instaan voor de volmacht art. 3:70 BW</li></ul></div>
   </div>
+  <nav class="verder" aria-label="Vorige en volgende"><a class="glass" href="#h3">&#8249; <span>Totstandkoming van de overeenkomst</span></a><a class="glass" href="#h5"><span>Tekortkoming in de nakoming, overzicht</span> &#8250;</a></nav>
+</section>
 
-  <!-- ═══════════════════════════════════════════ -->
-  <!-- HOOFDSTUK 5: TEKORTKOMING & NAKOMING -->
-  <!-- ═══════════════════════════════════════════ -->
-  <div class="chapter" id="h5">
-    <div class="chapter-header">
-      <span class="chapter-num">WEEK 4–6</span>
-      <h2>Tekortkoming in de nakoming — overzicht</h2>
-    </div>
-
-    <div class="callout">
-      <strong>Tijdig klagen!</strong> <span class="art">art. 6:89 BW</span> — klacht bij de schuldenaar over een gebrek moet tijdig worden gedaan. Wie niet tijdig klaagt, verliest zijn rechten.
-    </div>
-
-    <p class="prose">Bij een tekortkoming (geheel niet, gedeeltelijk, te laat of onbehoorlijk nakomen) zijn vier acties mogelijk:</p>
-    <div class="table-wrap">
-      <table>
-        <thead><tr><th>#</th><th>Actie</th><th>Wetsartikel</th><th>Toerekenbaarheid vereist?</th></tr></thead>
-        <tbody>
-          <tr><td>1</td><td><strong>Nakoming</strong></td><td>art. 3:296 BW</td><td>Nee</td></tr>
-          <tr><td>2</td><td><strong>Opschorting</strong></td><td>art. 6:52 BW e.v.</td><td>Nee</td></tr>
-          <tr><td>3</td><td><strong>Schadevergoeding wegens wanprestatie</strong></td><td>art. 6:74 BW</td><td>Ja</td></tr>
-          <tr><td>4</td><td><strong>Ontbinding</strong></td><td>art. 6:265 BW</td><td>Nee</td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div class="section-title">Stappenplan: nakoming (art. 3:296 BW)</div>
-    <div class="stappenplan">
-      <div class="stappenplan-title">Nakoming — drie cumulatieve voorwaarden</div>
-      <div class="stap"><div class="stap-num">1</div><div class="stap-text"><strong>Vordering is opeisbaar</strong> — zonder termijn: terstond <span class="art">art. 6:38 BW</span>; met termijn: na verstrijken <span class="art">art. 6:39 BW</span></div></div>
-      <div class="stap"><div class="stap-num">2</div><div class="stap-text"><strong>Er is een tekortkoming in de nakoming</strong> — geheel niet, te laat, gebrekkig of ondeugdelijk</div></div>
-      <div class="stap"><div class="stap-num">3</div><div class="stap-text"><strong>Nakoming is niet blijvend onmogelijk</strong> — nakoming moet (eventueel op termijn) nog mogelijk zijn</div></div>
-    </div>
-    <div class="callout">Eerder nakoming vorderen kan ook <span class="art">art. 6:80 BW</span>: als vaststaat dat nakoming onmogelijk wordt, bij mededeling schuldenaar, of bij redelijke grond + aanmaning.</div>
+<section class="sectie" id="h5">
+  <header class="lees-kop"><span class="les-pill">WEEK 4–6</span><h1>Tekortkoming in de nakoming, overzicht</h1></header>
+  <div class="tekst">
+<div class="kern"><strong>Tijdig klagen!</strong> art. 6:89 BW, klacht bij de schuldenaar over een gebrek moet tijdig worden gedaan. Wie niet tijdig klaagt, verliest zijn rechten.</div>
+<p>Bij een tekortkoming (geheel niet, gedeeltelijk, te laat of onbehoorlijk nakomen) zijn vier acties mogelijk:</p>
+<div class="tabel"><table><thead><tr><th>#</th><th>Actie</th><th>Wetsartikel</th><th>Toerekenbaarheid vereist?</th></tr></thead><tbody><tr><td>1</td><td><strong>Nakoming</strong></td><td>art. 3:296 BW</td><td>Nee</td></tr><tr><td>2</td><td><strong>Opschorting</strong></td><td>art. 6:52 BW e.v.</td><td>Nee</td></tr><tr><td>3</td><td><strong>Schadevergoeding wegens wanprestatie</strong></td><td>art. 6:74 BW</td><td>Ja</td></tr><tr><td>4</td><td><strong>Ontbinding</strong></td><td>art. 6:265 BW</td><td>Nee</td></tr></tbody></table></div>
+<h3>Stappenplan: nakoming (art. 3:296 BW)</h3>
+<div class="kader glass"><h4>Nakoming, drie cumulatieve voorwaarden</h4><ul><li>1 <strong>Vordering is opeisbaar</strong>, zonder termijn: terstond art. 6:38 BW; met termijn: na verstrijken art. 6:39 BW</li><li>2 <strong>Er is een tekortkoming in de nakoming</strong>, geheel niet, te laat, gebrekkig of ondeugdelijk</li><li>3 <strong>Nakoming is niet blijvend onmogelijk</strong>, nakoming moet (eventueel op termijn) nog mogelijk zijn</li></ul></div>
+<div class="kern">Eerder nakoming vorderen kan ook art. 6:80 BW: als vaststaat dat nakoming onmogelijk wordt, bij mededeling schuldenaar, of bij redelijke grond + aanmaning.</div>
   </div>
+  <nav class="verder" aria-label="Vorige en volgende"><a class="glass" href="#h4">&#8249; <span>Vertegenwoordiging &amp; Volmacht</span></a><a class="glass" href="#h6"><span>Opschorting</span> &#8250;</a></nav>
+</section>
 
-  <!-- ═══════════════════════════════════════════ -->
-  <!-- HOOFDSTUK 6: OPSCHORTING -->
-  <!-- ═══════════════════════════════════════════ -->
-  <div class="chapter" id="h6">
-    <div class="chapter-header">
-      <span class="chapter-num">WEEK 5</span>
-      <h2>Opschorting</h2>
-    </div>
-
-    <div class="callout">
-      <strong>Opschorting</strong> = het tijdelijk weigeren van de eigen prestatie totdat de wederpartij haar verplichtingen nakomt. Het is een drukmiddel, geen definitieve beëindiging.
-    </div>
-
-    <div class="section-title">Stappenplan: opschorting (art. 6:52 BW)</div>
-    <div class="stappenplan">
-      <div class="stappenplan-title">Opschorting — vier cumulatieve voorwaarden</div>
-      <div class="stap"><div class="stap-num">1</div><div class="stap-text"><strong>Vordering is opeisbaar</strong> <span class="art">art. 6:38 en 6:39 BW</span> — tenzij art. 6:80 BW van toepassing</div></div>
-      <div class="stap"><div class="stap-num">2</div><div class="stap-text"><strong>Connexiteit (samenhang)</strong> — voldoende samenhang tussen de vordering en de op te schorten verbintenis <span class="art">art. 6:52 lid 1 BW</span>; bijv. zelfde rechtsverhouding of regelmatig zaken gedaan</div></div>
-      <div class="stap"><div class="stap-num">3</div><div class="stap-text"><strong>Proportionaliteit</strong> — opschorting moet evenredig zijn aan de vordering <span class="art">art. 6:262 lid 2 BW</span></div></div>
-      <div class="stap"><div class="stap-num">4</div><div class="stap-text"><strong>Nakoming is niet blijvend onmogelijk</strong></div></div>
-    </div>
-    <div class="callout">Tip: informeer de wederpartij altijd vooraf over de opschorting en de reden — soms vereist op grond van redelijkheid en billijkheid.</div>
-    <p class="prose"><strong>Einde opschortingsrecht:</strong></p>
-    <ul class="item-list">
-      <li>Schuldeiser komt zijn verbintenis alsnog na <span class="art">art. 6:52 BW</span></li>
-      <li>Nakoming door schuldeiser wordt blijvend onmogelijk <span class="art">art. 6:54 BW</span></li>
-    </ul>
-    <p class="prose">Verwante rechten: <strong>retentierecht</strong> <span class="art">art. 3:290 BW</span> (zaak onder zich houden), <strong>exceptio non adimpleti contractus</strong> <span class="art">art. 6:262 BW</span> (wederkerige overeenkomst), <strong>onzekerheidsexceptie</strong> <span class="art">art. 6:263 BW</span>.</p>
+<section class="sectie" id="h6">
+  <header class="lees-kop"><span class="les-pill">WEEK 5</span><h1>Opschorting</h1></header>
+  <div class="tekst">
+<div class="kern"><strong>Opschorting</strong> = het tijdelijk weigeren van de eigen prestatie totdat de wederpartij haar verplichtingen nakomt. Het is een drukmiddel, geen definitieve beëindiging.</div>
+<h3>Stappenplan: opschorting (art. 6:52 BW)</h3>
+<div class="kader glass"><h4>Opschorting, vier cumulatieve voorwaarden</h4><ul><li>1 <strong>Vordering is opeisbaar</strong> art. 6:38 en 6:39 BW, tenzij art. 6:80 BW van toepassing</li><li>2 <strong>Connexiteit (samenhang)</strong>, voldoende samenhang tussen de vordering en de op te schorten verbintenis art. 6:52 lid 1 BW; bijv. zelfde rechtsverhouding of regelmatig zaken gedaan</li><li>3 <strong>Proportionaliteit</strong>, opschorting moet evenredig zijn aan de vordering art. 6:262 lid 2 BW</li><li>4 <strong>Nakoming is niet blijvend onmogelijk</strong></li></ul></div>
+<div class="kern">Tip: informeer de wederpartij altijd vooraf over de opschorting en de reden, soms vereist op grond van redelijkheid en billijkheid.</div>
+<p><strong>Einde opschortingsrecht:</strong></p>
+<ul><li>Schuldeiser komt zijn verbintenis alsnog na art. 6:52 BW</li><li>Nakoming door schuldeiser wordt blijvend onmogelijk art. 6:54 BW</li></ul>
+<p>Verwante rechten: <strong>retentierecht</strong> art. 3:290 BW (zaak onder zich houden), <strong>exceptio non adimpleti contractus</strong> art. 6:262 BW (wederkerige overeenkomst), <strong>onzekerheidsexceptie</strong> art. 6:263 BW.</p>
   </div>
+  <nav class="verder" aria-label="Vorige en volgende"><a class="glass" href="#h5">&#8249; <span>Tekortkoming in de nakoming, overzicht</span></a><a class="glass" href="#h7"><span>Schadevergoeding wegens wanprestatie</span> &#8250;</a></nav>
+</section>
 
-  <!-- ═══════════════════════════════════════════ -->
-  <!-- HOOFDSTUK 7: SCHADEVERGOEDING -->
-  <!-- ═══════════════════════════════════════════ -->
-  <div class="chapter" id="h7">
-    <div class="chapter-header">
-      <span class="chapter-num">WEEK 5–6</span>
-      <h2>Schadevergoeding wegens wanprestatie</h2>
-    </div>
-
-    <div class="section-title">Stappenplan: schadevergoeding (art. 6:74 BW)</div>
-    <div class="stappenplan">
-      <div class="stappenplan-title">Schadevergoeding — vijf cumulatieve vereisten</div>
-      <div class="stap"><div class="stap-num">1</div><div class="stap-text"><strong>Tekortkoming</strong> — opeisbaar <span class="art">art. 6:38/6:39 BW</span> én geheel niet, te laat of gebrekkig nakomen</div></div>
-      <div class="stap"><div class="stap-num">2</div><div class="stap-text"><strong>Toerekenbaarheid</strong> — schuld, of toerekening op grond van wet/rechtshandeling/verkeersopvattingen <span class="art">art. 6:75 BW</span><br>• Overmacht = niet toerekenbaar <span class="art">art. 6:75 BW</span><br>• Hulppersonen <span class="art">art. 6:76 BW</span>, Zaken <span class="art">art. 6:77 BW</span></div></div>
-      <div class="stap"><div class="stap-num">3</div><div class="stap-text"><strong>Schade</strong><br>• Vermogensschade: geleden verlies + gederfde winst <span class="art">art. 6:96 BW</span><br>• Immaterieel nadeel: smartengeld <span class="art">art. 6:106 BW</span></div></div>
-      <div class="stap"><div class="stap-num">4</div><div class="stap-text"><strong>Causaal verband</strong> — condicio sine qua non (csqn): zou de schade ook geleden zijn zonder de tekortkoming? + toerekening naar redelijkheid <span class="art">art. 6:98 BW</span></div></div>
-      <div class="stap"><div class="stap-num">5</div><div class="stap-text"><strong>Verzuim of blijvende onmogelijkheid</strong> <span class="art">art. 6:74 lid 2 BW</span> — verzuim is nodig, tenzij nakoming blijvend onmogelijk is</div></div>
-    </div>
-
-    <div class="section-title">Verzuim — wanneer treedt het in?</div>
-    <div class="table-wrap">
-      <table>
-        <thead><tr><th>Wijze van verzuim</th><th>Wetsartikel</th></tr></thead>
-        <tbody>
-          <tr><td><strong>Schriftelijke ingebrekestelling</strong> met redelijke termijn</td><td>art. 6:82 lid 1 BW</td></tr>
-          <tr><td><strong>Aansprakelijkstelling</strong> bij tijdelijke onmogelijkheid of onwilligheid</td><td>art. 6:82 lid 2 BW</td></tr>
-          <tr><td><strong>Van rechtswege (automatisch)</strong> — afgesproken termijn verstreken; schadevergoeding o.g.v. OD; mededeling schuldenaar</td><td>art. 6:83 BW</td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div class="section-title">Ingebrekestelling — hoe werkt het in de praktijk?</div>
-    <p style="font-size:14px;color:var(--ink-soft);margin:0 0 8px;">De ingebrekestelling is een schriftelijke aanmaning waarin de schuldeiser de schuldenaar een laatste redelijke termijn geeft om alsnog na te komen. Pas als die termijn verstrijkt, ontstaat verzuim en daarmee de mogelijkheid om schadevergoeding te eisen of (onder voorwaarden) te ontbinden.</p>
-    <ul style="font-size:14px;color:var(--ink-soft);padding-left:20px;line-height:1.65;">
-      <li><strong>Vorm:</strong> schriftelijk. In de praktijk vrijwel altijd per aangetekende brief of e-mail met leesbevestiging — zo kan de schuldeiser de ontvangst bewijzen. Een gewone brief mag, maar dan ligt de bewijslast bij de afzender.</li>
-      <li><strong>Inhoud:</strong> wat is verschuldigd, wat is de tekortkoming, welke termijn krijgt de schuldenaar (redelijk = afhankelijk van aard prestatie, vaak 7–14 dagen) en welk gevolg verbindt de schuldeiser aan niet-nakoming.</li>
-      <li><strong>Wanneer overslaan?</strong> Bij blijvende onmogelijkheid (art. 6:74 lid 2 BW) of in de gevallen van art. 6:83 BW (van rechtswege). Een fatale termijn in het contract maakt de ingebrekestelling overbodig.</li>
-      <li><strong>Risico bij verkeerd doen:</strong> een te korte termijn of onduidelijke aanmaning maakt de ingebrekestelling ongeldig — geen verzuim, geen schadevergoeding.</li>
-    </ul>
-
-    <div class="section-title">Overmacht en force majeure-clausules</div>
-    <p style="font-size:14px;color:var(--ink-soft);margin:0 0 8px;">Wettelijk is overmacht een tekortkoming die niet aan de schuldenaar is toe te rekenen (art. 6:75 BW). De rechter kijkt naar wet, rechtshandeling en verkeersopvattingen. Bedrijven leggen dit vaak preciezer vast in een contractuele <strong>force majeure-clausule</strong>, juist omdat de wettelijke uitleg ruimte voor discussie laat.</p>
-    <ul style="font-size:14px;color:var(--ink-soft);padding-left:20px;line-height:1.65;">
-      <li><strong>Doel:</strong> vooraf vastleggen welke gebeurtenissen als overmacht gelden (oorlog, pandemie, staking, energiecrisis, weersextremen, IT-storing) en welke uitdrukkelijk niet (bijv. bedrijfseconomische tegenslag, valutaschommelingen).</li>
-      <li><strong>Gevolgen:</strong> wat gebeurt er bij overmacht — opschorting, hardship-overleg, verlenging van termijnen of recht op ontbinding zonder schadevergoeding.</li>
-      <li><strong>Meldingsplicht:</strong> de getroffen partij moet binnen een afgesproken termijn (vaak 5–10 werkdagen) melden dat overmacht intreedt en bewijs aanleveren.</li>
-      <li><strong>Mitigatieplicht:</strong> ook bij overmacht moet de partij redelijke inspanning leveren om schade te beperken — bijv. een alternatieve leverancier proberen.</li>
-      <li><strong>Belang voor FM-inkoop:</strong> in cateringcontracten, schoonmaakcontracten en ICT-SLA's voorkomt een goede force majeure-clausule eindeloze discussie tijdens incidenten.</li>
-    </ul>
-
-    <div class="section-title">Soorten schadevergoeding</div>
-    <div class="table-wrap">
-      <table>
-        <thead><tr><th>Soort</th><th>Verzuim vereist?</th><th>Toelichting</th></tr></thead>
-        <tbody>
-          <tr><td><strong>Vertragingsschade</strong></td><td>Ja, alleen vanaf verzuim</td><td>Schade door te late nakoming <span class="art">art. 6:85 BW</span></td></tr>
-          <tr><td><strong>Gevolgschade</strong></td><td>Nee</td><td>Schade die verder strekt dan de vertraging</td></tr>
-          <tr><td><strong>Vervangende schadevergoeding</strong></td><td>Ja</td><td>Waarde van de prestatie in geld. Vervangt de nakoming zelf.</td></tr>
-        </tbody>
-      </table>
-    </div>
+<section class="sectie" id="h7">
+  <header class="lees-kop"><span class="les-pill">WEEK 5–6</span><h1>Schadevergoeding wegens wanprestatie</h1></header>
+  <div class="tekst">
+<h3>Stappenplan: schadevergoeding (art. 6:74 BW)</h3>
+<div class="kader glass"><h4>Schadevergoeding, vijf cumulatieve vereisten</h4><ul><li>1 <strong>Tekortkoming</strong>, opeisbaar art. 6:38/6:39 BW én geheel niet, te laat of gebrekkig nakomen</li><li>2 <strong>Toerekenbaarheid</strong>, schuld, of toerekening op grond van wet/rechtshandeling/verkeersopvattingen art. 6:75 BW<br>• Overmacht = niet toerekenbaar art. 6:75 BW<br>• Hulppersonen art. 6:76 BW, Zaken art. 6:77 BW</li><li>3 <strong>Schade</strong><br>• Vermogensschade: geleden verlies + gederfde winst art. 6:96 BW<br>• Immaterieel nadeel: smartengeld art. 6:106 BW</li><li>4 <strong>Causaal verband</strong>, condicio sine qua non (csqn): zou de schade ook geleden zijn zonder de tekortkoming? + toerekening naar redelijkheid art. 6:98 BW</li><li>5 <strong>Verzuim of blijvende onmogelijkheid</strong> art. 6:74 lid 2 BW, verzuim is nodig, tenzij nakoming blijvend onmogelijk is</li></ul></div>
+<h3>Verzuim, wanneer treedt het in?</h3>
+<div class="tabel"><table><thead><tr><th>Wijze van verzuim</th><th>Wetsartikel</th></tr></thead><tbody><tr><td><strong>Schriftelijke ingebrekestelling</strong> met redelijke termijn</td><td>art. 6:82 lid 1 BW</td></tr><tr><td><strong>Aansprakelijkstelling</strong> bij tijdelijke onmogelijkheid of onwilligheid</td><td>art. 6:82 lid 2 BW</td></tr><tr><td><strong>Van rechtswege (automatisch)</strong>, afgesproken termijn verstreken; schadevergoeding o.g.v. OD; mededeling schuldenaar</td><td>art. 6:83 BW</td></tr></tbody></table></div>
+<h3>Ingebrekestelling, hoe werkt het in de praktijk?</h3>
+<p>De ingebrekestelling is een schriftelijke aanmaning waarin de schuldeiser de schuldenaar een laatste redelijke termijn geeft om alsnog na te komen. Pas als die termijn verstrijkt, ontstaat verzuim en daarmee de mogelijkheid om schadevergoeding te eisen of (onder voorwaarden) te ontbinden.</p>
+<ul><li><strong>Vorm:</strong> schriftelijk. In de praktijk vrijwel altijd per aangetekende brief of e-mail met leesbevestiging, zo kan de schuldeiser de ontvangst bewijzen. Een gewone brief mag, maar dan ligt de bewijslast bij de afzender.</li><li><strong>Inhoud:</strong> wat is verschuldigd, wat is de tekortkoming, welke termijn krijgt de schuldenaar (redelijk = afhankelijk van aard prestatie, vaak 7–14 dagen) en welk gevolg verbindt de schuldeiser aan niet-nakoming.</li><li><strong>Wanneer overslaan?</strong> Bij blijvende onmogelijkheid (art. 6:74 lid 2 BW) of in de gevallen van art. 6:83 BW (van rechtswege). Een fatale termijn in het contract maakt de ingebrekestelling overbodig.</li><li><strong>Risico bij verkeerd doen:</strong> een te korte termijn of onduidelijke aanmaning maakt de ingebrekestelling ongeldig, geen verzuim, geen schadevergoeding.</li></ul>
+<h3>Overmacht en force majeure-clausules</h3>
+<p>Wettelijk is overmacht een tekortkoming die niet aan de schuldenaar is toe te rekenen (art. 6:75 BW). De rechter kijkt naar wet, rechtshandeling en verkeersopvattingen. Bedrijven leggen dit vaak preciezer vast in een contractuele <strong>force majeure-clausule</strong>, juist omdat de wettelijke uitleg ruimte voor discussie laat.</p>
+<ul><li><strong>Doel:</strong> vooraf vastleggen welke gebeurtenissen als overmacht gelden (oorlog, pandemie, staking, energiecrisis, weersextremen, IT-storing) en welke uitdrukkelijk niet (bijv. bedrijfseconomische tegenslag, valutaschommelingen).</li><li><strong>Gevolgen:</strong> wat gebeurt er bij overmacht, opschorting, hardship-overleg, verlenging van termijnen of recht op ontbinding zonder schadevergoeding.</li><li><strong>Meldingsplicht:</strong> de getroffen partij moet binnen een afgesproken termijn (vaak 5–10 werkdagen) melden dat overmacht intreedt en bewijs aanleveren.</li><li><strong>Mitigatieplicht:</strong> ook bij overmacht moet de partij redelijke inspanning leveren om schade te beperken, bijv. een alternatieve leverancier proberen.</li><li><strong>Belang voor FM-inkoop:</strong> in cateringcontracten, schoonmaakcontracten en ICT-SLA's voorkomt een goede force majeure-clausule eindeloze discussie tijdens incidenten.</li></ul>
+<h3>Soorten schadevergoeding</h3>
+<div class="tabel"><table><thead><tr><th>Soort</th><th>Verzuim vereist?</th><th>Toelichting</th></tr></thead><tbody><tr><td><strong>Vertragingsschade</strong></td><td>Ja, alleen vanaf verzuim</td><td>Schade door te late nakoming art. 6:85 BW</td></tr><tr><td><strong>Gevolgschade</strong></td><td>Nee</td><td>Schade die verder strekt dan de vertraging</td></tr><tr><td><strong>Vervangende schadevergoeding</strong></td><td>Ja</td><td>Waarde van de prestatie in geld. Vervangt de nakoming zelf.</td></tr></tbody></table></div>
   </div>
+  <nav class="verder" aria-label="Vorige en volgende"><a class="glass" href="#h6">&#8249; <span>Opschorting</span></a><a class="glass" href="#h8"><span>Ontbinding</span> &#8250;</a></nav>
+</section>
 
-  <!-- ═══════════════════════════════════════════ -->
-  <!-- HOOFDSTUK 8: ONTBINDING -->
-  <!-- ═══════════════════════════════════════════ -->
-  <div class="chapter" id="h8">
-    <div class="chapter-header">
-      <span class="chapter-num">WEEK 6</span>
-      <h2>Ontbinding</h2>
-    </div>
-
-    <div class="section-title">Stappenplan: ontbinding (art. 6:265 BW)</div>
-    <div class="stappenplan">
-      <div class="stappenplan-title">Ontbinding — vier cumulatieve vereisten</div>
-      <div class="stap"><div class="stap-num">1</div><div class="stap-text"><strong>Wederkerige overeenkomst</strong> — twee tegenover elkaar staande verbintenissen</div></div>
-      <div class="stap"><div class="stap-num">2</div><div class="stap-text"><strong>Tekortkoming in de nakoming</strong> — opeisbaar én geheel niet, te laat, gebrekkig of ondeugdelijk</div></div>
-      <div class="stap"><div class="stap-num">3</div><div class="stap-text"><strong>Verzuim of blijvende/tijdelijke onmogelijkheid</strong> — zelfde als bij schadevergoeding <span class="art">art. 6:82/6:83 BW</span>. Toerekenbaarheid is hier NIET vereist!</div></div>
-      <div class="stap"><div class="stap-num">4</div><div class="stap-text"><strong>Tekortkoming rechtvaardigt de ontbinding</strong> <span class="art">art. 6:265 lid 1 BW</span> — een kleine tekortkoming kan mogelijk geen volledige ontbinding rechtvaardigen</div></div>
-    </div>
-
-    <div class="warn"><strong>Belangrijk verschil met schadevergoeding:</strong> bij ontbinding speelt toerekenbaarheid/overmacht GEEN rol. Bij schadevergoeding is toerekenbaarheid wél vereist <span class="art">art. 6:74/6:75 BW</span>.</div>
-
-    <div class="section-title">Wijze van ontbinding</div>
-    <ul class="item-list">
-      <li><strong>Buitengerechtelijk</strong> — schriftelijke verklaring <span class="art">art. 6:267 lid 1 BW</span></li>
-      <li><strong>Gerechtelijk</strong> — op vordering bij de rechter <span class="art">art. 6:267 lid 2 BW</span></li>
-    </ul>
-
-    <div class="section-title">Gevolgen ontbinding</div>
-    <ul class="item-list">
-      <li>Bevrijding van nog niet verrichte prestaties</li>
-      <li>Ongedaanmakingsverplichting voor al verrichte prestaties</li>
-      <li>Ongedaanmaking onmogelijk → waardevergoeding <span class="art">art. 6:272 lid 1 BW</span></li>
-      <li>Gedeeltelijke ontbinding mogelijk (evenredigheid)</li>
-      <li>Geen terugwerkende kracht (anders dan bij vernietiging)</li>
-    </ul>
-
-    <div class="section-title">Toegestane combinaties van acties bij wanprestatie</div>
-    <div class="table-wrap">
-      <table>
-        <thead><tr><th>Combinatie</th><th>Toegestaan?</th></tr></thead>
-        <tbody>
-          <tr><td>Nakoming + gevolg- en vertragingsschade</td><td>✓ Ja</td></tr>
-          <tr><td>Nakoming + opschorting + gevolg- en vertragingsschade</td><td>✓ Ja</td></tr>
-          <tr><td>Opschorting + gevolg- en vertragingsschade</td><td>✓ Ja</td></tr>
-          <tr><td>Ontbinding + gevolg- en vertragingsschade</td><td>✓ Ja</td></tr>
-          <tr><td>Vervangende schadevergoeding + gevolg- en vertragingsschade</td><td>✓ Ja</td></tr>
-          <tr><td>Ontbinding + vervangende schadevergoeding</td><td>✗ Nee — vervangende schadevergoeding vervangt de nakoming; ontbinding beëindigt de overeenkomst</td></tr>
-        </tbody>
-      </table>
-    </div>
+<section class="sectie" id="h8">
+  <header class="lees-kop"><span class="les-pill">WEEK 6</span><h1>Ontbinding</h1></header>
+  <div class="tekst">
+<h3>Stappenplan: ontbinding (art. 6:265 BW)</h3>
+<div class="kader glass"><h4>Ontbinding, vier cumulatieve vereisten</h4><ul><li>1 <strong>Wederkerige overeenkomst</strong>, twee tegenover elkaar staande verbintenissen</li><li>2 <strong>Tekortkoming in de nakoming</strong>, opeisbaar én geheel niet, te laat, gebrekkig of ondeugdelijk</li><li>3 <strong>Verzuim of blijvende/tijdelijke onmogelijkheid</strong>, zelfde als bij schadevergoeding art. 6:82/6:83 BW. Toerekenbaarheid is hier NIET vereist!</li><li>4 <strong>Tekortkoming rechtvaardigt de ontbinding</strong> art. 6:265 lid 1 BW, een kleine tekortkoming kan mogelijk geen volledige ontbinding rechtvaardigen</li></ul></div>
+<div class="let-op"><b>Let op</b><strong>Belangrijk verschil met schadevergoeding:</strong> bij ontbinding speelt toerekenbaarheid/overmacht GEEN rol. Bij schadevergoeding is toerekenbaarheid wél vereist art. 6:74/6:75 BW.</div>
+<h3>Wijze van ontbinding</h3>
+<ul><li><strong>Buitengerechtelijk</strong>, schriftelijke verklaring art. 6:267 lid 1 BW</li><li><strong>Gerechtelijk</strong>, op vordering bij de rechter art. 6:267 lid 2 BW</li></ul>
+<h3>Gevolgen ontbinding</h3>
+<ul><li>Bevrijding van nog niet verrichte prestaties</li><li>Ongedaanmakingsverplichting voor al verrichte prestaties</li><li>Ongedaanmaking onmogelijk → waardevergoeding art. 6:272 lid 1 BW</li><li>Gedeeltelijke ontbinding mogelijk (evenredigheid)</li><li>Geen terugwerkende kracht (anders dan bij vernietiging)</li></ul>
+<h3>Toegestane combinaties van acties bij wanprestatie</h3>
+<div class="tabel"><table><thead><tr><th>Combinatie</th><th>Toegestaan?</th></tr></thead><tbody><tr><td>Nakoming + gevolg- en vertragingsschade</td><td>✓ Ja</td></tr><tr><td>Nakoming + opschorting + gevolg- en vertragingsschade</td><td>✓ Ja</td></tr><tr><td>Opschorting + gevolg- en vertragingsschade</td><td>✓ Ja</td></tr><tr><td>Ontbinding + gevolg- en vertragingsschade</td><td>✓ Ja</td></tr><tr><td>Vervangende schadevergoeding + gevolg- en vertragingsschade</td><td>✓ Ja</td></tr><tr><td>Ontbinding + vervangende schadevergoeding</td><td>✗ Nee, vervangende schadevergoeding vervangt de nakoming; ontbinding beëindigt de overeenkomst</td></tr></tbody></table></div>
   </div>
+  <nav class="verder" aria-label="Vorige en volgende"><a class="glass" href="#h7">&#8249; <span>Schadevergoeding wegens wanprestatie</span></a><a class="glass" href="#h9"><span>Onrechtmatige daad</span> &#8250;</a></nav>
+</section>
 
-  <!-- ═══════════════════════════════════════════ -->
-  <!-- HOOFDSTUK 9: ONRECHTMATIGE DAAD -->
-  <!-- ═══════════════════════════════════════════ -->
-  <div class="chapter" id="h9">
-    <div class="chapter-header">
-      <span class="chapter-num">WEEK 6</span>
-      <h2>Onrechtmatige daad</h2>
-    </div>
-
-    <div class="callout">
-      <strong>Onrechtmatige daad (art. 6:162 BW)</strong> = een buitencontractuele grondslag voor aansprakelijkheid. Anders dan bij wanprestatie is er géén overeenkomst tussen partijen nodig: iedereen die onrechtmatig schade veroorzaakt aan een ander kan tot vergoeding worden aangesproken.
-    </div>
-
-    <div class="warn"><strong>Verschil met wanprestatie:</strong> wanprestatie (art. 6:74 BW) speelt binnen een bestaande overeenkomst — onrechtmatige daad daarbuiten. Bij samenloop kan de benadeelde kiezen, tenzij de wet of overeenkomst dat uitsluit.</div>
-
-    <div class="section-title">Stappenplan: onrechtmatige daad (art. 6:162 BW)</div>
-    <div class="stappenplan">
-      <div class="stappenplan-title">Onrechtmatige daad — vijf cumulatieve vereisten</div>
-      <div class="stap"><div class="stap-num">1</div><div class="stap-text"><strong>Onrechtmatige gedraging</strong> <span class="art">art. 6:162 lid 2 BW</span> — drie categorieën: (a) inbreuk op een recht, (b) doen of nalaten in strijd met een wettelijke plicht, (c) doen of nalaten in strijd met de maatschappelijke zorgvuldigheid (ongeschreven recht)</div></div>
-      <div class="stap"><div class="stap-num">2</div><div class="stap-text"><strong>Toerekenbaarheid</strong> <span class="art">art. 6:162 lid 3 BW</span> — de daad is toe te rekenen op grond van: schuld (verwijtbaarheid) of een wettelijke oorzaak (bijv. risicoaansprakelijkheid) of de verkeersopvattingen</div></div>
-      <div class="stap"><div class="stap-num">3</div><div class="stap-text"><strong>Schade</strong> <span class="art">art. 6:95 BW</span> — vermogensschade (geleden verlies + gederfde winst) en/of immaterieel nadeel (smartengeld, art. 6:106 BW)</div></div>
-      <div class="stap"><div class="stap-num">4</div><div class="stap-text"><strong>Causaal verband</strong> <span class="art">art. 6:98 BW</span> — condicio sine qua non: zonder de gedraging géén schade. Plus toerekening naar redelijkheid: schade moet in zodanig verband staan met de daad dat zij als gevolg kan worden toegerekend</div></div>
-      <div class="stap"><div class="stap-num">5</div><div class="stap-text"><strong>Relativiteit</strong> <span class="art">art. 6:163 BW</span> — de geschonden norm moet strekken tot bescherming tegen de geleden schade van deze persoon. Niet elke wetsovertreding levert dus aansprakelijkheid op tegenover iedereen.</div></div>
-    </div>
-
-    <div class="section-title">Rechtvaardigingsgronden</div>
-    <p class="prose">Een gedraging die normaal onrechtmatig zou zijn, kan toch rechtmatig zijn als er een rechtvaardigingsgrond is. De bewijslast rust op degene die zich erop beroept.</p>
-    <ul class="item-list">
-      <li><strong>Noodweer</strong> — verdediging tegen een ogenblikkelijke wederrechtelijke aanranding</li>
-      <li><strong>Overmacht</strong> — een onontkoombare drang of dwang</li>
-      <li><strong>Wettelijk voorschrift</strong> — handelen op grond van de wet (bijv. een politieagent)</li>
-      <li><strong>Bevoegd gegeven ambtelijk bevel</strong></li>
-      <li><strong>Toestemming van de benadeelde</strong> — bijv. bij sport en spel binnen de regels</li>
-    </ul>
-
-    <div class="section-title">Bijzondere aansprakelijkheden — risicoaansprakelijkheid</div>
-    <p class="prose">In een aantal situaties hoeft schuld niet bewezen te worden. De wet legt de aansprakelijkheid bij een specifieke partij, ongeacht verwijtbaarheid.</p>
-    <div class="table-wrap">
-      <table>
-        <thead><tr><th>Soort</th><th>Wetsartikel</th><th>Toelichting</th></tr></thead>
-        <tbody>
-          <tr><td><strong>Aansprakelijkheid voor kinderen onder 14</strong></td><td>art. 6:169 lid 1 BW</td><td>Ouders/voogd zijn aansprakelijk voor schade door doen of nalaten van het kind</td></tr>
-          <tr><td><strong>Aansprakelijkheid werkgever voor ondergeschikte</strong></td><td>art. 6:170 BW</td><td>Werkgever is aansprakelijk voor fouten van werknemers in functie-uitoefening</td></tr>
-          <tr><td><strong>Aansprakelijkheid voor hulppersonen</strong></td><td>art. 6:171 BW</td><td>Opdrachtgever aansprakelijk voor zelfstandig ingeschakelde hulppersoon (bedrijfsmatig)</td></tr>
-          <tr><td><strong>Aansprakelijkheid bezitter dier</strong></td><td>art. 6:179 BW</td><td>Bezitter is aansprakelijk voor schade door eigen energie van het dier</td></tr>
-          <tr><td><strong>Aansprakelijkheid bezitter opstal</strong></td><td>art. 6:174 BW</td><td>Bezitter aansprakelijk voor gebrekkige toestand van gebouw of werk</td></tr>
-          <tr><td><strong>Productaansprakelijkheid</strong></td><td>art. 6:185 e.v. BW</td><td>Producent aansprakelijk voor gebrekkig product, ook zonder schuld</td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div class="section-title">Wanprestatie versus onrechtmatige daad — vergelijking</div>
-    <div class="table-wrap">
-      <table>
-        <thead><tr><th>Aspect</th><th>Wanprestatie (6:74 BW)</th><th>Onrechtmatige daad (6:162 BW)</th></tr></thead>
-        <tbody>
-          <tr><td><strong>Grondslag</strong></td><td>Bestaande overeenkomst</td><td>Buitencontractueel — geen overeenkomst nodig</td></tr>
-          <tr><td><strong>Verzuim vereist?</strong></td><td>Ja, behalve bij blijvende onmogelijkheid</td><td>Nee</td></tr>
-          <tr><td><strong>Toerekenbaarheid</strong></td><td>Vereist (schuld, wet, verkeersopvattingen)</td><td>Vereist (schuld, wet, verkeersopvattingen)</td></tr>
-          <tr><td><strong>Verjaring</strong></td><td>Nakoming: 5 jaar na opeisbaarheid (art. 3:307 BW). Schadevergoeding: 5 jaar na bekendheid met schade en aansprakelijke, max. 20 jaar (art. 3:310 BW). Ontbinding: 5 jaar na ontdekking tekortkoming.</td><td>5 jaar na bekendheid schade + dader, max. 20 jaar (art. 3:310 BW)</td></tr>
-          <tr><td><strong>Relativiteit</strong></td><td>Niet apart vereist</td><td>Wél apart vereist (art. 6:163 BW)</td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div class="section-title">Belang voor facilitair management</div>
-    <p class="prose">Onrechtmatige daad is praktisch relevant voor de FM'er bij situaties zoals: een bezoeker die uitglijdt op een net gedweilde gang zonder waarschuwingsbord (zorgvuldigheidsnorm), schade aan een huurauto door een ondergeschikte (art. 6:170 BW), een gebrekkig gebouw waardoor letsel ontstaat (art. 6:174 BW) of een datalek waarbij persoonsgegevens uitlekken zonder dat er een contract met de betrokkene bestond. Goede risico-inventarisatie en aansprakelijkheidsverzekeringen (zoals de AVB, de aansprakelijkheidsverzekering voor bedrijven) zijn standaard in het FM-werkveld.</p>
+<section class="sectie" id="h9">
+  <header class="lees-kop"><span class="les-pill">WEEK 6</span><h1>Onrechtmatige daad</h1></header>
+  <div class="tekst">
+<div class="kern"><strong>Onrechtmatige daad (art. 6:162 BW)</strong> = een buitencontractuele grondslag voor aansprakelijkheid. Anders dan bij wanprestatie is er géén overeenkomst tussen partijen nodig: iedereen die onrechtmatig schade veroorzaakt aan een ander kan tot vergoeding worden aangesproken.</div>
+<div class="let-op"><b>Let op</b><strong>Verschil met wanprestatie:</strong> wanprestatie (art. 6:74 BW) speelt binnen een bestaande overeenkomst, onrechtmatige daad daarbuiten. Bij samenloop kan de benadeelde kiezen, tenzij de wet of overeenkomst dat uitsluit.</div>
+<h3>Stappenplan: onrechtmatige daad (art. 6:162 BW)</h3>
+<div class="kader glass"><h4>Onrechtmatige daad, vijf cumulatieve vereisten</h4><ul><li>1 <strong>Onrechtmatige gedraging</strong> art. 6:162 lid 2 BW, drie categorieën: (a) inbreuk op een recht, (b) doen of nalaten in strijd met een wettelijke plicht, (c) doen of nalaten in strijd met de maatschappelijke zorgvuldigheid (ongeschreven recht)</li><li>2 <strong>Toerekenbaarheid</strong> art. 6:162 lid 3 BW, de daad is toe te rekenen op grond van: schuld (verwijtbaarheid) of een wettelijke oorzaak (bijv. risicoaansprakelijkheid) of de verkeersopvattingen</li><li>3 <strong>Schade</strong> art. 6:95 BW, vermogensschade (geleden verlies + gederfde winst) en/of immaterieel nadeel (smartengeld, art. 6:106 BW)</li><li>4 <strong>Causaal verband</strong> art. 6:98 BW, condicio sine qua non: zonder de gedraging géén schade. Plus toerekening naar redelijkheid: schade moet in zodanig verband staan met de daad dat zij als gevolg kan worden toegerekend</li><li>5 <strong>Relativiteit</strong> art. 6:163 BW, de geschonden norm moet strekken tot bescherming tegen de geleden schade van deze persoon. Niet elke wetsovertreding levert dus aansprakelijkheid op tegenover iedereen.</li></ul></div>
+<h3>Rechtvaardigingsgronden</h3>
+<p>Een gedraging die normaal onrechtmatig zou zijn, kan toch rechtmatig zijn als er een rechtvaardigingsgrond is. De bewijslast rust op degene die zich erop beroept.</p>
+<ul><li><strong>Noodweer</strong>, verdediging tegen een ogenblikkelijke wederrechtelijke aanranding</li><li><strong>Overmacht</strong>, een onontkoombare drang of dwang</li><li><strong>Wettelijk voorschrift</strong>, handelen op grond van de wet (bijv. een politieagent)</li><li><strong>Bevoegd gegeven ambtelijk bevel</strong></li><li><strong>Toestemming van de benadeelde</strong>, bijv. bij sport en spel binnen de regels</li></ul>
+<h3>Bijzondere aansprakelijkheden, risicoaansprakelijkheid</h3>
+<p>In een aantal situaties hoeft schuld niet bewezen te worden. De wet legt de aansprakelijkheid bij een specifieke partij, ongeacht verwijtbaarheid.</p>
+<div class="tabel"><table><thead><tr><th>Soort</th><th>Wetsartikel</th><th>Toelichting</th></tr></thead><tbody><tr><td><strong>Aansprakelijkheid voor kinderen onder 14</strong></td><td>art. 6:169 lid 1 BW</td><td>Ouders/voogd zijn aansprakelijk voor schade door doen of nalaten van het kind</td></tr><tr><td><strong>Aansprakelijkheid werkgever voor ondergeschikte</strong></td><td>art. 6:170 BW</td><td>Werkgever is aansprakelijk voor fouten van werknemers in functie-uitoefening</td></tr><tr><td><strong>Aansprakelijkheid voor hulppersonen</strong></td><td>art. 6:171 BW</td><td>Opdrachtgever aansprakelijk voor zelfstandig ingeschakelde hulppersoon (bedrijfsmatig)</td></tr><tr><td><strong>Aansprakelijkheid bezitter dier</strong></td><td>art. 6:179 BW</td><td>Bezitter is aansprakelijk voor schade door eigen energie van het dier</td></tr><tr><td><strong>Aansprakelijkheid bezitter opstal</strong></td><td>art. 6:174 BW</td><td>Bezitter aansprakelijk voor gebrekkige toestand van gebouw of werk</td></tr><tr><td><strong>Productaansprakelijkheid</strong></td><td>art. 6:185 e.v. BW</td><td>Producent aansprakelijk voor gebrekkig product, ook zonder schuld</td></tr></tbody></table></div>
+<h3>Wanprestatie versus onrechtmatige daad, vergelijking</h3>
+<div class="tabel"><table><thead><tr><th>Aspect</th><th>Wanprestatie (6:74 BW)</th><th>Onrechtmatige daad (6:162 BW)</th></tr></thead><tbody><tr><td><strong>Grondslag</strong></td><td>Bestaande overeenkomst</td><td>Buitencontractueel, geen overeenkomst nodig</td></tr><tr><td><strong>Verzuim vereist?</strong></td><td>Ja, behalve bij blijvende onmogelijkheid</td><td>Nee</td></tr><tr><td><strong>Toerekenbaarheid</strong></td><td>Vereist (schuld, wet, verkeersopvattingen)</td><td>Vereist (schuld, wet, verkeersopvattingen)</td></tr><tr><td><strong>Verjaring</strong></td><td>Nakoming: 5 jaar na opeisbaarheid (art. 3:307 BW). Schadevergoeding: 5 jaar na bekendheid met schade en aansprakelijke, max. 20 jaar (art. 3:310 BW). Ontbinding: 5 jaar na ontdekking tekortkoming.</td><td>5 jaar na bekendheid schade + dader, max. 20 jaar (art. 3:310 BW)</td></tr><tr><td><strong>Relativiteit</strong></td><td>Niet apart vereist</td><td>Wél apart vereist (art. 6:163 BW)</td></tr></tbody></table></div>
+<h3>Belang voor facilitair management</h3>
+<p>Onrechtmatige daad is praktisch relevant voor de FM'er bij situaties zoals: een bezoeker die uitglijdt op een net gedweilde gang zonder waarschuwingsbord (zorgvuldigheidsnorm), schade aan een huurauto door een ondergeschikte (art. 6:170 BW), een gebrekkig gebouw waardoor letsel ontstaat (art. 6:174 BW) of een datalek waarbij persoonsgegevens uitlekken zonder dat er een contract met de betrokkene bestond. Goede risico-inventarisatie en aansprakelijkheidsverzekeringen (zoals de AVB, de aansprakelijkheidsverzekering voor bedrijven) zijn standaard in het FM-werkveld.</p>
   </div>
-
+  <nav class="verder" aria-label="Vorige en volgende"><a class="glass" href="#h8">&#8249; <span>Ontbinding</span></a><span></span></nav>
+</section>
+  </main>
 </div>
 
-<footer class="fa-site-footer">
-  <span>FM Atlas · gratis studiehulp voor HAN Facilitair Management, gemaakt door een student</span>
-  <span>Niet officieel verbonden aan de HAN · <a href="privacy.html">Privacy</a> · <a href="app.html#contact">Fout gezien?</a></span>
-</footer>
+<div class="lightbox" id="lightbox" hidden><figure><img alt=""/><p></p></figure></div>
 
-<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
-<script src="js/fmatlas.js"></script>
+<script src="js/atlas-data.js"></script>
+<script src="js/atlas.js"></script>
 <script>
-const firebaseConfig = {
-  apiKey: "AIzaSyBB397Wk2eqpBjic8E7aGV1mTgIjhQ21a8",
-  authDomain: "fmkompas-ff8bc.firebaseapp.com",
-  projectId: "fmkompas-ff8bc",
-  storageBucket: "fmkompas-ff8bc.firebasestorage.app",
-  messagingSenderId: "487972024689",
-  appId: "1:487972024689:web:712c3117080745d14746d0"
-};
-firebase.initializeApp(firebaseConfig);
-firebase.auth().onAuthStateChanged(user => {
-  document.getElementById('fa-header-slot').innerHTML = '';
-  faMarkActiveToday();
-  document.getElementById('fa-header-slot').appendChild(faRenderHeader({ user }));
-  faMarkLastSeen('recht','Recht','recht.html');
-});
+(function () {
+  Atlas.topbar('<span class="sep">/</span><a href="vak.html?v=facilitaire-inkoop">Facilitaire inkoop</a><span class="sep">/</span><span class="here">Samenvatting</span>');
+  const secties = [...document.querySelectorAll('.sectie')];
+  const links = [...document.querySelectorAll('#toc a')];
+  const toc = document.getElementById('toc');
+  const toggle = document.getElementById('toc-toggle');
+
+  function toon(id, scroll) {
+    const s = secties.find(x => x.id === id) || secties[0];
+    secties.forEach(x => x.classList.toggle('actief', x === s));
+    links.forEach(a => a.setAttribute('aria-current', String(a.getAttribute('href') === '#' + s.id)));
+    const a = links.find(x => x.getAttribute('href') === '#' + s.id);
+    document.getElementById('toc-now').textContent = a ? a.textContent.replace(/\s+/g, ' ').trim() : '';
+    toc.classList.remove('open'); toggle.setAttribute('aria-expanded', 'false');
+    if (scroll) window.scrollTo({ top: 0 });
+  }
+  window.addEventListener('hashchange', () => toon(location.hash.slice(1), true));
+  toggle.addEventListener('click', () => { const o = toc.classList.toggle('open'); toggle.setAttribute('aria-expanded', String(o)); });
+  if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+  toon(location.hash.slice(1), true);
+  window.addEventListener('load', () => window.scrollTo({ top: 0 }));
+
+  // Beeld vergroten
+  const lb = document.getElementById('lightbox');
+  document.addEventListener('click', e => {
+    const b = e.target.closest('.beeld button');
+    if (b) {
+      const img = b.querySelector('img');
+      lb.querySelector('img').src = img.src;
+      lb.querySelector('p').textContent = b.parentNode.querySelector('figcaption')?.textContent || '';
+      lb.hidden = false;
+    } else if (e.target.closest('#lightbox')) lb.hidden = true;
+  });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') lb.hidden = true; });
+})();
 </script>
 </body>
 </html>

@@ -2,510 +2,202 @@
 <html lang="nl">
 <head>
 <meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Samenvatting · Basis van FM A — FM Atlas</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+<title>Samenvatting · Basis van FM A · FM Atlas</title>
+<meta name="description" content="Samenvatting van Basis van FM A op FM Atlas, studiehulp voor HAN Facilitair Management."/>
 <link rel="icon" type="image/svg+xml" href="logo.svg"/>
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png"/>
 <link rel="apple-touch-icon" href="apple-touch-icon.png"/>
-<meta name="theme-color" content="#f7f3ec"/>
+<meta name="theme-color" content="#efe5d4"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet"/>
-<link rel="stylesheet" href="css/fmatlas.css"/>
-<style>
-.sam-wrap { max-width: 1100px; margin: 0 auto; padding: 24px; }
-.sam-intro { background: var(--surface); border: 1.5px solid var(--line); border-radius: var(--radius-xl); padding: 28px 32px; margin-bottom: 18px; }
-.sam-intro-meta { font-size: 11px; font-weight: 800; color: var(--accent); letter-spacing: 0.08em; margin-bottom: 8px; }
-.sam-intro h1 { font-size: 32px; font-weight: 900; letter-spacing: -0.025em; line-height: 1.08; margin-bottom: 10px; }
-.sam-intro p { color: var(--ink-soft); font-size: 14.5px; line-height: 1.6; }
-
-nav.chapnav { background: var(--surface); border: 1.5px solid var(--line); border-radius: var(--radius-lg); padding: 12px 16px; margin: 0 24px 18px; max-width: 1052px; margin-left: auto; margin-right: auto; display: flex; flex-wrap: wrap; gap: 6px; position: sticky; top: 68px; z-index: 20; }
-nav.chapnav a { color: var(--ink-soft); text-decoration: none; padding: 4px 10px; border-radius: 8px; background: var(--bg); font-weight: 800; font-size: 11.5px; border: 1.5px solid var(--line); transition: all 0.12s; }
-nav.chapnav a:hover { background: var(--accent-soft); color: var(--accent-deep); border-color: var(--accent); }
-
-.main { max-width: 1052px; margin: 0 auto; padding: 0 24px 60px; display: flex; flex-direction: column; gap: 18px; }
-
-.card { background: var(--surface); border: 1.5px solid var(--line); border-radius: var(--radius-xl); overflow: hidden; scroll-margin-top: 140px; }
-.card-header { padding: 16px 22px; display: flex; align-items: center; gap: 10px; color: var(--surface); background: var(--ink); }
-.card-header h2 { font-size: 17px; font-weight: 900; letter-spacing: -0.015em; }
-.card-header .icon { font-size: 20px; }
-.card-body { padding: 22px 24px; }
-
-.h1 { background: var(--accent); }
-
-.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-.three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
-@media (max-width: 740px) { .two-col, .three-col { grid-template-columns: 1fr; } }
-
-.section { margin-bottom: 18px; }
-.section h3 { font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin-bottom: 8px; padding-bottom: 6px; border-bottom: 1.5px solid var(--line); }
-
-ul.clean { list-style: none; display: flex; flex-direction: column; gap: 5px; margin: 0; padding: 0; }
-ul.clean li { font-size: 13.5px; line-height: 1.55; padding: 3px 0 3px 16px; position: relative; color: var(--ink-soft); font-weight: 500; }
-ul.clean li::before { content: '›'; position: absolute; left: 0; top: 3px; color: var(--accent); font-weight: 900; }
-ul.clean li strong { color: var(--ink); font-weight: 800; }
-
-.defbox { background: var(--bg); border: 1.5px solid var(--line); border-left: 4px solid var(--accent); border-radius: 0 var(--radius) var(--radius) 0; padding: 10px 14px; margin-bottom: 10px; font-size: 13.5px; line-height: 1.55; color: var(--ink-soft); }
-.defbox strong { display: block; font-size: 10.5px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); margin-bottom: 4px; }
-
-.highlight { background: var(--accent-soft); border: 1.5px solid rgba(239, 90, 63, 0.25); border-radius: var(--radius); padding: 10px 14px; font-size: 13.5px; line-height: 1.55; margin-bottom: 10px; color: var(--accent-deep); font-weight: 600; }
-.highlight strong { color: var(--accent-deep); font-weight: 900; }
-
-.warn { background: #fff7ed; border-left: 3px solid #f59e0b; padding: 9px 14px; border-radius: 0 var(--radius) var(--radius) 0; font-size: 12.5px; color: #92400e; margin-bottom: 10px; font-weight: 600; }
-
-table.compact { width: 100%; border-collapse: collapse; font-size: 12.5px; margin-top: 6px; }
-table.compact th, table.compact td { padding: 7px 10px; text-align: left; border-bottom: 1.5px solid var(--line); color: var(--ink-soft); }
-table.compact th { font-size: 10.5px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
-table.compact td strong { color: var(--ink); font-weight: 800; }
-</style>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="css/atlas.css"/>
+<link rel="stylesheet" href="css/leer.css"/>
 </head>
 <body>
+<div class="scene" aria-hidden="true"><i></i></div>
+<header class="topbar" id="topbar"></header>
 
-<div id="fa-header-slot"></div>
+<div class="leer">
+  <nav class="toc glass" id="toc" aria-label="Inhoud">
+    <button class="toc-toggle" type="button" id="toc-toggle" aria-expanded="false"><span id="toc-now"></span><span aria-hidden="true">▾</span></button>
+    <div class="toc-list">
+      <div class="toc-title">Samenvatting</div>
+      <a href="#basisprincipes"><span>1 · Basisprincipes van FM</span></a>
+      <a href="#dienstverlening"><span>2 · Dienstverleningsprocessen</span></a>
+      <a href="#sturing"><span>2b · Sturen op de dienstverlening (SLA, KPI, NEN 2748)</span></a>
+      <a href="#huisvesting"><span>3 · Huisvesting &amp; werkplekken</span></a>
+      <a href="#hospitality"><span>4 · Hospitality &amp; gastvrijheid</span></a>
+      <a href="#inkoop"><span>5 · Inkoop &amp; kwaliteit</span></a>
+    </div>
+  </nav>
 
-<nav class="fa-breadcrumb">
-  <a href="app.html">Vakken</a>
-  <span>›</span>
-  <a href="basis-van-fm-a.html">Basis van FM — A</a>
-  <span>›</span>
-  <span class="current">Samenvatting</span>
-</nav>
-
-<div class="sam-wrap">
-  <div class="sam-intro">
-    <div class="sam-intro-meta">SAMENVATTING · PERIODE 1 · JAAR 1</div>
-    <h1>Basis van FM — A</h1>
-    <p>Introductie op het beroepsprofiel van de facilitair manager: rollen, klanten, dienstverleningsprocessen, huisvesting, hospitality en inkoop & kwaliteit.</p>
+  <main class="lees" id="lees">
+<section class="sectie" id="basisprincipes">
+  <header class="lees-kop"><h1>1 · Basisprincipes van FM</h1></header>
+  <div class="tekst">
+<div class="kern">Introductie op het beroepsprofiel van de facilitair manager: rollen, klanten, dienstverleningsprocessen, huisvesting, hospitality en inkoop &amp; kwaliteit.</div>
+<h3>Wat is facility management?</h3>
+<dl class="begrip"><dt>Kerngedachte</dt><dd>Als facility professional zorg ik dat jij je werk beter kan doen. FM realiseert een <em>fit-for-use omgeving</em>: geschikt voor het beoogde gebruik, afgestemd op de wensen en behoeften van de organisatie.</dd></dl>
+<ul><li><strong>Interne klant</strong>, medewerkers van de organisatie</li><li><strong>Externe klant</strong>, klanten van buiten de organisatie</li><li><strong>Soft services</strong>, schoonmaak, catering, beveiliging, receptie</li><li><strong>Hard services</strong>, gebouwbeheer, onderhoud, verduurzaming</li><li><strong>Hybride werkomgeving</strong>, deels kantoor, deels elders</li><li><strong>Sourcing</strong>, zelf doen of uitbesteden?</li></ul>
+<h3>Vier facilitaire rollen</h3>
+<ul><li><strong>Facility manager</strong>, geeft sturing aan de FM-afdeling; eindverantwoordelijk voor alle facilitaire voorzieningen</li><li><strong>Specialist</strong>, diepe kennis van één onderdeel; waardevol bij specifieke vraagstukken</li><li><strong>Adviseur</strong>, ingeschakeld bij complexe vraagstukken die specialisme vereisen</li><li><strong>Ondernemer</strong>, breed inzetbaar, zelfstandig, gericht op winstgevendheid</li></ul>
+<h3>Plek van FM in organisaties</h3>
+<ul><li><strong>Single service provider</strong>, gespecialiseerd in één dienst (bijv. alleen schoonmaak)</li><li><strong>Multi service provider</strong>, meerdere facilitaire diensten</li><li><strong>Integrated service provider</strong>, complete facilitaire ontzorging</li><li>Positie in organogram verschilt: stafdienst, businessunit, of onderdeel van managementsupport</li></ul>
+<h3>12 vormen van toegevoegde waarde</h3>
+<ul><li>Tevredenheid verhogen · Productiviteit ondersteunen</li><li>Kosten beheersen · Risico's beheersen</li><li>MVO · Duurzaamheid · Imago ondersteunen</li><li>Cultuur ondersteunen · Flexibiliteit vergroten</li><li>Innovatie stimuleren · Vitaliteit bevorderen</li><li>Waardestijging vastgoed</li></ul>
+<div class="kern"><strong>Golden Circle (Sinek):</strong> communiceer vanuit het <em>waarom</em>, de impact die FM levert op de organisatie, niet alleen de diensten zelf.</div>
   </div>
+  <nav class="verder" aria-label="Vorige en volgende"><span></span><a class="glass" href="#dienstverlening"><span>2 · Dienstverleningsprocessen</span> &#8250;</a></nav>
+</section>
+
+<section class="sectie" id="dienstverlening">
+  <header class="lees-kop"><h1>2 · Dienstverleningsprocessen</h1></header>
+  <div class="tekst">
+<h3>Processen</h3>
+<dl class="begrip"><dt>Definitie</dt><dd>Een opvolging van afhankelijke activiteiten met een begin, een eind en een duidelijk omschreven input en output.</dd></dl>
+<ul><li><strong>Input</strong> → mensen, middelen, machines</li><li><strong>Throughput</strong> → het verwerkingsproces</li><li><strong>Output</strong> → het resultaat</li><li><strong>Primair proces</strong>, kernactiviteit van de organisatie</li><li><strong>Ondersteunend proces</strong>, ondersteunt de kernactiviteit</li><li><strong>Managementproces</strong>, sturing en leiding</li><li><strong>KSF</strong>, factor waarop een organisatie moet uitblinken om haar doel te halen</li></ul>
+<h3>Schillenmodel ⭐</h3>
+<dl class="begrip"><dt>Schillenmodel</dt><dd>Concentrische voorstelling van een organisatie: in het hart het primaire proces, daaromheen schillen van ondersteunende en management­processen. FM zit doorgaans in de buitenste schil(len) en faciliteert de kern.</dd></dl>
+<ul><li><strong>Schil 1, Kern (primair proces):</strong> waarvoor de organisatie bestaat (zorg verlenen, lesgeven, produceren).</li><li><strong>Schil 2, Direct ondersteunend:</strong> processen die het primaire proces dichtbij ondersteunen (bijv. medisch secretariaat in een ziekenhuis).</li><li><strong>Schil 3, Algemeen ondersteunend:</strong> facilitaire diensten (schoonmaak, catering, beveiliging, huisvesting) en stafdiensten (HR, ICT, finance).</li><li><strong>Schil 4, Management &amp; strategie:</strong> richtinggevende processen, beleid, control.</li></ul>
+<div class="kern">Hoe verder een dienst van het hart staat, hoe makkelijker ze in principe uitbesteed kan worden, maar bewaak de raakvlakken met het primaire proces (kwaliteit, beleving, veiligheid).</div>
+<h3>Safety &amp; beveiliging</h3>
+<ul><li><strong>RI&amp;E</strong>, Risico-Inventarisatie &amp; -Evaluatie; verplicht om risico's in kaart te brengen</li><li><strong>BHV</strong>, Bedrijfshulpverlening: eerste hulp, brand, evacuatie</li><li><strong>Seamless security</strong>, onopvallende technologie die veiligheid waarborgt zonder gastvrijheid te schaden</li><li><strong>Crowd management</strong>, proactieve planning van bezoekersstromen</li><li><strong>Crowd control</strong>, reactieve beheersing van gedrag op het moment zelf</li></ul>
+<h3>R-ladder (circulaire economie)</h3>
+<ul><li><strong>1. Refuse &amp; Rethink</strong>, vermindering van consumptie</li><li><strong>2. Reduce</strong>, minder grondstofgebruik in productie</li><li><strong>3. Reuse</strong>, producten hergebruiken</li><li><strong>4. Repair / Refurbish / Remanufacture</strong>, reparatie en hergebruik</li><li><strong>5. Recycle</strong>, materialen verwerken</li><li><strong>6. Recover</strong>, energie terugwinnen door verbranding/vergisting</li></ul>
+<h3>Facilitaire servicedesk</h3>
+<ul><li>Centraal aanspreekpunt voor meldingen, klachten, aanvragen en reserveringen</li><li>Kanalen: selfservice, telefoon, balie, chatbot</li><li>KSF's: bereikbaarheid, snelheid, transparantie, klantgerichtheid</li></ul>
+<h3>Schoonmaak</h3>
+<ul><li><strong>Inspanningsgericht</strong>, alles wordt schoongemaakt op basis van vaste instructies</li><li><strong>Resultaatgericht</strong>, alleen schoonmaken als dat nodig is (reinheidsgraad + bezettingsdata)</li><li>Kwaliteitsmeting via VSR-KMS of ER-KMS (steekproeven)</li></ul>
+  </div>
+  <nav class="verder" aria-label="Vorige en volgende"><a class="glass" href="#basisprincipes">&#8249; <span>1 · Basisprincipes van FM</span></a><a class="glass" href="#sturing"><span>2b · Sturen op de dienstverlening (SLA, KPI, NEN 2748)</span> &#8250;</a></nav>
+</section>
+
+<section class="sectie" id="sturing">
+  <header class="lees-kop"><h1>2b · Sturen op de dienstverlening (SLA, KPI, NEN 2748)</h1></header>
+  <div class="tekst">
+<h3>Van KSF naar KPI</h3>
+<dl class="begrip"><dt>KSF</dt><dd>Kritische Succesfactor: dat waarop een dienst of organisatie moet uitblinken om haar doel te halen. Kwalitatief en richtinggevend.</dd></dl>
+<dl class="begrip"><dt>KPI</dt><dd>Kritieke Prestatie Indicator: meetbaar getal dat aangeeft of de KSF wordt gerealiseerd. Kwantitatief en stuurbaar.</dd></dl>
+<div class="tabel"><table><thead><tr><th>KSF (kwalitatief)</th><th>KPI (meetbaar)</th><th>Norm</th></tr></thead><tbody><tr><td>Snelle servicedesk</td><td>% calls beantwoord binnen 20 sec</td><td>≥ 90%</td></tr><tr><td>Schone werkomgeving</td><td>VSR-KMS score</td><td>≥ 90% schoon</td></tr><tr><td>Tevreden gasten</td><td>NPS / cijfer 1-10</td><td>NPS &gt; 30</td></tr><tr><td>Beschikbare ruimtes</td><td>Uitval reserveringssysteem</td><td>&lt; 1 storing/maand</td></tr></tbody></table></div>
+<div class="kern">Vuistregel SMART: een goede KPI is Specifiek, Meetbaar, Acceptabel, Realistisch en Tijdgebonden.</div>
+<h3>SLA (Service Level Agreement)</h3>
+<dl class="begrip"><dt>SLA / Dienstverleningsovereenkomst</dt><dd>Schriftelijke afspraak tussen leverancier (intern of extern) en afnemer over welke dienst geleverd wordt, op welk niveau, gemeten via welke KPI's en met welke gevolgen bij overschrijding.</dd></dl>
+<ul><li><strong>Wat</strong>, scope: welke diensten en producten</li><li><strong>Hoeveel</strong>, volume, openingstijden, capaciteit</li><li><strong>Hoe goed</strong>, kwaliteitsniveau via KPI's</li><li><strong>Tegen welke prijs</strong>, vergoeding en indexatie</li><li><strong>Wat als…</strong>, boete-/bonusregeling, escalatie, opzegging</li><li><strong>Hoe meten</strong>, rapportage-frequentie, evaluaties</li></ul>
+<p>Een SLA werkt alleen als beide partijen dezelfde definitie van de KPI hanteren, anders ontstaat discussie bij elke meting.</p>
+<h3>NEN 2748, kostenrubricering FM</h3>
+<dl class="begrip"><dt>NEN 2748</dt><dd>Nederlandse norm die facilitaire kosten en prestaties indeelt in vaste rubrieken, zodat organisaties onderling vergelijkbaar zijn (benchmarking).</dd></dl>
+<p>Vijf hoofdrubrieken:</p>
+<ul><li><strong>1. Huisvesting</strong>, gebouw, terrein, energie, beveiliging, schoonmaak gebouwgebonden</li><li><strong>2. Diensten en middelen</strong>, consumptieve diensten (catering, drankvoorziening), risicobeheersing, werkplekservices</li><li><strong>3. ICT</strong>, apparatuur, telecom, netwerk, gebruikersondersteuning</li><li><strong>4. Externe voorzieningen</strong>, diensten op afstand, wagenpark, verhuizingen</li><li><strong>5. Facility management</strong>, beleid, planning, control, contractmanagement</li></ul>
+<div class="kern">Zonder uniforme indeling kun je geen kengetallen of benchmark vergelijken: NEN 2748 is de "gemeenschappelijke taal" tussen FM-organisaties.</div>
+<h3>Sourcingmodel</h3>
+<ul><li><strong>In-house</strong>, diensten zelf uitvoeren met eigen personeel</li><li><strong>Out-tasking</strong>, losse taak uitbesteden, regie blijft intern</li><li><strong>Outsourcing</strong>, volledige dienst extern beleggen, sturen via SLA</li><li><strong>Co-sourcing</strong>, gedeeld eigenaarschap tussen interne en externe partij</li></ul>
+<p>Bij elke vorm: zorg voor een interne regiefunctie die de SLA en KPI's bewaakt.</p>
+  </div>
+  <nav class="verder" aria-label="Vorige en volgende"><a class="glass" href="#dienstverlening">&#8249; <span>2 · Dienstverleningsprocessen</span></a><a class="glass" href="#huisvesting"><span>3 · Huisvesting &amp; werkplekken</span> &#8250;</a></nav>
+</section>
+
+<section class="sectie" id="huisvesting">
+  <header class="lees-kop"><h1>3 · Huisvesting &amp; werkplekken</h1></header>
+  <div class="tekst">
+<h3>Vloeroppervlaktematen (NEN 2580)</h3>
+<div class="tabel"><table><thead><tr><th>Afkorting</th><th>Omschrijving</th></tr></thead><tbody><tr><td><strong>BVO</strong></td><td>Bruto vloeroppervlak, alles, inclusief muren en trappenhuizen</td></tr><tr><td><strong>NVO</strong></td><td>Netto vloeroppervlak, BVO minus bouwdelen &lt; 1,5 m</td></tr><tr><td><strong>FNO</strong></td><td>Functioneel nuttig, alleen bruikbare ruimte primair proces</td></tr><tr><td><strong>NO</strong></td><td>Nuttig, FNO + ondersteunende ruimtes</td></tr><tr><td><strong>VVO</strong></td><td>Verhuurbaar, NO + verkeersruimten (gangen, entrees)</td></tr></tbody></table></div>
+<div class="let-op"><b>Let op</b>Vuistregel: 18–25 m² per fte bij vaste werkplekken (klassiek kantoor). Bij activiteitgebonden werken (ABW) en hybride werken ligt dit lager: ongeveer 10–15 m² per fte, omdat werkplekken gedeeld worden (flexfactor &lt; 1).</div>
+<h3>Programma van eisen (PvE)</h3>
+<ul><li><strong>Functioneel PvE</strong>, welke functies/activiteiten zijn er?</li><li><strong>Ruimtelijk PvE</strong>, hoeveel m² per functie?</li><li><strong>Ruimtelijk ontwerp</strong>, vlekkenplan → wandenplan → inrichtingsplan</li><li><strong>Relatiediagram</strong>, p (primair), s (secundair), a (anti-relatie)</li></ul>
+<h3>Werkplekconcepten</h3>
+<ul><li><strong>Traditioneel kantoor</strong>, vaste, afsluitbare werkplekken; vaak op basis van hiërarchie</li><li><strong>Flexplekken / hotdesking</strong>, vrije werkplekken; clean desk policy verplicht</li><li><strong>ABW (Activiteitgebonden werken)</strong>, werkplek kiezen op basis van activiteit: concentratie, overleg of ontspanning</li><li><strong>Hybride werken / TPAW</strong>, Tijd-, Plaats- en Apparaatonafhankelijk Werken; deels thuis, deels kantoor</li></ul>
+<h3>Flexfactor</h3>
+<dl class="begrip"><dt>Formule</dt><dd>Flexfactor = aantal werkplekken / aantal fte's. Waarde &lt; 1 → flexibel werken. Bij ABW daalt de flexfactor verder.</dd></dl>
+<h3>Vlekkenplan</h3>
+<ul><li>Eerste ontwerpstap: functies als 'vlekken' op een plattegrond</li><li>Gebaseerd op relatiediagram en gevraagde oppervlakte</li><li>Nog niet gedetailleerd; alternatieven eenvoudig te toetsen</li></ul>
+  </div>
+  <nav class="verder" aria-label="Vorige en volgende"><a class="glass" href="#sturing">&#8249; <span>2b · Sturen op de dienstverlening (SLA, KPI, NEN 2748)</span></a><a class="glass" href="#hospitality"><span>4 · Hospitality &amp; gastvrijheid</span> &#8250;</a></nav>
+</section>
+
+<section class="sectie" id="hospitality">
+  <header class="lees-kop"><h1>4 · Hospitality &amp; gastvrijheid</h1></header>
+  <div class="tekst">
+<h3>Drie dimensies (Pijls)</h3>
+<ul><li><strong>Inviting</strong>, welkom voelen, uitnodigen</li><li><strong>Care</strong>, zorg en service tijdens het verblijf</li><li><strong>Comfort</strong>, prettige, aangename omgeving</li></ul>
+<h3>Guest journey (klantreis)</h3>
+<ul><li><strong>Onderweg</strong>, bereikbaarheid, informatie vooraf (inviting)</li><li><strong>Aankomst</strong>, ontvangst, parkeren, bewegwijzering</li><li><strong>Verblijf</strong>, gedrag, service, omgeving (care &amp; comfort)</li><li><strong>Vertrek</strong>, nazorg, vriendelijk afscheid (after care)</li></ul>
+<dl class="begrip"><dt>Touchpoints</dt><dd>Momenten van interactie: gedrag van medewerkers, werkplekken, digitale processen, services.</dd></dl>
+<h3>Klanttypen (Zweeds onderzoek)</h3>
+<ul><li><strong>Andersson (50%)</strong>, wil uitgebreide informatie en duidelijke procedures</li><li><strong>Svensson (25%)</strong>, verwacht dat de basis op orde is</li><li><strong>Hansson (25%)</strong>, regelt zaken impulsief en ter plekke</li></ul>
+<h3>Persona's</h3>
+<ul><li>Fictieve klantprofielen op basis van onderzoek</li><li>Geven inzicht in motieven, behoeften en werkstijlen</li><li>Worden gebruikt bij het ontwerpen van dienstverlening</li></ul>
+<h3>Service design thinking</h3>
+<ul><li><strong>1. Empathize</strong>, inleven in de klant</li><li><strong>2. Define</strong>, probleem definiëren</li><li><strong>3. Ideate</strong>, ideeën genereren</li><li><strong>4. Prototype</strong>, prototype bouwen</li><li><strong>5. Test</strong>, testen en itereren</li></ul>
+<h3>Gastvrij gedrag</h3>
+<ul><li>Combinatie van woorden, stemgebruik en non-verbale communicatie</li><li><strong>Scripting</strong>, vaste routines met ruimte voor authenticiteit</li><li>7 aspecten (Melissen): betrouwbare service, beleefdheid, glimlach, contact, culturele sensitiviteit, flexibiliteit, klachtenafhandeling</li><li><strong>Tolerantiezone</strong>, verschil tussen gewenste en acceptabele kwaliteit; wordt steeds kleiner</li></ul>
+  </div>
+  <nav class="verder" aria-label="Vorige en volgende"><a class="glass" href="#huisvesting">&#8249; <span>3 · Huisvesting &amp; werkplekken</span></a><a class="glass" href="#inkoop"><span>5 · Inkoop &amp; kwaliteit</span> &#8250;</a></nav>
+</section>
+
+<section class="sectie" id="inkoop">
+  <header class="lees-kop"><h1>5 · Inkoop &amp; kwaliteit</h1></header>
+  <div class="tekst">
+<h3>Cyclisch inkoopproces (4 fasen)</h3>
+<ul><li><strong>Fase 1, Analyse &amp; strategie</strong>, wensen/behoeften inventariseren, risico's in kaart brengen, strategiedocument opstellen</li><li><strong>Fase 2, Inkoop &amp; contract</strong>, programma van eisen (PvE), offertes beoordelen, contract sluiten</li><li><strong>Fase 3, Implementatie</strong>, systemen inrichten, leveranciersoverdracht begeleiden</li><li><strong>Fase 4, Beheer</strong>, operationele inkoop, contractmanagement, prestatiebeoordeling</li></ul>
+<div class="kern"><strong>Cyclisch:</strong> na afloop van een contract start fase 1 opnieuw, met alle inzichten uit fase 4 als input.</div>
+<h3>Make-or-buy beslissing</h3>
+<ul><li>Impact op primair proces</li><li>Kwalitatieve meerwaarde</li><li>Financieel voordeel</li><li>Sociaal-maatschappelijke overwegingen (MVO)</li></ul>
+<div class="let-op"><b>Let op</b>Uitbesteding is niet per definitie goedkoper, let op verborgen kosten en controleverlies.</div>
+<h3>Kraljic-matrix</h3>
+<div class="tabel"><table><thead><tr><th>Categorie</th><th>Impact</th><th>Risico</th><th>Strategie</th></tr></thead><tbody><tr><td><strong>Hefboom</strong></td><td>Hoog</td><td>Laag</td><td>Concurrentiestelling</td></tr><tr><td><strong>Strategisch</strong></td><td>Hoog</td><td>Hoog</td><td>Partnerschap</td></tr><tr><td><strong>Routine</strong></td><td>Laag</td><td>Laag</td><td>Raamcontracten</td></tr><tr><td><strong>Knelpunt</strong></td><td>Laag</td><td>Hoog</td><td>Leveringszekerheid</td></tr></tbody></table></div>
+<h3>Kwaliteitsmanagement</h3>
+<dl class="begrip"><dt>PDCA-cyclus (ISO 9001)</dt><dd>Plan → Do → Check → Act. Zeg wat je doet, doe wat je zegt, toon aan dat je doet wat je zegt.</dd></dl>
+<ul><li><strong>Technische kwaliteit</strong>, is geleverd wat gevraagd werd?</li><li><strong>Functionele kwaliteit</strong>, hoe wordt de dienst geleverd?</li><li><strong>Relationele kwaliteit</strong>, wie levert het en hoe is de relatie?</li></ul>
+<h3>MVOI &amp; duurzaamheid</h3>
+<ul><li><strong>MVOI</strong>, Maatschappelijk Verantwoord Opdrachtgeven en Inkopen</li><li>Overheid = aanjager met 85 miljard euro inkoopvolume per jaar</li><li><strong>ISO 31000</strong>, risicomanagement: herkennen, analyseren, beoordelen, beheersen</li></ul>
+  </div>
+  <nav class="verder" aria-label="Vorige en volgende"><a class="glass" href="#hospitality">&#8249; <span>4 · Hospitality &amp; gastvrijheid</span></a><span></span></nav>
+</section>
+  </main>
 </div>
 
-<nav class="chapnav">
-  <a href="#basisprincipes">1 · Basisprincipes</a>
-  <a href="#dienstverlening">2 · Dienstverlening</a>
-  <a href="#sturing">2b · Sturing</a>
-  <a href="#huisvesting">3 · Huisvesting</a>
-  <a href="#hospitality">4 · Hospitality</a>
-  <a href="#inkoop">5 · Inkoop & kwaliteit</a>
-</nav>
+<div class="lightbox" id="lightbox" hidden><figure><img alt=""/><p></p></figure></div>
 
-<div class="main">
-
-  <!-- ── 1. Basisprincipes FM ───────────────────────────────── -->
-  <div class="card" id="basisprincipes">
-    <div class="card-header h1">
-      <span class="icon" aria-hidden="true">🏢</span>
-      <h2>1 · Basisprincipes van FM</h2>
-    </div>
-    <div class="card-body">
-      <div class="two-col">
-        <div>
-          <div class="section">
-            <h3>Wat is facility management?</h3>
-            <div class="defbox"><strong>Kerngedachte</strong>Als facility professional zorg ik dat jij je werk beter kan doen. FM realiseert een <em>fit-for-use omgeving</em>: geschikt voor het beoogde gebruik, afgestemd op de wensen en behoeften van de organisatie.</div>
-            <ul class="clean">
-              <li><strong>Interne klant</strong> — medewerkers van de organisatie</li>
-              <li><strong>Externe klant</strong> — klanten van buiten de organisatie</li>
-              <li><strong>Soft services</strong> — schoonmaak, catering, beveiliging, receptie</li>
-              <li><strong>Hard services</strong> — gebouwbeheer, onderhoud, verduurzaming</li>
-              <li><strong>Hybride werkomgeving</strong> — deels kantoor, deels elders</li>
-              <li><strong>Sourcing</strong> — zelf doen of uitbesteden?</li>
-            </ul>
-          </div>
-          <div class="section">
-            <h3>Vier facilitaire rollen</h3>
-            <ul class="clean">
-              <li><strong>Facility manager</strong> — geeft sturing aan de FM-afdeling; eindverantwoordelijk voor alle facilitaire voorzieningen</li>
-              <li><strong>Specialist</strong> — diepe kennis van één onderdeel; waardevol bij specifieke vraagstukken</li>
-              <li><strong>Adviseur</strong> — ingeschakeld bij complexe vraagstukken die specialisme vereisen</li>
-              <li><strong>Ondernemer</strong> — breed inzetbaar, zelfstandig, gericht op winstgevendheid</li>
-            </ul>
-          </div>
-        </div>
-        <div>
-          <div class="section">
-            <h3>Plek van FM in organisaties</h3>
-            <ul class="clean">
-              <li><strong>Single service provider</strong> — gespecialiseerd in één dienst (bijv. alleen schoonmaak)</li>
-              <li><strong>Multi service provider</strong> — meerdere facilitaire diensten</li>
-              <li><strong>Integrated service provider</strong> — complete facilitaire ontzorging</li>
-              <li>Positie in organogram verschilt: stafdienst, businessunit, of onderdeel van managementsupport</li>
-            </ul>
-          </div>
-          <div class="section">
-            <h3>12 vormen van toegevoegde waarde</h3>
-            <ul class="clean">
-              <li>Tevredenheid verhogen · Productiviteit ondersteunen</li>
-              <li>Kosten beheersen · Risico's beheersen</li>
-              <li>MVO · Duurzaamheid · Imago ondersteunen</li>
-              <li>Cultuur ondersteunen · Flexibiliteit vergroten</li>
-              <li>Innovatie stimuleren · Vitaliteit bevorderen</li>
-              <li>Waardestijging vastgoed</li>
-            </ul>
-            <div class="highlight"><strong>Golden Circle (Sinek):</strong> communiceer vanuit het <em>waarom</em> — de impact die FM levert op de organisatie, niet alleen de diensten zelf.</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ── 2. Dienstverlening & processen ────────────────────── -->
-  <div class="card" id="dienstverlening">
-    <div class="card-header">
-      <span class="icon" aria-hidden="true">⚙️</span>
-      <h2>2 · Dienstverleningsprocessen</h2>
-    </div>
-    <div class="card-body">
-      <div class="two-col">
-        <div>
-          <div class="section">
-            <h3>Processen</h3>
-            <div class="defbox"><strong>Definitie</strong>Een opvolging van afhankelijke activiteiten met een begin, een eind en een duidelijk omschreven input en output.</div>
-            <ul class="clean">
-              <li><strong>Input</strong> → mensen, middelen, machines</li>
-              <li><strong>Throughput</strong> → het verwerkingsproces</li>
-              <li><strong>Output</strong> → het resultaat</li>
-              <li><strong>Primair proces</strong> — kernactiviteit van de organisatie</li>
-              <li><strong>Ondersteunend proces</strong> — ondersteunt de kernactiviteit</li>
-              <li><strong>Managementproces</strong> — sturing en leiding</li>
-              <li><strong>KSF</strong> — factor waarop een organisatie moet uitblinken om haar doel te halen</li>
-            </ul>
-          </div>
-          <div class="section">
-            <h3>Schillenmodel ⭐</h3>
-            <div class="defbox"><strong>Schillenmodel</strong>Concentrische voorstelling van een organisatie: in het hart het primaire proces, daaromheen schillen van ondersteunende en management­processen. FM zit doorgaans in de buitenste schil(len) en faciliteert de kern.</div>
-            <ul class="clean">
-              <li><strong>Schil 1 — Kern (primair proces):</strong> waarvoor de organisatie bestaat (zorg verlenen, lesgeven, produceren).</li>
-              <li><strong>Schil 2 — Direct ondersteunend:</strong> processen die het primaire proces dichtbij ondersteunen (bijv. medisch secretariaat in een ziekenhuis).</li>
-              <li><strong>Schil 3 — Algemeen ondersteunend:</strong> facilitaire diensten (schoonmaak, catering, beveiliging, huisvesting) en stafdiensten (HR, ICT, finance).</li>
-              <li><strong>Schil 4 — Management & strategie:</strong> richtinggevende processen, beleid, control.</li>
-            </ul>
-            <div class="highlight">Hoe verder een dienst van het hart staat, hoe makkelijker ze in principe uitbesteed kan worden — maar bewaak de raakvlakken met het primaire proces (kwaliteit, beleving, veiligheid).</div>
-          </div>
-          <div class="section">
-            <h3>Safety & beveiliging</h3>
-            <ul class="clean">
-              <li><strong>RI&amp;E</strong> — Risico-Inventarisatie &amp; -Evaluatie; verplicht om risico's in kaart te brengen</li>
-              <li><strong>BHV</strong> — Bedrijfshulpverlening: eerste hulp, brand, evacuatie</li>
-              <li><strong>Seamless security</strong> — onopvallende technologie die veiligheid waarborgt zonder gastvrijheid te schaden</li>
-              <li><strong>Crowd management</strong> — proactieve planning van bezoekersstromen</li>
-              <li><strong>Crowd control</strong> — reactieve beheersing van gedrag op het moment zelf</li>
-            </ul>
-          </div>
-        </div>
-        <div>
-          <div class="section">
-            <h3>R-ladder (circulaire economie)</h3>
-            <ul class="clean">
-              <li><strong>1. Refuse &amp; Rethink</strong> — vermindering van consumptie</li>
-              <li><strong>2. Reduce</strong> — minder grondstofgebruik in productie</li>
-              <li><strong>3. Reuse</strong> — producten hergebruiken</li>
-              <li><strong>4. Repair / Refurbish / Remanufacture</strong> — reparatie en hergebruik</li>
-              <li><strong>5. Recycle</strong> — materialen verwerken</li>
-              <li><strong>6. Recover</strong> — energie terugwinnen door verbranding/vergisting</li>
-            </ul>
-          </div>
-          <div class="section">
-            <h3>Facilitaire servicedesk</h3>
-            <ul class="clean">
-              <li>Centraal aanspreekpunt voor meldingen, klachten, aanvragen en reserveringen</li>
-              <li>Kanalen: selfservice, telefoon, balie, chatbot</li>
-              <li>KSF's: bereikbaarheid, snelheid, transparantie, klantgerichtheid</li>
-            </ul>
-          </div>
-          <div class="section">
-            <h3>Schoonmaak</h3>
-            <ul class="clean">
-              <li><strong>Inspanningsgericht</strong> — alles wordt schoongemaakt op basis van vaste instructies</li>
-              <li><strong>Resultaatgericht</strong> — alleen schoonmaken als dat nodig is (reinheidsgraad + bezettingsdata)</li>
-              <li>Kwaliteitsmeting via VSR-KMS of ER-KMS (steekproeven)</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ── 2b. Sturing op dienstverlening ───────────────────── -->
-  <div class="card" id="sturing">
-    <div class="card-header">
-      <span class="icon" aria-hidden="true">📊</span>
-      <h2>2b · Sturen op de dienstverlening (SLA, KPI, NEN 2748)</h2>
-    </div>
-    <div class="card-body">
-      <div class="two-col">
-        <div>
-          <div class="section">
-            <h3>Van KSF naar KPI</h3>
-            <div class="defbox"><strong>KSF</strong>Kritische Succesfactor: dat waarop een dienst of organisatie moet uitblinken om haar doel te halen. Kwalitatief en richtinggevend.</div>
-            <div class="defbox"><strong>KPI</strong>Kritieke Prestatie Indicator: meetbaar getal dat aangeeft of de KSF wordt gerealiseerd. Kwantitatief en stuurbaar.</div>
-            <table class="compact">
-              <tr><th>KSF (kwalitatief)</th><th>KPI (meetbaar)</th><th>Norm</th></tr>
-              <tr><td>Snelle servicedesk</td><td>% calls beantwoord binnen 20 sec</td><td>≥ 90%</td></tr>
-              <tr><td>Schone werkomgeving</td><td>VSR-KMS score</td><td>≥ 90% schoon</td></tr>
-              <tr><td>Tevreden gasten</td><td>NPS / cijfer 1-10</td><td>NPS &gt; 30</td></tr>
-              <tr><td>Beschikbare ruimtes</td><td>Uitval reserveringssysteem</td><td>&lt; 1 storing/maand</td></tr>
-            </table>
-            <div class="highlight">Vuistregel SMART: een goede KPI is Specifiek, Meetbaar, Acceptabel, Realistisch en Tijdgebonden.</div>
-          </div>
-          <div class="section">
-            <h3>SLA (Service Level Agreement)</h3>
-            <div class="defbox"><strong>SLA / Dienstverleningsovereenkomst</strong>Schriftelijke afspraak tussen leverancier (intern of extern) en afnemer over welke dienst geleverd wordt, op welk niveau, gemeten via welke KPI's en met welke gevolgen bij overschrijding.</div>
-            <ul class="clean">
-              <li><strong>Wat</strong> — scope: welke diensten en producten</li>
-              <li><strong>Hoeveel</strong> — volume, openingstijden, capaciteit</li>
-              <li><strong>Hoe goed</strong> — kwaliteitsniveau via KPI's</li>
-              <li><strong>Tegen welke prijs</strong> — vergoeding en indexatie</li>
-              <li><strong>Wat als…</strong> — boete-/bonusregeling, escalatie, opzegging</li>
-              <li><strong>Hoe meten</strong> — rapportage-frequentie, evaluaties</li>
-            </ul>
-            <p style="font-size:12px;color:var(--muted);margin-top:6px;">Een SLA werkt alleen als beide partijen dezelfde definitie van de KPI hanteren — anders ontstaat discussie bij elke meting.</p>
-          </div>
-        </div>
-        <div>
-          <div class="section">
-            <h3>NEN 2748 — kostenrubricering FM</h3>
-            <div class="defbox"><strong>NEN 2748</strong>Nederlandse norm die facilitaire kosten en prestaties indeelt in vaste rubrieken, zodat organisaties onderling vergelijkbaar zijn (benchmarking).</div>
-            <p style="font-size:13px;color:var(--ink-soft);margin:0 0 6px;">Vijf hoofdrubrieken:</p>
-            <ul class="clean">
-              <li><strong>1. Huisvesting</strong> — gebouw, terrein, energie, beveiliging, schoonmaak gebouwgebonden</li>
-              <li><strong>2. Diensten en middelen</strong> — consumptieve diensten (catering, drankvoorziening), risicobeheersing, werkplekservices</li>
-              <li><strong>3. ICT</strong> — apparatuur, telecom, netwerk, gebruikersondersteuning</li>
-              <li><strong>4. Externe voorzieningen</strong> — diensten op afstand, wagenpark, verhuizingen</li>
-              <li><strong>5. Facility management</strong> — beleid, planning, control, contractmanagement</li>
-            </ul>
-            <div class="highlight">Zonder uniforme indeling kun je geen kengetallen of benchmark vergelijken: NEN 2748 is de "gemeenschappelijke taal" tussen FM-organisaties.</div>
-          </div>
-          <div class="section">
-            <h3>Sourcingmodel</h3>
-            <ul class="clean">
-              <li><strong>In-house</strong> — diensten zelf uitvoeren met eigen personeel</li>
-              <li><strong>Out-tasking</strong> — losse taak uitbesteden, regie blijft intern</li>
-              <li><strong>Outsourcing</strong> — volledige dienst extern beleggen, sturen via SLA</li>
-              <li><strong>Co-sourcing</strong> — gedeeld eigenaarschap tussen interne en externe partij</li>
-            </ul>
-            <p style="font-size:12px;color:var(--muted);margin-top:4px;">Bij elke vorm: zorg voor een interne regiefunctie die de SLA en KPI's bewaakt.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ── 3. Huisvesting & werkplekken ─────────────────────── -->
-  <div class="card" id="huisvesting">
-    <div class="card-header">
-      <span class="icon" aria-hidden="true">🏗️</span>
-      <h2>3 · Huisvesting & werkplekken</h2>
-    </div>
-    <div class="card-body">
-      <div class="two-col">
-        <div>
-          <div class="section">
-            <h3>Vloeroppervlaktematen (NEN 2580)</h3>
-            <table class="compact">
-              <tr><th>Afkorting</th><th>Omschrijving</th></tr>
-              <tr><td><strong>BVO</strong></td><td>Bruto vloeroppervlak — alles, inclusief muren en trappenhuizen</td></tr>
-              <tr><td><strong>NVO</strong></td><td>Netto vloeroppervlak — BVO minus bouwdelen &lt; 1,5 m</td></tr>
-              <tr><td><strong>FNO</strong></td><td>Functioneel nuttig — alleen bruikbare ruimte primair proces</td></tr>
-              <tr><td><strong>NO</strong></td><td>Nuttig — FNO + ondersteunende ruimtes</td></tr>
-              <tr><td><strong>VVO</strong></td><td>Verhuurbaar — NO + verkeersruimten (gangen, entrees)</td></tr>
-            </table>
-            <div class="warn">Vuistregel: 18–25 m² per fte bij vaste werkplekken (klassiek kantoor). Bij activiteitgebonden werken (ABW) en hybride werken ligt dit lager: ongeveer 10–15 m² per fte, omdat werkplekken gedeeld worden (flexfactor &lt; 1).</div>
-          </div>
-          <div class="section">
-            <h3>Programma van eisen (PvE)</h3>
-            <ul class="clean">
-              <li><strong>Functioneel PvE</strong> — welke functies/activiteiten zijn er?</li>
-              <li><strong>Ruimtelijk PvE</strong> — hoeveel m² per functie?</li>
-              <li><strong>Ruimtelijk ontwerp</strong> — vlekkenplan → wandenplan → inrichtingsplan</li>
-              <li><strong>Relatiediagram</strong> — p (primair), s (secundair), a (anti-relatie)</li>
-            </ul>
-          </div>
-        </div>
-        <div>
-          <div class="section">
-            <h3>Werkplekconcepten</h3>
-            <ul class="clean">
-              <li><strong>Traditioneel kantoor</strong> — vaste, afsluitbare werkplekken; vaak op basis van hiërarchie</li>
-              <li><strong>Flexplekken / hotdesking</strong> — vrije werkplekken; clean desk policy verplicht</li>
-              <li><strong>ABW (Activiteitgebonden werken)</strong> — werkplek kiezen op basis van activiteit: concentratie, overleg of ontspanning</li>
-              <li><strong>Hybride werken / TPAW</strong> — Tijd-, Plaats- en Apparaatonafhankelijk Werken; deels thuis, deels kantoor</li>
-            </ul>
-          </div>
-          <div class="section">
-            <h3>Flexfactor</h3>
-            <div class="defbox"><strong>Formule</strong>Flexfactor = aantal werkplekken / aantal fte's. Waarde &lt; 1 → flexibel werken. Bij ABW daalt de flexfactor verder.</div>
-          </div>
-          <div class="section">
-            <h3>Vlekkenplan</h3>
-            <ul class="clean">
-              <li>Eerste ontwerpstap: functies als 'vlekken' op een plattegrond</li>
-              <li>Gebaseerd op relatiediagram en gevraagde oppervlakte</li>
-              <li>Nog niet gedetailleerd; alternatieven eenvoudig te toetsen</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ── 4. Hospitality & gastvrijheid ────────────────────── -->
-  <div class="card" id="hospitality">
-    <div class="card-header">
-      <span class="icon" aria-hidden="true">🤝</span>
-      <h2>4 · Hospitality & gastvrijheid</h2>
-    </div>
-    <div class="card-body">
-      <div class="two-col">
-        <div>
-          <div class="section">
-            <h3>Drie dimensies (Pijls)</h3>
-            <ul class="clean">
-              <li><strong>Inviting</strong> — welkom voelen, uitnodigen</li>
-              <li><strong>Care</strong> — zorg en service tijdens het verblijf</li>
-              <li><strong>Comfort</strong> — prettige, aangename omgeving</li>
-            </ul>
-          </div>
-          <div class="section">
-            <h3>Guest journey (klantreis)</h3>
-            <ul class="clean">
-              <li><strong>Onderweg</strong> — bereikbaarheid, informatie vooraf (inviting)</li>
-              <li><strong>Aankomst</strong> — ontvangst, parkeren, bewegwijzering</li>
-              <li><strong>Verblijf</strong> — gedrag, service, omgeving (care &amp; comfort)</li>
-              <li><strong>Vertrek</strong> — nazorg, vriendelijk afscheid (after care)</li>
-            </ul>
-            <div class="defbox"><strong>Touchpoints</strong>Momenten van interactie: gedrag van medewerkers, werkplekken, digitale processen, services.</div>
-          </div>
-          <div class="section">
-            <h3>Klanttypen (Zweeds onderzoek)</h3>
-            <ul class="clean">
-              <li><strong>Andersson (50%)</strong> — wil uitgebreide informatie en duidelijke procedures</li>
-              <li><strong>Svensson (25%)</strong> — verwacht dat de basis op orde is</li>
-              <li><strong>Hansson (25%)</strong> — regelt zaken impulsief en ter plekke</li>
-            </ul>
-          </div>
-        </div>
-        <div>
-          <div class="section">
-            <h3>Persona's</h3>
-            <ul class="clean">
-              <li>Fictieve klantprofielen op basis van onderzoek</li>
-              <li>Geven inzicht in motieven, behoeften en werkstijlen</li>
-              <li>Worden gebruikt bij het ontwerpen van dienstverlening</li>
-            </ul>
-          </div>
-          <div class="section">
-            <h3>Service design thinking</h3>
-            <ul class="clean">
-              <li><strong>1. Empathize</strong> — inleven in de klant</li>
-              <li><strong>2. Define</strong> — probleem definiëren</li>
-              <li><strong>3. Ideate</strong> — ideeën genereren</li>
-              <li><strong>4. Prototype</strong> — prototype bouwen</li>
-              <li><strong>5. Test</strong> — testen en itereren</li>
-            </ul>
-          </div>
-          <div class="section">
-            <h3>Gastvrij gedrag</h3>
-            <ul class="clean">
-              <li>Combinatie van woorden, stemgebruik en non-verbale communicatie</li>
-              <li><strong>Scripting</strong> — vaste routines met ruimte voor authenticiteit</li>
-              <li>7 aspecten (Melissen): betrouwbare service, beleefdheid, glimlach, contact, culturele sensitiviteit, flexibiliteit, klachtenafhandeling</li>
-              <li><strong>Tolerantiezone</strong> — verschil tussen gewenste en acceptabele kwaliteit; wordt steeds kleiner</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ── 5. Inkoop & kwaliteit ────────────────────────────── -->
-  <div class="card" id="inkoop">
-    <div class="card-header">
-      <span class="icon" aria-hidden="true">📋</span>
-      <h2>5 · Inkoop & kwaliteit</h2>
-    </div>
-    <div class="card-body">
-      <div class="two-col">
-        <div>
-          <div class="section">
-            <h3>Cyclisch inkoopproces (4 fasen)</h3>
-            <ul class="clean">
-              <li><strong>Fase 1 — Analyse &amp; strategie</strong> — wensen/behoeften inventariseren, risico's in kaart brengen, strategiedocument opstellen</li>
-              <li><strong>Fase 2 — Inkoop &amp; contract</strong> — programma van eisen (PvE), offertes beoordelen, contract sluiten</li>
-              <li><strong>Fase 3 — Implementatie</strong> — systemen inrichten, leveranciersoverdracht begeleiden</li>
-              <li><strong>Fase 4 — Beheer</strong> — operationele inkoop, contractmanagement, prestatiebeoordeling</li>
-            </ul>
-            <div class="highlight"><strong>Cyclisch:</strong> na afloop van een contract start fase 1 opnieuw, met alle inzichten uit fase 4 als input.</div>
-          </div>
-          <div class="section">
-            <h3>Make-or-buy beslissing</h3>
-            <ul class="clean">
-              <li>Impact op primair proces</li>
-              <li>Kwalitatieve meerwaarde</li>
-              <li>Financieel voordeel</li>
-              <li>Sociaal-maatschappelijke overwegingen (MVO)</li>
-            </ul>
-            <div class="warn">Uitbesteding is niet per definitie goedkoper — let op verborgen kosten en controleverlies.</div>
-          </div>
-        </div>
-        <div>
-          <div class="section">
-            <h3>Kraljic-matrix</h3>
-            <table class="compact">
-              <tr><th>Categorie</th><th>Impact</th><th>Risico</th><th>Strategie</th></tr>
-              <tr><td><strong>Hefboom</strong></td><td>Hoog</td><td>Laag</td><td>Concurrentiestelling</td></tr>
-              <tr><td><strong>Strategisch</strong></td><td>Hoog</td><td>Hoog</td><td>Partnerschap</td></tr>
-              <tr><td><strong>Routine</strong></td><td>Laag</td><td>Laag</td><td>Raamcontracten</td></tr>
-              <tr><td><strong>Knelpunt</strong></td><td>Laag</td><td>Hoog</td><td>Leveringszekerheid</td></tr>
-            </table>
-          </div>
-          <div class="section">
-            <h3>Kwaliteitsmanagement</h3>
-            <div class="defbox"><strong>PDCA-cyclus (ISO 9001)</strong>Plan → Do → Check → Act. Zeg wat je doet, doe wat je zegt, toon aan dat je doet wat je zegt.</div>
-            <ul class="clean">
-              <li><strong>Technische kwaliteit</strong> — is geleverd wat gevraagd werd?</li>
-              <li><strong>Functionele kwaliteit</strong> — hoe wordt de dienst geleverd?</li>
-              <li><strong>Relationele kwaliteit</strong> — wie levert het en hoe is de relatie?</li>
-            </ul>
-          </div>
-          <div class="section">
-            <h3>MVOI &amp; duurzaamheid</h3>
-            <ul class="clean">
-              <li><strong>MVOI</strong> — Maatschappelijk Verantwoord Opdrachtgeven en Inkopen</li>
-              <li>Overheid = aanjager met 85 miljard euro inkoopvolume per jaar</li>
-              <li><strong>ISO 31000</strong> — risicomanagement: herkennen, analyseren, beoordelen, beheersen</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-</div>
-
-<footer class="fa-site-footer">
-  <span>FM Atlas · gratis studiehulp voor HAN Facilitair Management, gemaakt door een student</span>
-  <span>Niet officieel verbonden aan de HAN · <a href="privacy.html">Privacy</a> · <a href="app.html#contact">Fout gezien?</a></span>
-</footer>
-
-<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
-<script src="js/fmatlas.js"></script>
+<script src="js/atlas-data.js"></script>
+<script src="js/atlas.js"></script>
 <script>
-const firebaseConfig = {
-  apiKey: "AIzaSyBB397Wk2eqpBjic8E7aGV1mTgIjhQ21a8",
-  authDomain: "fmkompas-ff8bc.firebaseapp.com",
-  projectId: "fmkompas-ff8bc",
-  storageBucket: "fmkompas-ff8bc.firebasestorage.app",
-  messagingSenderId: "487972024689",
-  appId: "1:487972024689:web:712c3117080745d14746d0"
-};
-firebase.initializeApp(firebaseConfig);
-firebase.auth().onAuthStateChanged(user => {
-  document.getElementById('fa-header-slot').innerHTML = '';
-  faMarkActiveToday();
-  document.getElementById('fa-header-slot').appendChild(faRenderHeader({ user }));
-  faMarkLastSeen('basis-van-fm-a','Basis van FM — A','basis-van-fm-a.html');
-});
+(function () {
+  Atlas.topbar('<span class="sep">/</span><a href="vak.html?v=basis-van-fm-a">Basis van FM A</a><span class="sep">/</span><span class="here">Samenvatting</span>');
+  const secties = [...document.querySelectorAll('.sectie')];
+  const links = [...document.querySelectorAll('#toc a')];
+  const toc = document.getElementById('toc');
+  const toggle = document.getElementById('toc-toggle');
+
+  function toon(id, scroll) {
+    const s = secties.find(x => x.id === id) || secties[0];
+    secties.forEach(x => x.classList.toggle('actief', x === s));
+    links.forEach(a => a.setAttribute('aria-current', String(a.getAttribute('href') === '#' + s.id)));
+    const a = links.find(x => x.getAttribute('href') === '#' + s.id);
+    document.getElementById('toc-now').textContent = a ? a.textContent.replace(/\s+/g, ' ').trim() : '';
+    toc.classList.remove('open'); toggle.setAttribute('aria-expanded', 'false');
+    if (scroll) window.scrollTo({ top: 0 });
+  }
+  window.addEventListener('hashchange', () => toon(location.hash.slice(1), true));
+  toggle.addEventListener('click', () => { const o = toc.classList.toggle('open'); toggle.setAttribute('aria-expanded', String(o)); });
+  if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+  toon(location.hash.slice(1), true);
+  window.addEventListener('load', () => window.scrollTo({ top: 0 }));
+
+  // Beeld vergroten
+  const lb = document.getElementById('lightbox');
+  document.addEventListener('click', e => {
+    const b = e.target.closest('.beeld button');
+    if (b) {
+      const img = b.querySelector('img');
+      lb.querySelector('img').src = img.src;
+      lb.querySelector('p').textContent = b.parentNode.querySelector('figcaption')?.textContent || '';
+      lb.hidden = false;
+    } else if (e.target.closest('#lightbox')) lb.hidden = true;
+  });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') lb.hidden = true; });
+})();
 </script>
 </body>
 </html>

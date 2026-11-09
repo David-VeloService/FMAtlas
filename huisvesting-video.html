@@ -2,126 +2,131 @@
 <html lang="nl">
 <head>
 <meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
 <title>Lesvideo's · Huisvesting · FM Atlas</title>
-<meta name="description" content="Lesvideo's voor Huisvesting, met hoofdstukken, Nederlandse ondertitels en checkvragen in tentamenvorm."/>
-<link rel="canonical" href="https://fmatlas.nl/huisvesting-video.html"/>
+<meta name="description" content="Lesvideo’s voor Huisvesting, met hoofdstukken, Nederlandse ondertitels en checkvragen in tentamenvorm."/>
 <link rel="icon" type="image/svg+xml" href="logo.svg"/>
-<meta name="theme-color" content="#f7f3ec"/>
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png"/>
+<link rel="apple-touch-icon" href="apple-touch-icon.png"/>
+<meta name="theme-color" content="#efe5d4"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet"/>
-<link rel="stylesheet" href="css/fmatlas.css"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="css/atlas.css"/>
+<link rel="canonical" href="https://fmatlas.nl/huisvesting-video.html"/>
 <style>
-.video-wrap { max-width: 1152px; padding: 32px 24px 64px; margin: auto; }
-.video-wrap h1 { font-size: clamp(28px, 5vw, 38px); line-height: 1.15; font-weight: 900; letter-spacing: -.028em; }
-.video-wrap h2 { font-size: 22px; line-height: 1.3; font-weight: 900; }
-.video-intro { max-width: 800px; margin: 12px 0 24px; color: var(--ink-soft); }
-.video-layout { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); gap: 24px; align-items: start; }
-.video-panel, .chapter-panel { min-width: 0; background: var(--surface); border: 1.5px solid var(--line); border-radius: var(--radius-lg); overflow: hidden; }
-.video-player { position: relative; aspect-ratio: 16 / 9; min-height: 200px; background: var(--ink); }
+.video-wrap { max-width: 1180px; padding: 36px 16px 64px; margin: 0 auto; color: var(--ink); }
+.video-wrap [hidden] { display: none; }
+.video-wrap h1, .video-wrap h2, .video-wrap h3 { font-family: var(--font-display); letter-spacing: -.025em; line-height: 1.2; }
+.video-wrap h1 { font-size: clamp(28px, 4vw, 40px); }
+.video-intro { max-width: 76ch; margin: 16px 0 28px; font-size: 17px; line-height: 1.7; }
+.video-layout { display: grid; grid-template-columns: 280px minmax(0, 1fr); gap: 24px; align-items: start; }
+.video-content { min-width: 0; }
+.video-panel { border-radius: var(--r-lg); overflow: hidden; }
+.video-player { position: relative; aspect-ratio: 16 / 9; background: var(--olive-950); }
 .video-player iframe { display: block; width: 100%; height: 100%; position: absolute; inset: 0; border: 0; }
-.video-start { width: 100%; height: 100%; position: absolute; inset: 0; border: 0; background: var(--ink); color: var(--surface); cursor: pointer; font: inherit; }
-.video-start img { width: 100%; height: 100%; object-fit: cover; }
-.video-start span { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
-.video-start strong { padding: 12px 24px; background: var(--ink); border: 2px solid var(--surface); border-radius: var(--radius); }
-.video-privacy { font-size: 13px; color: var(--ink-soft); margin-bottom: 16px; }
-.video-panel [hidden], .video-wrap [hidden] { display: none; }
-.video-info, .chapter-panel { padding: 24px; }
-.video-meta { font-size: 13px; font-weight: 800; color: var(--muted); margin-bottom: 8px; }
-.video-controls { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-top: 16px; }
-.video-controls button, .video-controls select { min-height: 44px; font: inherit; font-size: 14px; font-weight: 800; border: 1.5px solid var(--line); border-radius: var(--radius); padding: 8px 12px; background: var(--bg); color: var(--ink); }
-.video-controls label { font-size: 14px; font-weight: 700; }
-.video-controls button { cursor: pointer; }
-.video-controls button:disabled, .video-controls select:disabled { opacity: .6; cursor: default; }
-.video-status { color: var(--ink-soft); font-size: 14px; margin-top: 12px; }
-.video-upcoming { padding: 48px 24px; background: var(--surface-alt); font-size: 20px; font-weight: 800; }
-.chapter-panel h2 { font-size: 18px; margin-bottom: 12px; }
+.video-start { width: 100%; height: 100%; position: absolute; inset: 0; background: var(--olive-950); color: var(--sand-50); }
+.video-start img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.video-start span { position: absolute; inset: 0; display: grid; place-items: center; padding: 16px; }
+.video-start strong { min-height: 48px; padding: 12px 24px; background: var(--olive-900); color: var(--sand-50); border: 1px solid var(--sand-50); border-radius: var(--r-pill); font-size: 17px; }
+.video-start:focus-visible { outline-offset: -6px; }
+.video-info { padding: 28px; }
+.video-info h2 { font-size: clamp(24px, 3vw, 30px); margin: 12px 0 16px; overflow-wrap: anywhere; }
+.video-privacy, .video-status, .video-meta { color: var(--ink); line-height: 1.6; }
+.video-privacy { margin-top: 24px; }
+.video-controls { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-top: 24px; }
+.video-controls button, .video-controls select { min-height: 48px; padding: 12px 18px; border: 1px solid var(--glass-edge); border-radius: var(--r-pill); font: inherit; font-weight: 600; background: var(--glass-strong); color: var(--ink); max-width: 100%; white-space: normal; }
+.video-controls option { color: var(--ink); background: var(--bg); }
+.video-controls button:hover { background: var(--glass-hover); }
+.video-controls button:disabled, .video-controls select:disabled { cursor: default; }
+.video-status:not(:empty) { margin-top: 16px; }
+.video-upcoming { min-height: 180px; padding: 48px 24px; display: grid; place-items: center; font-size: 24px; background: var(--glass-strong); }
+.chapter-panel { border-radius: var(--r-lg); margin-top: 24px; padding: 24px; }
+.chapter-panel h2 { font-size: 22px; margin-bottom: 16px; }
 .chapter-list { list-style: none; }
-.chapter-list li + li { border-top: 1px solid var(--line-soft); }
-.chapter-list button { display: flex; gap: 12px; align-items: baseline; text-align: left; width: 100%; min-height: 48px; padding: 12px 8px; font: inherit; font-size: 14px; color: var(--ink-soft); background: transparent; border: 0; border-radius: 8px; cursor: pointer; }
-.chapter-list time { font-size: 12px; font-weight: 800; font-variant-numeric: tabular-nums; flex-shrink: 0; }
-.chapter-list button[aria-current="true"] { background: var(--accent-soft); color: var(--ink); font-weight: 800; box-shadow: inset 3px 0 var(--accent-deep); }
+.chapter-list button { display: flex; gap: 16px; align-items: baseline; text-align: left; width: 100%; min-height: 48px; padding: 12px 16px; border-radius: var(--r-sm); overflow-wrap: anywhere; }
+.chapter-list button:hover:not(:disabled) { background: var(--glass-hover); }
+.chapter-list time { font-variant-numeric: tabular-nums; flex: none; }
+.chapter-list button[aria-current="true"] { background: var(--accent); color: var(--accent-ink); }
 .chapter-list button:disabled { cursor: default; }
-.video-blocks { margin-top: 32px; }
-.video-blocks > p { color: var(--ink-soft); margin: 8px 0 16px; font-size: 14px; }
-.video-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; list-style: none; }
-.video-card { display: block; height: 100%; border: 1.5px solid var(--line); border-top: 5px solid var(--block-color); border-radius: var(--radius-lg); padding: 20px; background: var(--surface); }
-.video-card:hover { border-color: var(--ink-soft); border-top-color: var(--block-color); }
-.video-card[aria-current="true"] { outline: 2px solid var(--ink); outline-offset: 2px; }
-.video-card h3 { font-size: 17px; line-height: 1.35; margin: 8px 0; font-weight: 800; }
-.video-card p { font-size: 13px; color: var(--ink-soft); }
-.video-card-top { display: flex; flex-wrap: wrap; gap: 8px; justify-content: space-between; font-size: 12px; font-weight: 800; }
-.video-viewed { display: inline-flex; align-items: center; gap: 6px; color: var(--ink); margin-top: 12px; font-size: 12px; font-weight: 800; }
-.video-viewed::before { content: ''; width: 6px; height: 11px; border: solid currentColor; border-width: 0 2px 2px 0; transform: rotate(45deg); margin: 0 4px 3px 2px; }
-.video-wrap a:focus-visible, .video-wrap button:focus-visible, .video-wrap select:focus-visible, .video-wrap video:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
-.video-wrap h2, .video-card, .chapter-list button { overflow-wrap: anywhere; }
-.video-skip { position: absolute; left: 16px; top: -100px; padding: 12px; z-index: 100; background: var(--surface); }
-.video-skip:focus { top: 8px; }
-.fa-site-footer a { text-decoration: underline; text-underline-offset: 3px; }
-#fa-header-slot { min-height: 78px; background: var(--surface); }
-@media (max-width: 760px) { #fa-header-slot { min-height: 144px; } }
-@media (max-width: 760px) {
-  .video-layout, .video-grid { grid-template-columns: minmax(0, 1fr); }
-  .video-wrap { padding: 24px 16px 48px; }
-  .video-info, .chapter-panel { padding: 16px; }
+.video-blocks { position: sticky; top: 88px; border-radius: var(--r-lg); padding: 12px; max-height: calc(100dvh - 112px); overflow: auto; }
+.video-blocks summary { min-height: 48px; padding: 12px; font-weight: 600; cursor: pointer; }
+.video-blocks > p { margin: 8px 12px 16px; line-height: 1.6; }
+.video-grid { list-style: none; display: grid; gap: 8px; }
+.video-card { display: block; min-height: 48px; padding: 16px 12px; border-radius: var(--r-md); overflow-wrap: anywhere; }
+.video-card:hover { background: var(--glass-hover); }
+.video-card[aria-current="true"] { background: var(--accent); color: var(--accent-ink); }
+.video-card h3 { font-size: 18px; margin: 8px 0; }
+.video-card-top { display: flex; flex-wrap: wrap; gap: 4px 12px; }
+.video-card p, .video-card-top { font-size: 14px; }
+.video-viewed { display: block; margin-top: 8px; font-weight: 600; }
+.video-skip { position: fixed; left: 16px; top: -120px; padding: 12px 24px; border-radius: var(--r-pill); background: var(--bg); z-index: 100; }
+.video-skip:focus { top: 16px; }
+@media (max-width: 900px) {
+  .video-layout { grid-template-columns: minmax(0, 1fr); gap: 16px; }
+  .video-blocks { position: static; max-height: none; }
+  .video-blocks .video-grid { max-height: 52dvh; overflow: auto; }
+}
+@media (max-width: 480px) {
+  .video-wrap { padding-top: 24px; }
+  .video-info, .chapter-panel { padding: 24px 20px; }
+  .video-controls { gap: 12px 8px; }
+  .chapter-list button { padding-inline: 8px; gap: 12px; }
 }
 </style>
 </head>
 <body>
 <a class="video-skip" href="#video-main">Naar de lesvideo's</a>
-<div id="fa-header-slot"></div>
-<nav class="fa-breadcrumb" aria-label="Broodkruimel">
-  <a href="app.html">Vakken</a><span aria-hidden="true">›</span>
-  <a href="huisvesting.html">Huisvesting</a><span aria-hidden="true">›</span>
-  <span class="current" aria-current="page">Lesvideo's</span>
-</nav>
+<div class="scene" aria-hidden="true"><i></i></div>
+<header class="topbar" id="topbar"></header>
 <main class="video-wrap" id="video-main">
-  <h1>Lesvideo's · Huisvesting</h1>
+  <h1>Lesvideo's</h1>
   <p class="video-intro">Deze lesvideo's leggen alle lesstof van les 1.1 tot en met 7.2 en de Syllabus Bouwkundige Begrippen uit, met checkvragen in tentamenvorm. De boekstof zit er niet volledig in; lees de opgegeven boekhoofdstukken erbij.</p>
   <noscript><p>Schakel JavaScript in om een video te kiezen en de hoofdstukken te gebruiken.</p></noscript>
   <div class="video-layout">
-    <section class="video-panel" aria-labelledby="video-title">
-      <div class="video-player" id="video-player" hidden>
-        <button type="button" class="video-start" id="video-start">
-          <img id="video-poster" alt=""/>
-          <span><strong>▶ Afspelen op YouTube</strong></span>
-        </button>
-      </div>
-      <p class="video-upcoming" id="video-upcoming" hidden>Volgt binnenkort</p>
-      <div class="video-info">
-        <p class="video-privacy">De video's staan op YouTube; bij afspelen gelden de privacyregels van YouTube.</p>
-        <p class="video-meta" id="video-meta"></p>
-        <h2 id="video-title"></h2>
-        <div class="video-controls" id="video-controls" hidden>
-          <label for="video-speed">Snelheid</label>
-          <select id="video-speed" disabled>
-            <option value="1">1x</option><option value="1.25">1,25x</option><option value="1.5">1,5x</option>
-          </select>
-          <button type="button" id="video-resume" hidden></button>
+    <details class="video-blocks glass" id="video-blocks" open>
+      <summary id="blocks-title">Alle blokken</summary>
+      <p id="video-count"></p>
+      <ol class="video-grid" id="video-grid" aria-labelledby="blocks-title"></ol>
+    </details>
+    <div class="video-content">
+      <section class="video-panel glass" aria-labelledby="video-title">
+        <div class="video-player" id="video-player" hidden>
+          <button type="button" class="video-start" id="video-start">
+            <img id="video-poster" alt=""/>
+            <span><strong>Afspelen op YouTube</strong></span>
+          </button>
         </div>
-        <p class="video-status" id="video-status" role="status"></p>
-      </div>
-    </section>
-    <section class="chapter-panel" aria-labelledby="chapters-title">
-      <h2 id="chapters-title">Hoofdstukken</h2>
-      <ol class="chapter-list" id="chapter-list"></ol>
-    </section>
+        <p class="video-upcoming" id="video-upcoming" hidden>Volgt binnenkort</p>
+        <div class="video-info">
+          <p class="video-meta" id="video-meta"></p>
+          <h2 id="video-title"></h2>
+          <div class="video-controls" id="video-controls" hidden>
+            <label for="video-speed">Snelheid</label>
+            <select id="video-speed" disabled>
+              <option value="1">1x</option><option value="1.25">1,25x</option><option value="1.5">1,5x</option>
+            </select>
+            <button type="button" id="video-resume" hidden></button>
+          </div>
+          <p class="video-status" id="video-status" role="status"></p>
+          <p class="video-privacy">De video's staan op YouTube; bij afspelen gelden de privacyregels van YouTube.</p>
+        </div>
+      </section>
+      <section class="chapter-panel glass" aria-labelledby="chapters-title">
+        <h2 id="chapters-title">Hoofdstukken</h2>
+        <ol class="chapter-list" id="chapter-list"></ol>
+      </section>
+    </div>
   </div>
-  <section class="video-blocks" aria-labelledby="blocks-title">
-    <h2 id="blocks-title">Alle blokken</h2>
-    <p id="video-count"></p>
-    <ol class="video-grid" id="video-grid"></ol>
-  </section>
 </main>
-<footer class="fa-site-footer">
-  <span>FM Atlas · gratis studiehulp voor HAN Facilitair Management, gemaakt door een student</span>
-  <span>Niet officieel verbonden aan de HAN · <a href="privacy.html">Privacy</a> · <a href="app.html#contact">Fout gezien?</a></span>
-</footer>
+<script src="js/atlas-data.js"></script>
+<script src="js/atlas.js"></script>
 <script id="lesson-data" type="application/json">{"blokken": [{"blok": 1, "titel": "Waarom huisvesting ertoe doet", "kleur": "#3b82f6", "lessen": ["1.1", "1.2"], "duur": 998.376292, "beschikbaar": true, "hoofdstukken": [{"id": "h1", "titel": "Wat huisvesting is", "start": 0}, {"id": "h2", "titel": "De huisvestingscyclus", "start": 245.14420833333332}, {"id": "h3", "titel": "Wat huisvesting kost en oplevert", "start": 417.67270833333333}, {"id": "h4", "titel": "Van missie naar prestaties", "start": 670.6194166666667}, {"id": "h5", "titel": "Maatschappij en stakeholders", "start": 868.4311250000001}], "poster": "video/huisvesting/blok-01.jpg", "youtube_id": "QadVQsUIKxo"}, {"blok": 2, "titel": "Bouwtekeningen lezen", "kleur": "#0ea5e9", "lessen": ["1.3", "2.2"], "duur": 898.89825, "beschikbaar": true, "hoofdstukken": [{"id": "h1", "titel": "Waarom tekeningen en welke schaal", "start": 0}, {"id": "h2", "titel": "Acht soorten tekeningen", "start": 200.82416666666666}, {"id": "h3", "titel": "Maten: stramien, peil en draairichting", "start": 388.49304166666667}, {"id": "h4", "titel": "De grond: kavel, kaart en regels", "start": 600.9858750000001}, {"id": "h5", "titel": "Van tekening naar gebouwanalyse", "start": 770.5955833333334}], "poster": null, "youtube_id": "2gGXRIGeROw"}, {"blok": 3, "titel": "Bouwkunde 1: van grond tot vloer", "kleur": "#f97316", "lessen": ["2.1"], "duur": 932.499, "beschikbaar": true, "hoofdstukken": [{"id": "h1", "titel": "Opbouw en belasting", "start": 0}, {"id": "h2", "titel": "Fundering en de grond", "start": 214.47995833333334}, {"id": "h3", "titel": "Beton en wapening", "start": 494.7568333333333}, {"id": "h4", "titel": "Vloeren", "start": 679.2396249999999}], "poster": null, "youtube_id": "Kd-_-RN3vok"}, {"blok": 4, "titel": "Bouwkunde 2: muren, gevels en openingen", "kleur": "#f97316", "lessen": ["2.1"], "duur": 1071.385333, "beschikbaar": true, "hoofdstukken": [{"id": "h1", "titel": "Vier manieren om muren te bouwen", "start": 0}, {"id": "h2", "titel": "De spouwmuur", "start": 228.55841666666666}, {"id": "h3", "titel": "Stenen, dikte en verbanden", "start": 448.924125}, {"id": "h4", "titel": "Openingen in de gevel", "start": 679.3329583333333}, {"id": "h5", "titel": "Binnenwanden en voegen die bewegen", "start": 872.3037916666667}], "poster": null, "youtube_id": "JudbIYlOGx8"}, {"blok": 5, "titel": "Daken, trappen en afwerking", "kleur": "#f97316", "lessen": ["2.1"], "duur": 1017.6795, "beschikbaar": true, "hoofdstukken": [{"id": "h1", "titel": "Het schuine dak", "start": 0}, {"id": "h2", "titel": "Het platte dak en de waterafvoer", "start": 281.3906666666667}, {"id": "h3", "titel": "Trappen en open ruimtes", "start": 526.6385833333334}, {"id": "h4", "titel": "Afwerking van vloer, wand en plafond", "start": 744.8242083333333}], "poster": null, "youtube_id": "XXz4JdmV8DY"}, {"blok": 6, "titel": "Mensgericht huisvesten", "kleur": "#ec4899", "lessen": ["2.3", "3.1"], "duur": 886.91, "beschikbaar": true, "hoofdstukken": [{"id": "h1", "titel": "Comfort en behoeften", "start": 0}, {"id": "h2", "titel": "Omgevingspsychologie", "start": 192.58425}, {"id": "h3", "titel": "Prestaties voor de gebruiker", "start": 403.6146666666667}, {"id": "h4", "titel": "Waarnemen en de kaart in je hoofd", "start": 658.6822916666666}], "poster": null, "youtube_id": "1JZFLx9ZpE0"}, {"blok": 7, "titel": "Werkplekconcepten en hybride werken", "kleur": "#ec4899", "lessen": ["3.2"], "duur": 979.936458, "beschikbaar": true, "hoofdstukken": [{"id": "h1", "titel": "Wat doen mensen op kantoor", "start": 0}, {"id": "h2", "titel": "Van kantoorzaal naar activiteitgebonden werken", "start": 148.87983333333335}, {"id": "h3", "titel": "Hybride werken", "start": 308.1863333333333}, {"id": "h4", "titel": "Bruis, ruis, rust en de bouwstenen", "start": 505.806125}, {"id": "h5", "titel": "Voorbeelden en het aantal werkplekken", "start": 783.591375}], "poster": null, "youtube_id": "W6DF5nMUKIc"}, {"blok": 8, "titel": "Het programma van eisen", "kleur": "#8b5cf6", "lessen": ["4.1"], "duur": 903.289208, "beschikbaar": true, "hoofdstukken": [{"id": "h1", "titel": "Waarom een programma van eisen", "start": 0}, {"id": "h2", "titel": "Eisen, wensen en geen oplossingen", "start": 203.41670833333336}, {"id": "h3", "titel": "Inhoud, opbouw, visie en beeldverwachting", "start": 338.3975}, {"id": "h4", "titel": "Functioneel, ruimtelijk, technisch, facilitair", "start": 544.8885833333334}, {"id": "h5", "titel": "Van globaal naar gedetailleerd", "start": 767.4957083333334}], "poster": null, "youtube_id": "mIMLdaMDohM"}, {"blok": 9, "titel": "Rekenen met ruimte", "kleur": "#8b5cf6", "lessen": ["4.1", "4.2"], "duur": 962.711542, "beschikbaar": true, "hoofdstukken": [{"id": "h1", "titel": "Hoeveel werkplekken heb je nodig", "start": 0}, {"id": "h2", "titel": "Ruimte per werkplek en de ruimtestaat", "start": 154.04408333333333}, {"id": "h3", "titel": "Soorten vloeroppervlak: BVO, NVO, NO, FNO", "start": 402.0145416666666}, {"id": "h4", "titel": "Woonunits en herbestemming", "start": 608.9340416666666}], "poster": null, "youtube_id": "_Hak6rJqi2A"}, {"blok": 10, "titel": "Van ruimtestaat naar inrichting", "kleur": "#8b5cf6", "lessen": ["4.2", "4.3"], "duur": 929.64975, "beschikbaar": true, "hoofdstukken": [{"id": "h1", "titel": "Ruimtelijke relaties", "start": 0}, {"id": "h2", "titel": "Het vlekkenplan", "start": 226.905625}, {"id": "h3", "titel": "Inrichten: zones en flow", "start": 451.19483333333335}, {"id": "h4", "titel": "Wat kost inrichten", "start": 623.0638749999999}, {"id": "h5", "titel": "Kleur en materiaal", "start": 728.0507916666667}], "poster": null, "youtube_id": "YHrr6gUu4pA"}, {"blok": 11, "titel": "Bouwbesluit en plantoetsing", "kleur": "#d97706", "lessen": ["5.1"], "duur": 904.867333, "beschikbaar": true, "hoofdstukken": [{"id": "h1", "titel": "Wat het Bouwbesluit regelt", "start": 0}, {"id": "h2", "titel": "Plantoetsing en gebruiksfuncties", "start": 213.13983333333334}, {"id": "h3", "titel": "Stap 2: het gebruiksoppervlak", "start": 456.6430833333334}, {"id": "h4", "titel": "Stap 3 tot 5: ruimtes benoemen", "start": 683.95025}], "poster": null, "youtube_id": "1R5FIOr8tCY"}, {"blok": 12, "titel": "Het bouwproces: fasen, bestek en aanbesteden", "kleur": "#d97706", "lessen": ["5.2"], "duur": 854.743708, "beschikbaar": true, "hoofdstukken": [{"id": "h1", "titel": "De zes bouwfasen", "start": 0}, {"id": "h2", "titel": "Ontwerpen van grof naar fijn", "start": 223.428}, {"id": "h3", "titel": "Het bestek", "start": 417.420125}, {"id": "h4", "titel": "Uitvoering en aanbesteden", "start": 651.1221666666667}], "poster": null, "youtube_id": "S-y-FuT5GNk"}, {"blok": 13, "titel": "Partijen, contracten en informatie", "kleur": "#d97706", "lessen": ["5.3"], "duur": 1019.913458, "beschikbaar": true, "hoofdstukken": [{"id": "h1", "titel": "Stakeholders in kaart", "start": 0}, {"id": "h2", "titel": "Wie bouwt er mee", "start": 231.36133333333333}, {"id": "h3", "titel": "Vier contractmodellen", "start": 432.88725}, {"id": "h4", "titel": "Business case en informatiebeheersing", "start": 659.385625}, {"id": "h5", "titel": "BIM, IWMS en FMIS", "start": 795.2039583333334}], "poster": null, "youtube_id": "I5nPGPJA4F8"}, {"blok": 14, "titel": "Duurzaam bouwen en binnenklimaat", "kleur": "#10b981", "lessen": ["6.1", "7.2"], "duur": 1118.418792, "beschikbaar": true, "hoofdstukken": [{"id": "h1", "titel": "Waarom duurzaam bouwen", "start": 0}, {"id": "h2", "titel": "De Trias energetica", "start": 189.50479166666668}, {"id": "h3", "titel": "Circulair bouwen", "start": 391.8600416666667}, {"id": "h4", "titel": "De R-ladder en circulair beheren", "start": 559.5924583333333}, {"id": "h5", "titel": "Het binnenklimaat", "start": 893.9921666666667}], "poster": null, "youtube_id": "nFdKEqB6QFw"}, {"blok": 15, "titel": "Beheer, onderhoud en het MJOP", "kleur": "#14b8a6", "lessen": ["6.2", "7.2"], "duur": 942.6195, "beschikbaar": true, "hoofdstukken": [{"id": "h1", "titel": "Beheer, POE en het MJOP", "start": 0}, {"id": "h2", "titel": "Wat bepaalt de onderhoudsbehoefte", "start": 229.07595833333335}, {"id": "h3", "titel": "Drie soorten levensduur", "start": 342.56716666666665}, {"id": "h4", "titel": "Soorten onderhoud en kosten", "start": 541.4957083333333}, {"id": "h5", "titel": "Het duurzame MJOP", "start": 743.6403333333334}], "poster": null, "youtube_id": "LF57R2LbTOs"}, {"blok": 16, "titel": "Conditiemeting en onderhoudsstrategie", "kleur": "#14b8a6", "lessen": ["6.3"], "duur": 988.152792, "beschikbaar": true, "hoofdstukken": [{"id": "h1", "titel": "Soorten onderhoud en de plek van inspectie", "start": 0}, {"id": "h2", "titel": "NEN 2767 en de zes conditiescores", "start": 149.098875}, {"id": "h3", "titel": "Een gebrek beoordelen: ernst, intensiteit, omvang", "start": 322.8978333333333}, {"id": "h4", "titel": "Van gebrek naar conditiescore", "start": 573.5014583333333}, {"id": "h5", "titel": "Inspectiekaart, MJOP en onderhoudsstrategie", "start": 784.6939583333333}], "poster": null, "youtube_id": "OZEoCP-gIRU"}], "intro": "Deze lesvideo's leggen alle lesstof van les 1.1 tot en met 7.2 en de Syllabus Bouwkundige Begrippen uit, met checkvragen in tentamenvorm. De boekstof zit er niet volledig in; lees de opgegeven boekhoofdstukken erbij."}</script>
 <script>
 (() => {
   'use strict';
+  Atlas.topbar('<span class="sep">/</span><a href="vak.html?v=huisvesting">Huisvesting</a><span class="sep">/</span><span class="here">Lesvideo&#39;s</span>');
+  if (matchMedia('(max-width: 900px)').matches) document.getElementById('video-blocks').open = false;
   const data = JSON.parse(document.getElementById('lesson-data').textContent);
   const blocks = data.blokken;
   const selectedNumber = Number(new URL(location.href).searchParams.get('blok'));
@@ -221,7 +226,6 @@
     url.searchParams.set('blok', b.blok);
     link.href = url.pathname + url.search;
     link.className = 'video-card';
-    link.style.setProperty('--block-color', b.kleur);
     if (b.blok === block.blok) link.setAttribute('aria-current', 'true');
     const top = document.createElement('div');
     top.className = 'video-card-top';
@@ -380,30 +384,9 @@
     document.addEventListener('visibilitychange', () => { if (document.hidden) saveProgress(); });
   } else {
     document.getElementById('video-upcoming').hidden = false;
-    status.textContent = 'Deze video is nog niet beschikbaar. Kies hieronder een beschikbaar blok.';
+    status.textContent = 'Deze video is nog niet beschikbaar. Kies een beschikbaar blok uit de lijst.';
   }
 })();
-</script>
-<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
-<script src="js/fmatlas.js"></script>
-<script>
-document.getElementById('fa-header-slot').replaceChildren(faRenderHeader());
-</script>
-<script>
-const firebaseConfig = {
-  apiKey: "AIzaSyBB397Wk2eqpBjic8E7aGV1mTgIjhQ21a8",
-  authDomain: "fmkompas-ff8bc.firebaseapp.com",
-  projectId: "fmkompas-ff8bc",
-  storageBucket: "fmkompas-ff8bc.firebasestorage.app",
-  messagingSenderId: "487972024689",
-  appId: "1:487972024689:web:712c3117080745d14746d0"
-};
-firebase.initializeApp(firebaseConfig);
-firebase.auth().onAuthStateChanged(user => {
-  document.getElementById('fa-header-slot').replaceChildren(faRenderHeader({ user }));
-  faMarkActiveToday();
-});
 </script>
 </body>
 </html>

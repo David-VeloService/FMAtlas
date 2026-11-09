@@ -2,283 +2,83 @@
 <html lang="nl">
 <head>
 <meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Begrippentoets — FM Atlas</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+<title>Begrippentoets · FM Atlas</title>
 <meta name="description" content="Oefen de begrippen van een vak: je krijgt een omschrijving en kiest het juiste begrip."/>
 <link rel="icon" type="image/svg+xml" href="logo.svg"/>
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png"/>
 <link rel="apple-touch-icon" href="apple-touch-icon.png"/>
-<meta name="theme-color" content="#f7f3ec"/>
+<meta name="theme-color" content="#efe5d4"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet"/>
-<link rel="stylesheet" href="css/fmatlas.css"/>
-<style>
-.ot-wrap { max-width: 820px; margin: 0 auto; padding: 28px 24px 100px; }
-
-/* Intro */
-.ot-intro {
-  background: var(--surface); border: 1.5px solid var(--line); border-radius: var(--radius-xl);
-  padding: 36px 36px; text-align: left; margin-bottom: 24px;
-}
-.ot-intro-meta {
-  font-size: 11px; font-weight: 800; color: var(--accent); letter-spacing: 0.08em; margin-bottom: 8px;
-}
-.ot-intro h1 { font-size: 36px; font-weight: 900; letter-spacing: -0.028em; line-height: 1.05; margin-bottom: 10px; }
-.ot-intro p { color: var(--ink-soft); font-size: 15px; line-height: 1.6; margin-bottom: 16px; }
-.ot-facts { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin: 18px 0 24px; }
-@media (max-width: 640px) { .ot-facts { grid-template-columns: repeat(2, 1fr); } }
-.ot-fact {
-  background: var(--bg); border: 1.5px solid var(--line); border-radius: var(--radius);
-  padding: 12px 14px;
-}
-.ot-fact-lbl { font-size: 10px; color: var(--muted); font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 4px; }
-.ot-fact-val { font-size: 18px; font-weight: 800; letter-spacing: -0.01em; }
-
-/* Sticky progress strip */
-.ot-strip {
-  position: sticky; top: 70px; z-index: 20;
-  background: var(--surface); border: 1.5px solid var(--line); border-radius: var(--radius-lg);
-  padding: 12px 16px; margin-bottom: 18px;
-  display: flex; align-items: center; gap: 14px;
-}
-.ot-strip-label {
-  font-size: 12px; font-weight: 800; color: var(--ink); letter-spacing: 0.02em; white-space: nowrap;
-  font-variant-numeric: tabular-nums;
-}
-.ot-strip-bar { flex: 1; }
-.ot-strip-score { font-size: 12px; font-weight: 800; color: var(--muted); font-variant-numeric: tabular-nums; }
-
-/* Section header */
-.ot-section-title {
-  font-size: 11px; font-weight: 800; color: var(--muted); letter-spacing: 0.08em;
-  text-transform: uppercase; margin: 28px 0 10px;
-  display: flex; align-items: center; gap: 10px;
-}
-.ot-section-title::after { content: ''; flex: 1; height: 1.5px; background: var(--line); }
-
-/* Question card */
-.ot-q {
-  background: var(--surface); border: 1.5px solid var(--line); border-radius: var(--radius-lg);
-  padding: 20px 22px; margin-bottom: 12px; transition: border-color 0.15s;
-}
-.ot-q.answered.correct { border-color: var(--ok); background: rgba(58, 138, 92, 0.04); }
-.ot-q.answered.wrong { border-color: var(--accent); background: rgba(239, 90, 63, 0.04); }
-
-.ot-q-head {
-  display: flex; align-items: baseline; gap: 12px; margin-bottom: 10px;
-}
-.ot-q-num {
-  display: inline-flex; align-items: center; justify-content: center;
-  width: 26px; height: 26px; border-radius: 50%; background: var(--surface-alt);
-  border: 1.5px solid var(--line);
-  font-size: 11px; font-weight: 900; color: var(--ink-soft); flex-shrink: 0;
-  font-variant-numeric: tabular-nums;
-}
-.ot-q.answered.correct .ot-q-num { background: var(--ok); color: #fff; border-color: var(--ok); }
-.ot-q.answered.wrong .ot-q-num { background: var(--accent); color: #fff; border-color: var(--accent); }
-
-.ot-q-text { font-size: 15.5px; font-weight: 700; color: var(--ink); line-height: 1.45; flex: 1; }
-
-/* Meerkeuze-opties: volle breedte, met letterbadge */
-.ot-opts { display: flex; flex-direction: column; gap: 8px; margin-top: 12px; }
-.ot-opt {
-  width: 100%; text-align: left; padding: 12px 14px; background: var(--bg);
-  border: 1.5px solid var(--line); border-radius: var(--radius); font-family: inherit;
-  font-size: 14px; font-weight: 700; color: var(--ink-soft); cursor: pointer;
-  transition: all 0.12s; display: flex; align-items: center; gap: 11px;
-}
-.ot-opt:hover:not(:disabled) { border-color: var(--ink); color: var(--ink); background: var(--surface); }
-.ot-opt:disabled { cursor: default; }
-.ot-opt-letter {
-  display: inline-flex; align-items: center; justify-content: center;
-  width: 24px; height: 24px; border-radius: 7px; background: var(--surface-alt);
-  border: 1.5px solid var(--line); font-size: 12px; font-weight: 900; flex-shrink: 0;
-}
-.ot-opt.chosen { background: var(--ink); border-color: var(--ink); color: #fff; }
-.ot-opt.chosen .ot-opt-letter { background: rgba(255,255,255,0.18); border-color: transparent; color: #fff; }
-.ot-opt.revealed-correct { background: var(--ok); border-color: var(--ok); color: #fff; }
-.ot-opt.revealed-correct .ot-opt-letter { background: rgba(255,255,255,0.22); border-color: transparent; color: #fff; }
-.ot-opt.revealed-wrong { background: var(--accent); border-color: var(--accent); color: #fff; opacity: 0.92; }
-.ot-opt.revealed-wrong .ot-opt-letter { background: rgba(255,255,255,0.22); border-color: transparent; color: #fff; }
-
-.ot-feedback {
-  margin-top: 14px; padding: 12px 14px; border-radius: var(--radius);
-  font-size: 13.5px; line-height: 1.55; font-weight: 500;
-  display: none;
-}
-.ot-feedback.show { display: block; }
-.ot-feedback.correct { background: rgba(58, 138, 92, 0.1); border: 1.5px solid rgba(58, 138, 92, 0.3); color: #0d5e30; }
-.ot-feedback.wrong { background: var(--accent-soft); border: 1.5px solid rgba(239, 90, 63, 0.3); color: var(--accent-deep); }
-.ot-feedback strong { font-weight: 800; }
-.ot-feedback-label {
-  font-size: 10px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase;
-  margin-bottom: 4px; display: block;
-}
-
-/* Casusblok */
-.ot-casus {
-  background: var(--surface-alt); border: 1.5px solid var(--line); border-radius: var(--radius-lg);
-  padding: 18px 20px; margin-bottom: 12px; font-size: 14px; color: var(--ink-soft);
-  line-height: 1.65; font-weight: 500; white-space: pre-line;
-}
-
-/* Open vragen */
-.ot-open-area {
-  width: 100%; box-sizing: border-box; margin-top: 12px; min-height: 90px;
-  padding: 12px 14px; border: 1.5px solid var(--line); border-radius: var(--radius);
-  font-family: inherit; font-size: 14px; line-height: 1.55; color: var(--ink);
-  background: var(--bg); resize: vertical;
-}
-.ot-open-area:focus { outline: none; border-color: var(--ink); }
-.ot-open-actions { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: 12px; }
-details.ot-model { margin-top: 12px; border: 1.5px solid var(--line); border-radius: var(--radius); overflow: hidden; }
-details.ot-model summary {
-  cursor: pointer; padding: 10px 14px; font-size: 12.5px; font-weight: 800; color: var(--ink);
-  background: var(--surface-alt); list-style: none; display: flex; align-items: center; gap: 7px; user-select: none;
-}
-details.ot-model summary::-webkit-details-marker { display: none; }
-details.ot-model summary::before { content: '▸'; color: var(--accent); font-weight: 900; transition: transform 0.15s; }
-details.ot-model[open] summary::before { transform: rotate(90deg); }
-details.ot-model summary:hover { background: var(--accent-soft); }
-details.ot-model .ot-model-body { padding: 14px; font-size: 13.5px; color: var(--ink-soft); line-height: 1.6; }
-.ot-selfmark { display: none; gap: 8px; margin-top: 12px; align-items: center; flex-wrap: wrap; }
-.ot-selfmark.show { display: flex; }
-.ot-selfmark-label { font-size: 12px; font-weight: 800; color: var(--ink-soft); }
-.ot-mark-btn {
-  font-family: inherit; font-size: 12.5px; font-weight: 800; padding: 7px 14px;
-  border-radius: 999px; border: 1.5px solid var(--line); background: var(--surface);
-  color: var(--ink-soft); cursor: pointer; transition: all 0.12s;
-}
-.ot-mark-btn:hover { border-color: var(--ink); color: var(--ink); }
-.ot-mark-btn.sel-good { background: var(--ok); border-color: var(--ok); color: #fff; }
-.ot-mark-btn.sel-bad { background: var(--accent); border-color: var(--accent); color: #fff; }
-
-/* Submit / final card */
-.ot-submit-card {
-  margin-top: 24px; background: var(--ink); color: var(--surface);
-  border-radius: var(--radius-xl); padding: 28px 32px; text-align: center;
-}
-.ot-submit-card h3 { font-size: 20px; font-weight: 900; letter-spacing: -0.015em; margin-bottom: 6px; }
-.ot-submit-card p { color: rgba(255,255,255,0.72); font-size: 13.5px; font-weight: 500; margin-bottom: 14px; }
-
-/* Results */
-#ot-results { display: none; text-align: center; padding: 28px 0; }
-.ot-score-big {
-  font-size: 80px; font-weight: 900; color: var(--ok); letter-spacing: -0.04em; line-height: 0.95;
-  font-variant-numeric: tabular-nums;
-}
-.ot-score-big.bad { color: var(--accent); }
-.ot-score-pct { font-size: 16px; font-weight: 800; color: var(--muted); letter-spacing: 0.02em; margin-top: 4px; }
-.ot-verdict { font-size: 18px; font-weight: 800; margin: 14px 0 8px; letter-spacing: -0.01em; }
-.ot-verdict-sub { color: var(--ink-soft); font-size: 14px; font-weight: 500; line-height: 1.5; max-width: 480px; margin: 0 auto 24px; }
-.ot-result-cta { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-bottom: 20px; }
-
-/* XP toast */
-.xp-toast {
-  position: fixed; top: 80px; right: 24px; z-index: 500;
-  background: var(--ink); color: var(--surface); padding: 10px 18px;
-  border-radius: 999px; font-size: 13px; font-weight: 800;
-  display: flex; align-items: center; gap: 6px;
-  transform: translateX(420px); transition: transform 0.25s ease;
-  box-shadow: var(--shadow-lg);
-}
-.xp-toast.show { transform: translateX(0); }
-.xp-toast span.yel { color: var(--xp); }
-
-.bt-choice { display:flex; gap:8px; flex-wrap:wrap; margin: 6px 0 16px; }
-.bt-choice label { display:flex; align-items:center; gap:6px; font-size:13.5px; font-weight:700; background:var(--surface-alt); border:1.5px solid var(--line); border-radius:999px; padding:6px 12px; cursor:pointer; }
-.bt-choice input { accent-color: var(--accent-deep); }
-.bt-missing { padding: 40px 0; text-align:center; color: var(--ink-soft); }
-.only-wrong .ot-q:not(.wrong) { display:none; }
-.bt-onlywrong { background:var(--surface); border:1.5px solid var(--line); border-radius:12px; padding:10px 14px; margin-bottom:14px; font-size:13.5px; display:flex; gap:10px; align-items:center; flex-wrap:wrap; }
-</style>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="css/atlas.css"/>
+<link rel="stylesheet" href="css/leer.css"/>
+<link rel="stylesheet" href="css/toets.css"/>
 </head>
 <body>
-
-<div id="fa-header-slot"></div>
-
-<nav class="fa-breadcrumb" id="bt-crumb">
-  <a href="app.html">Vakken</a>
-  <span aria-hidden="true">›</span>
-  <a href="app.html" id="bt-crumb-vak">Vak</a>
-  <span aria-hidden="true">›</span>
-  <span class="current">Begrippentoets</span>
-</nav>
-
-<div class="ot-wrap">
-  <div class="ot-intro">
-    <div class="ot-intro-meta" id="bt-meta">BEGRIPPENTOETS</div>
-    <h1 id="bt-title">Begrippentoets</h1>
-    <p>Je krijgt telkens een omschrijving en kiest het begrip dat erbij hoort. De vragen komen uit de begrippenlijst van dit vak; elke keer een nieuwe willekeurige selectie. Goed voor het actief ophalen van de stof, maar geen vervanging van de oefentoetsen in het echte tentamenformat.</p>
-    <div class="bt-choice" role="radiogroup" aria-label="Aantal vragen">
-      <label><input type="radio" name="bt-n" value="10"> 10 vragen</label>
-      <label><input type="radio" name="bt-n" value="20" checked> 20 vragen</label>
-      <label><input type="radio" name="bt-n" value="0"> alle begrippen</label>
+<div class="scene" aria-hidden="true"><i></i></div>
+<header class="topbar" id="topbar"></header>
+<main class="toets">
+  <h1 id="toets-title">Begrippentoets</h1>
+  <p class="toets-best" id="toets-best" hidden></p>
+  <section class="toets-intro glass" id="toets-intro" aria-label="Over deze toets">
+    <p>Je krijgt een omschrijving en kiest het begrip dat erbij hoort. Elke ronde geeft een willekeurige selectie uit de begrippenlijst van dit vak.</p>
+    <fieldset class="toets-choice" id="toets-settings"><legend>Aantal vragen</legend>
+      <label class="glass"><input type="radio" name="bt-n" value="10"/>10 vragen</label>
+      <label class="glass"><input type="radio" name="bt-n" value="20" checked/>20 vragen</label>
+      <label class="glass"><input type="radio" name="bt-n" value="0"/>Alle begrippen</label>
+    </fieldset><p class="toets-status" id="toets-status" role="status">Begrippen laden…</p>
+    <div class="toets-actions">
+      <button class="toets-btn toets-primary" id="toets-start" type="button" disabled>Begin begrippentoets</button>
+      <a class="toets-btn glass toets-back" href="index.html">Terug naar vak</a>
     </div>
-    <div style="display:flex;gap:10px;flex-wrap:wrap">
-      <button class="fa-btn fa-btn-primary" onclick="startTest()">
-        <span data-fa-icon="play" data-fa-size="13"></span> Begin begrippentoets
-      </button>
-      <a class="fa-btn fa-btn-ghost" href="app.html" id="bt-back">
-        <span data-fa-icon="arrowL" data-fa-size="13"></span> Terug naar vak
-      </a>
+  </section>
+  <section id="toets-test" aria-label="Vragen" hidden>
+    <div class="toets-progress">
+      <p id="toets-counter" role="status" aria-live="polite"></p>
+      <div class="toets-meter" id="toets-meter" role="progressbar" aria-labelledby="toets-counter" aria-valuemin="0" aria-valuemax="1" aria-valuenow="0"><span id="toets-bar"></span></div>
     </div>
-  </div>
-
-  <div id="ot-test" style="display:none">
-    <div class="ot-strip">
-      <span class="ot-strip-label"><span id="stripNum">0</span> / <span id="stripTotal">0</span> beantwoord</span>
-      <div class="ot-strip-bar">
-        <div class="fa-progress"><div class="fa-progress-bar" id="stripBar" style="width:0%"></div></div>
+    <article class="toets-question glass" id="toets-question" aria-labelledby="question-title"></article>
+    <nav class="toets-nav" aria-label="Vragen doorlopen">
+      <button class="toets-btn glass" id="toets-prev" type="button">Vorige</button>
+      <button class="toets-btn toets-primary" id="toets-next" type="button">Volgende</button>
+    </nav>
+  </section>
+  <section id="toets-results" aria-labelledby="results-title" hidden>
+    <div class="toets-summary glass">
+      <h2 id="results-title" tabindex="-1">Je resultaat</h2>
+      <p class="toets-score" id="toets-score"></p>
+      <p id="toets-verdict"></p>
+      <div class="toets-actions">
+        <button class="toets-btn toets-primary" id="toets-wrong" type="button">Alleen de foute opnieuw</button>
+        <button class="toets-btn glass" id="toets-restart" type="button">Nieuwe ronde</button>
+        <button class="toets-btn glass" id="toets-configure" type="button">Aantal vragen kiezen</button>
+        <a class="toets-btn glass toets-back" href="index.html">Terug naar vak</a>
       </div>
-      <span class="ot-strip-score"><span id="stripCorrect">0</span> ✓</span>
     </div>
-    <div id="ot-questions"></div>
-    <div class="ot-submit-card" id="ot-submit">
-      <h3>Klaar?</h3>
-      <p>Lever in om je score te zien. Je kunt meteen een nieuwe ronde starten met andere begrippen.</p>
-      <button class="fa-btn fa-btn-accent" onclick="submitTest()">
-        <span data-fa-icon="check" data-fa-size="13"></span> Lever in
-      </button>
-    </div>
-  </div>
+    <ol class="toets-review-list" id="toets-review" aria-label="Antwoorden met uitleg"></ol>
+  </section>
+  <noscript><p>Schakel JavaScript in om de toets te maken.</p></noscript>
+</main>
+<dialog class="toets-lightbox" id="toets-lightbox" aria-label="Afbeelding vergroot">
+  <button class="toets-btn glass" type="button" id="toets-close">Sluiten</button>
+  <figure><img alt=""/><figcaption></figcaption></figure>
+</dialog>
+<script src="js/atlas-data.js"></script>
+<script src="js/atlas.js"></script>
 
-  <div id="ot-results">
-    <div class="ot-score-big" id="resScoreBig">0 / 0</div>
-    <div class="ot-score-pct" id="resPct">0%</div>
-    <div class="ot-verdict" id="resVerdict">—</div>
-    <div class="ot-verdict-sub" id="resVerdictSub"></div>
-    <div class="ot-result-cta">
-      <button class="fa-btn fa-btn-accent" onclick="startTest()">
-        <span data-fa-icon="refresh" data-fa-size="13"></span> Nieuwe ronde
-      </button>
-      <button class="fa-btn fa-btn-ghost" onclick="reviewMistakes()">Bekijk fouten</button>
-      <a class="fa-btn fa-btn-primary" href="app.html" id="bt-back2">Terug naar vak</a>
-    </div>
-  </div>
-</div>
-
-<div class="xp-toast" id="xpToast"><span data-fa-icon="bolt" data-fa-size="13"></span> <span id="xpToastText">+2 XP</span></div>
-
-<footer class="fa-site-footer">
-  <span>FM Atlas · gratis studiehulp voor HAN Facilitair Management, gemaakt door een student</span>
-  <span>Niet officieel verbonden aan de HAN · <a href="privacy.html">Privacy</a> · <a href="app.html#contact">Fout gezien?</a></span>
-</footer>
-
-<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
-<script src="js/fmatlas.js"></script>
 <script>
-/* Welke vakken: ?vak=<sleutel>. data = bestand + globale naam, key = voortgangssleutel */
+(() => {
+  'use strict';
+  const $ = id => document.getElementById(id);
+  const esc = Atlas.esc;
+  const letter = i => String.fromCharCode(65 + i);
 const BT_VAKKEN = {
   /* >>> jaar 2 (gegenereerd door fmatlas-vakken) */
   'facilitaire-bedrijfskunde': { title: 'Facilitaire bedrijfskunde', data: 'js/data-facilitaire-bedrijfskunde.js', ns: 'FBK', key: 'facilitaire-bedrijfskunde', hub: 'facilitaire-bedrijfskunde.html' },
   'fm-tech': { title: 'FM Tech', data: 'js/data-fm-tech.js', ns: 'FMTECH', key: 'fm-tech', hub: 'fm-tech.html' },
   'huisvesting': { title: 'Huisvesting', data: 'js/data-huisvesting.js', ns: 'HUIV', key: 'huisvesting', hub: 'huisvesting.html' },
-  'praktijkproject-business-management': { title: 'Praktijkproject Business Management', data: 'js/data-praktijkproject-business-management.js', ns: 'PRJBUS', key: 'praktijkproject-business-management', hub: 'praktijkproject-business-management.html' },
-  'praktijkproject-workplace-management': { title: 'Praktijkproject Workplace Management', data: 'js/data-praktijkproject-workplace-management.js', ns: 'PRJWPM', key: 'praktijkproject-workplace-management', hub: 'praktijkproject-workplace-management.html' },
   /* <<< jaar 2 */
   'bvfma':                { title: 'Basis van FM A',               data: 'js/data-bvfma.js',                 ns: 'BVFMA',  key: 'basis-van-fm-a',               hub: 'basis-van-fm-a.html' },
   'trendwatchers':        { title: 'Trendwatchers',                data: 'js/data-trendwatchers.js',         ns: 'TRDW',   key: 'trendwatchers',                hub: 'trendwatchers.html' },
@@ -290,169 +90,204 @@ const BT_VAKKEN = {
   'evenementenlogistiek': { title: 'Evenementenlogistiek',         data: 'js/data-evenementenlogistiek.js',  ns: 'EVLOG',  key: 'evenementenlogistiek',         hub: 'evenementenlogistiek.html' },
   'projectvaardigheden':  { title: 'Projectvaardigheden',          data: 'js/data-projectvaardigheden.js',   ns: 'PVRD',   key: 'projectvaardigheden',          hub: 'projectvaardigheden.html' },
 };
-const VAK_ID = new URLSearchParams(location.search).get('vak');
-const VAK = BT_VAKKEN[VAK_ID];
-const OPT_LETTERS = ['A', 'B', 'C', 'D'];
-let pool = [], questions = [], answers = {}, total = 0;
-
-firebase.initializeApp({
-  apiKey: "AIzaSyBB397Wk2eqpBjic8E7aGV1mTgIjhQ21a8",
-  authDomain: "fmkompas-ff8bc.firebaseapp.com",
-  projectId: "fmkompas-ff8bc",
-  storageBucket: "fmkompas-ff8bc.firebasestorage.app",
-  messagingSenderId: "487972024689",
-  appId: "1:487972024689:web:712c3117080745d14746d0"
-});
-const _auth = firebase.auth();
-const _db = firebase.firestore();
-_auth.onAuthStateChanged(async user => {
-  if (user) await faSyncFromCloud(user, _db);
-  faMarkActiveToday();
-  const slot = document.getElementById('fa-header-slot');
-  slot.innerHTML = '';
-  slot.appendChild(faRenderHeader({ user }));
-  if (VAK) faMarkLastSeen(VAK.key, VAK.title, VAK.hub);
-});
-
-function shuffle(a) { for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; }
-/* De term zelf uit de omschrijving halen, anders verklapt de vraag het antwoord */
-function maskTerm(def, term) {
-  let out = def;
-  const parts = [term, term.replace(/\s*\(.*?\)\s*/g, ' ').trim(), ...term.split(/\s*[\/(),]\s*/)]
-    .map(p => p.trim()).filter(p => p.length > 3);
-  for (const p of [...new Set(parts)].sort((a, b) => b.length - a.length)) {
-    out = out.replace(new RegExp(p.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'gi'), '…');
+  const VAK_ID = new URLSearchParams(location.search).get('vak');
+  const VAK = Object.hasOwn(BT_VAKKEN, VAK_ID) ? BT_VAKKEN[VAK_ID] : null;
+  let pool = [];
+  const count = () => Math.min(Number(document.querySelector('input[name="bt-n"]:checked').value) || pool.length, pool.length);
+  const scoreKey = () => VAK && pool.length ? VAK.key + '-begrippentoets-' + count() : null;
+  const submitLabel = 'Lever begrippentoets in';
+  const verdict = () => 'Lees de uitleg hieronder. In een nieuwe ronde krijg je een andere selectie begrippen.';
+  function shuffle(list) {
+    for (let i = list.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [list[i], list[j]] = [list[j], list[i]];
+    }
+    return list;
   }
-  return out;
-}
-
-function init() {
-  if (!VAK) {
-    document.querySelector('.ot-intro').innerHTML = '<div class="bt-missing">Kies eerst een vak. <a href="app.html">Naar het vakkenoverzicht</a></div>';
-    return;
+  function maskTerm(def, term) {
+    const parts = [term, term.replace(/\s*\(.*?\)\s*/g, ' ').trim(), ...term.split(/\s*[\/(),]\s*/)]
+      .map(p => p.trim()).filter(p => p.length > 3);
+    let result = def;
+    for (const part of [...new Set(parts)].sort((a, b) => b.length - a.length)) {
+      result = result.replace(new RegExp(part.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'gi'), '…');
+    }
+    return result;
   }
-  document.title = `Begrippentoets · ${VAK.title} — FM Atlas`;
-  document.getElementById('bt-title').textContent = `Begrippentoets: ${VAK.title}`;
-  document.getElementById('bt-crumb-vak').textContent = VAK.title;
-  ['bt-crumb-vak', 'bt-back', 'bt-back2'].forEach(id => { document.getElementById(id).href = VAK.hub; });
-  const s = document.createElement('script');
-  s.src = VAK.data;
-  s.onload = () => {
-    const D = window[VAK.ns];
-    pool = (D && D.begrippen || []).filter(b => b.term && b.def);
-    document.getElementById('bt-meta').textContent = `BEGRIPPENTOETS · ${pool.length} BEGRIPPEN IN DE POOL`;
-  };
-  document.body.appendChild(s);
-}
+  function createQuestions() {
+    return shuffle(pool.slice()).slice(0, count()).map((b, i) => {
+      const same = shuffle(pool.filter(x => x.term !== b.term && x.cat === b.cat));
+      const other = shuffle(pool.filter(x => x.term !== b.term && x.cat !== b.cat));
+      const options = shuffle([b.term, ...[...same, ...other].slice(0, 3).map(x => x.term)]);
+      return { kind: 'mc', num: i + 1, text: esc(maskTerm(b.def, b.term)), options: options.map(esc), answer: options.indexOf(b.term), explanation: esc(b.def) };
+    });
+  }
+  function init() {
+    // De voortgangssleutel blijft behouden; inkoop en recht delen één vakpagina.
+    const VAKPAGINA = {"basis-fm-b": "basis-van-fm-b", "bvfma": "basis-van-fm-a", "trendwatchers": "trendwatchers", "bvfmb": "basis-van-fm-b", "bedrijfseconomie": "facilitaire-bedrijfseconomie", "em1": "eventmanagement1", "inkoop": "facilitaire-inkoop", "recht": "facilitaire-inkoop", "evenementenlogistiek": "evenementenlogistiek", "projectvaardigheden": "projectvaardigheden"};
+    const back = VAK ? 'vak.html?v=' + encodeURIComponent(VAKPAGINA[VAK.key] || VAK.key) : 'index.html';
+    document.querySelectorAll('.toets-back').forEach(link => { link.href = back; });
+    Atlas.topbar(VAK ? `<span class="sep">/</span><a href="${esc(back)}">${esc(VAK.title)}</a><span class="sep">/</span><span class="here">Begrippentoets</span>` : '<span class="sep">/</span><span class="here">Begrippentoets</span>');
+    if (!VAK) {
+      $('toets-status').textContent = 'Kies een vak via het vakkenoverzicht.';
+      $('toets-start').hidden = true;
+      $('toets-settings').hidden = true;
+      document.querySelectorAll('.toets-back').forEach(link => { link.textContent = 'Naar het vakkenoverzicht'; });
+      return;
+    }
+    document.title = `Begrippentoets · ${VAK.title} · FM Atlas`;
+    const script = document.createElement('script');
+    script.src = VAK.data;
+    script.onload = () => {
+      const seen = new Set();
+      pool = (window[VAK.ns]?.begrippen || []).filter(b => {
+        if (typeof b.term !== 'string' || typeof b.def !== 'string' || !b.term.trim() || !b.def.trim() || seen.has(b.term)) return false;
+        seen.add(b.term);
+        return true;
+      });
+      $('toets-start').disabled = pool.length < 2;
+      $('toets-status').textContent = pool.length < 2 ? 'Dit vak heeft nog niet genoeg begrippen voor een toets.' : `${pool.length} begrippen beschikbaar.`;
+      paintBest();
+    };
+    script.onerror = () => { $('toets-status').textContent = 'De begrippen konden niet laden. Laad de pagina opnieuw om het nog eens te proberen.'; };
+    document.body.appendChild(script);
+  }
 
-function startTest() {
-  if (!pool.length) return;
-  const nSel = +(document.querySelector('input[name="bt-n"]:checked')?.value || 20);
-  const picked = shuffle(pool.slice()).slice(0, nSel || pool.length);
-  questions = picked.map((b, i) => {
-    const sameCat = shuffle(pool.filter(x => x.term !== b.term && x.cat === b.cat));
-    const other = shuffle(pool.filter(x => x.term !== b.term && x.cat !== b.cat));
-    const wrong = [...sameCat, ...other].slice(0, 3).map(x => x.term);
-    const options = shuffle([b.term, ...wrong]);
-    return { num: i + 1, text: maskTerm(b.def, b.term), options, answer: options.indexOf(b.term), term: b.term, def: b.def };
+
+  let questions = [], answers = Object.create(null), current = 0, retry = false, mistakes = [];
+  function paintBest() {
+    const key = scoreKey();
+    Atlas.accountReady.then(account => {
+      if (key !== scoreKey()) return;
+      const best = key && account?.readTest(key);
+      $('toets-best').hidden = !best;
+      $('toets-best').textContent = best ? `Beste score: ${best.goed} van ${best.totaal}` : '';
+    });
+  }
+  paintBest();
+  window.addEventListener('atlas:toetsen', event => { if (event.detail.key === scoreKey()) paintBest(); });
+  function image(q) {
+    if (!q.img) return '';
+    return `<figure class="beeld"><button type="button" data-image aria-label="Afbeelding bij vraag ${q.num} vergroten"><img src="${esc(q.img)}" alt="${esc(q.alt || 'Afbeelding bij de vraag')}" loading="lazy"/></button><figcaption>${esc(q.alt || 'Afbeelding bij de vraag')}. Klik om te vergroten.</figcaption></figure>`;
+  }
+  function start(selected = null) {
+    questions = selected ? selected.slice() : createQuestions();
+    if (!questions.length) return;
+    answers = Object.create(null);
+    current = 0;
+    retry = selected !== null;
+    $('toets-intro').hidden = true;
+    $('toets-results').hidden = true;
+    $('toets-review').replaceChildren();
+    $('toets-test').hidden = false;
+    render();
+  }
+  function render() {
+    const q = questions[current];
+    if (!q) return;
+    const state = answers[q.num] || {};
+    $('toets-counter').textContent = `Vraag ${current + 1} van ${questions.length}`;
+    $('toets-meter').setAttribute('aria-valuemax', questions.length);
+    $('toets-meter').setAttribute('aria-valuenow', current + 1);
+    $('toets-bar').style.width = (current + 1) / questions.length * 100 + '%';
+    $('toets-prev').disabled = current === 0;
+    $('toets-next').textContent = current === questions.length - 1 ? submitLabel : 'Volgende';
+    $('toets-question').innerHTML = `
+      ${q.section ? `<p class="toets-section">${esc(q.section)}</p>` : ''}
+      ${q.casus ? `<div class="toets-casus"><strong>Casus</strong>${q.casus}</div>` : ''}
+      <h2 id="question-title" tabindex="-1">${q.text}</h2>${image(q)}
+      ${q.kind === 'mc' ? `<div class="toets-options" role="group" aria-labelledby="question-title">${q.options.map((option, i) => `
+        <button class="toets-option glass" type="button" data-choice="${i}" aria-pressed="${state.choice === i}"><span class="toets-letter">${letter(i)}.</span><span>${option}</span></button>`).join('')}</div>` : `
+        <label class="toets-answer-label" for="toets-answer">Jouw antwoord</label>
+        <textarea class="toets-answer" id="toets-answer" placeholder="Schrijf je antwoord op voordat je het modelantwoord bekijkt."></textarea>
+        <div class="toets-actions"><button class="toets-btn glass" type="button" data-reveal ${state.reveal ? 'hidden' : ''}>Toon modelantwoord</button></div>
+        <div class="toets-model" id="toets-model" tabindex="-1" ${state.reveal ? '' : 'hidden'}><h3>Modelantwoord</h3><div>${q.model}</div>
+          <div class="toets-mark"><p>Vergelijk je antwoord met het modelantwoord.</p><div class="toets-actions">
+            <button class="toets-btn glass" type="button" data-mark="good" aria-pressed="${state.good === true}">Goed</button>
+            <button class="toets-btn glass" type="button" data-mark="wrong" aria-pressed="${state.good === false}">Fout</button>
+          </div></div>
+        </div>`}`;
+    if (q.kind === 'open') $('toets-answer').value = state.text || '';
+    $('question-title').focus({ preventScroll: true });
+    window.scrollTo({ top: 0 });
+  }
+  $('toets-question').addEventListener('input', event => {
+    if (event.target.id === 'toets-answer') {
+      (answers[questions[current].num] ||= {}).text = event.target.value;
+    }
   });
-  total = questions.length;
-  answers = {};
-  document.querySelector('.ot-intro').style.display = 'none';
-  document.getElementById('ot-results').style.display = 'none';
-  document.getElementById('ot-test').style.display = 'block';
-  document.getElementById('ot-questions').classList.remove('only-wrong');
-  document.getElementById('bt-onlywrong')?.remove();
-  document.getElementById('stripTotal').textContent = total;
-  const box = document.getElementById('ot-questions');
-  box.innerHTML = questions.map(q => `
-    <div class="ot-q" id="q-${q.num}">
-      <div class="ot-q-head">
-        <span class="ot-q-num">${q.num}</span>
-        <div class="ot-q-text">${faEsc(q.text)}</div>
-      </div>
-      <div class="ot-opts">
-        ${q.options.map((o, i) => `<button class="ot-opt" data-idx="${i}" onclick="answer(${q.num}, ${i})"><span class="ot-opt-letter">${OPT_LETTERS[i]}</span><span>${faEsc(o)}</span></button>`).join('')}
-      </div>
-      <div class="ot-feedback" id="fb-${q.num}" aria-live="polite"></div>
-    </div>`).join('');
-  updateStrip();
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-}
-
-function answer(num, idx) {
-  const q = questions.find(x => x.num === num);
-  if (!q || num in answers) return;
-  answers[num] = idx;
-  const ok = idx === q.answer;
-  const card = document.getElementById('q-' + num);
-  card.querySelectorAll('.ot-opt').forEach(b => {
-    b.disabled = true;
-    const i = +b.dataset.idx;
-    if (i === q.answer) b.classList.add('revealed-correct'); else if (i === idx) b.classList.add('revealed-wrong');
+  $('toets-question').addEventListener('click', event => {
+    const q = questions[current];
+    const choice = event.target.closest('[data-choice]');
+    if (choice) {
+      (answers[q.num] ||= {}).choice = Number(choice.dataset.choice);
+      $('toets-question').querySelectorAll('[data-choice]').forEach(button => button.setAttribute('aria-pressed', String(button === choice)));
+    }
+    if (event.target.closest('[data-reveal]')) {
+      (answers[q.num] ||= {}).reveal = true;
+      $('toets-question').querySelector('[data-reveal]').hidden = true;
+      $('toets-model').hidden = false;
+      $('toets-model').focus({ preventScroll: true });
+    }
+    const mark = event.target.closest('[data-mark]');
+    if (mark) {
+      (answers[q.num] ||= {}).good = mark.dataset.mark === 'good';
+      $('toets-question').querySelectorAll('[data-mark]').forEach(button => button.setAttribute('aria-pressed', String(button === mark)));
+    }
   });
-  card.classList.add('answered', ok ? 'correct' : 'wrong');
-  const fb = document.getElementById('fb-' + num);
-  fb.className = 'ot-feedback show ' + (ok ? 'correct' : 'wrong');
-  fb.innerHTML = `<span class="ot-feedback-label">${ok ? '✓ Goed' : '✗ Fout, het is ' + faEsc(q.term)}</span>${faEsc(q.def)}`;
-  if (ok && faOnce('bt#' + VAK_ID + '#' + faToday() + '#' + q.term)) { faAddXP(2); addFirestorePoints(2); showXpToast('+2 XP'); }
-  updateStrip();
-}
-
-function updateStrip() {
-  const n = Object.keys(answers).length;
-  const c = questions.filter(q => answers[q.num] === q.answer).length;
-  document.getElementById('stripNum').textContent = n;
-  document.getElementById('stripCorrect').textContent = c;
-  document.getElementById('stripBar').style.width = (total ? n / total * 100 : 0) + '%';
-}
-
-function submitTest() {
-  const correct = questions.filter(q => answers[q.num] === q.answer).length;
-  const pct = total ? Math.round(correct / total * 100) : 0;
-  document.getElementById('ot-test').style.display = 'none';
-  document.getElementById('ot-results').style.display = 'block';
-  document.getElementById('resScoreBig').textContent = `${correct} / ${total}`;
-  document.getElementById('resScoreBig').classList.toggle('bad', pct < 75);
-  document.getElementById('resPct').textContent = pct + '%';
-  document.getElementById('resVerdict').textContent = pct >= 90 ? 'Je kent deze begrippen.' : pct >= 75 ? 'Goed bezig.' : 'Nog even oefenen.';
-  document.getElementById('resVerdictSub').textContent = pct >= 75
-    ? 'Start een nieuwe ronde voor andere begrippen, of ga door naar de flashcards.'
-    : 'Bekijk je fouten en herhaal die begrippen met de flashcards.';
-  if (VAK && total >= 10) faSetProgress(VAK.key, Math.min(100, pct));
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-}
-
-function reviewMistakes() {
-  document.getElementById('ot-test').style.display = 'block';
-  document.getElementById('ot-results').style.display = 'none';
-  const box = document.getElementById('ot-questions');
-  box.classList.add('only-wrong');
-  const n = box.querySelectorAll('.ot-q.wrong').length;
-  document.getElementById('bt-onlywrong')?.remove();
-  const bar = document.createElement('div');
-  bar.id = 'bt-onlywrong'; bar.className = 'bt-onlywrong';
-  bar.innerHTML = `${n ? `Je ziet nu alleen je <strong>${n} foute ${n === 1 ? 'vraag' : 'vragen'}</strong>.` : 'Geen foute vragen.'} <button type="button" class="fa-btn fa-btn-ghost fa-btn-sm">Toon alle vragen</button>`;
-  bar.querySelector('button').onclick = () => { box.classList.remove('only-wrong'); bar.remove(); };
-  box.before(bar);
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-}
-
-function showXpToast(txt) {
-  const t = document.getElementById('xpToast');
-  document.getElementById('xpToastText').textContent = txt;
-  t.classList.add('show'); clearTimeout(t._h); t._h = setTimeout(() => t.classList.remove('show'), 1600);
-}
-async function addFirestorePoints(n) {
-  const u = _auth.currentUser; if (!u) return;
-  try {
-    await _db.collection('scores').doc(u.uid).set({
-      pts: firebase.firestore.FieldValue.increment(n), name: u.displayName || 'Anoniem',
-      photoURL: u.photoURL || '', updatedAt: firebase.firestore.FieldValue.serverTimestamp()
-    }, { merge: true });
-  } catch (e) { console.warn(e); }
-}
-init();
+  const isCorrect = q => q.kind === 'mc' ? answers[q.num]?.choice === q.answer : answers[q.num]?.good === true;
+  function submit() {
+    const correct = questions.filter(isCorrect).length;
+    mistakes = questions.filter(q => !isCorrect(q));
+    const pct = Math.round(correct / questions.length * 100);
+    $('toets-score').textContent = `Je hebt ${correct} van ${questions.length} vragen goed (${pct}%).`;
+    $('toets-verdict').textContent = retry ? 'Dit is het resultaat van je herhaling.' : verdict(pct);
+    $('toets-wrong').hidden = mistakes.length === 0;
+    $('toets-review').innerHTML = questions.map(q => {
+      const state = answers[q.num] || {};
+      return `<li class="toets-review glass"><h3>Vraag ${q.num} · ${isCorrect(q) ? 'Goed' : 'Fout'}</h3><div>${q.text}</div>${image(q)}
+        ${q.casus ? `<div class="toets-casus"><strong>Casus</strong>${q.casus}</div>` : ''}
+        ${q.kind === 'mc' ? `<p><strong>Jouw antwoord:</strong> ${state.choice === undefined ? 'Niet beantwoord' : q.options[state.choice]}</p><p><strong>Juiste antwoord:</strong> ${q.options[q.answer]}</p><div class="toets-explanation">${q.explanation || ''}</div>` : `
+          <p class="toets-written"><strong>Jouw antwoord:</strong> ${esc(state.text || 'Niet ingevuld')}</p>${state.good === undefined ? '<p>Niet zelf nagekeken; telt als fout.</p>' : '<p>Door jou nagekeken met het modelantwoord.</p>'}<div class="toets-explanation"><strong>Modelantwoord</strong><br/>${q.model}</div>`}</li>`;
+    }).join('');
+    $('toets-test').hidden = true;
+    $('toets-results').hidden = false;
+    if (!retry) {
+      const key = scoreKey();
+      const result = { goed: correct, totaal: questions.length, laatst: Date.now() };
+      Atlas.accountReady.then(account => account?.saveTest(key, result));
+    }
+    $('results-title').focus({ preventScroll: true });
+    window.scrollTo({ top: 0 });
+  }
+  $('toets-start').addEventListener('click', () => start());
+  $('toets-restart').addEventListener('click', () => start());
+  $('toets-wrong').addEventListener('click', () => { if (mistakes.length) start(mistakes); });
+  $('toets-configure')?.addEventListener('click', () => {
+    $('toets-results').hidden = true;
+    $('toets-intro').hidden = false;
+    $('toets-start').focus();
+  });
+  document.querySelectorAll('input[name="bt-n"]').forEach(input => input.addEventListener('change', paintBest));
+  $('toets-prev').addEventListener('click', () => { if (current > 0) { current--; render(); } });
+  $('toets-next').addEventListener('click', () => { if (current < questions.length - 1) { current++; render(); } else submit(); });
+  const dialog = $('toets-lightbox');
+  document.addEventListener('click', event => {
+    const button = event.target.closest('[data-image]');
+    if (button) {
+      const img = button.querySelector('img');
+      dialog.querySelector('img').src = img.src;
+      dialog.querySelector('img').alt = img.alt;
+      dialog.querySelector('figcaption').textContent = img.alt;
+      dialog.showModal();
+    } else if (event.target === dialog || event.target.closest('#toets-close')) dialog.close();
+  });
+  document.addEventListener('keydown', event => {
+    if ($('toets-test').hidden || dialog.open || event.altKey || event.ctrlKey || event.metaKey || event.target.closest('input, textarea, select, [contenteditable="true"], .atlas-account')) return;
+    if (event.key === 'ArrowLeft' && current > 0) { event.preventDefault(); current--; render(); }
+    if (event.key === 'ArrowRight' && current < questions.length - 1) { event.preventDefault(); current++; render(); }
+  });
+  init();
+})();
 </script>
 </body>
 </html>

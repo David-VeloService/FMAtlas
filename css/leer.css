@@ -1,0 +1,78 @@
+/* FM Atlas, leerpagina's (samenvatting, toetsing). Bouwt op css/atlas.css.
+ * Eén les tegelijk, inhoudsopgave links, leesbreedte rond 70 tekens, beelden mogen breder.
+ */
+.leer { max-width: 1180px; margin: 0 auto; padding: 28px 16px 64px; display: grid; grid-template-columns: 260px minmax(0, 1fr); gap: 28px; align-items: start; }
+
+/* ── Inhoudsopgave ── */
+.toc { position: sticky; top: 84px; border-radius: var(--r-lg); padding: 10px; max-height: calc(100vh - 100px); overflow: auto; }
+.toc-title { font-family: var(--font-display); font-weight: 700; font-size: 15px; padding: 8px 10px 10px; }
+.toc a { display: flex; gap: 10px; align-items: baseline; padding: 8px 10px; border-radius: 12px; font-size: 14px; line-height: 1.3; color: var(--ink-soft); }
+.toc a:hover { background: var(--glass-hover); color: var(--ink); }
+.toc a[aria-current="true"] { background: var(--accent); color: var(--accent-ink); }
+.toc .les { flex: none; font-weight: 700; font-variant-numeric: tabular-nums; min-width: 26px; }
+.toc-toggle { display: none; }
+
+/* ── Leesvlak ── */
+.lees { min-width: 0; }
+.sectie { display: none; }
+.sectie.actief { display: block; }
+.lees-kop { margin-bottom: 22px; }
+.les-pill { display: inline-block; font-size: 13px; font-weight: 700; padding: 4px 12px; border-radius: var(--r-pill); background: var(--olive-800); color: var(--gold); margin-bottom: 12px; }
+.lees-kop h1 { font-family: var(--font-display); font-size: clamp(28px, 4vw, 40px); font-weight: 700; letter-spacing: -0.03em; line-height: 1.08; max-width: 22ch; }
+
+.tekst { max-width: 70ch; font-size: 17px; line-height: 1.7; color: var(--ink); }
+.tekst > * + * { margin-top: 16px; }
+.tekst h3 { font-family: var(--font-display); font-size: 21px; font-weight: 700; letter-spacing: -0.015em; line-height: 1.25; margin-top: 36px; }
+.tekst p strong, .tekst li strong, .tekst td strong { font-weight: 700; }
+.tekst ul, .tekst ol { padding-left: 22px; }
+.tekst li + li { margin-top: 6px; }
+.tekst li::marker { color: var(--accent); font-weight: 700; }
+
+.kern { border-radius: var(--r-md); padding: 18px 20px; font-size: 17px; font-weight: 500; background: rgba(240, 183, 36, 0.18); border: 1px solid rgba(240, 183, 36, 0.45); }
+.let-op { border-radius: var(--r-md); padding: 14px 18px; font-size: 15px; background: var(--glass-strong); border: 1px solid var(--glass-edge-low); }
+.let-op b { display: block; margin-bottom: 2px; }
+.begrip { border-radius: var(--r-md); padding: 16px 20px; background: var(--glass); border: 1px solid var(--glass-edge-low); border-left: 4px solid var(--accent); }
+.begrip dt { font-weight: 700; margin-bottom: 2px; }
+.kader { border-radius: var(--r-md); padding: 18px 20px; }
+.kader h4 { font-family: var(--font-display); font-size: 17px; margin-bottom: 6px; }
+.kader ul { margin-top: 6px; }
+.naast { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.naast > div > * + * { margin-top: 12px; }
+
+.tabel { overflow-x: auto; border-radius: var(--r-md); border: 1px solid var(--glass-edge-low); background: var(--glass); }
+.tabel table { width: 100%; border-collapse: collapse; font-size: 15px; line-height: 1.5; }
+.tabel th, .tabel td { text-align: left; vertical-align: top; padding: 10px 14px; }
+.tabel th { font-weight: 700; background: var(--glass-strong); }
+.tabel tr + tr td { border-top: 1px solid var(--glass-edge-low); }
+
+/* Beelden mogen breder dan de tekst */
+.beeld { margin: 28px 0; max-width: min(920px, 100%); }
+.beeld button { display: block; width: 100%; padding: 0; border-radius: var(--r-md); overflow: hidden; background: #fff; box-shadow: var(--glass-shadow); cursor: zoom-in; }
+.beeld img { display: block; width: 100%; height: auto; max-height: 560px; object-fit: contain; background: #fff; }
+.beeld figcaption { margin-top: 10px; font-size: 15px; color: var(--ink-soft); }
+.beeld figcaption span { white-space: nowrap; }
+@media (max-width: 600px) { .beeld figcaption span { white-space: normal; } }
+
+/* ── Vorige / volgende ── */
+.verder { margin-top: 44px; display: flex; justify-content: space-between; gap: 12px; max-width: 70ch; }
+.verder a { display: flex; align-items: center; gap: 10px; padding: 12px 18px; border-radius: var(--r-pill); font-size: 15px; font-weight: 600; max-width: 48%; }
+.verder a:hover { background: var(--glass-hover); }
+.verder a span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+/* ── Vergroten ── */
+.lightbox { position: fixed; inset: 0; z-index: 50; display: grid; place-items: center; padding: 24px; background: rgba(20, 23, 15, 0.82); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); cursor: zoom-out; }
+.lightbox[hidden] { display: none; }
+.lightbox img { max-width: 100%; max-height: 86vh; border-radius: 12px; background: #fff; }
+.lightbox p { color: #f7f1e7; margin-top: 12px; text-align: center; font-size: 15px; }
+
+/* ── Telefoon ── */
+@media (max-width: 900px) {
+  .leer { grid-template-columns: 1fr; gap: 16px; padding-top: 16px; }
+  .toc { position: sticky; top: 72px; z-index: 10; max-height: none; padding: 6px; }
+  .toc-title { display: none; }
+  .toc-toggle { display: flex; width: 100%; align-items: center; justify-content: space-between; gap: 10px; padding: 10px 12px; font-weight: 600; font-size: 15px; text-align: left; }
+  .toc-list { display: none; max-height: 60vh; overflow: auto; }
+  .toc.open .toc-list { display: block; }
+  .tekst { font-size: 16px; }
+  .naast { grid-template-columns: 1fr; }
+}

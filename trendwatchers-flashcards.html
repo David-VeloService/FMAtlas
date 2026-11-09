@@ -2,194 +2,289 @@
 <html lang="nl">
 <head>
 <meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Flashcards · Trendwatchers — FM Atlas</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+<title>Flashcards · Trendwatchers · FM Atlas</title>
+<meta name="description" content="Oefen de begrippen van Trendwatchers met flashcards die je voortgang onthouden op FM Atlas."/>
 <link rel="icon" type="image/svg+xml" href="logo.svg"/>
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png"/>
 <link rel="apple-touch-icon" href="apple-touch-icon.png"/>
-<meta name="theme-color" content="#f7f3ec"/>
+<meta name="theme-color" content="#efe5d4"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet"/>
-<link rel="stylesheet" href="css/fmatlas.css"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="css/atlas.css"/>
 <style>
-.fc-wrap { max-width: 780px; margin: 0 auto; padding: 28px 24px 80px; }
-.fc-hero { display: flex; align-items: center; justify-content: space-between; gap: 18px; margin-bottom: 18px; flex-wrap: wrap; }
-.fc-hero h1 { font-size: 28px; font-weight: 900; letter-spacing: -0.025em; }
-.fc-hero-sub { font-size: 13px; color: var(--muted); font-weight: 700; letter-spacing: 0.02em; }
-.fc-toolbar { background: var(--surface); border: 1.5px solid var(--line); border-radius: var(--radius-lg); padding: 14px 16px; margin-bottom: 16px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
-.fc-select { background: var(--bg); border: 1.5px solid var(--line); border-radius: 10px; padding: 8px 12px; font-family: inherit; font-size: 13px; font-weight: 700; color: var(--ink); outline: none; cursor: pointer; }
-.fc-select:hover, .fc-select:focus { border-color: var(--accent); }
-.fc-progwrap { flex: 1; min-width: 140px; }
-.fc-proglabels { display: flex; justify-content: space-between; font-size: 11px; color: var(--muted); font-weight: 700; margin-bottom: 4px; }
-.fc-stats { display: flex; gap: 18px; justify-content: center; margin-bottom: 18px; }
-.fc-stat { text-align: center; }
-.fc-stat-num { font-size: 28px; font-weight: 900; line-height: 1; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
-.fc-stat-lbl { font-size: 10px; color: var(--muted); font-weight: 800; letter-spacing: 0.07em; text-transform: uppercase; margin-top: 3px; }
-.fc-stat.known .fc-stat-num { color: var(--ok); }
-.fc-stat.unknown .fc-stat-num { color: var(--accent); }
-.fc-counter { text-align: center; font-size: 12px; color: var(--muted); font-weight: 700; margin-bottom: 8px; letter-spacing: 0.04em; }
-.fc-flip { width: 100%; perspective: 1400px; cursor: pointer; }
-.fc-flip-inner { position: relative; width: 100%; min-height: 260px; transform-style: preserve-3d; transition: transform 0.55s cubic-bezier(.4, 0, .2, 1); }
-.fc-flip.flipped .fc-flip-inner { transform: rotateY(180deg); }
-.fc-face { position: absolute; inset: 0; backface-visibility: hidden; border-radius: var(--radius-xl); padding: 40px 32px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; border: 1.5px solid var(--line); min-height: 260px; }
-.fc-face-front { background: var(--surface); }
-.fc-face-back { background: var(--ink); color: var(--surface); border-color: var(--ink); transform: rotateY(180deg); }
-.fc-face-hint { font-size: 10px; font-weight: 800; letter-spacing: 0.1em; margin-bottom: 14px; text-transform: uppercase; display: flex; align-items: center; gap: 6px; }
-.fc-face-front .fc-face-hint { color: var(--muted); }
-.fc-face-back .fc-face-hint { color: rgba(255,255,255,0.5); }
-.fc-cat { display: inline-flex; align-items: center; padding: 4px 12px; font-size: 10px; font-weight: 800; border-radius: 999px; margin-bottom: 16px; letter-spacing: 0.05em; text-transform: uppercase; }
-.fc-term { font-size: 24px; font-weight: 900; letter-spacing: -0.02em; line-height: 1.25; color: var(--ink); }
-.fc-def { font-size: 15px; color: rgba(255,255,255,0.88); line-height: 1.6; font-weight: 500; max-width: 560px; }
-.fc-btn-row { display: grid; grid-template-columns: 1fr auto 1fr; gap: 10px; margin-top: 16px; }
-@media (max-width: 600px) { .fc-btn-row { grid-template-columns: 1fr; } }
-.fc-btn { padding: 14px 18px; border-radius: var(--radius); border: 1.5px solid transparent; font-family: inherit; font-size: 14px; font-weight: 800; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 8px; transition: transform 0.08s, background 0.15s, border-color 0.15s; }
-.fc-btn:active { transform: translateY(1px); }
-.fc-btn-no { background: rgba(239,68,68,0.08); color: #b91c1c; border-color: rgba(239,68,68,0.25); }
-.fc-btn-no:hover { background: rgba(239,68,68,0.15); border-color: #b91c1c; }
-.fc-btn-yes { background: rgba(58,138,92,0.1); color: var(--ok); border-color: rgba(58,138,92,0.3); }
-.fc-btn-yes:hover { background: rgba(58,138,92,0.18); }
-.fc-btn-skip { background: var(--surface); color: var(--ink-soft); border-color: var(--line); }
-.fc-btn-skip:hover { color: var(--ink); border-color: var(--ink); }
-#fc-done { display: none; text-align: center; padding: 32px 24px; }
-#fc-done h2 { font-size: 32px; font-weight: 900; letter-spacing: -0.03em; margin-bottom: 10px; }
-#fc-done .score-big { font-size: 72px; font-weight: 900; color: var(--ok); line-height: 1; letter-spacing: -0.04em; margin: 12px 0; }
-#fc-done .score-big.bad { color: var(--accent); }
-#fc-done p { color: var(--ink-soft); font-size: 14px; font-weight: 600; margin-bottom: 24px; }
-.missed-list { text-align: left; background: var(--surface); border: 1.5px solid var(--line); border-radius: var(--radius-lg); padding: 18px 22px; margin-top: 24px; max-height: 340px; overflow-y: auto; }
-.missed-list h3 { font-size: 11px; color: var(--accent); font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 10px; }
-.missed-item { padding: 8px 0; border-bottom: 1px solid var(--line-soft); font-size: 13px; }
-.missed-item:last-child { border-bottom: none; }
-.missed-item strong { display: block; color: var(--ink); font-weight: 800; margin-bottom: 2px; }
-.missed-item span { color: var(--muted); font-weight: 500; line-height: 1.4; display: block; }
-.xp-toast { position: fixed; top: 80px; right: 24px; z-index: 500; background: var(--ink); color: var(--surface); padding: 10px 18px; border-radius: 999px; font-size: 13px; font-weight: 800; display: flex; align-items: center; gap: 6px; transform: translateX(420px); transition: transform 0.25s ease; box-shadow: var(--shadow-lg); }
-.xp-toast.show { transform: translateX(0); }
-.xp-toast span { color: var(--xp); }
+.flashcards { max-width: 960px; }
+.flashcards .periods { margin-top: 24px; }
+.flashcards .period-btn { height: 44px; flex: none; }
+.period-btn[aria-pressed="true"] { background: var(--accent); color: var(--accent-ink); }
+.fc-progress { margin: 24px 0; }
+.fc-progress p { margin-bottom: 10px; font-variant-numeric: tabular-nums; }
+.fc-meter { height: 6px; border-radius: var(--r-pill); overflow: hidden; background: var(--glass-strong); }
+.fc-meter span { display: block; height: 100%; background: var(--accent); }
+.fc-meta, .fc-actions { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin: 20px 0; }
+.fc-card { display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; min-height: 320px; padding: clamp(24px, 5vw, 56px); border-radius: var(--r-lg); overflow-wrap: anywhere; }
+.fc-term { display: block; font-family: var(--font-display); font-size: clamp(28px, 4vw, 44px); font-weight: 700; letter-spacing: -.03em; line-height: 1.12; }
+.fc-hint { display: block; margin-top: 24px; font-size: 16px; }
+.fc-def { display: block; max-width: 64ch; margin-top: 24px; font-size: clamp(17px, 2vw, 20px); line-height: 1.65; }
+.fc-answers { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 24px; }
+.fc-btn { min-height: 48px; padding: 12px 24px; border-radius: var(--r-pill); display: inline-flex; align-items: center; justify-content: center; font-weight: 600; }
+.fc-btn:hover { background: var(--glass-hover); }
+.fc-btn-yes { background: var(--accent); color: var(--accent-ink); }
+.fc-btn-yes:hover { background: var(--accent); }
+.fc-done { border-radius: var(--r-lg); padding: 32px; text-align: center; }
+.fc-done h2, .fc-history h2 { font: 700 24px / 1.2 var(--font-display); letter-spacing: -.02em; }
+.fc-done p { margin: 16px 0; }
+.fc-history { padding: 24px; margin-top: 24px; border-radius: var(--r-lg); }
+.fc-history svg { display: block; width: 100%; height: auto; margin-top: 16px; overflow: visible; }
+.fc-history p { margin-top: 8px; }
+.flashcards [hidden] { display: none; }
+@media (max-width: 480px) {
+  .fc-btn { padding-inline: 16px; }
+  .fc-history { padding: 24px 16px; }
+  .fc-card { min-height: 300px; }
+  .fc-actions .fc-btn { flex: 1 1 auto; }
+}
 </style>
 </head>
 <body>
-<div id="fa-header-slot"></div>
-<nav class="fa-breadcrumb">
-  <a href="app.html">Vakken</a><span>›</span>
-  <a href="trendwatchers.html">Trendwatchers</a><span>›</span>
-  <span class="current">Flashcards</span>
-</nav>
-<div class="fc-wrap">
-  <div class="fc-hero">
-    <div>
-      <h1>Flashcards</h1>
-      <div class="fc-hero-sub">Klik de kaart of druk op spatie om te draaien</div>
-    </div>
-    <a class="fa-btn fa-btn-ghost fa-btn-sm" href="trendwatchers.html">
-      <span data-fa-icon="arrowL" data-fa-size="13"></span> Terug naar vak
-    </a>
+<div class="scene" aria-hidden="true"><i></i></div>
+<header class="topbar" id="topbar"></header>
+<main class="page flashcards">
+  <h1 class="hero-title">Flashcards</h1>
+  <div class="periods glass" id="catFilter" role="group" aria-label="Categorie"></div>
+  <div class="fc-progress">
+    <p id="progLabel" role="status" aria-live="polite"></p>
+    <div class="fc-meter" id="fcMeter" role="progressbar" aria-labelledby="progLabel" aria-valuemin="0" aria-valuenow="0" aria-valuemax="1"><span id="progBar"></span></div>
   </div>
-  <div class="fc-toolbar">
-    <select class="fc-select" id="catFilter" onchange="loadDeck()"><option value="all">Alle categorieën</option></select>
-    <button class="fa-btn fa-btn-accent fa-btn-sm" onclick="shuffleDeck()"><span data-fa-icon="refresh" data-fa-size="13"></span> Schud</button>
-    <button class="fa-btn fa-btn-ghost fa-btn-sm" onclick="loadDeck()">Opnieuw</button>
-    <div class="fc-progwrap">
-      <div class="fc-proglabels"><span id="progLabel">0 / 0 bekend</span><span id="progPct">0%</span></div>
-      <div class="fa-progress"><div class="fa-progress-bar" id="progBar" style="width:0%"></div></div>
-    </div>
+  <div class="fc-meta">
+    <p id="cardCounter" role="status" aria-live="polite"></p>
+    <button class="fc-btn glass" id="fcProgress" type="button" aria-expanded="false" aria-controls="fcHistory">Voortgang</button>
   </div>
-  <div id="fc-main">
-    <div class="fc-stats">
-      <div class="fc-stat"><div class="fc-stat-num" id="statTotal">0</div><div class="fc-stat-lbl">Totaal</div></div>
-      <div class="fc-stat known"><div class="fc-stat-num" id="statKnown">0</div><div class="fc-stat-lbl">Gekend</div></div>
-      <div class="fc-stat unknown"><div class="fc-stat-num" id="statUnknown">0</div><div class="fc-stat-lbl">Herhalen</div></div>
+  <section id="fc-main" aria-label="Oefenkaarten">
+    <button class="fc-card glass" id="flipWrap" type="button" aria-expanded="false" aria-controls="backDef">
+      <span class="fc-term" id="frontTerm"></span>
+      <span class="fc-hint" id="flipHint">Tik of druk op spatie voor de definitie</span>
+      <span class="fc-def" id="backDef" hidden></span>
+    </button>
+    <div class="fc-answers" id="fcAnswers" hidden>
+      <button class="fc-btn fc-btn-no glass" id="fcNo" type="button">Weet ik niet</button>
+      <button class="fc-btn fc-btn-yes" id="fcYes" type="button">Weet ik</button>
     </div>
-    <div class="fc-counter" id="cardCounter"></div>
-    <div class="fc-flip" id="flipWrap" onclick="flipCard()">
-      <div class="fc-flip-inner" id="flipInner">
-        <div class="fc-face fc-face-front">
-          <div class="fc-face-hint"><span data-fa-icon="sparkle" data-fa-size="11"></span> Klik om te onthullen</div>
-          <span class="fc-cat" id="frontCat"></span>
-          <div class="fc-term" id="frontTerm"></div>
-        </div>
-        <div class="fc-face fc-face-back">
-          <div class="fc-face-hint">Definitie / Omschrijving</div>
-          <div class="fc-def" id="backDef"></div>
-        </div>
-      </div>
-    </div>
-    <div class="fc-btn-row">
-      <button class="fc-btn fc-btn-no" onclick="markCard(false)"><span data-fa-icon="x" data-fa-size="14"></span> Nog niet</button>
-      <button class="fc-btn fc-btn-skip" onclick="nextCard()">Sla over</button>
-      <button class="fc-btn fc-btn-yes" onclick="markCard(true)"><span data-fa-icon="check" data-fa-size="14"></span> Gekend!</button>
-    </div>
-  </div>
-  <div id="fc-done">
-    <h2>Sessie klaar!</h2>
-    <div class="score-big" id="doneScore">0 / 0</div>
+  </section>
+  <section class="fc-done glass" id="fc-done" aria-labelledby="doneTitle" hidden>
+    <h2 id="doneTitle" tabindex="-1">Voor vandaag ben je klaar</h2>
     <p id="doneText"></p>
-    <button class="fa-btn fa-btn-accent" id="btnMissed" onclick="restartMissed()" style="display:none;margin-right:8px"><span data-fa-icon="refresh" data-fa-size="13"></span> Herhaal niet-gekende</button>
-    <button class="fa-btn fa-btn-primary" onclick="loadDeck()">Begin opnieuw</button>
-    <div class="missed-list" id="missedList" style="display:none"><h3>Nog te leren</h3><div id="missedItems"></div></div>
+    <button class="fc-btn glass" id="fcRestart" type="button">Verder oefenen</button>
+  </section>
+  <div class="fc-actions">
+    <a class="fc-btn glass" id="fcBrowse" href="trendwatchers-begrippen.html">Begrippen bekijken</a>
+    <button class="fc-btn glass" id="fcFinish" type="button">Sessie afronden</button>
   </div>
-</div>
-<div class="xp-toast" id="xpToast"><span data-fa-icon="bolt" data-fa-size="13"></span> <span id="xpToastText">+5 XP</span></div>
-<footer class="fa-site-footer">
-  <span>FM Atlas · gratis studiehulp voor HAN Facilitair Management, gemaakt door een student</span>
-  <span>Niet officieel verbonden aan de HAN · <a href="privacy.html">Privacy</a> · <a href="app.html#contact">Fout gezien?</a></span>
-</footer>
-<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
-<script src="js/fmatlas.js"></script>
+  <section class="fc-history glass" id="fcHistory" aria-labelledby="historyTitle" hidden>
+    <h2 id="historyTitle">Gekende kaarten</h2>
+    <div id="historyChart"></div>
+    <p>De laatste 30 dagen, voor het hele vak.</p>
+  </section>
+</main>
+<script src="js/atlas-data.js"></script>
+<script src="js/atlas-account.js"></script>
+<script src="js/atlas.js"></script>
 <script src="js/data-trendwatchers.js"></script>
 <script>
-window.__FMDATA__ = {
-  flashcards: (window.TRDW && window.TRDW.flashcards) || [],
-  cats: (window.TRDW && window.TRDW.cats) || [],
-  key: 'trendwatchers',
-  title: 'Trendwatchers',
-  url: 'trendwatchers.html'
-};
+(function () {
+  'use strict';
+  Atlas.topbar('<span class="sep">/</span><a href="vak.html?v=trendwatchers">Trendwatchers</a><span class="sep">/</span><span class="here">Flashcards</span>');
+  const account = window.AtlasAccount, key = 'trendwatchers', data = window.TRDW || {};
+  const cards = (data.begrippen || []).map(card => ({ ...card, uid: account.cardId(card) }));
+  const cats = data.cats || [], filters = document.getElementById('catFilter');
+  const flip = document.getElementById('flipWrap'), answers = document.getElementById('fcAnswers');
+  const chart = document.getElementById('fcHistory'), progress = document.getElementById('fcProgress');
+  const initial = new URLSearchParams(location.search).get('cat');
+  let category = cats.some(c => c.key === initial) ? initial : '';
+  let state = account.read(key), queue = [], revealed = false, reviewed = 0, finished = false, stopped = false, updating = false;
+  const retries = new Set();
+  state.totaal = cards.length;
+
+  [{ key: '', short: 'Alle' }, ...cats].forEach(c => {
+    const button = document.createElement('button');
+    button.type = 'button'; button.className = 'period-btn'; button.dataset.cat = c.key;
+    button.textContent = c.short || c.label;
+    button.setAttribute('aria-label', c.label || 'Alle categorieën');
+    button.addEventListener('click', () => {
+      category = c.key;
+      const url = new URL(location.href);
+      if (category) url.searchParams.set('cat', category); else url.searchParams.delete('cat');
+      history.replaceState(null, '', url);
+      start();
+      if (!finished) flip.focus({ preventScroll: true });
+    });
+    filters.appendChild(button);
+  });
+  const selected = () => category ? cards.filter(card => card.cat === category) : cards;
+  function buildQueue() {
+    const pool = selected(), now = Date.now();
+    const due = pool.filter(card => state.kaarten[card.uid] && (state.kaarten[card.uid].volgende <= now || retries.has(card.uid)));
+    due.sort((a, b) => state.kaarten[a.uid].volgende - state.kaarten[b.uid].volgende);
+    return [...due, ...pool.filter(card => !state.kaarten[card.uid])];
+  }
+  function start() {
+    state = account.read(key); state.totaal = cards.length;
+    queue = buildQueue(); reviewed = 0; finished = false; stopped = false;
+    filters.querySelectorAll('button').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.cat === category)));
+    document.getElementById('fcBrowse').href = 'trendwatchers-begrippen.html' + (category ? '?cat=' + encodeURIComponent(category) : '');
+    paintProgress(); showCard();
+  }
+  function paintProgress() {
+    const count = cards.filter(card => state.kaarten[card.uid]?.bak === 3).length;
+    document.getElementById('progLabel').textContent = `${count} van ${cards.length} gekend`;
+    document.getElementById('progBar').style.width = (cards.length ? count / cards.length * 100 : 0) + '%';
+    document.getElementById('fcMeter').setAttribute('aria-valuenow', count);
+    document.getElementById('fcMeter').setAttribute('aria-valuemax', Math.max(1, cards.length));
+    if (!chart.hidden) drawHistory();
+  }
+  function showCard() {
+    if (!queue.length) { finish(false); return; }
+    revealed = false;
+    document.getElementById('fc-main').hidden = false;
+    document.getElementById('fc-done').hidden = true;
+    document.getElementById('fcFinish').hidden = false;
+    document.getElementById('cardCounter').textContent = `Nog ${queue.length} ${queue.length === 1 ? 'kaart' : 'kaarten'}`;
+    document.getElementById('frontTerm').textContent = queue[0].term;
+    document.getElementById('backDef').textContent = queue[0].def;
+    document.getElementById('backDef').hidden = true;
+    document.getElementById('flipHint').hidden = false;
+    answers.hidden = true; flip.setAttribute('aria-expanded', 'false');
+  }
+  function reveal() {
+    if (finished || !queue.length || revealed) return;
+    revealed = true;
+    document.getElementById('backDef').hidden = false;
+    document.getElementById('flipHint').hidden = true;
+    answers.hidden = false; flip.setAttribute('aria-expanded', 'true');
+  }
+  function mark(isKnown) {
+    if (!revealed || !queue.length || finished) return;
+    const card = queue.shift(), old = state.kaarten[card.uid];
+    const bak = isKnown ? Math.min(3, (old?.bak || 1) + 1) : 1;
+    const now = Date.now(), following = new Date(now);
+    following.setDate(following.getDate() + ({ 1: 1, 2: 3, 3: 5 })[bak]);
+    following.setHours(0, 0, 0, 0);
+    state.kaarten[card.uid] = { bak, volgende: following.getTime(), laatst: Math.max(now, (old?.laatst || 0) + 1) };
+    state.totaal = cards.length;
+    updating = true;
+    state = account.save(key, state);
+    updating = false;
+    reviewed++;
+    if (isKnown) retries.delete(card.uid);
+    else {
+      retries.add(card.uid);
+      queue.splice(Math.min(3, queue.length), 0, card);
+    }
+    paintProgress(); showCard();
+    if (!finished) flip.focus({ preventScroll: true });
+    else document.getElementById('doneTitle').focus({ preventScroll: true });
+  }
+  function finish(manual) {
+    finished = true; stopped = !!manual;
+    document.getElementById('fc-main').hidden = true;
+    document.getElementById('fc-done').hidden = false;
+    document.getElementById('fcFinish').hidden = true;
+    document.getElementById('cardCounter').textContent = 'Sessie afgerond';
+    document.getElementById('doneTitle').textContent = manual ? 'Sessie afgerond' : selected().length ? 'Voor vandaag ben je klaar' : 'Geen kaarten in deze categorie';
+    const upcoming = selected().map(card => state.kaarten[card.uid]?.volgende).filter(n => n > Date.now());
+    const nextDate = upcoming.length ? new Intl.DateTimeFormat('nl-NL', { day: 'numeric', month: 'long' }).format(new Date(Math.min(...upcoming))) : '';
+    document.getElementById('doneText').textContent = queue.length
+      ? `Je hebt ${reviewed} antwoorden gegeven. Er staan nog ${queue.length} kaarten voor je klaar.`
+      : `Je hebt ${reviewed} antwoorden gegeven.` + (nextDate ? ` Je volgende herhaling is op ${nextDate}.` : '');
+    document.getElementById('fcRestart').hidden = !queue.length;
+    showHistory(true);
+  }
+  function showHistory(open) {
+    chart.hidden = !open;
+    progress.setAttribute('aria-expanded', String(open));
+    if (open) drawHistory();
+  }
+  function drawHistory() {
+    const dates = [];
+    for (let i = 29; i >= 0; i--) {
+      const date = new Date(); date.setDate(date.getDate() - i);
+      dates.push(account.today(date));
+    }
+    const historical = Object.keys(state.historie).filter(day => day < dates[0]).sort();
+    let count = historical.length ? state.historie[historical[historical.length - 1]] : 0;
+    const current = cards.filter(card => state.kaarten[card.uid]?.bak === 3).length;
+    const values = dates.map(day => {
+      if (Object.prototype.hasOwnProperty.call(state.historie, day)) count = state.historie[day];
+      return day === account.today() ? current : count;
+    });
+    const max = Math.max(1, cards.length, ...values);
+    const width = Math.max(240, document.getElementById('historyChart').clientWidth);
+    const end = width - 24;
+    const points = values.map((n, i) => [40 + i * (end - 40) / 29, 156 - n / max * 124]);
+    const line = points.map(point => point.join(',')).join(' ');
+    const label = day => day.slice(8) + '-' + day.slice(5, 7);
+    const description = dates.map((day, i) => `${day}: ${values[i]} gekend`).join('; ');
+    document.getElementById('historyChart').innerHTML = `<svg viewBox="0 0 ${width} 196" role="img" aria-labelledby="chartTitle chartDescription">
+      <title id="chartTitle">Gekende kaarten per dag in de laatste 30 dagen</title>
+      <desc id="chartDescription">${Atlas.esc(description)}</desc>
+      <path d="M40 32H${end} M40 156H${end}" fill="none" stroke="var(--ink-soft)" stroke-opacity=".3"/>
+      <polygon points="40,156 ${line} ${end},156" fill="var(--accent)" fill-opacity=".12"/>
+      <polyline points="${line}" fill="none" stroke="var(--accent)" stroke-width="3" stroke-linejoin="round"/>
+      <circle cx="${end}" cy="${points[29][1]}" r="4" fill="var(--highlight)" stroke="var(--ink)"/>
+      <g fill="var(--ink)" font-size="14" font-family="var(--font)">
+        <text x="32" y="37" text-anchor="end">${max}</text><text x="32" y="161" text-anchor="end">0</text>
+        <text x="40" y="186">${label(dates[0])}</text><text x="${end}" y="186" text-anchor="end">${label(dates[29])}</text>
+      </g>
+    </svg>`;
+  }
+  flip.addEventListener('click', reveal);
+  document.getElementById('fcYes').addEventListener('click', () => mark(true));
+  document.getElementById('fcNo').addEventListener('click', () => mark(false));
+  progress.addEventListener('click', () => {
+    showHistory(chart.hidden);
+    if (!finished) flip.focus({ preventScroll: true });
+  });
+  window.addEventListener('resize', () => { if (!chart.hidden) drawHistory(); });
+  document.getElementById('fcFinish').addEventListener('click', () => { finish(true); document.getElementById('doneTitle').focus(); });
+  document.getElementById('fcRestart').addEventListener('click', () => { start(); if (!finished) flip.focus(); });
+  document.addEventListener('keydown', event => {
+    if (event.repeat || event.altKey || event.ctrlKey || event.metaKey || event.target.closest('input, textarea, select, button, a, [contenteditable]')) return;
+    if (event.code === 'Space' || event.key === ' ') { event.preventDefault(); reveal(); }
+  });
+  window.addEventListener('atlas:kaarten', event => {
+    if (event.detail.key !== key || updating) return;
+    const currentId = queue[0]?.uid, wasRevealed = revealed;
+    const oldState = state;
+    state = account.read(key); state.totaal = cards.length;
+    paintProgress();
+    const changed = cards.some(card => JSON.stringify(oldState.kaarten[card.uid]) !== JSON.stringify(state.kaarten[card.uid]));
+    if (!changed) return;
+    if (event.detail.account) retries.clear();
+    // Herhalingen houden hun plek in deze sessie, ook als een ander apparaat iets wijzigt.
+    const repeatPositions = queue.map((card, position) => ({ card, position })).filter(({ card }) => retries.has(card.uid));
+    retries.forEach(id => {
+      if (state.kaarten[id]?.bak !== 1) retries.delete(id);
+    });
+    queue = buildQueue().filter(card => !retries.has(card.uid));
+    repeatPositions.forEach(({ card, position }) => {
+      if (retries.has(card.uid)) queue.splice(Math.min(position, queue.length), 0, card);
+    });
+    const active = queue.findIndex(card => card.uid === currentId);
+    if (!event.detail.account && active > 0 && JSON.stringify(oldState.kaarten[currentId]) === JSON.stringify(state.kaarten[currentId])) {
+      queue.unshift(queue.splice(active, 1)[0]);
+    }
+    if (!stopped) {
+      finished = false;
+      showCard();
+      if (queue[0]?.uid === currentId && wasRevealed) reveal();
+    } else finish(true);
+  });
+  if (Object.keys(state.kaarten).length) {
+    updating = true; state = account.save(key, state); updating = false;
+  }
+  start();
+})();
 </script>
-<script>
-const firebaseConfig = {
-  apiKey: "AIzaSyBB397Wk2eqpBjic8E7aGV1mTgIjhQ21a8",
-  authDomain: "fmkompas-ff8bc.firebaseapp.com",
-  projectId: "fmkompas-ff8bc",
-  storageBucket: "fmkompas-ff8bc.firebasestorage.app",
-  messagingSenderId: "487972024689",
-  appId: "1:487972024689:web:712c3117080745d14746d0"
-};
-firebase.initializeApp(firebaseConfig);
-const _auth = firebase.auth();
-const _db = firebase.firestore();
-_auth.onAuthStateChanged(async user => {
-  if (user) await faSyncFromCloud(user, _db);
-  document.getElementById('fa-header-slot').innerHTML = '';
-  faMarkActiveToday();
-  document.getElementById('fa-header-slot').appendChild(faRenderHeader({ user }));
-  faMarkLastSeen(DATA.key, DATA.title, DATA.url);
-});
-const DATA = window.__FMDATA__ || { flashcards: [], cats: [], key: 'vak', title: 'Vak', url: 'index.html' };
-const allCards = DATA.flashcards || [];
-const catMap = {};
-DATA.cats.forEach(c => catMap[c.key] = c);
-(function(){ const sel = document.getElementById('catFilter'); DATA.cats.forEach(c => { const opt = document.createElement('option'); opt.value = c.key; opt.textContent = c.label; sel.appendChild(opt); }); })();
-function hexToRgb(h){h=h.replace('#','');if(h.length===3)h=h.split('').map(c=>c+c).join('');const n=parseInt(h,16);return [n>>16&255,n>>8&255,n&255];}
-function catSoftBg(k){const c=catMap[k];if(!c)return 'var(--surface-alt)';const [r,g,b]=hexToRgb(c.color);return 'rgba('+r+','+g+','+b+',0.15)';}
-let deck=[],current=0,known=0,missed=[],flipped=false;
-function shuffleArr(arr){for(let i=arr.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[arr[i],arr[j]]=[arr[j],arr[i]];}return arr;}
-function loadDeck(){const cat=document.getElementById('catFilter').value;deck=(cat==='all'?[...allCards]:allCards.filter(c=>c.cat===cat));current=0;known=0;missed=[];flipped=false;document.getElementById('flipWrap').classList.remove('flipped');document.getElementById('fc-done').style.display='none';document.getElementById('fc-main').style.display='block';updateStats();showCard();}
-function shuffleDeck(){loadDeck();deck=shuffleArr(deck);showCard();}
-function showCard(){if(current>=deck.length){showDone();return;}const c=deck[current];document.getElementById('cardCounter').textContent=`Kaart ${current+1} van ${deck.length}`;const frontCat=document.getElementById('frontCat');frontCat.textContent=(catMap[c.cat]&&catMap[c.cat].label)||c.cat;frontCat.className='fc-cat';frontCat.style.background=catSoftBg(c.cat);frontCat.style.color=(catMap[c.cat]&&catMap[c.cat].color)||'var(--ink)';document.getElementById('frontTerm').textContent=c.term;document.getElementById('backDef').textContent=c.def+(c.formula?'  Formule: '+c.formula:'');flipped=false;document.getElementById('flipWrap').classList.remove('flipped');}
-function flipCard(){flipped=!flipped;document.getElementById('flipWrap').classList.toggle('flipped',flipped);}
-function markCard(isKnown){if(!flipped){flipCard();setTimeout(()=>_mark(isKnown),400);}else _mark(isKnown);}
-function _mark(isKnown){if(isKnown){known++;if (faOnce(location.pathname + '#' + faToday() + '#' + document.getElementById('frontTerm').textContent)) {  faAddXP(5); addFirestorePoints(5); showXpToast('+5 XP');}}else{missed.push(deck[current]);}current++;updateStats();setTimeout(showCard,150);}
-function nextCard(){missed.push(deck[current]);current++;updateStats();flipped=false;document.getElementById('flipWrap').classList.remove('flipped');showCard();}
-function updateStats(){const total=deck.length;document.getElementById('statTotal').textContent=total;document.getElementById('statKnown').textContent=known;document.getElementById('statUnknown').textContent=missed.length;const pct=total?Math.round(current/total*100):0;document.getElementById('progBar').style.width=pct+'%';document.getElementById('progPct').textContent=pct+'%';document.getElementById('progLabel').textContent=`${known} / ${total} bekend`;faSetProgress(DATA.key,Math.min(100,(known/allCards.length)*100));}
-function showDone(){document.getElementById('fc-main').style.display='none';const d=document.getElementById('fc-done');d.style.display='block';const pct=deck.length?Math.round(known/deck.length*100):0;const scoreEl=document.getElementById('doneScore');scoreEl.textContent=`${known} / ${deck.length}`;scoreEl.className='score-big'+(pct<60?' bad':'');document.getElementById('doneText').textContent=pct>=80?'Uitstekend! Je beheerst deze stof goed.':pct>=60?'Goed bezig! Herhaal de niet-gekende kaarten nog een keer.':'Nog wat herhalen. Ga de gemiste kaarten nog eens door.';const btn=document.getElementById('btnMissed');const list=document.getElementById('missedList');if(missed.length){btn.style.display='inline-flex';list.style.display='block';document.getElementById('missedItems').innerHTML=missed.map(c=>`<div class="missed-item"><strong>${c.term}</strong><span>${c.def.substring(0,130)}${c.def.length>130?'…':''}</span></div>`).join('');}else{btn.style.display='none';list.style.display='none';}}
-function restartMissed(){if(!missed.length)return;deck=shuffleArr([...missed]);current=0;known=0;missed=[];flipped=false;document.getElementById('fc-done').style.display='none';document.getElementById('fc-main').style.display='block';document.getElementById('flipWrap').classList.remove('flipped');updateStats();showCard();}
-function showXpToast(txt){const t=document.getElementById('xpToast');document.getElementById('xpToastText').textContent=txt;t.classList.add('show');clearTimeout(t._h);t._h=setTimeout(()=>t.classList.remove('show'),1400);}
-async function addFirestorePoints(n){const u=_auth.currentUser;if(!u)return;try{await _db.collection('scores').doc(u.uid).set({pts:firebase.firestore.FieldValue.increment(n),name:u.displayName||'Anoniem',photoURL:u.photoURL||'',updatedAt:firebase.firestore.FieldValue.serverTimestamp()},{merge:true});}catch(e){console.warn(e);}}
-document.addEventListener('keydown',e=>{if(document.getElementById('fc-done').style.display==='block')return;if(e.target.tagName==='SELECT'||e.target.tagName==='INPUT')return;if(e.key===' '||e.key==='Enter'){e.preventDefault();flipCard();}if(e.key==='ArrowRight')markCard(true);if(e.key==='ArrowLeft')markCard(false);if(e.key==='ArrowDown'){e.preventDefault();nextCard();}});
-loadDeck();
-</script>
-<script src="js/studie-extra.js"></script>
 </body>
 </html>

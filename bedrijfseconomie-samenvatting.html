@@ -2,694 +2,235 @@
 <html lang="nl">
 <head>
 <meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Samenvatting · Facilitaire Bedrijfseconomie — FM Atlas</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+<title>Samenvatting · Facilitaire bedrijfseconomie · FM Atlas</title>
+<meta name="description" content="Samenvatting van Facilitaire bedrijfseconomie op FM Atlas, studiehulp voor HAN Facilitair Management."/>
 <link rel="icon" type="image/svg+xml" href="logo.svg"/>
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png"/>
 <link rel="apple-touch-icon" href="apple-touch-icon.png"/>
-<meta name="theme-color" content="#f7f3ec"/>
+<meta name="theme-color" content="#efe5d4"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet"/>
-<link rel="stylesheet" href="css/fmatlas.css"/>
-<style>
-.sam-wrap { max-width: 1100px; margin: 0 auto; padding: 24px; }
-.sam-intro { background: var(--surface); border: 1.5px solid var(--line); border-radius: var(--radius-xl); padding: 28px 32px; margin-bottom: 18px; }
-.sam-intro-meta { font-size: 11px; font-weight: 800; color: var(--accent); letter-spacing: 0.08em; margin-bottom: 8px; }
-.sam-intro h1 { font-size: 32px; font-weight: 900; letter-spacing: -0.025em; line-height: 1.08; margin-bottom: 10px; }
-.sam-intro p { color: var(--ink-soft); font-size: 14.5px; line-height: 1.6; }
-
-nav.chapnav { background: var(--surface); border: 1.5px solid var(--line); border-radius: var(--radius-lg); padding: 12px 16px; margin: 0 24px 18px; max-width: 1052px; margin-left: auto; margin-right: auto; display: flex; flex-wrap: wrap; gap: 6px; position: sticky; top: 68px; z-index: 20; }
-nav.chapnav a { color: var(--ink-soft); text-decoration: none; padding: 4px 10px; border-radius: 8px; background: var(--bg); font-weight: 800; font-size: 11.5px; border: 1.5px solid var(--line); transition: all 0.12s; }
-nav.chapnav a:hover { background: var(--accent-soft); color: var(--accent-deep); border-color: var(--accent); }
-
-.main { max-width: 1052px; margin: 0 auto; padding: 0 24px 60px; display: flex; flex-direction: column; gap: 18px; }
-
-.card { background: var(--surface); border: 1.5px solid var(--line); border-radius: var(--radius-xl); overflow: hidden; scroll-margin-top: 140px; }
-.card-header { padding: 16px 22px; display: flex; align-items: center; gap: 10px; color: var(--surface); background: var(--ink); }
-.card-header h2 { font-size: 17px; font-weight: 900; letter-spacing: -0.015em; }
-.card-header .icon { font-size: 20px; }
-.card-body { padding: 22px 24px; }
-
-.h1 { background: var(--accent); }
-.h2, .h3, .h4, .h5, .h6 { background: var(--ink); }
-
-.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-.three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
-@media (max-width: 740px) { .two-col, .three-col { grid-template-columns: 1fr; } }
-
-.section { margin-bottom: 18px; }
-.section h3 { font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin-bottom: 8px; padding-bottom: 6px; border-bottom: 1.5px solid var(--line); }
-
-ul.clean { list-style: none; display: flex; flex-direction: column; gap: 5px; margin: 0; padding: 0; }
-ul.clean li { font-size: 13.5px; line-height: 1.55; padding: 3px 0 3px 16px; position: relative; color: var(--ink-soft); font-weight: 500; }
-ul.clean li::before { content: '›'; position: absolute; left: 0; top: 3px; color: var(--accent); font-weight: 900; }
-ul.clean li strong { color: var(--ink); font-weight: 800; }
-
-.defbox { background: var(--bg); border: 1.5px solid var(--line); border-left: 4px solid var(--accent); border-radius: 0 var(--radius) var(--radius) 0; padding: 10px 14px; margin-bottom: 10px; font-size: 13.5px; line-height: 1.55; color: var(--ink-soft); }
-.defbox strong { display: block; font-size: 10.5px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); margin-bottom: 4px; }
-
-.highlight { background: var(--accent-soft); border: 1.5px solid rgba(239, 90, 63, 0.25); border-radius: var(--radius); padding: 10px 14px; font-size: 13.5px; line-height: 1.55; margin-bottom: 10px; color: var(--accent-deep); font-weight: 600; }
-.highlight strong { color: var(--accent-deep); font-weight: 900; }
-
-.warn { background: #fff7ed; border-left: 3px solid #f59e0b; padding: 9px 14px; border-radius: 0 var(--radius) var(--radius) 0; font-size: 12.5px; color: #92400e; margin-bottom: 10px; font-weight: 600; }
-
-.formula-box { background: #0f172a; border-radius: var(--radius); padding: 12px 16px; margin-bottom: 10px; font-family: 'SFMono-Regular', Menlo, monospace; font-size: 13px; color: #fcd34d; line-height: 1.7; }
-.formula-box .comment { color: #6b7280; font-style: italic; font-family: inherit; }
-
-table.compact { width: 100%; border-collapse: collapse; font-size: 12.5px; margin-top: 6px; }
-table.compact th, table.compact td { padding: 7px 10px; text-align: left; border-bottom: 1.5px solid var(--line); color: var(--ink-soft); }
-table.compact th { font-size: 10.5px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
-table.compact td strong { color: var(--ink); font-weight: 800; }
-
-.box { background: var(--bg); border: 1.5px solid var(--line); border-radius: var(--radius); padding: 12px 14px; }
-.box h4 { font-size: 12.5px; font-weight: 900; margin-bottom: 8px; color: var(--ink); letter-spacing: -0.005em; }
-
-.nummer { display: inline-flex; align-items:center; justify-content:center; background: var(--accent); color: var(--surface); width: 22px; height: 22px; border-radius: 50%; font-size: 11px; font-weight: 900; margin-right: 8px; flex-shrink: 0; }
-.stap { display: flex; align-items: flex-start; gap: 4px; font-size: 13.5px; color: var(--ink-soft); padding: 4px 0; line-height: 1.5; }
-.stap strong { color: var(--ink); }
-
-.tag { display: inline-block; padding: 2px 8px; border-radius: 999px; font-size: 11px; font-weight: 800; }
-.blue   { background: #dbeafe; color: #1e40af; }
-.green  { background: #dcfce7; color: #166534; }
-.purple { background: #ede9fe; color: #5b21b6; }
-.orange { background: #ffedd5; color: #9a3412; }
-.red    { background: #fee2e2; color: #991b1b; }
-.yellow { background: #fef3c7; color: #854d0e; }
-</style>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="css/atlas.css"/>
+<link rel="stylesheet" href="css/leer.css"/>
 </head>
 <body>
+<div class="scene" aria-hidden="true"><i></i></div>
+<header class="topbar" id="topbar"></header>
 
-<div id="fa-header-slot"></div>
+<div class="leer">
+  <nav class="toc glass" id="toc" aria-label="Inhoud">
+    <button class="toc-toggle" type="button" id="toc-toggle" aria-expanded="false"><span id="toc-now"></span><span aria-hidden="true">▾</span></button>
+    <div class="toc-list">
+      <div class="toc-title">Samenvatting</div>
+      <a href="#h1"><span>Module 1, Basisprincipes</span></a>
+      <a href="#h2"><span>Module 2, Financiële overzichten</span></a>
+      <a href="#h3"><span>Module 3, Kosten en geldstromen</span></a>
+      <a href="#h4"><span>Module 4, Managen en calculatie</span></a>
+      <a href="#h5"><span>Module 5, Financiële kengetallen</span></a>
+      <a href="#h6"><span>Module 6, Investering beoordelen</span></a>
+      <a href="#h7"><span>Module 7, FM-economie: TCO en NEN 2748</span></a>
+      <a href="#h8"><span>Module 8, Offertes: van prijsopgave tot tarief</span></a>
+    </div>
+  </nav>
 
-<nav class="fa-breadcrumb">
-  <a href="app.html">Vakken</a>
-  <span>›</span>
-  <a href="bedrijfseconomie.html">Facilitaire Bedrijfseconomie</a>
-  <span>›</span>
-  <span class="current">Samenvatting</span>
-</nav>
-
-<div class="sam-wrap">
-  <div class="sam-intro">
-    <div class="sam-intro-meta">SAMENVATTING · 8 modules · alle formules</div>
-    <h1>Facilitaire Bedrijfseconomie — volledige studiesamenvatting</h1>
-    <p>Basisprincipes, financiële overzichten (balans, resultatenrekening, kasstroomoverzicht), kosten en geldstromen, BTW, break-even, kostprijsberekeningen, personeelskosten, kengetallen en investeringsbeoordeling.</p>
+  <main class="lees" id="lees">
+<section class="sectie" id="h1">
+  <header class="lees-kop"><h1>Module 1, Basisprincipes</h1></header>
+  <div class="tekst">
+<div class="kern">Basisprincipes, financiële overzichten (balans, resultatenrekening, kasstroomoverzicht), kosten en geldstromen, BTW, break-even, kostprijsberekeningen, personeelskosten, kengetallen en investeringsbeoordeling.</div>
+<h3>Investering</h3>
+<dl class="begrip"><dt>Investering</dt><dd>Een grote uitgave aan iets wat je voor een langere periode gebruikt. Bedoeld om geld mee te verdienen, te besparen of te voorkomen dat je geld gaat verliezen.</dd></dl>
+<div class="kern"><strong>Op het moment van investeren word je niet armer of rijker.</strong> Hetzelfde geldt voor lenen: op het moment van lenen word je niet armer of rijker.</div>
+<h3>Kosten vs. opbrengsten</h3>
+<dl class="begrip"><dt>Kosten</dt><dd>Aan perioden toegerekende uitgaven. Kosten verlagen je winst.</dd></dl>
+<dl class="begrip"><dt>Opbrengsten</dt><dd>Aan perioden toegerekende ontvangsten. Opbrengsten verhogen je winst.</dd></dl>
+<h3>Typen kosten</h3>
+<div class="tabel"><table><thead><tr><th>Type</th><th>Kenmerken</th></tr></thead><tbody><tr><td><strong>Variabele kosten (v)</strong></td><td>Veranderen mee met productie-omvang</td></tr><tr><td><strong>Vaste (constante) kosten (C)</strong></td><td>Blijven gelijk, ongeacht omvang</td></tr><tr><td><strong>Directe kosten</strong></td><td>Direct toe te wijzen aan één product/dienst</td></tr><tr><td><strong>Indirecte kosten</strong></td><td>Niet direct toe te wijzen, verdeeld via opslag</td></tr></tbody></table></div>
+<h3>Onthoud dit altijd</h3>
+<div class="tabel"><table><thead><tr><th>Post</th><th>Kosten?</th><th>Uitgave?</th></tr></thead><tbody><tr><td><strong>Afschrijving</strong></td><td>Ja</td><td>Nee</td></tr><tr><td><strong>Aflossing</strong></td><td>Nee</td><td>Ja</td></tr><tr><td><strong>Rente</strong></td><td>Ja</td><td>Ja</td></tr><tr><td><strong>Geleend geld</strong></td><td>Nooit opbrengst</td><td></td></tr><tr><td><strong>Voorziening</strong></td><td>Ja</td><td>Nee</td></tr></tbody></table></div>
   </div>
+  <nav class="verder" aria-label="Vorige en volgende"><span></span><a class="glass" href="#h2"><span>Module 2, Financiële overzichten</span> &#8250;</a></nav>
+</section>
+
+<section class="sectie" id="h2">
+  <header class="lees-kop"><h1>Module 2, Financiële overzichten</h1></header>
+  <div class="tekst">
+<h3>De balans</h3>
+<dl class="begrip"><dt>Balans</dt><dd>Overzicht van bezittingen en schulden op één bepaald moment. Debet (links) = activa. Credit (rechts) = passiva. Totaal debet = Totaal credit (altijd!).</dd></dl>
+<div class="tabel"><table><thead><tr><th>DEBET (Activa)</th><th>CREDIT (Passiva)</th></tr></thead><tbody><tr><td>Vaste activa</td><td>Eigen vermogen</td></tr><tr><td>Vlottende activa</td><td>Voorzieningen</td></tr><tr><td>, Voorraden</td><td>Vreemd vermogen lang</td></tr><tr><td>, Debiteuren</td><td>Vreemd vermogen kort</td></tr><tr><td>, Te vorderen BTW</td><td>, Crediteuren</td></tr><tr><td>, Liquide middelen</td><td>, Te betalen BTW</td></tr></tbody></table></div>
+<div class="kern"><strong>EV = Bezittingen - Schulden.</strong> Activa worden altijd exclusief BTW op de balans gezet (behalve debiteuren en crediteuren: inclusief BTW).</div>
+<h3>Resultatenrekening, EBITDA naar EAT</h3>
+<div class="kern">Omzet (q × p, excl. BTW)<br>− Inkoopwaarde omzet (IWO)<br>= <strong>Brutowinst</strong><br>− Overige kosten<br>= <strong>EBITDA</strong> // vóór rente, belasting, afschrijving<br>− Afschrijvingen<br>= <strong>EBIT</strong> // vóór rente en belasting<br>− Rentekosten<br>= <strong>EBT</strong> // vóór belasting<br>− Vennootschapsbelasting (EBT × %)<br>= <strong>EAT</strong> // nettowinst</div>
+<h3>Kasstroomoverzicht</h3>
+<dl class="begrip"><dt>Kasstroomoverzicht en liquiditeitsbegroting</dt><dd>(terugkijken tegenover vooruitkijken) Overzicht van alle ontvangsten en uitgaven over een periode. Niet kosten/opbrengsten, maar daadwerkelijke geldstromen. Beginsaldo + ontvangsten - uitgaven = eindsaldo.</dd></dl>
+<div class="let-op"><b>Let op</b>Factuurmoment ≠ betaalmoment. Ontvangen/verstuurde rekening = nog géén ontvangst/uitgave. Betaling = wel ontvangst/uitgave.</div>
+  </div>
+  <nav class="verder" aria-label="Vorige en volgende"><a class="glass" href="#h1">&#8249; <span>Module 1, Basisprincipes</span></a><a class="glass" href="#h3"><span>Module 3, Kosten en geldstromen</span> &#8250;</a></nav>
+</section>
+
+<section class="sectie" id="h3">
+  <header class="lees-kop"><h1>Module 3, Kosten en geldstromen</h1></header>
+  <div class="tekst">
+<h3>Primaire vs. secundaire geldstromen</h3>
+<div class="kader glass"><h4>Primaire geldstroom</h4><p>Geldstromen die direct samenhangen met productie en verkoop. Worden gebruikt bij investeringsbeoordelingen (BTP/NCW/ETP).</p></div>
+<div class="kader glass"><h4>Secundaire geldstroom</h4><p>Geldstromen die samenhangen met de vermogensmarkt: leningen, aflossingen, rentebetalingen, aandelenkapitaal, dividend.</p></div>
+<div class="kern">Primaire geldstroom (voor investeringsbeoordeling)<br>= EAT + Rentekosten + Afschrijvingen// Afschrijving terug: is geen geldstroom (boekhoudkundig).<br>// Rente terug: hoort bij financiering (secundair),<br>// niet bij het project zelf, zo blijft de beoordeling<br>// onafhankelijk van hoe het project gefinancierd wordt.</div>
+<h3>BTW (omzetbelasting)</h3>
+<dl class="begrip"><dt>Factuurstelsel</dt><dd>BTW boeken op het moment van factuur (niet betaling). Inkoop-BTW terugvragen (te vorderen BTW, debet). Verkoop-BTW afdragen (te betalen BTW, credit).</dd></dl>
+<div class="kern">Excl. BTW → Incl. BTW: bedrag × 1,21<br>Incl. BTW → Excl. BTW: bedrag / 1,21<br>BTW-bedrag (21%): excl. × 0,21<br>BTW-bedrag (9%): excl. × 0,09</div>
+<div class="let-op"><b>Let op</b>Activa en kosten staan altijd EXCLUSIEF BTW op de balans/resultatenrekening. Debiteuren en crediteuren staan INCLUSIEF BTW.</div>
+<h3>Afschrijving</h3>
+<div class="kern">Afschrijving per jaar = (Aanschafwaarde − Restwaarde) / Aantal jaren</div>
+  </div>
+  <nav class="verder" aria-label="Vorige en volgende"><a class="glass" href="#h2">&#8249; <span>Module 2, Financiële overzichten</span></a><a class="glass" href="#h4"><span>Module 4, Managen en calculatie</span> &#8250;</a></nav>
+</section>
+
+<section class="sectie" id="h4">
+  <header class="lees-kop"><h1>Module 4, Managen en calculatie</h1></header>
+  <div class="tekst">
+<h3>Break-even analyse</h3>
+<div class="kern">TO = q × p // totale opbrengst<br>TK = (q × v) + C // totale kosten<br>Break-even: TO = TK<br>Dekkingsbijdrage = p − v<br>BEA = C / (p − v) // break-even afzet, altijd ↑ afronden<br>BEO = BEA × p // break-even omzet (1 product)<br>Veiligheidsmarge (€) = Werkelijke omzet − BEO<br>Veiligheidsmarge (%) = VM / WO × 100%</div>
+<h3>Kostprijsberekeningen</h3>
+<div class="kern">// Integrale kostprijs (per eenheid)<br>IK = (C / N) + (V / W)// C/N = constante kosten gedeeld door normaal aantal eenheden<br>// V/W = variabele kosten gedeeld door werkelijk aantal eenheden<br>// Beide termen zijn dus al per-eenheid voordat je optelt.// Enkelvoudige opslagmethode<br>Opslag% = Totale indirecte kosten / Totale directe kosten × 100%<br>Kostprijs = DC + (DC × Opslag%)// Nooit opslagpercentage afronden!</div>
+<h3>Personeelskosten en uurtarief</h3>
+<h3>Productieve uren berekening</h3>
+<ul><li>1 <strong>Contracturen</strong> = uren per week × 52</li><li>2 − Vakantiedagen (dagen × uren/dag)</li><li>3 − Ziekteverzuim (% van overgebleven uren)</li><li>4 − Pauze (dagen/week × 52 × pauze-uren/dag)</li><li>5 − Leegloop (% van overgebleven uren) = <strong>Productieve uren</strong></li></ul>
+<div class="kern">Werkgeverslasten = Brutoloon + vakantiegeld + sociale lasten + overig<br>Kostprijs/uur = Werkgeverslasten / Productieve uren<br>Uurtarief = Kostprijs × (1 + overhead%) × (1 + winst%) × (1 + BTW%)</div>
+<h3>Differentiële calculatie</h3>
+<dl class="begrip"><dt>Differentieel resultaat</dt><dd>Extra opbrengsten − extra kosten door de opdracht. Constante kosten zijn al gedekt en worden NIET meegenomen. Sunk costs worden NIET meegenomen.</dd></dl>
+  </div>
+  <nav class="verder" aria-label="Vorige en volgende"><a class="glass" href="#h3">&#8249; <span>Module 3, Kosten en geldstromen</span></a><a class="glass" href="#h5"><span>Module 5, Financiële kengetallen</span> &#8250;</a></nav>
+</section>
+
+<section class="sectie" id="h5">
+  <header class="lees-kop"><h1>Module 5, Financiële kengetallen</h1></header>
+  <div class="tekst">
+<h3>Solvabiliteit (lange termijn)</h3>
+<dl class="begrip"><dt>Wat?</dt><dd>Kan het bedrijf op lange termijn aan zijn financiële verplichtingen voldoen? Interessant voor: directie, leveranciers, banken.</dd></dl>
+<div class="kern">Solvabiliteits% = EV / TV × 100%<br>Debt ratio = VV / TV// TV = EV + VV// Gebruik 1 moment, GEEN gemiddelden!</div>
+<h3>Liquiditeit (korte termijn)</h3>
+<dl class="begrip"><dt>Wat?</dt><dd>Kan het bedrijf op korte termijn zijn rekeningen betalen? Interessant voor: directie, leveranciers, banken.</dd></dl>
+<div class="kern">NWK = Vlottende activa − Kort VV<br>CR = Vlottende activa / Kort VV<br>QR = (Vlottende activa − Voorraden) / Kort VV// Gebruik 1 moment, GEEN gemiddelden!// Voorzieningen = GEEN Kort VV</div>
+<h3>Rentabiliteit</h3>
+<dl class="begrip"><dt>Wat?</dt><dd>Hoeveel rendement behaalt het bedrijf? Gebruik WEL gemiddelden (begin- + eindbalans / 2).</dd></dl>
+<div class="kern">REV = EAT / Gem. EV × 100%<br>RTV = EBIT / Gem. TV × 100%<br>KVV = Rente / Gem. VV × 100%// Gemiddeld VV = (VV begin + VV eind) / 2</div>
+<h3>Waardecreatiemodel, 6 waarden (FIM MNS)</h3>
+<div class="tabel"><table><thead><tr><th>Waarde</th><th>Wat?</th><th>Signaalwoorden</th></tr></thead><tbody><tr><td><strong>Financieel</strong></td><td>Geld, kapitaal, rendement</td><td>budget, winst, schuld, besparing</td></tr><tr><td><strong>Intellectueel</strong></td><td>Kennis, innovatie</td><td>training, software, reputatie, data</td></tr><tr><td><strong>Menselijk</strong></td><td>Welzijn eigen medewerkers</td><td>gezondheid, veiligheid, motivatie, ziekteverzuim</td></tr><tr><td><strong>Materieel</strong></td><td>Fysieke bezittingen</td><td>gebouw, machines, inventaris, apparatuur</td></tr><tr><td><strong>Natuurlijk</strong></td><td>Milieu, duurzaamheid</td><td>CO₂, energie, groen, afval, recycling</td></tr><tr><td><strong>Sociaal-relationeel</strong></td><td>Relaties met externen</td><td>partnership, leveranciers, klanten, samenwerking</td></tr></tbody></table></div>
+  </div>
+  <nav class="verder" aria-label="Vorige en volgende"><a class="glass" href="#h4">&#8249; <span>Module 4, Managen en calculatie</span></a><a class="glass" href="#h6"><span>Module 6, Investering beoordelen</span> &#8250;</a></nav>
+</section>
+
+<section class="sectie" id="h6">
+  <header class="lees-kop"><h1>Module 6, Investering beoordelen</h1></header>
+  <div class="tekst">
+<h3>DPG en BTP</h3>
+<dl class="begrip"><dt>DPG, Differentiële Primaire Geldstromen</dt><dd>Alleen de primaire geldstromen die veranderen door jouw investering.</dd></dl>
+<div class="kern">BTP = optellen DPG's per jaar totdat investering overschreden<br>BTP maanden = (Benodigd bedrag in jaar / Jaarbedrag) × 12// Altijd naar BOVEN afronden// BTP houdt GEEN rekening met tijdswaarde van geld</div>
+<h3>Tijdswaarde van geld</h3>
+<div class="kern"><strong>Geld dat je eerder krijgt is meer waard</strong> dan geld dat je later krijgt, omdat je er meer geld van kan maken. Uitgaven zo laat mogelijk, ontvangsten zo vroeg mogelijk.</div>
+<div class="kern">Toekomstige waarde (TW) = Waarde nu × (1 + r)^n<br>Contante waarde (CW) = TW / (1 + r)^n// r = rente/vermogenskostenvoet, n = aantal jaren</div>
+<h3>NCW en ETP</h3>
+<div class="kern">NCW = Som van alle contante DPG's − Investering<br>CW jaar 1 = DPG jaar 1 / (1 + r)^1<br>CW jaar 2 = DPG jaar 2 / (1 + r)^2<br>...<br>NCW &gt; 0 → Investering is rendabel ✓<br>NCW &lt; 0 → Investering haalt rendement niet ✗</div>
+<dl class="begrip"><dt>ETP, Economische Terugverdienperiode</dt><dd>Zelfde als BTP maar dan met contant gemaakte DPG's. Houdt WEL rekening met tijdswaarde van geld. Verschil: ETP ≥ BTP (want contante waarden zijn lager).</dd></dl>
+<div class="tabel"><table><thead><tr><th>Methode</th><th>Tijdswaarde?</th></tr></thead><tbody><tr><td><strong>BTP</strong></td><td>Nee, gebruikt gewone DPG's</td></tr><tr><td><strong>ETP</strong></td><td>Ja, gebruikt contante DPG's</td></tr><tr><td><strong>NCW</strong></td><td>Ja, vergelijkt contante waarden</td></tr></tbody></table></div>
+  </div>
+  <nav class="verder" aria-label="Vorige en volgende"><a class="glass" href="#h5">&#8249; <span>Module 5, Financiële kengetallen</span></a><a class="glass" href="#h7"><span>Module 7, FM-economie: TCO en NEN 2748</span> &#8250;</a></nav>
+</section>
+
+<section class="sectie" id="h7">
+  <header class="lees-kop"><h1>Module 7, FM-economie: TCO en NEN 2748</h1></header>
+  <div class="tekst">
+<h3>Total Cost of Ownership (TCO)</h3>
+<dl class="begrip"><dt>TCO</dt><dd>Alle kosten die een product of dienst gedurende zijn hele levensduur veroorzaakt, niet alleen de aankoopprijs. Vooral relevant bij FM-investeringen (gebouwen, installaties, wagenpark, ICT, koffieautomaten).</dd></dl>
+<p>Drie kostenfasen:</p>
+<ul><li><strong>Pre-transactie</strong>, selectie, marktonderzoek, specificeren, aanbesteden</li><li><strong>Transactie</strong>, aanschaf, installatie, training</li><li><strong>Post-transactie</strong>, gebruik, energie, onderhoud, reparatie, verzekering, afvoer</li></ul>
+<div class="kern">TCO = Aanschafkosten<br>+ Som(jaarlijkse exploitatiekosten × levensduur)<br>+ Onderhouds- en reparatiekosten<br>+ Eindafvoerkosten<br>− Restwaarde</div>
+<div class="kern">De goedkoopste optie bij aankoop is vaak de duurste over de levensduur. TCO maakt dat verschil zichtbaar en is daarmee een betere basis dan kale offertevergelijking.</div>
+<h3>NEN 2748, kostenrubricering FM</h3>
+<dl class="begrip"><dt>NEN 2748</dt><dd>Nederlandse norm die facilitaire kosten en prestaties uniform indeelt. Maakt benchmarken mogelijk doordat organisaties dezelfde "categorieën-taal" hanteren.</dd></dl>
+<div class="tabel"><table><thead><tr><th>Rubriek</th><th>Inhoud</th></tr></thead><tbody><tr><td><strong>1. Huisvesting</strong></td><td>Gebouw, terrein, energie, schoonmaak gebouwgebonden, beveiliging</td></tr><tr><td><strong>2. Diensten en middelen</strong></td><td>Catering, drankvoorziening, werkplekservices, risicobeheersing</td></tr><tr><td><strong>3. ICT</strong></td><td>Apparatuur, software, telecom, gebruikersondersteuning</td></tr><tr><td><strong>4. Externe voorzieningen</strong></td><td>Wagenpark, verhuizingen, externe diensten op afstand</td></tr><tr><td><strong>5. Facility management</strong></td><td>Beleid, planning, control, contractmanagement</td></tr></tbody></table></div>
+<p>Voorbeeldkengetal: facilitaire kosten per fte per jaar, alleen vergelijkbaar als alle organisaties NEN 2748 gebruiken voor de afbakening.</p>
+<h3>Benchmarking</h3>
+<ul><li><strong>Intern</strong>, eigen locaties of jaren naast elkaar leggen (zelfde definities, snel beschikbaar)</li><li><strong>Extern</strong>, vergelijken met sectorgenoten via Facility Management Nederland (FMN), branchecijfers of benchmarkdiensten</li><li><strong>Best practice</strong>, leren van organisaties die op een KPI excelleren, niet alleen vergelijken</li></ul>
+  </div>
+  <nav class="verder" aria-label="Vorige en volgende"><a class="glass" href="#h6">&#8249; <span>Module 6, Investering beoordelen</span></a><a class="glass" href="#h8"><span>Module 8, Offertes: van prijsopgave tot tarief</span> &#8250;</a></nav>
+</section>
+
+<section class="sectie" id="h8">
+  <header class="lees-kop"><h1>Module 8, Offertes: van prijsopgave tot tarief</h1></header>
+  <div class="tekst">
+<h3>Periode 2 in één oogopslag</h3>
+<div class="kern"><strong>Periode 1 ging over investeren (lange termijn).</strong> Periode 2 gaat over offertes (korte termijn). Je bekijkt een offerte van twee kanten: als aanbieder die hem opstelt en als inkoper die hem beoordeelt.</div>
+<div class="tabel"><table><thead><tr><th>Week</th><th>Onderwerp</th></tr></thead><tbody><tr><td><strong>1</strong></td><td>Algemeen: hoe ziet een offerte eruit?</td></tr><tr><td><strong>2</strong></td><td>Loonkosten, productieve uren en uurtarieven</td></tr><tr><td><strong>3</strong></td><td>Kostprijs voor een offerte</td></tr><tr><td><strong>4</strong></td><td>Beoordelen van een offerte als inkopende partij</td></tr><tr><td><strong>5</strong></td><td>Wat als je het zelf zou doen?</td></tr><tr><td><strong>6</strong></td><td>Samenhang offertes en investeringen (eenmalige opdrachten)</td></tr><tr><td><strong>7</strong></td><td>Oefentoets</td></tr></tbody></table></div>
+<ul><li><strong>Eerst</strong> de offerte uit elkaar trekken: wat staat erop?</li><li><strong>Dan als aanbieder:</strong> hoe komt een offerte tot stand?</li><li><strong>Dan als inkoper:</strong> kunnen we het niet beter zelf doen?</li><li><strong>Tot slot</strong> afronding en oefentoets.</li></ul>
+<h3>Wat is een offerte?</h3>
+<dl class="begrip"><dt>Offerte</dt><dd>Een uitgebreide prijsopgave voor een (mogelijke) klant. Je laat zien wat de opdracht kost, hoe je hem wilt uitvoeren en hoe het bedrag is opgebouwd: uit een uurtarief, uit materiaalkosten, of met een toeslag omdat het een spoedklus is. Alleen een bedrag met "vriendelijke groet" is geen offerte.</dd></dl>
+<div class="tabel"><table><thead><tr><th></th><th>Dienst</th><th>Product</th></tr></thead><tbody><tr><td><strong>Wat?</strong></td><td>Werk dat iemand voor je doet</td><td>Iets tastbaars</td></tr><tr><td><strong>Bewaren?</strong></td><td>Nee gedaan of niet gedaan</td><td>Ja ook door te verkopen</td></tr><tr><td><strong>Op de balans?</strong></td><td>Nooit altijd kosten</td><td>Kan als bezit</td></tr></tbody></table></div>
+<h3>Twee kanten van de offerte</h3>
+<div class="kader glass"><h4>Verkopende kant</h4><p>Jij biedt catering, schoonmaak, beveiliging of advies aan een klant aan. Je stelt de offerte op en bepaalt de tarieven.</p></div>
+<div class="kader glass"><h4>Inkopende kant</h4><p>Jij koopt die diensten in bij een andere partij, of je doet het zelf. Je beoordeelt de offerte en vraagt je af of zelf doen niet beter is.</p></div>
+<div class="tabel"><table><thead><tr><th>Deelmarkt</th><th>Uitbestedingspercentage</th></tr></thead><tbody><tr><td><strong>Schoonmaakdienstverlening</strong></td><td>92%</td></tr><tr><td><strong>Technisch beheer</strong></td><td>86%</td></tr><tr><td><strong>Beveiliging</strong></td><td>81%</td></tr></tbody></table></div>
+<p>Marktonderzoek Twijstra Gudde 2025. Omdat zoveel wordt uitbesteed, heeft een FM'er bijna altijd met offertes te maken.</p>
+<h3>Verplichte onderdelen van een offerte</h3>
+<ul><li><strong>Je bedrijfsgegevens</strong>, inclusief KvK-nummer en btw-id</li><li><strong>Gegevens van de klant</strong></li><li><strong>Offertenummer</strong></li><li><strong>Datum en geldigheidsduur</strong></li><li><strong>Beschrijving van de werkzaamheden</strong> (omvang van de dienstverlening)</li><li><strong>Prijs per eenheid en aantallen</strong>: per uur, functie, stuk, liter, keer of m²</li><li><strong>Totaalprijs exclusief btw</strong> en het <strong>btw-percentage</strong></li><li><strong>Verwijzing naar je algemene voorwaarden</strong></li><li><strong>Hoe de klant akkoord geeft</strong>, bijvoorbeeld een handtekening voor akkoord</li></ul>
+<div class="let-op"><b>Let op</b>Btw is niet voor elke organisatie terug te vragen. Voor sommige organisaties is de btw op een offerte gewoon een kostenpost.</div>
+<div class="let-op"><b>Let op</b>"Onder voorbehoud van wijzigingen" betekent dat de prijzen nog kunnen veranderen.</div>
+<h3>Rekenvoorbeeld: offerte CleanUp B.V.</h3>
+<dl class="begrip"><dt>De situatie</dt><dd>CleanUp B.V. biedt Facility Education Sciences v.o.f. de terugkerende schoonmaakwerkzaamheden aan voor kalenderjaar 2026. Offertedatum 28-10-2025, vervaldag 27-11-2025: de offerte is dus 30 dagen geldig.</dd></dl>
+<div class="tabel"><table><thead><tr><th>Omvang dienstverlening</th><th>Aantal</th><th>Tarief</th><th>Totaal excl.</th></tr></thead><tbody><tr><td>Reiniging 3.500 m² looproutes</td><td>2.000 uur</td><td>€ 30,55</td><td>€ 61.100,00</td></tr><tr><td>Reiniging 7.500 m² kantoor en lokalen</td><td>3.000 uur</td><td>€ 30,55</td><td>€ 91.650,00</td></tr><tr><td>Reiniging overige ruimtes</td><td>1.000 uur</td><td>€ 30,55</td><td>€ 30.550,00</td></tr><tr><td>Reiniging gevelglas (5.700 m²)</td><td>6 beurten</td><td>€ 4.500,00</td><td>€ 27.000,00</td></tr><tr><td>Specialistische schoonmaak</td><td>80 uur</td><td>€ 52,00</td><td>€ 4.160,00</td></tr><tr><td>Loonkosten toezicht</td><td>650 uur</td><td>€ 52,00</td><td>€ 33.800,00</td></tr><tr><td><strong>Bedrag exclusief btw</strong></td><td></td><td></td><td><strong>€ 248.260,00</strong></td></tr></tbody></table></div>
+<div class="kern">Regelbedrag = aantal × tarief<br>2.000 × € 30,55 = € 61.100,00<br>Bedrag excl. btw = som van de regels = € 248.260,00<br>Btw (21%) = € 248.260,00 × 0,21 = € 52.134,60<br>Totaalbedrag = € 248.260,00 + € 52.134,60 = <strong>€ 300.394,60</strong>// Gevelglas wordt per beurt geprijsd, de rest per uur.<br>// Onder de offerte staan ook tarieven voor eventueel extra werk.</div>
+<div class="tabel"><table><thead><tr><th>Op te vragen bij de klant</th><th>Zelf te bepalen</th></tr></thead><tbody><tr><td>3.500 m² looproutes</td><td>€ 30,55 schoonmaak categorie 1</td></tr><tr><td>7.500 m² kantoor en lokalen</td><td>€ 52,00 specialistische schoonmaak</td></tr><tr><td>5.700 m² gevelglas</td><td>€ 52,00 leidinggevende</td></tr></tbody></table></div>
+<h3>Wat heb je nodig om een tarief te bepalen?</h3>
+<ul><li>1 <strong>Wat kost een medewerker jou?</strong> Uurloon, werkgeverslasten, vakantiegeld en vergoedingen.</li><li>2 <strong>Hoeveel uur werkt die voor je klanten?</strong> Start bij de contracturen en houd rekening met verlof, ziekte en pauzes.</li><li>3 <strong>Wat ben je kwijt aan materiaal?</strong> Liters schoonmaakmiddel en sponsjes per m² tegen inkoopprijs, plus afschrijving op schoonmaakapparatuur.</li><li>4 <strong>Wat moet je verder nog terugverdienen?</strong> Overhead: de directeur, je eigen hoofdkantoor (huur, schoonmaak, receptie, beveiliging, administratie) en marketing.</li><li>5 <strong>Hoeveel winst wil je maken?</strong> Het winstpercentage op je tarief, met de vraag of de klant dan niet naar een andere leverancier gaat.</li></ul>
+<div class="kern"><strong>Een offerte vraagt veel voorbereiding.</strong> Achter elk tarief zitten loonkosten, inzetbare uren, materiaal, overhead en winst. Hoe je productieve uren, werkgeverslasten en het uurtarief uitrekent, staat in Module 4.</div>
+  </div>
+  <nav class="verder" aria-label="Vorige en volgende"><a class="glass" href="#h7">&#8249; <span>Module 7, FM-economie: TCO en NEN 2748</span></a><span></span></nav>
+</section>
+  </main>
 </div>
 
-<nav class="chapnav">
-  <a href="#h1">Basisprincipes</a>
-  <a href="#h2">Financiële overzichten</a>
-  <a href="#h3">Kosten en geldstromen</a>
-  <a href="#h4">Managen en calculatie</a>
-  <a href="#h5">Kengetallen</a>
-  <a href="#h6">Investering beoordelen</a>
-  <a href="#h7">FM-economie</a>
-  <a href="#h8">Offertes</a>
-</nav>
+<div class="lightbox" id="lightbox" hidden><figure><img alt=""/><p></p></figure></div>
 
-<div class="main">
-
-<!-- ===== H1: BASISPRINCIPES ===== -->
-<div class="card" id="h1">
-  <div class="card-header h1"><span class="icon" aria-hidden="true">💰</span><h2>Module 1 — Basisprincipes</h2></div>
-  <div class="card-body">
-    <div class="two-col">
-      <div>
-        <div class="section">
-          <h3>Investering</h3>
-          <div class="defbox">
-            <strong>Investering</strong>
-            Een grote uitgave aan iets wat je voor een langere periode gebruikt. Bedoeld om geld mee te verdienen, te besparen of te voorkomen dat je geld gaat verliezen.
-          </div>
-          <div class="highlight"><strong>Op het moment van investeren word je niet armer of rijker.</strong> Hetzelfde geldt voor lenen: op het moment van lenen word je niet armer of rijker.</div>
-        </div>
-        <div class="section">
-          <h3>Kosten vs. opbrengsten</h3>
-          <div class="defbox">
-            <strong>Kosten</strong>
-            Aan perioden toegerekende uitgaven. Kosten verlagen je winst.
-          </div>
-          <div class="defbox">
-            <strong>Opbrengsten</strong>
-            Aan perioden toegerekende ontvangsten. Opbrengsten verhogen je winst.
-          </div>
-        </div>
-      </div>
-      <div>
-        <div class="section">
-          <h3>Typen kosten</h3>
-          <table class="compact">
-            <thead><tr><th>Type</th><th>Kenmerken</th></tr></thead>
-            <tbody>
-              <tr><td><strong>Variabele kosten (v)</strong></td><td>Veranderen mee met productie-omvang</td></tr>
-              <tr><td><strong>Vaste (constante) kosten (C)</strong></td><td>Blijven gelijk, ongeacht omvang</td></tr>
-              <tr><td><strong>Directe kosten</strong></td><td>Direct toe te wijzen aan één product/dienst</td></tr>
-              <tr><td><strong>Indirecte kosten</strong></td><td>Niet direct toe te wijzen — verdeeld via opslag</td></tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="section">
-          <h3>Onthoud dit altijd</h3>
-          <table class="compact">
-            <thead><tr><th>Post</th><th>Kosten?</th><th>Uitgave?</th></tr></thead>
-            <tbody>
-              <tr><td><strong>Afschrijving</strong></td><td><span class="tag green">Ja</span></td><td><span class="tag red">Nee</span></td></tr>
-              <tr><td><strong>Aflossing</strong></td><td><span class="tag red">Nee</span></td><td><span class="tag green">Ja</span></td></tr>
-              <tr><td><strong>Rente</strong></td><td><span class="tag green">Ja</span></td><td><span class="tag green">Ja</span></td></tr>
-              <tr><td><strong>Geleend geld</strong></td><td colspan="2"><span class="tag orange">Nooit opbrengst</span></td></tr>
-              <tr><td><strong>Voorziening</strong></td><td><span class="tag green">Ja</span></td><td><span class="tag red">Nee</span></td></tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ===== H2: FINANCIËLE OVERZICHTEN ===== -->
-<div class="card" id="h2">
-  <div class="card-header h2"><span class="icon" aria-hidden="true">📊</span><h2>Module 2 — Financiële overzichten</h2></div>
-  <div class="card-body">
-    <div class="two-col">
-      <div>
-        <div class="section">
-          <h3>De balans</h3>
-          <div class="defbox">
-            <strong>Balans</strong>
-            Overzicht van bezittingen en schulden op één bepaald moment. Debet (links) = activa. Credit (rechts) = passiva. Totaal debet = Totaal credit (altijd!).
-          </div>
-          <table class="compact">
-            <thead><tr><th>DEBET (Activa)</th><th>CREDIT (Passiva)</th></tr></thead>
-            <tbody>
-              <tr><td>Vaste activa</td><td>Eigen vermogen</td></tr>
-              <tr><td>Vlottende activa</td><td>Voorzieningen</td></tr>
-              <tr><td>— Voorraden</td><td>Vreemd vermogen lang</td></tr>
-              <tr><td>— Debiteuren</td><td>Vreemd vermogen kort</td></tr>
-              <tr><td>— Te vorderen BTW</td><td>— Crediteuren</td></tr>
-              <tr><td>— Liquide middelen</td><td>— Te betalen BTW</td></tr>
-            </tbody>
-          </table>
-          <div class="highlight" style="margin-top:8px;"><strong>EV = Bezittingen - Schulden.</strong> Activa worden altijd exclusief BTW op de balans gezet (behalve debiteuren en crediteuren: inclusief BTW).</div>
-        </div>
-      </div>
-      <div>
-        <div class="section">
-          <h3>Resultatenrekening — EBITDA naar EAT</h3>
-          <div class="formula-box">
-Omzet (q × p, excl. BTW)
-− Inkoopwaarde omzet (IWO)
-= <strong>Brutowinst</strong>
-− Overige kosten
-= <strong>EBITDA</strong>  <span class="comment">// vóór rente, belasting, afschrijving</span>
-− Afschrijvingen
-= <strong>EBIT</strong>  <span class="comment">// vóór rente en belasting</span>
-− Rentekosten
-= <strong>EBT</strong>  <span class="comment">// vóór belasting</span>
-− Vennootschapsbelasting (EBT × %)
-= <strong>EAT</strong>  <span class="comment">// nettowinst</span>
-          </div>
-        </div>
-        <div class="section">
-          <h3>Kasstroomoverzicht</h3>
-          <div class="defbox">
-            <strong>Kasstroomoverzicht en liquiditeitsbegroting</strong> (terugkijken tegenover vooruitkijken)
-            Overzicht van alle ontvangsten en uitgaven over een periode. Niet kosten/opbrengsten, maar daadwerkelijke geldstromen. Beginsaldo + ontvangsten - uitgaven = eindsaldo.
-          </div>
-          <div class="warn">Factuurmoment ≠ betaalmoment. Ontvangen/verstuurde rekening = nog géén ontvangst/uitgave. Betaling = wel ontvangst/uitgave.</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ===== H3: KOSTEN EN GELDSTROMEN ===== -->
-<div class="card" id="h3">
-  <div class="card-header h3"><span class="icon" aria-hidden="true">🔄</span><h2>Module 3 — Kosten en geldstromen</h2></div>
-  <div class="card-body">
-    <div class="two-col">
-      <div>
-        <div class="section">
-          <h3>Primaire vs. secundaire geldstromen</h3>
-          <div class="box" style="margin-bottom:8px;">
-            <h4>Primaire geldstroom</h4>
-            <p style="font-size:13px;color:var(--ink-soft);margin:0;">Geldstromen die direct samenhangen met productie en verkoop. Worden gebruikt bij investeringsbeoordelingen (BTP/NCW/ETP).</p>
-          </div>
-          <div class="box">
-            <h4>Secundaire geldstroom</h4>
-            <p style="font-size:13px;color:var(--ink-soft);margin:0;">Geldstromen die samenhangen met de vermogensmarkt: leningen, aflossingen, rentebetalingen, aandelenkapitaal, dividend.</p>
-          </div>
-          <div class="formula-box" style="margin-top:10px;">
-Primaire geldstroom (voor investeringsbeoordeling)
-= EAT + Rentekosten + Afschrijvingen
-<span class="comment">// Afschrijving terug: is geen geldstroom (boekhoudkundig).
-// Rente terug: hoort bij financiering (secundair),
-// niet bij het project zelf — zo blijft de beoordeling
-// onafhankelijk van hoe het project gefinancierd wordt.</span>
-          </div>
-        </div>
-      </div>
-      <div>
-        <div class="section">
-          <h3>BTW (omzetbelasting)</h3>
-          <div class="defbox">
-            <strong>Factuurstelsel</strong>
-            BTW boeken op het moment van factuur (niet betaling). Inkoop-BTW terugvragen (te vorderen BTW, debet). Verkoop-BTW afdragen (te betalen BTW, credit).
-          </div>
-          <div class="formula-box">
-Excl. BTW → Incl. BTW: bedrag × 1,21
-Incl. BTW → Excl. BTW: bedrag / 1,21
-BTW-bedrag (21%): excl. × 0,21
-BTW-bedrag (9%): excl. × 0,09
-          </div>
-          <div class="warn">Activa en kosten staan altijd EXCLUSIEF BTW op de balans/resultatenrekening. Debiteuren en crediteuren staan INCLUSIEF BTW.</div>
-        </div>
-        <div class="section">
-          <h3>Afschrijving</h3>
-          <div class="formula-box">
-Afschrijving per jaar = (Aanschafwaarde − Restwaarde) / Aantal jaren
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ===== H4: MANAGEN EN CALCULATIE ===== -->
-<div class="card" id="h4">
-  <div class="card-header h4"><span class="icon" aria-hidden="true">🧮</span><h2>Module 4 — Managen en calculatie</h2></div>
-  <div class="card-body">
-    <div class="two-col">
-      <div>
-        <div class="section">
-          <h3>Break-even analyse</h3>
-          <div class="formula-box">
-TO = q × p       <span class="comment">// totale opbrengst</span>
-TK = (q × v) + C <span class="comment">// totale kosten</span>
-Break-even: TO = TK
-
-Dekkingsbijdrage = p − v
-BEA = C / (p − v)   <span class="comment">// break-even afzet, altijd ↑ afronden</span>
-BEO = BEA × p       <span class="comment">// break-even omzet (1 product)</span>
-
-Veiligheidsmarge (€) = Werkelijke omzet − BEO
-Veiligheidsmarge (%) = VM / WO × 100%
-          </div>
-        </div>
-        <div class="section">
-          <h3>Kostprijsberekeningen</h3>
-          <div class="formula-box">
-<span class="comment">// Integrale kostprijs (per eenheid)</span>
-IK = (C / N) + (V / W)
-<span class="comment">// C/N = constante kosten gedeeld door normaal aantal eenheden
-// V/W = variabele kosten gedeeld door werkelijk aantal eenheden
-// Beide termen zijn dus al per-eenheid voordat je optelt.</span>
-
-<span class="comment">// Enkelvoudige opslagmethode</span>
-Opslag% = Totale indirecte kosten / Totale directe kosten × 100%
-Kostprijs = DC + (DC × Opslag%)
-<span class="comment">// Nooit opslagpercentage afronden!</span>
-
-          </div>
-        </div>
-      </div>
-      <div>
-        <div class="section">
-          <h3>Personeelskosten en uurtarief</h3>
-          <div class="section">
-            <h3>Productieve uren berekening</h3>
-            <div class="stap"><span class="nummer">1</span><span><strong>Contracturen</strong> = uren per week × 52</span></div>
-            <div class="stap"><span class="nummer">2</span><span>− Vakantiedagen (dagen × uren/dag)</span></div>
-            <div class="stap"><span class="nummer">3</span><span>− Ziekteverzuim (% van overgebleven uren)</span></div>
-            <div class="stap"><span class="nummer">4</span><span>− Pauze (dagen/week × 52 × pauze-uren/dag)</span></div>
-            <div class="stap"><span class="nummer">5</span><span>− Leegloop (% van overgebleven uren) = <strong>Productieve uren</strong></span></div>
-          </div>
-          <div class="formula-box">
-Werkgeverslasten = Brutoloon + vakantiegeld + sociale lasten + overig
-Kostprijs/uur = Werkgeverslasten / Productieve uren
-Uurtarief = Kostprijs × (1 + overhead%) × (1 + winst%) × (1 + BTW%)
-          </div>
-        </div>
-        <div class="section">
-          <h3>Differentiële calculatie</h3>
-          <div class="defbox">
-            <strong>Differentieel resultaat</strong>
-            Extra opbrengsten − extra kosten door de opdracht. Constante kosten zijn al gedekt en worden NIET meegenomen. Sunk costs worden NIET meegenomen.
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ===== H5: KENGETALLEN ===== -->
-<div class="card" id="h5">
-  <div class="card-header h5"><span class="icon" aria-hidden="true">📈</span><h2>Module 5 — Financiële kengetallen</h2></div>
-  <div class="card-body">
-    <div class="three-col">
-      <div>
-        <div class="section">
-          <h3>Solvabiliteit (lange termijn)</h3>
-          <div class="defbox">
-            <strong>Wat?</strong>
-            Kan het bedrijf op lange termijn aan zijn financiële verplichtingen voldoen? Interessant voor: directie, leveranciers, banken.
-          </div>
-          <div class="formula-box">
-Solvabiliteits% = EV / TV × 100%
-Debt ratio = VV / TV
-<span class="comment">// TV = EV + VV</span>
-<span class="comment">// Gebruik 1 moment, GEEN gemiddelden!</span>
-          </div>
-        </div>
-      </div>
-      <div>
-        <div class="section">
-          <h3>Liquiditeit (korte termijn)</h3>
-          <div class="defbox">
-            <strong>Wat?</strong>
-            Kan het bedrijf op korte termijn zijn rekeningen betalen? Interessant voor: directie, leveranciers, banken.
-          </div>
-          <div class="formula-box">
-NWK = Vlottende activa − Kort VV
-CR = Vlottende activa / Kort VV
-QR = (Vlottende activa − Voorraden) / Kort VV
-<span class="comment">// Gebruik 1 moment, GEEN gemiddelden!</span>
-<span class="comment">// Voorzieningen = GEEN Kort VV</span>
-          </div>
-        </div>
-      </div>
-      <div>
-        <div class="section">
-          <h3>Rentabiliteit</h3>
-          <div class="defbox">
-            <strong>Wat?</strong>
-            Hoeveel rendement behaalt het bedrijf? Gebruik WEL gemiddelden (begin- + eindbalans / 2).
-          </div>
-          <div class="formula-box">
-REV = EAT / Gem. EV × 100%
-RTV = EBIT / Gem. TV × 100%
-KVV = Rente / Gem. VV × 100%
-<span class="comment">// Gemiddeld VV = (VV begin + VV eind) / 2</span>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="section" style="margin-top:4px; border-top:1.5px solid var(--line); padding-top:16px;">
-      <h3>Waardecreatiemodel — 6 waarden (FIM MNS)</h3>
-      <table class="compact">
-        <thead><tr><th>Waarde</th><th>Wat?</th><th>Signaalwoorden</th></tr></thead>
-        <tbody>
-          <tr><td><strong>Financieel</strong></td><td>Geld, kapitaal, rendement</td><td>budget, winst, schuld, besparing</td></tr>
-          <tr><td><strong>Intellectueel</strong></td><td>Kennis, innovatie</td><td>training, software, reputatie, data</td></tr>
-          <tr><td><strong>Menselijk</strong></td><td>Welzijn eigen medewerkers</td><td>gezondheid, veiligheid, motivatie, ziekteverzuim</td></tr>
-          <tr><td><strong>Materieel</strong></td><td>Fysieke bezittingen</td><td>gebouw, machines, inventaris, apparatuur</td></tr>
-          <tr><td><strong>Natuurlijk</strong></td><td>Milieu, duurzaamheid</td><td>CO₂, energie, groen, afval, recycling</td></tr>
-          <tr><td><strong>Sociaal-relationeel</strong></td><td>Relaties met externen</td><td>partnership, leveranciers, klanten, samenwerking</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-</div>
-
-<!-- ===== H6: INVESTERING BEOORDELEN ===== -->
-<div class="card" id="h6">
-  <div class="card-header h6"><span class="icon" aria-hidden="true">🏦</span><h2>Module 6 — Investering beoordelen</h2></div>
-  <div class="card-body">
-    <div class="two-col">
-      <div>
-        <div class="section">
-          <h3>DPG en BTP</h3>
-          <div class="defbox">
-            <strong>DPG — Differentiële Primaire Geldstromen</strong>
-            Alleen de primaire geldstromen die veranderen door jouw investering.
-          </div>
-          <div class="formula-box">
-BTP = optellen DPG's per jaar totdat investering overschreden
-BTP maanden = (Benodigd bedrag in jaar / Jaarbedrag) × 12
-<span class="comment">// Altijd naar BOVEN afronden</span>
-<span class="comment">// BTP houdt GEEN rekening met tijdswaarde van geld</span>
-          </div>
-        </div>
-        <div class="section">
-          <h3>Tijdswaarde van geld</h3>
-          <div class="highlight">
-            <strong>Geld dat je eerder krijgt is meer waard</strong> dan geld dat je later krijgt — omdat je er meer geld van kan maken. Uitgaven zo laat mogelijk, ontvangsten zo vroeg mogelijk.
-          </div>
-          <div class="formula-box">
-Toekomstige waarde (TW) = Waarde nu × (1 + r)^n
-Contante waarde (CW)    = TW / (1 + r)^n
-<span class="comment">// r = rente/vermogenskostenvoet, n = aantal jaren</span>
-          </div>
-        </div>
-      </div>
-      <div>
-        <div class="section">
-          <h3>NCW en ETP</h3>
-          <div class="formula-box">
-NCW = Som van alle contante DPG's − Investering
-
-CW jaar 1 = DPG jaar 1 / (1 + r)^1
-CW jaar 2 = DPG jaar 2 / (1 + r)^2
-...
-
-NCW &gt; 0 → Investering is rendabel ✓
-NCW &lt; 0 → Investering haalt rendement niet ✗
-          </div>
-          <div class="defbox">
-            <strong>ETP — Economische Terugverdienperiode</strong>
-            Zelfde als BTP maar dan met contant gemaakte DPG's. Houdt WEL rekening met tijdswaarde van geld. Verschil: ETP ≥ BTP (want contante waarden zijn lager).
-          </div>
-          <table class="compact">
-            <thead><tr><th>Methode</th><th>Tijdswaarde?</th></tr></thead>
-            <tbody>
-              <tr><td><strong>BTP</strong></td><td><span class="tag red">Nee</span> — gebruikt gewone DPG's</td></tr>
-              <tr><td><strong>ETP</strong></td><td><span class="tag green">Ja</span> — gebruikt contante DPG's</td></tr>
-              <tr><td><strong>NCW</strong></td><td><span class="tag green">Ja</span> — vergelijkt contante waarden</td></tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ===== H7: FM-ECONOMIE — TCO en NEN 2748 ===== -->
-<div class="card" id="h7">
-  <div class="card-header h6"><span class="icon" aria-hidden="true">🏢</span><h2>Module 7 — FM-economie: TCO en NEN 2748</h2></div>
-  <div class="card-body">
-    <div class="two-col">
-      <div>
-        <div class="section">
-          <h3>Total Cost of Ownership (TCO)</h3>
-          <div class="defbox">
-            <strong>TCO</strong>
-            Alle kosten die een product of dienst gedurende zijn hele levensduur veroorzaakt — niet alleen de aankoopprijs. Vooral relevant bij FM-investeringen (gebouwen, installaties, wagenpark, ICT, koffieautomaten).
-          </div>
-          <p style="font-size:13px;color:var(--ink-soft);margin:0 0 6px;">Drie kostenfasen:</p>
-          <ul class="clean">
-            <li><strong>Pre-transactie</strong> — selectie, marktonderzoek, specificeren, aanbesteden</li>
-            <li><strong>Transactie</strong> — aanschaf, installatie, training</li>
-            <li><strong>Post-transactie</strong> — gebruik, energie, onderhoud, reparatie, verzekering, afvoer</li>
-          </ul>
-          <div class="formula-box" style="margin-top:8px;">
-TCO = Aanschafkosten
-    + Som(jaarlijkse exploitatiekosten × levensduur)
-    + Onderhouds- en reparatiekosten
-    + Eindafvoerkosten
-    − Restwaarde
-          </div>
-          <div class="highlight">De goedkoopste optie bij aankoop is vaak de duurste over de levensduur. TCO maakt dat verschil zichtbaar en is daarmee een betere basis dan kale offertevergelijking.</div>
-        </div>
-      </div>
-      <div>
-        <div class="section">
-          <h3>NEN 2748 — kostenrubricering FM</h3>
-          <div class="defbox">
-            <strong>NEN 2748</strong>
-            Nederlandse norm die facilitaire kosten en prestaties uniform indeelt. Maakt benchmarken mogelijk doordat organisaties dezelfde "categorieën-taal" hanteren.
-          </div>
-          <table class="compact">
-            <tr><th>Rubriek</th><th>Inhoud</th></tr>
-            <tr><td><strong>1. Huisvesting</strong></td><td>Gebouw, terrein, energie, schoonmaak gebouwgebonden, beveiliging</td></tr>
-            <tr><td><strong>2. Diensten en middelen</strong></td><td>Catering, drankvoorziening, werkplekservices, risicobeheersing</td></tr>
-            <tr><td><strong>3. ICT</strong></td><td>Apparatuur, software, telecom, gebruikersondersteuning</td></tr>
-            <tr><td><strong>4. Externe voorzieningen</strong></td><td>Wagenpark, verhuizingen, externe diensten op afstand</td></tr>
-            <tr><td><strong>5. Facility management</strong></td><td>Beleid, planning, control, contractmanagement</td></tr>
-          </table>
-          <p style="font-size:12px;color:var(--muted);margin-top:6px;">Voorbeeldkengetal: facilitaire kosten per fte per jaar — alleen vergelijkbaar als alle organisaties NEN 2748 gebruiken voor de afbakening.</p>
-        </div>
-        <div class="section">
-          <h3>Benchmarking</h3>
-          <ul class="clean">
-            <li><strong>Intern</strong> — eigen locaties of jaren naast elkaar leggen (zelfde definities, snel beschikbaar)</li>
-            <li><strong>Extern</strong> — vergelijken met sectorgenoten via Facility Management Nederland (FMN), branchecijfers of benchmarkdiensten</li>
-            <li><strong>Best practice</strong> — leren van organisaties die op een KPI excelleren, niet alleen vergelijken</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ===== H8: OFFERTES (PERIODE 2) ===== -->
-<div class="card" id="h8">
-  <div class="card-header h6"><span class="icon" aria-hidden="true">📝</span><h2>Module 8 — Offertes: van prijsopgave tot tarief</h2></div>
-  <div class="card-body">
-    <div class="two-col">
-      <div>
-        <div class="section">
-          <h3>Periode 2 in één oogopslag</h3>
-          <div class="highlight"><strong>Periode 1 ging over investeren (lange termijn).</strong> Periode 2 gaat over offertes (korte termijn). Je bekijkt een offerte van twee kanten: als aanbieder die hem opstelt en als inkoper die hem beoordeelt.</div>
-          <table class="compact">
-            <thead><tr><th>Week</th><th>Onderwerp</th></tr></thead>
-            <tbody>
-              <tr><td><strong>1</strong></td><td>Algemeen: hoe ziet een offerte eruit?</td></tr>
-              <tr><td><strong>2</strong></td><td>Loonkosten, productieve uren en uurtarieven</td></tr>
-              <tr><td><strong>3</strong></td><td>Kostprijs voor een offerte</td></tr>
-              <tr><td><strong>4</strong></td><td>Beoordelen van een offerte als inkopende partij</td></tr>
-              <tr><td><strong>5</strong></td><td>Wat als je het zelf zou doen?</td></tr>
-              <tr><td><strong>6</strong></td><td>Samenhang offertes en investeringen (eenmalige opdrachten)</td></tr>
-              <tr><td><strong>7</strong></td><td>Oefentoets</td></tr>
-            </tbody>
-          </table>
-          <ul class="clean" style="margin-top:8px;">
-            <li><strong>Eerst</strong> de offerte uit elkaar trekken: wat staat erop?</li>
-            <li><strong>Dan als aanbieder:</strong> hoe komt een offerte tot stand?</li>
-            <li><strong>Dan als inkoper:</strong> kunnen we het niet beter zelf doen?</li>
-            <li><strong>Tot slot</strong> afronding en oefentoets.</li>
-          </ul>
-        </div>
-        <div class="section">
-          <h3>Wat is een offerte?</h3>
-          <div class="defbox">
-            <strong>Offerte</strong>
-            Een uitgebreide prijsopgave voor een (mogelijke) klant. Je laat zien wat de opdracht kost, hoe je hem wilt uitvoeren en hoe het bedrag is opgebouwd: uit een uurtarief, uit materiaalkosten, of met een toeslag omdat het een spoedklus is. Alleen een bedrag met "vriendelijke groet" is geen offerte.
-          </div>
-          <table class="compact">
-            <thead><tr><th></th><th>Dienst</th><th>Product</th></tr></thead>
-            <tbody>
-              <tr><td><strong>Wat?</strong></td><td>Werk dat iemand voor je doet</td><td>Iets tastbaars</td></tr>
-              <tr><td><strong>Bewaren?</strong></td><td><span class="tag red">Nee</span> gedaan of niet gedaan</td><td><span class="tag green">Ja</span> ook door te verkopen</td></tr>
-              <tr><td><strong>Op de balans?</strong></td><td><span class="tag red">Nooit</span> altijd kosten</td><td><span class="tag green">Kan</span> als bezit</td></tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="section">
-          <h3>Twee kanten van de offerte</h3>
-          <div class="box" style="margin-bottom:8px;">
-            <h4>Verkopende kant</h4>
-            <p style="font-size:13px;color:var(--ink-soft);margin:0;">Jij biedt catering, schoonmaak, beveiliging of advies aan een klant aan. Je stelt de offerte op en bepaalt de tarieven.</p>
-          </div>
-          <div class="box" style="margin-bottom:8px;">
-            <h4>Inkopende kant</h4>
-            <p style="font-size:13px;color:var(--ink-soft);margin:0;">Jij koopt die diensten in bij een andere partij, of je doet het zelf. Je beoordeelt de offerte en vraagt je af of zelf doen niet beter is.</p>
-          </div>
-          <table class="compact">
-            <thead><tr><th>Deelmarkt</th><th>Uitbestedingspercentage</th></tr></thead>
-            <tbody>
-              <tr><td><strong>Schoonmaakdienstverlening</strong></td><td>92%</td></tr>
-              <tr><td><strong>Technisch beheer</strong></td><td>86%</td></tr>
-              <tr><td><strong>Beveiliging</strong></td><td>81%</td></tr>
-            </tbody>
-          </table>
-          <p style="font-size:12px;color:var(--muted);margin-top:6px;">Marktonderzoek Twijstra Gudde 2025. Omdat zoveel wordt uitbesteed, heeft een FM'er bijna altijd met offertes te maken.</p>
-        </div>
-        <div class="section">
-          <h3>Verplichte onderdelen van een offerte</h3>
-          <ul class="clean">
-            <li><strong>Je bedrijfsgegevens</strong>, inclusief KvK-nummer en btw-id</li>
-            <li><strong>Gegevens van de klant</strong></li>
-            <li><strong>Offertenummer</strong></li>
-            <li><strong>Datum en geldigheidsduur</strong></li>
-            <li><strong>Beschrijving van de werkzaamheden</strong> (omvang van de dienstverlening)</li>
-            <li><strong>Prijs per eenheid en aantallen</strong>: per uur, functie, stuk, liter, keer of m²</li>
-            <li><strong>Totaalprijs exclusief btw</strong> en het <strong>btw-percentage</strong></li>
-            <li><strong>Verwijzing naar je algemene voorwaarden</strong></li>
-            <li><strong>Hoe de klant akkoord geeft</strong>, bijvoorbeeld een handtekening voor akkoord</li>
-          </ul>
-          <div class="warn">Btw is niet voor elke organisatie terug te vragen. Voor sommige organisaties is de btw op een offerte gewoon een kostenpost.</div>
-          <div class="warn">"Onder voorbehoud van wijzigingen" betekent dat de prijzen nog kunnen veranderen.</div>
-        </div>
-      </div>
-      <div>
-        <div class="section">
-          <h3>Rekenvoorbeeld: offerte CleanUp B.V.</h3>
-          <div class="defbox">
-            <strong>De situatie</strong>
-            CleanUp B.V. biedt Facility Education Sciences v.o.f. de terugkerende schoonmaakwerkzaamheden aan voor kalenderjaar 2026. Offertedatum 28-10-2025, vervaldag 27-11-2025: de offerte is dus 30 dagen geldig.
-          </div>
-          <table class="compact">
-            <thead><tr><th>Omvang dienstverlening</th><th>Aantal</th><th>Tarief</th><th>Totaal excl.</th></tr></thead>
-            <tbody>
-              <tr><td>Reiniging 3.500 m² looproutes</td><td>2.000 uur</td><td>€ 30,55</td><td>€ 61.100,00</td></tr>
-              <tr><td>Reiniging 7.500 m² kantoor en lokalen</td><td>3.000 uur</td><td>€ 30,55</td><td>€ 91.650,00</td></tr>
-              <tr><td>Reiniging overige ruimtes</td><td>1.000 uur</td><td>€ 30,55</td><td>€ 30.550,00</td></tr>
-              <tr><td>Reiniging gevelglas (5.700 m²)</td><td>6 beurten</td><td>€ 4.500,00</td><td>€ 27.000,00</td></tr>
-              <tr><td>Specialistische schoonmaak</td><td>80 uur</td><td>€ 52,00</td><td>€ 4.160,00</td></tr>
-              <tr><td>Loonkosten toezicht</td><td>650 uur</td><td>€ 52,00</td><td>€ 33.800,00</td></tr>
-              <tr><td colspan="3"><strong>Bedrag exclusief btw</strong></td><td><strong>€ 248.260,00</strong></td></tr>
-            </tbody>
-          </table>
-          <div class="formula-box" style="margin-top:10px;">
-Regelbedrag = aantal × tarief
-  2.000 × € 30,55 = € 61.100,00
-
-Bedrag excl. btw  = som van de regels = € 248.260,00
-Btw (21%)         = € 248.260,00 × 0,21 = € 52.134,60
-Totaalbedrag      = € 248.260,00 + € 52.134,60 = <strong>€ 300.394,60</strong>
-<span class="comment">// Gevelglas wordt per beurt geprijsd, de rest per uur.
-// Onder de offerte staan ook tarieven voor eventueel extra werk.</span>
-          </div>
-          <table class="compact">
-            <thead><tr><th>Op te vragen bij de klant</th><th>Zelf te bepalen</th></tr></thead>
-            <tbody>
-              <tr><td>3.500 m² looproutes</td><td>€ 30,55 schoonmaak categorie 1</td></tr>
-              <tr><td>7.500 m² kantoor en lokalen</td><td>€ 52,00 specialistische schoonmaak</td></tr>
-              <tr><td>5.700 m² gevelglas</td><td>€ 52,00 leidinggevende</td></tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="section">
-          <h3>Wat heb je nodig om een tarief te bepalen?</h3>
-          <div class="stap"><span class="nummer">1</span><span><strong>Wat kost een medewerker jou?</strong> Uurloon, werkgeverslasten, vakantiegeld en vergoedingen.</span></div>
-          <div class="stap"><span class="nummer">2</span><span><strong>Hoeveel uur werkt die voor je klanten?</strong> Start bij de contracturen en houd rekening met verlof, ziekte en pauzes.</span></div>
-          <div class="stap"><span class="nummer">3</span><span><strong>Wat ben je kwijt aan materiaal?</strong> Liters schoonmaakmiddel en sponsjes per m² tegen inkoopprijs, plus afschrijving op schoonmaakapparatuur.</span></div>
-          <div class="stap"><span class="nummer">4</span><span><strong>Wat moet je verder nog terugverdienen?</strong> Overhead: de directeur, je eigen hoofdkantoor (huur, schoonmaak, receptie, beveiliging, administratie) en marketing.</span></div>
-          <div class="stap"><span class="nummer">5</span><span><strong>Hoeveel winst wil je maken?</strong> Het winstpercentage op je tarief, met de vraag of de klant dan niet naar een andere leverancier gaat.</span></div>
-          <div class="highlight" style="margin-top:10px;"><strong>Een offerte vraagt veel voorbereiding.</strong> Achter elk tarief zitten loonkosten, inzetbare uren, materiaal, overhead en winst. Hoe je productieve uren, werkgeverslasten en het uurtarief uitrekent, staat in <a href="#h4">Module 4</a>.</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-</div><!-- .main -->
-
-<footer class="fa-site-footer">
-  <span>FM Atlas · gratis studiehulp voor HAN Facilitair Management, gemaakt door een student</span>
-  <span>Niet officieel verbonden aan de HAN · <a href="privacy.html">Privacy</a> · <a href="app.html#contact">Fout gezien?</a></span>
-</footer>
-
-<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
-<script src="js/fmatlas.js"></script>
+<script src="js/atlas-data.js"></script>
+<script src="js/atlas.js"></script>
 <script>
-const firebaseConfig = {
-  apiKey: "AIzaSyBB397Wk2eqpBjic8E7aGV1mTgIjhQ21a8",
-  authDomain: "fmkompas-ff8bc.firebaseapp.com",
-  projectId: "fmkompas-ff8bc",
-  storageBucket: "fmkompas-ff8bc.firebasestorage.app",
-  messagingSenderId: "487972024689",
-  appId: "1:487972024689:web:712c3117080745d14746d0"
-};
-firebase.initializeApp(firebaseConfig);
-firebase.auth().onAuthStateChanged(user => {
-  document.getElementById('fa-header-slot').innerHTML = '';
-  faMarkActiveToday();
-  document.getElementById('fa-header-slot').appendChild(faRenderHeader({ user }));
-});
+(function () {
+  Atlas.topbar('<span class="sep">/</span><a href="vak.html?v=facilitaire-bedrijfseconomie">Facilitaire bedrijfseconomie</a><span class="sep">/</span><span class="here">Samenvatting</span>');
+  const secties = [...document.querySelectorAll('.sectie')];
+  const links = [...document.querySelectorAll('#toc a')];
+  const toc = document.getElementById('toc');
+  const toggle = document.getElementById('toc-toggle');
+
+  function toon(id, scroll) {
+    const s = secties.find(x => x.id === id) || secties[0];
+    secties.forEach(x => x.classList.toggle('actief', x === s));
+    links.forEach(a => a.setAttribute('aria-current', String(a.getAttribute('href') === '#' + s.id)));
+    const a = links.find(x => x.getAttribute('href') === '#' + s.id);
+    document.getElementById('toc-now').textContent = a ? a.textContent.replace(/\s+/g, ' ').trim() : '';
+    toc.classList.remove('open'); toggle.setAttribute('aria-expanded', 'false');
+    if (scroll) window.scrollTo({ top: 0 });
+  }
+  window.addEventListener('hashchange', () => toon(location.hash.slice(1), true));
+  toggle.addEventListener('click', () => { const o = toc.classList.toggle('open'); toggle.setAttribute('aria-expanded', String(o)); });
+  if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+  toon(location.hash.slice(1), true);
+  window.addEventListener('load', () => window.scrollTo({ top: 0 }));
+
+  // Beeld vergroten
+  const lb = document.getElementById('lightbox');
+  document.addEventListener('click', e => {
+    const b = e.target.closest('.beeld button');
+    if (b) {
+      const img = b.querySelector('img');
+      lb.querySelector('img').src = img.src;
+      lb.querySelector('p').textContent = b.parentNode.querySelector('figcaption')?.textContent || '';
+      lb.hidden = false;
+    } else if (e.target.closest('#lightbox')) lb.hidden = true;
+  });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') lb.hidden = true; });
+})();
 </script>
 </body>
 </html>
