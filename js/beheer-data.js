@@ -38,9 +38,15 @@
       items: index.items.filter(item => item.courseKey === courseKey && item.part === part) };
   }
   // The measurement module applies cleanId to the caller's test key.
-  // Exact page IDs are supported; unrecognised keys remain visible without guessed attribution.
+  // Resolve score keys through indexed hrefs, since file prefixes can differ from course keys.
   function resolveTest(id, index) {
-    return resolvePage(id, { ...index, items: index.items.filter(item => ['begrippentoets', 'oefentoets'].includes(item.part)) });
+    const tests = { courses: [], items: index.items.filter(item => ['begrippentoets', 'oefentoets'].includes(item.part)) };
+    const exact = resolvePage(id, tests);
+    if (exact.items.length) return exact;
+    const practice = /^(.+-oefentoets)-([1-9]\d*)-[1-9]\d*$/.exec(id);
+    if (practice) return resolvePage(practice[1] + (practice[2] === '1' ? '' : '-' + practice[2]), tests);
+    const concepts = /^(.+)-begrippentoets-[1-9]\d*$/.exec(id);
+    return concepts ? resolvePage(pageId('begrippentoets.html?vak=' + concepts[1]), tests) : exact;
   }
   function localDay(date) {
     return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
@@ -109,9 +115,10 @@
         if (match.courseKey) courseRows.get(match.courseKey).views += n;
       }
       for (const test of stat.toetsen || []) {
-        sumTest(tests, test.id, test);
         const match = resolveTest(test.id, index), course = courseRows.get(match.courseKey);
-        if (course) { course.n += number(test.n); course.som += number(test.som); sumTest(course.tests, test.id, test); }
+        const id = match.items[0]?.pageId || test.id;
+        sumTest(tests, id, test);
+        if (course) { course.n += number(test.n); course.som += number(test.som); sumTest(course.tests, id, test); }
       }
     }
     for (const activity of activities) {
@@ -141,7 +148,13 @@
         const n = number(result?.n), som = number(result?.som);
         if (!n) continue;
         const match = resolveTest(id, index), course = courseRows.get(match.courseKey);
-        student.results.push({ day: activity.dag, id, n, som, average: som / n, courseKey: match.courseKey });
+        const testId = match.items[0]?.pageId || id;
+        let resultRow = student.results.find(row => row.day === activity.dag && row.id === testId);
+        if (!resultRow) {
+          resultRow = { day: activity.dag, id: testId, n: 0, som: 0, courseKey: match.courseKey };
+          student.results.push(resultRow);
+        }
+        resultRow.n += n; resultRow.som += som; resultRow.average = resultRow.som / resultRow.n;
         if (course) {
           course.students.add(activity.uid);
           if (!student.courses.has(course.key)) student.courses.set(course.key, { key: course.key, title: course.title, sec: 0, opens: 0 });
