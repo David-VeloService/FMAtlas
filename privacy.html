@@ -35,20 +35,23 @@
 
 <main class="page priv-wrap">
   <h1>Privacy</h1>
-  <p class="lead">FM Atlas is een gratis studiesite die door één student wordt bijgehouden. Hieronder staat welke gegevens er bewaard worden, waarom, en hoe je ze laat verwijderen. Bijgewerkt op 9 november 2026.</p>
+  <p class="lead">FM Atlas is een gratis studiesite die door één student wordt bijgehouden. Hieronder staat welke gegevens er bewaard worden, waarom, en hoe je ze laat verwijderen. Bijgewerkt op 10 november 2026.</p>
 
   <h2>Zonder inloggen</h2>
   <p>Je kunt alle samenvattingen, begrippenlijsten, flashcards en oefentoetsen gebruiken zonder account. Je voortgang wordt dan alleen in je eigen browser bewaard (localStorage). Die gegevens komen niet bij FM Atlas terecht.</p>
+  <p>Om te zien welke vakken en oefentoetsen gebruikt worden, telt FM Atlas per dag hoeveel browsers de site bezoeken, hoe vaak elke pagina wordt geopend en welke score een ingeleverde oefentoets oplevert. Dat zijn alleen tellers: er gaat geen naam, account, IP-adres of apparaatnummer mee. Om een bezoeker maar één keer per dag te tellen, onthoudt je browser de datum van je laatste bezoek (localStorage).</p>
 
   <h2>Met inloggen via Google</h2>
   <p>Als je inlogt, regelt Google de login via Firebase Authentication. FM Atlas bewaart daarna in Firebase (Firestore) het volgende:</p>
   <div class="priv-table-wrap glass">
   <table class="priv-table">
     <tr><th>Gegeven</th><th>Waarvoor</th><th>Wie ziet het</th></tr>
-    <tr><td>Je kaartvoortgang per vak: per flashcard in welk bakje hij zit en wanneer je hem het laatst en het volgende moment oefent, plus per dag hoeveel kaarten je kent</td><td>Zodat je op elk apparaat verder kunt waar je was en ziet hoe je vordert</td><td>Alleen jij</td></tr>
-    <tr><td>Je beste score per oefentoets</td><td>Zodat je op elk apparaat je beste resultaat terugziet</td><td>Alleen jij</td></tr>
+    <tr><td>Je kaartvoortgang per vak: per flashcard in welk bakje hij zit en wanneer je hem het laatst en het volgende moment oefent, plus per dag hoeveel kaarten je kent</td><td>Zodat je op elk apparaat verder kunt waar je was en ziet hoe je vordert</td><td>Jij en de beheerder</td></tr>
+    <tr><td>Je beste score per oefentoets</td><td>Zodat je op elk apparaat je beste resultaat terugziet</td><td>Jij en de beheerder</td></tr>
+    <tr><td>Wat je per dag op FM Atlas doet: welke vakken en onderdelen je opent, hoeveel tijd je er actief mee bezig bent en welke score je haalt op een oefentoets</td><td>Om te zien welke vakken en welke stof lastig zijn, wat beter uitgelegd moet worden en of FM Atlas helpt bij het leren</td><td>Jij en de beheerder</td></tr>
   </table>
   </div>
+  <p>Actieve tijd betekent: het tabblad staat open en je hebt de afgelopen minuut iets gedaan. Bij een lesvideo is dat het afgelopen kwartier, omdat je bij kijken niets aanklikt. Een tabblad dat open blijft staan, telt dus niet mee. Deze gegevens hangen aan je account, niet aan je naam of e-mailadres. Ze worden alleen gebruikt om FM Atlas beter te maken en niet met anderen gedeeld.</p>
   <p>Je e-mailadres wordt niet in de database van FM Atlas opgeslagen. Google en Firebase verwerken bij het inloggen wel je account­gegevens; daarvoor geldt het privacybeleid van Google.</p>
 
   <h2>Gegevens van de vorige versie van FM Atlas</h2>
@@ -62,21 +65,22 @@
 
   <h2>Wat er niet gebeurt</h2>
   <ul>
-    <li>Er draait geen advertentienetwerk en er staan geen trackers op de site.</li>
+    <li>Er draait geen advertentienetwerk en er staan geen trackers van anderen op de site. FM Atlas meet zelf wel, zoals hierboven beschreven.</li>
     <li>Gegevens worden niet verkocht of gedeeld met anderen dan de diensten hierboven.</li>
     <li>FM Atlas is niet verbonden aan de HAN; de HAN krijgt niets van deze gegevens.</li>
   </ul>
 
   <h2>Externe diensten</h2>
   <ul>
-    <li><strong>Firebase (Google)</strong>: inloggen en opslag van voortgang.</li>
+    <li><strong>Firebase (Google)</strong>: inloggen en opslag van voortgang en gebruiksgegevens.</li>
     <li><strong>Google Fonts</strong>: het lettertype van de site.</li>
     <li><strong>GitHub Pages</strong>: de hosting van de site.</li>
     <li><strong>YouTube (Google)</strong>: de lesvideo's, via youtube-nocookie.com.</li>
   </ul>
 
-  <h2>Je gegevens laten verwijderen</h2>
-  <p>Wil je dat je gegevens in Firebase verdwijnen? Mail naar <a href="mailto:dpw.koolstra@student.han.nl">dpw.koolstra@student.han.nl</a> en noem het Google-account waarmee je inlogde. Je gegevens worden dan verwijderd. Je lokale gegevens wis je zelf door je browsergegevens voor fmatlas.nl te wissen.</p>
+  <h2>Bewaren en verwijderen</h2>
+  <p>Je gegevens blijven bewaard tot vijf jaar na je laatste bezoek, zodat je voortgang je hele studie meegaat.</p>
+  <p>Wil je dat ze eerder uit Firebase verdwijnen? Mail naar <a href="mailto:dpw.koolstra@student.han.nl">dpw.koolstra@student.han.nl</a> en noem het Google-account waarmee je inlogde. Dan worden je voortgang en je gebruiksgegevens verwijderd. Je lokale gegevens wis je zelf door je browsergegevens voor fmatlas.nl te wissen.</p>
 </main>
 
 <footer class="foot">
