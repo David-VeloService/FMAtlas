@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+<meta name="robots" content="noindex, nofollow"/>
+<title>Gebruiksdata · FM Atlas</title>
+<link rel="icon" type="image/svg+xml" href="logo.svg"/>
+<meta name="theme-color" content="#efe5d4"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="css/atlas.css"/>
+<style>
+.data-page { max-width: 1120px; min-width: 0; }
+.data-page h1 { font: 700 clamp(32px, 6vw, 44px)/1.1 var(--font-display); letter-spacing: -.03em; margin-bottom: 16px; }
+.data-page h2 { font: 700 24px/1.3 var(--font-display); margin-bottom: 16px; }
+.data-page h3 { font: 600 18px/1.4 var(--font-display); margin-bottom: 8px; }
+.data-page p { margin-bottom: 16px; color: var(--ink-soft); }
+.data-page a:not(.data-tab) { text-decoration: underline; text-underline-offset: 3px; }
+.data-controls { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; margin: 24px 0; }
+.data-page select { font: inherit; color: var(--ink); background: var(--glass-strong); border: 1px solid var(--glass-edge); border-radius: var(--r-sm); min-height: 44px; padding: 8px 12px; max-width: 100%; }
+.data-tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; padding: 8px; border-radius: var(--r-md); }
+.data-tab, .data-button { display: inline-block; min-height: 44px; padding: 12px 16px; border-radius: var(--r-sm); font-size: 14px; font-weight: 600; }
+.data-tab[aria-current="page"], .data-button { background: var(--accent); color: var(--accent-ink); }
+.data-tab:hover { background: var(--glass-hover); color: var(--ink); }
+.data-panel { min-width: 0; padding: 24px; margin-bottom: 24px; border-radius: var(--r-lg); overflow-wrap: anywhere; }
+.data-metrics { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 16px; margin-bottom: 24px; }
+.data-metric { border-radius: var(--r-md); padding: 24px; min-width: 0; }
+.data-metric dt { color: var(--ink-soft); font-size: 14px; }
+.data-metric dd { font: 700 30px/1.3 var(--font-display); margin-top: 8px; font-variant-numeric: tabular-nums; }
+.data-metric small { display: block; color: var(--ink-soft); font: 400 14px/1.5 var(--font); }
+.data-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+.data-table-wrap { max-width: 100%; overflow-x: auto; border-radius: var(--r-sm); }
+.data-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.data-table th, .data-table td { text-align: left; padding: 12px; border-bottom: 1px solid var(--glass-edge); vertical-align: top; }
+.data-table th { white-space: nowrap; background: var(--glass-strong); }
+.data-table th button { min-height: 44px; text-align: left; font-weight: 600; }
+.data-table td { min-width: 88px; font-variant-numeric: tabular-nums; }
+.data-table td:first-child { min-width: 192px; }
+.data-note { font-size: 14px; color: var(--ink-soft); }
+.data-badge { display: inline-block; border: 1px solid var(--accent); border-radius: var(--r-pill); padding: 2px 8px; margin: 4px; font-size: 12px; }
+.data-chart { display: block; width: 100%; height: auto; }
+.data-chart .bar { fill: var(--accent); }
+.data-chart .grid { stroke: var(--muted); opacity: .25; }
+.data-chart text { fill: var(--ink-soft); font: 11px var(--font); }
+.data-page ul { padding-left: 24px; }
+.data-page li { margin-bottom: 8px; }
+[hidden] { display: none !important; }
+@media (max-width: 760px) {
+  .data-grid { grid-template-columns: minmax(0, 1fr); gap: 0; }
+  .data-panel { padding: 16px; }
+  .data-metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+  .data-metric { padding: 16px; }
+}
+</style>
+</head>
+<body data-no-stats data-no-feedback>
+<div class="scene" aria-hidden="true"><i></i></div>
+<header class="topbar" id="topbar"></header>
+<main class="page data-page">
+  <h1>Gebruiksdata</h1>
+  <p>Welke stof wordt gebruikt en waar vragen oefentoetsen meer aandacht? Alleen voor de beheerder.</p>
+  <div id="access" class="data-panel glass" role="status">Account controleren…</div>
+  <div id="dashboard" hidden>
+    <div class="data-controls">
+      <label for="period">Periode</label>
+      <select id="period"><option value="7">7 dagen</option><option value="30" selected>30 dagen</option><option value="90">90 dagen</option><option value="alles">Alles</option></select>
+      <span id="range" class="data-note"></span>
+    </div>
+    <nav id="tabs" class="data-tabs glass" aria-label="Gegevens"></nav>
+    <p id="load-state" role="status" aria-live="polite"></p>
+    <div id="view" aria-busy="false"></div>
+  </div>
+</main>
+<footer class="foot"><span>FM Atlas · gebruiksdata</span><span><a href="beheer.html">Meldingen beheren</a> · <a href="privacy.html">Privacy</a></span></footer>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+<script src="js/atlas-data.js"></script>
+<script src="js/atlas.js"></script>
+<script src="js/beheer-data.js"></script>
+<script>
+(function () {
+  'use strict';
+  Atlas.topbar('<span class="sep">/</span><span class="here">Gebruiksdata</span>');
+  const ADMIN = 'EFkA4kexkLNjBKCGuKD9eiyUvfM2';
+  const D = window.BeheerData, courses = window.ATLAS_VAKKEN;
+  const $ = id => document.getElementById(id), esc = D.escapeHTML;
+  const fmt = value => Number(value || 0).toLocaleString('nl-NL', { maximumFractionDigits: 1 });
+  const score = value => value == null ? 'Nog geen score' : fmt(value) + '%';
+  const hours = seconds => fmt(seconds / 3600);
+  const empty = '<p>Nog geen gegevens in deze periode.</p>';
+  const tabs = [['overzicht', 'Overzicht'], ['vakken', 'Vakken'], ['studenten', 'Studenten'], ['inhoud', 'Inhoud'], ['meldingen', 'Meldingen']];
+  let auth, db, authorised = false, model = null, loadedPeriod = null, generation = 0, loading = false;
+  let feedbackCount = null, feedbackError = false;
+  const sorts = new Map();
+  function route() {
+    const params = new URLSearchParams(location.hash.slice(1));
+    const period = ['7', '30', '90', 'alles'].includes(params.get('periode')) ? params.get('periode') : '30';
+    let tab = tabs.find(([key]) => params.has(key))?.[0] || 'overzicht';
+    if (params.has('vak')) tab = 'vakken';
+    if (params.has('student')) tab = 'studenten';
+    return { tab, period, course: params.get('vak'), student: params.get('student'), filter: params.get('filter') || '' };
+  }
+  function hash(tab, value, additions = {}) {
+    const params = new URLSearchParams(); params.set(tab, value || '');
+    params.set('periode', route().period);
+    for (const [key, val] of Object.entries(additions)) if (val) params.set(key, val);
+    return '#' + params.toString().replace(/^(\w+)=&/, '$1&');
+  }
+  const courseLink = course => `<a href="${esc(hash('vak', course.key))}">${esc(course.title)}</a>`;
+  const studentLink = student => `<a href="${esc(hash('student', student.uid))}">${esc(student.label)}</a>`;
+  const panel = (title, content) => `<section class="data-panel glass"><h2>${esc(title)}</h2>${content}</section>`;
+  function testLabel(test) {
+    const matches = D.resolveTest(test.id, model.index), item = matches.items[0];
+    return item ? `${item.courseTitle} · ${item.title}${matches.shared ? ' (gedeelde teller)' : ''}` : test.id + ' (niet gekoppeld)';
+  }
+  function pageLabel(page) {
+    const match = D.resolvePage(page.id, model.index), item = match.items[0];
+    if (item) return `${item.courseTitle} · ${item.title}${match.shared ? ' (gedeelde teller)' : ''}`;
+    return courses.find(course => course.key === match.courseKey)?.title || page.id;
+  }
+  // Table formatting is kept here; all comparisons and aggregation are pure helpers.
+  function table(id, columns, rows, defaultKey = columns[0].key, defaultDirection = 'asc') {
+    if (!rows.length) return empty;
+    const sorting = sorts.get(id) || { key: defaultKey, direction: defaultDirection };
+    sorts.set(id, sorting);
+    const sorted = D.sortRows(rows, sorting.key, sorting.direction);
+    return `<div class="data-table-wrap" role="region" aria-label="${esc(id)}" tabindex="0"><table class="data-table"><thead><tr>${columns.map(col =>
+      `<th scope="col" aria-sort="${sorting.key === col.key ? (sorting.direction === 'asc' ? 'ascending' : 'descending') : 'none'}"><button type="button" data-table="${esc(id)}" data-sort="${esc(col.key)}">${esc(col.label)}${sorting.key === col.key ? (sorting.direction === 'asc' ? ' ↑' : ' ↓') : ''}</button></th>`).join('')}</tr></thead><tbody>${sorted.map(row => `<tr>${columns.map(col => `<td>${col.render ? col.render(row) : esc(row[col.key] ?? '')}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
+  }
+  function chart(title, source, field, unit, divisor = 1) {
+    const range = D.periodRange(route().period);
+    const { values, total, peak } = D.chartData(source, field, divisor, range.start, range.end, model.days.map(row => row.day));
+    if (!peak) return panel(title, empty);
+    const width = 400, height = 200, left = 44, right = 12, top = 16, bottom = 32, plotHeight = height - top - bottom, plotWidth = width - left - right;
+    const step = plotWidth / values.length;
+    const labels = [...new Set([0, Math.floor((values.length - 1) / 2), values.length - 1])];
+    const svg = `<svg class="data-chart" role="img" viewBox="0 0 ${width} ${height}" aria-label="${esc(title + ': totaal ' + fmt(total) + ' ' + unit + ', piek ' + fmt(peak) + ' ' + unit)}">
+      ${[0, .5, 1].map(fraction => { const y = top + plotHeight * (1 - fraction); return `<line class="grid" x1="${left}" x2="${width - right}" y1="${y}" y2="${y}"/><text x="${left - 8}" y="${y + 4}" text-anchor="end">${fmt(peak * fraction)}</text>`; }).join('')}
+      ${values.map((row, i) => { const barHeight = plotHeight * row.value / peak; return `<rect class="bar" x="${left + i * step + step * .1}" y="${top + plotHeight - barHeight}" width="${step * .8}" height="${barHeight}"><title>${esc(row.day + ': ' + row.value.toLocaleString('nl-NL', { maximumFractionDigits: 20 }) + ' ' + unit + (divisor === 60 ? ' (' + row.raw + ' seconden)' : ''))}</title></rect>`; }).join('')}
+      ${labels.map(i => `<text x="${left + (i + .5) * step}" y="${height - 8}" text-anchor="${i === 0 ? 'start' : i === values.length - 1 ? 'end' : 'middle'}">${esc(values[i].day.slice(5))}</text>`).join('')}</svg>`;
+    return panel(title, svg + `<p class="data-note">Totaal ${fmt(total)} ${esc(unit)}. De staaftekst geeft de waarde per dag.</p>`);
+  }
+  const timeColumn = { key: 'sec', label: 'Actieve uren', render: row => hours(row.sec) };
+  const averageColumn = { key: 'average', label: 'Gem. score', render: row => esc(score(row.average)) };
+  const testColumns = [{ key: 'id', label: 'Oefentoets', render: row => esc(testLabel(row)) }, { key: 'n', label: 'Ingeleverd' }, averageColumn];
+  function studentColumns() {
+    return [{ key: 'label', label: 'Student', render: studentLink },
+      { key: 'year', label: 'Jaar (afgeleid)', render: row => row.year ? 'Jaar ' + esc(row.year) + ' (afgeleid)' : 'Onbekend (afgeleid)' },
+      timeColumn, { key: 'activeDays', label: 'Dagen actief' }, { key: 'courseCount', label: 'Vakken' }, { key: 'lastDay', label: 'Laatste dag' },
+      { key: 'retakeCount', label: 'Mogelijk herkansing', render: row => row.retakes.length ? esc(row.retakes.map(course => course.title).join(', ')) : 'Geen signaal' }];
+  }
+  function overview() {
+    const tiles = [['Bezoekers', fmt(model.visitors), 'Som van dagelijkse browsertellers'], ['Actieve studenten', fmt(model.studentCount), 'Unieke accounts in deze periode'],
+      ['Actieve uren', hours(model.sec), 'Ingelogde studenten'], ['Oefentoetsen ingeleverd', fmt(model.n), 'Anonieme tellers, inclusief ingelogde studenten'],
+      ['Gemiddelde score', score(model.average), 'Gewogen over alle inzendingen']];
+    return `<dl class="data-metrics">${tiles.map(([label, value, note]) => `<div class="data-metric glass"><dt>${esc(label)}</dt><dd>${esc(value)}</dd><small>${esc(note)}</small></div>`).join('')}</dl>` +
+      (!model.hasData ? panel('Overzicht', empty) : '') +
+      `<div class="data-grid">${chart('Bezoekers per dag', model.days, 'visitors', 'bezoekers')}${chart('Actieve minuten per dag', model.days, 'sec', 'minuten', 60)}</div>` +
+      panel('Meest gebruikt', table('meest-gebruikt', [{ key: 'id', label: 'Pagina', render: row => esc(pageLabel(row)) }, { key: 'views', label: 'Weergaven' }], model.pages.slice(0, 10), 'views', 'desc')) +
+      panel('Lastigste toetsen', `<p>Laagste gemiddelde score, met minstens ${D.DIFFICULT_MIN_SUBMISSIONS} inzendingen.</p>` + table('lastigste-toetsen', testColumns, model.difficult.slice(0, 10), 'average'));
+  }
+  function courseOverview() {
+    return panel('Vakken', `<p>Het label Huidige periode geldt voor jaar ${esc(ATLAS_HUIDIG.year)}, periode ${esc(ATLAS_HUIDIG.period)}. Gedeelde paginatellers tussen vakken worden niet aan één vak toegeschreven.</p>` +
+      table('vakken', [{ key: 'title', label: 'Vak', render: row => courseLink(row) + (row.current ? '<span class="data-badge">Huidige periode</span>' : '') },
+        { key: 'views', label: 'Weergaven' }, { key: 'studentCount', label: 'Unieke studenten' }, timeColumn,
+        { key: 'minutesPerStudent', label: 'Min. per student', render: row => fmt(row.minutesPerStudent) }, { key: 'n', label: 'Toetsen ingeleverd' }, averageColumn], model.courses));
+  }
+  function courseDetail(key) {
+    const course = model.courses.find(row => row.key === key);
+    if (!course) return panel('Vak niet gevonden', '<p><a href="' + esc(hash('vakken')) + '">Naar alle vakken</a></p>');
+    const parts = [...course.parts.values()];
+    const students = model.students.filter(student => course.students.has(student.uid));
+    return panel(course.title, `<p><a href="${esc(hash('vakken'))}">Alle vakken</a> · Jaar ${esc(course.year)} · Periode ${esc(course.periods.join(', '))}</p><p>${fmt(course.views)} weergaven · ${fmt(course.studentCount)} studenten · ${hours(course.sec)} actieve uren</p>`) +
+      chart('Actieve minuten per dag voor dit vak', course.days, null, 'minuten', 60) +
+      panel('Tijd en opens per onderdeel', '<p>Activiteit wordt per onderdeeltype bewaard. Meerdere pagina’s van hetzelfde type delen hun tijd en opens.</p>' +
+        table('vak-onderdelen', [{ key: 'group', label: 'Groep' }, { key: 'part', label: 'Onderdeeltype' }, { key: 'titles', label: 'Pagina’s' },
+          { key: 'sec', label: 'Actieve minuten', render: row => fmt(row.sec / 60) }, { key: 'opens', label: 'Opens' }], parts, 'group')) +
+      panel('Scores per oefentoets', table('vak-toetsen', testColumns, [...course.tests.values()])) +
+      panel('Studenten die dit vak gebruikten', table('vak-studenten', studentColumns(), students, 'sec', 'desc'));
+  }
+  function studentDetail(uid) {
+    const student = model.students.find(row => row.uid === uid);
+    if (!student) return panel('Student niet gevonden', `<p><a href="${esc(hash('studenten'))}">Naar alle studenten</a></p>`);
+    const inference = student.inference;
+    const explanation = inference.total < D.YEAR_MIN_SECONDS ? `Minder dan ${D.YEAR_MIN_SECONDS / 60} minuten gemeten tijd bij bekende vakken: jaar onbekend.` :
+      inference.tie ? 'Meerdere jaren hebben evenveel actieve tijd: jaar onbekend.' : `De meeste actieve tijd bij bekende vakken valt in jaar ${student.year}. Dit jaar is afgeleid uit gedrag.`;
+    return panel(student.label, `<p><a href="${esc(hash('studenten'))}">Alle studenten</a></p><p>${hours(student.sec)} actieve uren · ${student.activeDays} dagen actief · laatste dag ${esc(student.lastDay)}</p>`) +
+      chart('Actieve minuten per dag van deze student', student.days, null, 'minuten', 60) +
+      panel('Tijd per vak', table('student-vakken', [{ key: 'title', label: 'Vak', render: courseLink }, timeColumn, { key: 'opens', label: 'Opens' }], [...student.courses.values()], 'sec', 'desc')) +
+      panel('Toetsresultaten per dag', '<p>Per dag en per toets het gemiddelde van de ingeleverde pogingen. Dit zijn geen afzonderlijke pogingen.</p>' +
+        table('student-toetsen', [{ key: 'day', label: 'Dag' }, ...testColumns], student.results, 'day', 'desc')) +
+      panel('Afgeleid jaar en mogelijk herkansing', `<p>${esc(explanation)}</p>` +
+        `<ul>${inference.years.filter(row => row.sec).map(row => `<li>Jaar ${esc(row.year)}: ${fmt(row.sec / 60)} actieve minuten</li>`).join('')}</ul>` +
+        `<p>Een mogelijk herkansingssignaal is minstens ${D.RETAKE_MIN_SECONDS / 60} minuten bij een vak dat niet in de huidige periode loopt, uit een eerder of gelijk jaar aan het afgeleide jaar, of uit een eerdere periode van het huidige studiejaar. Dit is een signaal op basis van gedrag, geen feit.</p>` +
+        (student.retakes.length ? `<ul>${student.retakes.map(course => `<li>${courseLink(course)}: ${fmt(student.courses.get(course.key).sec / 60)} minuten, jaar ${esc(course.year)}, periode ${esc(course.periods.join(', '))}</li>`).join('')}</ul>` : '<p>Geen mogelijk herkansingssignaal in deze periode.</p>'));
+  }
+  function contentView(filter) {
+    return panel('Inhoud', `<label for="course-filter">Vak</label> <select id="course-filter"><option value="">Alle vakken</option>${courses.map(course => `<option value="${esc(course.key)}"${filter === course.key ? ' selected' : ''}>${esc(course.title)}</option>`).join('')}</select>` +
+      '<p class="data-note">Tijd en opens met * zijn gedeelde totalen van hetzelfde onderdeeltype binnen een vak. Weergaven met * delen een teller met een andere pagina. Tel deze regels niet bij elkaar op.</p>' +
+      table('inhoud', [{ key: 'courseTitle', label: 'Vak', render: row => courseLink({ key: row.courseKey, title: row.courseTitle }) }, { key: 'group', label: 'Groep' },
+        { key: 'title', label: 'Onderdeel', render: row => `<a href="${esc(row.href)}">${esc(row.title)}</a>` },
+        { key: 'views', label: 'Weergaven', render: row => fmt(row.views) + (row.sharedViews ? ' *' : '') },
+        { key: 'opens', label: 'Opens ingelogd', render: row => fmt(row.opens) + (row.sharedActivity ? ' *' : '') },
+        { key: 'sec', label: 'Actieve minuten', render: row => fmt(row.sec / 60) + (row.sharedActivity ? ' *' : '') }, averageColumn], model.content.filter(item => !filter || item.courseKey === filter), 'courseTitle'));
+  }
+  function render() {
+    if (!authorised) return;
+    const state = route(); $('period').value = state.period;
+    $('tabs').innerHTML = tabs.map(([key, title]) => `<a class="data-tab" href="${esc(hash(key))}"${state.tab === key ? ' aria-current="page"' : ''}>${esc(title)}</a>`).join('');
+    if (!model || loadedPeriod !== state.period) return;
+    const range = D.periodRange(state.period);
+    $('range').textContent = state.period === 'alles' ? 'Alle gemeten dagen, tot en met ' + range.end : range.start + ' t/m ' + range.end;
+    if (state.tab === 'overzicht') $('view').innerHTML = overview();
+    if (state.tab === 'vakken') $('view').innerHTML = state.course ? courseDetail(state.course) : courseOverview();
+    if (state.tab === 'studenten') $('view').innerHTML = state.student ? studentDetail(state.student) : panel('Studenten', '<p>Jaar en mogelijke herkansingen zijn afgeleid uit gedrag binnen de gekozen periode.</p>' + table('studenten', studentColumns(), model.students, 'sec', 'desc'));
+    if (state.tab === 'inhoud') $('view').innerHTML = contentView(state.filter);
+    if (state.tab === 'meldingen') $('view').innerHTML = panel('Nieuwe meldingen', `<p>${feedbackError ? 'Het aantal meldingen kon niet worden geladen.' : fmt(feedbackCount) + ' meldingen met status nieuw.'}</p><p>Dit is de huidige werkvoorraad, onafhankelijk van de gekozen periode.</p><a href="beheer.html">Meldingen afhandelen in Beheer</a>`);
+  }
+  // Bound the number of concurrent daily subcollection reads, also for the "alles" period.
+  async function readStatistics(documents, stillCurrent) {
+    const results = new Array(documents.length); let cursor = 0;
+    async function worker() {
+      while (cursor < documents.length && stillCurrent()) {
+        const i = cursor++, doc = documents[i];
+        const [pages, tests] = await Promise.all([doc.ref.collection('paginas').get(), doc.ref.collection('toetsen').get()]);
+        results[i] = { day: doc.id, bezoekers: doc.data().bezoekers || 0,
+          paginas: pages.docs.map(row => ({ ...row.data(), id: row.id })), toetsen: tests.docs.map(row => ({ ...row.data(), id: row.id })) };
+      }
+    }
+    await Promise.all(Array.from({ length: Math.min(3, documents.length) }, worker));
+    return results.filter(Boolean);
+  }
+  async function load() {
+    if (!authorised) return;
+    const state = route(), token = ++generation, range = D.periodRange(state.period);
+    const stillCurrent = () => token === generation && authorised && auth.currentUser?.uid === ADMIN;
+    loading = true; model = null; $('view').innerHTML = ''; $('view').setAttribute('aria-busy', 'true');
+    $('load-state').textContent = 'Gegevens laden…'; render();
+    try {
+      const [activity, stats, feedback] = await Promise.all([
+        db.collection('activiteit').where('dag', '>=', range.start).where('dag', '<=', range.end).get(),
+        db.collection('statistiek').where(firebase.firestore.FieldPath.documentId(), '>=', range.start).where(firebase.firestore.FieldPath.documentId(), '<=', range.end).get(),
+        db.collection('feedback').where('status', '==', 'nieuw').get().then(result => ({ count: result.size })).catch(() => ({ error: true }))
+      ]);
+      if (!stillCurrent()) return;
+      const statistics = await readStatistics(stats.docs, stillCurrent);
+      if (!stillCurrent()) return;
+      model = D.aggregate({ courses, current: ATLAS_HUIDIG, statistics, activities: activity.docs.map(doc => doc.data()), ...range });
+      feedbackCount = feedback.count ?? null; feedbackError = !!feedback.error; loadedPeriod = state.period;
+      $('load-state').textContent = ''; loading = false; $('view').setAttribute('aria-busy', 'false'); render();
+    } catch (error) {
+      if (!stillCurrent()) return;
+      loading = false; $('view').setAttribute('aria-busy', 'false');
+      $('load-state').textContent = 'Gegevens laden is mislukt (' + (error.code || 'onbekende fout') + ').';
+      $('view').innerHTML = '<button type="button" class="data-button" id="retry">Opnieuw laden</button>';
+    }
+  }
+  window.addEventListener('hashchange', () => {
+    if (!authorised) return;
+    if (route().period !== loadedPeriod && (!loading || route().period !== $('period').value)) load();
+    else render();
+  });
+  $('period').addEventListener('change', () => {
+    const params = new URLSearchParams(location.hash.slice(1));
+    if (!params.size) params.set('overzicht', '');
+    params.set('periode', $('period').value); location.hash = params.toString();
+    // Invalidate the in-flight period read before hashchange can render it.
+    load();
+  });
+  $('view').addEventListener('change', event => {
+    if (event.target.id === 'course-filter') location.hash = hash('inhoud', '', { filter: event.target.value });
+  });
+  $('view').addEventListener('click', event => {
+    if (event.target.closest('#retry')) { load(); return; }
+    const button = event.target.closest('[data-sort]');
+    if (!button) return;
+    const previous = sorts.get(button.dataset.table);
+    sorts.set(button.dataset.table, { key: button.dataset.sort, direction: previous?.key === button.dataset.sort && previous.direction === 'asc' ? 'desc' : 'asc' });
+    render();
+  });
+  Atlas.accountReady.then(account => {
+    if (!account || !window.firebase) { $('access').textContent = 'Inloggen is niet beschikbaar. Herlaad de pagina om opnieuw te proberen.'; return; }
+    if (!firebase.apps.length) firebase.initializeApp({
+      apiKey: 'AIzaSyBB397Wk2eqpBjic8E7aGV1mTgIjhQ21a8',
+      authDomain: 'fmkompas-ff8bc.firebaseapp.com', projectId: 'fmkompas-ff8bc',
+      storageBucket: 'fmkompas-ff8bc.firebasestorage.app', messagingSenderId: '487972024689',
+      appId: '1:487972024689:web:712c3117080745d14746d0'
+    });
+    auth = firebase.auth(); db = firebase.firestore();
+    auth.onAuthStateChanged(user => {
+      ++generation; model = null; loadedPeriod = null; loading = false; authorised = user?.uid === ADMIN;
+      $('view').innerHTML = ''; $('dashboard').hidden = !authorised; $('access').hidden = authorised;
+      if (!user) {
+        $('access').innerHTML = '<p>Log in met het beheerdersaccount.</p><button type="button" class="data-button" id="login">Inloggen met Google</button><p id="login-state" role="status"></p>';
+        $('login').onclick = async () => {
+          try { await auth.signInWithPopup(new firebase.auth.GoogleAuthProvider()); }
+          catch (error) {
+            if (/popup-blocked|operation-not-supported/.test(error.code || '')) {
+              try { await auth.signInWithRedirect(new firebase.auth.GoogleAuthProvider()); }
+              catch (_) { if ($('login-state')) $('login-state').textContent = 'Inloggen is mislukt. Probeer het opnieuw.'; }
+            } else if ($('login-state')) $('login-state').textContent = 'Inloggen is mislukt. Probeer het opnieuw.';
+          }
+        };
+      } else if (!authorised) $('access').textContent = 'Deze pagina is alleen voor de beheerder.';
+      else load();
+    });
+  }).catch(() => { $('access').textContent = 'Het account kon niet worden geladen. Herlaad de pagina om opnieuw te proberen.'; });
+})();
+</script>
+</body>
+</html>

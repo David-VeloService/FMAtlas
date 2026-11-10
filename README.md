@@ -175,6 +175,18 @@ Controle: `node --test tests/meten.test.mjs` en `node --check js/atlas-meten.js`
 [Firestore Write-referentie](https://firebase.google.com/docs/firestore/reference/rest/v1/Write)
 en de [REST-documentatie](https://firebase.google.com/docs/firestore/use-rest-api).
 
+## Datapagina voor de beheerder
+
+`data.html` toont gebruiksdata over 7, 30 (standaard), 90 dagen of alles, met doorklikbare vakken,
+studenten en inhoud. Alleen de beheerder leest de data. Jaar is afgeleid uit het studiejaar met de
+meeste actieve vaktijd, vanaf 10 minuten; bij gelijke tijd blijft het onbekend. Mogelijk herkansing
+is een gedragssignaal: minstens 15 minuten bij een vak buiten de huidige periode, uit een eerder
+of gelijk jaar aan het afgeleide jaar, of uit een eerdere periode van het huidige studiejaar.
+Tijd en opens zijn per onderdeeltype gemeten, niet per afzonderlijke oefentoets; gedeelde tellers
+zijn gemarkeerd. Onbekende toetsleutels blijven zichtbaar zonder een gegiste vakkoppeling.
+Meldingen toont alleen de huidige hoeveelheid met status `nieuw`, met een link naar `beheer.html`.
+Controle: `node --test tests/beheer-data.test.mjs` en `node --check js/beheer-data.js`.
+
 ## Feedback en automatische verwerking
 
 `beheer.html` toont bestaande meldingen uit Firestore `feedback/{id}` aan de beheerder.
