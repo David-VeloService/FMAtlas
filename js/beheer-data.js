@@ -7,6 +7,12 @@
   const GROUPS = ['leren', 'oefenen', 'toetsen'];
   const PARTS = ['begrippentoets', 'oefentoets', 'samenvatting', 'begrippen', 'flashcards', 'video'];
   const ICON_PARTS = { book: 'samenvatting', list: 'begrippen', play: 'video', cards: 'flashcards', check: 'begrippentoets', quiz: 'oefentoets' };
+  // Stored BT_VAKKEN keys that differ from the vak parameter in Atlas hrefs.
+  const CONCEPT_VAK_ALIASES = {
+    'basis-van-fm-a': 'bvfma', 'basis-fm-b': 'bvfmb',
+    'facilitaire-bedrijfseconomie': 'bedrijfseconomie',
+    eventmanagement1: 'em1', 'facilitaire-inkoop': 'inkoop'
+  };
   const number = value => typeof value === 'number' && Number.isFinite(value) && value > 0 ? value : 0;
   const escapeHTML = value => String(value ?? '').replace(/[&<>"']/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[char]));
   const cleanId = value => String(value || '').toLowerCase().replace(/[^a-z0-9~-]/g, '').slice(0, 80) || 'onbekend';
@@ -31,7 +37,10 @@
     if (hub) return { courseKey: hub.key, items: [], shared: false };
     const items = index.items.filter(item => item.pageId === id);
     const keys = [...new Set(items.map(item => item.courseKey))];
-    return { courseKey: keys.length === 1 ? keys[0] : null, items, shared: items.length > 1 };
+    const candidates = keys.length > 1 ? items.filter(item => !new URL(item.href, 'https://fmatlas.nl/').searchParams.has('from')) : items;
+    const owners = [...new Set(candidates.map(item => item.courseKey))];
+    const courseKey = owners.length === 1 ? owners[0] : null;
+    return { courseKey, items: courseKey ? items.filter(item => item.courseKey === courseKey) : items, shared: items.length > 1 };
   }
   function resolveActivity(courseKey, part, index) {
     return { course: index.courses.find(course => course.key === courseKey) || null,
@@ -46,7 +55,8 @@
     const practice = /^(.+-oefentoets)-([1-9]\d*)-[1-9]\d*$/.exec(id);
     if (practice) return resolvePage(practice[1] + (practice[2] === '1' ? '' : '-' + practice[2]), tests);
     const concepts = /^(.+)-begrippentoets-[1-9]\d*$/.exec(id);
-    return concepts ? resolvePage(pageId('begrippentoets.html?vak=' + concepts[1]), tests) : exact;
+    const vak = concepts && (Object.hasOwn(CONCEPT_VAK_ALIASES, concepts[1]) ? CONCEPT_VAK_ALIASES[concepts[1]] : concepts[1]);
+    return concepts ? resolvePage(pageId('begrippentoets.html?vak=' + vak), tests) : exact;
   }
   function localDay(date) {
     return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
@@ -80,10 +90,9 @@
     return { year: total >= YEAR_MIN_SECONDS && !tie ? ranked[0]?.[0] ?? null : null, total, years: [...years].map(([year, sec]) => ({ year, sec })), tie };
   }
   function inferRetakes(courseSeconds, inferredYear, current, index) {
-    return index.courses.filter(course => number(courseSeconds.get(course.key)) >= RETAKE_MIN_SECONDS &&
-      !(course.periods || []).includes(current.period) &&
-      ((inferredYear !== null && course.year <= inferredYear) ||
-       (course.year === current.year && (course.periods || []).some(period => period < current.period))));
+    return index.courses.filter(course => inferredYear !== null && number(courseSeconds.get(course.key)) >= RETAKE_MIN_SECONDS &&
+      (course.year < inferredYear || (course.year === inferredYear && course.periods?.length > 0 &&
+        course.periods.every(period => period < current.period))));
   }
   function sortRows(rows, key, direction = 'asc') {
     const sign = direction === 'desc' ? -1 : 1;

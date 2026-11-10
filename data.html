@@ -163,7 +163,7 @@
       panel('Lastigste toetsen', `<p>Laagste gemiddelde score, met minstens ${D.DIFFICULT_MIN_SUBMISSIONS} inzendingen.</p>` + table('lastigste-toetsen', testColumns, model.difficult.slice(0, 10), 'average'));
   }
   function courseOverview() {
-    return panel('Vakken', `<p>Het label Huidige periode geldt voor jaar ${esc(ATLAS_HUIDIG.year)}, periode ${esc(ATLAS_HUIDIG.period)}. Gedeelde paginatellers tussen vakken worden niet aan één vak toegeschreven.</p>` +
+    return panel('Vakken', `<p>Het label Huidige periode geldt voor jaar ${esc(ATLAS_HUIDIG.year)}, periode ${esc(ATLAS_HUIDIG.period)}. Gedeelde paginatellers horen bij het vak met de link zonder from-parameter; als meerdere vakken overblijven, blijft de teller niet gekoppeld.</p>` +
       table('vakken', [{ key: 'title', label: 'Vak', render: row => courseLink(row) + (row.current ? '<span class="data-badge">Huidige periode</span>' : '') },
         { key: 'views', label: 'Weergaven' }, { key: 'studentCount', label: 'Unieke studenten' }, timeColumn,
         { key: 'minutesPerStudent', label: 'Min. per student', render: row => fmt(row.minutesPerStudent) }, { key: 'n', label: 'Toetsen ingeleverd' }, averageColumn], model.courses));
@@ -194,7 +194,7 @@
         table('student-toetsen', [{ key: 'day', label: 'Dag' }, ...testColumns], student.results, 'day', 'desc')) +
       panel('Afgeleid jaar en mogelijk herkansing', `<p>${esc(explanation)}</p>` +
         `<ul>${inference.years.filter(row => row.sec).map(row => `<li>Jaar ${esc(row.year)}: ${fmt(row.sec / 60)} actieve minuten</li>`).join('')}</ul>` +
-        `<p>Een mogelijk herkansingssignaal is minstens ${D.RETAKE_MIN_SECONDS / 60} minuten bij een vak dat niet in de huidige periode loopt, uit een eerder of gelijk jaar aan het afgeleide jaar, of uit een eerdere periode van het huidige studiejaar. Dit is een signaal op basis van gedrag, geen feit.</p>` +
+        `<p>Een mogelijk herkansingssignaal is minstens ${D.RETAKE_MIN_SECONDS / 60} minuten bij een vak uit een eerder jaar dan het afgeleide jaar, of uit hetzelfde jaar als alle periodes van het vak vóór de huidige periode liggen. Bij een onbekend afgeleid jaar is er geen signaal. Dit is een signaal op basis van gedrag, geen feit.</p>` +
         (student.retakes.length ? `<ul>${student.retakes.map(course => `<li>${courseLink(course)}: ${fmt(student.courses.get(course.key).sec / 60)} minuten, jaar ${esc(course.year)}, periode ${esc(course.periods.join(', '))}</li>`).join('')}</ul>` : '<p>Geen mogelijk herkansingssignaal in deze periode.</p>'));
   }
   function contentView(filter) {
@@ -217,7 +217,7 @@
     if (state.tab === 'vakken') $('view').innerHTML = state.course ? courseDetail(state.course) : courseOverview();
     if (state.tab === 'studenten') $('view').innerHTML = state.student ? studentDetail(state.student) : panel('Studenten', '<p>Jaar en mogelijke herkansingen zijn afgeleid uit gedrag binnen de gekozen periode.</p>' + table('studenten', studentColumns(), model.students, 'sec', 'desc'));
     if (state.tab === 'inhoud') $('view').innerHTML = contentView(state.filter);
-    if (state.tab === 'meldingen') $('view').innerHTML = panel('Nieuwe meldingen', `<p>${feedbackError ? 'Het aantal meldingen kon niet worden geladen.' : fmt(feedbackCount) + ' meldingen met status nieuw.'}</p><p>Dit is de huidige werkvoorraad, onafhankelijk van de gekozen periode.</p><a href="beheer.html">Meldingen afhandelen in Beheer</a>`);
+    if (state.tab === 'meldingen') $('view').innerHTML = panel('Nieuwe meldingen', `<p>${feedbackError ? 'Het aantal meldingen kon niet worden geladen.' : feedbackCount == null ? 'Het aantal meldingen wordt geteld…' : fmt(feedbackCount) + ' meldingen met status nieuw.'}</p><p>Dit is de huidige werkvoorraad, onafhankelijk van de gekozen periode.</p><a href="beheer.html">Meldingen afhandelen in Beheer</a>`);
   }
   // Bound the number of concurrent daily subcollection reads, also for the "alles" period.
   async function readStatistics(documents, stillCurrent) {

@@ -180,8 +180,9 @@ en de [REST-documentatie](https://firebase.google.com/docs/firestore/use-rest-ap
 `data.html` toont gebruiksdata over 7, 30 (standaard), 90 dagen of alles, met doorklikbare vakken,
 studenten en inhoud. Alleen de beheerder leest de data. Jaar is afgeleid uit het studiejaar met de
 meeste actieve vaktijd, vanaf 10 minuten; bij gelijke tijd blijft het onbekend. Mogelijk herkansing
-is een gedragssignaal: minstens 15 minuten bij een vak buiten de huidige periode, uit een eerder
-of gelijk jaar aan het afgeleide jaar, of uit een eerdere periode van het huidige studiejaar.
+is een gedragssignaal: minstens 15 minuten bij een vak uit een eerder jaar dan het afgeleide jaar,
+of uit hetzelfde jaar als alle periodes van het vak vóór de huidige periode liggen.
+Bij een onbekend afgeleid jaar is er geen signaal; vooruitwerken telt niet mee.
 Tijd en opens zijn per onderdeeltype gemeten, niet per afzonderlijke oefentoets; gedeelde tellers
 zijn gemarkeerd. Onbekende toetsleutels blijven zichtbaar zonder een gegiste vakkoppeling.
 Meldingen toont alleen de huidige hoeveelheid met status `nieuw`, met een link naar `beheer.html`.

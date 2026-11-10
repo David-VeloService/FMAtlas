@@ -45,10 +45,11 @@ test('page IDs and activity parts use exactly the measurement rules for every At
   assert.equal(D.resolveActivity('_site', 'home', index).course, null);
 });
 
-test('ambiguous page counters stay shared; unknown keys are never attributed by a prefix guess', () => {
+test('shared pages belong to the course without from; unknown keys are never attributed by a prefix guess', () => {
   const shared = D.resolvePage('evenementenlogistiek-oefentoets-2', index);
-  assert.equal(shared.courseKey, null);
-  assert.equal(shared.items.length, 2);
+  assert.equal(shared.courseKey, 'evenementenlogistiek');
+  assert.equal(shared.items.length, 1);
+  assert.equal(shared.items[0].href, 'evenementenlogistiek-oefentoets-2.html');
   assert.equal(shared.shared, true);
   assert.equal(D.resolveTest('huisvesting-oefentoets', index).courseKey, 'huisvesting');
   assert.equal(D.resolveTest('huisvesting-made-up', index).courseKey, null);
@@ -69,24 +70,95 @@ test('practice score keys resolve test one and later tests through their page hr
   }
 });
 
-test('concept score keys resolve through the vak query, including aliases', () => {
-  for (const [key, courseKey] of [['huisvesting', 'huisvesting'], ['em1', 'eventmanagement1'], ['inkoop', 'facilitaire-inkoop']]) {
+test('concept score keys resolve through the vak query, including stored aliases', () => {
+  for (const [key, vak, courseKey] of [
+    ['huisvesting', 'huisvesting', 'huisvesting'],
+    ['eventmanagement1', 'em1', 'eventmanagement1'],
+    ['facilitaire-inkoop', 'inkoop', 'facilitaire-inkoop']
+  ]) {
     const match = D.resolveTest(`${key}-begrippentoets-20`, index);
     assert.equal(match.courseKey, courseKey);
-    assert.equal(match.items[0].href, `begrippentoets.html?vak=${key}`);
+    assert.equal(match.items[0].href, `begrippentoets.html?vak=${vak}`);
   }
   assert.equal(D.resolveTest('begrippentoets~huisvesting', index).courseKey, 'huisvesting');
 });
 
-test('unknown score keys stay unlinked and shared test pages stay ambiguous', () => {
+test('every BT_VAKKEN storage key resolves to its indexed Atlas course and concept page', () => {
+  const html = readFileSync(new URL('../begrippentoets.html', import.meta.url), 'utf8');
+  const table = html.match(/const BT_VAKKEN\s*=\s*({[\s\S]*?^});/m);
+  assert.ok(table, 'BT_VAKKEN table must be present and parseable');
+  const entries = vm.runInNewContext('(' + table[1] + ')');
+  assert.ok(Object.keys(entries).length > 0);
+  for (const [vak, entry] of Object.entries(entries)) {
+    const href = `begrippentoets.html?vak=${vak}`;
+    const expectedCourses = courses.filter(course => ['leren', 'oefenen', 'toetsen'].some(group =>
+      (course[group] || []).some(([, itemHref]) => itemHref === href)));
+    assert.equal(expectedCourses.length, 1, href);
+    const match = D.resolveTest(`${entry.key}-begrippentoets-20`, index);
+    assert.equal(match.courseKey, expectedCourses[0].key, `${vak}: ${entry.key}`);
+    assert.equal(match.items.length, 1, vak);
+    assert.equal(match.items[0].href, href, vak);
+  }
+});
+
+test('unknown score keys stay unlinked', () => {
   for (const id of ['unknown', 'huisvesting-oefentoets-99-20', 'huisvesting-made-up-20',
     'eventmanagement1-oefentoets-1-20', 'unknown-begrippentoets-20', 'huisvesting-oefentoets-0-20']) {
     assert.deepEqual(D.resolveTest(id, index), { courseKey: null, items: [], shared: false }, id);
   }
-  const shared = D.resolveTest('evenementenlogistiek-oefentoets-2-40', index);
-  assert.equal(shared.courseKey, null);
-  assert.equal(shared.items.length, 2);
-  assert.equal(shared.shared, true);
+});
+
+test('shared test scores prefer the course without from, regardless of item order', () => {
+  for (const orderedCourses of [courses, courses.slice().reverse()]) {
+    const orderedIndex = D.makeIndex(orderedCourses);
+    for (const n of [2, 3]) {
+      const page = `evenementenlogistiek-oefentoets-${n}`;
+      for (const id of [page, page + '-40']) {
+        const match = D.resolveTest(id, orderedIndex);
+        assert.equal(match.courseKey, 'evenementenlogistiek', id);
+        assert.equal(match.items.length, 1, id);
+        assert.equal(match.items[0].href, page + '.html', id);
+        assert.equal(match.shared, true, id);
+      }
+    }
+  }
+});
+
+test('multiple remaining owner courses stay unlinked for pages and tests', () => {
+  for (const suffixes of [['', ''], ['?from=one', '?from=two']]) {
+    const ambiguous = D.makeIndex(suffixes.map((suffix, i) => ({
+      key: 'course-' + i, oefenen: [['Shared test', 'shared-oefentoets.html' + suffix, 'quiz']]
+    })));
+    for (const match of [D.resolvePage('shared-oefentoets', ambiguous), D.resolveTest('shared-oefentoets-1-20', ambiguous)]) {
+      assert.equal(match.courseKey, null);
+      assert.equal(match.items.length, 2);
+      assert.equal(match.shared, true);
+    }
+  }
+});
+
+test('shared score and page counters aggregate only under the owner course', () => {
+  const result = aggregate({
+    statistics: [{ day: '2026-11-10', paginas: [{ id: 'evenementenlogistiek-oefentoets-2', n: 7 }], toetsen: [
+      { id: 'evenementenlogistiek-oefentoets-2-40', n: 2, som: 100 },
+      { id: 'evenementenlogistiek-oefentoets-3-20', n: 1, som: 80 }
+    ] }],
+    activities: [{ uid: 'student', dag: '2026-11-10', toetsen: {
+      'evenementenlogistiek-oefentoets-2-40': { n: 1, som: 50 },
+      'evenementenlogistiek-oefentoets-3-20': { n: 1, som: 80 }
+    } }]
+  });
+  const owner = result.courses.find(course => course.key === 'evenementenlogistiek');
+  const other = result.courses.find(course => course.key === 'projectvaardigheden');
+  assert.equal(owner.views, 7);
+  assert.equal(owner.n, 3);
+  assert.equal(owner.average, 60);
+  assert.equal(owner.tests.size, 2);
+  assert.equal(other.views, 0);
+  assert.equal(other.n, 0);
+  assert.equal(other.tests.size, 0);
+  assert.ok(result.tests.every(row => row.courseKey === owner.key));
+  assert.ok(result.students[0].results.every(row => row.courseKey === owner.key));
 });
 
 test('question counts merge per test page in totals, courses, content and daily student results', () => {
@@ -183,7 +255,7 @@ test('content keeps individual views but marks activity shared across pages of a
   assert.equal(result.content.length, index.items.length);
   const shared = aggregate({ statistics: [{ day: '2026-11-09', paginas: [{ id: 'evenementenlogistiek-oefentoets-2', n: 7 }] }] });
   assert.equal(shared.courses.find(row => row.key === 'projectvaardigheden').views, 0);
-  assert.equal(shared.courses.find(row => row.key === 'evenementenlogistiek').views, 0);
+  assert.equal(shared.courses.find(row => row.key === 'evenementenlogistiek').views, 7);
   assert.equal(shared.content.filter(row => row.pageId === 'evenementenlogistiek-oefentoets-2').every(row => row.sharedViews && row.views === 7), true);
 });
 
@@ -196,18 +268,21 @@ test('derived year requires ten minutes and chooses the year with the most measu
   assert.equal(D.inferYear(new Map([['unknown', 10000]]), index).year, null);
 });
 
-test('retake signals obey threshold, period and year; earlier current-year periods also qualify', () => {
+test('retake signals require fifteen minutes in an earlier year or fully elapsed periods of the inferred year', () => {
   const custom = D.makeIndex([
-    { key: 'earlier', year: 1, periods: [1] }, { key: 'now', year: 2, periods: [2] },
-    { key: 'previous', year: 2, periods: [1] }, { key: 'future', year: 3, periods: [3] },
-    { key: 'multi', year: 1, periods: [1, 2] }
+    { key: 'earlier', year: 1, periods: [3, 4] }, { key: 'now', year: 2, periods: [2] },
+    { key: 'previous', year: 2, periods: [1] }, { key: 'future-year', year: 3, periods: [1] },
+    { key: 'future-period', year: 2, periods: [3] },
+    { key: 'multi', year: 2, periods: [1, 2] }, { key: 'gap', year: 2, periods: [1, 3] }
   ]);
-  const times = new Map([['earlier', 900], ['now', 5000], ['previous', 900], ['future', 5000], ['multi', 1000]]);
+  const times = new Map(custom.courses.map(course => [course.key, 900]));
   assert.deepEqual(D.inferRetakes(times, 2, current, custom).map(course => course.key), ['earlier', 'previous']);
   assert.deepEqual(D.inferRetakes(new Map([['earlier', 899]]), 2, current, custom), []);
-  assert.deepEqual(D.inferRetakes(new Map([['future', 900]]), 2, current, custom), []);
-  assert.deepEqual(D.inferRetakes(new Map([['previous', 900]]), 1, current, custom).map(course => course.key), ['previous']);
+  assert.deepEqual(D.inferRetakes(new Map([['previous', 900]]), 1, current, custom), []);
   assert.deepEqual(D.inferRetakes(new Map([['earlier', 900]]), null, current, custom), []);
+  assert.deepEqual(D.inferRetakes(times, null, current, custom), []);
+  assert.deepEqual(D.inferRetakes(times, 2, { year: 3, period: 4 }, custom).map(course => course.key),
+    ['earlier', 'now', 'previous', 'future-period', 'multi', 'gap']);
 });
 
 test('empty input, zero score and invalid numbers produce no NaN or false data', () => {
@@ -267,7 +342,8 @@ test('chart calculation fills missing days and keeps exact quarter-minute values
 // Minimal DOM and Firebase doubles run the page's own script in Node, without a browser or network.
 const pageScript = readFileSync(new URL('../data.html', import.meta.url), 'utf8').match(/<script>([\s\S]*?)<\/script>/)[1];
 const settle = async () => { for (let i = 0; i < 35; i++) await Promise.resolve(); };
-function dashboard({ delayedStats, failActivities = false, initialApps = [], testCounters = [], studentTests = {} } = {}) {
+function dashboard({ delayedStats, failActivities = false, feedbackCount = 5, failFeedback = false,
+  initialApps = [], testCounters = [], studentTests = {} } = {}) {
   const nodes = new Map(), listeners = new Map(), reads = [], filters = [];
   let changed;
   const node = id => {
@@ -292,7 +368,8 @@ function dashboard({ delayedStats, failActivities = false, initialApps = [], tes
             return { async get() { reads.push('statistiek/' + part); return { docs: docs(part === 'paginas' ? [{ id: '<script>alert(1)</script>', n: 3 }] : testCounters) }; } };
           } } }] };
         }
-        return { size: 5, docs: [] };
+        if (failFeedback) throw { code: 'feedback-failed' };
+        return { size: feedbackCount, docs: [] };
       }
     };
   } };
@@ -363,6 +440,20 @@ test('dashboard shows indexed test titles and keeps unknown scores visibly unlin
   await page.navigate('#student=student');
   assert.equal((page.node('view').innerHTML.match(/Huisvesting · Oefentoets 1 · week 1 t\/m 3/g) || []).length, 1);
   assert.match(page.node('view').innerHTML, /unknown-score \(niet gekoppeld\)/);
+});
+
+test('feedback distinguishes an unknown count, a counted zero and a read error', async () => {
+  for (const [options, expected] of [
+    [{ feedbackCount: null }, /Het aantal meldingen wordt geteld…/],
+    [{ feedbackCount: 0 }, /0 meldingen met status nieuw/],
+    [{ failFeedback: true }, /Het aantal meldingen kon niet worden geladen/]
+  ]) {
+    const page = dashboard(options); await settle();
+    page.account({ uid: 'EFkA4kexkLNjBKCGuKD9eiyUvfM2' }); await settle();
+    await page.navigate('#meldingen');
+    assert.match(page.node('view').innerHTML, expected);
+    if (options.feedbackCount !== 0) assert.doesNotMatch(page.node('view').innerHTML, /0 meldingen/);
+  }
 });
 
 test('signing out during a read discards late results and stops subsequent subcollection reads', async () => {
