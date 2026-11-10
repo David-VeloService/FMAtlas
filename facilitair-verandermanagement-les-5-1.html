@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+<title>Les 5.1: Veranderproces en interventies · Facilitair verandermanagement · FM Atlas</title>
+<meta name="description" content="Les 5.1 van Facilitair verandermanagement: Veranderproces en interventies. Met lesvoorbereiding en toetsvoorbereiding."/>
+<link rel="icon" type="image/svg+xml" href="logo.svg"/>
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png"/>
+<link rel="apple-touch-icon" href="apple-touch-icon.png"/>
+<meta name="theme-color" content="#efe5d4"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="css/atlas.css"/>
+<link rel="stylesheet" href="css/leer.css"/>
+<link rel="stylesheet" href="css/toets.css"/>
+<link rel="canonical" href="https://fmatlas.nl/facilitair-verandermanagement-les-5-1.html"/>
+<style>
+.les-wrap { max-width: 1180px; margin: 0 auto; padding: 36px 16px 64px; color: var(--ink); }
+.les-wrap [hidden] { display: none !important; }
+.les-kop { margin-bottom: 28px; }
+.les-kop h1 { font-family: var(--font-display); font-size: clamp(28px, 4vw, 40px); font-weight: 700; letter-spacing: -0.03em; line-height: 1.1; max-width: 26ch; }
+.les-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+.chip { display: inline-block; padding: 4px 12px; border-radius: var(--r-pill); font-size: 14px; font-weight: 600; font-variant-numeric: tabular-nums; background: var(--glass-strong); border: 1px solid var(--glass-edge-low); }
+
+.les-grid { display: grid; grid-template-columns: minmax(0, 360px) minmax(0, 1fr); gap: 32px; align-items: start; }
+.les-grid.zonder-reel { grid-template-columns: minmax(0, 1fr); }
+.les-route { min-width: 0; }
+
+/* Reel: staand beeld, op desktop niet breder dan 360 px */
+.reel { width: 100%; max-width: 360px; }
+.reel-vlak { position: relative; aspect-ratio: 9 / 16; border-radius: var(--r-lg); overflow: hidden; background: var(--olive-950); color: var(--sand-50); box-shadow: var(--glass-shadow); }
+.reel-vlak iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; display: block; }
+.reel-start { position: absolute; inset: 0; width: 100%; height: 100%; background: var(--olive-950); color: var(--sand-50); }
+.reel-start img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.reel-start span { position: absolute; inset: 0; display: grid; place-items: end center; padding: 24px 16px; background: linear-gradient(to top, rgba(20, 23, 15, .75), transparent 45%); }
+.reel-start strong { min-height: 48px; display: inline-flex; align-items: center; padding: 12px 24px; background: var(--olive-900); color: var(--sand-50); border: 1px solid var(--sand-50); border-radius: var(--r-pill); font-size: 17px; }
+.reel-start:focus-visible { outline-offset: -6px; }
+.reel-volgt { position: absolute; inset: 0; display: grid; place-items: center; padding: 24px; text-align: center; font-family: var(--font-display); font-size: 22px; font-weight: 600; }
+.reel figcaption { margin-top: 12px; font-size: 15px; color: var(--ink-soft); font-variant-numeric: tabular-nums; }
+.reel-privacy, .reel-status { margin-top: 6px; font-size: 13px; color: var(--ink-soft); line-height: 1.5; }
+.reel-status:empty { display: none; }
+.reel-keuze { display: none; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+.js .reel-keuze { display: flex; }
+.reel-knop { min-height: 44px; padding: 8px 16px; border-radius: var(--r-pill); font-size: 14px; font-weight: 600; text-align: left; line-height: 1.3; background: var(--glass-strong); border: 1px solid var(--glass-edge); font-variant-numeric: tabular-nums; }
+.reel-knop:hover { background: var(--glass-hover); }
+.reel-knop[aria-pressed="true"] { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+
+/* Keuze tussen twee routes */
+.route-keuze { display: none; gap: 8px; margin-bottom: 28px; }
+.js .route-keuze { display: flex; flex-wrap: wrap; }
+.route-tab { min-height: 48px; padding: 12px 24px; border-radius: var(--r-pill); font-weight: 600; background: var(--glass-strong); border: 1px solid var(--glass-edge); }
+.route-tab:hover { background: var(--glass-hover); }
+.route-tab[aria-selected="true"] { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+.js .route-kop { display: none; }
+.route-kop { font-family: var(--font-display); font-size: 26px; margin-bottom: 8px; }
+.route-paneel + .route-paneel { margin-top: 48px; }
+.js .route-paneel + .route-paneel { margin-top: 0; }
+.route-paneel:focus { outline: none; }
+
+.tekst h2.les-h { font-family: var(--font-display); font-size: 21px; font-weight: 700; letter-spacing: -0.015em; line-height: 1.25; margin-top: 36px; }
+.tekst > h2.les-h:first-child, .route-kop + .tekst > h2.les-h:first-child { margin-top: 0; }
+
+.denk { border-radius: var(--r-md); padding: 4px 20px; }
+.denk summary { cursor: pointer; font-weight: 600; list-style: none; min-height: 48px; padding: 12px 0; display: flex; gap: 12px; align-items: baseline; }
+.denk summary::-webkit-details-marker { display: none; }
+.denk summary::before { content: "+"; flex: none; width: 14px; color: var(--accent); font-weight: 700; }
+.denk[open] summary::before { content: "\2013"; }
+.denk-antwoord { padding: 12px 0 16px; border-top: 1px solid var(--glass-edge-low); color: var(--ink-soft); }
+
+.mc-set, .open-set { display: grid; gap: 20px; }
+.mc-vraag, .open-vraag { border-radius: var(--r-lg); padding: clamp(20px, 3vw, 32px); overflow-wrap: anywhere; }
+.tekst .mc-vraag h3, .tekst .open-vraag h3 { margin-top: 0; font-size: 19px; line-height: 1.45; }
+.mc-nr { display: block; margin-bottom: 6px; font-size: 13px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; color: var(--ink-soft); }
+.mc-vraag .toets-options { margin-top: 20px; gap: 10px; }
+.mc-vraag .toets-option { font-size: 16px; padding: 14px 18px; }
+.mc-vraag .toets-actions, .open-vraag .toets-actions { margin-top: 20px; }
+.toets-option.mc-goed { background: rgba(31, 122, 63, .18); border-color: #1f7a3f; box-shadow: inset 0 0 0 1px #1f7a3f; color: var(--ink); }
+.toets-option.mc-fout { background: rgba(179, 38, 30, .16); border-color: #b3261e; box-shadow: inset 0 0 0 1px #b3261e; color: var(--ink); }
+.toets-option[aria-disabled="true"] { cursor: default; }
+.mc-tag { flex: none; margin-left: auto; padding-left: 12px; font-size: 14px; font-weight: 700; white-space: nowrap; }
+.mc-uitleg { margin-top: 20px; padding: 16px 20px; border-radius: var(--r-md); border-left: 4px solid var(--accent); background: var(--glass-strong); line-height: 1.7; }
+.mc-uitleg:focus { outline: none; }
+.mc-score { font-weight: 600; font-size: 17px; }
+.open-vraag .toets-model { padding: 16px 20px; border-radius: var(--r-md); border-left: 4px solid var(--accent); background: var(--glass-strong); }
+.open-vraag .toets-model h4 { font-family: var(--font-display); font-size: 17px; margin-bottom: 8px; }
+.mc-vraag .beeld, .tekst .toets-casus { margin: 16px 0 0; }
+
+.les-wrap .verder { margin-top: 56px; }
+@media (max-width: 900px) {
+  .les-grid { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+}
+@media (max-width: 600px) {
+  .les-wrap { padding-top: 24px; }
+  .reel { max-width: none; }
+  .js .reel-keuze { flex-wrap: nowrap; overflow-x: auto; scroll-snap-type: x proximity; padding-bottom: 6px; }
+  .reel-knop { flex: none; white-space: nowrap; scroll-snap-align: start; }
+  .route-tab { flex: 1 1 auto; padding-inline: 16px; }
+  .mc-vraag .toets-option { padding: 14px; gap: 12px; }
+  .verder a { max-width: 100%; }
+  .verder { flex-direction: column; }
+}
+</style>
+</head>
+<body>
+<script>document.documentElement.classList.add('js');</script>
+<div class="scene" aria-hidden="true"><i></i></div>
+<header class="topbar" id="topbar"></header>
+<main class="les-wrap" id="main" data-laag="verdieping">
+  <header class="les-kop">
+    <span class="les-pill">Les 5.1</span>
+    <h1>Veranderproces en interventies</h1>
+    <div class="les-chips"><span class="chip">Week 5</span><span class="chip">maandag 7 december</span><span class="chip">15:30-17:00</span><span class="chip">F0.13</span><span class="chip">theorie</span></div>
+  </header>
+  <div class="les-grid zonder-reel">
+    
+    <div class="les-route">
+      <div class="route-keuze" role="tablist" aria-label="Kies je voorbereiding"><button class="route-tab" type="button" role="tab" id="tab-les" data-route="les" aria-controls="panel-les" aria-selected="true" tabindex="0">Lesvoorbereiding</button><button class="route-tab" type="button" role="tab" id="tab-toets" data-route="toets" aria-controls="panel-toets" aria-selected="false" tabindex="-1">Toetsvoorbereiding</button></div>
+<section class="route-paneel" id="panel-les" data-route="les" role="tabpanel" aria-labelledby="tab-les"><h2 class="route-kop">Lesvoorbereiding</h2><div class="tekst">
+<h2 class="les-h">Wat er gebeurt</h2>
+<p>Hoe een veranderproces in fasen verloopt (Lewin, de transitiecurve, Bridges en Kotter), welke interventies bij welke fase passen, en wie je erbij betrekt: stakeholders, groepen en individuen. Leeswerk: H6 en paragraaf 7.1 tot en met 7.3 uit <em>Change Management</em>.</p>
+<h2 class="les-h">De kern</h2>
+<div class="let-op"><b>Let op</b>De dia's van week 5 staan nog niet op Brightspace. Deze les volgt het boek <em>Change Management</em> en wordt bijgewerkt als de dia's er zijn.</div>
+<div class="kern">Lewin deelt een verandering in drie fasen: <strong>unfreezing</strong> (losweken uit het oude), <strong>moving</strong> (de overgang, de leerfase) en <strong>freezing</strong> (het nieuwe vastleggen, ook borgen of verankeren genoemd). Het model gaat uit van rationele mensen en een rechte lijn, en dat is te simpel, maar het boek gebruikt het als grove indeling.</div>
+<p>Ieder individu doorloopt intussen een eigen route, de <strong>transitiecurve</strong> van Balogun en Hailey: schok, ontkenning, bewustwording, acceptatie, testen, search for meaning en integratie. Het zelfvertrouwen zakt bij de schok, herstelt even bij ontkenning, is het laagst rond acceptatie en stijgt daarna tot integratie. Niet iedereen gaat even snel.</p>
+<div class="tabel"><table><thead><tr><th>Fase</th><th>Transitiecurve</th><th>Wat je doet (voorbeelden)</th></tr></thead><tbody><tr><td>Unfreeze</td><td>Schok, ontkenning</td><td>Start markeren, onbehagen en toekomstbeeld verwoorden, voorbeeldgedrag, laten participeren, ruimte om stoom af te blazen</td></tr><tr><td>Move</td><td>Bewustwording, acceptatie, testen, begin van search for meaning</td><td>Leiderschap tonen, opleiden en trainen (action learning), coachen, opletten wie afhaakt</td></tr><tr><td>Freeze</td><td>Einde van search for meaning, integratie</td><td>Successen vieren, nieuw gedrag belonen en oud gedrag onmogelijk maken, personeelsinstrumenten laten passen, evalueren</td></tr></tbody></table></div>
+<div class="let-op"><b>Let op</b>Informeren en communiceren loopt door alle fasen. Let op: in de figuur van het boek valt ontkenning onder unfreeze, in de samenvattende tabel onder move. Search for meaning ligt in de figuur op de grens van move en freeze. Vraag na welke indeling de docent gebruikt.</div>
+<p><strong>Bridges</strong> deelt het proces ook in drieën, maar begint bij het afscheid: ending, neutral zone, new beginning. Veranderen begint met achterlaten. <strong>Kotter</strong> werkt de fasen uit in acht stappen: urgentiebesef, een leidende coalitie en een visie (ontdooien), de visie communiceren, draagvlak, kortetermijnsuccessen en consolideren (bewegen), en verankeren in de cultuur (bevriezen).</p>
+<p>Instrumentatie (H7) begint bij de vraag wie je meeneemt. Een <strong>stakeholder</strong> ondervindt invloed van de verandering of kan er zelf invloed op uitoefenen. De <strong>participatiepiramide</strong> geeft vijf vormen van betrokkenheid, met oplopende invloed: informeren, raadplegen, adviseren, coproduceren, meebeslissen. De <strong>stakeholdersmap</strong> (Johnson en Scholes) helpt kiezen:</p>
+<div class="tabel"><table><thead><tr><th></th><th>Lage impact</th><th>Hoge impact</th></tr></thead><tbody><tr><td>Weinig macht</td><td>Nauwelijks inspanning: mee-weten op hoofdlijnen</td><td>Blijvend informeren, op onderdelen meepraten</td></tr><tr><td>Veel macht</td><td>Tevreden houden</td><td>Maximaal betrekken: coproduceren of meebeslissen</td></tr></tbody></table></div>
+<p>Groepen hebben een eigen structuur en cultuur. De structuur verander je makkelijk, met een nieuw lid of een nieuwe leider; de cultuur verandert daarmee niet vanzelf. Mensen volgen de <strong>feitelijke norm</strong>, niet de officiële. Bij <strong>balkaniseergedrag</strong> (Mintzberg) komen afdelingen vooral voor zichzelf op. Informele leiders en <strong>sleutelpersonen</strong> kunnen een verandering maken of breken. Het individu vraagt zich af wat het voor hem betekent: hoe meer posities bedreigd worden, hoe sterker de weerstand. Een <strong>robuuste persoonlijkheid</strong> (Kets de Vries) ziet juist kansen.</p>
+<h2 class="les-h">Denk alvast na</h2>
+<details class="denk glass"><summary>Een facilitair manager mailt dat de schoonmaakroosters veranderen en begint de week erna met trainingen. Een deel van de schoonmakers zegt: 'Dit geldt vast niet voor ons.' Wat gaat er mis?</summary><div class="denk-antwoord">Hij slaat unfreezing over. De schoonmakers zitten in schok en ontkenning, en in die fase komt informatie nauwelijks aan. Eerst de start markeren, het onbehagen verwoorden en ruimte geven voor emoties; trainen hoort bij moving.</div></details>
+<details class="denk glass"><summary>Een gemeente verhuist naar een nieuw stadskantoor. Hoe betrek je de ondernemingsraad, de eigen medewerkers en bewoners die af en toe aan de balie komen?</summary><div class="denk-antwoord">Een mogelijke indeling: de ondernemingsraad heeft veel macht en ondervindt veel impact, dus maximaal betrekken. Medewerkers worden sterk geraakt maar hebben elk weinig macht: blijvend informeren en op onderdelen laten meepraten. Incidentele bezoekers: mee-weten op hoofdlijnen. Een andere vorm uit de piramide mag, als je hem motiveert.</div></details>
+<details class="denk glass"><summary>Na een reorganisatie wijzen de receptie en de servicedesk elkaar aan als er iets misgaat. Wat zie je, en wat helpt?</summary><div class="denk-antwoord">Balkaniseergedrag: wij tegen zij. Volgens het boek helpt een goede groepsanalyse met een passend instrument, bijvoorbeeld een projectorganisatie of multidisciplinaire teams met beide groepen erin. Zoek ook uit wie de informele leiders zijn.</div></details>
+<h2 class="les-h">Wat er deze week nog komt</h2>
+<p>Wat er in het werkcollege van deze week gebeurt, staat nog niet op Brightspace. Maandag 14 december (15:30-17:00, F0.13) les 6.1: sturingsinstrumenten, mentale kracht, evalueren en het veranderplan. Leeswerk: H7 en H10.</p>
+</div></section>
+<section class="route-paneel" id="panel-toets" data-route="toets" role="tabpanel" aria-labelledby="tab-toets"><h2 class="route-kop">Toetsvoorbereiding</h2><div class="tekst">
+<h2 class="les-h">De kern voor de toets</h2>
+<div class="let-op"><b>Let op</b>Voor week 5 staan nog geen dia's online. Deze vragen volgen het boek.</div>
+<p>Op het tentamen pas je dit toe op een FM-casus: in welke fase zit de organisatie of de persoon, wat gaat er mis als je een fase overslaat, welke interventies passen nu, en wie betrek je op welke manier.</p>
+<ul><li>Fase: unfreeze, move of freeze, met de fase van de transitiecurve en de signalen uit de casus.</li><li>Interventies per fase, elk gekoppeld aan een feit uit de casus.</li><li>Bridges (begint bij het afscheid) en Kotter (acht stappen, en welke stap ontbreekt).</li><li>Stakeholders: macht en impact, en welke vorm uit de participatiepiramide daarbij past.</li><li>Groep en individu: feitelijke normen, balkaniseergedrag, informele leiders, eigenbelang.</li></ul>
+<div class="let-op"><b>Let op</b>Hoe groter de impact op gedrag, hoe belangrijker unfreezing. Wie traint terwijl mensen nog in schok of ontkenning zitten, verspilt die training.</div>
+<h2 class="les-h">Oefenvragen</h2>
+<div class="mc-set"><article class="mc-vraag glass" data-mc="0" role="group" aria-labelledby="mc-0-t"><h3 id="mc-0-t"><span class="mc-nr">Vraag 1</span>Drie maanden na de invoering van een nieuw werkplekconcept proberen medewerkers de nieuwe werkwijze uit, maar een deel valt terug op de oude vaste plek. In welke fase zit de organisatie, en wat past daar?</h3><div class="toets-options" role="group" aria-labelledby="mc-0-t"><button class="toets-option glass" type="button" data-choice="0" aria-pressed="false"><span class="toets-letter">A.</span><span>Unfreezing: het onbehagen over de oude werkplek verwoorden</span></button><button class="toets-option glass" type="button" data-choice="1" aria-pressed="false"><span class="toets-letter">B.</span><span>Moving: coachen en letten op wie stilzwijgend afhaakt</span></button><button class="toets-option glass" type="button" data-choice="2" aria-pressed="false"><span class="toets-letter">C.</span><span>Freezing: de successen vieren en het project afronden</span></button><button class="toets-option glass" type="button" data-choice="3" aria-pressed="false"><span class="toets-letter">D.</span><span>Moving: de start van de verandering feestelijk markeren</span></button></div><div class="toets-actions"><button class="toets-btn toets-primary" type="button" data-check disabled>Kijk na</button></div><div class="mc-uitleg" id="mc-0-u" role="status" aria-live="polite" tabindex="-1" hidden></div></article>
+<article class="mc-vraag glass" data-mc="1" role="group" aria-labelledby="mc-1-t"><h3 id="mc-1-t"><span class="mc-nr">Vraag 2</span>Een receptiemedewerker hoort dat de balie wordt vervangen door zelfservicezuilen. Ze schrikt, en zegt daarna tegen collega's: 'Dat gaat bij ons toch niet door.' Welke fase van de transitiecurve volgt als ze verder komt?</h3><div class="toets-options" role="group" aria-labelledby="mc-1-t"><button class="toets-option glass" type="button" data-choice="0" aria-pressed="false"><span class="toets-letter">A.</span><span>Acceptatie: ze laat de oude situatie los</span></button><button class="toets-option glass" type="button" data-choice="1" aria-pressed="false"><span class="toets-letter">B.</span><span>Testen: ze probeert de zuilen zelf uit</span></button><button class="toets-option glass" type="button" data-choice="2" aria-pressed="false"><span class="toets-letter">C.</span><span>Integratie: het nieuwe werk is gewoon geworden</span></button><button class="toets-option glass" type="button" data-choice="3" aria-pressed="false"><span class="toets-letter">D.</span><span>Bewustwording: ze ziet dat het echt moet</span></button></div><div class="toets-actions"><button class="toets-btn toets-primary" type="button" data-check disabled>Kijk na</button></div><div class="mc-uitleg" id="mc-1-u" role="status" aria-live="polite" tabindex="-1" hidden></div></article>
+<article class="mc-vraag glass" data-mc="2" role="group" aria-labelledby="mc-2-t"><h3 id="mc-2-t"><span class="mc-nr">Vraag 3</span>Een hogeschool sluit een parkeerterrein. De gemeente kan de vergunning voor het nieuwe terrein tegenhouden, maar merkt verder weinig van de sluiting. Welke betrokkenheid past volgens de stakeholdersmap?</h3><div class="toets-options" role="group" aria-labelledby="mc-2-t"><button class="toets-option glass" type="button" data-choice="0" aria-pressed="false"><span class="toets-letter">A.</span><span>Tevreden houden en gericht informeren</span></button><button class="toets-option glass" type="button" data-choice="1" aria-pressed="false"><span class="toets-letter">B.</span><span>Maximaal betrekken via coproduceren</span></button><button class="toets-option glass" type="button" data-choice="2" aria-pressed="false"><span class="toets-letter">C.</span><span>Blijvend informeren en laten meepraten</span></button><button class="toets-option glass" type="button" data-choice="3" aria-pressed="false"><span class="toets-letter">D.</span><span>Alleen op hoofdlijnen laten mee-weten</span></button></div><div class="toets-actions"><button class="toets-btn toets-primary" type="button" data-check disabled>Kijk na</button></div><div class="mc-uitleg" id="mc-2-u" role="status" aria-live="polite" tabindex="-1" hidden></div></article>
+<article class="mc-vraag glass" data-mc="3" role="group" aria-labelledby="mc-3-t"><h3 id="mc-3-t"><span class="mc-nr">Vraag 4</span>Een FM-afdeling voert een nieuw meldsysteem in. Na twee maanden viert het management dat het systeem live staat en heft het de projectgroep op. Een halfjaar later melden de meeste medewerkers weer per mail. Welke stappen van Kotter zijn overgeslagen?</h3><div class="toets-options" role="group" aria-labelledby="mc-3-t"><button class="toets-option glass" type="button" data-choice="0" aria-pressed="false"><span class="toets-letter">A.</span><span>Urgentiebesef vestigen en een leidende coalitie vormen</span></button><button class="toets-option glass" type="button" data-choice="1" aria-pressed="false"><span class="toets-letter">B.</span><span>De visie communiceren en een breed draagvlak creëren</span></button><button class="toets-option glass" type="button" data-choice="2" aria-pressed="false"><span class="toets-letter">C.</span><span>Consolideren en het nieuwe verankeren in de cultuur</span></button><button class="toets-option glass" type="button" data-choice="3" aria-pressed="false"><span class="toets-letter">D.</span><span>Kortetermijnsuccessen genereren en zichtbaar maken</span></button></div><div class="toets-actions"><button class="toets-btn toets-primary" type="button" data-check disabled>Kijk na</button></div><div class="mc-uitleg" id="mc-3-u" role="status" aria-live="polite" tabindex="-1" hidden></div></article>
+<article class="mc-vraag glass" data-mc="4" role="group" aria-labelledby="mc-4-t"><h3 id="mc-4-t"><span class="mc-nr">Vraag 5</span>Het beleid van een cateringteam zegt dat gastvrijheid voorop staat, maar de teamleider beoordeelt medewerkers alleen op hoeveel maaltijden ze per uur uitgeven. Wat voorspelt het boek?</h3><div class="toets-options" role="group" aria-labelledby="mc-4-t"><button class="toets-option glass" type="button" data-choice="0" aria-pressed="false"><span class="toets-letter">A.</span><span>Ze volgen het beleid, want dat is de officiële norm</span></button><button class="toets-option glass" type="button" data-choice="1" aria-pressed="false"><span class="toets-letter">B.</span><span>Ze volgen de feitelijke norm: tempo gaat voor gastvrijheid</span></button><button class="toets-option glass" type="button" data-choice="2" aria-pressed="false"><span class="toets-letter">C.</span><span>Een nieuwe teamleider lost het op, want structuur bepaalt cultuur</span></button><button class="toets-option glass" type="button" data-choice="3" aria-pressed="false"><span class="toets-letter">D.</span><span>Er ontstaat balkaniseergedrag tussen keuken en bediening</span></button></div><div class="toets-actions"><button class="toets-btn toets-primary" type="button" data-check disabled>Kijk na</button></div><div class="mc-uitleg" id="mc-4-u" role="status" aria-live="polite" tabindex="-1" hidden></div></article></div>
+<p class="mc-score" id="mc-score" role="status" aria-live="polite" hidden></p>
+<h2 class="les-h">Open vragen</h2>
+<div class="open-set"><article class="open-vraag glass" data-open="0" role="group" aria-labelledby="open-0-t"><div class="toets-casus"><strong>Casus</strong>Een ziekenhuis stapt over van vaste schoonmakers per afdeling naar een centrale pool die via een app wordt ingezet. De directie heeft het besloten. De facilitair manager kondigt het aan in een mail en begint twee weken later met trainingen in de app. Schoonmakers zeggen dat 'hun' afdeling hen nodig heeft en dat de app toch niet werkt. Na de invoering vallen teams terug op hun oude afdeling zodra het druk is.</div><h3 id="open-0-t"><span class="mc-nr">Open vraag 6</span>Leg met het driefasenmodel van Lewin en de transitiecurve uit wat er in deze aanpak misgaat. Welke interventies stel je per fase voor?</h3><div class="toets-actions"><button class="toets-btn glass" type="button" data-model aria-expanded="false" aria-controls="open-0-m">Toon modelantwoord</button></div><div class="toets-model" id="open-0-m" tabindex="-1" hidden></div></article>
+<article class="open-vraag glass" data-open="1" role="group" aria-labelledby="open-1-t"><div class="toets-casus"><strong>Casus</strong>Een gemeente voegt haar drie stadsloketten samen tot één servicepunt in het stadhuis. Het college van B en W neemt het besluit. Verder spelen: de ondernemingsraad, de loketmedewerkers van de drie locaties, bewoners van de wijken waar een loket sluit, en wijkverenigingen die in de lokale krant al protesteren. Op locatie Noord is een ervaren medewerker al jaren het aanspreekpunt van het team; ze is geen leidinggevende, maar collega's volgen haar mening.</div><h3 id="open-1-t"><span class="mc-nr">Open vraag 7</span>Voer een stakeholdersanalyse uit met de stakeholdersmap en de participatiepiramide. Wat betekent de medewerker van Noord voor je aanpak?</h3><div class="toets-actions"><button class="toets-btn glass" type="button" data-model aria-expanded="false" aria-controls="open-1-m">Toon modelantwoord</button></div><div class="toets-model" id="open-1-m" tabindex="-1" hidden></div></article></div>
+</div></section>
+      <noscript><p>Schakel JavaScript in om de oefenvragen na te kijken.</p></noscript>
+    </div>
+  </div>
+<nav class="verder" aria-label="Vorige en volgende les"><a class="glass" href="facilitair-verandermanagement-les-4-2.html">&#8249; <span>Les 4.2: Veranderstrategie ING</span></a><a class="glass" href="facilitair-verandermanagement-les-6-1.html"><span>Les 6.1: Interventies en het veranderplan</span> &#8250;</a></nav>
+</main>
+<div class="lightbox" id="lightbox" hidden><figure><img alt=""/><p></p></figure></div>
+<script src="js/atlas-data.js"></script>
+<script src="js/atlas.js"></script>
+<script src="js/lessen-facilitair-verandermanagement.js"></script>
+<script>
+(() => {
+  'use strict';
+  const $ = (s, r = document) => r.querySelector(s);
+  const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+  Atlas.topbar('<span class="sep">/</span><a href="vak.html?v=facilitair-verandermanagement">Facilitair verandermanagement</a><span class="sep">/</span><a href="facilitair-verandermanagement-lessen.html">Lessen</a><span class="sep">/</span><span class="here">Les 5.1</span>');
+  // De antwoorden staan niet in de pagina maar in js/lessen-<key>.js; pas na het nakijken komen ze in beeld.
+  const data = (window.FVM_LESSEN || {})["5.1"] || { mc: [], open: [] };
+
+  // ── Keuze tussen lesvoorbereiding en toetsvoorbereiding ──
+  const tabs = $$('.route-tab');
+  const panels = $$('.route-paneel');
+  const routes = tabs.map(t => t.dataset.route);
+  const storeKey = 'fa_les_route_facilitair-verandermanagement';
+  const stored = () => { try { return localStorage.getItem(storeKey); } catch (_) { return null; } };
+  const store = route => { try { localStorage.setItem(storeKey, route); } catch (_) {} };
+  const hashRoute = () => location.hash.slice(1);
+  const pick = () => {
+    if (routes.includes(hashRoute())) return hashRoute();
+    const saved = stored();
+    if (routes.includes(saved)) return saved;
+    return routes.includes('les') ? 'les' : routes[0];
+  };
+  function show(route) {
+    tabs.forEach(t => {
+      const on = t.dataset.route === route;
+      t.setAttribute('aria-selected', String(on));
+      t.tabIndex = on ? 0 : -1;
+    });
+    panels.forEach(p => { p.hidden = p.dataset.route !== route; });
+  }
+  tabs.forEach((tab, i) => {
+    tab.addEventListener('click', () => {
+      store(tab.dataset.route);
+      show(tab.dataset.route);
+      if (hashRoute() !== tab.dataset.route) location.hash = tab.dataset.route;
+    });
+    tab.addEventListener('keydown', event => {
+      const step = { ArrowLeft: -1, ArrowRight: 1 }[event.key];
+      if (!step || tabs.length < 2) return;
+      event.preventDefault();
+      const next = tabs[(i + step + tabs.length) % tabs.length];
+      next.focus();
+      next.click();
+    });
+  });
+  window.addEventListener('hashchange', () => {
+    if (routes.includes(hashRoute())) store(hashRoute());
+    show(pick());
+  });
+  if (routes.includes(hashRoute())) store(hashRoute());
+  show(pick());
+
+  // ── Meerkeuze: kiezen, nakijken, uitleg ──
+  const cards = $$('.mc-vraag');
+  const done = cards.map(() => null);
+  const score = $('#mc-score');
+  const paintScore = () => {
+    if (!score) return;
+    const all = done.every(d => d !== null);
+    score.hidden = !all;
+    score.textContent = all ? `Je hebt ${done.filter(Boolean).length} van ${done.length} oefenvragen goed.` : '';
+  };
+  cards.forEach((card, i) => {
+    const options = $$('.toets-option', card);
+    const check = $('[data-check]', card);
+    const uitleg = $('.mc-uitleg', card);
+    let choice = null;
+    const reset = () => {
+      choice = null;
+      done[i] = null;
+      options.forEach(o => {
+        o.classList.remove('mc-goed', 'mc-fout');
+        o.removeAttribute('aria-disabled');
+        o.setAttribute('aria-pressed', 'false');
+        $('.mc-tag', o)?.remove();
+      });
+      check.hidden = false;
+      check.disabled = true;
+      uitleg.hidden = true;
+      uitleg.replaceChildren();
+      paintScore();
+    };
+    options.forEach((option, j) => option.addEventListener('click', () => {
+      if (done[i] !== null) return;
+      choice = j;
+      options.forEach(o => o.setAttribute('aria-pressed', String(o === option)));
+      check.disabled = false;
+    }));
+    check.addEventListener('click', () => {
+      const q = data.mc[i];
+      if (done[i] !== null || choice === null || !q) return;
+      done[i] = choice === q.answer;
+      options.forEach((o, j) => {
+        o.setAttribute('aria-disabled', 'true');
+        const tag = j === q.answer ? 'Juist antwoord' : j === choice ? 'Jouw keuze' : '';
+        if (j === q.answer) o.classList.add('mc-goed');
+        else if (j === choice) o.classList.add('mc-fout');
+        if (tag) o.insertAdjacentHTML('beforeend', `<span class="mc-tag">${tag}</span>`);
+      });
+      check.hidden = true;
+      uitleg.innerHTML = `<p><strong>${done[i] ? 'Goed.' : 'Niet goed.'}</strong> Het juiste antwoord is ${String.fromCharCode(65 + q.answer)}.</p>
+        <div>${q.explanation}</div>
+        <div class="toets-actions"><button class="toets-btn glass" type="button" data-retry>Probeer opnieuw</button></div>`;
+      uitleg.hidden = false;
+      paintScore();
+    });
+    uitleg.addEventListener('click', event => {
+      if (!event.target.closest('[data-retry]')) return;
+      reset();
+      options[0].focus({ preventScroll: true });
+    });
+  });
+
+  // ── Open vragen: modelantwoord ──
+  $$('.open-vraag').forEach((card, i) => {
+    const button = $('[data-model]', card);
+    const model = $('.toets-model', card);
+    button.addEventListener('click', () => {
+      const open = button.getAttribute('aria-expanded') === 'true';
+      if (open) {
+        model.hidden = true;
+        model.replaceChildren();
+      } else {
+        const q = data.open[i];
+        if (!q) return;
+        model.innerHTML = `<h4>Modelantwoord</h4><div>${q.model}</div>`;
+        model.hidden = false;
+      }
+      button.setAttribute('aria-expanded', String(!open));
+      button.textContent = open ? 'Toon modelantwoord' : 'Verberg modelantwoord';
+    });
+  });
+
+  // ── Reels: één speler tegelijk; de YouTube-API en de speler pas na een klik op afspelen ──
+  const reelBox = $('#reel');
+  if (reelBox) {
+    const reels = JSON.parse($('#reel-data').textContent);
+    const vlak = $('#reel-vlak');
+    const status = $('#reel-status');
+    const caption = $('#reel-caption');
+    const knoppen = $$('.reel-knop');
+    let current = 0, player = null, loading = false, timer = null;
+    function teardown() {
+      clearTimeout(timer);
+      loading = false;
+      try { if (player && player.destroy) player.destroy(); } catch (_) {}
+      player = null;
+      vlak.replaceChildren();
+    }
+    function mount(i, message) {
+      teardown();
+      current = i;
+      const r = reels[i];
+      knoppen.forEach((k, j) => k.setAttribute('aria-pressed', String(j === i)));
+      const strong = document.createElement('strong');
+      strong.textContent = r.titel;
+      caption.replaceChildren(strong, r.duur ? ' · ' + r.duur : '');
+      status.textContent = message || '';
+      if (!r.youtube_id) {
+        const volgt = document.createElement('p');
+        volgt.className = 'reel-volgt';
+        volgt.textContent = 'Video volgt binnenkort';
+        vlak.append(volgt);
+        return;
+      }
+      const start = document.createElement('button');
+      start.type = 'button';
+      start.className = 'reel-start';
+      start.id = 'reel-start';
+      start.dataset.video = r.youtube_id;
+      start.setAttribute('aria-label', 'Afspelen op YouTube: ' + r.titel);
+      const poster = document.createElement('img');
+      poster.id = 'reel-poster';
+      poster.alt = '';
+      poster.decoding = 'async';
+      poster.addEventListener('error', () => {
+        if (poster.src !== r.thumb) poster.src = r.thumb;
+        else poster.hidden = true;
+      });
+      poster.src = r.poster || r.thumb;
+      const label = document.createElement('span');
+      label.innerHTML = '<strong>Afspelen op YouTube</strong>';
+      start.append(poster, label);
+      start.addEventListener('click', () => play(start, r, i));
+      vlak.append(start);
+    }
+    function failed() {
+      mount(current, 'De video kon niet laden. Klik op afspelen om het opnieuw te proberen.');
+    }
+    function create(r, i) {
+      if (!loading || player || i !== current) return;
+      const iframe = document.createElement('iframe');
+      iframe.id = 'reel-video';
+      iframe.title = 'Reel: ' + r.titel;
+      iframe.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
+      iframe.allowFullscreen = true;
+      iframe.referrerPolicy = 'strict-origin-when-cross-origin';
+      const url = new URL('https://www.youtube-nocookie.com/embed/' + encodeURIComponent(r.youtube_id));
+      url.search = new URLSearchParams({ enablejsapi: '1', origin: location.origin, autoplay: '1', playsinline: '1', cc_lang_pref: 'nl', rel: '0' });
+      iframe.src = url.href;
+      vlak.replaceChildren(iframe);
+      player = new YT.Player(iframe, {
+        events: {
+          onReady: event => {
+            player = event.target;
+            clearTimeout(timer);
+            loading = false;
+            status.textContent = '';
+            event.target.playVideo();
+          },
+          // Na het einde staat de volgende reel klaar; hij begint niet vanzelf.
+          onStateChange: event => {
+            if (event.data === 0 && current + 1 < reels.length) {
+              mount(current + 1, 'Volgende reel klaar: ' + reels[current + 1].titel + '. Klik op afspelen om hem te starten.');
+            }
+          },
+          onError: failed
+        }
+      });
+    }
+    function play(start, r, i) {
+      if (loading || player) return;
+      loading = true;
+      start.disabled = true;
+      status.textContent = 'YouTube-speler laden…';
+      timer = setTimeout(failed, 15000);
+      if (window.YT && window.YT.Player) { create(r, i); return; }
+      window.onYouTubeIframeAPIReady = () => create(r, i);
+      $('#youtube-api')?.remove();
+      const script = document.createElement('script');
+      script.id = 'youtube-api';
+      script.src = 'https://www.youtube.com/iframe_api';
+      script.async = true;
+      script.onerror = failed;
+      document.head.append(script);
+    }
+    knoppen.forEach((knop, i) => knop.addEventListener('click', () => { if (i !== current) mount(i); }));
+    mount(0);
+  }
+
+  // ── Beeld vergroten (blokken van het type img) ──
+  const lb = $('#lightbox');
+  document.addEventListener('click', e => {
+    const b = e.target.closest('.beeld button');
+    if (b) {
+      const img = b.querySelector('img');
+      lb.querySelector('img').src = img.src;
+      lb.querySelector('p').textContent = b.parentNode.querySelector('figcaption')?.textContent || '';
+      lb.hidden = false;
+    } else if (e.target.closest('#lightbox')) lb.hidden = true;
+  });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') lb.hidden = true; });
+})();
+</script>
+</body>
+</html>

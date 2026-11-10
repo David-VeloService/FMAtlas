@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+<title>Les 7.1: Uitloop en tentamentraining · Facilitair verandermanagement · FM Atlas</title>
+<meta name="description" content="Les 7.1 van Facilitair verandermanagement: Uitloop en tentamentraining. Met lesvoorbereiding en toetsvoorbereiding."/>
+<link rel="icon" type="image/svg+xml" href="logo.svg"/>
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png"/>
+<link rel="apple-touch-icon" href="apple-touch-icon.png"/>
+<meta name="theme-color" content="#efe5d4"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="css/atlas.css"/>
+<link rel="stylesheet" href="css/leer.css"/>
+<link rel="stylesheet" href="css/toets.css"/>
+<link rel="canonical" href="https://fmatlas.nl/facilitair-verandermanagement-les-7-1.html"/>
+<style>
+.les-wrap { max-width: 1180px; margin: 0 auto; padding: 36px 16px 64px; color: var(--ink); }
+.les-wrap [hidden] { display: none !important; }
+.les-kop { margin-bottom: 28px; }
+.les-kop h1 { font-family: var(--font-display); font-size: clamp(28px, 4vw, 40px); font-weight: 700; letter-spacing: -0.03em; line-height: 1.1; max-width: 26ch; }
+.les-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+.chip { display: inline-block; padding: 4px 12px; border-radius: var(--r-pill); font-size: 14px; font-weight: 600; font-variant-numeric: tabular-nums; background: var(--glass-strong); border: 1px solid var(--glass-edge-low); }
+
+.les-grid { display: grid; grid-template-columns: minmax(0, 360px) minmax(0, 1fr); gap: 32px; align-items: start; }
+.les-grid.zonder-reel { grid-template-columns: minmax(0, 1fr); }
+.les-route { min-width: 0; }
+
+/* Reel: staand beeld, op desktop niet breder dan 360 px */
+.reel { width: 100%; max-width: 360px; }
+.reel-vlak { position: relative; aspect-ratio: 9 / 16; border-radius: var(--r-lg); overflow: hidden; background: var(--olive-950); color: var(--sand-50); box-shadow: var(--glass-shadow); }
+.reel-vlak iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; display: block; }
+.reel-start { position: absolute; inset: 0; width: 100%; height: 100%; background: var(--olive-950); color: var(--sand-50); }
+.reel-start img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.reel-start span { position: absolute; inset: 0; display: grid; place-items: end center; padding: 24px 16px; background: linear-gradient(to top, rgba(20, 23, 15, .75), transparent 45%); }
+.reel-start strong { min-height: 48px; display: inline-flex; align-items: center; padding: 12px 24px; background: var(--olive-900); color: var(--sand-50); border: 1px solid var(--sand-50); border-radius: var(--r-pill); font-size: 17px; }
+.reel-start:focus-visible { outline-offset: -6px; }
+.reel-volgt { position: absolute; inset: 0; display: grid; place-items: center; padding: 24px; text-align: center; font-family: var(--font-display); font-size: 22px; font-weight: 600; }
+.reel figcaption { margin-top: 12px; font-size: 15px; color: var(--ink-soft); font-variant-numeric: tabular-nums; }
+.reel-privacy, .reel-status { margin-top: 6px; font-size: 13px; color: var(--ink-soft); line-height: 1.5; }
+.reel-status:empty { display: none; }
+.reel-keuze { display: none; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+.js .reel-keuze { display: flex; }
+.reel-knop { min-height: 44px; padding: 8px 16px; border-radius: var(--r-pill); font-size: 14px; font-weight: 600; text-align: left; line-height: 1.3; background: var(--glass-strong); border: 1px solid var(--glass-edge); font-variant-numeric: tabular-nums; }
+.reel-knop:hover { background: var(--glass-hover); }
+.reel-knop[aria-pressed="true"] { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+
+/* Keuze tussen twee routes */
+.route-keuze { display: none; gap: 8px; margin-bottom: 28px; }
+.js .route-keuze { display: flex; flex-wrap: wrap; }
+.route-tab { min-height: 48px; padding: 12px 24px; border-radius: var(--r-pill); font-weight: 600; background: var(--glass-strong); border: 1px solid var(--glass-edge); }
+.route-tab:hover { background: var(--glass-hover); }
+.route-tab[aria-selected="true"] { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+.js .route-kop { display: none; }
+.route-kop { font-family: var(--font-display); font-size: 26px; margin-bottom: 8px; }
+.route-paneel + .route-paneel { margin-top: 48px; }
+.js .route-paneel + .route-paneel { margin-top: 0; }
+.route-paneel:focus { outline: none; }
+
+.tekst h2.les-h { font-family: var(--font-display); font-size: 21px; font-weight: 700; letter-spacing: -0.015em; line-height: 1.25; margin-top: 36px; }
+.tekst > h2.les-h:first-child, .route-kop + .tekst > h2.les-h:first-child { margin-top: 0; }
+
+.denk { border-radius: var(--r-md); padding: 4px 20px; }
+.denk summary { cursor: pointer; font-weight: 600; list-style: none; min-height: 48px; padding: 12px 0; display: flex; gap: 12px; align-items: baseline; }
+.denk summary::-webkit-details-marker { display: none; }
+.denk summary::before { content: "+"; flex: none; width: 14px; color: var(--accent); font-weight: 700; }
+.denk[open] summary::before { content: "\2013"; }
+.denk-antwoord { padding: 12px 0 16px; border-top: 1px solid var(--glass-edge-low); color: var(--ink-soft); }
+
+.mc-set, .open-set { display: grid; gap: 20px; }
+.mc-vraag, .open-vraag { border-radius: var(--r-lg); padding: clamp(20px, 3vw, 32px); overflow-wrap: anywhere; }
+.tekst .mc-vraag h3, .tekst .open-vraag h3 { margin-top: 0; font-size: 19px; line-height: 1.45; }
+.mc-nr { display: block; margin-bottom: 6px; font-size: 13px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; color: var(--ink-soft); }
+.mc-vraag .toets-options { margin-top: 20px; gap: 10px; }
+.mc-vraag .toets-option { font-size: 16px; padding: 14px 18px; }
+.mc-vraag .toets-actions, .open-vraag .toets-actions { margin-top: 20px; }
+.toets-option.mc-goed { background: rgba(31, 122, 63, .18); border-color: #1f7a3f; box-shadow: inset 0 0 0 1px #1f7a3f; color: var(--ink); }
+.toets-option.mc-fout { background: rgba(179, 38, 30, .16); border-color: #b3261e; box-shadow: inset 0 0 0 1px #b3261e; color: var(--ink); }
+.toets-option[aria-disabled="true"] { cursor: default; }
+.mc-tag { flex: none; margin-left: auto; padding-left: 12px; font-size: 14px; font-weight: 700; white-space: nowrap; }
+.mc-uitleg { margin-top: 20px; padding: 16px 20px; border-radius: var(--r-md); border-left: 4px solid var(--accent); background: var(--glass-strong); line-height: 1.7; }
+.mc-uitleg:focus { outline: none; }
+.mc-score { font-weight: 600; font-size: 17px; }
+.open-vraag .toets-model { padding: 16px 20px; border-radius: var(--r-md); border-left: 4px solid var(--accent); background: var(--glass-strong); }
+.open-vraag .toets-model h4 { font-family: var(--font-display); font-size: 17px; margin-bottom: 8px; }
+.mc-vraag .beeld, .tekst .toets-casus { margin: 16px 0 0; }
+
+.les-wrap .verder { margin-top: 56px; }
+@media (max-width: 900px) {
+  .les-grid { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+}
+@media (max-width: 600px) {
+  .les-wrap { padding-top: 24px; }
+  .reel { max-width: none; }
+  .js .reel-keuze { flex-wrap: nowrap; overflow-x: auto; scroll-snap-type: x proximity; padding-bottom: 6px; }
+  .reel-knop { flex: none; white-space: nowrap; scroll-snap-align: start; }
+  .route-tab { flex: 1 1 auto; padding-inline: 16px; }
+  .mc-vraag .toets-option { padding: 14px; gap: 12px; }
+  .verder a { max-width: 100%; }
+  .verder { flex-direction: column; }
+}
+</style>
+</head>
+<body>
+<script>document.documentElement.classList.add('js');</script>
+<div class="scene" aria-hidden="true"><i></i></div>
+<header class="topbar" id="topbar"></header>
+<main class="les-wrap" id="main" data-laag="verdieping">
+  <header class="les-kop">
+    <span class="les-pill">Les 7.1</span>
+    <h1>Uitloop en tentamentraining</h1>
+    <div class="les-chips"><span class="chip">Week 7</span><span class="chip">maandag 4 januari</span><span class="chip">09:00-10:30</span><span class="chip">F2.70</span><span class="chip">theorie</span></div>
+  </header>
+  <div class="les-grid zonder-reel">
+    
+    <div class="les-route">
+      <div class="route-keuze" role="tablist" aria-label="Kies je voorbereiding"><button class="route-tab" type="button" role="tab" id="tab-les" data-route="les" aria-controls="panel-les" aria-selected="true" tabindex="0">Lesvoorbereiding</button><button class="route-tab" type="button" role="tab" id="tab-toets" data-route="toets" aria-controls="panel-toets" aria-selected="false" tabindex="-1">Toetsvoorbereiding</button></div>
+<section class="route-paneel" id="panel-les" data-route="les" role="tabpanel" aria-labelledby="tab-les"><h2 class="route-kop">Lesvoorbereiding</h2><div class="tekst">
+<h2 class="les-h">Wat er gebeurt</h2>
+<p>Uitloop en tentamentraining. Deze les laat zien hoe de hoofdstukken samen het IOV-model vormen, met H1 als kader en H10 als afsluiting, en wat er misgaat als je een onderdeel overslaat. In de toetsroute oefen je met zes open casusvragen in de vorm van het tentamen. Leeswerk: H10, en herhaal H1 tot en met H7.</p>
+<h2 class="les-h">De kern</h2>
+<div class="let-op"><b>Let op</b>De dia's van week 7 staan nog niet op Brightspace. Deze les volgt het boek <em>Change Management</em> en wordt bijgewerkt als de dia's er zijn.</div>
+<div class="kern">Het IOV-model heeft twee delen. Het oranje deel (H2 tot en met H4) beantwoordt <strong>wat er verandert en waarom</strong> en voedt de analysefase van het veranderplan. Het groene deel (H5 tot en met H10) beantwoordt <strong>hoe de verandering wordt ingevoerd</strong> en voedt het implementatietraject.</div>
+<p>Volgens H10 zijn de onderdelen samen de <strong>kritische factoren voor succes</strong>: pas je ze goed toe, dan slaagt de verandering. Laat je er een weg of pas je hem verkeerd toe, dan krijg je een voorspelbaar gebrek:</p>
+<div class="tabel"><table><thead><tr><th>Onderdeel</th><th>De vraag</th><th>Overgeslagen of verkeerd</th></tr></thead><tbody><tr><td>Toekomstige fit (H2)</td><td>Waarom werkt het huidige niet meer, en waar willen we heen?</td><td>Doolhof: je weet niet waarheen</td></tr><tr><td>Niveaus (H3)</td><td>Wat betekent het concreet, tot op het gedrag?</td><td>Papieren tijger: mooi op organisatieplaatjes</td></tr><tr><td>Verandervermogen (H4)</td><td>Kan de organisatie dit aan?</td><td>Vertraging: onverwachte barrières, of early adopters die teleurgesteld afhaken</td></tr><tr><td>Strategie (H5)</td><td>Hoe pak je het in hoofdlijnen aan?</td><td>Wie leidt? Je volgt de verandering in plaats van haar te sturen</td></tr><tr><td>Vormgeving (H6)</td><td>Welke fasen, en wat doe je per fase?</td><td>Verspilling: instrumenten op het verkeerde moment</td></tr><tr><td>Instrumentatie (H7)</td><td>Wie betrek je, en met welke instrumenten?</td><td>Demotivatie: iedereen over één kam geschoren</td></tr><tr><td>Leider als veranderaar (H8)</td><td>Kan de leider de verandering leiden?</td><td>Ongewenst gedrag</td></tr><tr><td>Functionele relaties (H9)</td><td>Weet je voor wie je werkt en wie je nodig hebt?</td><td>Eenzaam en alleen</td></tr><tr><td>Evaluatie (H6)</td><td>Bereik je wat je wilde, ook tussentijds?</td><td>Niet leren</td></tr></tbody></table></div>
+<div class="let-op"><b>Let op</b>H8 en H9 zijn geen tentamenstof. Ze staan in de tabel omdat H10 ze noemt.</div>
+<p>De figuur suggereert een rij, maar volgens H1 speelt in de praktijk alles tegelijk en loop je het model steeds opnieuw door: een rode draad, geen blauwdruk. Sterk samen hangen de niveaus, de strategie en de vormgeving (hoe groter de impact op medewerkers, hoe meer aandacht voor verwerking), en de stakeholderanalyse en de instrumentatie. Het veranderplan is de neerslag van alles, en volgens het boek een hulpmiddel, geen doel op zich.</p>
+<p>De volgorde van het model, als geheugensteun bij een casus:</p>
+<ol><li>Omgeving en huidige fit: bestaansrecht, inrichting, leefbaarheid (H1, H2).</li><li>Gewenste fit en de kloof op de drie niveaus (H2, H3).</li><li>Verandervermogen: organisatiekenmerken, relaties, cultuur, weerstand (H4).</li><li>Strategie, onderbouwd met kenmerken uit de casus (H5).</li><li>Fasering en interventies per fase (H6).</li><li>Stakeholders, groepen, individuen en de instrumenten (H7).</li><li>Veranderplan, communicatie en evaluatie (H10).</li></ol>
+<h2 class="les-h">Denk alvast na</h2>
+<details class="denk glass"><summary>Een facilitaire dienst presenteert een nieuw werkplekconcept met plattegronden en een nieuw organogram, maar niemand weet wat er aan zijn eigen werkdag verandert. Welk onderdeel is overgeslagen?</summary><div class="denk-antwoord">De niveaus van verandering (H3): richten en inrichten zijn uitgewerkt, verrichten niet. H10 noemt het gevolg een papieren tijger: mooi op organisatieplaatjes, zonder effect op het werk.</div></details>
+<details class="denk glass"><summary>Waarom staat het verandervermogen in het oranje deel, terwijl je het nodig hebt om een strategie te kiezen?</summary><div class="denk-antwoord">Het hoort bij de analyse: kan de organisatie dit aan? In de figuur loopt een pijl van verandervermogen naar de strategie, en H5 noemt het verandervermogen als een van de zeven factoren voor de strategiekeuze. De analyse voedt de keuze voor de aanpak.</div></details>
+<details class="denk glass"><summary>Een manager zegt: 'We werken het IOV-model van links naar rechts af, en met het veranderplan zijn we klaar.' Klopt dat?</summary><div class="denk-antwoord">Nee. Veranderen is iteratief: alles speelt tegelijk en je loopt het model steeds opnieuw door. Het plan mag je bijstellen, en evaluatie hoort er tussentijds bij, anders leer je niet.</div></details>
+<h2 class="les-h">Wat er deze week nog komt</h2>
+<p>Het tentamen is een individueel kennistentamen over <em>Change Management</em> H1 tot en met H10, zonder H8 en H9, met open vragen waarin je de stof toepast op een FM-casus. Ook de dia's van de lessen en het artikel van Metselaar (2018) zijn tentamenstof. Datum, duur en weging staan nog niet op Brightspace; kijk in je rooster en in OSIRIS.</p>
+</div></section>
+<section class="route-paneel" id="panel-toets" data-route="toets" role="tabpanel" aria-labelledby="tab-toets"><h2 class="route-kop">Toetsvoorbereiding</h2><div class="tekst">
+<h2 class="les-h">De kern voor de toets</h2>
+<div class="let-op"><b>Let op</b>Voor week 7 staan nog geen dia's online. De vragen hieronder zijn oefenvragen met fictieve casussen, geen vragen van de docent.</div>
+<p>Het tentamen bestaat uit open vragen bij een FM-casus. De zes open vragen hieronder volgen die vorm en lopen samen langs H1 tot en met H7 en H10. Maak ze eerst zelf, op papier, en vergelijk dan met het modelantwoord.</p>
+<div class="kern">Een sterk antwoord noemt het model of begrip, past het toe op feiten uit de casus en eindigt met een conclusie. 'Leg uit' vraagt het verband, 'beoordeel en onderbouw' vraagt een oordeel met argumenten.</div>
+<h2 class="les-h">Oefenvragen</h2>
+<div class="mc-set"><article class="mc-vraag glass" data-mc="0" role="group" aria-labelledby="mc-0-t"><h3 id="mc-0-t"><span class="mc-nr">Vraag 1</span>Een facilitair manager heeft een strak plan, maar zet bij alle teams dezelfde informatiebijeenkomst in: ook bij het team dat al enthousiast is, en bij het team dat wel wil maar niet kan. Welk gevolg voorspelt H10?</h3><div class="toets-options" role="group" aria-labelledby="mc-0-t"><button class="toets-option glass" type="button" data-choice="0" aria-pressed="false"><span class="toets-letter">A.</span><span>Demotivatie, want de instrumentatie is niet op maat</span></button><button class="toets-option glass" type="button" data-choice="1" aria-pressed="false"><span class="toets-letter">B.</span><span>Een doolhof, omdat de toekomstige fit niet helder is</span></button><button class="toets-option glass" type="button" data-choice="2" aria-pressed="false"><span class="toets-letter">C.</span><span>Verspilling, omdat de fasering is genegeerd</span></button><button class="toets-option glass" type="button" data-choice="3" aria-pressed="false"><span class="toets-letter">D.</span><span>Een papieren tijger, omdat de niveaus ontbreken</span></button></div><div class="toets-actions"><button class="toets-btn toets-primary" type="button" data-check disabled>Kijk na</button></div><div class="mc-uitleg" id="mc-0-u" role="status" aria-live="polite" tabindex="-1" hidden></div></article>
+<article class="mc-vraag glass" data-mc="1" role="group" aria-labelledby="mc-1-t"><h3 id="mc-1-t"><span class="mc-nr">Vraag 2</span>Medewerkers van een facilitaire dienst zien een nieuw serviceconcept vooral als 'het prestigeproject van de nieuwe directeur'. Wat helpt volgens het boek het meest?</h3><div class="toets-options" role="group" aria-labelledby="mc-1-t"><button class="toets-option glass" type="button" data-choice="0" aria-pressed="false"><span class="toets-letter">A.</span><span>Het concept sneller invoeren, zodat de discussie stopt</span></button><button class="toets-option glass" type="button" data-choice="1" aria-pressed="false"><span class="toets-letter">B.</span><span>Het besluit laten bekrachtigen door de hoogste leiding</span></button><button class="toets-option glass" type="button" data-choice="2" aria-pressed="false"><span class="toets-letter">C.</span><span>Extra beloning geven aan wie als eerste meedoet</span></button><button class="toets-option glass" type="button" data-choice="3" aria-pressed="false"><span class="toets-letter">D.</span><span>Het verband met de omgeving laten zien</span></button></div><div class="toets-actions"><button class="toets-btn toets-primary" type="button" data-check disabled>Kijk na</button></div><div class="mc-uitleg" id="mc-1-u" role="status" aria-live="polite" tabindex="-1" hidden></div></article>
+<article class="mc-vraag glass" data-mc="2" role="group" aria-labelledby="mc-2-t"><h3 id="mc-2-t"><span class="mc-nr">Vraag 3</span>Na de aankondiging van een nieuw roostersysteem zegt niemand iets in het overleg, maar het ziekteverzuim stijgt en er gaan geruchten rond. Hoe typeer je deze weerstand in de matrix van H4?</h3><div class="toets-options" role="group" aria-labelledby="mc-2-t"><button class="toets-option glass" type="button" data-choice="0" aria-pressed="false"><span class="toets-letter">A.</span><span>Manifest en hoog: openlijk en sterk</span></button><button class="toets-option glass" type="button" data-choice="1" aria-pressed="false"><span class="toets-letter">B.</span><span>Diffuus en laag: vermijden en afschuiven</span></button><button class="toets-option glass" type="button" data-choice="2" aria-pressed="false"><span class="toets-letter">C.</span><span>Diffuus en hoog: verborgen maar sterk</span></button><button class="toets-option glass" type="button" data-choice="3" aria-pressed="false"><span class="toets-letter">D.</span><span>Manifest en laag: openlijk, maar afstandelijk</span></button></div><div class="toets-actions"><button class="toets-btn toets-primary" type="button" data-check disabled>Kijk na</button></div><div class="mc-uitleg" id="mc-2-u" role="status" aria-live="polite" tabindex="-1" hidden></div></article>
+<article class="mc-vraag glass" data-mc="3" role="group" aria-labelledby="mc-3-t"><h3 id="mc-3-t"><span class="mc-nr">Vraag 4</span>Een facilitaire dienst wil dat medewerkers niet alleen een nieuwe werkroutine leren, maar echt gastvrij gaan denken en handelen. Wat past volgens H5?</h3><div class="toets-options" role="group" aria-labelledby="mc-3-t"><button class="toets-option glass" type="button" data-choice="0" aria-pressed="false"><span class="toets-letter">A.</span><span>Single loop leren met een strak blauw invoeringsplan</span></button><button class="toets-option glass" type="button" data-choice="1" aria-pressed="false"><span class="toets-letter">B.</span><span>Double loop leren, met een groene of witte aanpak</span></button><button class="toets-option glass" type="button" data-choice="2" aria-pressed="false"><span class="toets-letter">C.</span><span>Een machtsstrategie, omdat gedrag moet veranderen</span></button><button class="toets-option glass" type="button" data-choice="3" aria-pressed="false"><span class="toets-letter">D.</span><span>Een rode aanpak, want routines leer je met beloning</span></button></div><div class="toets-actions"><button class="toets-btn toets-primary" type="button" data-check disabled>Kijk na</button></div><div class="mc-uitleg" id="mc-3-u" role="status" aria-live="polite" tabindex="-1" hidden></div></article>
+<article class="mc-vraag glass" data-mc="4" role="group" aria-labelledby="mc-4-t"><h3 id="mc-4-t"><span class="mc-nr">Vraag 5</span>Het management laat medewerkers meepraten over een nieuw werkplekconcept, maar bindt zich niet aan wat ze zeggen. Welke vorm uit de participatiepiramide is dit?</h3><div class="toets-options" role="group" aria-labelledby="mc-4-t"><button class="toets-option glass" type="button" data-choice="0" aria-pressed="false"><span class="toets-letter">A.</span><span>Informeren: de medewerkers zijn alleen toehoorder</span></button><button class="toets-option glass" type="button" data-choice="1" aria-pressed="false"><span class="toets-letter">B.</span><span>Adviseren: het management volgt het advies in principe</span></button><button class="toets-option glass" type="button" data-choice="2" aria-pressed="false"><span class="toets-letter">C.</span><span>Raadplegen: gehoord worden zonder binding</span></button><button class="toets-option glass" type="button" data-choice="3" aria-pressed="false"><span class="toets-letter">D.</span><span>Coproduceren: doel en aanpak worden samen bepaald</span></button></div><div class="toets-actions"><button class="toets-btn toets-primary" type="button" data-check disabled>Kijk na</button></div><div class="mc-uitleg" id="mc-4-u" role="status" aria-live="polite" tabindex="-1" hidden></div></article></div>
+<p class="mc-score" id="mc-score" role="status" aria-live="polite" hidden></p>
+<h2 class="les-h">Open vragen</h2>
+<div class="open-set"><article class="open-vraag glass" data-open="0" role="group" aria-labelledby="open-0-t"><div class="toets-casus"><strong>Casus</strong>Een facilitair dienstverlener beheert vergaderzalen in een kantorenpark. Bedrijven huren de zalen tot nu toe met jaarcontracten. Door hybride werken vergaderen ze vaker online, en nieuwe aanbieders laten bedrijven via een app een zaal per uur boeken. De dienstverlener laat alle boekingen via de receptie lopen en heeft een vast team per gebouw. Er zijn al twee klanten vertrokken. Het management kondigt een 'nieuwe koers' aan zonder uit te leggen waarom; medewerkers noemen het 'weer een plannetje van de directie'.</div><h3 id="open-0-t"><span class="mc-nr">Open vraag 6</span>Stel een diagnose op met het bestaansvoorwaardenmodel. Leg daarna uit waarom de medewerkers de noodzaak van de verandering niet zien en wat het management daaraan kan doen.</h3><div class="toets-actions"><button class="toets-btn glass" type="button" data-model aria-expanded="false" aria-controls="open-0-m">Toon modelantwoord</button></div><div class="toets-model" id="open-0-m" tabindex="-1" hidden></div></article>
+<article class="open-vraag glass" data-open="1" role="group" aria-labelledby="open-1-t"><div class="toets-casus"><strong>Casus</strong>Een ziekenhuis wil dat patiënten hun maaltijd zelf kiezen op het moment dat ze honger hebben, in plaats van op vaste tijden. De directie heeft dat besloten, er is een bestelapp aangeschaft en de functie van voedingsassistent is herschreven tot gastvrouw of gastheer. Een halfjaar later lopen de voedingsassistenten nog steeds hun vaste ronde, en een patiënt die tussendoor iets bestelt, krijgt te horen dat het 'bij de volgende ronde' komt.</div><h3 id="open-1-t"><span class="mc-nr">Open vraag 7</span>Leg uit op welke niveaus van verandering deze verandering is uitgewerkt en op welk niveau niet. Welk gevolg noemt H10 hiervoor, en wat had het ziekenhuis anders moeten doen?</h3><div class="toets-actions"><button class="toets-btn glass" type="button" data-model aria-expanded="false" aria-controls="open-1-m">Toon modelantwoord</button></div><div class="toets-model" id="open-1-m" tabindex="-1" hidden></div></article>
+<article class="open-vraag glass" data-open="2" role="group" aria-labelledby="open-2-t"><div class="toets-casus"><strong>Casus</strong>De facilitaire dienst van een zorginstelling wil dat de teams schoonmaak, receptie en catering zelfsturend worden. Tot nu toe ging elk besluit via de afdelingshoofden, waren er uitgebreide procedures en werd eigen initiatief niet beloond. Dit jaar lopen er ook een ICT-migratie en een bezuiniging. Er gaat het gerucht dat zelfsturing een verkapte bezuiniging is, en het ziekteverzuim stijgt.</div><h3 id="open-2-t"><span class="mc-nr">Open vraag 8</span>Beoordeel het verandervermogen van de facilitaire dienst met de harde en zachte kenmerken uit H4. Typeer daarbij de cultuur en de weerstand.</h3><div class="toets-actions"><button class="toets-btn glass" type="button" data-model aria-expanded="false" aria-controls="open-2-m">Toon modelantwoord</button></div><div class="toets-model" id="open-2-m" tabindex="-1" hidden></div></article>
+<article class="open-vraag glass" data-open="3" role="group" aria-labelledby="open-3-t"><div class="toets-casus"><strong>Casus</strong>Een bedrijf dat bedrijfsrestaurants exploiteert, verliest binnen een jaar drie grote klanten. Zonder ingrijpen is het geld over zes maanden op. Het bedrijf is hiërarchisch: het management bepaalt, en medewerkers zijn gewend opdrachten uit te voeren. De directeur wil het menu, de inkoop en de bezetting per restaurant snel aanpassen.</div><h3 id="open-3-t"><span class="mc-nr">Open vraag 9</span>Welke strategie van de Change Factory past hier? Onderbouw je keuze met het type verandering en het type organisatie. Noem daarna een passende kleur van De Caluwé en Vermaak en de valkuil van die kleur.</h3><div class="toets-actions"><button class="toets-btn glass" type="button" data-model aria-expanded="false" aria-controls="open-3-m">Toon modelantwoord</button></div><div class="toets-model" id="open-3-m" tabindex="-1" hidden></div></article>
+<article class="open-vraag glass" data-open="4" role="group" aria-labelledby="open-4-t"><div class="toets-casus"><strong>Casus</strong>Een gemeente sluit haar eigen drukkerij en besteedt het drukwerk uit. De zes drukkers krijgen ander werk binnen de facilitaire dienst, in de postkamer en het magazijn. De manager heeft de nieuwe taken goed geregeld en wil op maandag meteen beginnen. In de pauzes praten de drukkers vooral over hoe goed de drukkerij vroeger draaide, en twee van hen melden zich ziek.</div><h3 id="open-4-t"><span class="mc-nr">Open vraag 10</span>Leg met het driefasenmodel van Bridges uit wat de manager over het hoofd ziet. Welke interventies passen in elke fase?</h3><div class="toets-actions"><button class="toets-btn glass" type="button" data-model aria-expanded="false" aria-controls="open-4-m">Toon modelantwoord</button></div><div class="toets-model" id="open-4-m" tabindex="-1" hidden></div></article>
+<article class="open-vraag glass" data-open="5" role="group" aria-labelledby="open-5-t"><div class="toets-casus"><strong>Casus</strong>Een schoonmaakbedrijf met 400 medewerkers stapt over op dagschoonmaak: de schoonmakers werken voortaan overdag, tussen de kantoormedewerkers van de klanten door, in plaats van 's avonds. De directie heeft het besloten. De vakbond vreest voor de toeslagen van de avonddienst. Teamleiders moeten de roosters omzetten. Grote klanten willen weten of het overdag stil genoeg blijft. De leverancier van de machines moet stillere apparatuur leveren.</div><h3 id="open-5-t"><span class="mc-nr">Open vraag 11</span>Maak in twee stappen een stakeholdersanalyse volgens Bryson en geef aan welke stakeholders primair en welke secundair zijn. Wat moet het communicatieplan daarna regelen?</h3><div class="toets-actions"><button class="toets-btn glass" type="button" data-model aria-expanded="false" aria-controls="open-5-m">Toon modelantwoord</button></div><div class="toets-model" id="open-5-m" tabindex="-1" hidden></div></article></div>
+</div></section>
+      <noscript><p>Schakel JavaScript in om de oefenvragen na te kijken.</p></noscript>
+    </div>
+  </div>
+<nav class="verder" aria-label="Vorige en volgende les"><a class="glass" href="facilitair-verandermanagement-les-6-1.html">&#8249; <span>Les 6.1: Interventies en het veranderplan</span></a><span></span></nav>
+</main>
+<div class="lightbox" id="lightbox" hidden><figure><img alt=""/><p></p></figure></div>
+<script src="js/atlas-data.js"></script>
+<script src="js/atlas.js"></script>
+<script src="js/lessen-facilitair-verandermanagement.js"></script>
+<script>
+(() => {
+  'use strict';
+  const $ = (s, r = document) => r.querySelector(s);
+  const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+  Atlas.topbar('<span class="sep">/</span><a href="vak.html?v=facilitair-verandermanagement">Facilitair verandermanagement</a><span class="sep">/</span><a href="facilitair-verandermanagement-lessen.html">Lessen</a><span class="sep">/</span><span class="here">Les 7.1</span>');
+  // De antwoorden staan niet in de pagina maar in js/lessen-<key>.js; pas na het nakijken komen ze in beeld.
+  const data = (window.FVM_LESSEN || {})["7.1"] || { mc: [], open: [] };
+
+  // ── Keuze tussen lesvoorbereiding en toetsvoorbereiding ──
+  const tabs = $$('.route-tab');
+  const panels = $$('.route-paneel');
+  const routes = tabs.map(t => t.dataset.route);
+  const storeKey = 'fa_les_route_facilitair-verandermanagement';
+  const stored = () => { try { return localStorage.getItem(storeKey); } catch (_) { return null; } };
+  const store = route => { try { localStorage.setItem(storeKey, route); } catch (_) {} };
+  const hashRoute = () => location.hash.slice(1);
+  const pick = () => {
+    if (routes.includes(hashRoute())) return hashRoute();
+    const saved = stored();
+    if (routes.includes(saved)) return saved;
+    return routes.includes('les') ? 'les' : routes[0];
+  };
+  function show(route) {
+    tabs.forEach(t => {
+      const on = t.dataset.route === route;
+      t.setAttribute('aria-selected', String(on));
+      t.tabIndex = on ? 0 : -1;
+    });
+    panels.forEach(p => { p.hidden = p.dataset.route !== route; });
+  }
+  tabs.forEach((tab, i) => {
+    tab.addEventListener('click', () => {
+      store(tab.dataset.route);
+      show(tab.dataset.route);
+      if (hashRoute() !== tab.dataset.route) location.hash = tab.dataset.route;
+    });
+    tab.addEventListener('keydown', event => {
+      const step = { ArrowLeft: -1, ArrowRight: 1 }[event.key];
+      if (!step || tabs.length < 2) return;
+      event.preventDefault();
+      const next = tabs[(i + step + tabs.length) % tabs.length];
+      next.focus();
+      next.click();
+    });
+  });
+  window.addEventListener('hashchange', () => {
+    if (routes.includes(hashRoute())) store(hashRoute());
+    show(pick());
+  });
+  if (routes.includes(hashRoute())) store(hashRoute());
+  show(pick());
+
+  // ── Meerkeuze: kiezen, nakijken, uitleg ──
+  const cards = $$('.mc-vraag');
+  const done = cards.map(() => null);
+  const score = $('#mc-score');
+  const paintScore = () => {
+    if (!score) return;
+    const all = done.every(d => d !== null);
+    score.hidden = !all;
+    score.textContent = all ? `Je hebt ${done.filter(Boolean).length} van ${done.length} oefenvragen goed.` : '';
+  };
+  cards.forEach((card, i) => {
+    const options = $$('.toets-option', card);
+    const check = $('[data-check]', card);
+    const uitleg = $('.mc-uitleg', card);
+    let choice = null;
+    const reset = () => {
+      choice = null;
+      done[i] = null;
+      options.forEach(o => {
+        o.classList.remove('mc-goed', 'mc-fout');
+        o.removeAttribute('aria-disabled');
+        o.setAttribute('aria-pressed', 'false');
+        $('.mc-tag', o)?.remove();
+      });
+      check.hidden = false;
+      check.disabled = true;
+      uitleg.hidden = true;
+      uitleg.replaceChildren();
+      paintScore();
+    };
+    options.forEach((option, j) => option.addEventListener('click', () => {
+      if (done[i] !== null) return;
+      choice = j;
+      options.forEach(o => o.setAttribute('aria-pressed', String(o === option)));
+      check.disabled = false;
+    }));
+    check.addEventListener('click', () => {
+      const q = data.mc[i];
+      if (done[i] !== null || choice === null || !q) return;
+      done[i] = choice === q.answer;
+      options.forEach((o, j) => {
+        o.setAttribute('aria-disabled', 'true');
+        const tag = j === q.answer ? 'Juist antwoord' : j === choice ? 'Jouw keuze' : '';
+        if (j === q.answer) o.classList.add('mc-goed');
+        else if (j === choice) o.classList.add('mc-fout');
+        if (tag) o.insertAdjacentHTML('beforeend', `<span class="mc-tag">${tag}</span>`);
+      });
+      check.hidden = true;
+      uitleg.innerHTML = `<p><strong>${done[i] ? 'Goed.' : 'Niet goed.'}</strong> Het juiste antwoord is ${String.fromCharCode(65 + q.answer)}.</p>
+        <div>${q.explanation}</div>
+        <div class="toets-actions"><button class="toets-btn glass" type="button" data-retry>Probeer opnieuw</button></div>`;
+      uitleg.hidden = false;
+      paintScore();
+    });
+    uitleg.addEventListener('click', event => {
+      if (!event.target.closest('[data-retry]')) return;
+      reset();
+      options[0].focus({ preventScroll: true });
+    });
+  });
+
+  // ── Open vragen: modelantwoord ──
+  $$('.open-vraag').forEach((card, i) => {
+    const button = $('[data-model]', card);
+    const model = $('.toets-model', card);
+    button.addEventListener('click', () => {
+      const open = button.getAttribute('aria-expanded') === 'true';
+      if (open) {
+        model.hidden = true;
+        model.replaceChildren();
+      } else {
+        const q = data.open[i];
+        if (!q) return;
+        model.innerHTML = `<h4>Modelantwoord</h4><div>${q.model}</div>`;
+        model.hidden = false;
+      }
+      button.setAttribute('aria-expanded', String(!open));
+      button.textContent = open ? 'Toon modelantwoord' : 'Verberg modelantwoord';
+    });
+  });
+
+  // ── Reels: één speler tegelijk; de YouTube-API en de speler pas na een klik op afspelen ──
+  const reelBox = $('#reel');
+  if (reelBox) {
+    const reels = JSON.parse($('#reel-data').textContent);
+    const vlak = $('#reel-vlak');
+    const status = $('#reel-status');
+    const caption = $('#reel-caption');
+    const knoppen = $$('.reel-knop');
+    let current = 0, player = null, loading = false, timer = null;
+    function teardown() {
+      clearTimeout(timer);
+      loading = false;
+      try { if (player && player.destroy) player.destroy(); } catch (_) {}
+      player = null;
+      vlak.replaceChildren();
+    }
+    function mount(i, message) {
+      teardown();
+      current = i;
+      const r = reels[i];
+      knoppen.forEach((k, j) => k.setAttribute('aria-pressed', String(j === i)));
+      const strong = document.createElement('strong');
+      strong.textContent = r.titel;
+      caption.replaceChildren(strong, r.duur ? ' · ' + r.duur : '');
+      status.textContent = message || '';
+      if (!r.youtube_id) {
+        const volgt = document.createElement('p');
+        volgt.className = 'reel-volgt';
+        volgt.textContent = 'Video volgt binnenkort';
+        vlak.append(volgt);
+        return;
+      }
+      const start = document.createElement('button');
+      start.type = 'button';
+      start.className = 'reel-start';
+      start.id = 'reel-start';
+      start.dataset.video = r.youtube_id;
+      start.setAttribute('aria-label', 'Afspelen op YouTube: ' + r.titel);
+      const poster = document.createElement('img');
+      poster.id = 'reel-poster';
+      poster.alt = '';
+      poster.decoding = 'async';
+      poster.addEventListener('error', () => {
+        if (poster.src !== r.thumb) poster.src = r.thumb;
+        else poster.hidden = true;
+      });
+      poster.src = r.poster || r.thumb;
+      const label = document.createElement('span');
+      label.innerHTML = '<strong>Afspelen op YouTube</strong>';
+      start.append(poster, label);
+      start.addEventListener('click', () => play(start, r, i));
+      vlak.append(start);
+    }
+    function failed() {
+      mount(current, 'De video kon niet laden. Klik op afspelen om het opnieuw te proberen.');
+    }
+    function create(r, i) {
+      if (!loading || player || i !== current) return;
+      const iframe = document.createElement('iframe');
+      iframe.id = 'reel-video';
+      iframe.title = 'Reel: ' + r.titel;
+      iframe.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
+      iframe.allowFullscreen = true;
+      iframe.referrerPolicy = 'strict-origin-when-cross-origin';
+      const url = new URL('https://www.youtube-nocookie.com/embed/' + encodeURIComponent(r.youtube_id));
+      url.search = new URLSearchParams({ enablejsapi: '1', origin: location.origin, autoplay: '1', playsinline: '1', cc_lang_pref: 'nl', rel: '0' });
+      iframe.src = url.href;
+      vlak.replaceChildren(iframe);
+      player = new YT.Player(iframe, {
+        events: {
+          onReady: event => {
+            player = event.target;
+            clearTimeout(timer);
+            loading = false;
+            status.textContent = '';
+            event.target.playVideo();
+          },
+          // Na het einde staat de volgende reel klaar; hij begint niet vanzelf.
+          onStateChange: event => {
+            if (event.data === 0 && current + 1 < reels.length) {
+              mount(current + 1, 'Volgende reel klaar: ' + reels[current + 1].titel + '. Klik op afspelen om hem te starten.');
+            }
+          },
+          onError: failed
+        }
+      });
+    }
+    function play(start, r, i) {
+      if (loading || player) return;
+      loading = true;
+      start.disabled = true;
+      status.textContent = 'YouTube-speler laden…';
+      timer = setTimeout(failed, 15000);
+      if (window.YT && window.YT.Player) { create(r, i); return; }
+      window.onYouTubeIframeAPIReady = () => create(r, i);
+      $('#youtube-api')?.remove();
+      const script = document.createElement('script');
+      script.id = 'youtube-api';
+      script.src = 'https://www.youtube.com/iframe_api';
+      script.async = true;
+      script.onerror = failed;
+      document.head.append(script);
+    }
+    knoppen.forEach((knop, i) => knop.addEventListener('click', () => { if (i !== current) mount(i); }));
+    mount(0);
+  }
+
+  // ── Beeld vergroten (blokken van het type img) ──
+  const lb = $('#lightbox');
+  document.addEventListener('click', e => {
+    const b = e.target.closest('.beeld button');
+    if (b) {
+      const img = b.querySelector('img');
+      lb.querySelector('img').src = img.src;
+      lb.querySelector('p').textContent = b.parentNode.querySelector('figcaption')?.textContent || '';
+      lb.hidden = false;
+    } else if (e.target.closest('#lightbox')) lb.hidden = true;
+  });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') lb.hidden = true; });
+})();
+</script>
+</body>
+</html>

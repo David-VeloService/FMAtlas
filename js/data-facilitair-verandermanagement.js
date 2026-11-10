@@ -42,6 +42,24 @@ window.FVM = {
    "label": "Veranderstrategieën",
    "short": "Strategie",
    "color": "#d97706"
+  },
+  {
+   "key": "proces",
+   "label": "Het veranderproces",
+   "short": "Proces",
+   "color": "#14b8a6"
+  },
+  {
+   "key": "interventies",
+   "label": "Instrumenten en interventies",
+   "short": "Interventies",
+   "color": "#ec4899"
+  },
+  {
+   "key": "veranderplan",
+   "label": "Het veranderplan",
+   "short": "Plan",
+   "color": "#6366f1"
   }
  ],
  "begrippen": [
@@ -83,7 +101,7 @@ window.FVM = {
   {
    "cat": "iov",
    "term": "Organisatievernieuwing",
-   "def": "Een ingrijpende strategieverandering (disruptive change). Het verschil met organisatieverbetering is de diepte: bij vernieuwing verandert de koers, bij verbetering de manier van werken binnen de koers."
+   "def": "Een ingrijpende, schoksgewijze strategieverandering: eerst anders, dan beter (boek H2). Het verschil met organisatieverbetering is de diepte: bij vernieuwing verandert de koers, bij verbetering de manier van werken binnen de koers. Disruptive change is een vorm van vernieuwing die een hele branche ontwricht."
   },
   {
    "cat": "iov",
@@ -108,7 +126,7 @@ window.FVM = {
   {
    "cat": "iov",
    "term": "Instrumentatie van het veranderproces",
-   "def": "Onderdeel van het IOV-model: de technieken die je bij de verandering inzet, zoals een stakeholderanalyse."
+   "def": "Onderdeel van het IOV-model: welke instrumenten (informeren, overtuigen, onderhandelen, coachen, opleiden en meer) je inzet om stakeholders mee te krijgen. Je kiest ze na een stakeholderanalyse; die analyse gaat aan de instrumenten vooraf (boek H1 en H7)."
   },
   {
    "cat": "iov",
@@ -118,17 +136,402 @@ window.FVM = {
   {
    "cat": "iov",
    "term": "Functionele relaties",
-   "def": "Onderdeel van het IOV-model dat gaat over het effect van (strategisch) samenwerken."
+   "def": "Onderdeel van het IOV-model: de relaties die je door je functie hebt en niet zelf kiest, zoals bazen, concernstaf en ondernemingsraad. De veranderaar moet weten voor wie hij werkt, waartoe hij bevoegd is en wie hij te vriend moet houden (boek H1)."
   },
   {
    "cat": "iov",
    "term": "Evaluatie (IOV-model)",
-   "def": "Onderdeel van het IOV-model: het meten van het effect van de gekozen veranderstrategie."
+   "def": "Onderdeel van het IOV-model: nagaan of je bereikt wat je wilde, tussentijds en achteraf, zodat je kunt bijsturen. Je evalueert de inhoud (resultaten tegenover doelen) en het proces (hoe de verandering verliep) (boek H1 en H6)."
   },
   {
    "cat": "iov",
    "term": "Veranderplan",
    "def": "Laatste onderdeel van het IOV-model: de stappenplannen omgezet in planning, acties en ideeën. Het sluit aan op de ontwikkeling van het veranderplan in week 6."
+  },
+  {
+   "cat": "iov",
+   "term": "Organisatiekunde en veranderkunde",
+   "def": "De eerste drie elementen van het IOV-model (fit, niveaus, verandervermogen) beantwoorden wat er verandert en waarom: organisatiekunde. De overige gaan over hoe: veranderkunde. In de praktijk zijn ze onlosmakelijk verbonden (boek H1)."
+  },
+  {
+   "cat": "iov",
+   "term": "Verbondenheid van aspecten (IOV-model)",
+   "def": "De figuur suggereert een rij, maar alle elementen van het IOV-model spelen tegelijk en hangen paarsgewijs samen; alleen het accent verschuift. Het model is een rode draad, geen blauwdruk of checklist (boek H1)."
+  },
+  {
+   "cat": "iov",
+   "term": "Iteratief proces",
+   "def": "Veranderen gaat heen en weer en wordt onderweg bijgesteld, niet lineair. Het veranderplan is daarom een leidraad die mag veranderen, geen spoorboekje (boek H1)."
+  },
+  {
+   "cat": "iov",
+   "term": "Ambitie van het management",
+   "def": "Wat het management wil bereiken. Zien medewerkers een verandering als persoonlijke ambitie van een manager (indruk maken, stempel drukken), dan wekt dat wantrouwen en zien ze de noodzaak niet (boek H1)."
+  },
+  {
+   "cat": "iov",
+   "term": "(Deel)systeemverandering",
+   "def": "Indeling naar omvang. Een organisatie is een open systeem van deelsystemen: je verandert één onderdeel (bijvoorbeeld productie) of één aspect over het geheel (bijvoorbeeld informatievoorziening). Als student heb je meestal met deelveranderingen te maken (boek H2)."
+  },
+  {
+   "cat": "iov",
+   "term": "Spontane verandering",
+   "def": "Onbewuste verandering die dagelijks ontstaat doordat mensen leren van ervaring, vanuit eigen drijfveren. Niet iedereen merkt haar op. Tegenover de bewust gestuurde verandering (boek H2)."
+  },
+  {
+   "cat": "iov",
+   "term": "Bewust gewilde en gestuurde verandering",
+   "def": "Verandering die het management doelgericht inzet om te kunnen blijven bestaan of om proactief in te spelen op omstandigheden. Ze raakt strategie, structuur, procedures, regels en gedrag. Het boek gaat vooral over dit type (boek H2)."
+  },
+  {
+   "cat": "iov",
+   "term": "Disruptive change",
+   "def": "Vernieuwing die een organisatie of branche ontwricht, meestal door technologie, zoals webshops tegenover winkelketens of Airbnb tegenover hotels (boek H2)."
+  },
+  {
+   "cat": "iov",
+   "term": "Preventieve verandering",
+   "def": "Verandering om problemen te voorkomen. Klein aanpassen is verbeteren, radicaal omgooien is vernieuwen (boek H2)."
+  },
+  {
+   "cat": "iov",
+   "term": "Curatieve verandering",
+   "def": "Verandering om een bestaand probleem te genezen: een kleine bijsturing (aanpassen) of een forse ingreep (saneren of reorganiseren). Vaak groot, complex en met zware gevolgen voor medewerkers (boek H2)."
+  },
+  {
+   "cat": "iov",
+   "term": "Cultuurveranderingen (Braun)",
+   "def": "Vijf typen: culturele creatie (een cultuur bouwen bij de start), continuïteit (een goede cultuur bestendigen), heroriëntatie (terug naar de bedoeling als men verstrikt is in procedures), genezing (bestaansrecht in gevaar, al dan niet drastisch reorganiseren) en transformatie (de omgeving eist echt iets anders) (boek H2)."
+  },
+  {
+   "cat": "iov",
+   "term": "Stakeholder",
+   "def": "Persoon of organisatie die invloed ondervindt van de verandering of er zelf invloed op kan uitoefenen; beide richtingen tellen. Intern: medewerkers, leiding, aandeelhouders. Extern: klanten, leveranciers, overheid, maatschappij. Primaire stakeholders hebben een directere relatie met de verandering dan secundaire (boek H1 en H7)."
+  },
+  {
+   "cat": "interventies",
+   "term": "Stakeholdersanalyse",
+   "def": "Per belanghebbende vijf vragen: relatie met de verandering, belang, macht, coalitie en prioriteit. Doel: bepalen wie de verandering kan vertragen, blokkeren of terugdraaien, en wie je dus nodig hebt. De analyse gaat vooraf aan de keuze van instrumenten (boek H2 en H7)."
+  },
+  {
+   "cat": "interventies",
+   "term": "Stakeholdersmap (Johnson en Scholes)",
+   "def": "Indeling op macht (kunnen ze de invoering bevorderen of belemmeren?) en belang (impact op hen). Veel macht en hoge impact: maximaal betrekken. Weinig macht, hoge impact: blijvend informeren, op onderdelen meepraten. Veel macht, lage impact: tevreden houden. Weinig macht, lage impact: minimaal informeren (boek H2 en H7)."
+  },
+  {
+   "cat": "interventies",
+   "term": "Stakeholder-interest matrix en power-interest matrix (Bryson)",
+   "def": "Concretere stakeholdersanalyse in twee stappen. Eerst een tabel met stakeholders in rijen en hun belangen in kolommen; wie geen enkel belang heeft, is geen stakeholder. Daarna een negenvlak van macht tegen belang (no, some, high) met per stakeholder een plek (boek H7)."
+  },
+  {
+   "cat": "interventies",
+   "term": "Participatiepiramide",
+   "def": "Vijf vormen van participatie, oplopend in invloed op de beslisser: informeren, raadplegen, adviseren, coproduceren, meebeslissen. In de onderste twee lagen is de stakeholder passief. Gebruik: per stakeholder kiezen hoe je hem betrekt (boek H7)."
+  },
+  {
+   "cat": "interventies",
+   "term": "Informeren (participatie)",
+   "def": "Laagste vorm van participatie: de stakeholder is toehoorder en het management vertelt wat er gebeurt (boek H7)."
+  },
+  {
+   "cat": "interventies",
+   "term": "Raadplegen (participatie)",
+   "def": "Het management praat met stakeholders, maar bindt zich niet aan de uitkomst (boek H7)."
+  },
+  {
+   "cat": "interventies",
+   "term": "Adviseren (participatie)",
+   "def": "Stakeholders brengen problemen en oplossingen in; het management volgt dat in principe, maar mag beargumenteerd afwijken (boek H7)."
+  },
+  {
+   "cat": "interventies",
+   "term": "Coproduceren (participatie)",
+   "def": "Management en stakeholders spreken doel en aanpak samen af; het management blijft eindverantwoordelijk (boek H7)."
+  },
+  {
+   "cat": "interventies",
+   "term": "Meebeslissen (participatie)",
+   "def": "Hoogste vorm van participatie: het management kan alleen besluiten met instemming van de stakeholders, zoals bij het instemmingsrecht van de ondernemingsraad (boek H7)."
+  },
+  {
+   "cat": "iov",
+   "term": "Commitment (netwerk)",
+   "def": "De verbinding van de belangrijkste spelers met de verandering. Je bouwt aan een netwerk van sleutelfiguren die de verandering dragen, om acceptatie te krijgen (boek H2)."
+  },
+  {
+   "cat": "iov",
+   "term": "Future search",
+   "def": "Werkvorm waarmee veel belanghebbenden samen een visie en strategie bouwen en invoeren (Weisbord en Janoff). Uitgangspunten: verleden, heden en toekomst horen bij elkaar, je ziet maar een deel van de werkelijkheid, meedoen maakt betrokken, en verandering is nooit af (boek H2)."
+  },
+  {
+   "cat": "iov",
+   "term": "Large Scale Interventions",
+   "def": "Familie van interventies die uitgaat van de organisatie als open systeem en van gaandeweg bijstellen; vorm en inhoud liggen vooraf niet vast. Future search is er een voorbeeld van (boek H2)."
+  },
+  {
+   "cat": "interventies",
+   "term": "Sturingsinstrumenten",
+   "def": "Manieren, methoden en technieken om een verandering te realiseren, zoals visie geven, informeren, overtuigen, laten meepraten, onderhandelen en opleiden. Een instrument kan weer andere instrumenten bevatten (boek H7)."
+  },
+  {
+   "cat": "interventies",
+   "term": "Interventie",
+   "def": "Een voorgenomen veranderactiviteit om het veranderdoel te halen. Beeld uit het boek: het stuurwiel is het instrument, het draaien eraan de interventie. Een instrument staat of valt met wie het toepast (boek H7)."
+  },
+  {
+   "cat": "interventies",
+   "term": "Managementproces",
+   "def": "Vooruitkijken, plannen, organiseren, motiveren, de voortgang bewaken en evalueren. Dezelfde stappen pas je toe op het sturen van een veranderproces (boek H7)."
+  },
+  {
+   "cat": "proces",
+   "term": "Driefasenmodel van Lewin",
+   "def": "Een veranderproces verloopt in drie fasen: unfreezing (losweken uit de oude toestand), moving (overgang naar de nieuwe) en freezing (de nieuwe situatie vastleggen). Kritiek: het gaat uit van rationele mensen en een lineair verloop (boek H6)."
+  },
+  {
+   "cat": "proces",
+   "term": "Unfreezing",
+   "def": "Eerste fase van Lewin, ook mobilisatiefase of mobilizing: veranderingsbereidheid kweken. Interventies: start markeren, onbehagen verwoorden, inspireren, informeren, voorbeeldgedrag, participeren en ruimte voor emoties. Hoe groter de impact op gedrag, hoe belangrijker deze fase (boek H6)."
+  },
+  {
+   "cat": "proces",
+   "term": "Moving",
+   "def": "Tweede fase van Lewin: mensen accepteren de nieuwe situatie en proberen nieuwe werkwijzen uit. Het is de leerfase, met risico op terugval in oud gedrag. Interventies: leiderschap tonen, opleiden, trainen en coachen (boek H6)."
+  },
+  {
+   "cat": "proces",
+   "term": "Freezing",
+   "def": "Derde fase van Lewin, ook institutionaliseren, verankeren of borgen genoemd: het nieuwe gedrag wordt eigen en ligt vast. Interventies: ondersteunen, belonen, successen vieren, oud gedrag onmogelijk maken en regelmatig evalueren (boek H6)."
+  },
+  {
+   "cat": "proces",
+   "term": "Verandering en transitie (Bridges)",
+   "def": "Verandering is wat je overkomt, of je het er nu mee eens bent of niet. Transitie is de psychologische verwerking ervan in je hoofd en lijf, en die duurt meestal langer (boek H6)."
+  },
+  {
+   "cat": "proces",
+   "term": "Driefasenmodel van Bridges",
+   "def": "Ending (afscheid van het oude), neutral zone (de overgang) en new beginning (het nieuwe in gebruik). Bridges legt de nadruk op het feit dat veranderen begint met achterlaten: ga na wie wat verliest en neem dat serieus (boek H6)."
+  },
+  {
+   "cat": "proces",
+   "term": "Neutral zone",
+   "def": "De overgangsfase bij Bridges: gevaarlijk, omdat nieuw gedrag nog niet geleerd is en oud gedrag terugkomt, maar ook kansrijk voor creativiteit. Helpend: tijdelijke regels, extra ontmoetingsmomenten en fouten niet afstraffen (boek H6)."
+  },
+  {
+   "cat": "proces",
+   "term": "Transitiecurve (Balogun en Hailey)",
+   "def": "Zeven emotionele fasen die een individu bij verandering doorloopt: schok, ontkenning, bewustwording, acceptatie, testen, search for meaning en integratie. Het zelfvertrouwen zakt eerst en groeit daarna. Niet iedereen gaat even snel (boek H6)."
+  },
+  {
+   "cat": "proces",
+   "term": "Bewustwordingsfase",
+   "def": "Fase 3 van de transitiecurve: je ziet dat verandering nodig is, en je zelfvertrouwen daalt omdat je de nieuwe werkwijze nog niet beheerst (boek H6)."
+  },
+  {
+   "cat": "proces",
+   "term": "Acceptatiefase",
+   "def": "Fase 4 van de transitiecurve: je laat het verleden los, en pas nu kun je nieuw gedrag leren (boek H6)."
+  },
+  {
+   "cat": "proces",
+   "term": "Search for meaning",
+   "def": "Fase 6 van de transitiecurve: al doende leren van fouten en successen en begrijpen waarom iets wel of niet werkt (boek H6)."
+  },
+  {
+   "cat": "proces",
+   "term": "Integratiefase",
+   "def": "Fase 7 van de transitiecurve: het nieuwe gedrag zit in het dagelijks werk. Valt samen met de freezing-fase van Lewin (boek H6)."
+  },
+  {
+   "cat": "proces",
+   "term": "Rouwverwerking bij baanverlies",
+   "def": "Vijf stadia: ontkenning, boosheid, onderhandelen, depressie en acceptatie. Pas bij acceptatie is er ruimte voor iets nieuws. De werkgever is medeverantwoordelijk voor de verwerking, ook bij wie blijft (boek H6)."
+  },
+  {
+   "cat": "proces",
+   "term": "Drie factoren voor persoonlijke verandering (Kets de Vries)",
+   "def": "Een groot gevoel van onbehagen, een duwtje in de rug, en een openlijke intentieverklaring die steun mogelijk maakt en terugkrabbelen moeilijk (boek H6)."
+  },
+  {
+   "cat": "proces",
+   "term": "Onbehagen verwoorden",
+   "def": "Interventie in de unfreezing-fase: de ontevredenheid met de huidige situatie benoemen, eerlijk informeren en het debat over de huidige werkwijze stimuleren (boek H6)."
+  },
+  {
+   "cat": "proces",
+   "term": "Voorbeeldgedrag",
+   "def": "De leider laat zelf zien wat hij verwacht, bijvoorbeeld om de noodzaak duidelijk te maken. Werkt in elke fase (boek H6)."
+  },
+  {
+   "cat": "proces",
+   "term": "Participatie",
+   "def": "Medewerkers laten meepraten; dat vergroot de veranderingsbereidheid, maar vraagt een relatie en vertrouwen ('zonder relatie geen participatie'). Wordt inbreng genegeerd, dan groeit de weerstand (boek H6)."
+  },
+  {
+   "cat": "proces",
+   "term": "IKEA-verandereffect",
+   "def": "Wat je zelf mee hebt gebouwd, waardeer je meer, mits je inspanning tot iets leidt. Nadelen van meebouwen: het kost tijd en kan een middelmatig compromis opleveren (boek H6)."
+  },
+  {
+   "cat": "proces",
+   "term": "Katalysator",
+   "def": "Middel dat het losweken in de unfreezing-fase versnelt, zoals workshops en bijeenkomsten met dialoog (boek H6)."
+  },
+  {
+   "cat": "proces",
+   "term": "Emotiemanagement",
+   "def": "Ruimte geven om stoom af te blazen: wie slecht nieuws niet heeft verwerkt, neemt geen nieuwe informatie op. Bij een slechtnieuwsgesprek eerst laten reageren en luisteren, pas daarna argumenten geven (boek H6)."
+  },
+  {
+   "cat": "proces",
+   "term": "Action learning",
+   "def": "Leren door te doen: praktijkgericht, van en met elkaar, met vragen stellen en reflectie. Vraagt een veilige sfeer waarin fouten mogen; bij blijvende moeite volgt coaching (boek H6)."
+  },
+  {
+   "cat": "proces",
+   "term": "Actie-reactiereflex",
+   "def": "Een automatische reactie op een probleem zonder naar de oorzaak te kijken: meer van hetzelfde, zoals steeds meer reclame bij dalende verkoop. Dit is single loop learning (boek H6)."
+  },
+  {
+   "cat": "iov",
+   "term": "Lerende organisatie",
+   "def": "Organisatie waar mensen leren om in te blijven spelen op de omgeving, via dialoog, feedback en double loop learning. Ze werkt voortdurend aan een nieuwe fit in kleine stappen (boek H2 en H6)."
+  },
+  {
+   "cat": "proces",
+   "term": "Gamification",
+   "def": "Spelvormen (games) als hulpmiddel voor ervaringsleren tijdens een verandering (boek H6)."
+  },
+  {
+   "cat": "proces",
+   "term": "Klankbordgroep",
+   "def": "Groep waarin terugkerende problemen worden besproken; een middel om de verandering op lange termijn te borgen, naast interne mentoren of externe coaches (boek H6)."
+  },
+  {
+   "cat": "proces",
+   "term": "Personeelsinstrumenten",
+   "def": "Beoordelen, belonen en dergelijke. Ze moeten passen bij de verandering: wie kwaliteit uitroept maar op kwantiteit beoordeelt, laat het programma stranden (boek H6)."
+  },
+  {
+   "cat": "proces",
+   "term": "Succes roept succes op",
+   "def": "Snel zichtbare resultaten boeken, laten zien en samen vieren, zodat de verandering vaart houdt (boek H6)."
+  },
+  {
+   "cat": "proces",
+   "term": "Inhoudelijke en procesmatige evaluatie",
+   "def": "Inhoudelijk: resultaten tegenover doelen, met maatstaven uit de bestaansvoorwaarden en het competentieprofiel om gedragsverandering te volgen. Procesmatig: hoe de verandering verliep, bijvoorbeeld met een logboek (boek H6)."
+  },
+  {
+   "cat": "proces",
+   "term": "Logboek (evaluatie)",
+   "def": "Vastlegging van wat is ondernomen, de gevolgen en de oorzaken van afwijkingen, die je periodiek bespreekt om aanpak, fasering of instrumenten bij te stellen (boek H6)."
+  },
+  {
+   "cat": "proces",
+   "term": "Afspraak is afspraak",
+   "def": "De afspraak om te evalueren moet ook worden nagekomen; afspraken breken is dodelijk voor een veranderproces (boek H6)."
+  },
+  {
+   "cat": "proces",
+   "term": "Say/do-ratio",
+   "def": "Verhouding tussen wat je zegt en wat je doet; ideaal is 1. Boven 1 zeg je veel en maak je weinig waar (onbetrouwbaar), onder 1 doe je veel zonder het te zeggen (onvoorspelbaar) (boek H6)."
+  },
+  {
+   "cat": "proces",
+   "term": "Planned change",
+   "def": "Stapsgewijs geplande verandering, opgedeeld in deelprojecten, passend bij een ontwerpaanpak. Niet elke verandering hoort in een projectorganisatie; vaak loopt ze via de lijn (boek H6)."
+  },
+  {
+   "cat": "proces",
+   "term": "TGKOIC",
+   "def": "Tijd, Geld, Kwaliteit, Organisatie, Informatie en Communicatie: de aspecten waarop je een veranderproject procesmatig beheerst (boek H6)."
+  },
+  {
+   "cat": "proces",
+   "term": "SMART",
+   "def": "Specifiek, Meetbaar, Acceptabel, Realistisch, Tijdgebonden. Past bij een ontwerpaanpak; bij een ontwikkelaanpak kan vasthouden aan zulke doelen remmen, en worden ze een contract waarop je achteraf afrekent (boek H6)."
+  },
+  {
+   "cat": "proces",
+   "term": "SMART volgens Stofberg",
+   "def": "Alternatief voor complexe, lerende processen: Samenhangend, Maatschappelijk aanvaardbaar, Ambitieus, Richtinggevend, Toetsbaar en tijdloos (boek H6)."
+  },
+  {
+   "cat": "proces",
+   "term": "Achtstappenplan van Kotter",
+   "def": "1 urgentiebesef vestigen, 2 een leidende coalitie vormen, 3 een visie en strategie ontwikkelen, 4 die communiceren, 5 breed draagvlak creëren, 6 kortetermijnsuccessen genereren, 7 verbeteringen consolideren en meer verandering tot stand brengen, 8 het nieuwe verankeren in de cultuur. Stap 1 tot 3 is ontdooien, 4 tot 7 bewegen, 8 verankeren (boek H6)."
+  },
+  {
+   "cat": "proces",
+   "term": "Urgentiebesef",
+   "def": "Stap 1 van Kotter: betrokkenen de noodzaak laten zien of voelen, met de dialoog over wat er in de markt gebeurt. Niet te vroeg doorgaan naar de volgende stap (boek H6)."
+  },
+  {
+   "cat": "proces",
+   "term": "Leidende coalitie",
+   "def": "Stap 2 van Kotter: een groep met vaardigheden, leiderschap en geloofwaardigheid, niet per se uit de top, uit verschillende afdelingen en niveaus. Wordt ze gezien als te sterke sturing van bovenaf, dan werkt ze averechts (boek H6)."
+  },
+  {
+   "cat": "proces",
+   "term": "Kortetermijnsuccessen",
+   "def": "Stap 6 van Kotter: snel zichtbare, betekenisvolle en ondubbelzinnige successen die het vertrouwen vergroten en sceptici ongelijk geven (boek H6)."
+  },
+  {
+   "cat": "veranderplan",
+   "term": "Analysefase (veranderplan)",
+   "def": "Eerste deel van het veranderplan: wat willen we veranderen, waarom (van oude naar nieuwe fit), hoe diep dringt het door (niveaus) en wat is het verandervermogen. Samen te vatten in het mission statement voor verandering (boek H10)."
+  },
+  {
+   "cat": "veranderplan",
+   "term": "Implementatietraject",
+   "def": "Tweede deel van het veranderplan, ook invoeringstraject of implementatiepad: hoe we er komen. Strategie, betrokken partijen, interventies per fase, uitwerking van grof naar fijn met kosten, een planning en de veranderorganisatie (boek H10)."
+  },
+  {
+   "cat": "veranderplan",
+   "term": "Procesplan",
+   "def": "Globale planning bij een ontwikkelingsgerichte strategie, met een vage stip op de horizon: de stappen zijn bekend, de resultaten per stap nog niet. Tegenover het strakke spoorboekje bij een ontwerpstrategie (boek H10)."
+  },
+  {
+   "cat": "veranderplan",
+   "term": "Strokenplanning",
+   "def": "Tijdtabel met de activiteiten als stroken over de tijd. Hoe precies de planning is, hangt af van de gekozen strategie (boek H10)."
+  },
+  {
+   "cat": "veranderplan",
+   "term": "Veranderorganisatie",
+   "def": "Afspraken over wie opdrachtgever is, wie de verandering leidt en welke verantwoordelijkheden en bevoegdheden er zijn (boek H10)."
+  },
+  {
+   "cat": "veranderplan",
+   "term": "Communicatieplan",
+   "def": "Plan voor hoe je iedereen intern en extern op de hoogte houdt: wie je informeert en waarom, welke informatie, hoe, wanneer en via welke media. Communicatie loopt door het hele traject en is ook dialoog (boek H6 en H10)."
+  },
+  {
+   "cat": "veranderplan",
+   "term": "Doorgeef-effect",
+   "def": "Een boodschap raakt vervormd als ze via meerdere schakels wordt doorverteld, zoals bij een fluisterspel. Het middenkader speelt in de communicatie een grote rol en heeft steun nodig (boek H10)."
+  },
+  {
+   "cat": "veranderplan",
+   "term": "V + V en O = O",
+   "def": "Communiceer Veelzijdig en Vaak (V + V). 'Onderwijzen is Overdrijven' (O = O): herhalen en aanzetten helpt een boodschap te laten hangen (boek H10)."
+  },
+  {
+   "cat": "veranderplan",
+   "term": "Early adopters",
+   "def": "Medewerkers die voor de troepen uitlopen. Is het verandervermogen niet in kaart gebracht, dan haken ze teleurgesteld af als ze op de rest moeten wachten (boek H10)."
+  },
+  {
+   "cat": "veranderplan",
+   "term": "Kritische factoren voor succes (KSF)",
+   "def": "Alle bouwstenen van het IOV-model samen: pas je ze goed toe, dan leidt dat tot succes (boek H10)."
+  },
+  {
+   "cat": "veranderplan",
+   "term": "Gevolgen van een onjuist toegepast IOV-model",
+   "def": "Geen heldere toekomstige fit: doolhof. Niveaus niet doordacht: papieren tijger. Verandervermogen niet in kaart: vertraging. Strategie past niet: wie leidt? Fasering genegeerd: verspilling. Instrumentatie niet op maat: demotivatie. Leider faalt: ongewenst gedrag. Functionele relaties verwaarloosd: eenzaam en alleen. Geen evaluatie: niet leren (boek H10)."
   },
   {
    "cat": "fit",
@@ -201,6 +604,131 @@ window.FVM = {
    "def": "De vraag naar het doel: wat moet de verandering in de toekomst opleveren en wat merken (externe) klanten, burgers en de samenleving ervan? Je maakt hier keuzes, bijvoorbeeld voor hogere kwaliteit, duurzaamheid of concurrentievoordeel. Bij een noodzaak is het doel duidelijk, bij een kans heeft het een richting. Deze vraag komt uit Verandervesneller, niet uit het boek."
   },
   {
+   "cat": "fit",
+   "term": "Omgeving",
+   "def": "Het deel van de wereld dat invloed heeft op het bestaansrecht: stakeholders (afnemers, leveranciers, concurrenten, toetreders, omwonenden, overheid) en ontwikkelingen. Een organisatie is een open systeem (boek H2)."
+  },
+  {
+   "cat": "fit",
+   "term": "Simpele en complexe omgeving",
+   "def": "Simpel: weinig belanghebbenden, zoals bij een loodgieter. Complex: veel belanghebbenden, zoals bij een ziekenhuis of universiteit (boek H2)."
+  },
+  {
+   "cat": "fit",
+   "term": "Vier omgevingstypes",
+   "def": "Complexiteit tegenover stabiliteit. Simpel en stabiel: rustig, lage onzekerheid. Complex en stabiel: minder dan gemiddelde onzekerheid. Simpel en instabiel: meer dan gemiddelde onzekerheid. Complex en instabiel: turbulent, hoge onzekerheid (boek H2)."
+  },
+  {
+   "cat": "fit",
+   "term": "VUCA",
+   "def": "Volatile (vluchtig, instabiel), Uncertain (niet te voorspellen), Complex (veel verbonden factoren), Ambiguous (dubbelzinnige of tegenstrijdige informatie). Kenmerk van een turbulente omgeving; vraagt flexibiliteit en meer aandacht voor mensen en hun verandervermogen (boek H2)."
+  },
+  {
+   "cat": "fit",
+   "term": "Omgevingsfactoren als oorzaak van een verstoorde fit",
+   "def": "Een fit raakt meestal verstoord door veranderingen in de omgeving: nieuwe concurrentie, technologie of maatschappelijke ontwikkelingen. Daar komt de noodzaak tot veranderen vandaan (boek H1 en H2)."
+  },
+  {
+   "cat": "fit",
+   "term": "Model A",
+   "def": "Ideaaltypische fit van beheersing: productgericht bestaansrecht, inrichting gericht op efficiency, medewerkers als volgers. Het management heeft maximale invloed maar staat er bij verandering alleen voor (boek H2)."
+  },
+  {
+   "cat": "fit",
+   "term": "Model B",
+   "def": "Ideaaltypische fit van vrijheid: marktgericht bestaansrecht, inrichting gericht op effectiviteit, medewerkers als intrapreneurs, zoals hoogleraren of artsen. Het management schept voorwaarden; minder efficiënt met middelen (boek H2)."
+  },
+  {
+   "cat": "fit",
+   "term": "Productgericht en marktgericht",
+   "def": "Bestaansrecht in model A en B. Productgericht: maken wat de klant toch wel afneemt, in een voorspelbare markt, met lang vaste doelen (plannen). Marktgericht: onzeker bestaansrecht, doelen uit onderzoek naar de klantbehoefte, ondernemen en strategisch handelen (boek H2)."
+  },
+  {
+   "cat": "fit",
+   "term": "Efficiency en effectiviteit",
+   "def": "Inrichting in model A en B. Efficiency: zo goed mogelijk met middelen omgaan, standaardiseren, normeren en controleren. Effectiviteit: aan klantwensen voldoen, werken in teams rond de klant, macht op basis van kennis van het proces (boek H2)."
+  },
+  {
+   "cat": "fit",
+   "term": "Volgers",
+   "def": "Leefbaarheid in model A: medewerkers doen wat wordt opgedragen, met strakke functiebeschrijvingen, individuele beoordeling, weinig inspraak en weinig informatie of feedback (boek H2)."
+  },
+  {
+   "cat": "fit",
+   "term": "Intrapreneur",
+   "def": "Leefbaarheid in model B: een medewerker die ondernemend werkt binnen de organisatie, met brede taken, groepswerk, eigen verantwoordelijkheid voor zijn ontwikkeling en veel informatie en feedback (boek H2)."
+  },
+  {
+   "cat": "fit",
+   "term": "Strategisch handelen",
+   "def": "Continu inspelen op nieuwe ontwikkelingen, kenmerk van een marktgericht bestaansrecht (model B). Tegenover zorgvuldig strategisch plannen in model A (boek H2)."
+  },
+  {
+   "cat": "fit",
+   "term": "Diagnoseschema (veranderingskloof op schaal)",
+   "def": "Per kenmerk van bestaansrecht, inrichting, leefbaarheid en omgeving een schaal van 1 (zuiver model A) tot 10 (zuiver model B), met de huidige en de gewenste situatie erop. Het gat ertussen is de kloof die je moet overbruggen; de cijfers zijn relatief (boek H2)."
+  },
+  {
+   "cat": "fit",
+   "term": "Machinebureaucratie en innovatieve organisatie (Mintzberg)",
+   "def": "Organisatietypen die helpen de huidige en gewenste situatie te beschrijven: de machinebureaucratie zet het product centraal, de innovatieve organisatie de klantbehoefte (boek H1)."
+  },
+  {
+   "cat": "fit",
+   "term": "Customer intimacy",
+   "def": "Strategie van een nauwe band met de klant, met de organisatie als adviseur. Wordt in het boek ook genoemd naast operational excellence (de goedkoopste zijn) (boek H2 en H4)."
+  },
+  {
+   "cat": "fit",
+   "term": "Participatief leiderschap",
+   "def": "Leiderschap in model B: de leider wijst de weg, laat medewerkers meedenken, inspireert met een gezamenlijk toekomstbeeld, geeft vertrouwen en luistert naar feedback. In model A is de leider een heerser die doel en taken bepaalt (boek H2)."
+  },
+  {
+   "cat": "fit",
+   "term": "Netwerkorganisatie",
+   "def": "Organisatie met directe, wederkerige contacten naar buiten en autonome eenheden met eigen resultaatverantwoordelijkheid, zoals bij digitale bedrijven die met zelfsturende teams werken; een model-B-fit (boek H2)."
+  },
+  {
+   "cat": "fit",
+   "term": "Menselijke factor",
+   "def": "Wat het succes van digitale bedrijven volgens het boek vooral bepaalt: weten wat de klant wil en de organisatie daarop inrichten (boek H2)."
+  },
+  {
+   "cat": "fit",
+   "term": "Digitale transformatie",
+   "def": "Een organisatie vernieuwen met digitale technologie. Alleen technologie en efficiency is niet genoeg; ook organisatorische voorwaarden en leiderschap moeten mee. Model-A-organisaties met een gevestigde cultuur transformeren moeilijk (boek H2)."
+  },
+  {
+   "cat": "fit",
+   "term": "Exponentiële organisaties (exo's)",
+   "def": "Organisaties die minstens tien keer beter presteren dan het marktgemiddelde en exponentieel groeien via communities, big data, algoritmes en nieuwe technologie, zoals Uber en Airbnb (Ismail) (boek H2 en H5)."
+  },
+  {
+   "cat": "fit",
+   "term": "Planet, People, Profit",
+   "def": "Milieu, mens en winst als drie belangen; duurzaamheid staat steeds hoger op de agenda (boek H2)."
+  },
+  {
+   "cat": "fit",
+   "term": "Shareholders value en stakeholders value",
+   "def": "Waarde voor de aandeelhouders tegenover waarde voor alle belanghebbenden (boek H2)."
+  },
+  {
+   "cat": "fit",
+   "term": "T-shaped capaciteiten",
+   "def": "Vakdiepte (de verticale lijn) plus verbreding van kennis en vaardigheden (de horizontale balk). Nodig omdat dienstverlening ontstaat in interactie met de klant (boek H2)."
+  },
+  {
+   "cat": "fit",
+   "term": "21st century skills",
+   "def": "Brede vaardigheden die naast vakkennis nodig zijn om met voortdurende verandering om te gaan (boek H2)."
+  },
+  {
+   "cat": "fit",
+   "term": "Het Nieuwe Werken",
+   "def": "Werken los van tijd en plaats, sturen op resultaat, vrije toegang tot informatie en een flexibele arbeidsrelatie. Het boek gebruikt het ook als voorbeeld van een verandering die blijft hangen bij gebouw, ICT en regels en het gedrag vergeet (boek H2 en H3)."
+  },
+  {
    "cat": "niveaus",
    "term": "Niveaus van verandering",
    "def": "Onderdeel van het IOV-model: de gewenste fit vertalen naar drie organisatorische niveaus (strategisch beleid, functies en rollen, functioneren en gedrag). Het geeft aan hoe diep de verandering doordringt in de organisatie."
@@ -213,7 +741,7 @@ window.FVM = {
   {
    "cat": "niveaus",
    "term": "Functies en rollen (inrichten)",
-   "def": "Middelste niveau: beleid vertalen naar structuur en inrichting, zoals processen, functies, rollen, systemen en middelen. Een misfit hier is bijvoorbeeld onduidelijkheid over wie verantwoordelijk is voor bestellen of winkelinrichting."
+   "def": "Middelste niveau: beleid vertalen naar structuur en inrichting, zoals functies, rollen en hun rangorde. Het boek bedoelt hier de immateriële middelen; materiële middelen laat het op dit niveau buiten beschouwing (boek H3). Een misfit hier is bijvoorbeeld onduidelijkheid over wie verantwoordelijk is voor bestellen of winkelinrichting."
   },
   {
    "cat": "niveaus",
@@ -254,6 +782,121 @@ window.FVM = {
    "cat": "niveaus",
    "term": "Healing environment",
    "def": "Een gezonde, helende omgeving met veel daglicht, beweging, groen en sociale interactie. In de Radboud-casus komt het voor als voorbeeld van wat FM voor gezondheid kan inrichten."
+  },
+  {
+   "cat": "niveaus",
+   "term": "Strategie en beleid",
+   "def": "Strategie is wat er moet gebeuren, beleid is hoe het moet gebeuren. Samen vormen ze het strategisch beleid, vastgelegd in een beleidsplan en gericht op missie en visie (boek H3)."
+  },
+  {
+   "cat": "niveaus",
+   "term": "Missie en visie",
+   "def": "Waar de organisatie voor staat en wat ze wil zijn. Het strategisch beleid richt de organisatie erop (boek H3)."
+  },
+  {
+   "cat": "niveaus",
+   "term": "Functie",
+   "def": "Een met andere functies samenhangend geheel van formele werkzaamheden, bevoegdheden en verantwoordelijkheden (De Bont). Vast, van bovenaf beschreven, één per persoon en gekoppeld aan arbeidsvoorwaarden (boek H3)."
+  },
+  {
+   "cat": "niveaus",
+   "term": "Rol",
+   "def": "Een samenhangend takenpakket dat door één of meer personen vervuld kan worden en aantoonbaar bijdraagt aan het resultaat. Gebonden aan het werkproces, niet aan de hiërarchie; flexibel, wisselbaar en iemand kan er meerdere hebben. Past bij zelforganisatie (boek H3)."
+  },
+  {
+   "cat": "niveaus",
+   "term": "Organisatiestructuur",
+   "def": "Het samenhangende, gerangschikte geheel van functies, zichtbaar in het organisatieschema (boek H3)."
+  },
+  {
+   "cat": "niveaus",
+   "term": "Functieanalyse en functiewaardering",
+   "def": "Functieanalyse beschrijft en analyseert functies. Functiewaardering beschrijft en waardeert functies volgens vaste gezichtspunten om er een beloning aan te koppelen (boek H3)."
+  },
+  {
+   "cat": "niveaus",
+   "term": "Formatieplan",
+   "def": "Plan met de nieuw benodigde functies en aantallen, dat voortkomt uit het nieuwe beleid en de nieuwe functieordening (boek H3)."
+  },
+  {
+   "cat": "niveaus",
+   "term": "Competentie",
+   "def": "De kennis en kunde die nodig zijn om een functie te vervullen. Kennis is een voorwaarde voor kunnen, maar kennen is nog geen kunnen (boek H3)."
+  },
+  {
+   "cat": "niveaus",
+   "term": "Competentieprofiel",
+   "def": "Korte samenvatting van wat iemand in een functie moet kennen en kunnen; het bepaalt het individuele gedrag. Bij elke verandering ga je na wat er in het profiel verandert, en je gebruikt het om de voortgang per medewerker te volgen (boek H3 en H6)."
+  },
+  {
+   "cat": "niveaus",
+   "term": "Formele organisatie",
+   "def": "De organisatie zoals ze op papier staat. In de praktijk wijkt het gedrag daarvan af (boek H3)."
+  },
+  {
+   "cat": "niveaus",
+   "term": "Informele organisatie",
+   "def": "De organisatie zoals ze feitelijk functioneert, volgens de ongeschreven regels. Het boek stelt haar gelijk aan de organisatiecultuur (boek H3)."
+  },
+  {
+   "cat": "niveaus",
+   "term": "Olifantenpaadjes",
+   "def": "Eigen, kortere routes die mensen creëren in regels en structuren. Een uiting van creativiteit, lastig om van af te komen bij een verandering, en een argument om medewerkers te betrekken bij het zoeken naar oplossingen (boek H3)."
+  },
+  {
+   "cat": "niveaus",
+   "term": "Afstemming van de niveaus",
+   "def": "Een verandering slaagt alleen als de gevolgen op alle drie niveaus helder zijn. Een kleine wijziging op functieniveau kan grote gevolgen hebben op gedragsniveau als je het verband uit het oog verliest (boek H3)."
+  },
+  {
+   "cat": "niveaus",
+   "term": "Matrix bestaansvoorwaarden en niveaus",
+   "def": "Rijen bestaansrecht, inrichting en leefbaarheid; kolommen strategisch beleid, functie en vereist gedrag. Je vult hem twee keer in, voor de huidige en de gewenste fit, liefst samen met betrokkenen. Zo zie je de veranderingskloof en hoe diep de verandering ingrijpt (boek H3)."
+  },
+  {
+   "cat": "niveaus",
+   "term": "Holacracy",
+   "def": "Besturingssysteem zonder traditionele managers, op basis van rollen, een helder doel (purpose) en verdeelde autoriteit; het model organiseert werk, niet mensen (boek H3)."
+  },
+  {
+   "cat": "niveaus",
+   "term": "Purpose",
+   "def": "Het heldere, doorleefde doel van de organisatie waarbinnen medewerkers autonoom beslissen. Zonder heldere purpose werkt holacracy niet (boek H3)."
+  },
+  {
+   "cat": "niveaus",
+   "term": "Werken in teams",
+   "def": "Voorbeeld uit het boek van een verandering die het competentieprofiel verschuift: van voorgeschreven handelingen en problemen bij de chef leggen naar collegiaal overleggen, zelf problemen oplossen en klanten te woord staan (boek H3)."
+  },
+  {
+   "cat": "niveaus",
+   "term": "Feitelijke normen",
+   "def": "De werkelijk gehanteerde normen in een groep, die zwaarder wegen dan de officiële. Wie klantgericht zegt maar op productie beoordeelt, krijgt productiegericht gedrag (boek H7)."
+  },
+  {
+   "cat": "niveaus",
+   "term": "Balkaniseergedrag",
+   "def": "Afdelingen of groepen komen vooral voor zichzelf op, 'wij tegen zij', en werken langs of tegen elkaar (Mintzberg). Gevolg: vernieuwingen komen niet van de grond. Remedie: een goede groepsanalyse en bijvoorbeeld multidisciplinaire teams (boek H7)."
+  },
+  {
+   "cat": "niveaus",
+   "term": "Groeifasen van groepen",
+   "def": "Een groep groeit in fasen naar volwassenheid. Bij een verandering valt een nieuw of veranderd team terug in een lagere fase en moet het opnieuw groeien (boek H7)."
+  },
+  {
+   "cat": "niveaus",
+   "term": "Informele leider",
+   "def": "Degene met de meeste invloed op de groep; dat is niet altijd de formele leider. Een verontrust middenkader kan een laag zijn waar de verandering niet doorheen komt (boek H7)."
+  },
+  {
+   "cat": "niveaus",
+   "term": "Sleutelpersonen",
+   "def": "De sterkste beïnvloeders in een groep; zij kunnen een verandering maken of breken (boek H7)."
+  },
+  {
+   "cat": "niveaus",
+   "term": "Groepsdenken",
+   "def": "De neiging mee te gaan met de mening van de groep, ook als die onjuist is (lijnenexperiment van Asch). Ook een keuzefactor bij de strategie: wees bewust van je eigen bril (boek H5 en H7)."
   },
   {
    "cat": "vermogen",
@@ -307,8 +950,8 @@ window.FVM = {
   },
   {
    "cat": "vermogen",
-   "term": "Cultural web (Johnson & Scoles)",
-   "def": "Hulpmiddel om organisatiecultuur te analyseren. Cultuur komt tot uiting in verhalen, symbolen, rituelen en routines, macht en het omgaan met onzekerheden. De naam van de auteur is zo gespeld op de dia (les 3.1 dia 15)."
+   "term": "Cultural web (Johnson & Scholes)",
+   "def": "Hulpmiddel om organisatiecultuur te analyseren. Cultuur komt tot uiting in verhalen, symbolen, rituelen en routines, macht en het omgaan met onzekerheden; in het midden staat het paradigma, de onderliggende uitgangspunten (boek H4). Op de dia (les 3.1) staat de naam als Scoles, in het boek als Scholes."
   },
   {
    "cat": "vermogen",
@@ -338,7 +981,7 @@ window.FVM = {
   {
    "cat": "vermogen",
    "term": "Cultuurtypering van Handy en Harrison",
-   "def": "Indeling van culturen op twee factoren: machtsspreiding (zit de macht bij een kleine groep of is ze verdeeld?) en samenwerkingsgraad (werken mensen individueel of samen?). Dat levert vier typen op: macht, rol, taak en persoon."
+   "def": "Indeling van culturen in vier typen: macht, rol, taak en persoon. Het boek gebruikt twee criteria: mensgericht of taakgericht, en de mate van machtsongelijkheid (hiërarchisch of gelijkwaardig) (boek H4). De dia noemt ze machtsspreiding en samenwerkingsgraad. De vier typen zijn ook te lezen als groeifasen van een bedrijf."
   },
   {
    "cat": "vermogen",
@@ -359,6 +1002,126 @@ window.FVM = {
    "cat": "vermogen",
    "term": "Persoonscultuur",
    "def": "Cultuur waarin het individu centraal staat en de organisatie er is voor de professionals: 'we moeten het alleen doen als we er allemaal achter kunnen staan'. Verandering moet uit de groep zelf komen en is zeer lastig. Voorbeelden: artsen, maatschap van advocaten."
+  },
+  {
+   "cat": "vermogen",
+   "term": "Harde en zachte organisatiekenmerken",
+   "def": "Hard: type organisatie, ondernemingsstrategie, conflicterende strategische prioriteiten en randvoorwaarden. Zacht: de aard van de relaties, de organisatiecultuur en weerstand. Samen bepalen ze het verandervermogen; je analyseert ze voordat je begint (boek H4)."
+  },
+  {
+   "cat": "vermogen",
+   "term": "Type organisatie (verandervermogen)",
+   "def": "Het organisatiemodel (A of B) bepaalt wat haalbaar is. Een starre organisatie wordt niet morgen flexibel: strakke sturing leert initiatief af, dus eerst vertrouwen winnen (boek H4)."
+  },
+  {
+   "cat": "vermogen",
+   "term": "Conflicterende strategische prioriteiten",
+   "def": "Tegenstrijdige doelen die koers en richting van een verandering vertroebelen, waardoor die vaker mislukt (Boonstra). Medewerkers voelen aan welke projecten echt aandacht krijgen (boek H4)."
+  },
+  {
+   "cat": "vermogen",
+   "term": "Urgent en belangrijk (matrix)",
+   "def": "Urgent en belangrijk: nu doen. Urgent, niet belangrijk: nu doen en delegeren. Niet urgent, wel belangrijk: inplannen. Niet urgent en niet belangrijk: lost zich vanzelf op. Hoe urgenter en belangrijker een verandering, hoe groter de kans van slagen (boek H4)."
+  },
+  {
+   "cat": "vermogen",
+   "term": "Nuloptie",
+   "def": "Beschrijven wat er gebeurt als de oude situatie blijft. Zo versterk je de urgentie van een verandering (boek H4)."
+  },
+  {
+   "cat": "vermogen",
+   "term": "Relatie",
+   "def": "Een band of verbinding tussen mensen in de organisatie; zonder relaties is er alleen een verzameling mensen. Het boek onderscheidt vier typen: formeel, sociaal, politiek en cultureel (boek H4)."
+  },
+  {
+   "cat": "vermogen",
+   "term": "Formele relaties (uurwerk)",
+   "def": "In de indeling van het boek: gedrag volgens functie en voorschrift, zoals structuur, functieomschrijvingen en procedures. Bij een verandering grijpt men vaak hier in, bijvoorbeeld met een plattere structuur of nieuwe procesbeschrijvingen (boek H4)."
+  },
+  {
+   "cat": "vermogen",
+   "term": "Sociale relaties (dartclub)",
+   "def": "Vriendschap en groepsgevoel die vanzelf ontstaan uit samenwerking. Een bindmiddel, maar ook een bron van weerstand als banden worden verbroken, bijvoorbeeld bij het splitsen van een team (boek H4)."
+  },
+  {
+   "cat": "vermogen",
+   "term": "Politieke relaties (apenrots)",
+   "def": "Anderen gebruiken als middel voor eigen doelen; het draait om macht, en positie verwerf je met gunsten of strijd. Macht valt niet altijd samen met het organisatieschema, en mensen geven haar niet graag op (boek H4)."
+  },
+  {
+   "cat": "vermogen",
+   "term": "Culturele relaties (arena)",
+   "def": "Gedrag volgens gedeelde waarden en normen, zoals supporters van een club. Cultuur veranderen is extreem moeilijk; bij strijd tussen cultuur en verandering wint de cultuur (boek H4)."
+  },
+  {
+   "cat": "vermogen",
+   "term": "Macht",
+   "def": "Het vermogen om anderen iets te laten doen. Formeel (positie, sancties) of via deskundigheid en charisma, en niet altijd gelijk aan de plek in het organisatieschema. Hoe meer posities een verandering bedreigt, hoe sterker de weerstand (boek H4 en H7)."
+  },
+  {
+   "cat": "vermogen",
+   "term": "Waarden en normen",
+   "def": "Waarden zijn gedeelde opvattingen over wat goed en nastrevenswaardig is, zoals betrouwbaarheid. Normen zijn waarneembare verwachtingen over gedrag en dienen als maatstaf (boek H4)."
+  },
+  {
+   "cat": "vermogen",
+   "term": "Houding",
+   "def": "Hoe iemand tegenover iets of iemand staat: attitude of werkhouding. Gedrag veranderen vraagt verandering van kennis (kennen en kunnen) én van houding (boek H4)."
+  },
+  {
+   "cat": "vermogen",
+   "term": "Paradigma (cultural web)",
+   "def": "De onderliggende uitgangspunten in het midden van het cultural web: de onuitgesproken vanzelfsprekendheden achter het gedrag (boek H4)."
+  },
+  {
+   "cat": "vermogen",
+   "term": "Cultuuranalyse",
+   "def": "De cultuur als een ui van buiten naar binnen pellen via verhalen, symbolen, rituelen en routines, macht en omgaan met onzekerheden. Het gesprek over de uitkomst is minstens zo belangrijk als het model (boek H4)."
+  },
+  {
+   "cat": "vermogen",
+   "term": "Cultuurtypering van Cameron en Quinn",
+   "def": "Twee schijnbare tegenstellingen, flexibiliteit tegenover stabiliteit en interne tegenover externe gerichtheid, geven vier culturen: familie, adhocratie, hiërarchie en markt (boek H4)."
+  },
+  {
+   "cat": "vermogen",
+   "term": "Familiecultuur",
+   "def": "Cameron en Quinn, intern gericht en flexibel: mentoren, loyaliteit, teamwerk en betrokkenheid. Kernwoord: samenwerken (boek H4)."
+  },
+  {
+   "cat": "vermogen",
+   "term": "Adhocratische cultuur",
+   "def": "Cameron en Quinn, extern gericht en flexibel: experimenteren, risico nemen, voorop lopen. Kernwoord: creëren en innoveren (boek H4)."
+  },
+  {
+   "cat": "vermogen",
+   "term": "Hiërarchische cultuur",
+   "def": "Cameron en Quinn, intern gericht en stabiel: formeel, efficiënt, betrouwbare levering tegen lage kosten. Kernwoord: controle (boek H4)."
+  },
+  {
+   "cat": "vermogen",
+   "term": "Marktcultuur",
+   "def": "Cameron en Quinn, extern gericht en stabiel: resultaat, competitie, winnen en marktaandeel. Kernwoord: concurreren (boek H4)."
+  },
+  {
+   "cat": "vermogen",
+   "term": "OCAI",
+   "def": "Organizational Culture Assessment Instrument (Quinn): een quick scan die de cultuur laat zien als mix van de vier culturen van Cameron en Quinn, ook voor de gewenste cultuur (boek H4)."
+  },
+  {
+   "cat": "vermogen",
+   "term": "Cultuurverandering",
+   "def": "Extreem moeilijk. Sluit een verandering aan bij de cultuur, dan versnelt dat; botsen ze, dan wint de cultuur, en moet je de cultuur of de verandering aanpassen (boek H4)."
+  },
+  {
+   "cat": "vermogen",
+   "term": "Vanzelfsprekendheden",
+   "def": "Diepgewortelde gewoonten ('zo doen we dat altijd') die een verandering remmen. Bij het verandervermogen let je hier vooral op (boek H1 en H4)."
+  },
+  {
+   "cat": "vermogen",
+   "term": "Mission statement voor verandering",
+   "def": "Korte, begrijpelijke samenvatting op één A4 van wat er verandert en waarom, en ook hoe, met betrokkenheid en steun voor medewerkers. Eerste communicatiestap, overtuigingsmiddel en ijkpunt onderweg. Idealiter opgesteld na de keuze voor een strategie (boek H4 en H10)."
   },
   {
    "cat": "weerstand",
@@ -434,6 +1197,51 @@ window.FVM = {
    "cat": "weerstand",
    "term": "Vorm en mate van weerstand",
    "def": "Weerstand beschrijf je op twee assen: de vorm (zichtbaar of manifest tegenover verborgen of diffuus) en de mate (zwak of sterk). Dat levert vier typen weerstand op."
+  },
+  {
+   "cat": "weerstand",
+   "term": "Weerstandsuitingen",
+   "def": "Matrix van vorm en mate. Diffuus en laag: vermijding, ontkenning, verschuilen. Diffuus en hoog: ziekmelding, projectie, geruchten. Manifest en laag: afstandelijke reacties ('overtuig me maar'). Manifest en hoog: competitie, antagonisme, conflicten (boek H4)."
+  },
+  {
+   "cat": "weerstand",
+   "term": "Vermijdings- en ontkenningsgedrag",
+   "def": "Weerstand in de vorm van apathie, je achter anderen verschuilen of zaken afschuiven. Onderschat het niet: wie weinig weerstand voelt, kan bij een verkeerde aanpak snel aansluiten bij de felste tegenstanders (boek H4)."
+  },
+  {
+   "cat": "weerstand",
+   "term": "Positieve weerstand",
+   "def": "Kritiek als teken van betrokkenheid. Luister naar de argumenten: de betrokkenen zijn vaak de deskundigen (boek H4)."
+  },
+  {
+   "cat": "weerstand",
+   "term": "Veranderverleden",
+   "def": "Slechte ervaringen met eerdere veranderingen bouwen weerstand op; het verleden voorspelt het heden. Veranderingen worden zelden geëvalueerd (boek H4)."
+  },
+  {
+   "cat": "weerstand",
+   "term": "Onderstroom",
+   "def": "Wat onder water blijft in een organisatie: emoties, oud zeer, vanzelfsprekendheden (Van Es). Veranderaars kijken, maar zien er vaak te weinig van; let op je eigen bril (boek H4)."
+  },
+  {
+   "cat": "weerstand",
+   "term": "Waarnemen en luisteren",
+   "def": "Weerstand herken je op individueel, groeps- en organisatieniveau via gesprekken, overlegverslagen, pauzegesprekken en cijfers over productiviteit, verzuim en verloop (boek H4)."
+  },
+  {
+   "cat": "weerstand",
+   "term": "Eigen belang",
+   "def": "Mensen beoordelen een verandering eerst op wat ze voor henzelf en hun positie betekent. Daarom staat een top zelden unaniem achter een verandering (boek H7)."
+  },
+  {
+   "cat": "weerstand",
+   "term": "Crisis (machtsstrijd)",
+   "def": "In een crisis kan een machtsstrijd over de koers ontstaan die de organisatie kan laten omvallen (boek H7)."
+  },
+  {
+   "cat": "weerstand",
+   "term": "Onzekerheid over de eigen functie",
+   "def": "Hoe onzekerder iemand is over de gevolgen voor zijn functie (blijft die bestaan, status, inhoud), hoe sterker het verzet. Soms houdt verzet zichzelf in stand omdat het voordeel oplevert (boek H6)."
   },
   {
    "cat": "dinamo",
@@ -556,9 +1364,39 @@ window.FVM = {
    "def": "Werkwijze uit de casusopdracht: je scoort elke factor met een + of een - op basis van de casus en laat factoren die je niet kunt beoordelen leeg. Daarna benoem je welke factoren het grootste risico vormen en of dat in willen, moeten of kunnen zit."
   },
   {
+   "cat": "dinamo",
+   "term": "Interventiewiel (Metselaar, 2011)",
+   "def": "Model in het boek dat de bouwstenen van veranderingsbereidheid koppelt aan instrumenten en interventies op persoons-, groeps- en organisatieniveau. Willen: gevolgen voor het werk, emoties, meerwaarde. Moeten: houding van collega's en van de directie. Kunnen: kennis en ervaring, tijd en mankracht, aansturing, complexiteit. Het gebruikt andere gewichten dan DINAMO uit 2018 (boek H7)."
+  },
+  {
+   "cat": "dinamo",
+   "term": "Gewichten in het interventiewiel",
+   "def": "In het boek (8 groot, 4 middel, 1 klein): emoties 8, kennis en ervaring met eerdere veranderingen 7, gevolgen voor het werk 6, houding van collega's 5, meerwaarde 4, tijd en mankracht 3, complexiteit 3, aansturing 1. Let op: dit zijn niet de gewichten van Metselaar (2018) uit de les (boek H7)."
+  },
+  {
+   "cat": "dinamo",
+   "term": "Robuuste persoonlijkheid",
+   "def": "Iemand met een sterke eigenwaarde die kansen ziet waar anderen bedreigingen zien (Kets de Vries): hoge veranderingsbereidheid. Zijn er te weinig, dan kun je ze van buiten aantrekken, belonen of op sleutelfuncties zetten (boek H7)."
+  },
+  {
+   "cat": "dinamo",
+   "term": "Not-for-profitsector en veranderingsbereidheid",
+   "def": "In een sector zonder winstoogmerk en vaak zonder marktdruk is veranderingsbereidheid volgens de schrijvers vaker een knelpunt (boek H7)."
+  },
+  {
+   "cat": "dinamo",
+   "term": "Mentale kracht",
+   "def": "Het vermogen goed te blijven functioneren bij uitdaging, verandering, druk of pech. Vier bouwstenen met acht factoren: controle, vasthoudendheid, uitdaging en vertrouwen. Het is te trainen, als maatwerk (boek H7)."
+  },
+  {
+   "cat": "dinamo",
+   "term": "Mentale-krachtprofiel",
+   "def": "De score op de acht factoren van mentale kracht, van mentaal krachtig tot mentaal gevoelig. Een profiel is niet goed of fout; de vraag is of het belemmert wat iemand wil bereiken. Bij een team telt de optelsom van de leden (boek H7)."
+  },
+  {
    "cat": "strategie",
    "term": "Veranderstrategie",
-   "def": "Een algemene verzameling theoretische overwegingen en beleidspunten die een leidraad vormt voor het plannen, kiezen en uitvoeren van stappen en interventies om veranderingen in organisatiepatronen tot stand te brengen (Boonstra, 2013). Kort: de wijze waarop er veranderd gaat worden."
+   "def": "Een algemene verzameling theoretische overwegingen en beleidspunten die een leidraad vormt voor het plannen, kiezen en uitvoeren van stappen en interventies om veranderingen in organisatiepatronen tot stand te brengen (Boonstra; de dia noemt 2013, het boek 2003). Kort: de wijze waarop er veranderd gaat worden. Eenmaal ingezet draai je hem moeilijk terug, dus kies hem bewust (boek H5)."
   },
   {
    "cat": "strategie",
@@ -583,7 +1421,7 @@ window.FVM = {
   {
    "cat": "strategie",
    "term": "Geeldrukdenken",
-   "def": "Veranderen is belangen bij elkaar brengen in een machtsspel. Interventies zijn onder meer coalitievorming en topstructurering; de valkuil zijn luchtfietsen en loose-loose-situaties."
+   "def": "Veranderen is belangen bij elkaar brengen in een machtsspel. Interventies zijn onder meer coalitievorming en topstructurering; de valkuil zijn luchtfietserij en een machtsstrijd waarin iedereen verliest (lose-lose)."
   },
   {
    "cat": "strategie",
@@ -598,7 +1436,7 @@ window.FVM = {
   {
    "cat": "strategie",
    "term": "Groendrukdenken",
-   "def": "Veranderen is mensen in leersituaties brengen, een leerproces naar een oplossing die mensen samen vinden. Interventies zijn gaming, coaching en open systems planning; de valkuil is niemand uitsluiten en gebrek aan actie."
+   "def": "Veranderen is mensen in leersituaties brengen, een leerproces naar een oplossing die mensen samen vinden. Interventies zijn gaming, coaching en open systems planning; de valkuil is ontkennen dat niet iedereen wil of kan leren, gebrek aan prioriteit en actie, en navelstaren (boek H5)."
   },
   {
    "cat": "strategie",
@@ -633,7 +1471,7 @@ window.FVM = {
   {
    "cat": "strategie",
    "term": "Change Factory-strategieën",
-   "def": "Vier strategieën die je kiest op basis van twee vragen: het type verandering (koud: voorgeschreven en planmatig, of warm: emergent en organisch) en het type organisatie (koud: hiërarchisch en top-down, of warm: mensgericht en open). Het zijn de interventie-, implementatie-, transformatie- en vernieuwingsstrategie."
+   "def": "Vier strategieën die je kiest op basis van het type verandering en het type organisatie. Volgens het boek is een koude verandering een crisis waarin de noodzaak vaststaat, een warme verandering de overtuiging van een topmanager met geleidelijke groei. Een koude organisatie is bureaucratisch, het management bepaalt en weerstand is een barrière; een warme heeft betrokkenheid en een inspirerend management (boek H5). Koud in koud: interventie; koud in warm: transformatie; warm in koud: implementatie; warm in warm: vernieuwing. De dia omschrijft koud en warm anders (voorgeschreven tegenover emergent); het boek is de tentamenstof."
   },
   {
    "cat": "strategie",
@@ -648,7 +1486,7 @@ window.FVM = {
   {
    "cat": "strategie",
    "term": "Transformatiestrategie",
-   "def": "Change Factory: fundamenteel veranderen van cultuur en gedrag. Diepgaande verandering van overtuigingen en waarden, veel aandacht voor bewustwording en leren, een langdurig proces met intensieve begeleiding. Doel: duurzame verandering van binnenuit."
+   "def": "Change Factory: koude verandering in een warme organisatie, interactief. Wat er verandert staat vast, hoe het gebeurt bepaal je in dialoog en via participatie (boek H5). De dia omschrijft het als het fundamenteel veranderen van cultuur en gedrag, langdurig en intensief begeleid; voor het tentamen geldt de omschrijving uit het boek."
   },
   {
    "cat": "strategie",
@@ -659,6 +1497,86 @@ window.FVM = {
    "cat": "strategie",
    "term": "Positionering van veranderstrategieën (tabel 5.8)",
    "def": "Het boek zet de strategieën naast elkaar: de ontwerpstrategie (E-stroom) met machtsstrategie en rationeel-empirische strategie, en de ontwikkelstrategie (O-stroom) met normatief-reëducatieve en facilitaire strategie, met daaronder een rij met de Change Factory-strategieën (interventie en implementatie bij de ontwerpkant, transformatie en vernieuwing bij de ontwikkelkant) en een rij met de kleuren: grofweg geel en blauw bij de ontwerpkant en rood, groen en wit bij de ontwikkelkant."
+  },
+  {
+   "cat": "strategie",
+   "term": "Bouwstenen van een veranderstrategie",
+   "def": "De onderdelen die je vooraf invult: doel, sturing (top-down of bottom-up), besluitvorming, leren (single of double loop), experts, communicatie, motivatie, planning, en menskracht en geld. Samen laten ze zien hoe je de verandering in hoofdlijnen aanpakt. H5 noemt er negen, H1 vat ze samen in acht vragen (boek H1 en H5)."
+  },
+  {
+   "cat": "strategie",
+   "term": "Niet vrijblijvend (strategiekeuze)",
+   "def": "Een eenmaal gemaakte strategiekeuze draai je niet zonder schade terug: wie eerst inspraak geeft en daarna toch top-down beslist, verliest vertrouwen. Het boek gebruikt het beeld van een olietanker die moeilijk van koers verandert (boek H1 en H5)."
+  },
+  {
+   "cat": "strategie",
+   "term": "E-stroom en O-stroom (Beer en Nohria)",
+   "def": "E: economische waarde maximaliseren, top-down, gericht op structuren en systemen, programmatische planning, veel adviseurs met expertise. O: capaciteiten van de organisatie ontwikkelen, participatief, gericht op cultuur, spontane ontwikkeling, weinig procesgerichte adviseurs. Ze zouden elkaar moeten aanvullen (boek H5)."
+  },
+  {
+   "cat": "strategie",
+   "term": "Single loop learning",
+   "def": "Een nieuwe routine of werkwijze leren zonder de onderliggende regels te bevragen: meer van hetzelfde. Past bij oppervlakkige verandering en bij een ontwerpaanpak (boek H5 en H6)."
+  },
+  {
+   "cat": "strategie",
+   "term": "Double loop learning",
+   "def": "Leren dat ook de regels en veronderstellingen bevraagt: de waarom-vraag stellen en meer inzicht krijgen. Nodig bij diepere gedragsverandering die ook de houding raakt; past bij ontwikkel, normatief-reëducatief, vernieuwing, groen of wit (boek H5 en H6)."
+  },
+  {
+   "cat": "strategie",
+   "term": "Koude en warme verandering (Change Factory)",
+   "def": "Volgens het boek is een koude verandering een crisis, levensbedreigend, waarbij de noodzaak vaststaat. Een warme verandering komt voort uit de overtuiging van een enkele topmanager, intrinsieke motivatie en geleidelijke groei (boek H5)."
+  },
+  {
+   "cat": "strategie",
+   "term": "Koude en warme organisatie (Change Factory)",
+   "def": "In een koude organisatie is weerstand een barrière, bepaalt het management gedrag, taken en doelen, en is men bureaucratisch en cynisch. In een warme organisatie is er interne betrokkenheid, inspireert het management met een visie en benut men weerstand positief (boek H5)."
+  },
+  {
+   "cat": "strategie",
+   "term": "Wat en hoe (Change Factory)",
+   "def": "Interventie: wat en hoe liggen vast. Implementatie: wat ligt vast, hoe via strakke sturing en vaste werkwijzen. Transformatie: wat ligt vast, hoe via participatie. Vernieuwing: medewerkers hebben eigen ambities, hoe via interne betrokkenheid (boek H5)."
+  },
+  {
+   "cat": "strategie",
+   "term": "Zeven keuzefactoren voor een strategie",
+   "def": "Type organisatie, groepsdenken, type verandering (breed of smal, diep of oppervlakkig), competenties van de veranderaars, belangen, de randvoorwaarden tijd en geld, en verandervermogen. Geen benadering is altijd de beste; het gaat om een strategie op maat (boek H5)."
+  },
+  {
+   "cat": "strategie",
+   "term": "Belangen (keuzefactor)",
+   "def": "Bij tegenstrijdige belangen moet het management meer ingrijpen; dan hoort geeldrukdenken in de aanpak (boek H5)."
+  },
+  {
+   "cat": "strategie",
+   "term": "Narratieve veranderingsstrategie (Abma)",
+   "def": "Variant van de normatief-reëducatieve strategie waarin verhalen, betekenissen en waarden het aangrijpingspunt zijn. Eerst de heersende mythe reconstrueren, daarna die ter discussie stellen en dilemma's afleiden. Er wordt bewust geen nieuwe mythe voorgeschreven (boek H5)."
+  },
+  {
+   "cat": "strategie",
+   "term": "Mythe",
+   "def": "In de narratieve strategie: een verklarend verhaal over de gang van zaken in een organisatie, met helden en antihelden, dat moeilijk te weerleggen is (boek H5)."
+  },
+  {
+   "cat": "strategie",
+   "term": "Dilemma's",
+   "def": "In de narratieve strategie: keuzemomenten in het handelen waarbij geen enkel alternatief optimaal is (boek H5)."
+  },
+  {
+   "cat": "strategie",
+   "term": "Theory U (Scharmer)",
+   "def": "Samen met open geest, hart en wil naar een situatie kijken en niet in oude patronen denken; verwant aan de narratieve strategie (boek H5)."
+  },
+  {
+   "cat": "strategie",
+   "term": "Zelforganisatie",
+   "def": "Een systeem organiseert zichzelf zonder overall beeld en vindt zelf een evenwicht (Stacey). Kern van witdrukdenken; beïnvloeding van buiten is zeer beperkt (boek H5)."
+  },
+  {
+   "cat": "strategie",
+   "term": "Operationeel management",
+   "def": "Leiders die direct verantwoordelijk zijn voor het primaire proces. In model B hoort veranderen bij hen, en niet bij consultants of projectorganisaties (boek H5)."
   }
  ],
  "oefentoetsen": [
