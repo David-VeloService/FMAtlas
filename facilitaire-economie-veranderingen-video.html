@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+<title>Lesvideo's · Facilitaire economie bij veranderingen · FM Atlas</title>
+<meta name="description" content="Lesvideo’s voor Facilitaire economie bij veranderingen, met hoofdstukken, Nederlandse ondertitels en checkvragen in tentamenvorm."/>
+<link rel="icon" type="image/svg+xml" href="logo.svg"/>
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png"/>
+<link rel="apple-touch-icon" href="apple-touch-icon.png"/>
+<meta name="theme-color" content="#efe5d4"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="css/atlas.css"/>
+<link rel="canonical" href="https://fmatlas.nl/facilitaire-economie-veranderingen-video.html"/>
+<style>
+.video-wrap { max-width: 1180px; padding: 36px 16px 64px; margin: 0 auto; color: var(--ink); }
+.video-wrap [hidden] { display: none; }
+.video-wrap h1, .video-wrap h2, .video-wrap h3 { font-family: var(--font-display); letter-spacing: -.025em; line-height: 1.2; }
+.video-wrap h1 { font-size: clamp(28px, 4vw, 40px); }
+.video-intro { max-width: 76ch; margin: 16px 0 28px; font-size: 17px; line-height: 1.7; }
+.video-layout { display: grid; grid-template-columns: 280px minmax(0, 1fr); gap: 24px; align-items: start; }
+.video-content { min-width: 0; }
+.video-panel { border-radius: var(--r-lg); overflow: hidden; }
+.video-player { position: relative; aspect-ratio: 16 / 9; background: var(--olive-950); }
+.video-player iframe { display: block; width: 100%; height: 100%; position: absolute; inset: 0; border: 0; }
+.video-start { width: 100%; height: 100%; position: absolute; inset: 0; background: var(--olive-950); color: var(--sand-50); }
+.video-start img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.video-start span { position: absolute; inset: 0; display: grid; place-items: center; padding: 16px; }
+.video-start strong { min-height: 48px; padding: 12px 24px; background: var(--olive-900); color: var(--sand-50); border: 1px solid var(--sand-50); border-radius: var(--r-pill); font-size: 17px; }
+.video-start:focus-visible { outline-offset: -6px; }
+.video-info { padding: 28px; }
+.video-info h2 { font-size: clamp(24px, 3vw, 30px); margin: 12px 0 16px; overflow-wrap: anywhere; }
+.video-privacy, .video-status, .video-meta { color: var(--ink); line-height: 1.6; }
+.video-privacy { margin-top: 24px; }
+.video-controls { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-top: 24px; }
+.video-controls button, .video-controls select { min-height: 48px; padding: 12px 18px; border: 1px solid var(--glass-edge); border-radius: var(--r-pill); font: inherit; font-weight: 600; background: var(--glass-strong); color: var(--ink); max-width: 100%; white-space: normal; }
+.video-controls option { color: var(--ink); background: var(--bg); }
+.video-controls button:hover { background: var(--glass-hover); }
+.video-controls button:disabled, .video-controls select:disabled { cursor: default; }
+.video-status:not(:empty) { margin-top: 16px; }
+.video-upcoming { min-height: 180px; padding: 48px 24px; display: grid; place-items: center; font-size: 24px; background: var(--glass-strong); }
+.chapter-panel { border-radius: var(--r-lg); margin-top: 24px; padding: 24px; }
+.chapter-panel h2 { font-size: 22px; margin-bottom: 16px; }
+.chapter-list { list-style: none; }
+.chapter-list button { display: flex; gap: 16px; align-items: baseline; text-align: left; width: 100%; min-height: 48px; padding: 12px 16px; border-radius: var(--r-sm); overflow-wrap: anywhere; }
+.chapter-list button:hover:not(:disabled) { background: var(--glass-hover); }
+.chapter-list time { font-variant-numeric: tabular-nums; flex: none; }
+.chapter-list button[aria-current="true"] { background: var(--accent); color: var(--accent-ink); }
+.chapter-list button:disabled { cursor: default; }
+.video-blocks { position: sticky; top: 88px; border-radius: var(--r-lg); padding: 12px; max-height: calc(100dvh - 112px); overflow: auto; }
+.video-blocks summary { min-height: 48px; padding: 12px; font-weight: 600; cursor: pointer; }
+.video-blocks > p { margin: 8px 12px 16px; line-height: 1.6; }
+.video-grid { list-style: none; display: grid; gap: 8px; }
+.video-card { display: block; min-height: 48px; padding: 16px 12px; border-radius: var(--r-md); overflow-wrap: anywhere; }
+.video-card:hover { background: var(--glass-hover); }
+.video-card[aria-current="true"] { background: var(--accent); color: var(--accent-ink); }
+.video-card h3 { font-size: 18px; margin: 8px 0; }
+.video-card-top { display: flex; flex-wrap: wrap; gap: 4px 12px; }
+.video-card p, .video-card-top { font-size: 14px; }
+.video-viewed { display: block; margin-top: 8px; font-weight: 600; }
+.video-skip { position: fixed; left: 16px; top: -120px; padding: 12px 24px; border-radius: var(--r-pill); background: var(--bg); z-index: 100; }
+.video-skip:focus { top: 16px; }
+@media (max-width: 900px) {
+  .video-layout { grid-template-columns: minmax(0, 1fr); gap: 16px; }
+  .video-blocks { position: static; max-height: none; }
+  .video-blocks .video-grid { max-height: 52dvh; overflow: auto; }
+}
+@media (max-width: 480px) {
+  .video-wrap { padding-top: 24px; }
+  .video-info, .chapter-panel { padding: 24px 20px; }
+  .video-controls { gap: 12px 8px; }
+  .chapter-list button { padding-inline: 8px; gap: 12px; }
+}
+</style>
+</head>
+<body>
+<a class="video-skip" href="#video-main">Naar de lesvideo's</a>
+<div class="scene" aria-hidden="true"><i></i></div>
+<header class="topbar" id="topbar"></header>
+<main class="video-wrap" id="video-main">
+  <h1>Lesvideo's</h1>
+  <p class="video-intro">Zes lesvideo's, één per stap van de businesscase, bij les 1.1 tot en met 6.2. Met rekenvoorbeelden, checkvragen en open casusvragen om te oefenen. Lees de dia's van de theorielessen erbij.</p>
+  <noscript><p>Schakel JavaScript in om een video te kiezen en de hoofdstukken te gebruiken.</p></noscript>
+  <div class="video-layout">
+    <details class="video-blocks glass" id="video-blocks" open>
+      <summary id="blocks-title">Alle blokken</summary>
+      <p id="video-count"></p>
+      <ol class="video-grid" id="video-grid" aria-labelledby="blocks-title"></ol>
+    </details>
+    <div class="video-content">
+      <section class="video-panel glass" aria-labelledby="video-title">
+        <div class="video-player" id="video-player" hidden>
+          <button type="button" class="video-start" id="video-start">
+            <img id="video-poster" alt=""/>
+            <span><strong>Afspelen op YouTube</strong></span>
+          </button>
+        </div>
+        <p class="video-upcoming" id="video-upcoming" hidden>Volgt binnenkort</p>
+        <div class="video-info">
+          <p class="video-meta" id="video-meta"></p>
+          <h2 id="video-title"></h2>
+          <div class="video-controls" id="video-controls" hidden>
+            <label for="video-speed">Snelheid</label>
+            <select id="video-speed" disabled>
+              <option value="1">1x</option><option value="1.25">1,25x</option><option value="1.5">1,5x</option>
+            </select>
+            <button type="button" id="video-resume" hidden></button>
+          </div>
+          <p class="video-status" id="video-status" role="status"></p>
+          <p class="video-privacy">De video's staan op YouTube; bij afspelen gelden de privacyregels van YouTube.</p>
+        </div>
+      </section>
+      <section class="chapter-panel glass" aria-labelledby="chapters-title">
+        <h2 id="chapters-title">Hoofdstukken</h2>
+        <ol class="chapter-list" id="chapter-list"></ol>
+      </section>
+    </div>
+  </div>
+</main>
+<script src="js/atlas-data.js"></script>
+<script src="js/atlas.js"></script>
+<script id="lesson-data" type="application/json">{"blokken": [{"blok": 1, "titel": "Verkennen: geld en de businesscase", "kleur": "#3a4029", "lessen": ["1.1", "1.2"], "duur": 1033.56, "beschikbaar": true, "hoofdstukken": [{"id": "h1", "titel": "Drie financiële overzichten", "start": 0}, {"id": "h2", "titel": "Kosten of uitgaven", "start": 190.30025}, {"id": "h3", "titel": "Wat een businesscase is", "start": 392.24575000000004}, {"id": "h4", "titel": "Stap 1: verkennen", "start": 605.1645070000001}, {"id": "h5", "titel": "Casusvragen", "start": 786.887958}], "poster": null, "youtube_id": "qkUnD6PiWMo"}, {"blok": 2, "titel": "Onderzoeken: welke kasstromen tellen", "kleur": "#3a4029", "lessen": ["2.1", "2.2"], "duur": 1005.52, "beschikbaar": true, "hoofdstukken": [{"id": "h1", "titel": "Kasstromen, geen winst", "start": 0}, {"id": "h2", "titel": "Relevante kasstromen", "start": 188.512333}, {"id": "h3", "titel": "Uitgaven sorteren", "start": 317.104625}, {"id": "h4", "titel": "Ontvangsten, effecten en looptijd", "start": 494.555583}, {"id": "h5", "titel": "Casusvragen", "start": 739.653375}], "poster": null, "youtube_id": "4Qd_WRN1TbE"}, {"blok": 3, "titel": "Maken: het financiële model", "kleur": "#3a4029", "lessen": ["3.1", "3.2"], "duur": 946.36, "beschikbaar": true, "hoofdstukken": [{"id": "h1", "titel": "Waarom een financieel model", "start": 0}, {"id": "h2", "titel": "De gegevenstabel", "start": 119.644667}, {"id": "h3", "titel": "Het rekenmodel", "start": 286.097458}, {"id": "h4", "titel": "Formules en wat-als", "start": 465.31154200000003}, {"id": "h5", "titel": "Casusvragen", "start": 705.2431670000001}], "poster": null, "youtube_id": "sDIjAXl33Xc"}, {"blok": 4, "titel": "Terugverdientijd en netto contante waarde", "kleur": "#3a4029", "lessen": ["4.1", "4.2"], "duur": 1068.64, "beschikbaar": true, "hoofdstukken": [{"id": "h1", "titel": "Rekenen met kasstromen", "start": 0}, {"id": "h2", "titel": "De terugverdientijd", "start": 109.56316699999999}, {"id": "h3", "titel": "De tijdwaarde van geld", "start": 351.41108299999996}, {"id": "h4", "titel": "De netto contante waarde", "start": 560.598083}, {"id": "h5", "titel": "Twee methoden naast elkaar", "start": 715.931833}], "poster": null, "youtube_id": "J_Wk6RbF07I"}, {"blok": 5, "titel": "De businesscase versterken", "kleur": "#3a4029", "lessen": ["5.1", "5.2"], "duur": 1010.56, "beschikbaar": true, "hoofdstukken": [{"id": "h1", "titel": "Omgaan met onzekerheid", "start": 0}, {"id": "h2", "titel": "Sensitiviteitsanalyse", "start": 71.714958}, {"id": "h3", "titel": "Risicoanalyse", "start": 312.313833}, {"id": "h4", "titel": "Beheersmaatregelen", "start": 572.3779579999999}, {"id": "h5", "titel": "Casusvragen", "start": 700.218167}], "poster": null, "youtube_id": "zsystTTVcxc"}, {"blok": 6, "titel": "Adviseren en afsluiten", "kleur": "#3a4029", "lessen": ["6.1", "6.2"], "duur": 1122.48, "beschikbaar": true, "hoofdstukken": [{"id": "h1", "titel": "Meer dan geld", "start": 0}, {"id": "h2", "titel": "Het advies", "start": 267.666}, {"id": "h3", "titel": "Rapport, spreadsheet en afsluiten", "start": 347.837125}, {"id": "h4", "titel": "Casusvragen over alles", "start": 498.186083}], "poster": null, "youtube_id": "joRzqX4DYUg"}], "intro": "Zes lesvideo's, één per stap van de businesscase, bij les 1.1 tot en met 6.2. Met rekenvoorbeelden, checkvragen en open casusvragen om te oefenen. Lees de dia's van de theorielessen erbij."}</script>
+<script>
+(() => {
+  'use strict';
+  Atlas.topbar('<span class="sep">/</span><a href="vak.html?v=facilitaire-economie-veranderingen">Facilitaire economie bij veranderingen</a><span class="sep">/</span><span class="here">Lesvideo&#39;s</span>');
+  if (matchMedia('(max-width: 900px)').matches) document.getElementById('video-blocks').open = false;
+  const data = JSON.parse(document.getElementById('lesson-data').textContent);
+  const blocks = data.blokken;
+  const selectedNumber = Number(new URL(location.href).searchParams.get('blok'));
+  const block = blocks.find(b => b.blok === selectedNumber) || blocks.find(b => b.beschikbaar) || blocks[0];
+  const container = document.getElementById('video-player');
+  const startButton = document.getElementById('video-start');
+  const poster = document.getElementById('video-poster');
+  const speed = document.getElementById('video-speed');
+  const resume = document.getElementById('video-resume');
+  const status = document.getElementById('video-status');
+  const storageKey = number => 'fa_video_facilitaire-economie-veranderingen_' + number;
+  const time = seconds => {
+    const s = Math.max(0, Math.floor(seconds || 0));
+    return String(Math.floor(s / 60)).padStart(2, '0') + ':' + String(s % 60).padStart(2, '0');
+  };
+  const lessons = b => 'Lesstof: ' + b.lessen.join(', ');
+  function readProgress(number) {
+    try {
+      const saved = JSON.parse(localStorage.getItem(storageKey(number)) || '{}');
+      return {
+        position: Number.isFinite(saved.position) ? Math.max(0, saved.position) : 0,
+        ranges: Array.isArray(saved.ranges) ? saved.ranges.filter(r => Array.isArray(r) && r.length === 2 && r.every(Number.isFinite) && r[0] >= 0 && r[1] > r[0]) : [],
+        viewed: saved.viewed === true
+      };
+    } catch (_) { return { position: 0, ranges: [], viewed: false }; }
+  }
+  const progress = readProgress(block.blok);
+  const savedPosition = progress.position;
+  let player = null;
+  let ready = false;
+  let loading = false;
+  let dirty = false;
+  let poll = null;
+  let previousSample = null;
+  let startupTimer = null;
+  const duration = () => (ready && player.getDuration()) || block.duur || 0;
+  const position = () => ready ? player.getCurrentTime() : 0;
+  const stopPolling = () => { clearInterval(poll); poll = null; previousSample = null; };
+  function markViewed() {
+    const badge = document.querySelector('[data-viewed="' + block.blok + '"]');
+    if (badge) badge.hidden = !progress.viewed;
+  }
+  function saveProgress(current = position()) {
+    if (!ready || !dirty) return;
+    progress.position = current;
+    const length = duration();
+    const ranges = progress.ranges.slice().sort((a, b) => a[0] - b[0]);
+    const merged = [];
+    for (const [a, b] of ranges) {
+      const start = a, end = length ? Math.min(b, length) : b;
+      if (end <= start) continue;
+      const last = merged[merged.length - 1];
+      if (last && start <= last[1]) last[1] = Math.max(last[1], end);
+      else merged.push([start, end]);
+    }
+    progress.ranges = merged;
+    if (length > 0 && merged.reduce((sum, r) => sum + r[1] - r[0], 0) > length * .9) progress.viewed = true;
+    try { localStorage.setItem(storageKey(block.blok), JSON.stringify(progress)); } catch (_) {}
+    markViewed();
+  }
+  function sample() {
+    const current = position(), now = performance.now();
+    if (previousSample) {
+      const delta = current - previousSample.position;
+      const elapsed = (now - previousSample.at) / 1000;
+      // Only count continuous playback. A jump on YouTube's own timeline is a seek.
+      if (delta > 0 && delta <= elapsed * player.getPlaybackRate() + .25) {
+        progress.ranges.push([previousSample.position, current]);
+      }
+    }
+    previousSample = { position: current, at: now };
+    dirty = true;
+    updateChapter();
+    saveProgress();
+  }
+  function seek(seconds) {
+    previousSample = null;
+    player.seekTo(seconds, true);
+    dirty = true;
+    resume.hidden = true;
+    updateChapter(seconds);
+    // YouTube updates getCurrentTime asynchronously after seekTo, also while paused.
+    saveProgress(seconds);
+  }
+  const currentUrl = new URL(location.href);
+  currentUrl.searchParams.set('blok', block.blok);
+  history.replaceState(null, '', currentUrl);
+  document.getElementById('video-title').textContent = block.titel;
+  document.getElementById('video-meta').textContent = 'Blok ' + String(block.blok).padStart(2, '0') + ' · ' + lessons(block) + (block.duur ? ' · ' + time(block.duur) : '');
+  startButton.setAttribute('aria-label', 'Afspelen op YouTube: ' + block.titel);
+  document.getElementById('video-count').textContent = blocks.filter(b => b.beschikbaar).length + ' van ' + blocks.length + " video's beschikbaar. Je voortgang wordt in deze browser bewaard.";
+
+  for (const b of blocks) {
+    const li = document.createElement('li');
+    const link = document.createElement('a');
+    const url = new URL(location.href);
+    url.searchParams.set('blok', b.blok);
+    link.href = url.pathname + url.search;
+    link.className = 'video-card';
+    if (b.blok === block.blok) link.setAttribute('aria-current', 'true');
+    const top = document.createElement('div');
+    top.className = 'video-card-top';
+    const num = document.createElement('span');
+    num.textContent = 'Blok ' + String(b.blok).padStart(2, '0');
+    const state = document.createElement('span');
+    state.textContent = !b.beschikbaar ? 'Volgt binnenkort' : b.blok === block.blok ? 'Gekozen video' : 'Beschikbaar';
+    top.append(num, state);
+    const title = document.createElement('h3');
+    title.textContent = b.titel;
+    const meta = document.createElement('p');
+    meta.textContent = lessons(b) + (b.duur ? ' · ' + time(b.duur) : ' · Duur volgt');
+    const badge = document.createElement('span');
+    badge.className = 'video-viewed';
+    badge.dataset.viewed = b.blok;
+    badge.textContent = 'Bekeken';
+    badge.hidden = !readProgress(b.blok).viewed;
+    link.append(top, title, meta, badge);
+    li.append(link);
+    document.getElementById('video-grid').append(li);
+  }
+
+  const chapterButtons = [];
+  block.hoofdstukken.forEach((chapter, i) => {
+    const li = document.createElement('li');
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.disabled = true;
+    const stamp = document.createElement('time');
+    stamp.textContent = chapter.start === null ? 'Volgt' : time(chapter.start);
+    if (chapter.start !== null) stamp.dateTime = 'PT' + chapter.start + 'S';
+    const label = document.createElement('span');
+    label.textContent = chapter.titel;
+    button.append(stamp, label);
+    button.addEventListener('click', () => {
+      seek(chapter.start);
+      status.textContent = 'Hoofdstuk ' + (i + 1) + ': ' + chapter.titel + ', ' + time(chapter.start) + '.';
+    });
+    chapterButtons.push(button);
+    li.append(button);
+    document.getElementById('chapter-list').append(li);
+  });
+  function updateChapter(current = position()) {
+    let active = -1;
+    block.hoofdstukken.forEach((c, i) => { if (c.start !== null && current >= c.start) active = i; });
+    chapterButtons.forEach((button, i) => {
+      if (i === active) button.setAttribute('aria-current', 'true');
+      else button.removeAttribute('aria-current');
+    });
+  }
+  function playerFailed() {
+    stopPolling();
+    clearTimeout(startupTimer);
+    saveProgress();
+    ready = false;
+    loading = false;
+    if (player) player.destroy();
+    player = null;
+    container.querySelector('iframe')?.remove();
+    speed.disabled = true;
+    resume.hidden = true;
+    chapterButtons.forEach(button => { button.disabled = true; });
+    startButton.hidden = false;
+    startButton.disabled = false;
+    status.textContent = 'De video kon niet laden. Klik op afspelen om het opnieuw te proberen.';
+  }
+  function createPlayer() {
+    if (!loading || player) return;
+    const iframe = document.createElement('iframe');
+    iframe.id = 'lesson-video';
+    iframe.title = 'Lesvideo: ' + block.titel;
+    iframe.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
+    iframe.allowFullscreen = true;
+    iframe.referrerPolicy = 'strict-origin-when-cross-origin';
+    const url = new URL('https://www.youtube-nocookie.com/embed/' + encodeURIComponent(block.youtube_id));
+    url.search = new URLSearchParams({ enablejsapi: '1', origin: location.origin, autoplay: '1', playsinline: '1', cc_lang_pref: 'nl', rel: '0' });
+    iframe.src = url.href;
+    container.append(iframe);
+    startButton.hidden = true;
+    player = new YT.Player(iframe, {
+      events: {
+        onReady: event => {
+          player = event.target;
+          clearTimeout(startupTimer);
+          ready = true;
+          loading = false;
+          speed.disabled = false;
+          chapterButtons.forEach((button, i) => { button.disabled = block.hoofdstukken[i].start === null; });
+          if (savedPosition >= 1 && (!duration() || savedPosition < duration() - 1)) {
+            resume.textContent = 'Verder kijken bij ' + time(savedPosition);
+            resume.hidden = false;
+          }
+          status.textContent = 'Ondertitels zet je aan met de ondertitelknop in de YouTube-speler.';
+          event.target.setPlaybackRate(Number(speed.value));
+          updateChapter();
+          event.target.playVideo();
+        },
+        onStateChange: event => {
+          if (!ready) return;
+          if (event.data === YT.PlayerState.PLAYING) {
+            stopPolling();
+            sample();
+            poll = setInterval(sample, 500);
+          } else {
+            if (poll) sample();
+            stopPolling();
+            saveProgress();
+          }
+        },
+        onPlaybackRateChange: event => { speed.value = String(event.data); previousSample = null; },
+        onError: playerFailed
+      }
+    });
+  }
+  if (block.beschikbaar && block.youtube_id) {
+    container.hidden = false;
+    document.getElementById('video-controls').hidden = false;
+    const thumbnail = 'https://i.ytimg.com/vi/' + encodeURIComponent(block.youtube_id) + '/hqdefault.jpg';
+    poster.src = block.poster || thumbnail;
+    poster.addEventListener('error', () => {
+      if (poster.src !== thumbnail) poster.src = thumbnail;
+      else poster.hidden = true;
+    });
+    startButton.addEventListener('click', () => {
+      if (loading || ready) return;
+      loading = true;
+      startButton.disabled = true;
+      status.textContent = 'YouTube-speler laden…';
+      startupTimer = setTimeout(playerFailed, 15000);
+      if (window.YT?.Player) { createPlayer(); return; }
+      window.onYouTubeIframeAPIReady = createPlayer;
+      const oldScript = document.getElementById('youtube-api');
+      if (oldScript) oldScript.remove();
+      const script = document.createElement('script');
+      script.id = 'youtube-api';
+      script.src = 'https://www.youtube.com/iframe_api';
+      script.async = true;
+      script.onerror = playerFailed;
+      document.head.append(script);
+    });
+    speed.addEventListener('change', () => {
+      if (ready) { previousSample = null; player.setPlaybackRate(Number(speed.value)); }
+    });
+    resume.addEventListener('click', () => {
+      if (!ready) return;
+      seek(savedPosition);
+      player.getIframe().focus();
+      status.textContent = 'Verder bij ' + time(savedPosition) + '.';
+    });
+    window.addEventListener('pagehide', () => { saveProgress(); stopPolling(); clearTimeout(startupTimer); });
+    window.addEventListener('pageshow', event => {
+      if (event.persisted && ready && player.getPlayerState() === YT.PlayerState.PLAYING) {
+        sample(); poll = setInterval(sample, 500);
+      }
+    });
+    document.addEventListener('visibilitychange', () => { if (document.hidden) saveProgress(); });
+  } else {
+    document.getElementById('video-upcoming').hidden = false;
+    status.textContent = 'Deze video is nog niet beschikbaar. Kies een beschikbaar blok uit de lijst.';
+  }
+})();
+</script>
+</body>
+</html>

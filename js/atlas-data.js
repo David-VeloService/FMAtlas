@@ -32,6 +32,7 @@ window.ATLAS_VAKKEN = [
     year: 2, periods: [2], icon: 'coin',
     leren: [
       ['Lessen · reels en voorbereiding', 'facilitaire-economie-veranderingen-lessen.html', 'play'],
+      ['Lesvideo\'s', 'facilitaire-economie-veranderingen-video.html', 'play'],
       ['Samenvatting', 'facilitaire-economie-veranderingen-samenvatting.html', 'book'],
       ['Begrippenlijst', 'facilitaire-economie-veranderingen-begrippen.html', 'list'],
     ],

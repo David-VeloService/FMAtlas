@@ -1,0 +1,756 @@
+WEBVTT
+
+00:00:00.290 --> 00:00:06.085
+Het Textielmuseum rekent op vijfhonderd
+extra bezoekers per jaar. Dan is de netto
+
+00:00:06.085 --> 00:00:11.434
+contante waarde ruim achtduizend euro.
+Maar wat als het er vierhonderd worden?
+
+00:00:12.410 --> 00:00:17.188
+Dan blijkt die mooie uitkomst op één
+aanname te leunen. En die vijfhonderd is
+
+00:00:17.188 --> 00:00:19.918
+een verwachting van de directie, geen
+gemeten getal.
+
+00:00:20.966 --> 00:00:26.346
+Dit is stap vijf van de businesscase:
+versterken. Je toetst de aannames, je
+
+00:00:26.346 --> 00:00:29.243
+analyseert de risico&#x27;s en je bedenkt
+maatregelen.
+
+00:00:29.848 --> 00:00:33.078
+Waarom is een eerste uitkomst nooit het
+eindpunt?
+
+00:00:34.076 --> 00:00:38.708
+Je weet nooit hoe de nabije toekomst
+loopt, en de verre toekomst is nog
+
+00:00:38.708 --> 00:00:42.016
+onzekerder. Ga dus voorzichtig om met de
+eerste financiële uitkomsten.
+
+00:00:42.812 --> 00:00:44.210
+Je onderzoekt de aannames,
+
+00:00:44.210 --> 00:00:45.608
+je verbetert de betrouwbaarheid,
+
+00:00:45.608 --> 00:00:49.451
+en je brengt de kwetsbare kant van de
+businesscase in kaart.
+
+00:00:50.051 --> 00:00:55.467
+Daarvoor heb je twee instrumenten: de
+sensitiviteitsanalyse en de risicoanalyse.
+
+00:00:56.089 --> 00:01:02.244
+Hier betaalt blok drie zich uit. Omdat het
+rekenmodel met celverwijzingen naar de
+
+00:01:02.244 --> 00:01:07.926
+gegevenstabel werkt, verander je één
+gegeven en rekent alles door. Met getypte
+
+00:01:07.926 --> 00:01:11.241
+bedragen kun je dit werk niet doen.
+
+00:01:11.715 --> 00:01:14.829
+Het eerste instrument: wat als een gegeven
+anders uitvalt?
+
+00:01:15.144 --> 00:01:19.666
+Een sensitiviteitsanalyse onderzoekt hoe
+gevoelig de haalbaarheid is voor de
+
+00:01:19.666 --> 00:01:24.642
+gegevens. Welke factoren hebben de
+grootste invloed op de terugverdientijd en
+
+00:01:24.642 --> 00:01:29.165
+de netto contante waarde? Dat zoek je uit
+met wat-als-vragen.
+
+00:01:29.916 --> 00:01:34.081
+Hebben kleine wijzigingen in één gegeven
+veel effect, dan kan het onverstandig zijn
+
+00:01:34.081 --> 00:01:36.003
+om met het project te starten.
+
+00:01:36.638 --> 00:01:42.715
+Bij een nieuwe bedrijfskantine vraag je
+bijvoorbeeld: wat als er tien procent
+
+00:01:42.715 --> 00:01:49.298
+minder medewerkers komen lunchen? Wat als
+de inrichting duurder uitvalt? Je kiest de
+
+00:01:49.298 --> 00:01:52.843
+gegevens waar de meeste onzekerheid in
+zit.
+
+00:01:53.410 --> 00:01:55.906
+Het Textielmuseum investeert
+zeventienduizend euro in een textiellab.
+
+00:01:55.906 --> 00:01:59.649
+Bij vijfhonderd extra bezoekers per jaar
+is de netto contante waarde achtduizend
+
+00:01:59.649 --> 00:02:00.273
+driehonderdeenenzeventig euro.
+
+00:02:00.652 --> 00:02:06.321
+Bij vierhonderd extra bezoekers per jaar
+is hij min negenendertig euro. Negatief.
+
+00:02:06.907 --> 00:02:12.092
+Kijk ook naar de terugverdientijd: die
+blijft bij vierhonderd bezoekers binnen de
+
+00:02:12.092 --> 00:02:17.278
+eis van vier jaar. Wie alleen de
+terugverdientijd toetst, ziet dit signaal
+
+00:02:17.278 --> 00:02:21.167
+niet. Daarom reken je in een wat-als-vraag
+altijd allebei.
+
+00:02:22.080 --> 00:02:28.765
+Zet je de wat-als-vragen onder elkaar, dan
+zie je het patroon. Het basisgeval: een
+
+00:02:28.765 --> 00:02:33.062
+terugverdientijd van drie komma twee jaar
+en plus achtduizend
+
+00:02:33.062 --> 00:02:33.540
+driehonderdeenenzeventig.
+
+00:02:34.491 --> 00:02:40.145
+Vierhonderd bezoekers: drie komma negen
+jaar, nog net binnen de eis van vier jaar,
+
+00:02:40.145 --> 00:02:41.760
+maar min negenendertig euro.
+
+00:02:42.452 --> 00:02:45.994
+Een investering die tien procent hoger
+uitvalt, achttienduizend zevenhonderd
+
+00:02:45.994 --> 00:02:49.930
+euro: drie komma vier jaar en plus
+zesduizend zeshonderdeenenzeventig. Dat
+
+00:02:49.930 --> 00:02:51.505
+kan het project hebben.
+
+00:02:51.936 --> 00:02:57.104
+En met doelzoeken in Excel vind je het
+investeringsbedrag waarbij de netto
+
+00:02:57.104 --> 00:02:59.688
+contante waarde precies nul is:
+vijfentwintigduizend
+
+00:02:59.688 --> 00:03:03.134
+driehonderdeenenzeventig euro. Bijna
+vijftig procent meer dan nu.
+
+00:03:03.562 --> 00:03:09.656
+Dat bedrag is geen toeval: het is precies
+de contante waarde van de kasstromen.
+
+00:03:09.656 --> 00:03:15.751
+Investeer je zoveel, dan blijft er na
+aftrek niets over. Zonder Excel vind je
+
+00:03:15.751 --> 00:03:19.669
+dat bedrag dus ook: het is de contante
+waarde.
+
+00:03:20.124 --> 00:03:26.194
+De conclusie: het project is gevoelig voor
+het aantal bezoekers en nauwelijks voor de
+
+00:03:26.194 --> 00:03:31.830
+investering. Daarmee ga je in gesprek met
+de stakeholders: hoe realistisch zijn de
+
+00:03:31.830 --> 00:03:32.698
+gegevens eigenlijk?
+
+00:03:32.934 --> 00:03:36.614
+Bij een wat-als-vraag verander je één
+gegeven tegelijk.
+
+00:03:37.026 --> 00:03:43.299
+In een scenario verander je er meerdere
+tegelijk. In het defensieve scenario van
+
+00:03:43.299 --> 00:03:48.607
+het Textielmuseum liggen de investering,
+het materiaal en de schoonmaak allemaal
+
+00:03:48.607 --> 00:03:54.397
+hoger. De netto contante waarde zakt naar
+plus duizend negenhonderdzes euro: nog
+
+00:03:54.397 --> 00:03:56.327
+positief, maar veel lager.
+
+00:03:57.113 --> 00:04:02.644
+De grens is in het lesmateriaal niet
+scherp: in theoriecollege vier hoorde een
+
+00:04:02.644 --> 00:04:07.323
+pessimistisch en een optimistisch scenario
+ook bij de gevoeligheidsanalyse. Leg in
+
+00:04:07.323 --> 00:04:13.704
+een antwoord dus vooral uit wat je
+verandert en wat dat met de uitkomst doet.
+
+00:04:14.034 --> 00:04:20.089
+Checkvraag. In het basisgeval is de netto
+contante waarde plus drieduizend euro. Bij
+
+00:04:20.089 --> 00:04:25.678
+tien procent minder gebruikers wordt hij
+min negenduizend. Bij een tien procent
+
+00:04:25.678 --> 00:04:31.267
+hogere investering plus duizend. Wat
+concludeer je? A, de investering is het
+
+00:04:31.267 --> 00:04:36.856
+kwetsbare gegeven. B, het project is
+onhaalbaar, één netto contante waarde is
+
+00:04:36.856 --> 00:04:43.376
+negatief. C, geen conclusie, want de basis
+is positief. D, het aantal gebruikers is
+
+00:04:43.376 --> 00:04:44.773
+het kwetsbare gegeven.
+
+00:04:51.640 --> 00:04:56.109
+D. Tien procent minder gebruikers kost
+twaalfduizend euro aan netto contante
+
+00:04:56.109 --> 00:05:00.578
+waarde, tien procent duurder maar
+tweeduizend. Daar zit de kwetsbaarheid, en
+
+00:05:00.578 --> 00:05:05.453
+die aanname moet je onderbouwen. Optie B
+is de verleidelijke: een negatieve
+
+00:05:05.453 --> 00:05:10.328
+uitkomst in een wat-als-vraag maakt het
+project niet onhaalbaar, maar wijst aan
+
+00:05:10.328 --> 00:05:11.953
+waar je moet doorvragen.
+
+00:05:12.314 --> 00:05:14.125
+Het tweede instrument kijkt niet naar
+gegevens, maar naar gebeurtenissen.
+
+00:05:15.521 --> 00:05:20.960
+Een risico is een onzekere gebeurtenis
+tijdens de looptijd van de investering.
+
+00:05:20.960 --> 00:05:27.306
+Het kan leiden tot hogere uitgaven, lagere
+ontvangsten, het niet halen van het doel,
+
+00:05:27.306 --> 00:05:30.479
+of het niet voldoen aan de normen.
+
+00:05:31.254 --> 00:05:36.502
+Een risico heeft twee kanten: de kans dat
+het gebeurt, en de impact als het gebeurt.
+
+00:05:37.657 --> 00:05:43.319
+Dat ken je uit projectmanagement in het
+eerste jaar; je prioriteert op dezelfde
+
+00:05:43.319 --> 00:05:49.417
+manier. Het verschil is dat het hier
+steeds terugkomt op geld: wat doet het
+
+00:05:49.417 --> 00:05:53.337
+risico met de uitgaven, de ontvangsten of
+de norm?
+
+00:05:54.002 --> 00:05:57.482
+De analyse gaat in vier fasen. Eén:
+risico&#x27;s in kaart brengen.
+
+00:05:57.986 --> 00:05:59.788
+Twee: ze concreet formuleren.
+
+00:06:00.076 --> 00:06:01.954
+Drie: prioriteren.
+
+00:06:02.750 --> 00:06:05.677
+En vier: de effecten en maatregelen
+beschrijven.
+
+00:06:05.677 --> 00:06:11.112
+In fase één verzamel je zoveel mogelijk
+risico&#x27;s, zonder er meteen een oordeel
+
+00:06:11.112 --> 00:06:15.293
+over te hebben. Via gesprekken met
+stakeholders en experts, vragenlijsten,
+
+00:06:15.293 --> 00:06:20.310
+interviews, een oorzaak-gevolganalyse of
+een brainstorm. En je kijkt steeds met een
+
+00:06:20.310 --> 00:06:24.910
+andere bril: van de functies in de
+organisatie, de stakeholders, de
+
+00:06:24.910 --> 00:06:27.418
+pessimist, de geschiedenis, of je
+onderbuikgevoel.
+
+00:06:28.181 --> 00:06:33.011
+Bij een facilitaire verbouwing is de bril
+van de geschiedenis een sterke. Liep de
+
+00:06:33.011 --> 00:06:38.186
+vorige verbouwing uit, dan is dat geen
+pech maar een patroon, en dan hoort het
+
+00:06:38.186 --> 00:06:39.911
+als risico in de businesscase.
+
+00:06:40.512 --> 00:06:45.260
+&quot;De verbouwing lukt niet&quot; is geen
+bruikbaar risico. Wat lukt er niet,
+
+00:06:45.260 --> 00:06:47.238
+waardoor, en wat kost het?
+
+00:06:48.107 --> 00:06:54.005
+Goed is: de kosten van de verbouwing zijn
+hoger dan ingeschat. De oorzaak: eigen
+
+00:06:54.005 --> 00:06:59.481
+inschattingen zijn te positief en er zijn
+geen marges opgenomen. Het gevolg: extra
+
+00:06:59.481 --> 00:06:59.902
+uitgaven.
+
+00:07:00.547 --> 00:07:07.127
+Vraagt een casus om een risico te
+formuleren, noem dan altijd die drie: wat,
+
+00:07:07.127 --> 00:07:13.237
+oorzaak en gevolg. En zonder oorzaak kun
+je een risico ook niet beheersen.
+
+00:07:14.240 --> 00:07:20.811
+In fase drie schaal je elk risico in. Bij
+het Textielmuseum is de kans een getal van
+
+00:07:20.811 --> 00:07:27.383
+nul tot één en de impact een getal van één
+tot tien. Risico is kans keer gevolg.
+
+00:07:27.383 --> 00:07:32.022
+Bezoekersaantallen vallen tegen: nul komma
+zes keer negen is vijf komma vier.
+
+00:07:32.022 --> 00:07:32.795
+Prioriteit één.
+
+00:07:33.168 --> 00:07:37.231
+Ongevallen in de belevingsruimte: nul
+komma drie keer negen is twee komma zeven.
+
+00:07:37.826 --> 00:07:43.636
+Materiaaluitgaven te positief ingeschat:
+nul komma vijf keer vijf is twee komma
+
+00:07:43.636 --> 00:07:44.120
+vijf.
+
+00:07:44.633 --> 00:07:48.743
+Zie het verband met de
+sensitiviteitsanalyse. Het risico met
+
+00:07:48.743 --> 00:07:54.679
+prioriteit één gaat over precies het
+gegeven dat daar het kwetsbaarst bleek: de
+
+00:07:54.679 --> 00:07:57.875
+bezoekers. Zo ondersteunen de twee
+analyses elkaar.
+
+00:07:58.613 --> 00:08:04.055
+In de risicotabel op de dia staat nog een
+vierde risico: budgetoverschrijding door
+
+00:08:04.055 --> 00:08:09.497
+positief begroten, kans nul komma acht,
+impact vier. Het risicogetal staat er als
+
+00:08:09.497 --> 00:08:14.939
+twee. Dat klopt niet: nul komma acht keer
+vier is drie komma twee.
+
+00:08:15.350 --> 00:08:21.389
+En dan verschuift ook de prioriteit: met
+drie komma twee komt dit risico op de
+
+00:08:21.389 --> 00:08:27.025
+tweede plaats, niet op de vierde. Reken
+een risicotabel dus altijd zelf na, ook
+
+00:08:27.025 --> 00:08:29.440
+als hij uit het boek komt.
+
+00:08:30.257 --> 00:08:35.883
+Checkvraag. Drie risico&#x27;s. P heeft kans
+nul komma negen en impact drie. Q heeft
+
+00:08:35.883 --> 00:08:42.312
+kans nul komma vier en impact acht. R
+heeft kans nul komma twee en impact tien.
+
+00:08:42.312 --> 00:08:48.339
+Welk risico krijgt prioriteit één? A, P,
+want kans nul komma negen is het hoogst.
+
+00:08:48.339 --> 00:08:55.169
+B, Q, want nul komma vier keer acht is
+drie komma twee, het hoogst. C, R, want
+
+00:08:55.169 --> 00:09:02.000
+impact tien is het hoogst. D, R, want nul
+komma twee plus tien is tien komma twee,
+
+00:09:02.000 --> 00:09:02.804
+het hoogst.
+
+00:09:13.680 --> 00:09:20.411
+B. P is twee komma zeven, Q drie komma
+twee en R twee. Optie C is de
+
+00:09:20.411 --> 00:09:25.163
+verleidelijke: de grootste impact voelt
+het gevaarlijkst, maar bij een kans van
+
+00:09:25.163 --> 00:09:31.102
+nul komma twee weegt hij minder zwaar. En
+D telt op in plaats van te
+
+00:09:31.102 --> 00:09:31.498
+vermenigvuldigen.
+
+00:09:32.378 --> 00:09:34.944
+Fase vier: wat doe je met de risico&#x27;s?
+
+00:09:35.614 --> 00:09:42.237
+Een beheersmaatregel is een maatregel of
+actie om een risico te beteugelen. Je kunt
+
+00:09:42.237 --> 00:09:47.442
+ook voorwaarden stellen, of adviseren om
+nog extra uitgaven te doen.
+
+00:09:47.903 --> 00:09:54.343
+Belangrijk is wie wat doet. De risico&#x27;s,
+en hoe je er bij de uitvoering mee omgaat,
+
+00:09:54.343 --> 00:09:58.770
+zijn de verantwoordelijkheid van de
+opdrachtgever. Jij als opsteller van de
+
+00:09:58.770 --> 00:10:03.600
+businesscase brengt ze in kaart, geeft ze
+prioriteit en stelt maatregelen voor.
+
+00:10:04.113 --> 00:10:08.937
+En een maatregel moet bij de oorzaak
+passen. Bij tegenvallende bezoekers helpt
+
+00:10:08.937 --> 00:10:14.966
+een grotere marge in de begroting niets;
+daar moet je iets aan de bezoekers zelf
+
+00:10:14.966 --> 00:10:15.368
+doen.
+
+00:10:16.091 --> 00:10:19.385
+Een paar voorbeelden bij het
+Textielmuseum. Bij tegenvallende
+
+00:10:19.385 --> 00:10:23.914
+bezoekers: eerst een proef of een
+marktonderzoek, voordat je de hele
+
+00:10:23.914 --> 00:10:24.738
+verbouwing doet.
+
+00:10:25.339 --> 00:10:28.534
+Bij ongevallen: toezicht en een veilige
+inrichting van de ruimte.
+
+00:10:29.050 --> 00:10:33.080
+Bij te positief ingeschatte
+materiaaluitgaven: een marge in de
+
+00:10:33.080 --> 00:10:33.528
+begroting.
+
+00:10:34.123 --> 00:10:39.747
+Let op wat een maatregel met de kasstromen
+doet. Een marktonderzoek of extra toezicht
+
+00:10:39.747 --> 00:10:45.773
+kost geld, en hoort dan als uitgave in het
+rekenmodel. Een maatregel kan de netto
+
+00:10:45.773 --> 00:10:47.782
+contante waarde dus ook verlagen.
+
+00:10:48.292 --> 00:10:53.266
+Checkvraag. Bij een nieuwe bedrijfskantine
+is &quot;de leverancier levert te laat&quot; risico
+
+00:10:53.266 --> 00:10:57.826
+één. Wat doet de opsteller van de
+businesscase? A, een maatregel
+
+00:10:57.826 --> 00:11:03.214
+voorstellen, zoals een boete. B, zelf een
+andere leverancier zoeken en inhuren. C,
+
+00:11:03.214 --> 00:11:09.017
+het risico weglaten, want het is onzeker.
+D, het project afkeuren, want het risico
+
+00:11:09.017 --> 00:11:09.846
+is groot.
+
+00:11:17.031 --> 00:11:23.124
+A. De opsteller brengt risico&#x27;s in kaart,
+geeft ze prioriteit en stelt maatregelen
+
+00:11:23.124 --> 00:11:28.749
+voor, bijvoorbeeld een boeteclausule bij
+te late levering. Optie B is de
+
+00:11:28.749 --> 00:11:33.436
+verleidelijke: dat klinkt daadkrachtig,
+maar de uitvoering is aan de
+
+00:11:33.436 --> 00:11:39.060
+opdrachtgever. En een onzeker risico
+weglaten is precies wat de analyse moet
+
+00:11:39.060 --> 00:11:39.529
+voorkomen.
+
+00:11:40.218 --> 00:11:45.312
+Twee casusvragen met een open vraag, zoals
+het casustentamen volgens les één. Zet de
+
+00:11:45.312 --> 00:11:48.222
+video stil als je meer tijd nodig hebt.
+
+00:11:49.262 --> 00:11:52.754
+Casusvraag. Een gemeente investeert
+achtendertigduizend euro in een
+
+00:11:52.754 --> 00:11:56.682
+kluisjessysteem voor flexwerkers. De
+afdeling schat de besparing op
+
+00:11:56.682 --> 00:12:01.483
+vijftienduizend euro per jaar, drie jaar
+lang, zonder restwaarde. De gemeente
+
+00:12:01.483 --> 00:12:07.157
+rekent met zes procent; de factoren staan
+in beeld. Bereken de netto contante
+
+00:12:07.157 --> 00:12:13.268
+waarde, en de netto contante waarde als de
+besparing tien procent lager uitvalt. Hoe
+
+00:12:13.268 --> 00:12:18.069
+gevoelig is de businesscase, en wat
+adviseer je? Je hebt vijfenveertig
+
+00:12:18.069 --> 00:12:18.505
+seconden.
+
+00:13:04.774 --> 00:13:07.944
+Contant gemaakt is de besparing
+veertienduizend honderdeenenvijftig,
+
+00:13:07.944 --> 00:13:10.209
+dertienduizend driehonderdvijftig en
+twaalfduizend vijfhonderdvierennegentig.
+
+00:13:10.209 --> 00:13:11.567
+Samen veertigduizend vijfennegentig.
+
+00:13:11.567 --> 00:13:16.096
+Min achtendertigduizend geeft een netto
+contante waarde van plus tweeduizend
+
+00:13:16.096 --> 00:13:17.001
+vijfennegentig euro.
+
+00:13:17.385 --> 00:13:23.465
+Valt de besparing tien procent lager uit,
+dertienduizend vijfhonderd per jaar, dan
+
+00:13:23.465 --> 00:13:29.039
+is de contante waarde zesendertigduizend
+zesentachtig, en de netto contante waarde
+
+00:13:29.039 --> 00:13:30.560
+min duizend negenhonderdveertien.
+
+00:13:30.792 --> 00:13:35.755
+Tien procent minder besparing en het
+project haalt de rendementseis niet meer.
+
+00:13:35.755 --> 00:13:38.650
+Die gevoeligheid moet in je antwoord
+staan.
+
+00:13:39.372 --> 00:13:45.870
+En de besparing is een schatting van de
+afdeling zelf. Het advies: laat die
+
+00:13:45.870 --> 00:13:49.583
+onderbouwen, bijvoorbeeld met een meting,
+voordat je investeert.
+
+00:13:50.085 --> 00:13:58.181
+Een snelle check: de netto contante waarde
+is nul als de investering gelijk is aan de
+
+00:13:58.181 --> 00:14:03.241
+contante waarde, veertigduizend
+vijfennegentig euro. De marge is dus maar
+
+00:14:03.241 --> 00:14:04.759
+ruim tweeduizend euro.
+
+00:14:05.484 --> 00:14:10.840
+Tweede casusvraag. Een hogeschool vervangt
+alle losse printers door een centraal
+
+00:14:10.840 --> 00:14:16.682
+printsysteem met pasjes. De businesscase
+rekent op een besparing op papier en
+
+00:14:16.682 --> 00:14:21.551
+toner. Het projectteam noemt drie
+risico&#x27;s. Risico één: de leverancier
+
+00:14:21.551 --> 00:14:27.881
+levert te laat, kans nul komma drie,
+impact zes. Risico twee: gebruikers vinden
+
+00:14:27.881 --> 00:14:34.697
+het systeem lastig en klagen, kans nul
+komma zeven, impact vier. Risico drie: de
+
+00:14:34.697 --> 00:14:41.026
+besparing op papier valt tegen, kans nul
+komma vijf, impact acht. Bij twintig
+
+00:14:41.026 --> 00:14:46.869
+procent minder besparing op papier wordt
+de netto contante waarde negatief. Bereken
+
+00:14:46.869 --> 00:14:51.737
+de risicogetallen en bepaal de prioriteit.
+Formuleer het belangrijkste risico
+
+00:14:51.737 --> 00:14:56.606
+concreet en stel een beheersmaatregel
+voor. Je hebt veertig seconden.
+
+00:15:37.931 --> 00:15:43.190
+Kans keer impact: risico één is één komma
+acht, risico twee twee komma acht, risico
+
+00:15:43.190 --> 00:15:43.891
+drie vier.
+
+00:15:44.336 --> 00:15:49.841
+De prioriteit is dus risico drie, dan
+twee, dan één.
+
+00:15:50.688 --> 00:15:54.935
+En die prioriteit klopt met de
+sensitiviteit: twintig procent minder
+
+00:15:54.935 --> 00:16:00.456
+besparing maakt de netto contante waarde
+al negatief. Risico drie raakt precies het
+
+00:16:00.456 --> 00:16:01.305
+gevoelige gegeven.
+
+00:16:02.142 --> 00:16:06.745
+Concreet geformuleerd. Wat: de besparing
+op papier is lager dan berekend.
+
+00:16:07.431 --> 00:16:11.501
+Oorzaak, bijvoorbeeld: de aanname over het
+huidige verbruik is te positief. Gevolg:
+
+00:16:11.501 --> 00:16:13.536
+lagere kasstromen dan in de businesscase.
+
+00:16:14.157 --> 00:16:19.174
+Een maatregel die bij die oorzaak past:
+meet eerst het huidige verbruik en reken
+
+00:16:19.174 --> 00:16:23.833
+door met die cijfers. Jij stelt dat voor,
+de opdrachtgever is verantwoordelijk voor
+
+00:16:23.833 --> 00:16:24.550
+de uitvoering.
+
+00:16:24.842 --> 00:16:31.659
+Dit moet je nu kunnen. Lukt een punt niet,
+kijk dat hoofdstuk dan terug.
+
+00:16:32.119 --> 00:16:38.653
+In een casusvraag over risico&#x27;s laat je
+dus drie dingen zien: het risicogetal, de
+
+00:16:38.653 --> 00:16:42.854
+prioriteit, en een maatregel die bij de
+oorzaak past.
+
+00:16:43.704 --> 00:16:48.549
+In het laatste blok maken we de
+businesscase af: de waarde die niet in
+
+00:16:48.549 --> 00:16:50.279
+geld zit, en het advies.
