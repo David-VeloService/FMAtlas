@@ -14,6 +14,7 @@ window.ATLAS_VAKKEN = [
     year: 2, periods: [2], icon: 'shift',
     leren: [
       ['Lessen · reels en voorbereiding', 'facilitair-verandermanagement-lessen.html', 'play'],
+      ['Lesvideo\'s', 'facilitair-verandermanagement-video.html', 'play'],
       ['Samenvatting', 'facilitair-verandermanagement-samenvatting.html', 'book'],
       ['Begrippenlijst', 'facilitair-verandermanagement-begrippen.html', 'list'],
     ],
