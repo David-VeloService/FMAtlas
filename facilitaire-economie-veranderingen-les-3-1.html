@@ -28,18 +28,13 @@
 .les-grid.zonder-reel { grid-template-columns: minmax(0, 1fr); }
 .les-route { min-width: 0; }
 
-/* Reel: staand beeld, op desktop niet breder dan 360 px */
+/* Portrait reel, at most 360 px wide on desktop. */
 .reel { width: 100%; max-width: 360px; }
 .reel-vlak { position: relative; aspect-ratio: 9 / 16; border-radius: var(--r-lg); overflow: hidden; background: var(--olive-950); color: var(--sand-50); box-shadow: var(--glass-shadow); }
-.reel-vlak iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; display: block; }
-.reel-start { position: absolute; inset: 0; width: 100%; height: 100%; background: var(--olive-950); color: var(--sand-50); }
-.reel-start img { display: block; width: 100%; height: 100%; object-fit: cover; }
-.reel-start span { position: absolute; inset: 0; display: grid; place-items: end center; padding: 24px 16px; background: linear-gradient(to top, rgba(20, 23, 15, .75), transparent 45%); }
-.reel-start strong { min-height: 48px; display: inline-flex; align-items: center; padding: 12px 24px; background: var(--olive-900); color: var(--sand-50); border: 1px solid var(--sand-50); border-radius: var(--r-pill); font-size: 17px; }
-.reel-start:focus-visible { outline-offset: -6px; }
+.reel-vlak video { position: absolute; inset: 0; width: 100%; height: 100%; display: block; object-fit: contain; background: var(--olive-950); }
 .reel-volgt { position: absolute; inset: 0; display: grid; place-items: center; padding: 24px; text-align: center; font-family: var(--font-display); font-size: 22px; font-weight: 600; }
 .reel figcaption { margin-top: 12px; font-size: 15px; color: var(--ink-soft); font-variant-numeric: tabular-nums; }
-.reel-privacy, .reel-status { margin-top: 6px; font-size: 13px; color: var(--ink-soft); line-height: 1.5; }
+.reel-status { margin-top: 6px; font-size: 13px; color: var(--ink-soft); line-height: 1.5; }
 .reel-status:empty { display: none; }
 .reel-keuze { display: none; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
 .js .reel-keuze { display: flex; }
@@ -114,7 +109,7 @@
     <div class="les-chips"><span class="chip">Week 3</span><span class="chip">maandag 23 november</span><span class="chip">13:45-15:15</span><span class="chip">F0.13</span><span class="chip">theorie</span></div>
   </header>
   <div class="les-grid">
-    <figure class="reel" id="reel"><div class="reel-vlak" id="reel-vlak"><button type="button" class="reel-start" id="reel-start" data-video="vcJ-leUwSCY" data-thumb="https://i.ytimg.com/vi/vcJ-leUwSCY/hqdefault.jpg" aria-label="Afspelen op YouTube: Gegevenstabel en rekenmodel"><img id="reel-poster" src="https://i.ytimg.com/vi/vcJ-leUwSCY/hqdefault.jpg" alt="" decoding="async"/><span><strong>Afspelen op YouTube</strong></span></button></div><figcaption id="reel-caption"><strong>Gegevenstabel en rekenmodel</strong> · 1:10</figcaption><div class="reel-keuze" role="group" aria-label="Reels bij deze les"><button type="button" class="reel-knop" data-reel="0" aria-pressed="true">1 · Gegevenstabel en rekenmodel · 1:10</button><button type="button" class="reel-knop" data-reel="1" aria-pressed="false">2 · Verwijs, typ geen getal · 1:00</button><button type="button" class="reel-knop" data-reel="2" aria-pressed="false">3 · Alleen wat extra is · 1:08</button></div><p class="reel-privacy">De video staat op YouTube; bij afspelen gelden de privacyregels van YouTube.</p><p class="reel-status" id="reel-status" role="status"></p><script type="application/json" id="reel-data">[{"titel": "Gegevenstabel en rekenmodel", "youtube_id": "vcJ-leUwSCY", "thumb": "https://i.ytimg.com/vi/vcJ-leUwSCY/hqdefault.jpg", "poster": null, "duur": "1:10"}, {"titel": "Verwijs, typ geen getal", "youtube_id": "AHWSM4I1MrI", "thumb": "https://i.ytimg.com/vi/AHWSM4I1MrI/hqdefault.jpg", "poster": null, "duur": "1:00"}, {"titel": "Alleen wat extra is", "youtube_id": "tpS5MjGxkuA", "thumb": "https://i.ytimg.com/vi/tpS5MjGxkuA/hqdefault.jpg", "poster": null, "duur": "1:08"}]</script></figure>
+    <figure class="reel" id="reel"><div class="reel-vlak" id="reel-vlak"><video id="reel-video" controls playsinline preload="none" controlslist="nodownload" poster="media/facilitaire-economie-veranderingen/reels/WPMBEC01-3-gegevenstabel.jpg" src="media/facilitaire-economie-veranderingen/reels/WPMBEC01-3-gegevenstabel.mp4" aria-label="Reel: Gegevenstabel en rekenmodel" title="Reel: Gegevenstabel en rekenmodel"></video></div><figcaption id="reel-caption"><strong>Gegevenstabel en rekenmodel</strong> · 1:10</figcaption><div class="reel-keuze" role="group" aria-label="Reels bij deze les"><button type="button" class="reel-knop" data-reel="0" aria-pressed="true">1 · Gegevenstabel en rekenmodel · 1:10</button><button type="button" class="reel-knop" data-reel="1" aria-pressed="false">2 · Verwijs, typ geen getal · 1:00</button><button type="button" class="reel-knop" data-reel="2" aria-pressed="false">3 · Alleen wat extra is · 1:08</button></div><p class="reel-status" id="reel-status" role="status"></p><script type="application/json" id="reel-data">[{"titel": "Gegevenstabel en rekenmodel", "video": "media/facilitaire-economie-veranderingen/reels/WPMBEC01-3-gegevenstabel.mp4", "poster": "media/facilitaire-economie-veranderingen/reels/WPMBEC01-3-gegevenstabel.jpg", "duur": "1:10"}, {"titel": "Verwijs, typ geen getal", "video": "media/facilitaire-economie-veranderingen/reels/WPMBEC01-3-celverwijzing.mp4", "poster": "media/facilitaire-economie-veranderingen/reels/WPMBEC01-3-celverwijzing.jpg", "duur": "1:00"}, {"titel": "Alleen wat extra is", "video": "media/facilitaire-economie-veranderingen/reels/WPMBEC01-3-textiellab.mp4", "poster": "media/facilitaire-economie-veranderingen/reels/WPMBEC01-3-textiellab.jpg", "duur": "1:08"}]</script></figure>
     <div class="les-route">
       <div class="route-keuze" role="tablist" aria-label="Kies je voorbereiding"><button class="route-tab" type="button" role="tab" id="tab-les" data-route="les" aria-controls="panel-les" aria-selected="true" tabindex="0">Lesvoorbereiding</button><button class="route-tab" type="button" role="tab" id="tab-toets" data-route="toets" aria-controls="panel-toets" aria-selected="false" tabindex="-1">Toetsvoorbereiding</button></div>
 <section class="route-paneel" id="panel-les" data-route="les" role="tabpanel" aria-labelledby="tab-les"><h2 class="route-kop">Lesvoorbereiding</h2><div class="tekst">
@@ -291,7 +286,7 @@
     });
   });
 
-  // ── Reels: één speler tegelijk; de YouTube-API en de speler pas na een klik op afspelen ──
+  // Reuse one native player; selecting or finishing a reel never starts playback.
   const reelBox = $('#reel');
   if (reelBox) {
     const reels = JSON.parse($('#reel-data').textContent);
@@ -299,16 +294,15 @@
     const status = $('#reel-status');
     const caption = $('#reel-caption');
     const knoppen = $$('.reel-knop');
-    let current = 0, player = null, loading = false, timer = null;
-    function teardown() {
-      clearTimeout(timer);
-      loading = false;
-      try { if (player && player.destroy) player.destroy(); } catch (_) {}
-      player = null;
-      vlak.replaceChildren();
-    }
+    const player = $('#reel-video') || document.createElement('video');
+    player.id = 'reel-video';
+    player.controls = true;
+    player.playsInline = true;
+    player.preload = 'none';
+    player.setAttribute('controlslist', 'nodownload');
+    let current = 0;
     function mount(i, message) {
-      teardown();
+      player.pause();
       current = i;
       const r = reels[i];
       knoppen.forEach((k, j) => k.setAttribute('aria-pressed', String(j === i)));
@@ -316,86 +310,33 @@
       strong.textContent = r.titel;
       caption.replaceChildren(strong, r.duur ? ' · ' + r.duur : '');
       status.textContent = message || '';
-      if (!r.youtube_id) {
+      if (!r.video) {
+        player.removeAttribute('src');
+        player.removeAttribute('poster');
+        player.load();
         const volgt = document.createElement('p');
         volgt.className = 'reel-volgt';
         volgt.textContent = 'Video volgt binnenkort';
-        vlak.append(volgt);
+        vlak.replaceChildren(volgt);
         return;
       }
-      const start = document.createElement('button');
-      start.type = 'button';
-      start.className = 'reel-start';
-      start.id = 'reel-start';
-      start.dataset.video = r.youtube_id;
-      start.setAttribute('aria-label', 'Afspelen op YouTube: ' + r.titel);
-      const poster = document.createElement('img');
-      poster.id = 'reel-poster';
-      poster.alt = '';
-      poster.decoding = 'async';
-      poster.addEventListener('error', () => {
-        if (poster.src !== r.thumb) poster.src = r.thumb;
-        else poster.hidden = true;
-      });
-      poster.src = r.poster || r.thumb;
-      const label = document.createElement('span');
-      label.innerHTML = '<strong>Afspelen op YouTube</strong>';
-      start.append(poster, label);
-      start.addEventListener('click', () => play(start, r, i));
-      vlak.append(start);
+      player.src = r.video;
+      player.poster = r.poster;
+      player.title = 'Reel: ' + r.titel;
+      player.setAttribute('aria-label', player.title);
+      vlak.replaceChildren(player);
+      player.load();
     }
-    function failed() {
-      mount(current, 'De video kon niet laden. Klik op afspelen om het opnieuw te proberen.');
-    }
-    function create(r, i) {
-      if (!loading || player || i !== current) return;
-      const iframe = document.createElement('iframe');
-      iframe.id = 'reel-video';
-      iframe.title = 'Reel: ' + r.titel;
-      iframe.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
-      iframe.allowFullscreen = true;
-      iframe.referrerPolicy = 'strict-origin-when-cross-origin';
-      const url = new URL('https://www.youtube-nocookie.com/embed/' + encodeURIComponent(r.youtube_id));
-      url.search = new URLSearchParams({ enablejsapi: '1', origin: location.origin, autoplay: '1', playsinline: '1', cc_lang_pref: 'nl', rel: '0' });
-      iframe.src = url.href;
-      vlak.replaceChildren(iframe);
-      player = new YT.Player(iframe, {
-        events: {
-          onReady: event => {
-            player = event.target;
-            clearTimeout(timer);
-            loading = false;
-            status.textContent = '';
-            event.target.playVideo();
-          },
-          // Na het einde staat de volgende reel klaar; hij begint niet vanzelf.
-          onStateChange: event => {
-            if (event.data === 0 && current + 1 < reels.length) {
-              mount(current + 1, 'Volgende reel klaar: ' + reels[current + 1].titel + '. Klik op afspelen om hem te starten.');
-            }
-          },
-          onError: failed
-        }
-      });
-    }
-    function play(start, r, i) {
-      if (loading || player) return;
-      loading = true;
-      start.disabled = true;
-      status.textContent = 'YouTube-speler laden…';
-      timer = setTimeout(failed, 15000);
-      if (window.YT && window.YT.Player) { create(r, i); return; }
-      window.onYouTubeIframeAPIReady = () => create(r, i);
-      $('#youtube-api')?.remove();
-      const script = document.createElement('script');
-      script.id = 'youtube-api';
-      script.src = 'https://www.youtube.com/iframe_api';
-      script.async = true;
-      script.onerror = failed;
-      document.head.append(script);
-    }
+    player.addEventListener('ended', () => {
+      if (reels[current].video && current + 1 < reels.length) {
+        mount(current + 1, 'Volgende reel klaar: ' + reels[current + 1].titel + '. Klik op afspelen om hem te starten.');
+      }
+    });
+    player.addEventListener('error', () => {
+      if (reels[current].video) status.textContent = 'De video kon niet laden. Probeer het later opnieuw.';
+    });
+    player.addEventListener('playing', () => { status.textContent = ''; });
     knoppen.forEach((knop, i) => knop.addEventListener('click', () => { if (i !== current) mount(i); }));
-    mount(0);
   }
 
   // ── Beeld vergroten (blokken van het type img) ──
