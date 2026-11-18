@@ -1403,7 +1403,7 @@ window.INKR = {
      "explanation": "Contractmanagement bestaat uit contractbeheer (het administratieve proces) en prestatiemanagement (bewaken en verbeteren van de leveranciersprestatie). De andere antwoorden bevatten begrippen uit de vijf pijlers van NEVI, maar dat zijn geen twee deelactiviteiten van contractmanagement."
     },
     {
-     "text": "Bij een ziekenhuis zijn de contracten verspreid over afdelingen en opgeslagen in een eenvoudige applicatie. Er is maar een klein aantal contractsjablonen, prestaties worden alleen basaal gemeten en relatiemanagement staat nog in de kinderschoenen. In welke fase van het NEVI-ontwikkelmodel voor contractmanagement zit het ziekenhuis?",
+     "text": "Bij een ziekenhuis zijn de contracten centraal opgeslagen in een eenvoudige applicatie. Er is maar een klein aantal contractsjablonen, prestaties worden alleen basaal gemeten en relatiemanagement staat nog in de kinderschoenen. In welke fase van het NEVI-ontwikkelmodel voor contractmanagement zit het ziekenhuis?",
      "options": [
       "Fase 1: erkenning, mobilisatie",
       "Fase 2: begrijpend, procesverbetering",
@@ -1411,7 +1411,7 @@ window.INKR = {
       "Fase 4: subtopper, geïntegreerde benadering"
      ],
      "answer": 0,
-     "explanation": "Het beschreven ziekenhuis past bij fase 1 van het NEVI-ontwikkelmodel (Inkoop week 5, p. 10): contracten zijn gedecentraliseerd en opgeslagen in een basisapplicatie, er is een beperkt aantal contractsjablonen, prestatiemeting is basaal en relatiemanagement staat in de kinderschoenen. In fase 2 worden kerncontracten centraal opgeslagen en is prestatiemeting ingevoerd, in fase 3 is contractmanagement ingebed in de afdeling met duidelijke verantwoordelijkheden en overlegstructuren, en in fase 4 wordt het erkend als cruciale succesfactor en ondersteund door het management."
+     "explanation": "Het beschreven ziekenhuis past bij fase 1 van het NEVI-ontwikkelmodel (Inkoop week 5, p. 10): contracten zijn gecentraliseerd en opgeslagen in een basisapplicatie, er is een beperkt aantal contractsjablonen, prestatiemeting is basaal en relatiemanagement staat in de kinderschoenen. In fase 2 worden kerncontracten centraal opgeslagen en is prestatiemeting ingevoerd, in fase 3 is contractmanagement ingebed in de afdeling met duidelijke verantwoordelijkheden en overlegstructuren, en in fase 4 wordt het erkend als cruciale succesfactor en ondersteund door het management."
     },
     {
      "text": "Welke pijler van contractmanagement (NEVI) gaat over het meten en sturen van de prestaties van de leverancier en de eigen organisatie, inclusief issue management?",

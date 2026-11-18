@@ -50,6 +50,7 @@ window.ATLAS_VAKKEN = [
     sub: 'TCO · sourcing · Europees aanbesteden · contractmanagement · recht',
     year: 2, periods: [2], icon: 'cart',
     leren: [
+      ['Lesvideo\'s', 'inkoop-en-recht-video.html', 'play'],
       ['Samenvatting', 'inkoop-en-recht-samenvatting.html', 'book'],
       ['Begrippenlijst', 'inkoop-en-recht-begrippen.html', 'list'],
     ],
