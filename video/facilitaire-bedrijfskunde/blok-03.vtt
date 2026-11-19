@@ -1,0 +1,755 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:05.630
+Een melding over een kapotte deur blijft
+drie dagen liggen. Daarna wacht de monteur
+
+00:00:05.630 --> 00:00:11.260
+op een onderdeel, en de factuur komt bij
+de verkeerde afdeling terecht. Waar zit
+
+00:00:11.260 --> 00:00:14.880
+het probleem: bij de monteur, of in het
+systeem?
+
+00:00:15.472 --> 00:00:21.984
+Dat zie je pas als je naar het systeem
+kijkt. Processen hangen aan elkaar: wat
+
+00:00:21.984 --> 00:00:28.495
+het ene proces oplevert, is de input van
+het volgende. Wie alleen naar één stap
+
+00:00:28.495 --> 00:00:31.100
+kijkt, mist waar het echt vastloopt.
+
+00:00:31.509 --> 00:00:37.827
+Dat is Systems, de derde S. In deze video:
+wat een systeem is, de organisatie als
+
+00:00:37.827 --> 00:00:42.566
+open systeem, de waardeketen van Porter,
+processen met het I-T-O-model, en hoe
+
+00:00:42.566 --> 00:00:44.145
+processen en systemen samenhangen.
+
+00:00:44.699 --> 00:00:47.288
+Eerst de vraag: wat is een systeem?
+
+00:00:47.288 --> 00:00:52.466
+Een systeem is een coherent geheel van
+elementen dat als één geheel fungeert. Het
+
+00:00:52.466 --> 00:00:56.535
+heeft twee kerneigenschappen: de elementen
+zijn wederkerig van elkaar afhankelijk, en
+
+00:00:56.535 --> 00:01:00.234
+het geheel is meer dan de som van de
+delen.
+
+00:01:01.044 --> 00:01:04.632
+Die twee eigenschappen zijn je
+toetsinstrument. Vraagt een casus waarom
+
+00:01:04.632 --> 00:01:10.374
+iets een systeem is, dan laat je zien hoe
+de onderdelen van elkaar afhangen en wat
+
+00:01:10.374 --> 00:01:13.245
+het geheel meer oplevert dan de losse
+delen.
+
+00:01:13.498 --> 00:01:18.407
+De les geeft twee voorbeelden uit facility
+management. Het inkoop- en
+
+00:01:18.407 --> 00:01:21.530
+leveringssysteem loopt van
+behoeftebepaling en aanvraag via
+
+00:01:21.530 --> 00:01:25.546
+leveranciersselectie en bestellen tot
+levering en factuurafhandeling. Een juiste
+
+00:01:25.546 --> 00:01:30.901
+behoeftebepaling bepaalt wat er besteld
+wordt, en levering en factuur sluiten aan
+
+00:01:30.901 --> 00:01:32.240
+op eerdere stappen.
+
+00:01:32.240 --> 00:01:35.809
+Bij het ruimte- en werkplekbeheersysteem
+sturen bezettingsgegevens de
+
+00:01:35.809 --> 00:01:38.487
+ruimteplanning, en beïnvloeden
+reserveringen welke werkplekken
+
+00:01:38.487 --> 00:01:39.379
+beschikbaar zijn.
+
+00:01:39.850 --> 00:01:43.757
+Kijk wat het geheel oplevert. Losse
+inkoopactiviteiten leveren spullen; het
+
+00:01:43.757 --> 00:01:47.273
+systeem levert structuur, controle en
+continuïteit. Losse reserveringen vullen
+
+00:01:47.273 --> 00:01:53.133
+een agenda; het systeem levert optimaal
+gebruik van de ruimte. Dat is: meer dan de
+
+00:01:53.133 --> 00:01:54.696
+som van de delen.
+
+00:01:55.910 --> 00:01:58.953
+De opbouw: bovenaan het systeem.
+
+00:01:59.440 --> 00:02:01.153
+Een systeem bestaat uit processen,
+
+00:02:01.520 --> 00:02:03.987
+en een proces bestaat uit activiteiten.
+
+00:02:04.986 --> 00:02:09.700
+Die volgorde kwam als quizvraag terug, met
+de omgekeerde versie als foute optie. Een
+
+00:02:09.700 --> 00:02:13.068
+inkoop- en leveringssysteem bestaat dus
+uit processen zoals bestellen en
+
+00:02:13.068 --> 00:02:15.425
+factureren, en bestellen bestaat weer uit
+activiteiten.
+
+00:02:15.878 --> 00:02:21.646
+Een organisatie is zelf ook een systeem,
+met deelsystemen. Inkoop, productie,
+
+00:02:21.646 --> 00:02:25.842
+verkoop en service lopen als het ware
+horizontaal.
+
+00:02:25.842 --> 00:02:29.513
+Facility management en
+personeelsmanagement lopen er dwars
+
+00:02:29.513 --> 00:02:32.659
+doorheen, omdat ze alle andere
+ondersteunen.
+
+00:02:32.872 --> 00:02:36.820
+Zo&#x27;n doorsnijdende blik heet een
+aspectsysteem: je bekijkt de hele
+
+00:02:36.820 --> 00:02:41.558
+organisatie vanuit één aspect. In de quiz:
+alle medewerkers boven de vijfenvijftig
+
+00:02:41.558 --> 00:02:45.901
+bij een bank in kaart brengen voor
+leeftijdsbewust personeelsbeleid. Dat is
+
+00:02:45.901 --> 00:02:48.665
+een aspectsysteem, geen open of gesloten
+systeem.
+
+00:02:49.234 --> 00:02:52.570
+Een organisatie staat niet op zichzelf. Ze
+is een open systeem.
+
+00:02:53.965 --> 00:02:57.778
+Systeemdenken betekent dat je de
+organisatie niet opdeelt in losse,
+
+00:02:57.778 --> 00:03:02.354
+gesloten afdelingen. Je kijkt hoe de
+onderdelen samen waarde creëren voor de
+
+00:03:02.354 --> 00:03:06.930
+klant, en hoe een verandering in één deel
+doorwerkt in de rest.
+
+00:03:07.308 --> 00:03:13.693
+Een voorbeeld: de schoonmaak van een hotel
+gaat later beginnen om kosten te besparen.
+
+00:03:13.693 --> 00:03:20.079
+Dan zijn kamers later klaar, kunnen gasten
+later inchecken en krijgt de receptie meer
+
+00:03:20.079 --> 00:03:24.640
+klachten. Wie alleen naar de
+schoonmaakkosten kijkt, ziet dat niet.
+
+00:03:25.240 --> 00:03:31.354
+Daarbij zie je de organisatie als een open
+systeem, dat steeds in wisselwerking staat
+
+00:03:31.354 --> 00:03:37.032
+met de omgeving. De input is wat ze uit
+die omgeving ontvangt: klanten,
+
+00:03:37.032 --> 00:03:38.779
+medewerkers, informatie, materialen, geld.
+
+00:03:39.335 --> 00:03:45.874
+De throughput zijn de activiteiten binnen
+de organisatie, de processen.
+
+00:03:46.169 --> 00:03:48.135
+De output is wat ze oplevert: producten,
+diensten, resultaten.
+
+00:03:48.843 --> 00:03:55.116
+En de feedback vertelt of ze succesvol is:
+klanttevredenheid, klachten, audits,
+
+00:03:55.116 --> 00:03:57.397
+prestatie-indicatoren en financiële
+resultaten.
+
+00:03:58.207 --> 00:04:04.687
+Het werkcollege vraagt er ook bij waarom
+een organisatie afhankelijk is van haar
+
+00:04:04.687 --> 00:04:11.168
+omgeving. Het antwoord zit in het schema:
+zonder input van buiten, zoals medewerkers
+
+00:04:11.168 --> 00:04:17.149
+en geld, en zonder afnemers voor de
+output, draait het systeem niet.
+
+00:04:17.474 --> 00:04:23.470
+Systeemdenken kun je ook toepassen op de
+waardeketen van Porter. Onderaan staan de
+
+00:04:23.470 --> 00:04:27.159
+primaire activiteiten: ingaande logistiek,
+productie, uitgaande logistiek, marketing
+
+00:04:27.159 --> 00:04:29.004
+en verkoop, en service.
+
+00:04:29.263 --> 00:04:32.767
+Daarboven de ondersteunende activiteiten:
+infrastructuur, human resources
+
+00:04:32.767 --> 00:04:37.272
+management, technologische ontwikkeling en
+inkoop. Facility management valt onder
+
+00:04:37.272 --> 00:04:40.775
+infrastructuur: gebouwen, onderhoud,
+energie, werkplekinrichting, schoonmaak en
+
+00:04:40.775 --> 00:04:41.276
+veiligheid.
+
+00:04:41.666 --> 00:04:46.125
+Maar ondersteunend betekent niet
+onbelangrijk. Facility management werkt
+
+00:04:46.125 --> 00:04:53.372
+door in de primaire activiteiten: laad- en
+losfaciliteiten bepalen de snelheid van de
+
+00:04:53.372 --> 00:04:59.503
+ingaande logistiek, licht, klimaat en
+ergonomie hebben direct effect op de
+
+00:04:59.503 --> 00:05:04.520
+productiviteit, en een representatieve
+ontvangstruimte beïnvloedt hoe klanten de
+
+00:05:04.520 --> 00:05:05.635
+organisatie zien.
+
+00:05:06.398 --> 00:05:10.824
+Daarom noemt de les facility management
+een systeemversneller: het beïnvloedt hoe
+
+00:05:10.824 --> 00:05:14.043
+goed alle andere activiteiten in de keten
+werken.
+
+00:05:14.532 --> 00:05:20.603
+Checkvraag. Een hotel houdt elke maand de
+gastenreviews en het aantal klachten bij.
+
+00:05:20.603 --> 00:05:27.141
+Bij welk onderdeel van het open systeem
+hoort dit? A, input: informatie die het
+
+00:05:27.141 --> 00:05:33.212
+hotel binnenkrijgt. B, throughput: het
+werk van de receptie. C, output: de dienst
+
+00:05:33.212 --> 00:05:38.815
+die het hotel levert. D, feedback: weten
+of het hotel succesvol is.
+
+00:05:45.211 --> 00:05:52.354
+D. Reviews en klachten vertellen het hotel
+of het succesvol is, en dat is feedback. A
+
+00:05:52.354 --> 00:05:58.603
+is de verleidelijke fout: het is wel
+informatie van buiten, maar het is een
+
+00:05:58.603 --> 00:06:02.621
+terugkoppeling op de output, geen
+grondstof voor het werk.
+
+00:06:02.954 --> 00:06:06.149
+Dan een niveau dieper: de processen.
+
+00:06:06.149 --> 00:06:10.941
+Een proces is een gestructureerde
+verzameling activiteiten binnen een
+
+00:06:10.941 --> 00:06:17.863
+systeem, in een logische en samenhangende
+volgorde. Een proces zet input om in
+
+00:06:17.863 --> 00:06:18.395
+output.
+
+00:06:18.795 --> 00:06:23.220
+Wie een proces tekent, maakt een
+flowchart, in het Nederlands een
+
+00:06:23.220 --> 00:06:26.438
+stroomdiagram. Ook dat kwam in de quiz
+terug.
+
+00:06:26.648 --> 00:06:33.059
+Het I-T-O-model maakt dat zichtbaar:
+input, throughput, output. De les past het
+
+00:06:33.059 --> 00:06:36.798
+toe op het inkoopproces van Van Weele.
+
+00:06:37.006 --> 00:06:41.697
+De input zijn de middelen en voorwaarden:
+mensen zoals inkopers en gebruikers,
+
+00:06:41.697 --> 00:06:45.215
+budget en systemen, informatie zoals
+specificaties, en voorwaarden zoals
+
+00:06:45.215 --> 00:06:46.388
+inkoopbeleid en wetgeving.
+
+00:06:46.888 --> 00:06:50.377
+De throughput zijn de stappen:
+behoeftebepaling, specificeren,
+
+00:06:50.377 --> 00:06:54.364
+leverancier selecteren, contracteren,
+bestellen en leveren, factureren en
+
+00:06:54.364 --> 00:06:55.859
+betalen, en evalueren.
+
+00:06:56.225 --> 00:07:02.043
+De output is de tijdige beschikbaarheid
+van de juiste goederen en diensten, en
+
+00:07:02.043 --> 00:07:04.281
+resultaten zoals kostenbesparing en
+leverbetrouwbaarheid.
+
+00:07:04.793 --> 00:07:10.830
+Een denkfout bij I-T-O-vragen: een stap
+uit het proces bij de input zetten.
+
+00:07:10.830 --> 00:07:16.868
+Specificaties zijn input, specificeren is
+throughput. Vraag je bij elk item af: gaat
+
+00:07:16.868 --> 00:07:20.584
+het erin, gebeurt het, of komt het eruit?
+
+00:07:21.440 --> 00:07:24.868
+Er zijn drie soorten processen.
+Bestuurlijke processen sturen en
+
+00:07:24.868 --> 00:07:29.057
+beheersen: richting geven, controleren en
+verbeteren. In de waardeketen vallen ze
+
+00:07:29.057 --> 00:07:32.484
+vooral onder infrastructuur, bij
+strategisch management en planning en
+
+00:07:32.484 --> 00:07:32.865
+control.
+
+00:07:33.232 --> 00:07:40.268
+Primaire processen dragen direct bij aan
+het product of de dienst: de primaire
+
+00:07:40.268 --> 00:07:40.809
+activiteiten.
+
+00:07:41.130 --> 00:07:45.405
+Secundaire processen ondersteunen het
+primaire proces. Een ander woord is
+
+00:07:45.405 --> 00:07:46.260
+ondersteunende processen.
+
+00:07:46.690 --> 00:07:53.140
+Of een proces primair of secundair is,
+hangt af van de organisatie. Gebouwen
+
+00:07:53.140 --> 00:07:59.590
+beveiligen is voor een beveiligingsbedrijf
+primair: dat is wat het levert. Voor een
+
+00:07:59.590 --> 00:08:05.048
+hogeschool is het secundair, want daar is
+onderwijs het primaire proces.
+
+00:08:05.544 --> 00:08:11.787
+Met processen doe je drie dingen.
+Beschrijven: hoe werkt het, met welke
+
+00:08:11.787 --> 00:08:13.869
+stappen, mensen en middelen?
+
+00:08:14.323 --> 00:08:18.846
+Besturen: verloopt het volgens afspraak en
+worden de resultaten gehaald?
+
+00:08:18.846 --> 00:08:23.369
+En verbeteren: op basis van evaluaties,
+analyses en feedback verbeterpunten
+
+00:08:23.369 --> 00:08:24.726
+vaststellen en doorvoeren.
+
+00:08:25.029 --> 00:08:29.564
+Hier sluit de feedback uit het open
+systeem weer aan: klachten en
+
+00:08:29.564 --> 00:08:33.344
+prestatie-indicatoren zijn de input voor
+verbeteren. In het bedrijfsproject van
+
+00:08:33.344 --> 00:08:35.990
+Business Management werk je dit verder
+uit.
+
+00:08:36.704 --> 00:08:41.261
+Checkvraag. Een schoonmaakbedrijf maakt de
+kantoren van een advocatenkantoor schoon.
+
+00:08:41.261 --> 00:08:48.095
+Wat voor proces is schoonmaken voor elk
+van de twee? A, voor allebei primair, want
+
+00:08:48.095 --> 00:08:54.019
+het is hetzelfde werk. B, primair voor de
+schoonmaker, secundair voor de advocaten.
+
+00:08:54.019 --> 00:08:59.487
+C, secundair voor de schoonmaker, primair
+voor de advocaten. D, voor allebei
+
+00:08:59.487 --> 00:09:01.309
+bestuurlijk, het wordt gecontroleerd.
+
+00:09:07.697 --> 00:09:12.113
+B. Voor het schoonmaakbedrijf is
+schoonmaken wat het levert, dus primair.
+
+00:09:12.113 --> 00:09:15.727
+Voor het advocatenkantoor ondersteunt het
+de juridische dienstverlening, dus
+
+00:09:15.727 --> 00:09:21.348
+secundair. A is de valkuil: hetzelfde werk
+kan in twee organisaties een andere soort
+
+00:09:21.348 --> 00:09:22.151
+proces zijn.
+
+00:09:22.151 --> 00:09:24.158
+Geen proces staat op zichzelf.
+
+00:09:25.713 --> 00:09:29.738
+Een organisatie is een systeem van
+onderling afhankelijke processen. Het
+
+00:09:29.738 --> 00:09:34.569
+werkcollege laat je daarom een keten
+tekenen. Neem een ziekenhuis. Proces A:
+
+00:09:34.569 --> 00:09:36.179
+een patiënt wordt ontslagen.
+
+00:09:36.626 --> 00:09:39.317
+Jouw proces: de kamer wordt schoongemaakt.
+
+00:09:39.831 --> 00:09:42.196
+Proces B: de volgende patiënt wordt
+opgenomen.
+
+00:09:42.500 --> 00:09:47.724
+En dan de reflectievraag uit het
+werkcollege: wat gebeurt er als jouw
+
+00:09:47.724 --> 00:09:54.255
+proces niet goed werkt? Hier wacht de
+opname, staat een bed leeg terwijl er een
+
+00:09:54.255 --> 00:10:00.786
+patiënt op wacht, en loopt de planning van
+de afdeling uit. Dat zijn drie gevolgen
+
+00:10:00.786 --> 00:10:03.398
+voor andere delen van de organisatie.
+
+00:10:04.424 --> 00:10:09.494
+Checkvraag, met blok twee erbij. Een
+ziekenhuis heeft een afdeling juridische
+
+00:10:09.494 --> 00:10:16.407
+zaken die de directie alleen adviseert.
+Wat voor proces is dat, en waar staat de
+
+00:10:16.407 --> 00:10:22.860
+afdeling in het organogram? A, een primair
+proces, in de lijn. B, een bestuurlijk
+
+00:10:22.860 --> 00:10:29.312
+proces, in de lijn. C, een ondersteunend
+proces, als staf. D, een primair proces,
+
+00:10:29.312 --> 00:10:30.695
+als functionele staf.
+
+00:10:37.093 --> 00:10:41.988
+C. Juridisch advies ondersteunt het
+primaire proces van het ziekenhuis, de
+
+00:10:41.988 --> 00:10:47.329
+zorg, en de afdeling heeft alleen
+adviesbevoegdheid. Dat is staf, en staf
+
+00:10:47.329 --> 00:10:52.670
+voert ondersteunende processen uit. B is
+de verleidelijke fout: advies aan de
+
+00:10:52.670 --> 00:10:56.676
+directie voelt als sturing, maar adviseren
+is geen besturen.
+
+00:10:57.313 --> 00:11:02.596
+Tot slot de samenhang met de rest van het
+zeven-S-model. Het werkcollege vraagt je
+
+00:11:02.596 --> 00:11:07.501
+twee recente artikelen te zoeken waarin
+een verandering in systemen een andere S
+
+00:11:07.501 --> 00:11:07.878
+raakt.
+
+00:11:08.458 --> 00:11:13.422
+Een voorbeeld: een organisatie voert een
+nieuw digitaal meldingensysteem in.
+
+00:11:13.422 --> 00:11:19.875
+Medewerkers moeten dan nieuwe kennis en
+vaardigheden opdoen, dat is Skills. En er
+
+00:11:19.875 --> 00:11:26.826
+is bijscholing nodig, of er verdwijnen en
+ontstaan functies, dat is Staff. Op de
+
+00:11:26.826 --> 00:11:34.272
+toets noem je dus niet alleen het systeem,
+maar ook welke S meebeweegt en hoe.
+
+00:11:34.739 --> 00:11:40.797
+Dat is dezelfde samenhang als in blok één:
+verandert één S, dan bewegen andere mee.
+
+00:11:41.138 --> 00:11:45.847
+Checkvraag. Een facility manager laat de
+laad- en losdocks van een
+
+00:11:45.847 --> 00:11:49.272
+distributiecentrum vernieuwen, zodat
+vrachtwagens sneller gelost worden. Waar
+
+00:11:49.272 --> 00:11:53.981
+zit facility management hier in de
+waardeketen? A, infrastructuur, met effect
+
+00:11:53.981 --> 00:11:59.547
+op ingaande logistiek. B, inkoop, met
+effect op uitgaande logistiek. C, zelf een
+
+00:11:59.547 --> 00:12:03.400
+primaire activiteit: ingaande logistiek.
+D, technologische ontwikkeling, met effect
+
+00:12:03.400 --> 00:12:04.256
+op service.
+
+00:12:10.320 --> 00:12:13.761
+A. Facility management valt onder
+infrastructuur, een ondersteunende
+
+00:12:13.761 --> 00:12:19.354
+activiteit, maar werkt hier door in de
+ingaande logistiek. C is de verleidelijke
+
+00:12:19.354 --> 00:12:24.516
+fout: het effect zit in een primaire
+activiteit, maar daarmee wordt facility
+
+00:12:24.516 --> 00:12:27.097
+management zelf nog geen primaire
+activiteit.
+
+00:12:27.881 --> 00:12:31.940
+Casusvraag. Op het hoofdkantoor van een
+verzekeraar meldt een medewerker via de
+
+00:12:31.940 --> 00:12:35.661
+servicedesk dat de verwarming in een
+vergaderzaal kapot is. De servicedesk
+
+00:12:35.661 --> 00:12:40.397
+registreert de melding en zet hem door
+naar de technische dienst. Die plant een
+
+00:12:40.397 --> 00:12:45.133
+monteur in, die de verwarming repareert en
+de klus gereed meldt. De servicedesk sluit
+
+00:12:45.133 --> 00:12:49.530
+de melding af en vraagt de melder om een
+beoordeling. Beschrijf dit meldingenproces
+
+00:12:49.530 --> 00:12:54.266
+met het I-T-O-model, inclusief feedback,
+en leg uit wat voor soort proces het is
+
+00:12:54.266 --> 00:12:56.634
+voor de verzekeraar. Je hebt vijfenveertig
+seconden.
+
+00:13:42.767 --> 00:13:48.145
+De input is de melding zelf, met de mensen
+en middelen die nodig zijn: de
+
+00:13:48.145 --> 00:13:50.654
+servicedesk, de technische dienst en de
+monteur.
+
+00:13:51.024 --> 00:13:54.785
+De throughput zijn de stappen:
+registreren, doorzetten, inplannen,
+
+00:13:54.785 --> 00:13:57.136
+repareren, gereed melden en afsluiten.
+
+00:13:57.366 --> 00:14:01.660
+De output is een werkende verwarming, dus
+een bruikbare vergaderzaal.
+
+00:14:02.039 --> 00:14:08.510
+De beoordeling van de melder is de
+feedback. Die gebruik je om het proces te
+
+00:14:08.510 --> 00:14:11.961
+verbeteren, bijvoorbeeld als meldingen te
+lang blijven liggen.
+
+00:14:12.464 --> 00:14:18.091
+En voor een verzekeraar is dit een
+secundair proces: het ondersteunt het
+
+00:14:18.091 --> 00:14:23.248
+primaire proces, verzekeren, maar is zelf
+niet wat de organisatie levert.
+
+00:14:23.780 --> 00:14:28.124
+Tweede casusvraag. Een fabriek van
+fietsonderdelen werkt in een verouderde
+
+00:14:28.124 --> 00:14:33.770
+hal, met slecht licht, tocht en een krappe
+laadplaats waar vrachtwagens vaak moeten
+
+00:14:33.770 --> 00:14:38.114
+wachten. Klanten klagen over late
+leveringen. De directie ziet facility
+
+00:14:38.114 --> 00:14:44.630
+management als een kostenpost die weinig
+met het product te maken heeft. Leg met de
+
+00:14:44.630 --> 00:14:50.711
+waardeketen van Porter uit waar facility
+management zit en hoe het hier de primaire
+
+00:14:50.711 --> 00:14:53.317
+activiteiten beïnvloedt. Je hebt veertig
+seconden.
+
+00:15:35.280 --> 00:15:37.569
+Facility management valt onder
+infrastructuur, een van de ondersteunende
+
+00:15:37.569 --> 00:15:37.823
+activiteiten.
+
+00:15:38.161 --> 00:15:45.451
+De krappe laadplaats raakt de ingaande en
+uitgaande logistiek, en dus de
+
+00:15:45.451 --> 00:15:46.058
+levertijden.
+
+00:15:46.674 --> 00:15:50.983
+Slecht licht en tocht hebben direct effect
+op de productiviteit en de kwaliteit in de
+
+00:15:50.983 --> 00:15:51.270
+productie.
+
+00:15:52.175 --> 00:15:56.646
+De klachten over late leveringen zijn
+feedback uit het open systeem: de omgeving
+
+00:15:56.646 --> 00:15:58.709
+laat zien dat de output tekortschiet.
+
+00:15:59.440 --> 00:16:03.995
+De conclusie voor de directie: facility
+management is geen losse kostenpost, maar
+
+00:16:03.995 --> 00:16:07.791
+een systeemversneller die beïnvloedt hoe
+goed de hele keten werkt.
+
+00:16:08.739 --> 00:16:13.553
+Je kunt nu een organisatie als systeem
+analyseren, van de waardeketen tot één
+
+00:16:13.553 --> 00:16:17.996
+proces. In blok vier gaan we naar de
+mensen: Staff en Style.

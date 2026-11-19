@@ -95,6 +95,7 @@ window.ATLAS_VAKKEN = [
     sub: '7S-model · strategie, structuur, personeel en cultuur · ondernemingsrecht',
     year: 2, periods: [1], icon: 'chart',
     leren: [
+      ['Lesvideo\'s', 'facilitaire-bedrijfskunde-video.html', 'play'],
       ['Samenvatting', 'facilitaire-bedrijfskunde-samenvatting.html', 'book'],
       ['Begrippenlijst', 'facilitaire-bedrijfskunde-begrippen.html', 'list'],
     ],
