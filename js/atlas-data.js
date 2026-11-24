@@ -115,6 +115,7 @@ window.ATLAS_VAKKEN = [
     sub: 'Technologieadoptie · benchmark · workshops · technologieadvies',
     year: 2, periods: [1], icon: 'bolt',
     leren: [
+      ['Lesvideo\'s', 'fm-tech-video.html', 'play'],
       ['Samenvatting', 'fm-tech-samenvatting.html', 'book'],
       ['Begrippenlijst', 'fm-tech-begrippen.html', 'list'],
     ],
