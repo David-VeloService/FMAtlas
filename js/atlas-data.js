@@ -228,6 +228,7 @@ window.ATLAS_VAKKEN = [
     sub: 'Eventmanagement 2 · schillenmodel · site design',
     year: 1, periods: [4], icon: 'event',
     leren: [
+      ['Lesvideo\'s', 'evenementenlogistiek-video.html', 'play'],
       ['Samenvatting', 'evenementenlogistiek-samenvatting.html', 'book'],
       ['Begrippenlijst', 'evenementenlogistiek-begrippen.html', 'list'],
     ],
