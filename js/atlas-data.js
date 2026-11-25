@@ -247,6 +247,7 @@ window.ATLAS_VAKKEN = [
     sub: 'Eventmanagement 2 · observeren · interviewen',
     year: 1, periods: [4], icon: 'mic',
     leren: [
+      ['Lesvideo\'s', 'projectvaardigheden-video.html', 'play'],
       ['Samenvatting', 'projectvaardigheden-samenvatting.html', 'book'],
       ['Begrippenlijst', 'projectvaardigheden-begrippen.html', 'list'],
     ],
