@@ -192,6 +192,7 @@ window.ATLAS_VAKKEN = [
     sub: 'Projectmanagement (Grit) · projectvaardigheden',
     year: 1, periods: [3], icon: 'event',
     leren: [
+      ['Lesvideo\'s', 'em1-video.html', 'play'],
       ['Samenvatting', 'em1-samenvatting.html', 'book'],
       ['Begrippenlijst', 'em1-begrippen.html', 'list'],
     ],

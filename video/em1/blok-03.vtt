@@ -1,0 +1,822 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:04.511
+Een monteur zegt: de radiatoren
+installeren kost twee dagen. Bedoelt hij
+
+00:00:04.511 --> 00:00:08.611
+twee dagen werk, of is het over twee dagen
+klaar?
+
+00:00:09.461 --> 00:00:15.934
+Dat verschil zit in elke planning. Wie het
+door elkaar haalt, rekent met de verkeerde
+
+00:00:15.934 --> 00:00:16.366
+getallen.
+
+00:00:16.635 --> 00:00:21.681
+In deze video: planning, uitvoeren, earned
+value, kwaliteit, en opleveren en
+
+00:00:21.681 --> 00:00:22.140
+afsluiten.
+
+00:00:22.988 --> 00:00:26.598
+We beginnen met de planning: waarom, en
+hoe je hem opstelt.
+
+00:00:27.353 --> 00:00:28.675
+Een planning heeft vijf doelen. Het werk
+van de projectmedewerkers organiseren.
+
+00:00:29.453 --> 00:00:31.711
+De totale projecttijd vaststellen.
+
+00:00:32.424 --> 00:00:34.311
+De gevolgen van een vertraging bepalen.
+
+00:00:35.099 --> 00:00:36.936
+De kosten vaststellen.
+
+00:00:37.629 --> 00:00:38.632
+En de voortgang en de kosten bewaken.
+
+00:00:39.366 --> 00:00:45.914
+Twee begrippen die je uit elkaar moet
+houden. De doorlooptijd is de tijd van
+
+00:00:45.914 --> 00:00:48.720
+begin tot eind van een activiteit.
+
+00:00:49.226 --> 00:00:52.875
+De benodigde werktijd is de tijd die
+mensen er echt aan besteden.
+
+00:00:53.497 --> 00:00:59.024
+Zegt iemand twee dagen, vraag dan altijd:
+doorlooptijd of werktijd? Met vijf mensen
+
+00:00:59.024 --> 00:01:02.426
+kan één dag doorlooptijd veertig uur werk
+zijn.
+
+00:01:03.285 --> 00:01:08.346
+Een planning maak je in vier stappen.
+Eerst verzamel je de activiteiten uit de
+
+00:01:08.346 --> 00:01:09.431
+work breakdown structure.
+
+00:01:10.229 --> 00:01:15.186
+Dan analyseer je: hoe lang duurt elke
+activiteit, en welke moet op welke
+
+00:01:15.186 --> 00:01:15.568
+wachten?
+
+00:01:16.685 --> 00:01:20.512
+Met die gegevens maak je een
+netwerkplanning, en bepaal je het kritieke
+
+00:01:20.512 --> 00:01:20.831
+pad.
+
+00:01:21.516 --> 00:01:24.048
+En tot slot zet je het om in een
+strokenplanning.
+
+00:01:24.902 --> 00:01:29.683
+Twee namen die je moet herkennen: een
+netwerkplanning heet ook een PERT-chart,
+
+00:01:29.683 --> 00:01:31.277
+een strokenplanning een Gantt-chart.
+
+00:01:31.935 --> 00:01:36.926
+Het voorbeeld uit de les: een centrale
+verwarming aanleggen in een kantoor.
+
+00:01:36.926 --> 00:01:39.005
+Buizen leveren duurt twee dagen,
+
+00:01:39.291 --> 00:01:41.608
+en pas daarna kun je ze leggen: zes dagen.
+
+00:01:42.220 --> 00:01:44.530
+De ketel leveren duurt vijf dagen.
+
+00:01:44.819 --> 00:01:47.643
+De radiatoren leveren twee,
+
+00:01:47.891 --> 00:01:49.421
+en daarna installeren, ook twee.
+
+00:01:49.421 --> 00:01:54.316
+De ketel installeren kan pas als de ketel
+er is én de buizen liggen: twee dagen.
+
+00:01:54.718 --> 00:01:59.882
+Buizen aansluiten op de radiatoren wacht
+op de gelegde buizen en de geïnstalleerde
+
+00:01:59.882 --> 00:02:01.073
+radiatoren: vier dagen.
+
+00:02:01.694 --> 00:02:04.122
+En inregelen, twee dagen, wacht op
+allebei.
+
+00:02:04.594 --> 00:02:07.856
+Zonder die afhankelijkheden kun je geen
+kritieke pad bepalen.
+
+00:02:08.967 --> 00:02:11.696
+Welke route duurt het langst? Buizen
+leveren, twee dagen,
+
+00:02:11.938 --> 00:02:13.926
+buizen leggen, zes erbij, dat is acht,
+
+00:02:14.379 --> 00:02:16.208
+aansluiten, vier erbij, twaalf,
+
+00:02:16.614 --> 00:02:21.488
+en inregelen, twee erbij: veertien dagen.
+Dat is het kritieke pad, en dat bepaalt de
+
+00:02:21.488 --> 00:02:23.113
+doorlooptijd van het hele project.
+
+00:02:23.523 --> 00:02:29.562
+Kijk naar de ketel. Leveren duurt vijf
+dagen, maar installeren kan pas na dag
+
+00:02:29.562 --> 00:02:36.032
+acht, als de buizen liggen. Die drie dagen
+ertussen zijn speling. Op het kritieke pad
+
+00:02:36.032 --> 00:02:41.208
+is er geen speling: elke dag vertraging
+daar schuift de einddatum op.
+
+00:02:41.689 --> 00:02:46.587
+In de strokenplanning staat hetzelfde als
+balken op een tijdas. De kritieke
+
+00:02:46.587 --> 00:02:47.812
+activiteiten zijn rood.
+
+00:02:48.278 --> 00:02:54.221
+De ketel is hier as soon as possible
+gepland: zo vroeg mogelijk, met de speling
+
+00:02:54.221 --> 00:02:59.372
+erachter. Je kunt hem ook as late as
+possible plannen: zo laat mogelijk.
+
+00:02:59.879 --> 00:03:06.054
+En dan valt de speling weg. Daarom staat
+er op de dia dat as late as possible
+
+00:03:06.054 --> 00:03:11.139
+kritiek wordt. Plan je een activiteit zo
+laat mogelijk, dan heeft ze geen marge
+
+00:03:11.139 --> 00:03:16.587
+meer en hoort ze bij het kritieke pad. Het
+voordeel van zo laat mogelijk: lagere
+
+00:03:16.587 --> 00:03:19.493
+kosten. Van zo vroeg mogelijk: marge voor
+succes.
+
+00:03:20.116 --> 00:03:25.240
+Twee laatste begrippen: lag time is
+wachttijd tussen twee activiteiten, lead
+
+00:03:25.240 --> 00:03:31.295
+time is overlap, als de volgende al begint
+voordat de vorige klaar is.
+
+00:03:31.609 --> 00:03:35.666
+Checkvraag. In het voorbeeld van de
+centrale verwarming loopt radiatoren
+
+00:03:35.666 --> 00:03:41.346
+installeren twee dagen uit. Wat gebeurt er
+met de einddatum van veertien dagen? A,
+
+00:03:41.346 --> 00:03:47.432
+die blijft staan, want E heeft speling tot
+het aansluiten. B, die schuift twee dagen
+
+00:03:47.432 --> 00:03:53.923
+op, naar zestien dagen. C, die schuift op,
+want E gaat aan het aansluiten vooraf. D,
+
+00:03:53.923 --> 00:03:57.575
+die schuift op, want elke vertraging
+verlengt het project.
+
+00:04:03.762 --> 00:04:09.014
+A. De radiatoren zijn normaal na vier
+dagen geïnstalleerd, maar het aansluiten
+
+00:04:09.014 --> 00:04:15.578
+moet toch wachten tot dag acht, als de
+buizen liggen. Twee dagen uitloop past in
+
+00:04:15.578 --> 00:04:20.830
+die speling. B klopt alleen voor een
+activiteit op het kritieke pad.
+
+00:04:21.070 --> 00:04:21.797
+Dan stap vier van de zes-P-methode:
+uitvoeren.
+
+00:04:22.354 --> 00:04:27.146
+Stap vier heeft geen vaste fasen. Het kan
+één realisatiefase zijn,
+
+00:04:27.146 --> 00:04:32.374
+of een reeks van ontwerp, voorbereiding,
+realisatie en invoering. Tussen elke twee
+
+00:04:32.374 --> 00:04:34.116
+fasen zit een overgang.
+
+00:04:34.751 --> 00:04:40.690
+Welke fasen het worden, hangt af van het
+type project. Bij bouw: ontwerp,
+
+00:04:40.690 --> 00:04:42.060
+voorbereiding en bouw.
+
+00:04:42.405 --> 00:04:45.621
+Bij ICT: functioneel ontwerp, technisch
+ontwerp en programmering.
+
+00:04:45.968 --> 00:04:50.867
+Bij onderzoek: ontwerp, gegevens
+verzamelen, analyseren en rapporteren.
+
+00:04:51.152 --> 00:04:54.109
+En bij een evenement: ontwerp, draaiboek
+en opbouw.
+
+00:04:54.820 --> 00:05:00.193
+En het evenement zelf? Dat is stap vijf,
+het opleveren van het projectresultaat.
+
+00:05:00.193 --> 00:05:03.086
+Het productieplan is het allesomvattende
+plan ervoor.
+
+00:05:03.738 --> 00:05:08.172
+Elke uitvoeringsfase beheers je met
+T-G-K-I-O, of bij een evenement met
+
+00:05:08.172 --> 00:05:14.621
+koftig. Je brengt de risico&#x27;s van die fase
+in kaart, en de fase levert een product
+
+00:05:14.621 --> 00:05:18.652
+op. Dan volgt de faseovergang, met drie
+keuzes. Volledig doorgaan,
+
+00:05:18.868 --> 00:05:19.551
+op punten bijstellen,
+
+00:05:19.551 --> 00:05:20.234
+of voortijdig stoppen.
+
+00:05:20.498 --> 00:05:25.763
+Een voorbeeld uit de les: een supersonisch
+passagiersvliegtuig. Na een crash, hoge
+
+00:05:25.763 --> 00:05:30.590
+onderhoudskosten en geluidsklachten stopte
+het; het heeft nooit opgeleverd wat ervan
+
+00:05:30.590 --> 00:05:31.467
+verwacht werd.
+
+00:05:32.048 --> 00:05:37.412
+Tijd bewaak je met tijdverantwoording,
+mijlpalen en het kritieke pad. Loopt het
+
+00:05:37.412 --> 00:05:42.777
+toch uit, dan noemt de les vijf reacties.
+De planning laten uitlopen.
+
+00:05:43.010 --> 00:05:44.691
+Teamleden onbetaald langer laten werken.
+
+00:05:45.244 --> 00:05:46.024
+Of betaald langer.
+
+00:05:46.024 --> 00:05:47.583
+Genoegen nemen met een lagere kwaliteit.
+
+00:05:48.180 --> 00:05:52.144
+Of een teamlid van een niet-kritische naar
+een kritische activiteit verplaatsen.
+
+00:05:52.500 --> 00:06:00.154
+Die laatste gebruikt de speling: wie op
+een activiteit met marge werkt, helpt
+
+00:06:00.154 --> 00:06:03.098
+tijdelijk op het kritieke pad.
+
+00:06:03.884 --> 00:06:08.374
+Geld bewaak je per fase met earned value:
+een vergelijking van drie bedragen.
+
+00:06:09.458 --> 00:06:14.377
+Planned value is de geplande waarde van
+het werk dat op dit moment af had moeten
+
+00:06:14.377 --> 00:06:14.684
+zijn.
+
+00:06:15.550 --> 00:06:24.109
+Earned value is de waarde van het werk dat
+echt af is, uitgedrukt in budget.
+
+00:06:24.991 --> 00:06:28.595
+Actual cost is wat er echt is uitgegeven.
+
+00:06:28.868 --> 00:06:33.998
+De cost variance is earned value min
+actual cost: zit je binnen budget?
+
+00:06:34.336 --> 00:06:38.367
+De schedule variance is earned value min
+planned value: lig je op schema?
+
+00:06:38.778 --> 00:06:44.850
+Van die bedragen maak je indexcijfers. De
+cost performance index is earned value
+
+00:06:44.850 --> 00:06:51.856
+gedeeld door actual cost. Boven de één zit
+je onder budget, onder de één erboven.
+
+00:06:52.248 --> 00:06:57.931
+De schedule performance index is earned
+value gedeeld door planned value. Boven de
+
+00:06:57.931 --> 00:07:01.429
+één loop je voor, onder de één achter.
+
+00:07:01.429 --> 00:07:07.550
+En de estimate at completion, de verwachte
+kosten aan het eind: de totale begroting
+
+00:07:07.550 --> 00:07:10.173
+gedeeld door de cost performance index.
+
+00:07:10.709 --> 00:07:16.176
+Onthoud: boven de één is bij allebei goed
+nieuws. Wie dat omdraait, trekt precies de
+
+00:07:16.176 --> 00:07:16.905
+verkeerde conclusie.
+
+00:07:18.040 --> 00:07:23.762
+Een rekenvoorbeeld uit de les: onderhoud
+en herinrichting van een kantoor, na vier
+
+00:07:23.762 --> 00:07:29.483
+weken. Per werkpakket is de earned value
+het percentage gereed maal het budget.
+
+00:07:29.483 --> 00:07:31.243
+Samen zeventienduizend vijfhonderd euro.
+
+00:07:32.752 --> 00:07:34.334
+De werkelijke kosten zijn samen
+negentienduizend negenhonderd euro.
+
+00:07:34.820 --> 00:07:39.083
+De cost performance index:
+zeventienduizend vijfhonderd gedeeld door
+
+00:07:39.083 --> 00:07:44.412
+negentienduizend negenhonderd, afgerond
+nul komma achtentachtig. Onder de één, dus
+
+00:07:44.412 --> 00:07:45.478
+over budget.
+
+00:07:45.810 --> 00:07:50.949
+De begroting is zesentwintigduizend euro.
+Gedeeld door nul komma achtentachtig
+
+00:07:50.949 --> 00:07:55.574
+verwacht je aan het eind ruim
+negenentwintigduizend vijfhonderd euro.
+
+00:07:56.268 --> 00:08:00.767
+Zo zie je na vier weken al dat het project
+ruim drieënhalfduizend euro duurder
+
+00:08:00.767 --> 00:08:02.374
+uitvalt, als het zo doorgaat.
+
+00:08:03.091 --> 00:08:09.188
+Checkvraag. Na zes weken is de earned
+value twintigduizend euro en de actual
+
+00:08:09.188 --> 00:08:14.816
+cost vijfentwintigduizend euro. Wat zegt
+de cost performance index? A, één komma
+
+00:08:14.816 --> 00:08:20.443
+vijfentwintig: het project zit onder
+budget. B, nul komma acht: het project
+
+00:08:20.443 --> 00:08:27.947
+loopt achter op schema. C, nul komma acht:
+het project zit boven budget. D, één komma
+
+00:08:27.947 --> 00:08:31.230
+vijfentwintig: het project loopt voor op
+schema.
+
+00:08:37.120 --> 00:08:41.361
+C. Twintigduizend gedeeld door
+vijfentwintigduizend is nul komma acht, en
+
+00:08:41.361 --> 00:08:48.570
+onder de één zit je boven budget. B is de
+valkuil: het getal klopt, maar over het
+
+00:08:48.570 --> 00:08:54.507
+schema zegt alleen de schedule performance
+index iets, en daarvoor heb je de planned
+
+00:08:54.507 --> 00:08:55.355
+value nodig.
+
+00:08:56.152 --> 00:08:59.787
+Naast tijd en geld bewaak je per fase de
+kwaliteit.
+
+00:09:00.275 --> 00:09:05.538
+Kwaliteit gaat over het resultaat, de
+tussenresultaten en de uitvoering. Bij het
+
+00:09:05.538 --> 00:09:10.802
+testen zijn er vier soorten. De unittest
+test één onderdeel, zoals het
+
+00:09:10.802 --> 00:09:12.995
+meldformulier van een facilitair
+meldsysteem.
+
+00:09:13.843 --> 00:09:18.790
+De integratietest kijkt of onderdelen
+samenwerken: formulier, doorsturen naar de
+
+00:09:18.790 --> 00:09:21.263
+juiste afdeling en de bevestigingsmail.
+
+00:09:21.960 --> 00:09:26.904
+De systeemtest controleert of het hele
+systeem alle functies uitvoert, van
+
+00:09:26.904 --> 00:09:28.253
+melding tot afhandeling.
+
+00:09:28.912 --> 00:09:33.393
+En bij de acceptatietest beoordelen de
+gebruikers zelf of het logisch en
+
+00:09:33.393 --> 00:09:34.140
+bruikbaar is.
+
+00:09:34.714 --> 00:09:39.675
+Let op het verschil tussen de laatste
+twee. Een systeem kan technisch alles goed
+
+00:09:39.675 --> 00:09:43.927
+doen en de systeemtest halen, terwijl
+gebruikers het onlogisch vinden. Dan zakt
+
+00:09:43.927 --> 00:09:45.345
+het voor de acceptatietest.
+
+00:09:46.200 --> 00:09:50.096
+Door voortschrijdend inzicht kan de
+opdrachtgever zijn wensen bijstellen. Dan
+
+00:09:50.096 --> 00:09:55.161
+volg je een vaste route. Stel de oorzaak
+vast en beschrijf de wijziging.
+
+00:09:55.783 --> 00:10:00.284
+Bepaal de gevolgen voor tijd, geld en
+kwaliteit, en de prioriteit.
+
+00:10:00.795 --> 00:10:02.716
+Maak een schriftelijk wijzigingsverzoek.
+
+00:10:03.459 --> 00:10:06.525
+Neem samen met de opdrachtgever een
+besluit.
+
+00:10:06.525 --> 00:10:13.096
+En verwerk het in de planning, de kosten
+en de KPI&#x27;s, en informeer de opdrachtgever
+
+00:10:13.096 --> 00:10:14.848
+schriftelijk en het team.
+
+00:10:15.155 --> 00:10:21.697
+Het besluit ligt dus bij de opdrachtgever,
+niet bij de projectmanager alleen. En
+
+00:10:21.697 --> 00:10:27.734
+liever voorkom je wijzigingen door de
+kwaliteit continu te bewaken, met plan,
+
+00:10:27.734 --> 00:10:29.244
+do, check, act.
+
+00:10:29.634 --> 00:10:34.098
+Plan: je analyseert het probleem,
+formuleert doelen en maakt een actieplan.
+
+00:10:34.431 --> 00:10:37.820
+Do: je voert het uit en verzamelt
+gegevens.
+
+00:10:38.356 --> 00:10:41.966
+Check: je analyseert de gegevens en
+vergelijkt de resultaten met de doelen.
+
+00:10:42.510 --> 00:10:47.321
+Act: je past aan, standaardiseert wat
+werkt, en begint opnieuw.
+
+00:10:47.589 --> 00:10:53.065
+In de casus uit de les is een
+bedrijfsrestaurant op tijd en binnen
+
+00:10:53.065 --> 00:10:57.698
+budget heringericht, maar de verspilling
+daalde maar vijf procent en de
+
+00:10:57.698 --> 00:11:01.488
+tevredenheid bleef gelijk. Bij check
+blijkt: doelen niet gehaald.
+
+00:11:02.024 --> 00:11:05.639
+Checkvraag. Een nieuw reserveringssysteem
+werkt technisch foutloos, maar de
+
+00:11:05.639 --> 00:11:10.459
+medewerkers vinden het onlogisch. Welke
+test faalt? A, de unittest, want één
+
+00:11:10.459 --> 00:11:14.475
+onderdeel werkt niet. B, de
+acceptatietest, want gebruikers keuren af.
+
+00:11:14.475 --> 00:11:19.295
+C, de systeemtest, want niet alle functies
+kloppen. D, de integratietest, want
+
+00:11:19.295 --> 00:11:20.098
+onderdelen botsen.
+
+00:11:26.301 --> 00:11:31.159
+B. Technisch foutloos betekent dat de
+unittest, de integratietest en de
+
+00:11:31.159 --> 00:11:35.134
+systeemtest slagen. Maar in de
+acceptatietest beoordelen gebruikers of
+
+00:11:35.134 --> 00:11:42.201
+het logisch en bruikbaar is, en daar gaat
+het mis. C is de valkuil: de systeemtest
+
+00:11:42.201 --> 00:11:44.851
+gaat over functies, niet over
+gebruiksgemak.
+
+00:11:45.528 --> 00:11:47.590
+Dan het einde: opleveren, afsluiten, en
+gebruiken en beheren.
+
+00:11:47.838 --> 00:11:49.913
+Stap vijf, opleveren, heeft vier acties.
+Maak een testplan.
+
+00:11:50.481 --> 00:11:53.155
+Controleer het projectresultaat.
+
+00:11:53.554 --> 00:11:54.353
+Zorg voor acceptatie.
+
+00:11:54.731 --> 00:11:59.484
+En voer het in. Wat je overhoudt: een
+testplan, een formeel geaccepteerd
+
+00:11:59.484 --> 00:12:01.464
+resultaat en een ingevoerd resultaat.
+
+00:12:01.772 --> 00:12:05.219
+Bij een groot project splits je de
+acceptatietest: functioneel, door
+
+00:12:05.219 --> 00:12:09.356
+gebruikers, en in productie, waar het moet
+samenwerken met de bestaande software.
+
+00:12:09.638 --> 00:12:16.988
+Invoeren kan op drie manieren. Big bang:
+in één keer, en de oude situatie stopt
+
+00:12:16.988 --> 00:12:17.478
+direct.
+
+00:12:17.734 --> 00:12:21.367
+Fasering: deel voor deel, en de oude
+situatie wordt geleidelijk uitgefaseerd.
+
+00:12:21.718 --> 00:12:29.663
+Parallel draaien: het oude systeem blijft
+in gebruik tot het nieuwe helemaal is
+
+00:12:29.663 --> 00:12:30.274
+ingevoerd.
+
+00:12:30.710 --> 00:12:35.758
+Niet elk project heeft een invoering. Bij
+een popconcert is de oplevering zelf het
+
+00:12:35.758 --> 00:12:41.528
+resultaat: na afloop is er niets meer om
+in te voeren. Bij een nieuw systeem wel,
+
+00:12:41.528 --> 00:12:45.134
+met handleidingen, opleiding van
+gebruikers en beheerders, en een helpdesk.
+
+00:12:45.657 --> 00:12:48.257
+Stap zes, afsluiten. Maak een
+projectevaluatieverslag.
+
+00:12:48.700 --> 00:12:50.776
+Handel het financieel af.
+
+00:12:51.094 --> 00:12:52.608
+Laat de medewerkers terugkeren in de
+organisatie.
+
+00:12:53.020 --> 00:12:55.596
+Organiseer een afsluitende bijeenkomst en
+vier het succes.
+
+00:12:55.993 --> 00:13:03.213
+En hef het team formeel op. Dan is het
+project formeel klaar, en begint het
+
+00:13:03.213 --> 00:13:06.102
+gebruik en beheer van het resultaat.
+
+00:13:06.859 --> 00:13:10.588
+Was het een succes? Daar kunnen
+stakeholders verschillen: de opdrachtgever
+
+00:13:10.588 --> 00:13:16.180
+kan tevreden zijn en de gebruikers niet.
+Of het resultaat is op tijd en binnen
+
+00:13:16.180 --> 00:13:18.045
+budget, maar wordt niet gebruikt.
+
+00:13:18.582 --> 00:13:24.028
+Bij sommige projecten is beheer zeer
+belangrijk. Een brug zonder onderhoud gaat
+
+00:13:24.028 --> 00:13:29.928
+snel verloren. Pas als hij gesloopt wordt,
+is het project definitief ten einde.
+
+00:13:30.219 --> 00:13:35.330
+Checkvraag. Een gemeente vervangt haar
+meldsysteem en wil de oude versie houden
+
+00:13:35.330 --> 00:13:40.868
+tot de nieuwe overal werkt. Welke
+invoerstrategie is dat? A, big bang: alles
+
+00:13:40.868 --> 00:13:45.979
+gaat in één keer over. B, fasering:
+afdeling voor afdeling over. C,
+
+00:13:45.979 --> 00:13:51.091
+acceptatie: eerst testen de gebruikers. D,
+parallel draaien: oud en nieuw tegelijk.
+
+00:13:56.920 --> 00:14:02.090
+D. Bij parallel draaien blijft het oude
+systeem in gebruik tot het nieuwe volledig
+
+00:14:02.090 --> 00:14:06.521
+is ingevoerd. B is verleidelijk, want ook
+fasering gaat geleidelijk. Maar bij
+
+00:14:06.521 --> 00:14:10.952
+fasering verdwijnt het oude stukje bij
+beetje, terwijl hier het oude helemaal
+
+00:14:10.952 --> 00:14:11.690
+blijft draaien.
+
+00:14:12.208 --> 00:14:17.380
+Tot slot twee stellingen in tentamenvorm.
+Juist of onjuist, en waarom?
+
+00:14:18.311 --> 00:14:24.181
+Stelling vijf. Loopt een activiteit op het
+kritieke pad een dag uit, dan vang je dat
+
+00:14:24.181 --> 00:14:28.950
+op met de speling van die activiteit.
+Juist of onjuist? Leg uit waarom.
+
+00:14:55.082 --> 00:14:55.782
+Onjuist.
+
+00:14:56.137 --> 00:15:01.540
+Activiteiten op het kritieke pad hebben
+geen speling. Het kritieke pad is juist de
+
+00:15:01.540 --> 00:15:02.697
+route zonder marge.
+
+00:15:03.122 --> 00:15:07.438
+Een dag uitloop daar schuift dus de
+einddatum op, zoals in het cv-voorbeeld
+
+00:15:07.438 --> 00:15:09.098
+van veertien naar vijftien dagen.
+
+00:15:09.859 --> 00:15:14.549
+Wil je dat voorkomen, dan grijp je in,
+bijvoorbeeld door een teamlid naar die
+
+00:15:14.549 --> 00:15:15.553
+activiteit te verplaatsen.
+
+00:15:16.413 --> 00:15:21.789
+Stelling zes. Een project met een cost
+performance index van nul komma negen kost
+
+00:15:21.789 --> 00:15:27.548
+meer dan begroot voor het werk dat af is.
+Juist of onjuist? Leg uit waarom.
+
+00:15:53.772 --> 00:15:54.372
+Juist.
+
+00:15:54.372 --> 00:15:59.931
+De cost performance index is earned value
+gedeeld door actual cost.
+
+00:16:00.581 --> 00:16:04.844
+Onder de één betekent: de werkelijke
+kosten zijn hoger dan de waarde van het
+
+00:16:04.844 --> 00:16:07.280
+werk dat af is. Je zit boven budget.
+
+00:16:08.104 --> 00:16:12.771
+Let op: over het schema zegt dit getal
+niets. Daarvoor heb je de schedule
+
+00:16:12.771 --> 00:16:13.771
+performance index nodig.
+
+00:16:14.579 --> 00:16:18.413
+Je kunt nu een netwerkplanning lezen en
+het kritieke pad bepalen.
+
+00:16:19.089 --> 00:16:22.935
+Je kiest uitvoeringsfasen en weet hoe je
+op vertraging reageert.
+
+00:16:23.270 --> 00:16:26.015
+Je rekent met earned value en de
+indexcijfers.
+
+00:16:26.936 --> 00:16:31.151
+En je kent de testen, de invoerstrategieën
+en de stappen van afsluiten.
